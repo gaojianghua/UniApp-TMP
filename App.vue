@@ -39,7 +39,7 @@
 				url: '/pages/tabbar/home/index'
 			})
 			uni.preloadPage({
-				url: '/pages/tabbar/class/index'
+				url: '/pages/tabbar/kind/index'
 			})
 			uni.preloadPage({
 				url: '/pages/tabbar/media/index'
@@ -68,8 +68,8 @@
 		},
 		onShow: function() {
 			console.log('App Show');
-			checkOpenPermission(this.globalData)
-			checkOpenService()
+			// checkOpenPermission(this.globalData)
+			// checkOpenService()
 		},
 		onHide: function() {
 			console.log('App Hide');

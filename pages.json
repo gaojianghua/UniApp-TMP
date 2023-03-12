@@ -10,7 +10,7 @@
 			}
 		},
 		{
-			"path": "pages/tabbar/class/index",
+			"path": "pages/tabbar/kind/index",
 			"style": {
 				"navigationBarTitleText": "%page.分类%",
 				"navigationStyle": "custom",
@@ -98,9 +98,9 @@
 				"text": "%page.首页%"
 			},
 			{
-				"pagePath": "pages/tabbar/class/index",
-				"iconPath": "static/img/tabbar/class.png",
-				"selectedIconPath": "static/img/tabbar/class-active.png",
+				"pagePath": "pages/tabbar/kind/index",
+				"iconPath": "static/img/tabbar/kind.png",
+				"selectedIconPath": "static/img/tabbar/kind-active.png",
 				"text": "%page.分类%"
 			},
 			{

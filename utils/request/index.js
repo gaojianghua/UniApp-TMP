@@ -1,5 +1,5 @@
 // 引入配置
-import config from '@/config/request/index.js'
+import config from '@/main_modules/request/config.js'
 // 初始化请求配置
 uni.$u.http.setConfig((defaultConfig) => {
 	/* defaultConfig 为默认全局配置 */
