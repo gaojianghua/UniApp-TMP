@@ -17,6 +17,9 @@ uni.setStorageSync('lang', uni.getLocale())
 import VueI18n from 'vue-i18n'
 Vue.use(VueI18n)
 export const i18n = new VueI18n(i18nConfig)
+//全局引入组件
+import MNavbar from '@/main_modules/main-ui/m-navbar/index.vue'
+Vue.component('m-navbar', MNavbar)
 
 App.mpType = 'app'
 const app = new Vue({

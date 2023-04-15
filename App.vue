@@ -51,9 +51,9 @@
 				url: '/pages/tabbar/mine/index'
 			})
 			//隐藏原生底部导航
-			// uni.hideTabBar({
-			// 	animation: false
-			// })
+			uni.hideTabBar({
+				animation: false
+			})
 			// setTimeout(() => {
 			// 	为tabbar的某一项上添加文本
 			// 	uni.setTabBarBadge({

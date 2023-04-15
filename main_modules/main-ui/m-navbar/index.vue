@@ -5,10 +5,11 @@
 		<view class="top top-0 index-1">
 			<view :style="{backgroundColor: bgColor}" class="tabbar d-flex j-center a-center position-relative">
 				<view v-if="!isTab" class="tabbar-back d-flex j-center a-center p-1" @click="retreat">
-					<u-icon name="arrow-left" :color="iconColor" size="20"></u-icon>
+					<u-image height="60rpx" width="60rpx" src="/static/img/common/back.svg"></u-image>
+					<!-- <u-icon name="arrow-left" :color="iconColor" size="20"></u-icon> -->
 				</view>
 				<view class="tabbar-title">
-					{{$t(value)}}
+					{{i18n ? $t(value) : value}}
 				</view>
 				<view v-if="isLang" class="tabbar-locale d-flex j-center a-center p-1" @click="selectLang">
 					<u-image height="60rpx" width="60rpx" src="/static/img/home/lang1.png"></u-image>
@@ -21,9 +22,9 @@
 <script>
 	import {
 		navigateBack
-	} from '@/util/index.js'
+	} from '../../tools/index.js'
 	export default {
-		name: "tabbar",
+		name: "navbar",
 		props: {
 			value: {
 				type: String,
@@ -44,6 +45,10 @@
 			iconColor: {
 				type: String,
 				default: '#fff'
+			},
+			i18n: {
+				type: Boolean,
+				default: false
 			}
 		},
 		data() {
@@ -66,6 +71,8 @@
 	.top {
 		height: 44px;
 		width: 100vw;
+		border-radius: 8rpx;
+		overflow: hidden;
 
 		.tabbar {
 			height: 100%;

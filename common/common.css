@@ -2,7 +2,7 @@
 /* (1) 页面高度100%,默认字体28upx,默认行高1.8,背景颜色 */
 page {
 	height: 100%;
-	font-size: 28upx;
+	font-size: 28rpx;
 	line-height: 1.8;
 	background: #FFFFFF;
 }
@@ -12,7 +12,7 @@ body {
 }
 
 .page {
-	background: #151521;
+	background: #f5f5f5;
 }
 
 /* (2) 图片默认100%宽度 */

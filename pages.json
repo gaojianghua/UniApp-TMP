@@ -88,37 +88,37 @@
 	},
 	"tabBar": {
 		"borderStyle": "none",
-		"backgroundColor": "#151515",
-		"color": "#7C8292",
-		"selectedColor": "#00AA8F",
+		"backgroundColor": "#333",
+		"color": "#dedede",
+		"selectedColor": "#fb7299",
 		"list": [{
 				"pagePath": "pages/tabbar/home/index",
-				"iconPath": "static/img/tabbar/home.png",
-				"selectedIconPath": "static/img/tabbar/home-active.png",
+				"iconPath": "static/img/tabbar/home.svg",
+				"selectedIconPath": "static/img/tabbar/home-active.svg",
 				"text": "%page.首页%"
 			},
 			{
 				"pagePath": "pages/tabbar/kind/index",
-				"iconPath": "static/img/tabbar/kind.png",
-				"selectedIconPath": "static/img/tabbar/kind-active.png",
+				"iconPath": "static/img/tabbar/kind.svg",
+				"selectedIconPath": "static/img/tabbar/kind-active.svg",
 				"text": "%page.分类%"
 			},
 			{
 				"pagePath": "pages/tabbar/media/index",
-				"iconPath": "static/img/tabbar/media.png",
-				"selectedIconPath": "static/img/tabbar/media-active.png",
+				"iconPath": "static/img/tabbar/media.svg",
+				"selectedIconPath": "static/img/tabbar/media-active.svg",
 				"text": "%page.娱乐%"
 			},
 			{
 				"pagePath": "pages/tabbar/cart/index",
-				"iconPath": "static/img/tabbar/cart.png",
-				"selectedIconPath": "static/img/tabbar/cart-active.png",
+				"iconPath": "static/img/tabbar/cart.svg",
+				"selectedIconPath": "static/img/tabbar/cart-active.svg",
 				"text": "%page.口袋%"
 			},
 			{
 				"pagePath": "pages/tabbar/mine/index",
-				"iconPath": "static/img/tabbar/mine.png",
-				"selectedIconPath": "static/img/tabbar/mine-active.png",
+				"iconPath": "static/img/tabbar/mine.svg",
+				"selectedIconPath": "static/img/tabbar/mine-active.svg",
 				"text": "%page.我的%"
 			}
 		]
