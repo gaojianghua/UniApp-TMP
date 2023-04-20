@@ -4,16 +4,16 @@
 		:refresher-triggered="triggered" @refresherpulling="onPulling" @refresherrefresh="onRefresh"
 		@refresherabort="onAbort" @refresherrestore="onRestore">
 		<view class="position-relative">
-			<m-refresh :isLoad="triggered" :show="none" :dropDown="dropDown" :text="$t(text)" />
+			<m-refresh :mainColor="mainColor" :isLoad="triggered" :show="none" :dropDown="dropDown" :text="i18n ? $t(text) : text" />
 			<slot />
 		</view>
-		<m-loading v-if="isLoading" :height="loadHeight" :load="load" />
+		<m-loading v-if="isLoading" :height="loadHeight" :load="load" :mainColor="mainColor" />
 	</scroll-view>
 </template>
 
 <script>
-	import MRefresh from '@/components/m-refresh/index.vue'
-	import MLoading from '@/components/m-loading/index.vue'
+	import MRefresh from '../m-refresh/index.vue'
+	import MLoading from '../m-loading/index.vue'
 	export default {
 		components: {
 			MLoading,
@@ -24,6 +24,12 @@
 				type: Object,
 				default: () => {
 					return {}
+				}
+			},
+			mainColor: {
+				type: String,
+				default: () => {
+					return '#151521'
 				}
 			},
 			load: {
@@ -66,6 +72,12 @@
 				type: Boolean,
 				default: () => {
 					return true
+				}
+			},
+			i18n: {
+				type: Boolean,
+				default: () => {
+					return false
 				}
 			}
 		},

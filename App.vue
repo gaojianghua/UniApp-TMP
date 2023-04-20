@@ -34,7 +34,6 @@
 			// #endif
 			// 公共的
 			getPhoneHeight()
-			this.$store.dispatch('getSysConfig')
 			uni.preloadPage({
 				url: '/pages/tabbar/home/index'
 			})

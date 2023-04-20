@@ -81,13 +81,14 @@
 			left: 0;
 			z-index: 999;
 			width: 100%;
+			height: 100rpx;
 			display: flex;
-			border-radius: 12rpx;
+			// border-radius: 12rpx;
 			justify-content: space-around;
 			padding-bottom: constant(safe-area-inset-bottom);
 			padding-bottom: env(safe-area-inset-bottom);
 			background-color: #151515;
-			box-shadow: 0px 2px 17rpx 10rpx rgba(206, 206, 206, 0.5);
+			// box-shadow: 0px 2px 17rpx 10rpx rgba(206, 206, 206, 0.5);
 
 			.tabbar-item {
 				display: block;

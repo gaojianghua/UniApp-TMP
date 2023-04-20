@@ -2,9 +2,9 @@
 	<u-transition :show="show" mode="slide-down">
 		<view :style="{height: `${dropDown}px`, top: `-${dropDown}px`}"
 			class="w-100 refresher text-center d-flex a-center j-center">
-			<u-loading-icon v-if="isLoad" size="20" :inactiveColor="color + '22'" mode="circle" :color="color">
+			<u-loading-icon v-if="isLoad" size="20" :inactiveColor="mainColor + '22'" mode="circle" :color="mainColor">
 			</u-loading-icon>
-			<view :style="{color: color}" class="refresher-text ml-2">
+			<view :style="{color: mainColor}" class="refresher-text ml-2">
 				{{text}}
 			</view>
 		</view>
@@ -20,10 +20,10 @@
 					return false
 				}
 			},
-			color: {
+			mainColor: {
 				type: String,
 				default: () => {
-					return '#FBDD5B'
+					return '#151521'
 				}
 			},
 			dropDown: {

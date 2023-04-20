@@ -6,6 +6,7 @@ export default {
 	// #ifndef APP-PLUS
 	tabbarHeight: 50,
 	// #endif
+	token: uni.getStorageSync('token') || '1',
 	userinfo: uni.getStorageSync('userinfo') || {},
 	sysConfig: uni.getStorageSync('config') || {},
 	lang: uni.getStorageSync('lang') || 'en',

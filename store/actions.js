@@ -6,6 +6,7 @@ import {
 
 
 export default {
+	// 获取系统配置
 	async getSysConfig({
 		commit
 	}) {
