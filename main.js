@@ -3,9 +3,13 @@ import Vue from 'vue'
 import uView from '@/uni_modules/uview-ui'
 Vue.use(uView)
 import store from './store';
+import tools from '@/main_modules/tools/index.js'
+import check from '@/main_modules/check/index.js'
 import http from '@/main_modules/request/method.js'
 Vue.prototype.$http = http
 Vue.prototype.$store = store
+Vue.prototype.$tools = tools
+Vue.prototype.$check = check
 Vue.config.productionTip = false
 //多语言
 import messages from './locale/index'

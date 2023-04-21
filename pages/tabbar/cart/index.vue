@@ -110,6 +110,7 @@
 			// 获取数据
 			async getData(e) {
 				this.load = 3
+				console.log(this.$check.isArray(this.load))
 				// let {
 				// 	data,
 				// 	code
