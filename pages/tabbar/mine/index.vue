@@ -1,5 +1,32 @@
 <template>
 	<view class="page">
+		<!-- 顶部信息 -->
+		<view class="user d-flex a-center">
+			<view class="user-avatar mr-2">
+				<image class="user-img" src="https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/wolffyPink.png" mode="">
+				</image>
+			</view>
+			<view class="user-info">
+				<view class="info-name font-lg line-h">
+					高江华
+				</view>
+				<view class="info-desc font-md">
+					我自横刀向天笑，去留肝胆两昆仑
+				</view>
+			</view>
+		</view>
+		<!-- 订单栏 -->
+		<view class="order d-flex a-center j-around">
+			<block v-for="i in 4" :key="i">
+				<view class="order-item d-flex flex-column a-center j-center">
+					<image class="order-img" src="https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/wolffyPink.png"
+						mode=""></image>
+					<view class="order-text">
+						待付款
+					</view>
+				</view>
+			</block>
+		</view>
 		<m-tabbar :pagePath="$store.state.tabbar[4].pagePath" i18n></m-tabbar>
 	</view>
 </template>
@@ -20,4 +47,41 @@
 </script>
 
 <style lang="scss" scoped>
+	.page {
+		background-color: #fff;
+
+		.user {
+			padding: 100rpx 50rpx 0;
+			background: linear-gradient(#fb7299, #fff);
+
+			.user-avatar {
+				.user-img {
+					width: 120rpx;
+					height: 120rpx;
+					border-radius: 50%;
+					overflow: hidden;
+				}
+			}
+		}
+
+		.order {
+			margin-top: 30rpx;
+			border-radius: 10rpx;
+			border: 1rpx solid #151515;
+			width: 690rpx;
+			margin-left: 30rpx;
+			padding: 30rpx;
+
+			.order-item {
+				.order-img {
+					width: 88rpx;
+					height: 88rpx;
+				}
+
+				.order-text {
+					font-size: 26rpx;
+				}
+			}
+		}
+	}
 </style>
