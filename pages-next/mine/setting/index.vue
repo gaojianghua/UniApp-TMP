@@ -11,7 +11,6 @@
 		},
 		onLoad(data) {
 			let obj = this.$tools.Navigate.receivePageData(data, true)
-			console.log(obj)
 		},
 		methods: {
 

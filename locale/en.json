@@ -5,5 +5,27 @@
 	"page.口袋": "Cart",
 	"page.我的": "My",
 	"page.登录": "Sign in",
-	"page.注册": "Sign up"
+	"page.注册": "Sign up",
+
+	"上拉加载更多哦~": "Pull up to load more oh ~",
+	"正在加载中哦! 亲~": "Under loading oh! Pro ~",
+	"亲~ 我是有底线的哦!": "Pro ~ I have a bottom line oh!",
+	"亲~ 下拉可以刷新哦": "Pro ~ drop down can refresh oh",
+	"亲~ 可以松手了哦": "Pro ~ You can let go oh",
+	"亲~ 正在加载中哦": "Pro ~ Under loading oh",
+	
+	"网络异常": "Network exception",
+	"网络异常, 请检查您的网络设置": "Network exception, please check your network settings",
+	"查看解决方案": "View the solution",
+	"您的设备可能未启用移动网络或WI-FI网络，可以参照以下方法进行设置": "The mobile network or WI-FI network may not be enabled on your device. You can perform the following operations to set the mobile network or Wi-Fi network",
+	"打开设备的": "Turn on the device",
+	"Wi-Fi网络": "Wi-Fi Network",
+	"蜂窝移动网络": "Cellular mobile network",
+	"设置面板选择一个可用的Wi-Fi接入": "Settings panel selects an available Wi-Fi access",
+	"设置面板启用蜂窝数据": "Settings panel Enable cellular data",
+	"如果您已经接入WiFi网络": "If you are already connected to a WiFi network",
+	"请检查该Wi-Fi热点是否已经接入互联网，或该Wi-Fi是否允许你的设备访问互联网": "Check to see if the Wi-Fi hotspot is connected to the Internet or if the Wi-Fi allows your device to access the Internet",
+	
+	"请求超时, 请稍候重试": "Request timeout, please try again later",
+	"APP下载": "Download APP"
 }
