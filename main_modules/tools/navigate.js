@@ -1,19 +1,34 @@
+import check from '../check/index.js'
 
 class Navigate {
+	// 设置明文参数
+	static setPlaintext = (data) => {
+		if (check.isString(data) || check.isNumber(data) || check.isBoolean(data)) {
+			return data
+		}else if (check.isObject(data) || check.isMap(data)) {
+			let str = ''
+			Object.keys(data).forEach((item, i) => {
+				i == 0 ? (str = `?${item}=${data[item]}`) : (str = str + `&${item}=${data[item]}`)
+			})
+			return str
+		}else {
+			throw new Error('参数不合法')
+		}
+	}
 	//封装跳转页面函数
-	static switchTab = (url, data = null) => {
+	static switchTab = (url, data = null, plaintext = false) => {
 		uni.switchTab({
-			url: data ? (url + '?item=' + encodeURIComponent(JSON.stringify(data))) : url
+			url: data ? (url + (plaintext ? this.setPlaintext(data) : ('?item=' + encodeURIComponent(JSON.stringify(data))))) : url
 		})
 	}
-	static navigateTo = (url, data = null) => {
+	static navigateTo = (url, data = null, plaintext = false) => {
 		uni.navigateTo({
-			url: data ? (url + '?item=' + encodeURIComponent(JSON.stringify(data))) : url
+			url: data ? (url + (plaintext ? this.setPlaintext(data) : ('?item=' + encodeURIComponent(JSON.stringify(data))))) : url
 		})
 	}
-	static redirectTo = (url, data = null) => {
+	static redirectTo = (url, data = null, plaintext = false) => {
 		uni.redirectTo({
-			url: data ? (url + '?item=' + encodeURIComponent(JSON.stringify(data))) : url
+			url: data ? (url + (plaintext ? this.setPlaintext(data) : ('?item=' + encodeURIComponent(JSON.stringify(data))))) : url
 		})
 	}
 	static navigateBack = (delta = 1) => {
@@ -33,10 +48,9 @@ class Navigate {
 		}
 		// #endif
 	}
-	
 	// 页面接收参数封装
-	static receivePageData = (data) => {
-		return JSON.parse(decodeURIComponent(data))
+	static receivePageData = (data, plaintext = false) => {
+		return !plaintext ? JSON.parse(decodeURIComponent(data.item)) : data
 	}
 }
 

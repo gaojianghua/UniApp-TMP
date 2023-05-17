@@ -27,6 +27,10 @@
 				</view>
 			</block>
 		</view>
+		<!-- 菜单栏 -->
+		<view class="menu" @click="openSet">
+			设置
+		</view>
 		<m-tabbar :pagePath="$store.state.tabbar[4].pagePath" i18n></m-tabbar>
 	</view>
 </template>
@@ -40,8 +44,21 @@
 		data() {
 			return {}
 		},
+		onLoad() {
+			this.init()
+		},
 		methods: {
-
+			// 初始化
+			init() {
+				
+			},
+			openSet() {
+				let obj = {
+					abc: '123',
+					bjj: '456'
+				}
+				this.$tools.Navigate.navigateTo('/pages-next/mine/setting/index', obj, true)
+			}
 		}
 	}
 </script>
