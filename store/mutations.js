@@ -1,7 +1,10 @@
 export default {
 	updateStatusHeight(state, e) {
-			state.statusHeight = e
-		},
+		state.statusHeight = e
+	},
+	updateMiniProgramCapsule(state, e) {
+		state.miniProgramCapsule = e
+	},
 	updateSysConfig(state, e) {
 		state.sysConfig = e
 	},

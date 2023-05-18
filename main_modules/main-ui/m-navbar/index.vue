@@ -1,8 +1,8 @@
 <!-- 顶部组件 -->
 <template>
 	<view class="position-sticky index-5">
-		<view :style="{height: `${$store.state.statusHeight}px`}"></view>
-		<view class="top top-0 index-1">
+		<view :style="{height: `${statusHeight}px`}"></view>
+		<view class="top top-0 index-1" :style="{height: `${navbarHeight}px`}">
 			<view :style="{backgroundColor: bgColor}" class="tabbar d-flex j-center a-center position-relative">
 				<view v-if="!isTab" class="tabbar-back d-flex j-center a-center p-1" @click="retreat">
 					<u-image height="60rpx" width="60rpx" src="/static/img/common/back.svg"></u-image>
@@ -24,7 +24,7 @@
 		navigateBack
 	} from '../../tools/index.js'
 	export default {
-		name: "navbar",
+		name: "m-navbar",
 		props: {
 			value: {
 				type: String,
@@ -53,8 +53,18 @@
 		},
 		data() {
 			return {
-
+				statusHeight: 0,
+				navbarHeight: 0
 			};
+		},
+		created() {
+			this.statusHeight = this.$store.state.statusHeight
+			// #ifdef MP
+			this.navbarHeight = (this.$store.state.miniProgramCapsule.top - this.$store.state.statusHeight) * 2 + this.$store.state.miniProgramCapsule.height
+			// #endif
+			// #ifndef MP
+			this.navbarHeight = 44
+			// #endif
 		},
 		methods: {
 			selectLang() {
@@ -69,7 +79,6 @@
 
 <style lang="scss">
 	.top {
-		height: 44px;
 		width: 100vw;
 		border-radius: 8rpx;
 		overflow: hidden;

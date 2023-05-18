@@ -1,5 +1,7 @@
 <template>
 	<view class="page">
+		<!-- 顶部状态栏高度 -->
+		<m-top />
 		<!-- 顶部栏 -->
 		<view class="title d-flex a-center px-3">
 			<view class="title-text mr-1">
@@ -70,15 +72,18 @@
 				</view>
 			</view>
 		</view>
+		<u-safe-bottom></u-safe-bottom>
 		<!-- 底部导航 -->
-		<m-tabbar :pagePath="$store.state.tabbar[3].pagePath" i18n></m-tabbar>
+		<m-tabbar pagePath="pages/tabbar/cart/index" i18n></m-tabbar>
 	</view>
 </template>
 
 <script>
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
 	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
+	import tabbarInit from '@/mixins/tabbar-init.js'
 	export default {
+		mixins: [tabbarInit],
 		components: {
 			MTabbar,
 			MScroll

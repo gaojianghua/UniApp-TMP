@@ -24,6 +24,8 @@ export const i18n = new VueI18n(i18nConfig)
 //全局引入组件
 import MNavbar from '@/main_modules/main-ui/m-navbar/index.vue'
 Vue.component('m-navbar', MNavbar)
+import MTop from '@/main_modules/main-ui/m-top/index.vue'
+Vue.component('m-top', MTop)
 
 App.mpType = 'app'
 const app = new Vue({

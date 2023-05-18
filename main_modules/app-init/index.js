@@ -1,12 +1,13 @@
 import store from '@/store/index.js'
 //获取胶囊位置
 export const getTabbarCapsule = () => {
-	let tabbarCapsule = uni.getMenuButtonBoundingClientRect()
-	uni.setStorageSync('tabbarCapsule', tabbarCapsule)
+	let miniProgramCapsule = uni.getMenuButtonBoundingClientRect()
+	uni.setStorageSync('miniProgramCapsule', miniProgramCapsule)
+	store.commit('updateMiniProgramCapsule', miniProgramCapsule)
 }
-//获取APP状态栏高度
+//获取手机状态栏高度
 export const getAppStatusHeight = () => {
-	let statusHeight = plus.navigator.getStatusbarHeight() // * plus.screen.scale;
+	let statusHeight = uni.getSystemInfoSync().statusBarHeight // * plus.screen.scale;
 	uni.setStorageSync('statusHeight', statusHeight)
 	store.commit('updateStatusHeight', statusHeight)
 }

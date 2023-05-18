@@ -4,10 +4,10 @@
 		getTabbarCapsule
 	} from '@/main_modules/app-init/index.js'
 	// #endif
-	// #ifdef APP-PLUS
 	import {
 		getAppStatusHeight
 	} from '@/main_modules/app-init/index.js'
+	// #ifdef APP-PLUS
 	import {
 		checkOpenService,
 		checkOpenPermission
@@ -19,14 +19,14 @@
 	} from '@/main_modules/app-init/index.js'
 	export default {
 		onLaunch: function() {
+			//获取手机状态栏高度
+			getAppStatusHeight()
 			// #ifdef APP-PLUS
 			APPUpdate();
 			//开屏动画
 			plus.navigator.closeSplashscreen();
 			//锁定屏幕方向
 			plus.screen.lockOrientation("portrait-primary");
-			//获取app状态栏高度
-			getAppStatusHeight()
 			// #endif
 			// #ifdef MP
 			//获取小程序胶囊信息
@@ -34,6 +34,7 @@
 			// #endif
 			// 公共的
 			getPhoneHeight()
+			// #ifndef MP
 			uni.preloadPage({
 				url: '/pages/tabbar/home/index'
 			})
@@ -49,6 +50,7 @@
 			uni.preloadPage({
 				url: '/pages/tabbar/mine/index'
 			})
+			// #endif
 			//隐藏原生底部导航
 			uni.hideTabBar({
 				animation: false

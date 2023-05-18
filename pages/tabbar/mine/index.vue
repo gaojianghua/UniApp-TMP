@@ -2,6 +2,8 @@
 	<view class="page">
 		<!-- 顶部信息 -->
 		<view class="user d-flex a-center">
+			<!-- 顶部状态栏高度 -->
+			<m-top />
 			<view class="user-avatar mr-2">
 				<image class="user-img" src="https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/wolffyPink.png" mode="">
 				</image>
@@ -31,13 +33,16 @@
 		<view class="menu" @click="openSet">
 			设置
 		</view>
-		<m-tabbar :pagePath="$store.state.tabbar[4].pagePath" i18n></m-tabbar>
+		<!-- 底部导航栏 -->
+		<m-tabbar pagePath="pages/tabbar/mine/index" i18n></m-tabbar>
 	</view>
 </template>
 
 <script>
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
+	import tabbarInit from '@/mixins/tabbar-init.js'
 	export default {
+		mixins: [tabbarInit],
 		components: {
 			MTabbar
 		},
