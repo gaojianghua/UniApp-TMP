@@ -1,8 +1,24 @@
 <template>
-	<scroll-view class="scroll" scroll-anchoring scroll-y="true" :style="scrollStyle" refresher-default-style="none"
+	<!-- #ifdef MP-WEIXIN -->
+	<scroll-view 
+		class="scroll-row" 
+		scroll-anchoring scroll-y="true" 
+		:style="[scrollStyle]" 
+		refresher-default-style="none"
 		:refresher-threshold="threshold" :refresher-background="bgColor" @scrolltolower="loadmore" refresher-enabled
 		:refresher-triggered="triggered" @refresherpulling="onPulling" @refresherrefresh="onRefresh"
 		@refresherabort="onAbort" @refresherrestore="onRestore">
+		<!-- #endif -->
+	<!-- #ifndef MP-WEIXIN -->
+	<scroll-view 
+		class="scroll-row" 
+		scroll-anchoring scroll-y="true" 
+		:style="scrollStyle" 
+		refresher-default-style="none"
+		:refresher-threshold="threshold" :refresher-background="bgColor" @scrolltolower="loadmore" refresher-enabled
+		:refresher-triggered="triggered" @refresherpulling="onPulling" @refresherrefresh="onRefresh"
+		@refresherabort="onAbort" @refresherrestore="onRestore">
+		<!-- #endif -->
 		<view class="position-relative">
 			<m-refresh :mainColor="mainColor" :isLoad="triggered" :show="none" :dropDown="dropDown" :text="i18n ? $t(text) : text" />
 			<slot />

@@ -1,6 +1,7 @@
 <template>
 	<view class="page">
 		<!-- 顶部状态栏高度 -->
+		<!--  -->
 		<m-top />
 		<!-- 顶部栏 -->
 		<view class="title d-flex a-center px-3">
@@ -17,15 +18,14 @@
 			</view>
 		</view>
 		<!--内容区域 -->
-		<view v-if="!$store.state.token" class="notopenid d-flex j-center a-center"
-			:style="{height: `calc(100vh - 190rpx - ${$store.state.tabbarHeight}px - ${$store.state.statusHeight}px)`}">
+		<view v-if="!token" class="notopenid d-flex j-center a-center"
+			:style="scrollStyle">
 			<view class="right d-flex j-center a-center" @click="login">
 				未登录!无法查看购物袋
 			</view>
 		</view>
 		<template v-else>
-			<m-scroll bgColor="transparent" :isLoading="isLoading" :scrollStyle="{height: `calc(100vh - 190rpx - ${$store.state.tabbarHeight}px - ${$store.state.statusHeight}px)`,
-				backgroundColor: 'transparent'}" :load="load" @loadmore="loadmore" @onRefresh="onRefresh" mainColor="#fb7290">
+			<m-scroll bgColor="transparent" :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load" @loadmore="loadmore" @onRefresh="onRefresh" mainColor="#fb7290">
 				<u-empty v-if="load != 0 && list.length == 0" mode="car" text="购物袋是空的"
 					icon="http://cdn.uviewui.com/uview/empty/car.png">
 				</u-empty>
@@ -37,7 +37,7 @@
 			</m-scroll>
 		</template>
 		<!-- 结算区域 -->
-		<view v-if="!$store.state.token" class="login d-flex a-center main-bg-color">
+		<view v-if="!token" class="login d-flex a-center main-bg-color">
 			<view class="left">
 				登录查看购物袋
 			</view>
@@ -150,11 +150,11 @@
 			},
 			// 管理
 			management() {
-				
+
 			},
 			// 查看详情
 			enterListDetail(i) {
-				
+
 			},
 			// 加载更多
 			loadmore() {
@@ -172,7 +172,15 @@
 				this.query.page = 1
 				this.getData()
 			}
-		}
+		},
+		computed: {
+			token() {
+				return this.$store.state.token
+			},
+			scrollStyle() {
+				return {height: `calc(100vh - 190rpx - ${this.$store.state.tabbarHeight}px - ${this.$store.state.statusHeight}px)`,backgroundColor: 'transparent'}
+			}
+		},
 	}
 </script>
 
@@ -236,7 +244,8 @@
 				color: #56360E;
 				line-height: 48rpx;
 			}
-			.right:active{
+
+			.right:active {
 				background: linear-gradient(-43deg, #FBEFD099, #FAE2A099);
 			}
 		}
@@ -293,7 +302,8 @@
 					margin-left: 25rpx;
 					box-shadow: 0 5rpx 10rpx #fb7290;
 				}
-				.btn:active{
+
+				.btn:active {
 					background: #fb729999;
 				}
 			}

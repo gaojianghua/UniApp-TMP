@@ -1,6 +1,7 @@
 <template>
 	<view class="page">
-		<m-navbar value="123"></m-navbar>
+		<!-- 顶部导航栏 -->
+		<m-navbar bgColor="#fff" isTab textColor="#fb7299" value="首页"></m-navbar>
 		<!-- 顶部状态栏高度 -->
 		<!-- <m-top /> -->
 		<!-- 底部导航栏 -->

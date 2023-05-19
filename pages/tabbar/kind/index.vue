@@ -1,7 +1,7 @@
 <template>
 	<view class="page">
-		<!-- 顶部状态栏高度 -->
-		<m-top />
+		<!-- 顶部导航栏 -->
+		<m-navbar bgColor="#fff" isTab textColor="#fb7299" value="分类"></m-navbar>
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/kind/index" i18n></m-tabbar>
 	</view>

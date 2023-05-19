@@ -1,8 +1,8 @@
 import App from './App.vue'
 import Vue from 'vue'
+import store from './store';
 import uView from '@/uni_modules/uview-ui'
 Vue.use(uView)
-import store from './store';
 import tools from '@/main_modules/tools/index.js'
 import check from '@/main_modules/check/index.js'
 import http from '@/main_modules/request/method.js'
@@ -29,8 +29,8 @@ Vue.component('m-top', MTop)
 
 App.mpType = 'app'
 const app = new Vue({
-	i18n,
 	store,
+	i18n,
 	...App
 })
 // 引入请求封装

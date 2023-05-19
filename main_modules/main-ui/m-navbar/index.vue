@@ -1,14 +1,14 @@
 <!-- 顶部组件 -->
 <template>
 	<view class="position-sticky index-5">
-		<view :style="{height: `${statusHeight}px`}"></view>
-		<view class="top top-0 index-1" :style="{height: `${navbarHeight}px`}">
+		<view :style="{height: `${statusHeight}px`, backgroundColor: bgColor}"></view>
+		<view class="top top-0 index-1" :style="{height: `${navbarHeight}px`, borderBottom: borderBottom ? '1rpx solid #f5f5f5' : 'none'}">
 			<view :style="{backgroundColor: bgColor}" class="tabbar d-flex j-center a-center position-relative">
 				<view v-if="!isTab" class="tabbar-back d-flex j-center a-center p-1" @click="retreat">
 					<u-image height="60rpx" width="60rpx" src="/static/img/common/back.svg"></u-image>
 					<!-- <u-icon name="arrow-left" :color="iconColor" size="20"></u-icon> -->
 				</view>
-				<view class="tabbar-title">
+				<view class="tabbar-title" :style="{color: textColor}">
 					{{i18n ? $t(value) : value}}
 				</view>
 				<view v-if="isLang" class="tabbar-locale d-flex j-center a-center p-1" @click="selectLang">
@@ -34,6 +34,10 @@
 				type: Boolean,
 				default: false
 			},
+			borderBottom: {
+				type: Boolean,
+				default: true
+			},
 			isTab: {
 				type: Boolean,
 				default: false
@@ -43,6 +47,10 @@
 				default: '#151521'
 			},
 			iconColor: {
+				type: String,
+				default: '#fff'
+			},
+			textColor: {
 				type: String,
 				default: '#fff'
 			},
@@ -88,7 +96,6 @@
 			width: 100%;
 
 			.tabbar-title {
-				color: #fff;
 				font-size: 28rpx;
 				font-weight: 500;
 			}
