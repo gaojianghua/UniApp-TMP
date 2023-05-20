@@ -1,22 +1,24 @@
 <template>
-	<view class="page">
-		<!-- 顶部状态栏高度 -->
-		<!--  -->
-		<m-top />
-		<!-- 顶部栏 -->
-		<view class="title d-flex a-center px-3">
-			<view class="title-text mr-1">
-				购物袋
+	<view class="page"><!-- 顶部导航栏 -->
+		<m-navbar bgColor="#fff" isTab isSlot>
+			<view class="title w-100 d-flex a-center px-3" :style="{
+			width: `calc(100vw - ${miniProgramCapsule.width}px)`,
+			marginRight: `${miniProgramCapsule.width}px`}">
+				<view class="title-text mr-2 line-h">
+					购物袋
+				</view>
+				<view class="title-address d-flex a-center">
+					<u-image width="50rpx" height="50rpx" src="/static/img/common/local.svg"></u-image>
+					<text class="line-h">北大山水资源年华7幢601</text>
+					<u-icon name="arrow-right" color="#999" size="15"></u-icon>
+				</view>
+				<!-- #ifndef MP -->
+				<view class="title-admin ml-auto line-h" @click="management">
+					管理
+				</view>
+				<!-- #endif -->
 			</view>
-			<view class="title-address d-flex a-center">
-				<u-image width="50rpx" height="50rpx" src="/static/img/common/local.svg"></u-image>
-				<text>北大山水资源年华7幢601</text>
-				<u-icon style="margin-bottom: 5rpx;" name="arrow-right" color="#999" size="15"></u-icon>
-			</view>
-			<view class="title-admin ml-auto" @click="management">
-				管理
-			</view>
-		</view>
+		</m-navbar>
 		<!--内容区域 -->
 		<view v-if="!token" class="notopenid d-flex j-center a-center"
 			:style="scrollStyle">
@@ -82,8 +84,9 @@
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
 	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	import tabbarInit from '@/mixins/tabbar-init.js'
+	import capsuleInit from '@/mixins/capsule-init.js'
 	export default {
-		mixins: [tabbarInit],
+		mixins: [tabbarInit,capsuleInit],
 		components: {
 			MTabbar,
 			MScroll

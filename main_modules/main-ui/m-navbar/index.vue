@@ -2,15 +2,21 @@
 <template>
 	<view class="position-sticky index-5">
 		<view :style="{height: `${statusHeight}px`, backgroundColor: bgColor}"></view>
-		<view class="top top-0 index-1" :style="{height: `${navbarHeight}px`, borderBottom: borderBottom ? '1rpx solid #f5f5f5' : 'none'}">
+		<view class="top top-0 index-1"
+			:style="{height: `${navbarHeight}px`, borderBottom: borderBottom ? '1rpx solid #f5f5f5' : 'none'}">
 			<view :style="{backgroundColor: bgColor}" class="tabbar d-flex j-center a-center position-relative">
 				<view v-if="!isTab" class="tabbar-back d-flex j-center a-center p-1" @click="retreat">
 					<u-image height="60rpx" width="60rpx" src="/static/img/common/back.svg"></u-image>
 					<!-- <u-icon name="arrow-left" :color="iconColor" size="20"></u-icon> -->
 				</view>
-				<view class="tabbar-title" :style="{color: textColor}">
-					{{i18n ? $t(value) : value}}
-				</view>
+				<template v-if="isSlot">
+					<slot></slot>
+				</template>
+				<template v-else>
+					<view class="tabbar-title" :style="{color: textColor}">
+						{{i18n ? $t(value) : value}}
+					</view>
+				</template>
 				<view v-if="isLang" class="tabbar-locale d-flex j-center a-center p-1" @click="selectLang">
 					<u-image height="60rpx" width="60rpx" src="/static/img/home/lang1.png"></u-image>
 				</view>
@@ -20,9 +26,7 @@
 </template>
 
 <script>
-	import {
-		navigateBack
-	} from '../../tools/index.js'
+	import tools from '../../tools/index.js'
 	export default {
 		name: "m-navbar",
 		props: {
@@ -31,6 +35,10 @@
 				default: ''
 			},
 			isLang: {
+				type: Boolean,
+				default: false
+			},
+			isSlot: {
 				type: Boolean,
 				default: false
 			},
@@ -68,7 +76,8 @@
 		created() {
 			this.statusHeight = this.$store.state.statusHeight
 			// #ifdef MP
-			this.navbarHeight = (this.$store.state.miniProgramCapsule.top - this.$store.state.statusHeight) * 2 + this.$store.state.miniProgramCapsule.height
+			this.navbarHeight = (this.$store.state.miniProgramCapsule.top - this.$store.state.statusHeight) * 2 + this
+				.$store.state.miniProgramCapsule.height
 			// #endif
 			// #ifndef MP
 			this.navbarHeight = 44
@@ -79,7 +88,7 @@
 				this.$emit('selectLang')
 			},
 			retreat() {
-				navigateBack()
+				tools.Navigate.navigateBack()
 			}
 		}
 	}

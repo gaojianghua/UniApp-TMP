@@ -1,9 +1,13 @@
 <template>
 	<view class="page">
 		<!-- 顶部导航栏 -->
-		<m-navbar bgColor="#fff" isTab textColor="#fb7299" value="首页"></m-navbar>
-		<!-- 顶部状态栏高度 -->
-		<!-- <m-top /> -->
+		<m-navbar bgColor="#fff" isTab isSlot>
+			<view class="w-100 search px-2" :style="{
+			width: `calc(100vw - ${miniProgramCapsule.width}px)`,
+			marginRight: `${miniProgramCapsule.width}px`}">
+				<u-search placeholder="请输入关键词" height="60rpx" disabled :showAction="false" @click="openSearch"></u-search>
+			</view>
+		</m-navbar>
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/home/index" i18n></m-tabbar>
 	</view>
@@ -13,8 +17,9 @@
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
 	import MNavbar from '@/main_modules/main-ui/m-navbar/index.vue'
 	import tabbarInit from '@/mixins/tabbar-init.js'
+	import capsuleInit from '@/mixins/capsule-init.js'
 	export default {
-		mixins: [tabbarInit],
+		mixins: [tabbarInit,capsuleInit],
 		components: {
 			MTabbar,
 			MNavbar
@@ -22,8 +27,22 @@
 		data() {
 			return {}
 		},
+		onLoad() {
+			this.init()
+		},
 		methods: {
-
+			// 初始化
+			init() {
+				
+			},
+			// 获取数据
+			getData() {
+				
+			},
+			// 进入搜索界面
+			openSearch() {
+				this.$tools.Navigate.navigateTo('/pages-next/common/search/index')
+			}
 		}
 	}
 </script>

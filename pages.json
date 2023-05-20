@@ -68,6 +68,13 @@
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
+		}, {
+			"path": "common/search/index",
+			"style": {
+				"navigationBarTitleText": "%page.搜索%",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
 		}]
 	}, {
 		"root": "pages-offspring",
