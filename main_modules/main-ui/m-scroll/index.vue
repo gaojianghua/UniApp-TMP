@@ -40,7 +40,7 @@
 			scrollStyle: {
 				type: Object,
 				default: () => {
-					return {}
+					return null
 				}
 			},
 			mainColor: {

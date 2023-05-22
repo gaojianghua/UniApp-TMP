@@ -15,13 +15,18 @@
 				@click="switchTabs"></u-tabs>
 		</view>
 		<!-- 列表栏 -->
-		<m-list-swiper :swiperStyle="scrollStyle" :chooseIndex="current" :tabs="tabs" @changeSwiper="changeSwiper">
-			<template slot-scope="scope">
-				<view class="content px-2">
-					<m-scroll :isLoading="scope.item.isLoading"
-						:scrollStyle="scrollStyle"
-						:load="scope.item.load" @loadmore="loadmore" bgColor="transparent" @onRefresh="onRefresh">
-						<view class="item d-flex a-center" v-for="(val, index) in scope.item.list" :key="index">
+		<!-- #ifdef MP-WEIXIN -->
+		<swiper :current="current" :style="[scrollStyle]" @change="changeSwiper">
+		<!-- #endif -->
+		<!-- #ifndef MP-WEIXIN -->
+		<swiper :current="current" :style="scrollStyle" @change="changeSwiper">
+		<!-- #endif -->
+			<swiper-item v-for="(item, i) in tabs" :key="i">
+				<!-- 列表区域 -->
+				<view class="w-100 h-100 px-2">
+					<m-scroll :isLoading="item.isLoading" :scrollStyle="scrollStyle" :load="item.load"
+						@loadmore="loadmore" bgColor="transparent" @onRefresh="onRefresh">
+						<view class="item d-flex a-center j-sb" v-for="(val, index) in item.list" :key="index">
 							<view class="left d-flex flex-column">
 								<view class="title">
 									{{val.title}}
@@ -30,12 +35,12 @@
 									{{val.desc}}
 								</view>
 							</view>
-							<u-image class="ml-auto" width="300rpx" height="180rpx" :src="val.img"></u-image>
+							<u-image width="300rpx" height="180rpx" :src="val.img"></u-image>
 						</view>
 					</m-scroll>
 				</view>
-			</template>
-		</m-list-swiper>
+			</swiper-item>
+		</swiper>
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/kind/index" i18n></m-tabbar>
 	</view>
@@ -62,6 +67,7 @@
 				tabs,
 				current: 1,
 				istrig: true,
+				isLock: false,
 				query: {
 					page: 1,
 					limit: 20,
@@ -87,7 +93,9 @@
 				// 	message
 				// } = await prayData(this.query)
 				let code = 200
-				let data = {list:[]}
+				let data = {
+					list: []
+				}
 				for (let i = 0; i < 10; i++) {
 					data.list.push({
 						img: 'https://wolffy-website.oss-cn-hangzhou.aliyuncs.com/banner2.jpg',
@@ -134,19 +142,22 @@
 			},
 			// 点击切换tabs
 			switchTabs(i) {
+				this.isLock = true
 				this.current = i.index
 				if (this.tabs[this.current].list.length == 0) {
 					this.tabs[this.current].isLoading = true
 					this.tabs[this.current].page = 1
 					let time = setTimeout(() => {
 						this.getData()
+						this.isLock = false
 						clearTimeout(time)
 					}, 1000)
 				}
 			},
 			// 滑动切换tabs
 			changeSwiper(i) {
-				this.current = i
+				if (this.isLock) return
+				this.current = i.detail.current
 				if (this.tabs[this.current].list.length == 0) {
 					this.tabs[this.current].isLoading = true
 					this.tabs[this.current].page = 1
@@ -166,28 +177,31 @@
 				// #ifndef MP
 				let navbarHeight = 44
 				// #endif
-				return {height: `calc(100vh - ${navbarHeight}px - 65rpx - 2rpx - env(safe-area-inset-bottom) - ${this.$store.state.tabbarHeight}px - ${this.$store.state.statusHeight}px)`}
+				return {
+					height: `calc(100vh - ${navbarHeight}px - 65rpx - 2rpx - env(safe-area-inset-bottom) - ${this.$store.state.tabbarHeight}px - ${this.$store.state.statusHeight}px)`
+				}
 			}
 		},
 	}
 </script>
 
 <style lang="scss" scoped>
-	.page{
-		.tabs{
+	.page {
+		.tabs {
 			border-bottom: 1rpx solid #fff;
 		}
-		.content{
-			.item{
-				padding: 20rpx 0;
-				border-bottom: 1rpx solid #fb7299;
-				.left{
-					height: 180rpx;
-				}
+
+		.item {
+			padding: 20rpx 0;
+			border-bottom: 1rpx solid #fb7299;
+		
+			.left {
+				height: 180rpx;
 			}
-			.item:last-child{
-				border-bottom: none;
-			}
+		}
+		
+		.item:last-child {
+			border-bottom: none;
 		}
 	}
 </style>
