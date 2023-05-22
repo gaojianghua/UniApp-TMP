@@ -1,12 +1,14 @@
 <template>
-	<swiper :current="tabIndex" :style="{
-		height: height,
-		width: width
-	}" @change="changeSwiper">
+	<!-- #ifdef MP-WEIXIN -->
+	<swiper :current="tabIndex" :style="[swiperStyle]" @change="changeSwiper">
+	<!-- #endif -->
+	<!-- #ifndef MP-WEIXIN -->
+	<swiper :current="tabIndex" :style="swiperStyle" @change="changeSwiper">
+	<!-- #endif -->
 		<swiper-item v-for="(item, i) in tabs" :key="i">
 			<!-- 列表区域 -->
 			<view class="w-100 h-100">
-				<slot />
+				<slot name="default" :item="item" />
 			</view>
 		</swiper-item>
 	</swiper>
@@ -21,17 +23,18 @@
 					return []
 				}
 			},
+			swiperStyle: {
+				type: Object,
+				default: () => {
+					return {
+						height: 'calc(100vh - 44px - 70rpx)',
+						width: '100vw'
+					}
+				}
+			},
 			chooseIndex: {
 				type: Number,
 				default: 0
-			},
-			height: {
-				type: String,
-				default: 'calc(100vh - 44px - 70rpx)'
-			},
-			width: {
-				type: String,
-				default: '100vw'
 			}
 		},
 		data() {

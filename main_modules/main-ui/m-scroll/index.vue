@@ -4,6 +4,7 @@
 		class="scroll-row" 
 		scroll-anchoring scroll-y="true" 
 		:style="[scrollStyle]" 
+		:enable-flex="true"
 		refresher-default-style="none"
 		:refresher-threshold="threshold" :refresher-background="bgColor" @scrolltolower="loadmore" refresher-enabled
 		:refresher-triggered="triggered" @refresherpulling="onPulling" @refresherrefresh="onRefresh"
@@ -21,7 +22,7 @@
 		<!-- #endif -->
 		<view class="position-relative">
 			<m-refresh :mainColor="mainColor" :isLoad="triggered" :show="none" :dropDown="dropDown" :text="i18n ? $t(text) : text" />
-			<slot />
+			<slot name="default" />
 		</view>
 		<m-loading v-if="isLoading" :height="loadHeight" :load="load" :mainColor="mainColor" />
 	</scroll-view>
