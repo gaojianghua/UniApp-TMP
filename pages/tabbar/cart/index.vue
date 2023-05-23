@@ -5,7 +5,7 @@
 			width: `calc(100vw - ${miniProgramCapsule.width}px)`,
 			marginRight: `${miniProgramCapsule.width}px`}">
 				<view class="title-text mr-2 line-h">
-					购物袋
+					购物车
 				</view>
 				<view class="title-address d-flex a-center">
 					<u-image width="50rpx" height="50rpx" src="/static/img/common/local.svg"></u-image>

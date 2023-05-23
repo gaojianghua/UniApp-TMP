@@ -85,7 +85,8 @@
 			justify-content: space-around;
 			padding-bottom: constant(safe-area-inset-bottom);
 			padding-bottom: env(safe-area-inset-bottom);
-			background-color: #151515;
+			background-color: #fff;
+			border-top: 1rpx solid #FBD7E1;
 
 			.tabbar-item {
 				display: block;

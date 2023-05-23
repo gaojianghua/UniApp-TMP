@@ -37,7 +37,7 @@ export default {
 			pagePath: 'pages/tabbar/cart/index',
 			iconPath: '/static/img/tabbar/cart.png',
 			selectedIconPath: '/static/img/tabbar/cart-active.png',
-			text: 'page.口袋'
+			text: 'page.购物车'
 		},
 		{
 			pagePath: 'pages/tabbar/mine/index',

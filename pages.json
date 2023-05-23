@@ -28,7 +28,7 @@
 		{
 			"path": "pages/tabbar/cart/index",
 			"style": {
-				"navigationBarTitleText": "%page.口袋%",
+				"navigationBarTitleText": "%page.购物车%",
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
