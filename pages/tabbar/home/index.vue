@@ -5,9 +5,13 @@
 			<view class="w-100 search px-2" :style="{
 			width: `calc(100vw - ${miniProgramCapsule.width}px)`,
 			marginRight: `${miniProgramCapsule.width}px`}">
-				<u-search placeholder="请输入关键词" height="60rpx" disabled :showAction="false" @click="openSearch"></u-search>
+				<u-search placeholder="请输入关键词" height="60rpx" disabled :showAction="false"
+					@click="openSearch"></u-search>
 			</view>
 		</m-navbar>
+		<!-- 内容区域 -->
+		<view class="content">
+		</view>
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/home/index" i18n></m-tabbar>
 	</view>
@@ -19,13 +23,14 @@
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	import capsuleInit from '@/mixins/capsule-init.js'
 	export default {
-		mixins: [tabbarInit,capsuleInit],
+		mixins: [tabbarInit, capsuleInit],
 		components: {
 			MTabbar,
 			MNavbar
 		},
 		data() {
-			return {}
+			return {
+			}
 		},
 		onLoad() {
 			this.init()
@@ -33,11 +38,11 @@
 		methods: {
 			// 初始化
 			init() {
-				
+
 			},
 			// 获取数据
 			getData() {
-				
+
 			},
 			// 进入搜索界面
 			openSearch() {
@@ -48,5 +53,5 @@
 </script>
 
 <style lang="scss" scoped>
-	
+
 </style>
