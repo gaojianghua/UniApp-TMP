@@ -31,6 +31,11 @@ class Navigate {
 			url: data ? (url + (plaintext ? this.setPlaintext(data) : ('?item=' + encodeURIComponent(JSON.stringify(data))))) : url
 		})
 	}
+	static reLaunch = (url, data = null, plaintext = false) => {
+		uni.reLaunch({
+			url: data ? (url + (plaintext ? this.setPlaintext(data) : ('?item=' + encodeURIComponent(JSON.stringify(data))))) : url
+		})
+	}
 	static navigateBack = (delta = 1) => {
 		// #ifndef H5
 		uni.navigateBack({
