@@ -1,8 +1,4 @@
-import {
-	interval,
-	maxReconnectMaxTime,
-	baseURL
-} from './config.js'
+import config from './config.js'
 
 class WS {
 	constructor(options) {
@@ -39,10 +35,13 @@ class WS {
 	 */
 	initWS() {
 		// this.options.data 连接websocket所需参数
-		const url = 'wss://' + baseURL + this.options.data.userId
+		const url = 'ws://' + config.baseURL + (this.options.data.userId ? '/' + this.options.data.userId : '')
 		this.socketTask = uni.connectSocket({
 			url,
-			success() {}
+			success() {},
+			fail(err) {
+				console.log(err)
+			}
 		})
 		// 监听WS
 		this.watchWS()
@@ -53,7 +52,7 @@ class WS {
 	watchWS() {
 		// 监听 WebSocket 连接打开事件
 		this.socketTask.onOpen(() => {
-			console('websocket连接成功！')
+			console.log('websocket连接成功！')
 			// 连接成功
 			this.options.onConnected()
 			// 重置连接次数
@@ -90,7 +89,7 @@ class WS {
 			if (res.data) {
 				this.options.onMessage(JSON.parse(res.data))
 			} else {
-				console('未监听到消息：原因：', JSON.stringify(res))
+				console.log('未监听到消息：原因：', JSON.stringify(res))
 			}
 		})
 	}
@@ -98,7 +97,7 @@ class WS {
 	 * @description 断开连接
 	 */
 	onDisconnected(res) {
-		console('websocket断开连接，原因：', JSON.stringify(res))
+		console.log('websocket断开连接，原因：', JSON.stringify(res))
 		// 关闭心跳
 		clearInterval(this.heartTimer)
 		// 全局Toast提示，防止用户继续发送
@@ -113,12 +112,12 @@ class WS {
 	 */
 	onReconnect() {
 		clearTimeout(this.reconnectTimer)
-		if (this.reconnectTime < maxReconnectMaxTime) {
+		if (this.reconnectTime < config.maxReconnectMaxTime) {
 			this.reconnectTimer = setTimeout(() => {
 				console.log(`第【${this.reconnectTime}】次重新连接中……`)
 				this.initWS()
 				this.reconnectTime++
-			}, interval)
+			}, config.interval)
 		} else {
 			uni.showModal({
 				title: '温馨提示',
@@ -142,7 +141,7 @@ class WS {
 					console.log('心跳发送成功！')
 				}
 			})
-		}, interval)
+		}, config.interval)
 	}
 }
 
