@@ -1,4 +1,4 @@
-## uniapp模板
+### uniapp项目骨架
 
 - main_modules 		为自定义工具集成
   * main—ui			为自定义组件，基于uview-UI2.0
