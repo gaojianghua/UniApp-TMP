@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 import rTime from 'dayjs/plugin/relativeTime'
-import config from './request/config.js'
+import config from '../request/config.js'
 dayjs.extend(rTime)
 
 

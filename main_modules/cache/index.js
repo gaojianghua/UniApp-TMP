@@ -94,10 +94,10 @@ class MinCache {
 	}
 }
 
-MinCache.install = function(Vue, {
-	timeout = 1200
-} = {}) {
+const install = (Vue, { timeout = 1200 } = {}) => {
 	Vue.prototype.$cache = new MinCache(timeout)
 }
 
-export default MinCache
+export default {
+	install
+}
