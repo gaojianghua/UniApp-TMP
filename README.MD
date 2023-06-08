@@ -1,5 +1,6 @@
 ### uniapp项目骨架
 
+
 - main_modules 		为自定义工具集成
   * main—ui			为自定义组件，基于uview-UI2.0
   * app-init		集成项目初始化需要执行的函数
@@ -16,6 +17,7 @@
   * animate.css		是css动画库
   * common.css		是用户自定义全局样式文件
   * icon.css		是字体图标文件
+  * main-nvue		是nvue全局原子css文件
   * main.css		是全局原子css文件
   * uni.css			是uniapp初始化css文件
 

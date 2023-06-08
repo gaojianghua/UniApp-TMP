@@ -17,6 +17,7 @@
 	import {
 		getPhoneHeight
 	} from '@/main_modules/app-init/index.js'
+	import global from '@/global/index.js'
 	export default {
 		onLaunch: function() {
 			//获取手机状态栏高度
@@ -76,13 +77,7 @@
 			console.log('App Hide');
 			uni.hideToast()
 		},
-		globalData: {
-			location: {
-				latitude: 30.30191704644097,
-				longitude: 120.1115673828125
-			},
-			address: {},
-		},
+		globalData: global.data,
 	};
 </script>
 
