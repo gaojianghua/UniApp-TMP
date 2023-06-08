@@ -1,13 +1,5 @@
 import App from './App.vue'
 import Vue from 'vue'
-// 通过 install 函数挂载 Vue 原型方法
-import uView from '@/uni_modules/uview-ui'
-Vue.use(uView)
-import cache from '@/main_modules/cache/index.js'
-Vue.use(cache)
-import MinRouter from '@/main_modules/router/index.js'
-import routerIntercept from '@/main_modules/router/intercept.js'
-Vue.use(MinRouter)
 // 直接引入实例对象进行挂载
 import http from '@/main_modules/request/method.js'
 import socket from '@/main_modules/socket/index.js'
@@ -21,8 +13,17 @@ Vue.prototype.$store = store
 Vue.prototype.$tools = tools
 Vue.prototype.$check = check
 Vue.prototype.$multiportApi = multiportApi
+// 通过 install 函数挂载 Vue 原型方法
+import uView from '@/uni_modules/uview-ui'
+Vue.use(uView)
+import cache from '@/main_modules/cache/index.js'
+Vue.use(cache)
+import MinRouter from '@/main_modules/router/index.js'
+import routerIntercept from '@/main_modules/router/intercept.js'
+Vue.use(MinRouter)
+// 环境设置
 Vue.config.productionTip = false
-//多语言
+// 多语言
 import messages from './locale/index'
 let i18nConfig = {
 	locale: uni.getLocale(),
@@ -44,7 +45,7 @@ import MNavbar from '@/main_modules/main-ui/m-navbar/index.vue'
 Vue.component('m-navbar', MNavbar)
 import MTop from '@/main_modules/main-ui/m-top/index.vue'
 Vue.component('m-top', MTop)
-
+// 初始化 Vue 实例
 App.mpType = 'app'
 const app = new Vue({
 	store,
