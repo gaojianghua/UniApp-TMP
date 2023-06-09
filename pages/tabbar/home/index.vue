@@ -11,9 +11,7 @@
 		</m-navbar>
 		<!-- 内容区域 -->
 		<view class="content">
-			<view class="" @click="goPage1">
-				123456
-			</view>
+			
 		</view>
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/home/index" i18n></m-tabbar>
@@ -33,7 +31,7 @@
 		},
 		data() {
 			return {
-				socketTask: null
+				
 			}
 		},
 		onLoad() {
@@ -42,7 +40,7 @@
 		methods: {
 			// 初始化
 			init() {
-				
+
 			},
 			// 获取数据
 			getData() {

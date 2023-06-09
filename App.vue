@@ -20,18 +20,20 @@
 	import global from '@/global/index.js'
 	export default {
 		onLaunch: function() {
-			//获取手机状态栏高度
+			// 获取手机状态栏高度
 			getAppStatusHeight()
 			// #ifdef APP-PLUS
 			APPUpdate();
-			//开屏动画
+			// 开屏动画
 			plus.navigator.closeSplashscreen();
-			//锁定屏幕方向
+			// 锁定屏幕方向
 			plus.screen.lockOrientation("portrait-primary");
 			// #endif
 			// #ifdef MP
-			//获取小程序胶囊信息
+			// 获取小程序胶囊信息
 			getTabbarCapsule()
+			// 获取小程序版本更新
+			this.$multiportApi.weixin.getVersionUpdate()
 			// #endif
 			// 公共的
 			getPhoneHeight()
@@ -52,7 +54,7 @@
 				url: '/pages/tabbar/mine/index'
 			})
 			// #endif
-			//隐藏原生底部导航
+			// 隐藏原生底部导航
 			uni.hideTabBar({
 				animation: false
 			})
