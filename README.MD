@@ -36,3 +36,9 @@
 
 - static 			为静态资源目录
   * 资源类型应做分类存放，再基于所属页面存放对应静态资源
+
+- global			为全局资源目录
+  * data.js			挂载在globalData上的全局数据
+
+- utils				为项目工具函数目录
+  * request			是uView的请求封装库
