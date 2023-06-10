@@ -130,6 +130,22 @@ class Check {
 	}
 
 	/**
+	 * @description 判断数组是否为空
+	 * @param value 数组
+	 */
+	static isEmptyArray(value) {
+		return value.length === 0
+	}
+
+	/**
+	 * @description 判断对象是否为空
+	 * @param value 对象
+	 */
+	static isEmptyObject(value) {
+		return Object.keys(value).length === 0
+	}
+
+	/**
 	 * @description 判断手机号格式是否是正确的
 	 * @param value 手机号参数
 	 */

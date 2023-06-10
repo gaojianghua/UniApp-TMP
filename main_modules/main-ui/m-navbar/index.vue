@@ -75,13 +75,7 @@
 		},
 		created() {
 			this.statusHeight = this.$store.state.statusHeight
-			// #ifdef MP
-			this.navbarHeight = (this.$store.state.miniProgramCapsule.top - this.$store.state.statusHeight) * 2 + this
-				.$store.state.miniProgramCapsule.height
-			// #endif
-			// #ifndef MP
-			this.navbarHeight = 44
-			// #endif
+			this.navbarHeight = this.$store.state.navbarHeight
 		},
 		methods: {
 			selectLang() {

@@ -1,6 +1,7 @@
 export default {
 	statusHeight: uni.getStorageSync('statusHeight') || 0, //系统状态栏高度
 	miniProgramCapsule: uni.getStorageSync('miniProgramCapsule') || {}, //小程序胶囊信息
+	navbarHeight: uni.getStorageSync('navbarHeight') || 44, //自定义顶部导航栏高度
 	// 底部导航栏高度
 	// #ifdef APP-PLUS
 	tabbarHeight: 0,

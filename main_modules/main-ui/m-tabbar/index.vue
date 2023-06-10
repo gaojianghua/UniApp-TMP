@@ -2,7 +2,7 @@
 	<view class="main">
 		<view class="tabbar">
 			<view class="tabbar-item" v-for="(item,index) in $store.state.tabbar" :key="index" @tap="changeTab(item)">
-				<view :class="[ 'item', item.pagePath == pagePath ? 'active' : '' ] ">
+				<view class="d-flex a-center j-center flex-column" :class="[ 'item', item.pagePath == pagePath ? 'active' : '' ] ">
 					<view class="tabbar-bd">
 						<view class="tabbar-icon">
 							<!-- //判断tabbar点击过后的图片路径 -->
@@ -92,7 +92,6 @@
 				display: block;
 				line-height: 24rpx;
 				font-size: 24rpx;
-				text-align: center;
 				width: 20%;
 
 				.item {

@@ -20,4 +20,7 @@ export default {
 	updatePhoneHeight(state, e) {
 		state.phoneHeight = e
 	},
+	updateNavbarHeight(state, e) {
+		state.navbarHeight = e
+	},
 }

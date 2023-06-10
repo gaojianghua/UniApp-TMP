@@ -170,15 +170,8 @@
 		},
 		computed: {
 			scrollStyle() {
-				// #ifdef MP
-				let navbarHeight = (this.$store.state.miniProgramCapsule.top - this.$store.state.statusHeight) * 2 + this
-					.$store.state.miniProgramCapsule.height
-				// #endif
-				// #ifndef MP
-				let navbarHeight = 44
-				// #endif
 				return {
-					height: `calc(100vh - ${navbarHeight}px - 65rpx - 2rpx - env(safe-area-inset-bottom) - ${this.$store.state.tabbarHeight}px - ${this.$store.state.statusHeight}px)`
+					height: `calc(100vh - ${this.$store.state.navbarHeight}px - 65rpx - 2rpx - env(safe-area-inset-bottom) - ${this.$store.state.tabbarHeight}px - ${this.$store.state.statusHeight}px)`
 				}
 			}
 		},

@@ -1,5 +1,9 @@
 ### uniapp项目骨架
 
+- components		为自定义组件目录
+  * common			是公共组件目录
+  * global			是全局组件目录
+  * pages			是页面组件目录
 
 - main_modules 		为自定义工具集成
   * main—ui			为自定义组件，基于uview-UI2.0

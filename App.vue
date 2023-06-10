@@ -15,7 +15,8 @@
 	import APPUpdate from '@/uni_modules/zhouWei-APPUpdate/js_sdk/appUpdate';
 	// #endif
 	import {
-		getPhoneHeight
+		getPhoneHeight,
+		setNavbarHeight
 	} from '@/main_modules/app-init/index.js'
 	import global from '@/global/index.js'
 	export default {
@@ -58,6 +59,8 @@
 			uni.hideTabBar({
 				animation: false
 			})
+			// 设置自定义导航栏高度
+			setNavbarHeight()
 			// setTimeout(() => {
 			// 	为tabbar的某一项上添加文本
 			// 	uni.setTabBarBadge({

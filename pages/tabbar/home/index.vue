@@ -10,9 +10,14 @@
 			</view>
 		</m-navbar>
 		<!-- 内容区域 -->
-		<view class="content">
-			
-		</view>
+		<m-scroll :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load" bgColor="transparent"
+			@loadmore="loadmore" @onRefresh="onRefresh">
+			<view class="content">
+				<block v-for="(item,i) in list" :key="i">
+					<p-home-dynamic :item="item"></p-home-dynamic>
+				</block>
+			</view>
+		</m-scroll>
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/home/index" i18n></m-tabbar>
 	</view>
@@ -21,17 +26,32 @@
 <script>
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
 	import MNavbar from '@/main_modules/main-ui/m-navbar/index.vue'
+	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
+	import PHomeDynamic from '@/components/pages/home-dynamic/index.vue'
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	import capsuleInit from '@/mixins/capsule-init.js'
+	import {
+		list
+	} from './data.js'
 	export default {
 		mixins: [tabbarInit, capsuleInit],
 		components: {
 			MTabbar,
-			MNavbar
+			MNavbar,
+			MScroll,
+			PHomeDynamic
 		},
 		data() {
 			return {
-				
+				list: [],
+				isLoading: true,
+				load: 0,
+				query: {
+					page: 1,
+					limit: 10
+				},
+				total: 0,
+				istrig: true
 			}
 		},
 		onLoad() {
@@ -40,20 +60,73 @@
 		methods: {
 			// 初始化
 			init() {
-
+				this.getData()
 			},
 			// 获取数据
-			getData() {
-
+			async getData(e) {
+				// let {
+				// 	data,
+				// 	code,
+				// 	message
+				// } = await prayData(this.query)
+				let code = 200
+				let data = {
+					list: []
+				}
+				data.list = list
+				data.total = data.list.length
+				if (code == 200) {
+					if (e) { // 加载更多
+						this.list = this.list.concat(data.list)
+					} else {
+						this.list = data.list
+						this.total = data.total
+					}
+					if (this.query.page * this.query.limit >= this.total) {
+						return this.load = 1
+					} else {
+						return this.load = 2
+					}
+					this.isLoading = false
+				}
+			},
+			// 下拉刷新
+			onRefresh() {
+				this.query.page = 1
+				this.getData()
+			},
+			// 加载更多
+			loadmore() {
+				if (this.load == 1 || this.istrig == false) return;
+				this.load = 0
+				this.query.page++
+				this.istrig = false
+				let time = setTimeout(() => {
+					this.getData('S')
+					this.istrig = true
+					clearTimeout(time)
+				}, 1000)
 			},
 			// 进入搜索界面
 			openSearch() {
 				this.$tools.Navigate.navigateTo('/pages-next/common/search/index')
 			}
-		}
+		},
+		computed: {
+			scrollStyle() {
+				return {
+					height: `calc(100vh - ${this.$store.state.navbarHeight}px - 2rpx - env(safe-area-inset-bottom) - ${this.$store.state.tabbarHeight}px - ${this.$store.state.statusHeight}px)`
+				}
+			}
+		},
 	}
 </script>
 
 <style lang="scss" scoped>
+	.page {
+		.content {
+			padding: 20rpx 20rpx 0;
 
+		}
+	}
 </style>
