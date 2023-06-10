@@ -21,23 +21,58 @@
 	import global from '@/global/index.js'
 	export default {
 		onLaunch: function() {
-			// 获取手机状态栏高度
-			getAppStatusHeight()
+			/**
+			 * APP端
+			 */ 
 			// #ifdef APP-PLUS
 			APPUpdate();
 			// 开屏动画
 			plus.navigator.closeSplashscreen();
 			// 锁定屏幕方向
 			plus.screen.lockOrientation("portrait-primary");
+			// 获取唯一标识CID
+			setTimeout(() => {
+				plus.push.getClientInfoAsync((info) => {
+					global.data.cid = info["clientid"]
+				})
+			}, 1000)
+			//监听push推送通知
+			plus.push.addEventListener('receive', (message) => {
+				plus.nativeUI.toast('push receive');
+			});
+			//监听点击push通知栏
+			plus.push.addEventListener('click', (message) => {
+				switchTab(message.content)
+			});
 			// #endif
+			
+			/**
+			 * 小程序端
+			 */ 
 			// #ifdef MP
 			// 获取小程序胶囊信息
 			getTabbarCapsule()
 			// 获取小程序版本更新
 			this.$multiportApi.weixin.getVersionUpdate()
 			// #endif
-			// 公共的
+			
+			/**
+			 * 全端
+			 */ 
+			// 获取手机状态栏高度
+			getAppStatusHeight()
+			// 获取手机屏幕高度
 			getPhoneHeight()
+			// 设置自定义导航栏高度
+			setNavbarHeight()
+			// 隐藏原生底部导航
+			uni.hideTabBar({
+				animation: false
+			})
+			
+			/**
+			 * 不包括小程序端
+			 */ 
 			// #ifndef MP
 			uni.preloadPage({
 				url: '/pages/tabbar/home/index'
@@ -55,12 +90,6 @@
 				url: '/pages/tabbar/mine/index'
 			})
 			// #endif
-			// 隐藏原生底部导航
-			uni.hideTabBar({
-				animation: false
-			})
-			// 设置自定义导航栏高度
-			setNavbarHeight()
 			// setTimeout(() => {
 			// 	为tabbar的某一项上添加文本
 			// 	uni.setTabBarBadge({

@@ -5,6 +5,7 @@
 			<view class="w-100 search px-2" :style="{
 			width: `calc(100vw - ${miniProgramCapsule.width}px)`,
 			marginRight: `${miniProgramCapsule.width}px`}">
+				<!-- 搜索框 -->
 				<u-search placeholder="请输入关键词" height="60rpx" disabled :showAction="false"
 					@click="openSearch"></u-search>
 			</view>

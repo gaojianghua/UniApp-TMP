@@ -46,7 +46,7 @@
 			mainColor: {
 				type: String,
 				default: () => {
-					return '#151521'
+					return '#fb7299'
 				}
 			},
 			load: {

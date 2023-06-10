@@ -14,13 +14,13 @@ export default {
 	updateLanguage(state, e) {
 		state.lang = e
 	},
-	updateUserBill(state, e) {
-		state.userBill = e
-	},
 	updatePhoneHeight(state, e) {
 		state.phoneHeight = e
 	},
 	updateNavbarHeight(state, e) {
 		state.navbarHeight = e
+	},
+	updateLiveCity(state, e) {
+		state.liveCity = e
 	},
 }

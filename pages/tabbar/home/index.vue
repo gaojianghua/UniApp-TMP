@@ -2,9 +2,15 @@
 	<view class="page">
 		<!-- 顶部导航栏 -->
 		<m-navbar bgColor="#fff" isTab isSlot>
-			<view class="w-100 search px-2" :style="{
+			<view class="w-100 d-flex a-center search px-2" :style="{
 			width: `calc(100vw - ${miniProgramCapsule.width}px)`,
 			marginRight: `${miniProgramCapsule.width}px`}">
+				<!-- 定位城市 -->
+				<view class="d-flex a-center mr-2" @click="$tools.Navigate.navigateTo('/pages-next/home/select-city/index')">
+					<u-image height="50rpx" width="50rpx" class="mr-1" src="/static/img/home/location.png"></u-image>
+					<text>{{ $store.state.liveCity }}</text>
+				</view>
+				<!-- 搜索框 -->
 				<u-search placeholder="请输入关键词" height="60rpx" disabled :showAction="false"
 					@click="openSearch"></u-search>
 			</view>
@@ -18,6 +24,8 @@
 				</block>
 			</view>
 		</m-scroll>
+		<!-- 悬停菜单 -->
+		<m-hover-menu :menuList="menuList"></m-hover-menu>
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/home/index" i18n></m-tabbar>
 	</view>
@@ -27,6 +35,7 @@
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
 	import MNavbar from '@/main_modules/main-ui/m-navbar/index.vue'
 	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
+	import MHoverMenu from '@/main_modules/main-ui/m-hover-menu/index.vue'
 	import PHomeDynamic from '@/components/pages/home-dynamic/index.vue'
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	import capsuleInit from '@/mixins/capsule-init.js'
@@ -39,6 +48,7 @@
 			MTabbar,
 			MNavbar,
 			MScroll,
+			MHoverMenu,
 			PHomeDynamic
 		},
 		data() {
@@ -51,7 +61,22 @@
 					limit: 10
 				},
 				total: 0,
-				istrig: true
+				istrig: true,
+				menuList: [
+					{
+						src: '/static/img/home/message.png',
+						activeSrc: '/static/img/home/message-active.png',
+						badge: 20
+					},
+					{
+						src: '/static/img/home/cart.png',
+						activeSrc: '/static/img/home/cart-active.png',
+						badge: 2000
+					},
+					{
+						src: '/static/img/home/server.png'
+					}
+				]
 			}
 		},
 		onLoad() {

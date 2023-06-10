@@ -75,6 +75,13 @@
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
+		}, {
+			"path": "home/select-city/index",
+			"style": {
+				"navigationBarTitleText": "%page.选择城市%",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
 		}]
 	}, {
 		"root": "pages-offspring",

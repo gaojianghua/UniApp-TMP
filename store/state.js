@@ -1,21 +1,21 @@
 export default {
+	/**
+	 * 系统相关数据
+	**/
+	phoneHeight: uni.getStorageSync('phoneHeight') || {},	//手机屏幕高度
 	statusHeight: uni.getStorageSync('statusHeight') || 0, //系统状态栏高度
 	miniProgramCapsule: uni.getStorageSync('miniProgramCapsule') || {}, //小程序胶囊信息
 	navbarHeight: uni.getStorageSync('navbarHeight') || 44, //自定义顶部导航栏高度
-	// 底部导航栏高度
 	// #ifdef APP-PLUS
-	tabbarHeight: 0,
+	tabbarHeight: 0,	// APP端底部导航栏高度
 	// #endif
 	// #ifndef APP-PLUS
-	tabbarHeight: 50,
+	tabbarHeight: 50,	// 除了APP的其他端底部导航栏高度
 	// #endif
-	token: uni.getStorageSync('token') || '1',
-	userinfo: uni.getStorageSync('userinfo') || {},
-	sysConfig: uni.getStorageSync('config') || {},
-	lang: uni.getStorageSync('lang') || 'en',
-	userBill: uni.getStorageSync('userBill') || {},
-	phoneHeight: uni.getStorageSync('phoneHeight') || {},
-	//公共的tabbar
+	lang: uni.getStorageSync('lang') || 'en',	//国际化多语言
+	/**
+	 * 自定义 tabbar 数据
+	**/
 	tabbar: [{
 			pagePath: 'pages/tabbar/home/index',
 			iconPath: '/static/img/tabbar/home.png',
@@ -46,5 +46,12 @@ export default {
 			selectedIconPath: '/static/img/tabbar/mine-active.png',
 			text: 'page.我的'
 		}
-	]
+	],
+	/**
+	 * 实际业务相关数据
+	**/
+	token: uni.getStorageSync('token') || '',	// 登录凭证
+	userinfo: uni.getStorageSync('userinfo') || {},		// 用户信息
+	sysConfig: uni.getStorageSync('config') || {},		// 业务系统配置
+	liveCity: uni.getStorageSync('liveCity') || '武汉',		// 所在城市
 }

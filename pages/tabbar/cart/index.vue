@@ -1,5 +1,6 @@
 <template>
-	<view class="page"><!-- 顶部导航栏 -->
+	<view class="page">
+		<!-- 顶部导航栏 -->
 		<m-navbar bgColor="#fff" isTab isSlot>
 			<view class="title w-100 d-flex a-center px-3" :style="{
 			width: `calc(100vw - ${miniProgramCapsule.width}px)`,
@@ -74,7 +75,6 @@
 				</view>
 			</view>
 		</view>
-		<u-safe-bottom></u-safe-bottom>
 		<!-- 底部导航 -->
 		<m-tabbar pagePath="pages/tabbar/cart/index" i18n></m-tabbar>
 	</view>
