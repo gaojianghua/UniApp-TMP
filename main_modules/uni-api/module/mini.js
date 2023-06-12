@@ -51,5 +51,9 @@ export default {
 				});
 			});
 		}
+	},
+	// 小程序显示原生菜单分享
+	showShareMenu(share) {
+		uni.showShareMenu(share)
 	}
 }

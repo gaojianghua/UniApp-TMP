@@ -18,7 +18,8 @@
         },
         /* 模块配置 */
         "modules" : {
-            "VideoPlayer" : {}
+            "VideoPlayer" : {},
+            "Share" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -40,7 +41,8 @@
                     "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
                     "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
                     "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
-                ]
+                ],
+                "abiFilters" : [ "armeabi-v7a", "arm64-v8a", "x86" ]
             },
             /* ios打包配置 */
             "ios" : {},
@@ -53,7 +55,8 @@
                         "appkey_android" : ""
                     }
                 },
-                "push" : {}
+                "push" : {},
+                "share" : {}
             }
         }
     },
