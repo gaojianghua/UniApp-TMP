@@ -39,7 +39,7 @@
 					{{item.comment}}
 				</view>
 			</view>
-			<view class="d-flex a-center">
+			<view class="d-flex a-center" @click="uniAppShare">
 				<u-image width="40rpx" height="40rpx" src="/static/img/home/share.png"></u-image>
 			</view>
 		</view>
@@ -59,22 +59,27 @@
 			return {}
 		},
 		methods: {
-
+			// 分享点击事件
+			uniAppShare() {
+				this.$emit('uniAppShare', this.item.id)
+			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	.item{
+	.item {
 		background-color: #fff;
 		border-radius: 12rpx;
 		padding: 20rpx;
 		margin-top: 20rpx;
-		&:first-child{
+
+		&:first-child {
 			margin-top: 0rpx;
 		}
-		.item-row{
-			.item-desc{
+
+		.item-row {
+			.item-desc {
 				white-space: normal;
 			}
 		}

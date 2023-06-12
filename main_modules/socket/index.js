@@ -35,7 +35,7 @@ class WS {
 	 */
 	initWS() {
 		// this.options.data 连接websocket所需参数
-		const url = 'ws://' + config.baseURL + (this.options.data.userId ? '/' + this.options.data.userId : '')
+		const url = (this.options.https ? 'wss://' : 'ws://') + config.baseURL + (this.options.data.userId ? '/' + this.options.data.userId : '')
 		this.socketTask = uni.connectSocket({
 			url,
 			success() {},

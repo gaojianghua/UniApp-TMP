@@ -20,7 +20,7 @@
 			@loadmore="loadmore" @onRefresh="onRefresh">
 			<view class="content">
 				<block v-for="(item,i) in list" :key="i">
-					<p-home-dynamic :item="item"></p-home-dynamic>
+					<p-home-dynamic :item="item" @uniAppShare="uniAppShare"></p-home-dynamic>
 				</block>
 			</view>
 		</m-scroll>
@@ -39,11 +39,12 @@
 	import PHomeDynamic from '@/components/pages/home-dynamic/index.vue'
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	import capsuleInit from '@/mixins/capsule-init.js'
+	import shareInit from '@/mixins/share-init.js'
 	import {
 		list
 	} from './data.js'
 	export default {
-		mixins: [tabbarInit, capsuleInit],
+		mixins: [tabbarInit, capsuleInit, shareInit],
 		components: {
 			MTabbar,
 			MNavbar,

@@ -1,5 +1,6 @@
 export const list = [
 	{
+		id: 0,
 		type: 'video',
 		title: '今日采风',
 		desc: '今天来到了西湖边，天气很好，这里好多人，都是成双成对的！',
@@ -10,6 +11,7 @@ export const list = [
 		comment: 256
 	},
 	{
+		id: 1,
 		type: 'video',
 		title: '今日采风',
 		desc: '今天来到了西湖边，天气很好，这里好多人，都是成双成对的！',
@@ -20,6 +22,7 @@ export const list = [
 		comment: 256
 	},
 	{
+		id: 2,
 		type: 'image',
 		title: '今日采风',
 		desc: '今天来到了西湖边，天气很好，这里好多人，都是成双成对的！',
@@ -30,6 +33,7 @@ export const list = [
 		comment: 256
 	},
 	{
+		id: 3,
 		type: 'image',
 		title: '今日采风',
 		desc: '今天来到了西湖边，天气很好，这里好多人，都是成双成对的！',
@@ -40,6 +44,7 @@ export const list = [
 		comment: 256
 	},
 	{
+		id: 4,
 		type: 'video',
 		title: '今日采风',
 		desc: '今天来到了西湖边，天气很好，这里好多人，都是成双成对的！',
@@ -50,6 +55,7 @@ export const list = [
 		comment: 256
 	},
 	{
+		id: 5,
 		type: 'image',
 		title: '今日采风',
 		desc: '今天来到了西湖边，天气很好，这里好多人，都是成双成对的！',
@@ -60,6 +66,7 @@ export const list = [
 		comment: 256
 	},
 	{
+		id: 6,
 		type: 'video',
 		title: '今日采风',
 		desc: '今天来到了西湖边，天气很好，这里好多人，都是成双成对的！',
@@ -70,6 +77,7 @@ export const list = [
 		comment: 256
 	},
 	{
+		id: 7,
 		type: 'image',
 		title: '今日采风',
 		desc: '今天来到了西湖边，天气很好，这里好多人，都是成双成对的！',
@@ -80,6 +88,7 @@ export const list = [
 		comment: 256
 	},
 	{
+		id: 8,
 		type: 'video',
 		title: '今日采风',
 		desc: '今天来到了西湖边，天气很好，这里好多人，都是成双成对的！',
@@ -90,6 +99,7 @@ export const list = [
 		comment: 256
 	},
 	{
+		id: 9,
 		type: 'image',
 		title: '今日采风',
 		desc: '今天来到了西湖边，天气很好，这里好多人，都是成双成对的！',
