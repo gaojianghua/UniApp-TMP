@@ -3,7 +3,7 @@
 // 请求配置说明：https://ext.dcloud.net.cn/plugin?id=822
 import {
 	i18n
-} from 'main.js'
+} from '@/main.js'
 import {
 	post
 } from '@/main_modules/request/method.js'

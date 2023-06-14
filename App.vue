@@ -31,10 +31,11 @@
 			// 锁定屏幕方向
 			plus.screen.lockOrientation("portrait-primary");
 			// 获取唯一标识CID
-			setTimeout(() => {
+			let time = setTimeout(() => {
 				plus.push.getClientInfoAsync((info) => {
 					global.data.cid = info["clientid"]
 				})
+				clearTimeout(time)
 			}, 1000)
 			//监听push推送通知
 			plus.push.addEventListener('receive', (message) => {

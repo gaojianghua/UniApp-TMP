@@ -1,9 +1,30 @@
 ### uniapp项目骨架
 
+- common 			为公共css集成
+  * animate.css		是css动画库
+  * common.css		是用户自定义全局样式文件
+  * icon.css		是字体图标文件
+  * main-nvue		是nvue全局原子css文件
+  * main.css		是全局原子css文件
+  * uni.css			是uniapp初始化css文件
+
 - components		为自定义组件目录
   * common			是公共组件目录
   * global			是全局组件目录
   * pages			是页面组件目录
+
+- config			为全局配置目录
+  * componentConfig 是APP发起请求更新
+
+- global			为全局资源目录
+  * data.js			挂载在globalData上的全局数据
+
+- js_sdk			为第三方SDK目录
+  * permission		判断APP原生功能权限是否开启
+
+- locale			i18n国际化语言包目录
+  * en				英文包
+  * zh-Hans			简体中文包
 
 - main_modules 		为自定义工具集成
   * main—ui			为自定义组件，基于uview-UI2.0
@@ -17,13 +38,13 @@
   * tools			是存放工具函数
   * uni-api			是分别存放uniapp各端独有的api
 
-- common 			为公共css集成
-  * animate.css		是css动画库
-  * common.css		是用户自定义全局样式文件
-  * icon.css		是字体图标文件
-  * main-nvue		是nvue全局原子css文件
-  * main.css		是全局原子css文件
-  * uni.css			是uniapp初始化css文件
+- mixins			抽离复用的逻辑功能
+  * capsule-init	兼容小程序初始化获取小程序胶囊信息
+  * share-init		初始化分享功能
+  * tabbar-init		初始化tabbar
+
+- node_modules		NPM安装的第三方包
+  * dayjs			日期时间格式化包
 
 - pages 			为一级路由栈页面
   * account			文件夹内是登录注册页面以及组件
@@ -41,8 +62,14 @@
 - static 			为静态资源目录
   * 资源类型应做分类存放，再基于所属页面存放对应静态资源
 
-- global			为全局资源目录
-  * data.js			挂载在globalData上的全局数据
+- store				Vuex全局状态目录
+
+- uni_modules		UniApp插件市场安装的第三方包
+  * uni-link		原生link标签插件
+  * uni-scss		scss插件包
+  * uni-share		APP分享插件
+  * uview-ui		Uview UI库
+  * zhouWei-APPUpdate	APP更新插件
 
 - utils				为项目工具函数目录
   * request			是uView的请求封装库

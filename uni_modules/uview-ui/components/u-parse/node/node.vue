@@ -101,6 +101,7 @@ module.exports = {
 <script>
 
 import node from './node'
+import { i18n } from "@/main.js"
 export default {
   name: 'node',
   // #ifdef MP-WEIXIN
@@ -218,8 +219,9 @@ export default {
       var attrs = this.childs[e.currentTarget.dataset.i].attrs
       if (!attrs.ignore)
         uni.showActionSheet({
-          itemList: ['保存图片'],
+          itemList: [this.$t ? this.$t('保存图片'): '保存图片'],
           success: () => {
+			let title = this.$t ? this.$t('保存成功') : '保存成功'
             uni.downloadFile({
               url: this.root.imgList[attrs.i],
               success: res => {
@@ -227,7 +229,8 @@ export default {
                   filePath: res.tempFilePath,
                   success() {
                     uni.showToast({
-                      title: '保存成功'
+                      title,
+					  icon: 'none'
                     })
                   }
                 })
@@ -278,7 +281,7 @@ export default {
               data: href,
               success: () =>
                 uni.showToast({
-                  title: '链接已复制'
+                  title: this.$t ? this.$t('链接已复制') : '链接已复制'
                 })
             })
             // #endif

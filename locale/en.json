@@ -29,5 +29,47 @@
 	"请检查该Wi-Fi热点是否已经接入互联网，或该Wi-Fi是否允许你的设备访问互联网": "Check to see if the Wi-Fi hotspot is connected to the Internet or if the Wi-Fi allows your device to access the Internet",
 	
 	"请求超时, 请稍候重试": "Request timeout, please try again later",
-	"APP下载": "Download APP"
+	"APP下载": "Download APP",
+	"当前已是最新版本": "This is the latest version",
+	"正在安装文件...": "Installing file ...",
+	"应用资源更新完成！": "App resource update complete！",
+	"安装文件失败": "Failed to install file",
+	"文件下载失败...": "File download failed ...",
+	"准备下载...": "Ready download ...",
+	"开始下载...": "Start download ...",
+	"已下载": "Downloading",
+	"已取消下载": "Download cancelled",
+	"发现新版本": "Discover new version",
+	"立即升级": "Upgrade",
+	"暂不升级": "No Upgrade",
+	"正在为您更新，请耐心等待": "  It is being updated for you, please be patient  ",
+	"升级APP": "Upgrade APP",
+	"取消下载": "Cancel download",
+	"后台下载": "Background download",
+	"关闭": "Close",
+	
+	"知道了": "Got it",
+	"获取服务供应商失败": "Failed to obtain a service provider",
+	"复制成功": "Copy Success",
+	"取消分享": "Unshare",
+	
+	"保存图片": "Save Image",
+	"保存成功": "Save Success",
+	"链接已复制": "Link Copied",
+	
+	"服务协议和隐私政策": "Service Agreement and Privacy Policy",
+	"请你务必审慎阅读、充分理解“服务协议”和“隐私政策”各条款，包括但不限于：为了更好的向你提供服务，我们需要收集你的设备标识、操作日志等信息用于分析、优化应用性能": "Please read carefully and fully underst “Service Agreement” and “Privacy Policy” Terms, including but not limited to：In order to better provide services to you, we need to collect your device identification, operation logs and other information for analysis and optimization of application performance",
+	"你可阅读": "You can read",
+	"服务协议": "Service agreement",
+	"和": "and",
+	"隐私政策": "Privacy Policy",
+	"了解详细信息。如果你同意，请点击下面按钮开始接受我们的服务": "Learn more. If you agree, please click the button below to start receiving our services",
+	"同意并接受": "Agree and accept",
+	"暂不同意": "Disagree temporarily",
+	"确认提示": "Confirmation prompt",
+	"进入应用前，你需先同意": "Before entering the app, you need to agree",
+	"否则将退出应用": "Otherwise, the application will exit",
+	"同意并继续": "Agree and continue",
+	"退出应用": "Exit App"
+	
 }

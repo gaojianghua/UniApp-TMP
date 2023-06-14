@@ -103,7 +103,7 @@ export default {
 						"share": "shareSystem"
 					}
 				],
-				cancelText: "取消分享",
+				cancelText: this.$t ? this.$t("取消分享") : "取消分享",
 			}, e => { //callback
 				console.log(this.uniShare.isShow);
 				console.log(e);

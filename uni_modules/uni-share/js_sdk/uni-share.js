@@ -1,4 +1,5 @@
 import UniImageMenu from './uni-image-menu.js';
+import { i18n } from '@/main.js'
 class UniShare extends UniImageMenu{
 	constructor(arg) {
 		super()
@@ -35,7 +36,7 @@ class UniShare extends UniImageMenu{
 								uni.showModal({
 									content: JSON.stringify(err),
 									showCancel: false,
-									confirmText: "知道了"
+									confirmText: i18n.t("知道了")
 								});
 							}
 						})
@@ -44,9 +45,9 @@ class UniShare extends UniImageMenu{
 			})
 		}, err => {
 			uni.showModal({
-				title: '获取服务供应商失败：' + JSON.stringify(err),
+				title: i18n.t("获取服务供应商失败") + '：' + JSON.stringify(err),
 				showCancel: false,
-				confirmText: '知道了'
+				confirmText: i18n.t("知道了")
 			});
 			console.error('获取服务供应商失败：' + JSON.stringify(err));
 		})
@@ -62,7 +63,7 @@ class UniShare extends UniImageMenu{
 				console.log('success');
 				uni.hideToast() //关闭自带的toast
 				uni.showToast({
-					title: '复制成功',
+					title: i18n.t("复制成功"),
 					icon: 'none'
 				});
 				super.hide();
@@ -88,9 +89,9 @@ class UniShare extends UniImageMenu{
 		}, (err)=> {
 			console.log('分享失败：' + JSON.stringify(err));
 			uni.showModal({
-				title: '获取服务供应商失败：' + JSON.stringify(err),
+				title: i18n.t("获取服务供应商失败") + '：' + JSON.stringify(err),
 				showCancel: false,
-				confirmText: '知道了'
+				confirmText: i18n.t("知道了")
 			});
 		});
 	}

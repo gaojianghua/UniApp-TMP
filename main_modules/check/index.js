@@ -146,6 +146,14 @@ class Check {
 	}
 
 	/**
+	 * @description 判断任意值是否为undefined
+	 * @param value 任意值
+	 */
+	static isUndefinedValue(value) {
+		return value === undefined
+	}
+
+	/**
 	 * @description 判断手机号格式是否是正确的
 	 * @param value 手机号参数
 	 */

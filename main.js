@@ -1,5 +1,15 @@
 import App from './App.vue'
 import Vue from 'vue'
+// 多语言
+import messages from './locale/index'
+let i18nConfig = {
+	locale: uni.getLocale(),
+	messages
+}
+uni.setStorageSync('lang', uni.getLocale())
+import VueI18n from 'vue-i18n'
+Vue.use(VueI18n)
+export const i18n = new VueI18n(i18nConfig)
 // 直接引入实例对象进行挂载
 import http from '@/main_modules/request/method.js'
 import socket from '@/main_modules/socket/index.js'
@@ -23,16 +33,6 @@ import routerIntercept from '@/main_modules/router/intercept.js'
 Vue.use(MinRouter)
 // 环境设置
 Vue.config.productionTip = false
-// 多语言
-import messages from './locale/index'
-let i18nConfig = {
-	locale: uni.getLocale(),
-	messages
-}
-uni.setStorageSync('lang', uni.getLocale())
-import VueI18n from 'vue-i18n'
-Vue.use(VueI18n)
-export const i18n = new VueI18n(i18nConfig)
 // 全局过滤器挂载
 import filters from '@/main_modules/filters'
 Object.keys(filters).forEach((item, i) => {
@@ -48,8 +48,8 @@ Vue.component('m-top', MTop)
 // 初始化 Vue 实例
 App.mpType = 'app'
 const app = new Vue({
-	store,
 	i18n,
+	store,
 	...App,
 	routerIntercept
 })
