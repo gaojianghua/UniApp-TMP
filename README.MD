@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="logo" src="https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/wolffyPink.png" width="120" height="120" style="margin-bottom: 10px;">
+    <img alt="logo" src="https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/weChatLogo.png" width="120" height="120" style="margin-bottom: 10px;">
 </p>
 <h3 align="center" style="margin: 30px 0 30px;font-weight: bold;font-size:40px;">UniApp TMP</h3>
 <h3 align="center">兼容多平台的UniApp骨架模板</h3>
