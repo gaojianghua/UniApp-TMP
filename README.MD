@@ -1,4 +1,15 @@
-### uniapp项目骨架
+<p align="center">
+    <img alt="logo" src="https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/wolffyPink.png" width="120" height="120" style="margin-bottom: 10px;">
+</p>
+<h3 align="center" style="margin: 30px 0 30px;font-weight: bold;font-size:40px;">UniApp TMP</h3>
+<h3 align="center">兼容多平台的UniApp骨架模板</h3>
+
+## 说明
+
+UniApp TMP，是基于[uni-app](https://uniapp.dcloud.io/)与[uView 2.0](https://uviewui.com)的兼容多平台的项目骨架模板。
+
+
+## 目录骨架
 
 - common 			为公共css集成
   * animate.css		是css动画库
