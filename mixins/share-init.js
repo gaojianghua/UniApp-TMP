@@ -6,8 +6,9 @@ export default {
 		return {
 			// #ifdef MP
 			miniShare: {
-				title: '自定义分享标题',
-				path: '/pages/test/test?id=123'
+				title: this.$holder.navigationBar.titleText,	// 小程序分享标题，默认当前页面标题
+				path: this.$page.fullPath,	// 小程序分享页面路径，可带参数，默认当前页面路径
+				imageUrl: '',	// 小程序分享的图片地址，可设置为默认LOGO图标
 			},
 			// #endif
 			// #ifdef APP-PLUS
