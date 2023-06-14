@@ -6,7 +6,7 @@
 
 ## 说明
 
-UniApp TMP，是基于[uni-app](https://uniapp.dcloud.io/)与[uView 2.0](https://uviewui.com)的兼容多平台的项目骨架模板。
+UniApp TMP，是基于[uni-app](https://uniapp.dcloud.io/)与[uView 2.0](https://uviewui.com)的兼容多平台的项目骨架模板。集成实际业务中所需的各种封装工具，使开发者快速上手开发或项目二开。
 
 
 ## 目录骨架
