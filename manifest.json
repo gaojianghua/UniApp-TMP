@@ -87,7 +87,7 @@
         "template" : "index.html",
         "router" : {
             "mode" : "history",
-            "base" : "./"
+            "base" : "/"
         },
         "optimization" : {
             "treeShaking" : {
