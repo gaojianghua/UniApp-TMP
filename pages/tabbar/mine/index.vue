@@ -33,6 +33,7 @@
 		<view class="menu" @click="openSet">
 			设置
 		</view>
+		<u-input password ></u-input>
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/mine/index" i18n></m-tabbar>
 	</view>

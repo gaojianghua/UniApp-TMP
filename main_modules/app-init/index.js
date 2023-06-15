@@ -1,4 +1,4 @@
-import store from '@/store/index.js'
+import store from '@/store'
 // 获取胶囊位置
 export const getTabbarCapsule = () => {
 	let miniProgramCapsule = uni.getMenuButtonBoundingClientRect()
@@ -23,8 +23,7 @@ export const getPhoneHeight = () => {
 // 设置自定义 Navbar 高度
 export const setNavbarHeight = () => {
 	// #ifdef MP
-	let navbarHeight = (this.$store.state.miniProgramCapsule.top - this.$store.state.statusHeight) * 2 + this
-		.$store.state.miniProgramCapsule.height
+	let navbarHeight = (store.state.miniProgramCapsule.top - store.state.statusHeight) * 2 + store.state.miniProgramCapsule.height
 	// #endif
 	// #ifndef MP
 	let navbarHeight = 44

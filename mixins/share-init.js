@@ -5,11 +5,7 @@ export default {
 	data() {
 		return {
 			// #ifdef MP
-			miniShare: {
-				title: this.$holder.navigationBar.titleText,	// 小程序分享标题，默认当前页面标题
-				path: this.$page.fullPath,	// 小程序分享页面路径，可带参数，默认当前页面路径
-				imageUrl: '',	// 小程序分享的图片地址，可设置为默认LOGO图标
-			},
+			miniShare: {},
 			// #endif
 			// #ifdef APP-PLUS
 			uniShare: new UniShare(),
@@ -21,7 +17,11 @@ export default {
 		if (res.from === 'button') { // 来自页面内分享按钮
 			console.log(res.target)
 		}
-		return this.miniShare
+		return this.miniShare = {
+			title: getCurrentPages()[0].$holder.navigationBar.titleText, // 小程序分享标题，默认当前页面标题
+			path: getCurrentPages()[0].$page.fullPath, // 小程序分享页面路径，可带参数，默认当前页面路径
+			imageUrl: '', // 小程序分享的图片地址，可设置为默认LOGO图标
+		}
 	},
 	// #endif
 	// #ifdef APP-PLUS
