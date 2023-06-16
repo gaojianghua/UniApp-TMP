@@ -27,7 +27,7 @@
 				<view class="w-100 h-100 px-2">
 					<m-scroll :isLoading="item.isLoading" :scrollStyle="scrollStyle" :load="item.load"
 						@loadmore="loadmore" bgColor="transparent" @onRefresh="onRefresh">
-						<view class="item d-flex a-center j-sb" v-for="(val, index) in item.list" :key="index">
+						<view class="item d-flex a-center j-sb p-2 mt-2" v-for="(val, index) in item.list" :key="index">
 							<view class="left d-flex flex-column">
 								<view class="title">
 									{{val.title}}
@@ -182,20 +182,16 @@
 <style lang="scss" scoped>
 	.page {
 		.tabs {
-			border-bottom: 1rpx solid #fff;
+			background-color: #fff;
 		}
 
 		.item {
-			padding: 20rpx 0;
-			border-bottom: 1rpx solid #fb7299;
+			border-radius: 8rpx;
+			background-color: #fff;
 		
 			.left {
 				height: 180rpx;
 			}
-		}
-		
-		.item:last-child {
-			border-bottom: none;
 		}
 	}
 </style>

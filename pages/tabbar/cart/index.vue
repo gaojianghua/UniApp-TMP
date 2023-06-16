@@ -21,15 +21,19 @@
 			</view>
 		</m-navbar>
 		<!--内容区域 -->
-		<view v-if="!token" class="notopenid d-flex j-center a-center"
-			:style="scrollStyle">
+		<!-- #ifndef MP -->
+		<view v-if="!token" class="notopenid d-flex j-center a-center" :style="scrollStyle">
+		<!-- #endif -->
+		<!-- #ifdef MP -->
+		<view v-if="!token" class="notopenid d-flex j-center a-center" :style="[scrollStyle]">
+		<!-- #endif -->
 			<view class="right d-flex j-center a-center" @click="login">
-				未登录!无法查看购物袋
+				未登录!无法查看购物车
 			</view>
 		</view>
 		<template v-else>
 			<m-scroll bgColor="transparent" :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load" @loadmore="loadmore" @onRefresh="onRefresh" mainColor="#fb7290">
-				<u-empty v-if="load != 0 && list.length == 0" mode="car" text="购物袋是空的"
+				<u-empty v-if="load != 0 && list.length == 0" mode="car" text="购物车是空的"
 					icon="http://cdn.uviewui.com/uview/empty/car.png">
 				</u-empty>
 				<view v-if="list.length != 0" class="list">
@@ -42,7 +46,7 @@
 		<!-- 结算区域 -->
 		<view v-if="!token" class="login d-flex a-center main-bg-color">
 			<view class="left">
-				登录查看购物袋
+				登录查看购物车
 			</view>
 			<view class="right d-flex ml-auto j-center a-center" @click="login">
 				立即登录

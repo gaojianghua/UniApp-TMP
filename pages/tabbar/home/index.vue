@@ -7,8 +7,8 @@
 			marginRight: `${miniProgramCapsule.width}px`}">
 				<!-- 定位城市 -->
 				<view class="d-flex a-center mr-2" @click="$tools.Navigate.navigateTo('/pages-next/home/select-city/index')">
-					<u-image height="50rpx" width="50rpx" class="mr-1" src="/static/img/home/location.png"></u-image>
-					<text>{{ $store.state.liveCity }}</text>
+					<u-image height="50rpx" width="50rpx" src="/static/img/home/location.png"></u-image>
+					<text class="ml-1">{{ liveCity }}</text>
 				</view>
 				<!-- 搜索框 -->
 				<u-search placeholder="请输入关键词" height="60rpx" disabled :showAction="false"
@@ -143,6 +143,9 @@
 				return {
 					height: `calc(100vh - ${this.$store.state.navbarHeight}px - 2rpx - env(safe-area-inset-bottom) - ${this.$store.state.tabbarHeight}px - ${this.$store.state.statusHeight}px)`
 				}
+			},
+			liveCity() {
+				return this.$store.state.liveCity
 			}
 		},
 	}
