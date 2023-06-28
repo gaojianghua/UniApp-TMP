@@ -1,5 +1,6 @@
 import App from './App.vue'
 import Vue from 'vue'
+import './.env'
 // 多语言
 import messages from './locale/index'
 let i18nConfig = {

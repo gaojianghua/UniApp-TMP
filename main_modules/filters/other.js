@@ -1,7 +1,6 @@
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 import rTime from 'dayjs/plugin/relativeTime'
-import config from '../request/config.js'
 dayjs.extend(rTime)
 
 
@@ -63,7 +62,7 @@ class Other {
 	 * @param string URL地址
 	 */
 	static mediaUrlDeal = (data) => {
-		return data.indexOf(config.baseUrl) == -1 ? (config.baseUrl + data) : data
+		return data.indexOf(process.uniEnv.baseURL) == -1 ? (process.uniEnv.baseURL + data) : data
 	}
 
 	/**

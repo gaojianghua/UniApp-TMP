@@ -1,6 +1,6 @@
 import {
 	intercept
-} from '@/main_modules/request/config.js'
+} from '@/main_modules/request'
 /**
  * 响应拦截
  * @param {Object} http 

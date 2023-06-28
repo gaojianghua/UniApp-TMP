@@ -45,7 +45,9 @@
                 "abiFilters" : [ "armeabi-v7a", "arm64-v8a", "x86" ]
             },
             /* ios打包配置 */
-            "ios" : {},
+            "ios" : {
+                "dSYMs" : false
+            },
             /* SDK配置 */
             "sdkConfigs" : {
                 "geolocation" : {
@@ -56,7 +58,8 @@
                     }
                 },
                 "push" : {},
-                "share" : {}
+                "share" : {},
+                "ad" : {}
             }
         }
     },

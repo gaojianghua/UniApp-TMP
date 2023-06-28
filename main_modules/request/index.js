@@ -1,7 +1,7 @@
-import config from "./config.js"
+import config from '@/.env'
 export default {
 	intercept: {
-		BASE_URL: config.baseUrl,
+		BASE_URL: config.baseURL,
 		// 接口报错提示处理
 		errorMessage(res) {
 			const {
