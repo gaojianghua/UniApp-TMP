@@ -62,16 +62,32 @@ body {
 	left: 0;
 }
 
+.left-half {
+	left: 50%;
+}
+
 .top-0 {
 	top: 0;
+}
+
+.top-half {
+	top: 50%;
 }
 
 .bottom-0 {
 	bottom: 0;
 }
 
+.bottom-half {
+	bottom: 50%;
+}
+
 .right-0 {
 	right: 0;
+}
+
+.right-half {
+	right: 50%;
 }
 
 /* 宽高 */
@@ -1219,6 +1235,71 @@ body {
 
 .index-5 {
 	z-index: 50;
+}
+
+/* 变换 */
+.tf-half {
+	transform: translate(-50%, -50%);
+}
+
+.tf-half-y {
+	transform: translateY(-50%);
+}
+
+.tf-half-x {
+	transform: translateX(-50%);
+}
+
+.tf-scale-9 {
+	transform: scale(.9);
+}
+
+.tf-scale-8 {
+	transform: scale(.8);
+}
+
+.tf-scale-7 {
+	transform: scale(.7);
+}
+
+.tf-scale-6 {
+	transform: scale(.6);
+}
+
+.tf-scale-5 {
+	transform: scale(.5);
+}
+
+.tf-scale-4 {
+	transform: scale(.4);
+}
+
+.tf-scale-3 {
+	transform: scale(.3);
+}
+
+.tf-scale-2 {
+	transform: scale(.2);
+}
+
+.tf-scale-1 {
+	transform: scale(.1);
+}
+
+.tf-rotate-45 {
+	transform: rotate(45deg);
+}
+
+.tf-rotate-90 {
+	transform: rotate(90deg);
+}
+
+.tf-rotate-180 {
+	transform: rotate(180deg);
+}
+
+.tf-rotate-360 {
+	transform: rotate(360deg);
 }
 
 /* 图片 */
