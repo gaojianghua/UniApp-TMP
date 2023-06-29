@@ -87,19 +87,19 @@
 			 */
 			// #ifndef MP
 			uni.preloadPage({
-				url: '/pages/tabbar/home/index'
+				url: "@/pages/tabbar/home/index"
 			})
 			uni.preloadPage({
-				url: '/pages/tabbar/kind/index'
+				url: "@/pages/tabbar/kind/index"
 			})
 			uni.preloadPage({
-				url: '/pages/tabbar/media/index'
+				url: "@/pages/tabbar/media/index"
 			})
 			uni.preloadPage({
-				url: '/pages/tabbar/cart/index'
+				url: "@/pages/tabbar/cart/index"
 			})
 			uni.preloadPage({
-				url: '/pages/tabbar/mine/index'
+				url: "@/pages/tabbar/mine/index"
 			})
 			// #endif
 			// setTimeout(() => {
