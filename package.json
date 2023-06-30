@@ -14,29 +14,51 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
+	"app-env": "Dev",
 	"uni-app": {
 		"scripts": {
-			"dev": {
-				"title": "开发环境",
+			"h5-dev": {
+				"title": "H5开发环境",
 				"browser":"chrome",
 				"env": {
 					"UNI_PLATFORM": "h5",
 					"APP_ENV": "Dev"
 				}
 			},
-			"test": {
-				"title": "测试环境",
+			"h5-test": {
+				"title": "H5测试环境",
 				"browser":"chrome",
 				"env": {
 					"UNI_PLATFORM": "h5",
 					"APP_ENV": "Test"
 				}
 			},
-			"pro": {
-				"title": "正式环境",
+			"h5-pro": {
+				"title": "H5正式环境",
 				"browser":"chrome",
 				"env": {
 					"UNI_PLATFORM": "h5",
+					"APP_ENV": "Pro"
+				}
+			},
+			"mpwx-dev": {
+				"title": "MPWX开发环境",
+				"env": {
+					"UNI_PLATFORM": "mp-weixin",
+					"APP_ENV": "Dev"
+				}
+			},
+			"mpwx-test": {
+				"title": "MPWX测试环境",
+				"env": {
+					"UNI_PLATFORM": "mp-weixin",
+					"APP_ENV": "Test"
+				}
+			},
+			"mpwx-pro": {
+				"title": "MPWX正式环境",
+				"env": {
+					"UNI_PLATFORM": "mp-weixin",
 					"APP_ENV": "Pro"
 				}
 			}

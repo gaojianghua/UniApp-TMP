@@ -1,7 +1,7 @@
 // 初始化请求配置
 uni.$u.http.setConfig((defaultConfig) => {
 	/* defaultConfig 为默认全局配置 */
-	defaultConfig.baseURL = process.uniEnv.baseURL /* 根域名 */
+	defaultConfig.baseURL = uni.uniEnv.baseURL /* 根域名 */
 	return defaultConfig
 })
 

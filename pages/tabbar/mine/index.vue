@@ -33,7 +33,6 @@
 		<view class="menu" @click="openSet">
 			设置
 		</view>
-		<u-input password ></u-input>
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/mine/index" i18n></m-tabbar>
 	</view>
@@ -48,7 +47,8 @@
 			MTabbar
 		},
 		data() {
-			return {}
+			return {
+			}
 		},
 		onLoad() {
 			this.init()
@@ -56,7 +56,7 @@
 		methods: {
 			// 初始化
 			init() {
-				
+
 			},
 			openSet() {
 				let obj = {

@@ -12,8 +12,9 @@ UniApp TMP，是基于[uni-app](https://uniapp.dcloud.io/)与[uView 2.0](https:/
 ## 目录骨架
 
 - .env 				为环境配置目录
-  * .env.dev.js		是本地开发环境配置
-  * .env.pro.js		是线上生产环境配置
+  * .env.dev.js		是开发环境配置
+  * .env.pro.js		是生产环境配置
+  * .env.test.js	是测试环境配置
 
 - common 			为公共css集成
   * animate.css		是css动画库

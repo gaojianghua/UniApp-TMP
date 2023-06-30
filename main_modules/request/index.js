@@ -1,4 +1,4 @@
-import config from '@/.env'
+import config from '@/.env/index.js'
 export default {
 	intercept: {
 		BASE_URL: config.baseURL,

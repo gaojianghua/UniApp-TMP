@@ -1,27 +1,38 @@
-const setEnvConfig = () => {
-	let ENV_VAR = null
-	process.uniEnv = {}
-	
-	if (process.env.NODE_ENV === 'development') {
-		ENV_VAR = require('./.env.dev.js').default
-	} else {
-		if (process.env.APP_ENV == "Dev") {
-			ENV_VAR = require('./.env.dev.js').default
-		} else if (process.env.APP_ENV == "Pro") {
-			ENV_VAR = require('./.env.pro.js').default
-		} else if (process.env.APP_ENV == "Test") {
-			ENV_VAR = require('./.env.test.js').default
-		}
+let envObj = null
+let uniEnv = {}
+
+// H5与MP 项目环境区分
+// #ifdef H5 || MP
+if (process.env.NODE_ENV === 'development') {
+	envObj = require('./.env.dev.js').default
+} else {
+	if (process.env.APP_ENV == "Dev") {
+		envObj = require('./.env.dev.js').default
+	} else if (process.env.APP_ENV == "Pro") {
+		envObj = require('./.env.pro.js').default
+	} else if (process.env.APP_ENV == "Test") {
+		envObj = require('./.env.test.js').default
 	}
-	
-	if (ENV_VAR) {
-		for (let key in ENV_VAR) {
-			process.uniEnv[key] = ENV_VAR[key]
-		}
+}
+// #endif
+
+// APP 项目环境区分
+// #ifdef APP || APP-NVUE || APP-PLUS || APP-PLUS-NVUE
+import appEnv from '@/package.json'
+if (appEnv['app-env'] == "Dev") {
+	envObj = require('./.env.dev.js').default
+} else if (appEnv['app-env'] == "Pro") {
+	envObj = require('./.env.pro.js').default
+} else if (appEnv['app-env'] == "Test") {
+	envObj = require('./.env.test.js').default
+}
+// #endif
+
+if (envObj) {
+	for (let key in envObj) {
+		uniEnv[key] = envObj[key]
 	}
-	return process.uniEnv
 }
 
-
-
-export default setEnvConfig()
+uni.uniEnv = uniEnv
+export default uni.uniEnv
