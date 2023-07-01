@@ -8,13 +8,13 @@
 
 UniApp TMP，是基于[uni-app](https://uniapp.dcloud.io/)与[uView 2.0](https://uviewui.com)的兼容多平台的项目骨架模板。集成实际业务中所需的各种封装工具，使开发者快速上手开发或项目二开。
 
-
 ## 目录骨架
 
 - .env 				为环境配置目录
   * .env.dev.js		是开发环境配置
   * .env.pro.js		是生产环境配置
   * .env.test.js	是测试环境配置
+  * 若是APP端请修改 package.json 中的 app-env 属性："Dev"(开发环境) "Pro"(生产环境) "Test"(测试环境)
 
 - common 			为公共css集成
   * animate.css		是css动画库
