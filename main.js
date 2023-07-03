@@ -24,6 +24,11 @@ Vue.prototype.$store = store
 Vue.prototype.$tools = tools
 Vue.prototype.$check = check
 Vue.prototype.$multiportApi = multiportApi
+// #ifdef APP
+// sqlite 只支持APP端 若要使用则必须在manifest.json的APP模块配置中勾选sqlite模块
+import sqlite from '@/main_modules/sqlite/index.js'
+Vue.prototype.$sqlite = sqlite
+// #endif
 // 通过 install 函数挂载 Vue 原型方法
 import uView from '@/uni_modules/uview-ui'
 Vue.use(uView)

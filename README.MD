@@ -51,6 +51,7 @@ UniApp TMP，是基于[uni-app](https://uniapp.dcloud.io/)与[uView 2.0](https:/
   * request			是对请求函数的封装
   * router			是自定义路由的封装
   * sdk-init		是存放第三方SDK的初始化函数
+  * sqlite			是sqlite数据库API的封装
   * tools			是存放工具函数
   * uni-api			是分别存放uniapp各端独有的api
 
