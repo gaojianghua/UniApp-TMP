@@ -21,7 +21,17 @@
             "VideoPlayer" : {},
             "Share" : {},
             "Push" : {},
-            "SQLite" : {}
+            "SQLite" : {},
+            "Barcode" : {},
+            "Maps" : {},
+            "iBeacon" : {},
+            "Geolocation" : {},
+            "Fingerprint" : {},
+            "FaceID" : {},
+            "Contacts" : {},
+            "Camera" : {},
+            "Bluetooth" : {},
+            "FacialRecognitionVerify" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -30,33 +40,47 @@
                 "permissions" : [
                     "<uses-feature android:name=\"android.hardware.camera\"/>",
                     "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
                     "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
                     "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.BLUETOOTH\"/>",
+                    "<uses-permission android:name=\"android.permission.BLUETOOTH_ADMIN\"/>",
                     "<uses-permission android:name=\"android.permission.CAMERA\"/>",
                     "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
                     "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
                     "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
                     "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
+                    "<uses-permission android:name=\"android.permission.INTERNET\"/>",
                     "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
                     "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
                     "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.USE_FINGERPRINT\"/>",
                     "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
                     "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
-                    "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
+                    "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>",
+                    "<uses-permission android:name=\"android.permission.BLUETOOTH\"/>",
+                    "<uses-permission android:name=\"android.permission.BLUETOOTH_ADMIN\"/>"
                 ],
-                "abiFilters" : [ "armeabi-v7a", "arm64-v8a", "x86" ]
+                "abiFilters" : [ "armeabi-v7a", "arm64-v8a", "x86" ],
+                "schemes" : "GongYue"
             },
             /* ios打包配置 */
             "ios" : {
-                "dSYMs" : false
+                "dSYMs" : false,
+                "urltypes" : "GongYue",
+                "UIBackgroundModes" : "audio,location"
             },
             /* SDK配置 */
             "sdkConfigs" : {
                 "geolocation" : {
                     "amap" : {
                         "__platform__" : [ "ios", "android" ],
-                        "appkey_ios" : "",
-                        "appkey_android" : ""
+                        "appkey_ios" : "68e1b09969273e6cef3810f8cb37300e",
+                        "appkey_android" : "5a989c1320d542853ad37b58fa090af2"
                     }
                 },
                 "push" : {
@@ -74,7 +98,14 @@
                     }
                 },
                 "share" : {},
-                "ad" : {}
+                "ad" : {},
+                "maps" : {
+                    "amap" : {
+                        "appkey_ios" : "68e1b09969273e6cef3810f8cb37300e",
+                        "appkey_android" : "5a989c1320d542853ad37b58fa090af2"
+                    }
+                },
+                "payment" : {}
             },
             "icons" : {
                 "android" : {
@@ -107,6 +138,11 @@
                         "spotlight@3x" : "unpackage/res/icons/120x120.png"
                     }
                 }
+            },
+            "splashscreen" : {
+                "useOriginalMsgbox" : true,
+                "iosStyle" : "common",
+                "androidStyle" : "common"
             }
         }
     },
@@ -121,7 +157,12 @@
             "postcss" : true,
             "minified" : true
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "permission" : {
+            "scope.userLocation" : {
+                "desc" : ""
+            }
+        }
     },
     "mp-alipay" : {
         "usingComponents" : true
@@ -147,9 +188,18 @@
                 "enable" : true
             }
         },
-        "title" : "loveshop",
+        "title" : "",
         "devServer" : {
             "https" : false
+        },
+        "sdkConfigs" : {
+            "maps" : {
+                "amap" : {
+                    "key" : "3e10d54e9fbfe1890ccbde1d8a8b1d91",
+                    "securityJsCode" : "922a3ef18f64f0566044108ef5a45972",
+                    "serviceHost" : "https://gaojianghua.cn/_AMapService"
+                }
+            }
         }
     },
     "locale" : "zh-Hans"
