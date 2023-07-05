@@ -99,7 +99,7 @@
 				}
 				for (let i = 0; i < 10; i++) {
 					data.list.push({
-						img: 'https://wolffy-website.oss-cn-hangzhou.aliyuncs.com/banner2.jpg',
+						img: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg',
 						title: 'haha',
 						desc: 'nishidsahhda'
 					})

@@ -5,7 +5,7 @@
 			<!-- 顶部状态栏高度 -->
 			<m-top />
 			<view class="user-avatar mr-2">
-				<image class="user-img" src="https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/wolffyPink.png" mode="">
+				<image class="user-img" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/weChatLogo.png" mode="">
 				</image>
 			</view>
 			<view class="user-info">
@@ -21,7 +21,7 @@
 		<view class="order d-flex a-center j-around">
 			<block v-for="i in 4" :key="i">
 				<view class="order-item d-flex flex-column a-center j-center">
-					<image class="order-img" src="https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/wolffyPink.png"
+					<image class="order-img" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/weChatLogo.png"
 						mode=""></image>
 					<view class="order-text">
 						待付款

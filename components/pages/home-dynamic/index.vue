@@ -17,7 +17,7 @@
 				<video class="w-100" :src="item.video"></video>
 			</template>
 			<template v-if="item.type == 'image'">
-				<u-image :src="item.image" mode="aspectFill"></u-image>
+				<u-image width="100%" height="auto" :src="item.image" mode="widthFix"></u-image>
 			</template>
 		</view>
 		<view class="item-bottom d-flex a-center j-sb mt-3">
