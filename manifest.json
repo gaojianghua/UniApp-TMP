@@ -1,6 +1,6 @@
 {
     "name" : "宫悦商城",
-    "appid" : "__UNI__F814860",
+    "appid" : "__UNI__8AA65D7",
     "description" : "一家高性价比，高品质的电商商城",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -66,7 +66,8 @@
                     "<uses-permission android:name=\"android.permission.BLUETOOTH_ADMIN\"/>"
                 ],
                 "abiFilters" : [ "armeabi-v7a", "arm64-v8a", "x86" ],
-                "schemes" : "GongYue"
+                "schemes" : "GongYue",
+                "minSdkVersion" : 21
             },
             /* ios打包配置 */
             "ios" : {
@@ -94,7 +95,8 @@
                                 "xhdpi" : "/Users/gaojianghua/Downloads/wolffyPink.png",
                                 "xxhdpi" : "/Users/gaojianghua/Downloads/wolffyPink.png"
                             }
-                        }
+                        },
+                        "version" : "2"
                     }
                 },
                 "share" : {},
@@ -144,37 +146,55 @@
                 "iosStyle" : "common",
                 "androidStyle" : "common"
             }
+        },
+        "uniStatistics" : {
+            "enable" : true
         }
     },
     /* 快应用特有相关 */
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "",
+        "appid" : "wxe0ebf860492fe0f5",
         "setting" : {
-            "urlCheck" : false,
+            "urlCheck" : true,
             "es6" : true,
             "postcss" : true,
             "minified" : true
         },
         "usingComponents" : true,
-        "permission" : {
-            "scope.userLocation" : {
-                "desc" : ""
-            }
+        "permission" : {},
+        "unipush" : {
+            "enable" : true
+        },
+        "secureNetwork" : {
+            "enable" : false
+        },
+        "uniStatistics" : {
+            "enable" : true
         }
     },
     "mp-alipay" : {
-        "usingComponents" : true
+        "usingComponents" : true,
+        "uniStatistics" : {
+            "enable" : true
+        }
     },
     "mp-baidu" : {
-        "usingComponents" : true
+        "usingComponents" : true,
+        "uniStatistics" : {
+            "enable" : true
+        }
     },
     "mp-toutiao" : {
-        "usingComponents" : true
+        "usingComponents" : true,
+        "uniStatistics" : {
+            "enable" : true
+        }
     },
     "uniStatistics" : {
-        "enable" : false
+        "enable" : true,
+        "version" : "2"
     },
     "vueVersion" : "2",
     "h5" : {
@@ -200,7 +220,43 @@
                     "serviceHost" : "https://gaojianghua.cn/_AMapService"
                 }
             }
+        },
+        "unipush" : {
+            "enable" : true
+        },
+        "uniStatistics" : {
+            "enable" : true
         }
     },
-    "locale" : "zh-Hans"
+    "locale" : "zh-Hans",
+    "mp-jd" : {
+        "uniStatistics" : {
+            "enable" : true
+        }
+    },
+    "mp-kuaishou" : {
+        "uniStatistics" : {
+            "enable" : true
+        }
+    },
+    "mp-lark" : {
+        "uniStatistics" : {
+            "enable" : true
+        }
+    },
+    "mp-qq" : {
+        "uniStatistics" : {
+            "enable" : true
+        }
+    },
+    "quickapp-webview-huawei" : {
+        "uniStatistics" : {
+            "enable" : true
+        }
+    },
+    "quickapp-webview-union" : {
+        "uniStatistics" : {
+            "enable" : true
+        }
+    }
 }
