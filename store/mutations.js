@@ -23,4 +23,7 @@ export default {
 	updateLiveCity(state, e) {
 		state.liveCity = e
 	},
+	updateContacts(state, e) {
+		state.contacts = e
+	},
 }

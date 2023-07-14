@@ -16,7 +16,8 @@
 	// #endif
 	import {
 		getPhoneHeight,
-		setNavbarHeight
+		setNavbarHeight,
+		getContacts
 	} from '@/main_modules/app-init/index.js'
 	import global from '@/global/index.js'
 	export default {
@@ -45,6 +46,8 @@
 			plus.push.addEventListener('click', (message) => {
 				switchTab(message.content)
 			});
+			// 获取通讯录数据
+			getContacts()
 			// #endif
 
 			/**
