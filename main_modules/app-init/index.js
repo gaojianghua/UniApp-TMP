@@ -77,4 +77,4 @@ export const getContacts = () => {
 		console.log("获取通讯录失败");
 	}, {});
 	// #endif
-},
+}

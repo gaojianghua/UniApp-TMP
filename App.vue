@@ -46,8 +46,6 @@
 			plus.push.addEventListener('click', (message) => {
 				switchTab(message.content)
 			});
-			// 获取通讯录数据
-			getContacts()
 			// #endif
 
 			/**
@@ -84,7 +82,8 @@
 			uni.hideTabBar({
 				animation: false
 			})
-
+			// 获取通讯录数据
+			getContacts()
 			/**
 			 * 不包括小程序端
 			 */
