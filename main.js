@@ -32,6 +32,8 @@ Vue.prototype.$sqlite = sqlite
 // 通过 install 函数挂载 Vue 原型方法
 import uView from '@/uni_modules/uview-ui'
 Vue.use(uView)
+import MToast from '@/main_modules/main-ui/m-toast/index.js'
+Vue.use(MToast)
 import cache from '@/main_modules/cache/index.js'
 Vue.use(cache)
 import MinRouter from '@/main_modules/router/index.js'

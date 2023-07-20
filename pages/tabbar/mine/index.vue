@@ -33,6 +33,9 @@
 		<view class="menu" @click="openSet">
 			设置
 		</view>
+		<view class="menu" @click="openShow">
+			show
+		</view>
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/mine/index" i18n></m-tabbar>
 	</view>
@@ -47,8 +50,7 @@
 			MTabbar
 		},
 		data() {
-			return {
-			}
+			return {}
 		},
 		onLoad() {
 			this.init()
@@ -64,6 +66,18 @@
 					bjj: '456'
 				}
 				this.$tools.Navigate.navigateTo('/pages-next/mine/setting/index', obj, true)
+			},
+			openShow() {
+				this.$mToast.show({
+					content: '你们都是大傻逼',
+					type: 'warning',
+					duration: 3000,
+					complete(){
+						console.log('执行完后的回调')
+					}
+				}, () => {
+					console.log('打开提示弹框');
+				})
 			}
 		}
 	}

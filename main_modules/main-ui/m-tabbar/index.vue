@@ -78,7 +78,7 @@
 			position: fixed;
 			bottom: 0;
 			left: 0;
-			z-index: 999;
+			z-index: 99;
 			width: 100%;
 			height: calc(100rpx + env(safe-area-inset-bottom));
 			display: flex;
