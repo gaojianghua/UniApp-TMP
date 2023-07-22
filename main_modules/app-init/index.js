@@ -1,4 +1,5 @@
 import store from '@/store'
+import multiportApi from "../uni-api/index.js"
 // 获取胶囊位置
 export const getTabbarCapsule = () => {
 	let miniProgramCapsule = uni.getMenuButtonBoundingClientRect()
@@ -34,7 +35,7 @@ export const setNavbarHeight = () => {
 }
 
 // 获取手机通讯录
-export const getContacts = () => {
+export const getContacts = (cb) => {
 	// #ifdef H5
 	if ('contacts' in navigator) {
 		navigator.contacts.select(['displayName', 'phoneNumbers'], (contacts) => {
@@ -69,12 +70,28 @@ export const getContacts = () => {
 				}
 				array.push(obj)
 			})
-			store.commit('updateContacts', array)
+			cb && cb(array)
 		}, () => {
 			console.log("检索通讯录失败");
 		});
 	}, () => {
 		console.log("获取通讯录失败");
-	}, {});
+		uni.showModal({
+			title: 'Tips',
+			content: 'Please go to System Settings to turn on address book permissions',
+			confirmText: 'Go to Settings',
+			cancelText: 'Exit',
+			success: (res) => {
+				if (res.confirm) {
+					// 用户点击了“去设置”按钮，跳转到系统设置页面
+					multiportApi.app.openSystemSettings()
+					multiportApi.app.exitApp()
+				}
+				if (res.cancel) {
+					multiportApi.app.exitApp()
+				}
+			}
+		});
+	});
 	// #endif
 }
