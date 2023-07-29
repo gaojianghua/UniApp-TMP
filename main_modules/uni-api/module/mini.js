@@ -55,5 +55,34 @@ export default {
 	// 小程序显示原生菜单分享
 	showShareMenu(share) {
 		uni.showShareMenu(share)
+	},
+	// 打开微信客户端设置页面
+	openSetting() {
+		uni.openSetting({
+			success: (res) => {
+				if (res.authSetting['scope.bluetooth'] === true) {
+					// 用户已经授权蓝牙权限
+					uni.showToast({
+						title: '已打开蓝牙设置',
+						icon: 'none',
+						duration: 1500
+					})
+				} else {
+					// 用户未授权蓝牙权限
+					uni.showToast({
+						title: '请授权蓝牙权限',
+						icon: 'none',
+						duration: 1500
+					})
+				}
+			}
+		})
+	},
+	// 打开手机系统设置的蓝牙页面
+	openBluetoothAdapter(success, fail) {
+		uni.openBluetoothAdapter({
+			success: (res) => success(res),
+			fail: (err) => fail(err)
+		})
 	}
 }
