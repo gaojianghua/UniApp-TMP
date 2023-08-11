@@ -154,6 +154,35 @@ class Check {
 	}
 
 	/**
+	 * @description 判断任意类型变量是否为空
+	 * @param value 任意类型变量
+	 */
+	static isEmpty(value) {
+		if (value === null || value === undefined) {
+			return true;
+		}
+		if (typeof value === 'string' || Array.isArray(value)) {
+			return value.length === 0;
+		}
+		if (typeof value === 'object') {
+			if (Object.keys(value).length === 0) {
+				return true;
+			}
+			if (value instanceof Set || value instanceof Map || value instanceof WeakSet ||
+				value instanceof WeakMap) {
+				return value.size === 0;
+			}
+			for (let key in value) {
+				if (value.hasOwnProperty(key) && !isEmpty(value[key])) {
+					return false;
+				}
+			}
+			return true;
+		}
+		return false;
+	}
+
+	/**
 	 * @description 判断手机号格式是否是正确的
 	 * @param value 手机号参数
 	 */
@@ -218,7 +247,7 @@ class Check {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * @description 校验出生日期
 	 * @param val 出生日期
@@ -236,7 +265,7 @@ class Check {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * @description 检验检验码
 	 * @param val 检验码
@@ -257,7 +286,7 @@ class Check {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * @description 判断身份证格式是否是正确的
 	 * @param val 身份证
@@ -273,7 +302,7 @@ class Check {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * @description 判断银行卡格式是否是正确的
 	 * @param val 银行卡

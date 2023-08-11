@@ -58,7 +58,7 @@
 		methods: {
 			// 初始化
 			init() {
-
+				
 			},
 			openSet() {
 				let obj = {
