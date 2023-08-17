@@ -4,13 +4,12 @@
 	"description": "<p align=\"center\">     <img alt=\"logo\" src=\"https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/weChatLogo.png\" width=\"120\" height=\"120\" style=\"margin-bottom: 10px;\"> </p> <h3 align=\"center\" style=\"margin: 30px 0 30px;font-weight: bold;font-size:40px;\">UniApp TMP</h3> <h3 align=\"center\">兼容多平台的UniApp骨架模板</h3>",
 	"main": "main.js",
 	"dependencies": {
-		"dayjs": "^1.11.8",
 		"crypto-js": "^4.1.1",
+		"dayjs": "^1.11.8",
 		"js-md5": "^0.7.3",
 		"lucky-canvas": "^1.7.27",
 		"uni-luck-draw": "^1.3.9"
 	},
-	"devDependencies": {},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
@@ -19,7 +18,7 @@
 		"scripts": {
 			"h5-dev": {
 				"title": "H5开发环境",
-				"browser":"chrome",
+				"browser": "chrome",
 				"env": {
 					"UNI_PLATFORM": "h5",
 					"APP_ENV": "Dev"
@@ -27,7 +26,7 @@
 			},
 			"h5-test": {
 				"title": "H5测试环境",
-				"browser":"chrome",
+				"browser": "chrome",
 				"env": {
 					"UNI_PLATFORM": "h5",
 					"APP_ENV": "Test"
@@ -35,7 +34,7 @@
 			},
 			"h5-pro": {
 				"title": "H5正式环境",
-				"browser":"chrome",
+				"browser": "chrome",
 				"env": {
 					"UNI_PLATFORM": "h5",
 					"APP_ENV": "Pro"

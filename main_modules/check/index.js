@@ -310,6 +310,22 @@ class Check {
 	static isBankCard(value) {
 		return /^([1-9]{})(\d{14}|\d{18})$/.test(value)
 	}
+
+	/**
+	 * @description 判断是否为有效URL
+	 * @param str URL字符串
+	 */
+	static isURL(str) {
+		// 定义URL的正则表达式模式
+		const urlPattern = new RegExp(
+			"^((https?|ftp|file):\/\/)?" + // 协议
+			"([a-z0-9\-]+\.)+[a-z]{2,6}" + // 域名
+			"(:[0-9]{1,5})?" + // 端口号
+			"(\/.*)?$", // 路径
+			"i" // 忽略大小写
+		);
+		return urlPattern.test(str);
+	}
 }
 
 export default Check

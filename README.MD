@@ -48,6 +48,7 @@ UniApp TMP，是基于[uni-app](https://uniapp.dcloud.io/)与[uView 2.0](https:/
   * cache			是对缓存函数的封装
   * check			是对类型判断函数的封装
   * filters			是对过滤函数的封装
+  * lib				是外部资源(组件或库)
   * request			是对请求函数的封装
   * router			是自定义路由的封装
   * sdk-init		是存放第三方SDK的初始化函数

@@ -1,3 +1,5 @@
+import lottie from 'lottie-web';
+import Check from '../check/index.js'
 class Common {
 	/**
 	 * @description 获取指定大小区间的随机数
@@ -182,6 +184,32 @@ class Common {
 			timeout = null;
 		}
 		return throttled;
+	}
+	/**
+	 * @description lottie动画渲染
+	 * @param el 元素id属性值
+	 * @param data json数据文件
+	 */
+	static renderLottie(el, data) {
+		const setEl = el.indexOf('#') == -1 ? '#' + el : el
+		const container = document.getElementById(setEl);
+		if (Check.isURL(data)) {
+			lottie.loadAnimation({
+				container: container,
+				renderer: 'svg',
+				loop: true,
+				autoplay: true,
+				path: data
+			})
+		} else {
+			lottie.loadAnimation({
+				container: container,
+				renderer: 'svg',
+				loop: true,
+				autoplay: true,
+				animationData: require(data)
+			});
+		}
 	}
 }
 
