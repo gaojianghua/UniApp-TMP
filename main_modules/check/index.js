@@ -326,6 +326,14 @@ class Check {
 		);
 		return urlPattern.test(str);
 	}
+
+	/**
+	 * @description 判断是否为Safari浏览器
+	 */
+	static isSafari() {
+		const vendor = navigator.vendor;
+		return vendor === 'Apple Computer, Inc.' || vendor.includes('Apple');
+	}
 }
 
 export default Check

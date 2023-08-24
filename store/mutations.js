@@ -2,6 +2,9 @@ export default {
 	updateStatusHeight(state, e) {
 		state.statusHeight = e
 	},
+	updateSafariFitHeight(state, e) {
+		state.safariFitHeight = e
+	},
 	updateMiniProgramCapsule(state, e) {
 		state.miniProgramCapsule = e
 	},
