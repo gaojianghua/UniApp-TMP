@@ -186,7 +186,7 @@ class Common {
 		return throttled;
 	}
 	/**
-	 * @description lottie动画渲染
+	 * @description lottie动画渲染（H5端）
 	 * @param el 元素id属性值
 	 * @param data json数据文件
 	 */
@@ -211,6 +211,28 @@ class Common {
 			});
 		}
 	}
+	/**
+	 * @description 函数加锁防止频繁密集点击事件
+	 * @param fn 原函数
+	 */
+	static withLock(fn) {
+		let locked = false;
+		return (...args) => {
+			if (locked) {
+				return;
+			}
+			locked = true;
+			const lastArg = args[args.length - 1];
+			if (typeof lastArg === "function") {
+				const callback = (...cbArgs) => {
+					locked = false;
+					lastArg(...cbArgs);
+				};
+				args[args.length - 1] = callback;
+			}
+			fn(...args);
+		};
+	};
 }
 
 
