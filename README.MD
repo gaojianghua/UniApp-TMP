@@ -55,6 +55,7 @@ UniApp TMP，是基于[uni-app](https://uniapp.dcloud.io/)与[uView 2.0](https:/
   * sqlite			是sqlite数据库API的封装
   * tools			是存放工具函数
   * uni-api			是分别存放uniapp各端独有的api
+  * worker			是对WebWorker的封装
 
 - mixins			抽离复用的逻辑功能
   * capsule-init	兼容小程序初始化获取小程序胶囊信息

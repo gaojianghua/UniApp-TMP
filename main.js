@@ -14,12 +14,14 @@ export const i18n = new VueI18n(i18nConfig)
 // 直接引入实例对象进行挂载
 import http from '@/main_modules/request/method.js'
 import socket from '@/main_modules/socket/index.js'
+import worker from '@/main_modules/worker/index.js'
 import store from '@/store';
 import tools from '@/main_modules/tools/index.js'
 import check from '@/main_modules/check/index.js'
 import multiportApi from '@/main_modules/uni-api/index.js'
 Vue.prototype.$http = http
 Vue.prototype.$socket = socket
+Vue.prototype.$worker = worker
 Vue.prototype.$store = store
 Vue.prototype.$tools = tools
 Vue.prototype.$check = check
