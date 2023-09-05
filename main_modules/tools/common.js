@@ -1,6 +1,9 @@
-import lottie from 'lottie-web';
+import lottie from '../lib/h5-lottie/lottie-web.min.js';
 import Check from '../check/index.js'
 class Common {
+	constructor() {
+		this.lock = false
+	}
 	/**
 	 * @description 获取指定大小区间的随机数
 	 */
@@ -212,26 +215,15 @@ class Common {
 		}
 	}
 	/**
-	 * @description 函数加锁防止频繁密集点击事件
+	 * @description 给点击事件加竞态锁
 	 * @param fn 原函数
 	 */
 	static withLock(fn) {
-		let locked = false;
-		return (...args) => {
-			if (locked) {
-				return;
-			}
-			locked = true;
-			const lastArg = args[args.length - 1];
-			if (typeof lastArg === "function") {
-				const callback = (...cbArgs) => {
-					locked = false;
-					lastArg(...cbArgs);
-				};
-				args[args.length - 1] = callback;
-			}
-			fn(...args);
-		};
+		if (this.lock) return
+		this.lock = true
+		fn().then(() => {
+			this.lock = false;
+		}).catch(err => {throw err});
 	};
 }
 

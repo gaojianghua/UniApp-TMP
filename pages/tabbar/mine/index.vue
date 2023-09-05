@@ -33,6 +33,9 @@
 		<view class="menu" @click="openSet">
 			设置
 		</view>
+		<view class="menu" @click="clickData">
+			点击
+		</view>
 		<view class="menu" @click="openShow">
 			show
 		</view>
@@ -44,6 +47,10 @@
 <script>
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
 	import tabbarInit from '@/mixins/tabbar-init.js'
+	import {
+		getSysConfig
+	} from '@/main_modules/request/api/get.js'
+import data from '../../../global/data'
 	export default {
 		mixins: [tabbarInit],
 		components: {
@@ -59,6 +66,13 @@
 			// 初始化
 			init() {
 				
+			},
+			clickData() {
+				this.$tools.Common.withLock(this._getData)
+			},
+			async _getData() {
+				let {data, code} = await getSysConfig()
+				console.log(data)
 			},
 			openSet() {
 				let obj = {

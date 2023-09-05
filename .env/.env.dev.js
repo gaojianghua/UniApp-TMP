@@ -1,3 +1,3 @@
 export default {
-	baseURL: 'http://192.168.15.207:5050',
+	baseURL: 'http://192.168.7.33:8083',
 }
