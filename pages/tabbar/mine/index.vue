@@ -1,7 +1,7 @@
 <template>
 	<view class="page">
 		<!-- 顶部信息 -->
-		<view class="user">
+		<view class="user" :style="{height: `calc(388rpx + ${statusHeight}px)`}">
 			<!-- 顶部状态栏高度 -->
 			<m-top />
 			<view class="d-flex a-center">
@@ -103,7 +103,8 @@
 			return {
 				orderMenus,
 				menuList,
-				assets
+				assets,
+				statusHeight: 0
 			}
 		},
 		onLoad() {
@@ -154,6 +155,9 @@
 					console.log('打开提示弹框');
 				})
 			}
+		},
+		created() {
+			this.statusHeight = this.$store.state.statusHeight
 		}
 	}
 </script>
@@ -163,7 +167,6 @@
 
 		.user {
 			position: relative;
-			height: 388rpx;
 			padding: 30rpx 30rpx 0;
 			background: linear-gradient(to bottom, #FF9412 40%, #fff);
 			border-radius: 0 0 40rpx 40rpx;

@@ -19,9 +19,6 @@
 		<m-scroll :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load" bgColor="transparent"
 			@loadmore="loadmore" @onRefresh="onRefresh">
 			<view class="content">
-				<block v-for="(item,i) in list" :key="i">
-					<p-home-dynamic :item="item" @uniAppShare="uniAppShare"></p-home-dynamic>
-				</block>
 			</view>
 		</m-scroll>
 		<!-- 底部导航栏 -->
@@ -33,7 +30,6 @@
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
 	import MNavbar from '@/main_modules/main-ui/m-navbar/index.vue'
 	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
-	import PHomeDynamic from '@/components/pages/home-dynamic/index.vue'
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	import capsuleInit from '@/mixins/capsule-init.js'
 	import shareInit from '@/mixins/share-init.js'
@@ -45,8 +41,7 @@
 		components: {
 			MTabbar,
 			MNavbar,
-			MScroll,
-			PHomeDynamic
+			MScroll
 		},
 		data() {
 			return {
