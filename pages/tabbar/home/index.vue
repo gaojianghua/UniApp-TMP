@@ -24,8 +24,6 @@
 				</block>
 			</view>
 		</m-scroll>
-		<!-- 悬停菜单 -->
-		<m-hover-menu :menuList="menuList"></m-hover-menu>
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/home/index" i18n></m-tabbar>
 	</view>
@@ -35,7 +33,6 @@
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
 	import MNavbar from '@/main_modules/main-ui/m-navbar/index.vue'
 	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
-	import MHoverMenu from '@/main_modules/main-ui/m-hover-menu/index.vue'
 	import PHomeDynamic from '@/components/pages/home-dynamic/index.vue'
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	import capsuleInit from '@/mixins/capsule-init.js'
@@ -49,7 +46,6 @@
 			MTabbar,
 			MNavbar,
 			MScroll,
-			MHoverMenu,
 			PHomeDynamic
 		},
 		data() {
@@ -62,22 +58,7 @@
 					limit: 10
 				},
 				total: 0,
-				istrig: true,
-				menuList: [
-					{
-						src: '/static/img/home/message.png',
-						activeSrc: '/static/img/home/message-active.png',
-						badge: 20
-					},
-					{
-						src: '/static/img/home/cart.png',
-						activeSrc: '/static/img/home/cart-active.png',
-						badge: 2000
-					},
-					{
-						src: '/static/img/home/server.png'
-					}
-				]
+				istrig: true
 			}
 		},
 		onLoad() {
