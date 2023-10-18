@@ -51,7 +51,7 @@
 		<view class="order">
 			<view class="d-flex j-sb">
 				<span class="font-weight">我的订单</span>
-				<view class="d-flex">
+				<view class="d-flex" @click="openOrderList">
 					全部
 					<u-icon name="arrow-right" size="14"></u-icon>
 				</view>
@@ -114,6 +114,9 @@
 			// 初始化
 			init() {
 
+			},
+			openOrderList() {
+				this.$tools.Navigate.navigateTo('/pages-next/mine/order-list/index')
 			},
 			openSet() {
 				let obj = {

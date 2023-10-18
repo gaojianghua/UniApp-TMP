@@ -1136,6 +1136,26 @@ body {
 	padding-top: 50rpx !important;
 }
 
+.pt-6 {
+	padding-top: 60rpx !important;
+}
+
+.pt-7 {
+	padding-top: 70rpx !important;
+}
+
+.pt-8 {
+	padding-top: 80rpx !important;
+}
+
+.pt-9 {
+	padding-top: 90rpx !important;
+}
+
+.pt-10 {
+	padding-top: 100rpx !important;
+}
+
 .pb-0 {
 	padding-bottom: 0;
 }
@@ -1162,6 +1182,26 @@ body {
 
 .pb-5 {
 	padding-bottom: 50rpx !important;
+}
+
+.pb-6 {
+	padding-bottom: 60rpx !important;
+}
+
+.pb-7 {
+	padding-bottom: 70rpx !important;
+}
+
+.pb-8 {
+	padding-bottom: 80rpx !important;
+}
+
+.pb-9 {
+	padding-bottom: 90rpx !important;
+}
+
+.pb-10 {
+	padding-bottom: 100rpx !important;
 }
 
 .pl-0 {
@@ -1192,6 +1232,26 @@ body {
 	padding-left: 50rpx !important;
 }
 
+.pl-6 {
+	padding-left: 60rpx !important;
+}
+
+.pl-7 {
+	padding-left: 70rpx !important;
+}
+
+.pl-8 {
+	padding-left: 80rpx !important;
+}
+
+.pl-9 {
+	padding-left: 90rpx !important;
+}
+
+.pl-10 {
+	padding-left: 100rpx !important;
+}
+
 .pr-0 {
 	padding-right: 0;
 }
@@ -1218,6 +1278,26 @@ body {
 
 .pr-5 {
 	padding-right: 50rpx !important;
+}
+
+.pr-6 {
+	padding-right: 60rpx !important;
+}
+
+.pr-7 {
+	padding-right: 70rpx !important;
+}
+
+.pr-8 {
+	padding-right: 80rpx !important;
+}
+
+.pr-9 {
+	padding-right: 90rpx !important;
+}
+
+.pr-10 {
+	padding-right: 100rpx !important;
 }
 
 /* 层级 */

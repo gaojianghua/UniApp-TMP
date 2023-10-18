@@ -63,9 +63,9 @@
 		transform: all 0.3s linear;
 
 		.refresher-text {
-			font-size: 20rpx;
+			font-size: 26rpx;
 			font-family: PingFang SC;
-			font-weight: 500;
+			font-weight: 400;
 		}
 	}
 </style>

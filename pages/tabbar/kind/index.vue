@@ -10,38 +10,10 @@
 					@click="openSearch"></u-search>
 			</view>
 		</m-navbar>
-		<!-- 标签栏 -->
-		<view class="tabs">
-			<u-tabs :current="current" :list="tabs" lineColor="#fb7299" :itemStyle="{height: '65rpx'}"
-				@click="switchTabs"></u-tabs>
+		<!-- 分类区域 -->
+		<view class="kind">
+			
 		</view>
-		<!-- 列表栏 -->
-		<!-- #ifdef MP-WEIXIN -->
-		<swiper :current="current" :style="[scrollStyle]" @change="changeSwiper">
-		<!-- #endif -->
-		<!-- #ifndef MP-WEIXIN -->
-		<swiper :current="current" :style="scrollStyle" @change="changeSwiper">
-		<!-- #endif -->
-			<swiper-item v-for="(item, i) in tabs" :key="i">
-				<!-- 列表区域 -->
-				<view class="w-100 h-100 px-2">
-					<m-scroll :isLoading="item.isLoading" :scrollStyle="scrollStyle" :load="item.load"
-						@loadmore="loadmore" bgColor="transparent" @onRefresh="onRefresh">
-						<view class="item d-flex a-center j-sb p-2 mt-2" v-for="(val, index) in item.list" :key="index">
-							<view class="left d-flex flex-column">
-								<view class="title">
-									{{val.title}}
-								</view>
-								<view class="desc">
-									{{val.desc}}
-								</view>
-							</view>
-							<u-image width="300rpx" height="180rpx" :src="val.img"></u-image>
-						</view>
-					</m-scroll>
-				</view>
-			</swiper-item>
-		</swiper>
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/kind/index" i18n></m-tabbar>
 	</view>
