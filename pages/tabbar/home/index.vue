@@ -28,7 +28,6 @@
 
 <script>
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
-	import MNavbar from '@/main_modules/main-ui/m-navbar/index.vue'
 	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	import capsuleInit from '@/mixins/capsule-init.js'
@@ -40,7 +39,6 @@
 		mixins: [tabbarInit, capsuleInit, shareInit],
 		components: {
 			MTabbar,
-			MNavbar,
 			MScroll
 		},
 		data() {

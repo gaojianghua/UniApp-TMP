@@ -11,8 +11,8 @@
 			</view>
 		</m-navbar>
 		<!-- 标签栏 -->
-		<view class="tabs">
-			<u-tabs :current="current" :list="tabs" lineColor="#fb7299" :itemStyle="{height: '65rpx'}"
+		<view class="tabs w-100">
+			<u-tabs class="w-100" :scrollable="false" :current="current" :list="tabs" lineColor="#fb7299" :itemStyle="{height: '65rpx'}"
 				@click="switchTabs"></u-tabs>
 		</view>
 		<!-- 列表栏 -->

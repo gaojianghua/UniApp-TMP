@@ -1,7 +1,7 @@
 <template>
 	<view class="page">
 		<!-- 顶部导航栏 -->
-		<m-navbar bgColor="#fff" isTab textColor="#fb7299" value="娱乐"></m-navbar>
+		<m-navbar bgColor="#fff" isTab textColor="#fb7299" i18n value="page.娱乐"></m-navbar>
 		<!-- 顶部状态栏高度 -->
 		<!-- <m-top /> -->
 		<!-- 底部导航栏 -->

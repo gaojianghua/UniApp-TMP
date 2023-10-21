@@ -93,14 +93,80 @@
 		]
 	}, {
 		"root": "pages-offspring",
-		"pages": [{
-			"path": "goods-details/index",
-			"style": {
-				"navigationBarTitleText": "%page.商品详情%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
+		"pages": [
+			{
+				"path": "goods-details/index",
+				"style": {
+					"navigationBarTitleText": "%page.商品详情%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
+				"path": "privacy-policy/index",
+				"style": {
+					"navigationBarTitleText": "%page.隐私政策%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
+				"path": "feedback/index",
+				"style": {
+					"navigationBarTitleText": "%page.意见反馈%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
+				"path": "about-us/index",
+				"style": {
+					"navigationBarTitleText": "%page.关于宫悦%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
+				"path": "clear-cache/index",
+				"style": {
+					"navigationBarTitleText": "%page.清除缓存%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
+				"path": "personal-info/index",
+				"style": {
+					"navigationBarTitleText": "%page.个人信息%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
+				"path": "common-problem/index",
+				"style": {
+					"navigationBarTitleText": "%page.常见问题%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
+				"path": "bind-cell-phone/index",
+				"style": {
+					"navigationBarTitleText": "%page.绑定手机%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
+				"path": "shipping-address/index",
+				"style": {
+					"navigationBarTitleText": "%page.收货地址%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
 			}
-		}]
+		]
 	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

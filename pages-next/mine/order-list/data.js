@@ -1,5 +1,5 @@
 export const tabs = [{
-		name: '关注',
+		name: '全部',
 		list: [],
 		total: 0,
 		page: 1,
@@ -7,10 +7,7 @@ export const tabs = [{
 		isLoading: true,
 	},
 	{
-		name: '推荐',
-		badge: {
-			isDot: true
-		},
+		name: '待付款',
 		list: [],
 		total: 0,
 		page: 1,
@@ -18,10 +15,7 @@ export const tabs = [{
 		isLoading: true,
 	},
 	{
-		name: '电影',
-		badge: {
-			value: 5,
-		},
+		name: '待发货',
 		list: [],
 		total: 0,
 		page: 1,
@@ -29,7 +23,7 @@ export const tabs = [{
 		isLoading: true,
 	},
 	{
-		name: '科技',
+		name: '待收货',
 		list: [],
 		total: 0,
 		page: 1,
@@ -37,39 +31,7 @@ export const tabs = [{
 		isLoading: true,
 	},
 	{
-		name: '音乐',
-		list: [],
-		total: 0,
-		page: 1,
-		load: 0,
-		isLoading: true,
-	},
-	{
-		name: '美食',
-		list: [],
-		total: 0,
-		page: 1,
-		load: 0,
-		isLoading: true,
-	},
-	{
-		name: '文化',
-		list: [],
-		total: 0,
-		page: 1,
-		load: 0,
-		isLoading: true,
-	},
-	{
-		name: '财经',
-		list: [],
-		total: 0,
-		page: 1,
-		load: 0,
-		isLoading: true,
-	},
-	{
-		name: '手工',
+		name: '售后',
 		list: [],
 		total: 0,
 		page: 1,

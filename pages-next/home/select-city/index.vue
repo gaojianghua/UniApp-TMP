@@ -1,6 +1,6 @@
 <template>
 	<view class="page">
-		
+		<m-navbar bgColor="#fff" textColor="#fb7299" value="page.选择城市" i18n></m-navbar>
 	</view>
 </template>
 

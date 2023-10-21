@@ -212,12 +212,12 @@
 				left: 30rpx;
 				bottom: -100rpx;
 				background: #FC465C;
-				border-radius: 12rpx;
+				border-radius: 8rpx;
 			}
 		}
 
 		.order {
-			border-radius: 12rpx;
+			border-radius: 8rpx;
 			background-color: #fff;
 			width: 690rpx;
 			margin-left: 30rpx;
@@ -237,7 +237,7 @@
 		.menu{
 			width: 690rpx;
 			margin-left: 30rpx;
-			border-radius: 12rpx;
+			border-radius: 8rpx;
 			padding: 0 30rpx;
 			background-color: #fff;
 			.menu-item:first-child{
