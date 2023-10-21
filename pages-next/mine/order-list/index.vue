@@ -61,7 +61,7 @@
 		data() {
 			return {
 				tabs,
-				current: 1,
+				current: 0,
 				istrig: true,
 				isLock: false,
 				query: {
@@ -71,7 +71,8 @@
 				},
 			}
 		},
-		onLoad() {
+		onLoad(args) {
+			this.current = args.item || 0
 			this.init()
 		},
 		methods: {
@@ -82,6 +83,7 @@
 			// 获取数据
 			async getData(e) {
 				this.query.type = this.current + 1
+				
 				this.query.page = this.tabs[this.current].page
 				// let {
 				// 	data,

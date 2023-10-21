@@ -89,6 +89,13 @@
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
+		},{
+			"path": "mine/my-evaluate/index",
+			"style": {
+				"navigationBarTitleText": "%page.我的评价%",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
 		}
 		]
 	}, {

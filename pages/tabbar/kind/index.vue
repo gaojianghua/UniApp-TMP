@@ -38,7 +38,7 @@
 		data() {
 			return {
 				tabs,
-				current: 1,
+				current: 0,
 				istrig: true,
 				isLock: false,
 				query: {
@@ -54,7 +54,7 @@
 		methods: {
 			// 初始化
 			init() {
-				this.getData()
+				// this.getData()
 			},
 			// 获取数据
 			async getData(e) {

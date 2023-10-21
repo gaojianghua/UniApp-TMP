@@ -1,6 +1,6 @@
 <template>
 	<view class="page">
-		<m-navbar bgColor="transparent" isFixed textColor="#fb7299"></m-navbar>
+		<m-navbar bgColor="#fff" textColor="#fb7299" value="page.我的评价" i18n></m-navbar>
 	</view>
 </template>
 

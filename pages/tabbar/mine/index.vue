@@ -51,14 +51,14 @@
 		<view class="order">
 			<view class="d-flex j-sb">
 				<span class="font-weight">我的订单</span>
-				<view class="d-flex" @click="openOrderList">
+				<view class="d-flex" @click="openOrderList()">
 					全部
 					<u-icon name="arrow-right" size="14"></u-icon>
 				</view>
 			</view>
 			<view class="d-flex a-center mt-1 j-sb">
 				<block v-for="(item, i) in orderMenus" :key="i">
-					<view class="order-item d-flex flex-column a-center j-center">
+					<view class="order-item d-flex flex-column a-center j-center" @click="openOrderList(item.id)">
 						<u-image width="60rpx" height="60rpx" :src="item.img" mode="" />
 						<view class="order-text">
 							{{item.name}}
@@ -115,15 +115,12 @@
 			init() {
 
 			},
-			openOrderList() {
-				this.$tools.Navigate.navigateTo('/pages-next/mine/order-list/index')
+			openOrderList(i) {
+				i == 5 ? this.$tools.Navigate.navigateTo('/pages-next/mine/my-evaluate/index') :
+				this.$tools.Navigate.navigateTo('/pages-next/mine/order-list/index', i)
 			},
 			openSet() {
-				let obj = {
-					abc: '123',
-					bjj: '456'
-				}
-				this.$tools.Navigate.navigateTo('/pages-next/mine/setting/index', obj, true)
+				this.$tools.Navigate.navigateTo('/pages-next/mine/setting/index')
 			},
 			openServer() {
 
@@ -167,7 +164,6 @@
 
 <style lang="scss" scoped>
 	.page {
-
 		.user {
 			position: relative;
 			padding: 30rpx 30rpx 0;

@@ -21,13 +21,13 @@
 						</view>
 					</view>
 				</m-cell>
-				<m-cell v-if="i > 0 && i <= 2" :itemStyle="{height: '88rpx'}" isActive class="px-3 bg-white"
+				<m-cell v-if="i > 0 && i <= 2" :itemStyle="{height: '88rpx'}" class="px-3 bg-white"
 					:item="item"></m-cell>
 				<u-gap v-if="i == 2" height="10rpx"></u-gap>
-				<m-cell v-if="i > 2 && i <= 4" :itemStyle="{height: '88rpx'}" isActive class="px-3 bg-white"
+				<m-cell v-if="i > 2 && i <= 4" :itemStyle="{height: '88rpx'}" class="px-3 bg-white"
 					:item="item"></m-cell>
 				<u-gap v-if="i == 4" height="10rpx"></u-gap>
-				<m-cell v-if="i > 4 && i <= 7" :itemStyle="{height: '88rpx'}" isActive class="px-3 bg-white"
+				<m-cell v-if="i > 4 && i <= 7" :itemStyle="{height: '88rpx'}" class="px-3 bg-white"
 					:item="item"></m-cell>
 				<u-gap v-if="i == 8" height="10rpx"></u-gap>
 				<m-cell v-if="i == 8" :itemStyle="{height: '88rpx'}" isActive textCenter :isIcon="false"

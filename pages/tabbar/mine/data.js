@@ -1,21 +1,26 @@
 const orderMenus = [
 	{
+		id: 1,
 		img: '/static/img/common/bank-card.svg',
 		name: '待付款'
 	},
 	{
+		id: 2,
 		img: '/static/img/common/bank-card.svg',
 		name: '待发货'
 	},
 	{
+		id: 3,
 		img: '/static/img/common/bank-card.svg',
 		name: '待收货'
 	},
 	{
+		id: 5,
 		img: '/static/img/common/bank-card.svg',
 		name: '待评价'
 	},
 	{
+		id: 4,
 		img: '/static/img/common/bank-card.svg',
 		name: '退款/售后'
 	}

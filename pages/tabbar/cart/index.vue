@@ -149,7 +149,7 @@
 			},
 			// 去登录
 			login() {
-
+				this.$tools.Navigate.navigateTo('/pages/account/login/index')
 			},
 			// 提交结算
 			submit() {

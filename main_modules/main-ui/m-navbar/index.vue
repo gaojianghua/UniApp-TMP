@@ -1,6 +1,6 @@
 <!-- 顶部组件 -->
 <template>
-	<view class="position-sticky index-5">
+	<view class="index-5" :class="isFixed ? 'position-fixed' : 'position-sticky'">
 		<view :style="{height: `${statusHeight}px`, backgroundColor: bgColor}"></view>
 		<view class="top top-0 index-1"
 			:style="{height: `${navbarHeight}px`, borderBottom: borderBottom ? '1rpx solid #f5f5f5' : 'none'}">
@@ -27,46 +27,10 @@
 
 <script>
 	import tools from '../../tools/index.js'
+	import props from './props.js'
 	export default {
 		name: "m-navbar",
-		props: {
-			value: {
-				type: String,
-				default: ''
-			},
-			isLang: {
-				type: Boolean,
-				default: false
-			},
-			isSlot: {
-				type: Boolean,
-				default: false
-			},
-			borderBottom: {
-				type: Boolean,
-				default: true
-			},
-			isTab: {
-				type: Boolean,
-				default: false
-			},
-			bgColor: {
-				type: String,
-				default: '#151521'
-			},
-			iconColor: {
-				type: String,
-				default: '#fff'
-			},
-			textColor: {
-				type: String,
-				default: '#fff'
-			},
-			i18n: {
-				type: Boolean,
-				default: false
-			}
-		},
+		props,
 		data() {
 			return {
 				statusHeight: 0,
