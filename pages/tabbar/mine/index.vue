@@ -21,17 +21,17 @@
 				<view class="top-menu ml-auto mr-1 d-flex flex-column j-center a-center" @click="openSet">
 					<u-image width="50rpx" height="50rpx" src="/static/img/common/setting-two.svg" mode="" />
 					<view class="top-menu-text">
-						设置
+						{{$t('page.设置')}}
 					</view>
 				</view>
 			</view>
 			<view class="assets d-flex a-center j-around">
-				<view v-for="(item, i) in assets" class="assets-item mt-2 d-flex flex-column a-center j-center">
+				<view v-for="(item, i) in assets" class="assets-item mt-2 d-flex flex-column a-center j-center" @click="openAssets(item)">
 					<view class="item-value">
 						{{item.value}}
 					</view>
 					<view class="item-text">
-						{{item.name}}
+						{{$t(item.name)}}
 					</view>
 				</view>
 			</view>
@@ -50,9 +50,9 @@
 		<!-- 订单栏 -->
 		<view class="order">
 			<view class="d-flex j-sb">
-				<span class="font-weight">我的订单</span>
+				<span class="font-weight">{{$t('我的订单')}}</span>
 				<view class="d-flex" @click="openOrderList()">
-					全部
+					{{$t('全部')}}
 					<u-icon name="arrow-right" size="14"></u-icon>
 				</view>
 			</view>
@@ -70,12 +70,12 @@
 		<!-- 菜单栏 -->
 		<view class="menu mt-2">
 			<view class="menu-item" v-for="(item, i) in menuList" :key="i" @click="openMenu(item)">
-				<m-cell v-if="item.id != 5 && item.id != 6" :item="item"></m-cell>
+				<m-cell i18n v-if="item.id != 5 && item.id != 6" :item="item"></m-cell>
 				<!-- #ifdef H5 -->
-				<m-cell v-if="item.id == 5" :item="item"></m-cell>
+				<m-cell i18n v-if="item.id == 5" :item="item"></m-cell>
 				<!-- #endif -->
 				<!-- #ifdef APP-PLUS -->
-				<m-cell v-if="item.id == 6" :item="item"></m-cell>
+				<m-cell i18n v-if="item.id == 6" :item="item"></m-cell>
 				<!-- #endif -->
 			</view>
 		</view>
@@ -113,7 +113,9 @@
 		methods: {
 			// 初始化
 			init() {
-
+				this.orderMenus.forEach((item) => {
+					item.name = this.$t(item.name)
+				})
 			},
 			openOrderList(i) {
 				i == 5 ? this.$tools.Navigate.navigateTo('/pages-next/mine/my-evaluate/index') :
@@ -122,24 +124,30 @@
 			openSet() {
 				this.$tools.Navigate.navigateTo('/pages-next/mine/setting/index')
 			},
-			openServer() {
-
+			openAssets(e) {
+				this.$tools.Navigate.navigateTo(e.page)
 			},
 			openMenu(e) {
 				switch (e.id) {
 					case 1:
+					this.$tools.Navigate.navigateTo(e.page)
 						break;
 					case 2:
+					this.$tools.Navigate.navigateTo(e.page)
 						break;
 					case 3:
+					this.$tools.Navigate.navigateTo(e.page)
 						break;
 					case 4:
+					this.$tools.Navigate.navigateTo(e.page)
 						break;
 					case 5:
+					this.$tools.Navigate.navigateTo(e.page)
 						break;
 					case 6:
 						break;
 					case 7:
+					this.$tools.Navigate.navigateTo(e.page)
 						break;
 				}
 			},

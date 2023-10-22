@@ -78,6 +78,9 @@
 		methods: {
 			// 初始化
 			init() {
+				this.tabs.forEach((item) => {
+					item.name = this.$t(item.name)
+				})
 				this.getData()
 			},
 			// 获取数据

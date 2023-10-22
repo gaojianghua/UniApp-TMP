@@ -96,6 +96,69 @@
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
+		},{
+			"path": "mine/my-coupon/index",
+			"style": {
+				"navigationBarTitleText": "%page.我的优惠券%",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},{
+			"path": "mine/my-points/index",
+			"style": {
+				"navigationBarTitleText": "%page.我的积分%",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},{
+			"path": "mine/my-collect/index",
+			"style": {
+				"navigationBarTitleText": "%page.我的收藏%",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},{
+			"path": "mine/my-footmark/index",
+			"style": {
+				"navigationBarTitleText": "%page.我的足迹%",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},{
+			"path": "mine/download-app/index",
+			"style": {
+				"navigationBarTitleText": "%page.APP下载%",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},{
+			"path": "mine/official-service/index",
+			"style": {
+				"navigationBarTitleText": "%page.官方客服%",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},{
+			"path": "mine/gongyue-coin/index",
+			"style": {
+				"navigationBarTitleText": "%page.宫悦币%",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},{
+			"path": "mine/lucky-bean/index",
+			"style": {
+				"navigationBarTitleText": "%page.幸运豆%",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},{
+			"path": "mine/video-deposit/index",
+			"style": {
+				"navigationBarTitleText": "%page.视投金%",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
 		}
 		]
 	}, {
