@@ -2,7 +2,8 @@
 	<!-- #ifdef MP-WEIXIN -->
 	<scroll-view 
 		class="scroll-row" 
-		scroll-anchoring scroll-y="true" 
+		scroll-anchoring 
+		scroll-y
 		:style="[scrollStyle]" 
 		:enable-flex="true"
 		refresher-default-style="none"
@@ -13,7 +14,8 @@
 	<!-- #ifndef MP-WEIXIN -->
 	<scroll-view 
 		class="scroll-row" 
-		scroll-anchoring scroll-y="true" 
+		scroll-anchoring 
+		scroll-y
 		:style="scrollStyle" 
 		refresher-default-style="none"
 		:refresher-threshold="threshold" :refresher-background="bgColor" @scrolltolower="loadmore" refresher-enabled

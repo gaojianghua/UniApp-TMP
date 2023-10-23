@@ -11,8 +11,29 @@
 			</view>
 		</m-navbar>
 		<!-- 分类区域 -->
-		<view class="kind">
-			
+		<view class="kind d-flex" :style="scrollStyle">
+			<!-- 左边一级分类 -->
+			<view class="kind-left h-100">
+				<m-scroll :isLoading="false" bgColor="transparent" :scrollStyle="scrollStyle" mainColor="#fb7290">
+					<view v-if="tabs.length != 0" class="one-list">
+						<view class="list-item d-flex a-center j-center px-3" v-for="(item, i) in tabs" :key="i"
+							@click="switchOneTabs(item, i)">
+							{{item.mallCategoryName}}
+						</view>
+					</view>
+				</m-scroll>
+			</view>
+			<!-- 右边二级分类以及商品列表 -->
+			<view class="kind-right h-100">
+				<view class="two-list">
+					<m-tabs scrollHeight="88rpx" :tabs="tabs[oneCurrent].bxMallSubDto" keyName="mallSubName">
+						
+					</m-tabs>
+				</view>
+				<view class="goods-list w-100" :style="{height: `calc(100% - 88rpx)`}">
+					
+				</view>
+			</view>
 		</view>
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/kind/index" i18n></m-tabbar>
@@ -22,23 +43,23 @@
 <script>
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
 	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
+	import MTabs from '@/main_modules/main-ui/m-tabs/index.vue'
 	import MListSwiper from '@/main_modules/main-ui/m-list-swiper/index.vue'
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	import capsuleInit from '@/mixins/capsule-init.js'
-	import {
-		tabs
-	} from './data.js'
+	import data from './data.json'
 	export default {
 		mixins: [tabbarInit, capsuleInit],
 		components: {
 			MTabbar,
 			MScroll,
-			MListSwiper
+			MListSwiper,
+			MTabs
 		},
 		data() {
 			return {
-				tabs,
-				current: 0,
+				tabs: [],
+				oneCurrent: 0,
 				istrig: true,
 				isLock: false,
 				query: {
@@ -54,7 +75,13 @@
 		methods: {
 			// 初始化
 			init() {
+				console.log(data)
 				// this.getData()
+				this.getCategoryData()
+			},
+			// 获取分类数据
+			async getCategoryData() {
+				this.tabs = await data.data
 			},
 			// 获取数据
 			async getData(e) {
@@ -113,38 +140,19 @@
 			openSearch() {
 				this.$tools.Navigate.navigateTo('/pages-next/common/search/index')
 			},
-			// 点击切换tabs
-			switchTabs(i) {
-				this.isLock = true
-				this.current = i.index
-				if (this.tabs[this.current].list.length == 0) {
-					this.tabs[this.current].isLoading = true
-					this.tabs[this.current].page = 1
-					let time = setTimeout(() => {
-						this.getData()
-						this.isLock = false
-						clearTimeout(time)
-					}, 1000)
-				}
+			// 点击一级分类
+			switchOneTabs(item, i) {
+				this.oneCurrent = i
 			},
-			// 滑动切换tabs
-			changeSwiper(i) {
-				if (this.isLock) return
-				this.current = i.detail.current
-				if (this.tabs[this.current].list.length == 0) {
-					this.tabs[this.current].isLoading = true
-					this.tabs[this.current].page = 1
-					let time = setTimeout(() => {
-						this.getData()
-						clearTimeout(time)
-					}, 1000)
-				}
+			// 点击二级分类
+			switchTwoTabs(item, i) {
+
 			}
 		},
 		computed: {
 			scrollStyle() {
 				return {
-					height: `calc(100vh - ${this.$store.state.navbarHeight}px - 65rpx - 2rpx - env(safe-area-inset-bottom) - ${this.$store.state.tabbarHeight}px - ${this.$store.state.statusHeight}px)`
+					height: `calc(100vh - ${this.$store.state.navbarHeight}px - env(safe-area-inset-bottom) - ${this.$store.state.tabbarHeight}px - ${this.$store.state.statusHeight}px)`
 				}
 			}
 		},
@@ -153,17 +161,28 @@
 
 <style lang="scss" scoped>
 	.page {
-		.tabs {
-			background-color: #fff;
-		}
+		.kind {
+			.kind-left {
+				width: 24%;
+				background-color: #fff;
 
-		.item {
-			border-radius: 8rpx;
-			background-color: #fff;
-		
-			.left {
-				height: 180rpx;
+				.one-list {
+					.list-item {
+						height: 88rpx;
+					}
+				}
+			}
+
+			.kind-right {
+				width: 76%;
+				.two-list{
+					height: 88rpx;
+				}
+				.goods-list{
+					
+				}
 			}
 		}
+
 	}
 </style>

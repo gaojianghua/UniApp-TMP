@@ -6,13 +6,13 @@
 	 	...scrollStyle
 	 }" scroll-x class="scroll-row" scroll-anchoring :scroll-into-view="scrollInto" :scroll-with-animation="true">
 		<view :style="{
-			height: height,
+			height: scrollHeight || height,
 			width: width,
 			backgroundColor: tabIndex === i ? chooseBgColor : bgColor,
 			...itemStyle
 		}" class="scroll-row-item px-4" v-for="(item, i) in tabs" :key="i" @click="changeTab(item, i)" :id="'tab'+i">
 			<view class="h-100 d-flex flex-column a-center j-center">
-				<text :style="tabIndex === i ? chooseTextStyle : textStyle">{{item.name}}</text>
+				<text :style="tabIndex === i ? chooseTextStyle : textStyle">{{item[keyName]}}</text>
 				<view v-if="tabIndex === i">
 					<slot />
 				</view>

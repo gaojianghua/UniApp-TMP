@@ -19,7 +19,7 @@ module.exports = {
 	},
 	scrollWidth: {
 		type: String,
-		default: '100vw'
+		default: '100%'
 	},
 	scrollBgColor: {
 		type: String,
@@ -65,6 +65,12 @@ module.exports = {
 		type: Object,
 		default: () => {
 			return {}
+		}
+	},
+	keyName: {
+		type: String,
+		default: () => {
+			return 'name'
 		}
 	}
 }
