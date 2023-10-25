@@ -680,6 +680,11 @@ body {
 	/* #ifdef APP-PLUS-NVUE */
 	lines: 1;
 	/* #endif */
+	/* 显示多行 */
+	display: -webkit-box;
+	/* 5为显示的行数 */
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
 }
 
 .text-ellipsis2 {
@@ -1410,4 +1415,16 @@ button {
 	padding-right: 0;
 	line-height: inherit;
 	border-radius: 0;
+}
+
+.hidden {
+	overflow: hidden;
+}
+
+.normal{
+	white-space: normal;
+}
+
+.initial{
+	white-space: initial;
 }

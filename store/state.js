@@ -14,6 +14,7 @@ export default {
 	// #endif
 	safariFitHeight: uni.getStorageSync('safariFitHeight') || 0, //Safari浏览器多出的高度
 	lang: uni.getStorageSync('lang') || 'en',	//国际化多语言
+	moneySymbol: uni.getStorageSync('moneySymbol') || '￥',	//货币符号
 	/**
 	 * 自定义 tabbar 数据
 	**/

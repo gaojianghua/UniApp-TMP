@@ -14,9 +14,10 @@
 		<view class="kind d-flex" :style="scrollStyle">
 			<!-- 左边一级分类 -->
 			<view class="kind-left h-100">
-				<m-scroll :isLoading="false" bgColor="transparent" :scrollStyle="scrollStyle" mainColor="#fb7290">
+				<m-scroll :isCustomRefresh="false" :isLoading="false" bgColor="transparent" :scrollStyle="scrollStyle" mainColor="#fb7290">
 					<view v-if="tabs.length != 0" class="one-list">
-						<view class="list-item d-flex a-center j-center px-3" v-for="(item, i) in tabs" :key="i"
+						<view :class="oneCurrent == i ? 'active' : 'normal'"
+							class="list-item d-flex a-center j-center px-1" v-for="(item, i) in tabs" :key="i"
 							@click="switchOneTabs(item, i)">
 							{{item.mallCategoryName}}
 						</view>
@@ -25,13 +26,40 @@
 			</view>
 			<!-- 右边二级分类以及商品列表 -->
 			<view class="kind-right h-100">
-				<view class="two-list">
-					<m-tabs scrollHeight="88rpx" :tabs="tabs[oneCurrent].bxMallSubDto" keyName="mallSubName">
-						
+				<view v-if="tabs[oneCurrent]" class="two-list d-flex a-center position-relative">
+					<m-tabs :scrollStyle="{width: `calc(100% - 88rpx)`}" chooseBgColor="#fb7299" :chooseTextStyle="{color: '#fff'}" :slideNum="1"
+						scrollHeight="88rpx" :tabs="tabs[oneCurrent].bxMallSubDto" keyName="mallSubName">
 					</m-tabs>
+					<view class="position-absolute bg-dark top-0 right-0 d-flex a-center j-center" style="height: 88rpx; width: 88rpx;">
+						<u-icon v-if="direction == 'Y'" name="list-dot" color="#fff" size="50rpx" @click="direction = 'X'"></u-icon>
+						<u-icon v-if="direction == 'X'" name="grid" color="#fff" size="50rpx" @click="direction = 'Y'"></u-icon>
+					</view>
 				</view>
-				<view class="goods-list w-100" :style="{height: `calc(100% - 88rpx)`}">
-					
+				<view class="kind-content" :style="{height: `calc(100% - 88rpx)`}">
+					<m-scroll bgColor="transparent" :isLoading="isLoading" :scrollStyle="{height: '100%'}" :load="load"
+						@loadmore="loadmore" @onRefresh="onRefresh" mainColor="#fb7290">
+						<u-empty v-if="load != 0 && list.length == 0" mode="list" text="暂无商品"
+							icon="http://cdn.uviewui.com/uview/empty/list.png">
+						</u-empty>
+						<view v-if="list.length != 0" class="goods-list px-2" 
+						:class="direction == 'Y' ? 'd-flex flex-wrap j-sb' : ''">
+							<view  class="goods-item"
+							:style="{width: direction == 'Y' ? '48%' : '100%'}"
+							 v-for="(item, i) in list" :key="i">
+								<m-goods-card 
+								:item="item" 
+								:direction="direction"
+								imageWidth="200rpx"
+								:imageHeight="direction == 'Y' ? '300rpx' : '200rpx'"
+								priceRight
+								isSales
+								isDesc
+								isOver
+								isVIP
+								></m-goods-card>
+							</view>
+						</view>
+					</m-scroll>
 				</view>
 			</view>
 		</view>
@@ -44,17 +72,20 @@
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
 	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	import MTabs from '@/main_modules/main-ui/m-tabs/index.vue'
+	import MGoodsCard from '@/main_modules/main-ui/m-goods-card/index.vue'
 	import MListSwiper from '@/main_modules/main-ui/m-list-swiper/index.vue'
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	import capsuleInit from '@/mixins/capsule-init.js'
 	import data from './data.json'
+	import goods from './goods.json'
 	export default {
 		mixins: [tabbarInit, capsuleInit],
 		components: {
 			MTabbar,
 			MScroll,
 			MListSwiper,
-			MTabs
+			MTabs,
+			MGoodsCard
 		},
 		data() {
 			return {
@@ -67,6 +98,11 @@
 					limit: 20,
 					type: 2
 				},
+				total: 0,
+				list: [],
+				load: 0,
+				isLoading: true,
+				direction: 'Y'
 			}
 		},
 		onLoad() {
@@ -82,6 +118,7 @@
 			// 获取分类数据
 			async getCategoryData() {
 				this.tabs = await data.data
+				this.list = await goods.data
 			},
 			// 获取数据
 			async getData(e) {
@@ -163,23 +200,38 @@
 	.page {
 		.kind {
 			.kind-left {
-				width: 24%;
+				width: 20%;
 				background-color: #fff;
 
 				.one-list {
 					.list-item {
 						height: 88rpx;
 					}
+
+					.normal {
+						color: #333;
+						background-color: #fff;
+					}
+
+					.active {
+						color: #fff;
+						background-color: #fb7299;
+					}
 				}
 			}
 
 			.kind-right {
-				width: 76%;
-				.two-list{
+				width: 80%;
+
+				.two-list {
 					height: 88rpx;
 				}
-				.goods-list{
-					
+
+				.kind-content {
+					.goods-list{
+						.goods-item{
+						}
+					}
 				}
 			}
 		}

@@ -95,6 +95,33 @@ class Other {
 		}
 		return head + s.replace(/(零.)*零元/, '元').replace(/(零.)+/g, '零').replace(/^整$/, '零元整');
 	}
+
+	/**
+	 * @description 截取数值金额的整数或者小数部分
+	 * @param amountStr 金额(string类型)
+	 * @param type 目标类型（'int'整数，'double'小数，'point'带小数点的小数）
+	 */
+	static extractAmount = (amountStr, type) => {
+		// 检查是否为小数数值
+		if (amountStr.indexOf(".") !== -1) {
+			if (type === "int") {
+				// 返回整数部分
+				const integerPart = amountStr.substring(0, amountStr.indexOf("."));
+				return parseInt(integerPart);
+			} else if (type === "point") {
+				// 返回小数部分并带上前面的小数点
+				const decimalPart = amountStr.substring(amountStr.indexOf("."));
+				return decimalPart;
+			} else if (type === "double") {
+				// 返回小数部分但不带小数点
+				const decimalPart = amountStr.substring(amountStr.indexOf(".") + 1);
+				return decimalPart;
+			}
+		}
+		// 如果不是小数数值，则直接返回整数值
+		return parseInt(amountStr);
+	}
 }
+
 
 export default Other

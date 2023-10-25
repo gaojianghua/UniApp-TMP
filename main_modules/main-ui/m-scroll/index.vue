@@ -7,7 +7,7 @@
 		:style="[scrollStyle]" 
 		:enable-flex="true"
 		refresher-default-style="none"
-		:refresher-threshold="threshold" :refresher-background="bgColor" @scrolltolower="loadmore" refresher-enabled
+		:refresher-threshold="threshold" :refresher-background="bgColor" @scrolltolower="loadmore" :refresher-enabled="isCustomRefresh"
 		:refresher-triggered="triggered" @refresherpulling="onPulling" @refresherrefresh="onRefresh"
 		@refresherabort="onAbort" @refresherrestore="onRestore">
 		<!-- #endif -->
@@ -18,7 +18,7 @@
 		scroll-y
 		:style="scrollStyle" 
 		refresher-default-style="none"
-		:refresher-threshold="threshold" :refresher-background="bgColor" @scrolltolower="loadmore" refresher-enabled
+		:refresher-threshold="threshold" :refresher-background="bgColor" @scrolltolower="loadmore" :refresher-enabled="isCustomRefresh"
 		:refresher-triggered="triggered" @refresherpulling="onPulling" @refresherrefresh="onRefresh"
 		@refresherabort="onAbort" @refresherrestore="onRestore">
 		<!-- #endif -->
@@ -88,6 +88,12 @@
 				}
 			},
 			isLoading: {
+				type: Boolean,
+				default: () => {
+					return true
+				}
+			},
+			isCustomRefresh: {
 				type: Boolean,
 				default: () => {
 					return true

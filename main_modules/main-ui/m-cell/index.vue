@@ -18,7 +18,6 @@
 <script>
 	import props from './props.js'
 	export default {
-		name: "menu-item",
 		props,
 		data() {
 			return {
