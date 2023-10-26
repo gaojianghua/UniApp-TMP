@@ -14,7 +14,8 @@
 		<view class="kind d-flex" :style="scrollStyle">
 			<!-- 左边一级分类 -->
 			<view class="kind-left h-100">
-				<m-scroll :isCustomRefresh="false" :isLoading="false" bgColor="transparent" :scrollStyle="scrollStyle" mainColor="#fb7290">
+				<m-scroll :isCustomRefresh="false" :isLoading="false" bgColor="transparent" :scrollStyle="scrollStyle"
+					mainColor="#fb7290">
 					<view v-if="tabs.length != 0" class="one-list">
 						<view :class="oneCurrent == i ? 'active' : 'normal'"
 							class="list-item d-flex a-center j-center px-1" v-for="(item, i) in tabs" :key="i"
@@ -27,36 +28,32 @@
 			<!-- 右边二级分类以及商品列表 -->
 			<view class="kind-right h-100">
 				<view v-if="tabs[oneCurrent]" class="two-list d-flex a-center position-relative">
-					<m-tabs :scrollStyle="{width: `calc(100% - 88rpx)`}" chooseBgColor="#fb7299" :chooseTextStyle="{color: '#fff'}" :slideNum="1"
-						scrollHeight="88rpx" :tabs="tabs[oneCurrent].bxMallSubDto" keyName="mallSubName">
+					<m-tabs :chooseIndex="twoCurrent" @changeTab="changeTab"
+						:scrollStyle="{width: `calc(100% - 88rpx)`}" chooseBgColor="#fb7299"
+						:chooseTextStyle="{color: '#fff'}" :slideNum="1" scrollHeight="88rpx"
+						:tabs="tabs[oneCurrent].bxMallSubDto" keyName="mallSubName">
 					</m-tabs>
-					<view class="position-absolute bg-dark top-0 right-0 d-flex a-center j-center" style="height: 88rpx; width: 88rpx;">
-						<u-icon v-if="direction == 'Y'" name="list-dot" color="#fff" size="50rpx" @click="direction = 'X'"></u-icon>
-						<u-icon v-if="direction == 'X'" name="grid" color="#fff" size="50rpx" @click="direction = 'Y'"></u-icon>
+					<view class="position-absolute bg-dark top-0 right-0 d-flex a-center j-center"
+						style="height: 88rpx; width: 88rpx;">
+						<u-icon v-if="direction == 'Y'" name="list-dot" color="#fff" size="50rpx"
+							@click="direction = 'X'"></u-icon>
+						<u-icon v-if="direction == 'X'" name="grid" color="#fff" size="50rpx"
+							@click="direction = 'Y'"></u-icon>
 					</view>
 				</view>
 				<view class="kind-content" :style="{height: `calc(100% - 88rpx)`}">
-					<m-scroll bgColor="transparent" :isLoading="isLoading" :scrollStyle="{height: '100%'}" :load="load"
-						@loadmore="loadmore" @onRefresh="onRefresh" mainColor="#fb7290">
+					<m-scroll bgColor="transparent" :isLoading="isLoading" :scrollStyle="{height: '100%'}"
+						:load="load" @loadmore="loadmore" @onRefresh="onRefresh" mainColor="#fb7290">
 						<u-empty v-if="load != 0 && list.length == 0" mode="list" text="暂无商品"
 							icon="http://cdn.uviewui.com/uview/empty/list.png">
 						</u-empty>
-						<view v-if="list.length != 0" class="goods-list px-2" 
-						:class="direction == 'Y' ? 'd-flex flex-wrap j-sb' : ''">
-							<view  class="goods-item"
-							:style="{width: direction == 'Y' ? '48%' : '100%'}"
-							 v-for="(item, i) in list" :key="i">
-								<m-goods-card 
-								:item="item" 
-								:direction="direction"
-								imageWidth="200rpx"
-								:imageHeight="direction == 'Y' ? '300rpx' : '200rpx'"
-								priceRight
-								isSales
-								isDesc
-								isOver
-								isVIP
-								></m-goods-card>
+						<view v-if="list.length != 0" class="goods-list px-2"
+							:class="direction == 'Y' ? 'd-flex flex-wrap j-sb' : ''">
+							<view class="goods-item" :style="{width: direction == 'Y' ? '48%' : '100%'}"
+								v-for="(item, i) in list" :key="i">
+								<m-goods-card :item="item" :direction="direction" imageWidth="200rpx"
+									:imageHeight="direction == 'Y' ? '300rpx' : '200rpx'" priceRight isSales
+									isDesc isOver isVIP></m-goods-card>
 							</view>
 						</view>
 					</m-scroll>
@@ -91,18 +88,18 @@
 			return {
 				tabs: [],
 				oneCurrent: 0,
+				twoCurrent: 0,
 				istrig: true,
 				isLock: false,
 				query: {
 					page: 1,
 					limit: 20,
-					type: 2
+					type: ''
 				},
-				total: 0,
 				list: [],
 				load: 0,
 				isLoading: true,
-				direction: 'Y'
+				direction: 'Y',
 			}
 		},
 		onLoad() {
@@ -111,19 +108,15 @@
 		methods: {
 			// 初始化
 			init() {
-				console.log(data)
-				// this.getData()
 				this.getCategoryData()
 			},
 			// 获取分类数据
 			async getCategoryData() {
 				this.tabs = await data.data
-				this.list = await goods.data
+				this.getData()
 			},
 			// 获取数据
 			async getData(e) {
-				this.query.type = this.current + 1
-				this.query.page = this.tabs[this.current].page
 				// let {
 				// 	data,
 				// 	code,
@@ -133,43 +126,37 @@
 				let data = {
 					list: []
 				}
-				for (let i = 0; i < 10; i++) {
-					data.list.push({
-						img: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg',
-						title: 'haha',
-						desc: 'nishidsahhda'
-					})
-				}
+				data.list = goods.data
 				data.total = data.list.length
 				if (code == 200) {
 					if (e) { // 加载更多
-						this.tabs[this.current].list = this.tabs[this.current].list.concat(data.list)
+						this.list = this.list.concat(data.list)
 					} else {
-						this.tabs[this.current].list = data.list
-						this.tabs[this.current].total = data.total
+						this.list = data.list
+						this.total = data.total
 					}
-					if (this.tabs[this.current].page * this.query.limit >= this.tabs[this.current].total) {
-						return this.tabs[this.current].load = 1
+					if (this.page * this.query.limit >= this.total) {
+						return this.load = 1
 					} else {
-						return this.tabs[this.current].load = 2
+						return this.load = 2
 					}
-					this.tabs[this.current].isLoading = false
+					this.isLoading = false
 				}
 			},
 			// 下拉刷新
 			onRefresh() {
-				this.tabs[this.current].page = 1
+				this.query.page = 1
 				this.getData()
 			},
 			// 加载更多
 			loadmore() {
-				if (this.tabs[this.current].load == 1 || this.tabs[this.current].istrig == false) return;
-				this.tabs[this.current].load = 0
-				this.tabs[this.current].page++
-				this.tabs[this.current].istrig = false
+				if (this.load == 1 || this.istrig == false) return;
+				this.load = 0
+				this.page++
+				this.istrig = false
 				let time = setTimeout(() => {
 					this.getData('S')
-					this.tabs[this.current].istrig = true
+					this.istrig = true
 					clearTimeout(time)
 				}, 1000)
 			},
@@ -177,13 +164,42 @@
 			openSearch() {
 				this.$tools.Navigate.navigateTo('/pages-next/common/search/index')
 			},
+			// 点击切换tabs
+			changeTab(i) {
+				this.isLock = true
+				this.twoCurrent = i.index
+				this.resetData()
+			},
+			// 滑动切换tabs
+			changeSwiper(i) {
+				if (this.isLock) return
+				this.twoCurrent = i
+				this.resetData()
+			},
+			// 重置数据
+			resetData() {
+				this.list = []
+				this.load = 0
+				if (this.list.length == 0) {
+					this.isLoading = true
+					this.page = 1
+					let time = setTimeout(() => {
+						this.getData()
+						this.isLock = false
+						clearTimeout(time)
+					}, 1000)
+				}
+			},
 			// 点击一级分类
 			switchOneTabs(item, i) {
 				this.oneCurrent = i
+				this.twoCurrent = 0
+				this.resetData()
 			},
 			// 点击二级分类
 			switchTwoTabs(item, i) {
-
+				this.twoCurrent = i
+				this.resetData()
 			}
 		},
 		computed: {
@@ -228,9 +244,8 @@
 				}
 
 				.kind-content {
-					.goods-list{
-						.goods-item{
-						}
+					.goods-list {
+						.goods-item {}
 					}
 				}
 			}

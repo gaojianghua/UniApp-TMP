@@ -27,8 +27,8 @@
 				type: Object,
 				default: () => {
 					return {
-						height: 'calc(100vh - 44px - 70rpx)',
-						width: '100vw'
+						height: '100%',
+						width: '100%'
 					}
 				}
 			},
