@@ -1,8 +1,7 @@
 <template>
 	<view class="card rounded-1 bg-white mt-2 w-100 rounded-1 hidden">
 		<view class="item d-flex" :class="direction == 'Y' ? 'flex-column' : 'a-center p-2'">
-			<view class="item-image position-relative flex-shrink" 
-			:style="{
+			<view class="item-image position-relative flex-shrink" :style="{
 				width: direction == 'Y' ? '100%' : imageWidth, 
 				height: imageHeight
 			}">
@@ -11,7 +10,8 @@
 					VIP
 				</view>
 				<slot name="image-vip" />
-				<view v-if="isOver" class="over-desc d-flex initial a-center text-white position-absolute bottom-0 left-0 text-ellipsis1">
+				<view v-if="isOver"
+					class="over-desc d-flex initial a-center text-white position-absolute bottom-0 left-0 text-ellipsis1">
 					{{item.goodsDesc}}
 				</view>
 				<slot name="image-over" />
@@ -38,11 +38,16 @@
 						<span class="price-int">{{item.presentPrice.toFixed(2) | extractAmount('int')}}</span>
 						<span class="price-double">{{item.presentPrice.toFixed(2) | extractAmount('point')}}</span>
 					</view>
-					<view class="item-oldPrice line-h font-weight ml-1">
+					<view v-if="isOldPrice" class="item-oldPrice line-h font-weight ml-1">
 						<span class="oldPrice-ident">{{$store.state.moneySymbol}}</span>
 						<span class="oldPrice-int">{{item.oriPrice.toFixed(2) | extractAmount('int')}}</span>
 						<span class="oldPrice-double">{{item.oriPrice.toFixed(2) | extractAmount('point')}}</span>
 					</view>
+					<view v-if="isCartBtn" class="item-cart rounded-circle p-1 main-bg-color ml-auto"
+						@click.stop="addCart">
+						<u-icon name="shopping-cart-fill" color="#ffdddd" size="20"></u-icon>
+					</view>
+					<slot name="cart-btn"/>
 				</view>
 			</view>
 		</view>
@@ -55,15 +60,19 @@
 		props,
 		data() {
 			return {
-
 			};
+		},
+		methods: {
+			addCart() {
+				this.$emit('addCart', item)
+			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
 	.card {
-		
+
 		.item {
 			.item-image {
 
@@ -81,7 +90,7 @@
 					line-height: 52rpx;
 					font-size: 24rpx;
 					padding-left: 16rpx;
-					background-color: rgba(1,1,1, .6)
+					background-color: rgba(1, 1, 1, .6)
 				}
 			}
 
@@ -95,20 +104,21 @@
 					font-size: 24rpx;
 					color: #999;
 				}
-				
+
 				.item-tags {
-					.item-tags-child{
+					.item-tags-child {
 						font-size: 22rpx;
 						color: #666;
 						background-color: #c2c2c2;
 						border-radius: 4rpx;
 					}
-					
+
 				}
 
 				.item-bottom {
 					.item-price {
 						color: #FF4C20;
+
 						.price-ident {
 							font-size: 26rpx;
 						}
@@ -125,6 +135,7 @@
 					.item-oldPrice {
 						color: #999;
 						position: relative;
+
 						.oldPrice-ident {
 							font-size: 22rpx;
 						}
@@ -137,28 +148,31 @@
 							font-size: 22rpx;
 						}
 					}
-					
+
 					.item-oldPrice::before,
 					.item-oldPrice::after {
-					  content: "";
-					  position: absolute;
-					  left: 5%;
-					  right: 0;
-					  width: 90%;
-					  height: 4rpx;
-					  background-color: rgba(1, 1, 1, .4);
+						content: "";
+						position: absolute;
+						left: 5%;
+						right: 0;
+						width: 90%;
+						height: 4rpx;
+						background-color: rgba(1, 1, 1, .4);
 					}
-					
+
 					.item-oldPrice::before {
 						top: 50%;
 						transform: skew(0deg, 15deg);
 					}
-					
+
 					.item-oldPrice::after {
 						top: 50%;
 						transform: skew(0deg, -15deg);
 					}
 
+					.item-cart:active {
+						background-color: #fb729980;
+					}
 
 					.item-tags {
 						font-size: 22rpx;

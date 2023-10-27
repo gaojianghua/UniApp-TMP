@@ -1,112 +1,65 @@
-export const list = [
+export const banner = [{
+		image: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/floor2.jpg'
+	},
 	{
+		image: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/floor3.jpg'
+	},
+	{
+		image: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/floor4.jpg'
+	},
+	{
+		image: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/floor5.png'
+	}
+]
+
+export const menus = [{
 		id: 0,
-		type: 'video',
-		title: '今日采风',
-		desc: '今天来到了西湖边，天气很好，这里好多人，都是成双成对的！',
-		video: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/7xi.mp4',
-		avatar: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/weChatLogo.png',
-		praise: 112,
-		collect: 26,
-		comment: 256
+		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(11).png',
+		name: '乐器音乐'
 	},
 	{
 		id: 1,
-		type: 'video',
-		title: '今日采风',
-		desc: '今天来到了西湖边，天气很好，这里好多人，都是成双成对的！',
-		video: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/7xi.mp4',
-		avatar: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/weChatLogo.png',
-		praise: 112,
-		collect: 26,
-		comment: 256
+		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(7).png',
+		name: '舞蹈'
 	},
 	{
 		id: 2,
-		type: 'image',
-		title: '今日采风',
-		desc: '今天来到了西湖边，天气很好，这里好多人，都是成双成对的！',
-		image: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg',
-		avatar: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/weChatLogo.png',
-		praise: 112,
-		collect: 26,
-		comment: 256
+		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(10).png',
+		name: '科技益智'
 	},
 	{
 		id: 3,
-		type: 'image',
-		title: '今日采风',
-		desc: '今天来到了西湖边，天气很好，这里好多人，都是成双成对的！',
-		image: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg',
-		avatar: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/weChatLogo.png',
-		praise: 112,
-		collect: 26,
-		comment: 256
+		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(3).png',
+		name: '书法绘画'
 	},
 	{
 		id: 4,
-		type: 'video',
-		title: '今日采风',
-		desc: '今天来到了西湖边，天气很好，这里好多人，都是成双成对的！',
-		video: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/7xi.mp4',
-		avatar: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/weChatLogo.png',
-		praise: 112,
-		collect: 26,
-		comment: 256
+		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(13).png',
+		name: '语言表演'
 	},
 	{
 		id: 5,
-		type: 'image',
-		title: '今日采风',
-		desc: '今天来到了西湖边，天气很好，这里好多人，都是成双成对的！',
-		image: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg',
-		avatar: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/weChatLogo.png',
-		praise: 112,
-		collect: 26,
-		comment: 256
+		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(5).png',
+		name: '体育竞技'
 	},
 	{
 		id: 6,
-		type: 'video',
-		title: '今日采风',
-		desc: '今天来到了西湖边，天气很好，这里好多人，都是成双成对的！',
-		video: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/7xi.mp4',
-		avatar: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/weChatLogo.png',
-		praise: 112,
-		collect: 26,
-		comment: 256
+		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(9).png',
+		name: '艺考'
 	},
 	{
 		id: 7,
-		type: 'image',
-		title: '今日采风',
-		desc: '今天来到了西湖边，天气很好，这里好多人，都是成双成对的！',
-		image: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg',
-		avatar: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/weChatLogo.png',
-		praise: 112,
-		collect: 26,
-		comment: 256
+		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(14).png',
+		name: '早教'
 	},
 	{
 		id: 8,
-		type: 'video',
-		title: '今日采风',
-		desc: '今天来到了西湖边，天气很好，这里好多人，都是成双成对的！',
-		video: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/7xi.mp4',
-		avatar: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/weChatLogo.png',
-		praise: 112,
-		collect: 26,
-		comment: 256
+		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(12).png',
+		name: '幼儿园'
 	},
 	{
 		id: 9,
-		type: 'image',
-		title: '今日采风',
-		desc: '今天来到了西湖边，天气很好，这里好多人，都是成双成对的！',
-		image: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg',
-		avatar: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/weChatLogo.png',
-		praise: 112,
-		collect: 26,
-		comment: 256
+		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(6).png',
+		name: '托管'
 	}
 ]

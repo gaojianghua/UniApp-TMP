@@ -75,6 +75,13 @@
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
+		},{
+			"path": "common/goods-detail/index",
+			"style": {
+				"navigationBarTitleText": "%page.商品详情%",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
 		}, {
 			"path": "home/select-city/index",
 			"style": {

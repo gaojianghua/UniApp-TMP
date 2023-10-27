@@ -17,8 +17,8 @@
 						{{i18n ? $t(value) : value}}
 					</view>
 				</template>
-				<view v-if="isLang" class="tabbar-locale d-flex j-center a-center p-1" @click="selectLang">
-					<u-image height="60rpx" width="60rpx" src="/static/img/home/lang1.png"></u-image>
+				<view v-if="isLang" class="tabbar-locale d-flex j-center a-center" @click="selectLang">
+					<u-image height="60rpx" width="60rpx" src="/static/img/common/diamonds.svg"></u-image>
 				</view>
 			</view>
 		</view>
@@ -69,7 +69,7 @@
 
 			.tabbar-locale {
 				position: absolute;
-				right: 30rpx;
+				right: 20rpx;
 				top: 50%;
 				transform: translateY(-50%);
 				width: 60rpx;

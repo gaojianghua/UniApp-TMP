@@ -44,7 +44,7 @@
 			</m-scroll>
 		</template>
 		<!-- 结算区域 -->
-		<view v-if="!token" class="login d-flex a-center main-bg-color">
+		<view v-if="!token" class="login d-flex a-center">
 			<view class="left">
 				登录查看购物车
 			</view>
@@ -228,6 +228,7 @@
 			width: 100%;
 			height: 100rpx;
 			padding: 0 30rpx;
+			background-color: #151521;
 			position: fixed;
 			left: 0;
 			bottom: calc(100rpx + env(safe-area-inset-bottom));

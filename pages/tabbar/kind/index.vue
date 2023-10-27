@@ -50,10 +50,10 @@
 						<view v-if="list.length != 0" class="goods-list px-2"
 							:class="direction == 'Y' ? 'd-flex flex-wrap j-sb' : ''">
 							<view class="goods-item" :style="{width: direction == 'Y' ? '48%' : '100%'}"
-								v-for="(item, i) in list" :key="i">
-								<m-goods-card :item="item" :direction="direction" imageWidth="200rpx"
-									:imageHeight="direction == 'Y' ? '300rpx' : '200rpx'" priceRight isSales
-									isDesc isOver isVIP></m-goods-card>
+								v-for="(item, i) in list" :key="i" @click.stop="openDetail(item)">
+								<m-goods-card @addCart.stop="addCart" :item="item" :direction="direction" imageWidth="200rpx"
+									:imageHeight="direction == 'Y' ? '300rpx' : '200rpx'" isSales
+									isDesc isOldPrice isOver isVIP isCartBtn></m-goods-card>
 							</view>
 						</view>
 					</m-scroll>
@@ -158,7 +158,7 @@
 					this.getData('S')
 					this.istrig = true
 					clearTimeout(time)
-				}, 1000)
+				}, 500)
 			},
 			// 进入搜索界面
 			openSearch() {
@@ -187,7 +187,7 @@
 						this.getData()
 						this.isLock = false
 						clearTimeout(time)
-					}, 1000)
+					}, 500)
 				}
 			},
 			// 点击一级分类
@@ -200,6 +200,14 @@
 			switchTwoTabs(item, i) {
 				this.twoCurrent = i
 				this.resetData()
+			},
+			// 进入商品详情页
+			openDetail(i) {
+				this.$tools.Navigate.navigateTo('/pages-next/common/goods-detail/index', i)
+			},
+			// 加入购物车
+			addCart(i) {
+				
 			}
 		},
 		computed: {

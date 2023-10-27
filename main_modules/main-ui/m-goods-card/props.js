@@ -59,4 +59,16 @@ module.exports = {
 			return false
 		}
 	},
+	isOldPrice: {
+		type: Boolean,
+		default: () => {
+			return false
+		}
+	},
+	isCartBtn: {
+		type: Boolean,
+		default: () => {
+			return false
+		}
+	},
 }

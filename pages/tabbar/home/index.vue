@@ -1,8 +1,8 @@
 <template>
 	<view class="page">
 		<!-- 顶部导航栏 -->
-		<m-navbar bgColor="#fff" isTab isSlot>
-			<view class="w-100 d-flex a-center search px-2" :style="{
+		<m-navbar isLang bgColor="#fff" isTab isSlot>
+			<view class="w-100 d-flex a-center search pl-2 pr-9" :style="{
 			width: `calc(100vw - ${miniProgramCapsule.width}px)`,
 			marginRight: `${miniProgramCapsule.width}px`}">
 				<!-- 定位城市 -->
@@ -18,7 +18,40 @@
 		<!-- 内容区域 -->
 		<m-scroll :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load" bgColor="transparent"
 			@loadmore="loadmore" @onRefresh="onRefresh">
-			<view class="content">
+			<view class="content pt-2 px-2 bg-white">
+				<u-swiper height="320rpx" :list="banner" keyName="image" indicator />
+				<view class="menu-list mt-1 d-flex flex-wrap">
+					<view class="menu-item mt-2 d-flex flex-column j-center a-center" v-for="(item, i) in menus" :key="i">
+						<u-image height="88rpx" width="88rpx" :src="item.src"></u-image>
+						<view class="">
+							{{item.name}}
+						</view>
+					</view>
+				</view>
+				<view class="d-flex a-center mt-3">
+					<view class="font-weight" style="font-size: 32rpx;">
+						热门推荐
+					</view>
+					<view class="bg-dark ml-auto d-flex a-center j-center"
+						style="height: 44rpx; width: 44rpx;">
+						<u-icon v-if="direction == 'Y'" name="list-dot" color="#fff" size="28rpx"
+							@click="direction = 'X'"></u-icon>
+						<u-icon v-if="direction == 'X'" name="grid" color="#fff" size="28rpx"
+							@click="direction = 'Y'"></u-icon>
+					</view>
+				</view>
+				<u-empty v-if="load != 0 && list.length == 0" mode="list" text="暂无商品"
+					icon="http://cdn.uviewui.com/uview/empty/list.png">
+				</u-empty>
+				<view v-if="list.length != 0" class="goods-list"
+					:class="direction == 'Y' ? 'd-flex flex-wrap j-sb' : ''">
+					<view class="goods-item" :style="{width: direction == 'Y' ? '48.8%' : '100%'}"
+						v-for="(item, i) in list" :key="i" @click.stop="openDetail(item)">
+						<m-goods-card @addCart.stop="addCart" :item="item" :direction="direction" imageWidth="200rpx"
+							:imageHeight="direction == 'Y' ? '300rpx' : '200rpx'" isSales
+							isDesc isOldPrice isOver isVIP isCartBtn></m-goods-card>
+					</view>
+				</view>
 			</view>
 		</m-scroll>
 		<!-- 底部导航栏 -->
@@ -29,29 +62,36 @@
 <script>
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
 	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
+	import MGoodsCard from '@/main_modules/main-ui/m-goods-card/index.vue'
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	import capsuleInit from '@/mixins/capsule-init.js'
 	import shareInit from '@/mixins/share-init.js'
 	import {
-		list
+		banner,
+		menus
 	} from './data.js'
+	import goods from '../kind/goods.json'
 	export default {
 		mixins: [tabbarInit, capsuleInit, shareInit],
 		components: {
 			MTabbar,
-			MScroll
+			MScroll,
+			MGoodsCard
 		},
 		data() {
 			return {
-				list: [],
+				banner,
+				menus,
 				isLoading: true,
 				load: 0,
 				query: {
 					page: 1,
 					limit: 10
 				},
+				list: [],
 				total: 0,
-				istrig: true
+				istrig: true,
+				direction: 'Y',
 			}
 		},
 		onLoad() {
@@ -73,7 +113,7 @@
 				let data = {
 					list: []
 				}
-				data.list = list
+				data.list = goods.data
 				data.total = data.list.length
 				if (code == 200) {
 					if (e) { // 加载更多
@@ -110,6 +150,14 @@
 			// 进入搜索界面
 			openSearch() {
 				this.$tools.Navigate.navigateTo('/pages-next/common/search/index')
+			},
+			// 进入商品详情页
+			openDetail(i) {
+				this.$tools.Navigate.navigateTo('/pages-next/common/goods-detail/index', i)
+			},
+			// 加入购物车
+			addCart(i) {
+				
 			}
 		},
 		computed: {
@@ -128,8 +176,11 @@
 <style lang="scss" scoped>
 	.page {
 		.content {
-			padding: 20rpx 20rpx 0;
-
+			.menu-list{
+				.menu-item{
+					width: 20%;
+				}
+			}
 		}
 	}
 </style>
