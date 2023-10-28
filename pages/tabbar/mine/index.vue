@@ -25,7 +25,7 @@
 					</view>
 				</view>
 			</view>
-			<view class="assets d-flex a-center j-around">
+			<view class="assets mt-2 d-flex a-center j-around">
 				<view v-for="(item, i) in assets" class="assets-item mt-2 d-flex flex-column a-center j-center" @click="openAssets(item)">
 					<view class="item-value">
 						{{item.value}}
@@ -46,7 +46,7 @@
 				</view>
 			</view>
 		</view>
-		<u-gap height="120rpx"></u-gap>
+		<u-gap height="80rpx"></u-gap>
 		<!-- 订单栏 -->
 		<view class="order">
 			<view class="d-flex j-sb">
@@ -211,11 +211,12 @@
 
 			.vip-card {
 				width: 690rpx;
-				height: 200rpx;
+				height: 120rpx;
 				position: absolute;
 				left: 30rpx;
-				bottom: -100rpx;
-				background: #FC465C;
+				bottom: -60rpx;
+				background: url('/static/img/mine/mine-vip-card.png') no-repeat;
+				background-size: cover;
 				border-radius: 8rpx;
 			}
 		}

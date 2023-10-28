@@ -28,6 +28,9 @@
 						</view>
 					</view>
 				</view>
+				<view class="mt-2">
+					<u-image radius="5" width="710rpx" height="110rpx" src="/static/img/home/vip-banner.png"></u-image>
+				</view>
 				<view class="d-flex a-center mt-3">
 					<view class="font-weight" style="font-size: 32rpx;">
 						热门推荐
