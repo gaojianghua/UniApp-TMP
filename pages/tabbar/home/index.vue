@@ -35,11 +35,11 @@
 					<view class="font-weight" style="font-size: 32rpx;">
 						热门推荐
 					</view>
-					<view class="bg-dark ml-auto d-flex a-center j-center"
-						style="height: 44rpx; width: 44rpx;">
-						<u-icon v-if="direction == 'Y'" name="list-dot" color="#fff" size="28rpx"
+					<view class="bg-dark ml-auto d-flex a-center j-center rounded-1"
+						style="height: 50rpx; width: 50rpx;">
+						<u-icon v-if="direction == 'Y'" name="list-dot" color="#fff" size="34rpx"
 							@click="direction = 'X'"></u-icon>
-						<u-icon v-if="direction == 'X'" name="grid" color="#fff" size="28rpx"
+						<u-icon v-if="direction == 'X'" name="grid" color="#fff" size="34rpx"
 							@click="direction = 'Y'"></u-icon>
 					</view>
 				</view>
@@ -50,7 +50,7 @@
 					:class="direction == 'Y' ? 'd-flex flex-wrap j-sb' : ''">
 					<view class="goods-item" :style="{width: direction == 'Y' ? '48.8%' : '100%'}"
 						v-for="(item, i) in list" :key="i" @click.stop="openDetail(item)">
-						<m-goods-card @addCart.stop="addCart" :item="item" :direction="direction" imageWidth="200rpx"
+						<m-goods-card @addCart="addCart" :item="item" :direction="direction" imageWidth="200rpx"
 							:imageHeight="direction == 'Y' ? '300rpx' : '200rpx'" isSales
 							isDesc isOldPrice isOver isVIP isCartBtn></m-goods-card>
 					</view>
@@ -130,7 +130,6 @@
 					} else {
 						return this.load = 2
 					}
-					this.isLoading = false
 				}
 			},
 			// 下拉刷新

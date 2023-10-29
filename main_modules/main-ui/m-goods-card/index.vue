@@ -32,22 +32,31 @@
 					</view>
 				</view>
 				<slot name="item-tags" />
-				<view class="item-bottom d-flex a-base mt-1">
-					<view class="item-price line-h d-flex a-base font-weight" :class="priceRight ? 'ml-auto' : ''">
-						<span class="price-ident">{{$store.state.moneySymbol}}</span>
-						<span class="price-int">{{item.presentPrice.toFixed(2) | extractAmount('int')}}</span>
-						<span class="price-double">{{item.presentPrice.toFixed(2) | extractAmount('point')}}</span>
+				<view class="item-bottom d-flex a-end mt-1">
+					<view class="d-flex a-base">
+						<view class="item-price line-h d-flex a-base font-weight" :class="priceRight ? 'ml-auto' : ''">
+							<span class="price-ident">{{$store.state.moneySymbol}}</span>
+							<span class="price-int">{{item.presentPrice.toFixed(2) | extractAmount('int')}}</span>
+							<span class="price-double">{{item.presentPrice.toFixed(2) | extractAmount('point')}}</span>
+						</view>
+						<view v-if="isOldPrice" class="item-oldPrice line-h font-weight ml-1">
+							<span class="oldPrice-ident">{{$store.state.moneySymbol}}</span>
+							<span class="oldPrice-int">{{item.oriPrice.toFixed(2) | extractAmount('int')}}</span>
+							<span class="oldPrice-double">{{item.oriPrice.toFixed(2) | extractAmount('point')}}</span>
+						</view>
 					</view>
-					<view v-if="isOldPrice" class="item-oldPrice line-h font-weight ml-1">
-						<span class="oldPrice-ident">{{$store.state.moneySymbol}}</span>
-						<span class="oldPrice-int">{{item.oriPrice.toFixed(2) | extractAmount('int')}}</span>
-						<span class="oldPrice-double">{{item.oriPrice.toFixed(2) | extractAmount('point')}}</span>
-					</view>
-					<view v-if="isCartBtn" class="item-cart rounded-circle p-1 main-bg-color ml-auto"
+					<view v-if="isCartBtn"
+						class="item-cart d-flex a-center j-center rounded-circle main-bg-color ml-auto"
 						@click.stop="addCart">
 						<u-icon name="shopping-cart-fill" color="#ffdddd" size="20"></u-icon>
 					</view>
-					<slot name="cart-btn"/>
+					<view v-if="isChecked" class="ml-auto">
+						<u-checkbox-group >
+							<u-checkbox shape="circle" activeColor="#fb7299" size="26" iconSize="18" :checked="item.check" @change="checkClick">
+							</u-checkbox>
+						</u-checkbox-group>
+					</view>
+					<slot name="bottom-btn" />
 				</view>
 			</view>
 		</view>
@@ -59,12 +68,14 @@
 	export default {
 		props,
 		data() {
-			return {
-			};
+			return {};
 		},
 		methods: {
 			addCart() {
-				this.$emit('addCart', item)
+				this.$emit('addCart', this.item)
+			},
+			checkClick() {
+				this.$emit('checkClick', this.item)
 			}
 		}
 	}
@@ -116,6 +127,10 @@
 				}
 
 				.item-bottom {
+					/deep/ .u-checkbox__icon-wrap {
+						margin-right: 0 !important;
+					}
+
 					.item-price {
 						color: #FF4C20;
 
@@ -168,6 +183,11 @@
 					.item-oldPrice::after {
 						top: 50%;
 						transform: skew(0deg, -15deg);
+					}
+
+					.item-cart {
+						height: 50rpx;
+						width: 50rpx;
 					}
 
 					.item-cart:active {

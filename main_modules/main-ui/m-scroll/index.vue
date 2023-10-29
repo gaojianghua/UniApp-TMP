@@ -27,6 +27,7 @@
 			<slot name="default" />
 		</view>
 		<m-loading v-if="isLoading" :height="loadHeight" :load="load" :mainColor="mainColor" />
+		<view :style="{height: placeHeight}" class="w-100"></view>
 	</scroll-view>
 </template>
 
@@ -103,6 +104,12 @@
 				type: Boolean,
 				default: () => {
 					return false
+				}
+			},
+			placeHeight: {
+				type: String,
+				default: () => {
+					return "0"
 				}
 			}
 		},

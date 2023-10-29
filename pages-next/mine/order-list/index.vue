@@ -12,7 +12,7 @@
 		</m-navbar>
 		<!-- 标签栏 -->
 		<view class="tabs w-100">
-			<u-tabs class="w-100" :scrollable="false" :current="current" :list="tabs" lineColor="#fb7299" :itemStyle="{height: '65rpx'}"
+			<u-tabs class="w-100" :scrollable="false" :current="current" :list="tabs" lineColor="#fb7299"
 				@click="switchTabs"></u-tabs>
 		</view>
 		<!-- 列表栏 -->
@@ -117,7 +117,6 @@
 					} else {
 						return this.tabs[this.current].load = 2
 					}
-					this.tabs[this.current].isLoading = false
 				}
 			},
 			// 下拉刷新
@@ -172,7 +171,7 @@
 		computed: {
 			scrollStyle() {
 				return {
-					height: `calc(100vh - ${this.$store.state.navbarHeight}px - 65rpx - 2rpx - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
+					height: `calc(100vh - ${this.$store.state.navbarHeight}px - 44px - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
 				}
 			}
 		},

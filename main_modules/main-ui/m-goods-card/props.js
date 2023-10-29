@@ -71,4 +71,10 @@ module.exports = {
 			return false
 		}
 	},
+	isChecked: {
+		type: Boolean,
+		default: () => {
+			return false
+		}
+	},
 }
