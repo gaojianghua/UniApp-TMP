@@ -11,7 +11,7 @@
 					<text class="ml-1">{{ liveCity }}</text>
 				</view>
 				<!-- 搜索框 -->
-				<u-search placeholder="请输入关键词" height="60rpx" disabled :showAction="false"
+				<u-search :placeholder="$t('请输入关键词')" height="60rpx" disabled :showAction="false"
 					@click="openSearch"></u-search>
 			</view>
 		</m-navbar>
@@ -33,7 +33,7 @@
 				</view>
 				<view class="d-flex a-center mt-3">
 					<view class="font-weight" style="font-size: 32rpx;">
-						热门推荐
+						{{$t('热门推荐')}}
 					</view>
 					<view class="bg-dark ml-auto d-flex a-center j-center rounded-1"
 						style="height: 50rpx; width: 50rpx;">
@@ -43,7 +43,7 @@
 							@click="direction = 'Y'"></u-icon>
 					</view>
 				</view>
-				<u-empty v-if="load != 0 && list.length == 0" mode="list" text="暂无商品"
+				<u-empty v-if="load != 0 && list.length == 0" mode="list" :text="$t('暂无商品')"
 					icon="http://cdn.uviewui.com/uview/empty/list.png">
 				</u-empty>
 				<view v-if="list.length != 0" class="goods-list"

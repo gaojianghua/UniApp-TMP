@@ -6,7 +6,7 @@
 			width: `calc(100vw - ${miniProgramCapsule.width}px)`,
 			marginRight: `${miniProgramCapsule.width}px`}">
 				<!-- 搜索框 -->
-				<u-search placeholder="请输入关键词" height="60rpx" disabled :showAction="false"
+				<u-search :placeholder="$t('请输入关键词')" height="60rpx" disabled :showAction="false"
 					@click="openSearch"></u-search>
 			</view>
 		</m-navbar>
@@ -27,7 +27,7 @@
 				<view class="w-100 h-100 px-2">
 					<m-scroll :isLoading="item.isLoading" :scrollStyle="scrollStyle" :load="item.load"
 						@loadmore="loadmore" bgColor="transparent" @onRefresh="onRefresh">
-						<u-empty v-if="item.load != 0 && item.list.length == 0" mode="list" text="暂无数据"
+						<u-empty v-if="item.load != 0 && item.list.length == 0" mode="list" :text="$t('暂无数据')"
 							icon="http://cdn.uviewui.com/uview/empty/list.png">
 						</u-empty>
 						<view v-if="item.list.length != 0" class="item d-flex a-center j-sb p-2 mt-2" v-for="(val, index) in item.list" :key="index">

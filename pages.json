@@ -172,14 +172,6 @@
 		"root": "pages-offspring",
 		"pages": [
 			{
-				"path": "goods-details/index",
-				"style": {
-					"navigationBarTitleText": "%page.商品详情%",
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
 				"path": "privacy-policy/index",
 				"style": {
 					"navigationBarTitleText": "%page.隐私政策%",

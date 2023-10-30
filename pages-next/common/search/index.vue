@@ -6,7 +6,7 @@
 			<view class="w-100 search pr-2" :style="{
 			width: `calc(100vw - ${miniProgramCapsule.width}px - 60rpx - 30rpx)`,
 			marginRight: `${miniProgramCapsule.width}px`}">
-				<u-search placeholder="请输入关键词" focus height="60rpx" v-model="search" :showAction="false" @search="startSearch"></u-search>
+				<u-search :placeholder="$t('请输入关键词')" focus height="60rpx" v-model="search" :showAction="false" @search="startSearch"></u-search>
 			</view>
 		</m-navbar>
 	</view>

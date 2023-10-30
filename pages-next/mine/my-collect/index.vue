@@ -3,10 +3,10 @@
 		<m-navbar bgColor="#fff" textColor="#fb7299" value="page.我的收藏" i18n></m-navbar>
 		<view class="option d-flex a-center px-2">
 			<view class="collect">
-				已收藏总量：{{10}}件
+				{{$t('已收藏总量')}}：{{10}}{{$t('件')}}
 			</view>
 			<view :class="switchManage ? 'bg-warning text-white' : 'bg-light-secondary'" class="manage ml-auto px-2 py mr-2  rounded-1" @click="switchManageClick">
-				管理
+				{{$t('管理')}}
 			</view>
 			<view class="bg-dark d-flex a-center j-center rounded-1"
 				style="height: 54rpx; width: 54rpx;">
@@ -20,7 +20,7 @@
 		<view class="w-100 px-2" :style="scrollStyle">
 			<m-scroll :placeHeight="switchManage? '100rpx' : '0'" :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load"
 				@loadmore="loadmore" bgColor="transparent" @onRefresh="onRefresh">
-				<u-empty v-if="load != 0 && list.length == 0" mode="list" text="暂无收藏"
+				<u-empty v-if="load != 0 && list.length == 0" mode="list" :text="$t('暂无收藏')"
 					icon="http://cdn.uviewui.com/uview/empty/list.png">
 				</u-empty>
 				<view v-if="list.length != 0" class="goods-list"
@@ -36,11 +36,11 @@
 		</view>
 		<view v-if="switchManage" class="settlement d-flex j-sb a-center">
 			<u-checkbox-group>
-				<u-checkbox label="全选" label-size="16" size="26" iconSize="22" active-color="#fb7290" shape="circle"
+				<u-checkbox :label="$t('全选')" label-size="16" size="26" iconSize="22" active-color="#fb7290" shape="circle"
 					@change="checkboxChange" :checked="checked"></u-checkbox>
 			</u-checkbox-group>
 			<view class="btn d-flex j-center a-center" @click="deleteSubmit">
-				删除
+				{{$t('删除')}}
 			</view>
 		</view>
 	</view>

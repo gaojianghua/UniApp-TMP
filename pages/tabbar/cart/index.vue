@@ -6,7 +6,7 @@
 			width: `calc(100vw - ${miniProgramCapsule.width}px)`,
 			marginRight: `${miniProgramCapsule.width}px`}">
 				<view class="title-text mr-2 line-h">
-					购物车
+					{{$t('购物车')}}
 				</view>
 				<view class="title-address d-flex a-center">
 					<u-image width="50rpx" height="50rpx" src="/static/img/common/local.svg"></u-image>
@@ -15,7 +15,7 @@
 				</view>
 				<!-- #ifndef MP -->
 				<view class="title-admin ml-auto line-h" @click="management">
-					管理
+					{{$t('管理')}}
 				</view>
 				<!-- #endif -->
 			</view>
@@ -28,12 +28,12 @@
 		<view v-if="!token" class="notopenid d-flex j-center a-center" :style="[scrollStyle]">
 		<!-- #endif -->
 			<view class="right d-flex j-center a-center" @click="login">
-				未登录!无法查看购物车
+				{{$t('未登录!无法查看购物车')}}
 			</view>
 		</view>
 		<template v-else>
 			<m-scroll bgColor="transparent" :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load" @loadmore="loadmore" @onRefresh="onRefresh" mainColor="#fb7290">
-				<u-empty v-if="load != 0 && list.length == 0" mode="car" text="购物车是空的"
+				<u-empty v-if="load != 0 && list.length == 0" mode="car" :text="$t('购物车是空的')"
 					icon="http://cdn.uviewui.com/uview/empty/car.png">
 				</u-empty>
 				<view v-if="list.length != 0" class="list">
@@ -46,22 +46,22 @@
 		<!-- 结算区域 -->
 		<view v-if="!token" class="login d-flex a-center">
 			<view class="left">
-				登录查看购物车
+				{{$t('登录查看购物车')}}
 			</view>
 			<view class="right d-flex ml-auto j-center a-center" @click="login">
-				立即登录
+				{{$t('立即登录')}}
 			</view>
 		</view>
 		<view v-else class="settlement d-flex j-sb a-center">
 			<view class="left">
 				<u-checkbox-group>
-					<u-checkbox label="全选" label-size="14" size="22" active-color="#fb7290" shape="circle"
+					<u-checkbox :label="$t('全选')" label-size="14" size="22" active-color="#fb7290" shape="circle"
 						@change="checkboxChange" v-model="checked"></u-checkbox>
 				</u-checkbox-group>
 			</view>
 			<view class="right d-flex a-base">
 				<view class="name mr-1">
-					合计: 
+					{{$t('合计')}}: 
 				</view>
 				<view class="money d-flex a-base">
 					<view class="icon">
@@ -75,7 +75,7 @@
 					</view>
 				</view>
 				<view class="btn d-flex j-center a-center" @click="submit">
-					结算
+					{{$t('结算')}}
 				</view>
 			</view>
 		</view>
