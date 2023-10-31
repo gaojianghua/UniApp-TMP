@@ -13,7 +13,6 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
-	"app-env": "Dev",
 	"uni-app": {
 		"scripts": {
 			"h5-dev": {

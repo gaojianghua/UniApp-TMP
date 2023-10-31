@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // APP 项目环境区分
 // #ifdef APP || APP-NVUE || APP-PLUS || APP-PLUS-NVUE
-import appEnv from '@/package.json'
+import appEnv from '@/pages.json'
 if (appEnv['app-env'] == "Dev") {
 	envObj = require('./.env.dev.js').default
 } else if (appEnv['app-env'] == "Pro") {

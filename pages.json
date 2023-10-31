@@ -285,5 +285,6 @@
 				"pagePath": "pages/tabbar/mine/index"
 			}
 		]
-	}
+	},
+	"app-env": "Dev"
 }
