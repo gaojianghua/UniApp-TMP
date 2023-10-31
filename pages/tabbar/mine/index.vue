@@ -35,16 +35,7 @@
 					</view>
 				</view>
 			</view>
-			<view class="vip-card">
-				<view class="is-vip">
-					<view class="">
-
-					</view>
-				</view>
-				<view class="no-vip">
-
-				</view>
-			</view>
+			<view class="vip-card" @click="$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')"></view>
 		</view>
 		<u-gap height="80rpx"></u-gap>
 		<!-- 订单栏 -->

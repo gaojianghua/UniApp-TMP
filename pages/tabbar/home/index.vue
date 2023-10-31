@@ -28,7 +28,7 @@
 						</view>
 					</view>
 				</view>
-				<view class="mt-2">
+				<view class="mt-3" @click="$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')">
 					<u-image radius="5" width="710rpx" height="110rpx" src="/static/img/home/vip-banner.png"></u-image>
 				</view>
 				<view class="d-flex a-center mt-3">

@@ -166,6 +166,13 @@
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
+		},{
+			"path": "mine/member-center/index",
+			"style": {
+				"navigationBarTitleText": "%page.会员中心%",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
 		}
 		]
 	}, {

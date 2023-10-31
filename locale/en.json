@@ -32,6 +32,7 @@
 	"page.商品详情": "Goods Detail",
 	"page.积分抽奖": "Points Draw",
 	"page.抽奖记录": "Draw Record",
+	"page.会员中心": "Member Center",
 
 	"上拉加载更多哦~": "Pull up to load more oh ~",
 	"正在加载中哦! 亲~": "Under loading oh! Pro ~",
@@ -134,6 +135,9 @@
 	"查看抽奖记录": "View the draw history",
 	"恭喜您抽中奖品": "Congratulations on winning the prize",
 	"恭喜中奖": "Congratulations on winning",
-	"确认": "confirm",
-	"抽奖规则": "Lottery rules"
+	"确认": "Confirm",
+	"取消": "Cancel",
+	"抽奖规则": "Lottery rules",
+	"确定退出登录吗？": "Are you sure you want to log out ？",
+	"确认退出": "Confirm Exit"
 }
