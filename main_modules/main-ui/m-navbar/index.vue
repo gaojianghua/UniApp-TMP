@@ -55,7 +55,6 @@
 <style lang="scss">
 	.top {
 		width: 100vw;
-		border-radius: 8rpx;
 		overflow: hidden;
 
 		.tabbar {

@@ -334,6 +334,17 @@ class Check {
 		const vendor = navigator.vendor;
 		return vendor === 'Apple Computer, Inc.' || vendor.includes('Apple');
 	}
-}
 
+	/**
+	 * @description 判断是否是偶数
+	 * @param num 整数数值
+	 */
+	static isEven(num) {
+		if ((num % 2) === 0) { //判定条件余数为0时为偶数
+			return true
+		} else {
+			return false
+		}
+	}
+}
 export default Check

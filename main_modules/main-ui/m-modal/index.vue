@@ -5,7 +5,7 @@
 				<view class="rect-title d-flex a-center j-center">
 					{{$t(title)}}
 					<view class="rect-close" @click="cancel">
-						<u-image src="@/static/img/wallet/close.png" width="25rpx" height="25rpx"></u-image>
+						<u-icon name="close" :color="iconColor" :size="iconSize"></u-icon>
 					</view>
 				</view>
 				<view class="rect-input">
@@ -48,7 +48,15 @@
 			},
 			btnName: {
 				type: String,
-				default: '确定'
+				default: '确认'
+			},
+			iconColor: {
+				type: String,
+				default: '#fff'
+			},
+			iconSize: {
+				type: String,
+				default: '16'
 			}
 		},
 		data() {

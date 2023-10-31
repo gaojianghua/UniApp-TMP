@@ -234,6 +234,22 @@
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
+			},
+			{
+				"path": "points-draw/index",
+				"style": {
+					"navigationBarTitleText": "%page.积分抽奖%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
+				"path": "points-draw-record/index",
+				"style": {
+					"navigationBarTitleText": "%page.抽奖记录%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
 			}
 		]
 	}],

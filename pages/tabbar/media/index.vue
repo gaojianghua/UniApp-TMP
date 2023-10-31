@@ -2,8 +2,8 @@
 	<view class="page">
 		<!-- 顶部导航栏 -->
 		<m-navbar bgColor="#fff" isTab textColor="#fb7299" i18n value="page.娱乐"></m-navbar>
-		<!-- 顶部状态栏高度 -->
-		<!-- <m-top /> -->
+		<!-- 内容区域 -->
+		
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/media/index" i18n></m-tabbar>
 	</view>
@@ -18,10 +18,16 @@
 			MTabbar
 		},
 		data() {
-			return {}
+			return {
+			}
+		},
+		onLoad() {
+			this.init()
 		},
 		methods: {
-
+			// 初始化
+			init() {
+			}
 		}
 	}
 </script>
