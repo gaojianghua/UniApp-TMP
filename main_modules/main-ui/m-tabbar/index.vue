@@ -86,7 +86,7 @@
 			padding-bottom: constant(safe-area-inset-bottom);
 			padding-bottom: env(safe-area-inset-bottom);
 			background-color: #fff;
-			border-top: 1rpx solid #FBD7E1;
+			border-top: 1rpx solid #eee;
 
 			.tabbar-item {
 				display: block;

@@ -14,8 +14,15 @@
 					<u-icon name="arrow-right" color="#999" size="15"></u-icon>
 				</view>
 				<!-- #ifndef MP -->
-				<view class="title-admin ml-auto line-h" @click="management">
+				<view :class="switchManage ? 'bg-warning text-white' : 'bg-light-secondary'" class="manage ml-auto px-2 py mr-2  rounded-1" @click="switchManageClick">
 					{{$t('管理')}}
+				</view>
+				<view class="bg-dark d-flex a-center j-center rounded-1"
+					style="height: 54rpx; width: 54rpx;">
+					<u-icon v-if="direction == 'Y'" name="list-dot" color="#fff" size="34rpx"
+						@click="direction = 'X'"></u-icon>
+					<u-icon v-if="direction == 'X'" name="grid" color="#fff" size="34rpx"
+						@click="direction = 'Y'"></u-icon>
 				</view>
 				<!-- #endif -->
 			</view>
@@ -36,9 +43,12 @@
 				<u-empty v-if="load != 0 && list.length == 0" mode="car" :text="$t('购物车是空的')"
 					icon="http://cdn.uviewui.com/uview/empty/car.png">
 				</u-empty>
-				<view v-if="list.length != 0" class="list">
-					<view class="list-item d-flex px-3" v-for="(item, i) in list" :key="i"
+				<view v-if="list.length != 0" class="list px-3" :class="direction == 'Y' ? 'd-flex flex-wrap j-sb' : ''">
+					<view class="list-item" :style="{width: direction == 'Y' ? '48.8%' : '100%'}" v-for="(item, i) in list" :key="i"
 						@click="enterListDetail(item)">
+						<m-goods-card @checkClick="checkClicke" @addCart="addCart" :item="item" :direction="direction" imageWidth="200rpx"
+							:imageHeight="direction == 'Y' ? '300rpx' : '200rpx'" isSales
+							isDesc isOldPrice isOver isVIP :isCartBtn="false" isChecked></m-goods-card>
 					</view>
 				</view>
 			</m-scroll>
@@ -55,15 +65,15 @@
 		<view v-else class="settlement d-flex j-sb a-center">
 			<view class="left">
 				<u-checkbox-group>
-					<u-checkbox :label="$t('全选')" label-size="14" size="22" active-color="#fb7290" shape="circle"
-						@change="checkboxChange" v-model="checked"></u-checkbox>
+					<u-checkbox :label="$t('全选')" label-size="14" size="24" iconSize="20" active-color="#fb7290" shape="circle"
+						@change="checkboxChange" :checked="checked"></u-checkbox>
 				</u-checkbox-group>
 			</view>
 			<view class="right d-flex a-base">
-				<view class="name mr-1">
+				<view v-if="!switchManage" class="name mr-1">
 					{{$t('合计')}}: 
 				</view>
-				<view class="money d-flex a-base">
+				<view v-if="!switchManage" class="money d-flex a-base">
 					<view class="icon">
 						￥
 					</view>
@@ -74,8 +84,11 @@
 						{{decimal}}
 					</view>
 				</view>
-				<view class="btn d-flex j-center a-center" @click="submit">
+				<view v-if="!switchManage" class="btn d-flex j-center a-center" @click="submit">
 					{{$t('结算')}}
+				</view>
+				<view v-else class="btn d-flex j-center a-center" @click="deleteSubmit">
+					{{$t('移除')}}
 				</view>
 			</view>
 		</view>
@@ -87,16 +100,21 @@
 <script>
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
 	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
+	import MGoodsCard from '@/main_modules/main-ui/m-goods-card/index.vue'
+	import goods from '@/pages/tabbar/kind/goods.json'
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	import capsuleInit from '@/mixins/capsule-init.js'
 	export default {
 		mixins: [tabbarInit,capsuleInit],
 		components: {
 			MTabbar,
-			MScroll
+			MScroll,
+			MGoodsCard
 		},
 		data() {
 			return {
+				direction: 'Y',
+				switchManage: false,
 				checked: false,
 				allPrice: '0',
 				decimal: '.00',
@@ -104,8 +122,8 @@
 				list: [],
 				isLoading: true,
 				query: {
-					pageNum: 1,
-					pageSize: 10
+					page: 1,
+					limit: 20
 				},
 				total: 0,
 				istrig: true
@@ -125,27 +143,25 @@
 				// 	data,
 				// 	code
 				// } = await getCartList(this.query)
-				// if (code == 200) {
-				// 	if (e) {
-				// 		this.list = this.list.concat(data.list)
-				// 	} else {
-				// 		this.list = data.list
-				// 		this.total = data.total
-				// 		if (this.list.length == 0) {
-				// 			this.isLoading = false
-				// 		}
-				// 		this.load = 1
-				// 	}
-				// 	if (this.query.pageNum * this.query.pageSize >= this.total) {
-				// 		return this.load = 1
-				// 	} else {
-				// 		return this.load = 2
-				// 	}
-				// }
-			},
-			// 全选变化事件
-			checkboxChange(e) {
-				console.log(e)
+				let code = 200
+				let data = {
+					list: []
+				}
+				data.list = goods.data
+				data.total = data.list.length
+				if (code == 200) {
+					if (e) {
+						this.list = this.list.concat(data.list)
+					} else {
+						this.list = data.list
+						this.total = data.total
+					}
+					if (this.query.page * this.query.limit >= this.total) {
+						return this.load = 1
+					} else {
+						return this.load = 2
+					}
+				}
 			},
 			// 去登录
 			login() {
@@ -155,13 +171,43 @@
 			submit() {
 
 			},
-			// 管理
-			management() {
-
+			// 删除确认
+			deleteSubmit() {
+				
 			},
-			// 查看详情
-			enterListDetail(i) {
-
+			// 选中
+			checkClicke(i) {
+				let bool = true
+				this.list.forEach((item) => {
+					if(item.goodsId == i.goodsId) {
+						item.check = !item.check
+					}
+					if(!item.check) {
+						bool = item.check
+					}
+				})
+				this.checked = bool
+			},
+			// 全选
+			checkboxChange(e) {
+				this.checked = e
+				this.list.forEach((item, i) => {
+					item.check = e
+				})
+			},
+			// 管理开关
+			switchManageClick() {
+				this.checked = false
+				if(this.switchManage) {
+					this.list.forEach((item, i) => {
+						item.check = false
+					})
+				}
+				this.switchManage = !this.switchManage
+			},
+			// 进入商品详情页
+			openDetail(i) {
+				this.$tools.Navigate.navigateTo('/pages-next/common/goods-detail/index', i)
 			},
 			// 加载更多
 			loadmore() {
@@ -265,7 +311,7 @@
 			width: 100%;
 			height: 100rpx;
 			background: #FFFFFF;
-			border-top: 1rpx solid #f5f5f5;
+			border-top: 1rpx solid #eee;
 			padding: 0 25rpx;
 
 			.left {}
@@ -274,27 +320,27 @@
 				.name {
 					font-weight: 500;
 					color: #222222;
-					font-size: 24rpx;
+					font-size: 28rpx;
 				}
 
 				.money {
 
 					.icon {
 						font-weight: bold;
-						font-size: 18rpx;
+						font-size: 22rpx;
 						color: #EF4868;
 					}
 
 					.integer {
 						font-weight: bold;
-						font-size: 32rpx;
+						font-size: 36rpx;
 						color: #EF4868;
 						line-height: 1;
 					}
 
 					.decimal {
 						font-weight: bold;
-						font-size: 18rpx;
+						font-size: 22rpx;
 						color: #EF4868;
 					}
 				}

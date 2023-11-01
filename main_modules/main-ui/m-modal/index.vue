@@ -2,7 +2,7 @@
 	<u-overlay :show="show" @click="cancel">
 		<view class="warp d-flex a-center j-center">
 			<view class="rect" @tap.stop>
-				<view class="rect-title d-flex a-center j-center">
+				<view class="rect-title d-flex a-center j-center main-bg-color">
 					{{$t(title)}}
 					<view class="rect-close" @click="cancel">
 						<u-icon name="close" :color="iconColor" :size="iconSize"></u-icon>
@@ -12,16 +12,16 @@
 					<slot />
 				</view>
 				<view v-if="isCancel" class="rect-btn d-flex j-sb a-center">
-					<view class="rect-btn-item text-center" @click="cancel">
+					<view class="rect-btn-item text-center main-bg-color main-bg-color-active" @click="cancel">
 						{{$t('取消')}}
 					</view>
 					<view class="px-4"></view>
-					<view class="rect-btn-item text-center" @click="confirm">
+					<view class="rect-btn-item text-center main-bg-color main-bg-color-active" @click="confirm">
 						{{$t('确认')}}
 					</view>
 				</view>
 				<view v-else class="rect-btn d-flex j-center a-center">
-					<view class="rect-btn-btn text-center" @click="confirm">
+					<view class="rect-btn-btn text-center main-bg-color main-bg-color-active" @click="confirm">
 						{{$t(btnName)}}
 					</view>
 				</view>
@@ -88,7 +88,6 @@
 			.rect-title {
 				height: 90rpx;
 				width: 100%;
-				background-color: #00AA8F;
 				position: relative;
 				color: #fff;
 				font-size: 28rpx;
@@ -110,7 +109,6 @@
 				padding: 0 40rpx;
 
 				.rect-btn-item {
-					background-color: #00AA8F;
 					border-radius: 50rpx;
 					width: 200rpx;
 					height: 56rpx;
@@ -121,7 +119,6 @@
 				}
 
 				.rect-btn-btn {
-					background-color: #00AA8F;
 					border-radius: 50rpx;
 					height: 60rpx;
 					padding: 0 35rpx;
@@ -129,10 +126,6 @@
 					font-size: 26rpx;
 					color: #fff;
 					font-weight: 400;
-				}
-
-				.rect-btn-item:active {
-					background-color: #00AA8F99;
 				}
 			}
 		}

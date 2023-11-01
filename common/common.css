@@ -30,7 +30,7 @@ image {
 }
 
 /* 主点击背景颜色（淡橙色）*/
-.main-bg-hover-color {
+.main-bg-color-active:active {
 	background: rgba(247, 106, 133, 0.65);
 }
 
@@ -41,7 +41,7 @@ image {
 
 /* 主边框颜色 */
 .main-border-color {
-	border-color: #F1F1F1;
+	border-color: #fb7290;
 }
 
 /* 主题卡片 */

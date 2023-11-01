@@ -147,12 +147,14 @@
 			},
 			// 全选
 			checkboxChange(e) {
+				this.checked = e
 				this.list.forEach((item, i) => {
 					item.check = e
 				})
 			},
 			// 管理开关
 			switchManageClick() {
+				this.checked = false
 				if(this.switchManage) {
 					this.list.forEach((item, i) => {
 						item.check = false
