@@ -7,8 +7,8 @@
 				</u-checkbox>
 			</u-checkbox-group>
 			<text class="line-h">{{i18n ? $t('我已阅读并同意') : '我已阅读并同意'}}</text>
-			<text class="line-h" :style="{color}" @click="openAgree(1)">《{{i18n ? $t('用户协议') : '用户协议'}}》</text>
-			<text class="line-h">{{i18n ? $t('与') : '与'}}</text>
+			<text v-if="!isShowPolicy" class="line-h" :style="{color}" @click="openAgree(1)">《{{i18n ? $t('用户协议') : '用户协议'}}》</text>
+			<text v-if="!isShowPolicy" class="line-h">{{i18n ? $t('与') : '与'}}</text>
 			<text class="line-h" :style="{color}" @click="openAgree(2)">《{{i18n ? $t('隐私政策') : '隐私政策'}}》</text>
 		</view>
 	</view>
@@ -37,6 +37,12 @@
 				}
 			},
 			i18n: {
+				type: Boolean,
+				default: () => {
+					return false
+				}
+			},
+			isShowPolicy: {
 				type: Boolean,
 				default: () => {
 					return false
