@@ -1,0 +1,120 @@
+{
+	"code": 200,
+	"data": {
+		"searchHistory": [
+			"燕京啤酒",
+			"哈尔滨冰爽啤酒",
+			"崂山清爽",
+			"雪花啤酒",
+			"崂山啤酒",
+			"哈尔滨小麦王",
+			"三得利清爽啤酒",
+			"青岛啤酒",
+			"三得利啤酒",
+			"二锅头"
+		],
+		"hotSearchGoods": [
+			{
+			    "image": "http://images.baixingliangfan.cn/compressedPic/20190116145309_40.jpg",
+			    "oriPrice": 2.50,
+			    "presentPrice": 1.80,
+				"sales": 1688,
+				"goodsDesc": "酒香浓郁，精美品质",
+			    "goodsName": "哈尔滨冰爽啤酒330ml",
+			    "goodsId": "3194330cf25f43c3934dbb8c2a964ade",
+				"check": true
+			},
+			{
+			    "image": "http://images.baixingliangfan.cn/compressedPic/20190115185215_1051.jpg",
+			    "oriPrice": 2.00,
+			    "presentPrice": 1.80,
+				"sales": 1688,
+				"goodsDesc": "酒香浓郁，精美品质",
+			    "goodsName": "燕京啤酒8°330ml",
+			    "goodsId": "522a3511f4c545ab9547db074bb51579",
+				"check": true
+			},
+			{
+			    "image": "http://images.baixingliangfan.cn/compressedPic/20190121102419_9362.jpg",
+			    "oriPrice": 1.98,
+			    "presentPrice": 1.80,
+				"sales": 1688,
+				"goodsDesc": "酒香浓郁，精美品质",
+			    "goodsName": "崂山清爽8°330ml",
+			    "goodsId": "bbdbd5028cc849c2998ff84fb55cb934",
+				"check": false
+			},
+			{
+			    "image": "http://images.baixingliangfan.cn/compressedPic/20180712181330_9746.jpg",
+			    "oriPrice": 2.50,
+			    "presentPrice": 1.90,
+				"sales": 1688,
+				"goodsDesc": "酒香浓郁，精美品质",
+			    "goodsName": "雪花啤酒8°清爽330ml",
+			    "goodsId": "87013c4315e54927a97e51d0645ece76",
+				"check": false
+			},
+			{
+			    "image": "http://images.baixingliangfan.cn/compressedPic/20180712180233_4501.jpg",
+			    "oriPrice": 2.50,
+			    "presentPrice": 2.20,
+				"sales": 1688,
+				"goodsDesc": "酒香浓郁，精美品质",
+			    "goodsName": "崂山啤酒8°330ml",
+			    "goodsId": "86388a0ee7bd4a9dbe79f4a38c8acc89",
+				"check": false
+			},
+			{
+			    "image": "http://images.baixingliangfan.cn/compressedPic/20190116164250_1839.jpg",
+			    "oriPrice": 2.50,
+			    "presentPrice": 2.30,
+				"sales": 1688,
+				"goodsDesc": "酒香浓郁，精美品质",
+			    "goodsName": "哈尔滨小麦王10°330ml",
+			    "goodsId": "d31a5a337d43433385b17fe83ce2676a",
+				"check": false
+			},
+			{
+			    "image": "http://images.baixingliangfan.cn/compressedPic/20180712181139_2653.jpg",
+			    "oriPrice": 2.70,
+			    "presentPrice": 2.50,
+				"sales": 1688,
+				"goodsDesc": "酒香浓郁，精美品质",
+			    "goodsName": "三得利清爽啤酒10°330ml",
+			    "goodsId": "74a1fb6adc1f458bb6e0788c4859bf54",
+				"check": false
+			},
+			{
+			    "image": "http://images.baixingliangfan.cn/compressedPic/20190121162731_3928.jpg",
+			    "oriPrice": 2.75,
+			    "presentPrice": 2.50,
+				"sales": 1688,
+				"goodsDesc": "酒香浓郁，精美品质",
+			    "goodsName": "三得利啤酒7.5度超纯啤酒330ml",
+			    "goodsId": "d52fa8ba9a5f40e6955be9e28a764f34",
+				"check": false
+			},
+			{
+			    "image": "http://images.baixingliangfan.cn/compressedPic/20180712180452_721.jpg",
+			    "oriPrice": 4.50,
+			    "presentPrice": 3.70,
+				"sales": 1688,
+				"goodsDesc": "酒香浓郁，精美品质",
+			    "goodsName": "青岛啤酒11°330ml",
+			    "goodsId": "a42c0585015540efa7e9642ec1183940",
+				"check": false
+			},
+			{
+			    "image": "http://images.baixingliangfan.cn/compressedPic/20190121170407_7423.jpg",
+			    "oriPrice": 4.40,
+			    "presentPrice": 4.00,
+				"sales": 1688,
+				"goodsDesc": "酒香浓郁，精美品质",
+			    "goodsName": "三得利清爽啤酒500ml 10.0°",
+			    "goodsId": "94ec3df73f4446b5a5f0d80a8e51eb9d",
+				"check": false
+			}
+		]
+	},
+	"message": "success"
+}

@@ -10,12 +10,15 @@
 						src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/weChatLogo.png" mode="">
 					</u-image>
 				</view>
-				<view class="user-info d-flex flex-column j-around">
+				<view class="user-info d-flex flex-column j-around" @click="openLogin">
 					<view class="info-name font-lg line-h">
-						高江华
+						{{$store.state.token ? $store.state.userinfo.name : $t('前往登录')}}
 					</view>
-					<view class="info-desc font-md line-h">
-						ID: {{89403076}}
+					<view v-if="$store.state.token" class="info-desc font-md line-h">
+						ID: {{$store.state.userinfo.id}}
+					</view>
+					<view v-else class="user-notice line-h">
+						{{$t('您还未登录。立即登录，享受更多特权！')}}
 					</view>
 				</view>
 				<view class="top-menu ml-auto mr-1 d-flex flex-column j-center a-center" @click="openSet">
@@ -42,15 +45,15 @@
 		<view class="order">
 			<view class="d-flex j-sb">
 				<span class="font-weight">{{$t('我的订单')}}</span>
-				<view class="d-flex" @click="openOrderList()">
+				<view class="d-flex a-base" @click="openOrderList()">
 					{{$t('全部')}}
 					<u-icon name="arrow-right" size="14"></u-icon>
 				</view>
 			</view>
-			<view class="d-flex a-center mt-1 j-sb">
+			<view class="d-flex a-center mt-2 j-sb">
 				<block v-for="(item, i) in orderMenus" :key="i">
 					<view class="order-item d-flex flex-column a-center j-center" @click="openOrderList(item.id)">
-						<u-image width="60rpx" height="60rpx" :src="item.img" mode="" />
+						<u-image width="60rpx" height="60rpx" :src="item.img" mode="aspectFit" />
 						<view class="order-text">
 							{{item.name}}
 						</view>
@@ -153,6 +156,12 @@
 				}, () => {
 					console.log('打开提示弹框');
 				})
+			},
+			// 前往登录
+			openLogin() {
+				if(!this.$store.state.token) {
+					this.$tools.Navigate.navigateTo('/pages/account/login/index')
+				}
 			}
 		},
 		created() {
@@ -184,6 +193,12 @@
 			
 			.user-info{
 				height: 100rpx;
+				
+				.user-notice{
+					font-size: 26rpx;
+					font-weight: 400;
+					color: #eee;
+				}
 			}
 			.user-avatar {
 				.user-img {

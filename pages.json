@@ -257,6 +257,13 @@
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
+			},
+			{
+				"path": "policy-agreement/index",
+				"style": {
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
 			}
 		]
 	}],
