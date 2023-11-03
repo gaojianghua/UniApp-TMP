@@ -6,13 +6,16 @@
 			<view class="w-100 search pr-2" :style="{
 			width: `calc(100vw - ${miniProgramCapsule.width}px - 60rpx - 30rpx)`,
 			marginRight: `${miniProgramCapsule.width}px`}">
-				<u-search :placeholder="$t('请输入关键词')" focus height="60rpx" v-model="search" :showAction="false" @search="startSearch"></u-search>
+				<u-search :placeholder="$t('请输入关键词')" focus height="60rpx" v-model="query.search" :showAction="false"
+					@search="startSearch"
+					@change="searchChange"
+					></u-search>
 			</view>
 		</m-navbar>
 		<!-- 内容区域 -->
 		<m-scroll :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load" bgColor="transparent"
 			@loadmore="loadmore" @onRefresh="onRefresh">
-			<view v-if="historyList != 0" class="history p-3">
+			<view v-if="historyList != 0 && !isSearchResult" class="history p-3">
 				<view class="d-flex a-center j-sb">
 					<view class="history-title font-weight">
 						{{$t('搜索历史')}}
@@ -20,16 +23,17 @@
 					<u-icon name="trash-fill" size="24" color="#fb7299" @click="clearHistory"></u-icon>
 				</view>
 				<view class="history-list d-flex flex-wrap">
-					<view class="history-item px-2 mt-2 mr-2 main-bg-color text-white" v-for="(item, i) in historyList" :key="i">
+					<view class="history-item px-2 mt-2 mr-2 main-bg-color text-white" v-for="(item, i) in historyList"
+						:key="i">
 						{{item}}
 					</view>
 				</view>
 			</view>
-			<u-gap height="20rpx" bgColor="#f1f1f1"></u-gap>
+			<u-gap v-if="!isSearchResult" height="10rpx" bgColor="#f1f1f1"></u-gap>
 			<view class="hot p-3">
 				<view class="d-flex a-center">
 					<view class="font-weight" style="font-size: 32rpx;">
-						{{$t('热搜推荐')}}
+						{{isSearchResult ? $t('搜索结果') : $t('热搜推荐')}}
 					</view>
 					<view class="bg-dark ml-auto d-flex a-center j-center rounded-1"
 						style="height: 50rpx; width: 50rpx;">
@@ -39,16 +43,16 @@
 							@click="direction = 'Y'"></u-icon>
 					</view>
 				</view>
-				<u-empty v-if="load != 0 && hotList.length == 0" mode="list" :text="$t('暂无热搜商品')"
+				<u-empty v-if="load != 0 && list.length == 0" mode="list" :text="$t('暂无热搜商品')"
 					icon="http://cdn.uviewui.com/uview/empty/list.png">
 				</u-empty>
-				<view v-if="hotList.length != 0" class="goods-list"
+				<view v-if="list.length != 0" class="goods-list"
 					:class="direction == 'Y' ? 'd-flex flex-wrap j-sb' : ''">
 					<view class="goods-item" :style="{width: direction == 'Y' ? '48.8%' : '100%'}"
-						v-for="(item, i) in hotList" :key="i" @click.stop="openDetail(item)">
+						v-for="(item, i) in list" :key="i" @click.stop="openDetail(item)">
 						<m-goods-card @addCart="addCart" :item="item" :direction="direction" imageWidth="200rpx"
-							:imageHeight="direction == 'Y' ? '300rpx' : '200rpx'" isSales
-							isDesc isOldPrice isOver isVIP isCartBtn></m-goods-card>
+							:imageHeight="direction == 'Y' ? '300rpx' : '200rpx'" isSales isDesc isOldPrice isOver isVIP
+							isCartBtn></m-goods-card>
 					</view>
 				</view>
 			</view>
@@ -69,18 +73,20 @@
 		},
 		data() {
 			return {
-				search: '',
 				historyList: [],
 				hotList: [],
+				list: [],
 				direction: 'Y',
 				isLoading: true,
 				load: 0,
 				query: {
 					page: 1,
-					limit: 10
+					limit: 10,
+					search: ''
 				},
 				total: 0,
 				istrig: true,
+				isSearchResult: false
 			}
 		},
 		onLoad() {
@@ -98,7 +104,7 @@
 				// 	data,
 				// 	code,
 				// 	message
-				// } = await prayData(this.query)
+				// } = await getData(this.query)
 				let code = 200
 				let data = {
 					list: []
@@ -107,9 +113,36 @@
 				data.total = data.list.length
 				if (code == 200) {
 					if (e) { // 加载更多
-						this.hotList = this.hotList.concat(data.list)
+						this.list = this.list.concat(data.list)
 					} else {
-						this.hotList = data.list
+						this.list = data.list
+						this.total = data.total
+					}
+					if (this.query.page * this.query.limit >= this.total) {
+						return this.load = 1
+					} else {
+						return this.load = 2
+					}
+				}
+			},
+			// 获取搜索数据
+			async getSearchData(e) {
+				// let {
+				// 	data,
+				// 	code,
+				// 	message
+				// } = await getSearchData(this.query)
+				let code = 200
+				let data = {
+					list: []
+				}
+				data.list = result.data.hotSearchGoods
+				data.total = data.list.length
+				if (code == 200) {
+					if (e) { // 加载更多
+						this.list = this.list.concat(data.list)
+					} else {
+						this.list = data.list
 						this.total = data.total
 					}
 					if (this.query.page * this.query.limit >= this.total) {
@@ -122,7 +155,7 @@
 			// 下拉刷新
 			onRefresh() {
 				this.query.page = 1
-				this.getData()
+				this.isSearchResult ? this.getSearchData() : this.getData()
 			},
 			// 加载更多
 			loadmore() {
@@ -131,14 +164,24 @@
 				this.query.page++
 				this.istrig = false
 				let time = setTimeout(() => {
-					this.getData('S')
+					this.isSearchResult ? this.getSearchData('S') : this.getData('S')
 					this.istrig = true
 					clearTimeout(time)
 				}, 1000)
 			},
 			// 开始搜索
 			startSearch(e) {
-				
+				this.isSearchResult = true
+				this.list = []
+				this.isLoading = true
+				this.query.page = 1
+				this.getSearchData()
+			},
+			// 搜索内容变化
+			searchChange(e) {
+				if(!e) {
+					this.isSearchResult = false
+				}
 			},
 			// 清空历史
 			clearHistory() {
@@ -150,13 +193,13 @@
 			},
 			// 加入购物车
 			addCart(i) {
-				
+
 			}
 		},
 		computed: {
 			scrollStyle() {
 				return {
-					height: `calc(100vh - ${this.$store.state.navbarHeight}px - 2rpx - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
+					height: `calc(100vh - ${this.$store.state.navbarHeight}px - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
 				}
 			}
 		},
@@ -164,24 +207,28 @@
 </script>
 
 <style lang="scss" scoped>
-	.page{
+	.page {
 		background-color: #fff;
-		.search{
+
+		.search {
 			margin-left: 100rpx;
 		}
-		.history{
-			.history-title{
+
+		.history {
+			.history-title {
 				font-size: 32rpx;
 			}
-			.history-list{
-				.history-item{
+
+			.history-list {
+				.history-item {
 					border-radius: 6rpx;
-					
+
 				}
 			}
 		}
-		.hot{
-			.hot-title{
+
+		.hot {
+			.hot-title {
 				font-size: 32rpx;
 			}
 		}

@@ -3,7 +3,7 @@
 		<!-- 顶部导航栏 -->
 		<m-navbar bgColor="#fff" textColor="#fb7299" value="page.我的积分" i18n></m-navbar>
 		<!-- 内容区域 -->
-		<view class="menu mt-2">
+		<view class="menu mt-1">
 			<view class="menu-item" v-for="(item, i) in menuList" :key="i" @click="openMenu(item)">
 				<m-cell i18n :item="item"></m-cell>
 			</view>

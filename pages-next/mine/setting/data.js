@@ -5,12 +5,12 @@ const setList = [
 	},
 	{
 		id: 1,
-		name: '我的收货地址',
+		name: '收货地址',
 		page: '/pages-offspring/shipping-address/index'
 	},
 	{
 		id: 2,
-		name: '已绑定手机号',
+		name: '绑定手机',
 		page: '/pages-offspring/bind-cell-phone/index'
 	},
 	{
@@ -30,16 +30,20 @@ const setList = [
 	},
 	{
 		id: 6,
-		name: '清除缓存',
-		page: '/pages-offspring/clear-cache/index'
-	},
-	{
-		id: 7,
 		name: '隐私政策',
 		page: '/pages-offspring/privacy-policy/index'
 	},
 	{
+		id: 7,
+		name: '清除缓存',
+		page: '/pages-offspring/clear-cache/index'
+	},
+	{
 		id: 8,
+		name: '当前版本'
+	},
+	{
+		id: 9,
 		name: '退出登录'
 	}
 ]

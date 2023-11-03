@@ -3,7 +3,7 @@
 		<!-- 顶部导航栏 -->
 		<m-navbar bgColor="#fff" textColor="#fb7299" value="page.积分抽奖" i18n></m-navbar>
 		<m-scroll :isLoading="false" :isCustomRefresh="false"
-			:scrollStyle="{height: `calc(100vh - 44px - ${$store.state.statusBarHeight}px - ${$store.state.statusHeight}px - env(safe-area-inset-bottom))`}">
+			:scrollStyle="scrollStyle">
 			<view class="position-relative">
 				<view class="notice" @click="ruleShow = true">
 					T&C
@@ -150,7 +150,14 @@
 			endLuckyDraw() {
 				this.show = true
 			}
-		}
+		},
+		computed: {
+			scrollStyle() {
+				return {
+					height: `calc(100vh - ${this.$store.state.navbarHeight}px - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
+				}
+			}
+		},
 	}
 </script>
 

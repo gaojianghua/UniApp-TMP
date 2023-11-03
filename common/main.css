@@ -1453,3 +1453,12 @@ button {
 	text-orientation: upright;
 	letter-spacing: 6rpx;
 }
+
+/* 首行缩进 */
+.text-i1 {
+	text-indent: 1em;
+}
+
+.text-i2 {
+	text-indent: 2em;
+}
