@@ -34,6 +34,8 @@
 	"page.积分抽奖": "Points Draw",
 	"page.抽奖记录": "Draw Record",
 	"page.会员中心": "Member Center",
+	"page.欢迎登录": "Welcome Login",
+	"page.欢迎注册": "Welcome Register",
 
 	"上拉加载更多哦~": "Pull up to load more oh ~",
 	"正在加载中哦! 亲~": "Under loading oh! Pro ~",
@@ -160,5 +162,17 @@
 	"意见反馈": "Feedback",
 	"关于宫悦": "About Gong Yue",
 	"当前版本": "Current version",
-	"退出登录": "Log out"
+	"退出登录": "Log out",
+	"由个人开发者高江华  版权所有": "All rights reserved by the individual developer Gao Jianghua",
+	"请阅读并同意用户协议与隐私政策": "请阅读并同意用户协议与隐私政策",
+	"QQ登录": "QQ登录",
+	"微信登录": "微信登录",
+	"微博登录": "微博登录",
+	"宫悦商城欢迎您": "宫悦商城欢迎您",
+	"同意协议并一键登录": "同意协议并一键登录",
+	"账号密码登录 ->": "账号密码登录 ->",
+	"请输入手机号": "请输入手机号",
+	"请输入密码": "请输入密码",
+	"还没有账号？立即注册 ->": "还没有账号？立即注册 ->",
+	"一键登录 ->": "一键登录 ->"
 }

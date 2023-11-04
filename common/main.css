@@ -1462,3 +1462,12 @@ button {
 .text-i2 {
 	text-indent: 2em;
 }
+
+/* 文字间隔 */
+.letter-1{
+	letter-spacing: 1rpx;
+}
+
+.letter-2{
+	letter-spacing: 2rpx;
+}

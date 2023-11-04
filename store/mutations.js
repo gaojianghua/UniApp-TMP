@@ -11,6 +11,9 @@ export default {
 	updateSysConfig(state, e) {
 		state.sysConfig = e
 	},
+	updateToken(state, e) {
+		state.token = e
+	},
 	updateUserinfo(state, e) {
 		state.userinfo = e
 	},

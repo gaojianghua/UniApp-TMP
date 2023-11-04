@@ -23,7 +23,7 @@
 				<span @click="openAgree(2)">《{{$t('隐私政策')}}》</span>
 			</view>
 			<view class="text-light-muted pb-3 d-flex a-center flex-column j-center font">
-				<span>由个人开发者高江华  版权所有</span>
+				<span>{{$t('由个人开发者高江华  版权所有')}}</span>
 				<span>Copyright c 2022-{{new Date().getFullYear()}}；ALL Rights Reserved</span>
 			</view>
 		</view>

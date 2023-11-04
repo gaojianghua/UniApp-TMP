@@ -1,6 +1,6 @@
 <template>
 	<view class="page">
-		<m-navbar bgColor="transparent" isFixed textColor="#fb7299"></m-navbar>
+		<m-navbar bgColor="transparent" textColor="#fb7299"></m-navbar>
 	</view>
 </template>
 

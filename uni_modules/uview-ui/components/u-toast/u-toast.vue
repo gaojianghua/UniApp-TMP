@@ -29,7 +29,7 @@
 					bgColor="transparent"
 				></u-gap>
 				<text
-					class="u-toast__content__text"
+					class="u-toast__content__text line-h-sm text-center"
 					:class="['u-toast__content__text--' + tmpConfig.type]"
 					style="max-width: 400rpx;"
 				>{{ tmpConfig.message }}</text>

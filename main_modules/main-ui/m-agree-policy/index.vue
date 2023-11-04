@@ -1,15 +1,15 @@
 <template>
 	<view class="title-cet d-flex a-center j-center">
-		<view class="title-agreement p d-flex a-center j-center" :style="{color: defColor}">
-			<u-checkbox-group checked shape="circle" @change="checkChange" size="16" :activeColor="color" :value="check"
+		<view class="title-agreement d-flex a-center j-center" :style="{color: defColor}">
+			<u-checkbox-group checked shape="circle" @change="checkChange" size="15" :activeColor="color" :value="check"
 				placement="column">
 				<u-checkbox name="check">
 				</u-checkbox>
 			</u-checkbox-group>
-			<text class="line-h">{{i18n ? $t('我已阅读并同意') : '我已阅读并同意'}}</text>
-			<text v-if="!isShowPolicy" class="line-h" :style="{color}" @click="openAgree(1)">《{{i18n ? $t('用户协议') : '用户协议'}}》</text>
-			<text v-if="!isShowPolicy" class="line-h">{{i18n ? $t('与') : '与'}}</text>
-			<text class="line-h" :style="{color}" @click="openAgree(2)">《{{i18n ? $t('隐私政策') : '隐私政策'}}》</text>
+			<text>{{i18n ? $t('我已阅读并同意') : '我已阅读并同意'}}</text>
+			<text v-if="!isShowPolicy" :style="{color}" @click="openAgree(1)">《{{i18n ? $t('用户协议') : '用户协议'}}》</text>
+			<text v-if="!isShowPolicy">{{i18n ? $t('与') : '与'}}</text>
+			<text :style="{color}" @click="openAgree(2)">《{{i18n ? $t('隐私政策') : '隐私政策'}}》</text>
 		</view>
 	</view>
 </template>

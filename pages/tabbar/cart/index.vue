@@ -14,10 +14,10 @@
 					<u-icon name="arrow-right" color="#999" size="15"></u-icon>
 				</view>
 				<!-- #ifndef MP -->
-				<view :class="switchManage ? 'bg-warning text-white' : 'bg-light-secondary'" class="manage ml-auto px-2 py mr-2  rounded-1" @click="switchManageClick">
+				<view v-if="$store.state.token" :class="switchManage ? 'bg-warning text-white' : 'bg-light-secondary'" class="manage ml-auto px-2 py mr-2  rounded-1" @click="switchManageClick">
 					{{$t('管理')}}
 				</view>
-				<view class="bg-dark d-flex a-center j-center rounded-1"
+				<view v-if="$store.state.token" class="bg-dark d-flex a-center j-center rounded-1"
 					style="height: 54rpx; width: 54rpx;">
 					<u-icon v-if="direction == 'Y'" name="list-dot" color="#fff" size="34rpx"
 						@click="direction = 'X'"></u-icon>
