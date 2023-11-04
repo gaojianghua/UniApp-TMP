@@ -121,7 +121,12 @@
 				uni.setStorageSync('token', data.token)
 				this.$store.commit('updateUserinfo', data.userinfo)
 				this.$store.commit('updateToken', data.token)
-				this.$tools.Navigate.navigateBack()
+				this.$refs.uToast.show({
+					message: this.$t('登录成功'),
+					type: 'success',
+					duration: 1200,
+					complete: () => this.$tools.Navigate.navigateBack()
+				})
 			},
 			// 其他登录
 			openMoreLogin(i) {

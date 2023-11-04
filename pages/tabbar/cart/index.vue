@@ -87,11 +87,19 @@
 				<view v-if="!switchManage" class="btn d-flex j-center a-center" @click="submit">
 					{{$t('结算')}}
 				</view>
-				<view v-else class="btn d-flex j-center a-center" @click="deleteSubmit">
+				<view v-else class="btn d-flex j-center a-center" @click="show = true">
 					{{$t('移除')}}
 				</view>
 			</view>
 		</view>
+		<!-- 弹框 -->
+		<m-modal :show="show" title="温馨提示" @cancel="show = false" @confirm="confirmDelete">
+			<view class="d-flex a-center j-center">
+				<view class="mt-1 text-center">
+					{{$t('确定移除选中的商品吗？')}}
+				</view>
+			</view>
+		</m-modal>
 		<!-- 底部导航 -->
 		<m-tabbar pagePath="pages/tabbar/cart/index" i18n></m-tabbar>
 	</view>
@@ -101,6 +109,7 @@
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
 	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	import MGoodsCard from '@/main_modules/main-ui/m-goods-card/index.vue'
+	import MModal from '@/main_modules/main-ui/m-modal/index.vue'
 	import goods from '@/pages/tabbar/kind/goods.json'
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	import capsuleInit from '@/mixins/capsule-init.js'
@@ -109,13 +118,15 @@
 		components: {
 			MTabbar,
 			MScroll,
-			MGoodsCard
+			MGoodsCard,
+			MModal
 		},
 		data() {
 			return {
 				direction: 'Y',
 				switchManage: false,
 				checked: false,
+				show: false,
 				allPrice: '0',
 				decimal: '.00',
 				load: 0,
@@ -172,8 +183,8 @@
 
 			},
 			// 删除确认
-			deleteSubmit() {
-				
+			confirmDelete() {
+				this.show = false
 			},
 			// 选中
 			checkClicke(i) {
