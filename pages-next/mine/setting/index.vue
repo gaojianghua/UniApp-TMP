@@ -13,10 +13,13 @@
 						</view>
 						<view class="user-info d-flex flex-column j-around">
 							<view class="info-name line-h">
-								{{$store.state.userinfo.name}}
+								{{$store.state.token ? $store.state.userinfo.name : $t('前往登录')}}
 							</view>
-							<view class="info-desc line-h">
+							<view v-if="$store.state.token" class="info-desc font-md line-h">
 								ID: {{$store.state.userinfo.id}}
+							</view>
+							<view v-else class="user-notice line-h">
+								{{$t('您还未登录。立即登录，享受更多特权！')}}
 							</view>
 						</view>
 					</view>
@@ -49,8 +52,8 @@
 						</view>
 					</template>
 				</m-cell>
-				<u-gap v-if="i == 9" height="10rpx"></u-gap>
-				<m-cell v-if="i == 9" :itemStyle="{height: '88rpx'}" i18n textCenter :isIcon="false"
+				<u-gap v-if="i == 9 && $store.state.token" height="10rpx"></u-gap>
+				<m-cell v-if="i == 9 && $store.state.token" :itemStyle="{height: '88rpx'}" i18n textCenter :isIcon="false"
 					class="px-3 bg-white" :item="item"></m-cell>
 			</view>
 		</view>
@@ -60,6 +63,7 @@
 				{{$t('确定退出登录吗？')}}
 			</view>
 		</m-modal>
+		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 
@@ -91,12 +95,30 @@
 			},
 			// cell点击事件
 			cellClick(i) {
-				i.id == 9 ? this.show = true :
-					this.$tools.Navigate.navigateTo(i.page)
+				i.id == 9 ? this.show = true : this.isLoginOpen(i)
 			},
-			// 退出登录
+			// 鉴别登录指定跳转
+			isLoginOpen(i) {
+				if(!this.$store.state.token) {
+					if(i.id == 0 || i.id == 1 || i.id == 2 || i.id == 4) {
+						return this.$tools.Navigate.navigateTo('/pages/account/login/index')
+					}
+					return this.$tools.Navigate.navigateTo(i.page)
+				}
+				this.$tools.Navigate.navigateTo(i.page)
+			},
+			// 确认退出登录
 			confirmLogout() {
-
+				uni.removeStorageSync('token')
+				uni.removeStorageSync('userinfo')
+				this.$store.commit('updateToken', '')
+				this.$store.commit('updateUserinfo', {})
+				this.show = false
+				this.$refs.uToast.show({
+					message: this.$t('退出登录成功'),
+					type: 'success',
+					duration: 1200
+				})
 			}
 		}
 	}
@@ -118,6 +140,11 @@
 						font-size: 26rpx;
 						font-weight: 400;
 						color: #898989;
+					}
+					.user-notice{
+						font-size: 26rpx;
+						font-weight: 400;
+						color: #999;
 					}
 				}
 

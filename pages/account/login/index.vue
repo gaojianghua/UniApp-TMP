@@ -11,27 +11,39 @@
 					{{$t('宫悦商城欢迎您')}}
 				</view>
 				<view class="content-form mt-10 p-3">
-					<view v-if="isPasswordLogin" class="bottom">
+					<view v-if="isLoginType != 1" class="bottom">
 						<u-input :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="text" border="none"
 							:placeholder="$t('请输入手机号')" v-model="query.phone">
 							<span slot="prefix" class="iconfont icon-shouji"></span>
 						</u-input>
 					</view>
-					<view v-if="isPasswordLogin" class="bottom">
+					<view v-if="isLoginType == 2" class="bottom">
+						<u-input border="none" :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="password"
+							:placeholder="$t('请输入验证码')" v-model="query.code">
+							<span slot="prefix" class="iconfont icon-mima"></span>
+						</u-input>
+					</view>
+					<view v-if="isLoginType == 3" class="bottom">
 						<u-input border="none" :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="password"
 							:placeholder="$t('请输入密码')" v-model="query.password">
 							<span slot="prefix" class="iconfont icon-mima"></span>
 						</u-input>
 					</view>
-					<view v-if="isPasswordLogin" class="notice my-4 text-center" @click="$tools.Navigate.navigateTo('/pages/account/register/index')">
+					<view v-if="isLoginType != 1" class="notice my-4 text-center" @click="$tools.Navigate.navigateTo('/pages/account/register/index')">
 						{{$t('还没有账号？立即注册 ->')}}
 					</view>
 					<view @click="submitLogin" class="mb-4 btons d-flex a-center j-center text-white">
-						{{isPasswordLogin ? $t('立即登录') : 	$t('同意协议并一键登录')}}
+						{{isLoginType == 1 ? $t('同意协议并一键登录') : $t('立即登录')}}
 					</view>
 					<m-agree-policy i18n @checkChange="checkChange" :check="check"></m-agree-policy>
-					<view class="notice mt-3 text-center" @click="isPasswordLogin = !isPasswordLogin">
-						{{isPasswordLogin ? $t('一键登录 ->') : $t('账号密码登录 ->')}}
+					<view class="d-flex a-center j-sb mt-3">
+						<view class="notice" 
+						v-for="(item, i) in loginType" 
+						:key="i" 
+						:class="isLoginType == (i+1) ? 'active' : ''"
+						@click="isLoginType = item.id">
+							{{$t(item.name)}}
+						</view>
 					</view>
 				</view>
 				<view class="more d-flex a-center j-around mt-5 w-100">
@@ -52,7 +64,7 @@
 <script>
 	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	import MAgreePolicy from '@/main_modules/main-ui/m-agree-policy/index.vue'
-	import { moreLogins } from './data.js'
+	import { moreLogins, loginType } from './data.js'
 	export default {
 		components: {
 			MScroll,
@@ -62,11 +74,13 @@
 			return {
 				query: {
 					password: '',
-					phone: ''
+					phone: '',
+					code: ''
 				},
+				loginType,
 				check: [],
 				moreLogins,
-				isPasswordLogin: false
+				isLoginType: 1
 			}
 		},
 		onLoad() {
@@ -85,7 +99,7 @@
 			},
 			// 登录
 			submitLogin() {
-				if (this.isPasswordLogin) {
+				if (this.isLoginType != 1) {
 					if(this.check.length == 0) {
 						return this.$refs.uToast.show({
 							message: this.$t('请阅读并同意用户协议与隐私政策'),
@@ -100,7 +114,14 @@
 							duration: 1500
 						})
 					}
-					if(!this.query.password) {
+					if(this.isLoginType == 2 && !this.query.code) {
+						return this.$refs.uToast.show({
+							message: this.$t('请输入密码'),
+							type: 'warning',
+							duration: 1500
+						})
+					}
+					if(this.isLoginType == 3 && !this.query.password) {
 						return this.$refs.uToast.show({
 							message: this.$t('请输入密码'),
 							type: 'warning',
@@ -170,6 +191,9 @@
 				font-size: 24rpx;
 				color: #666;
 				text-decoration: underline;
+			}
+			.active{
+				color: #f27299;
 			}
 
 			.bottom {

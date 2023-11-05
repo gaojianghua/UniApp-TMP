@@ -32,4 +32,7 @@ export default {
 	updateContacts(state, e) {
 		state.contacts = e
 	},
+	updateShippingAddress(state, e) {
+		state.shippingAddress = e
+	},
 }

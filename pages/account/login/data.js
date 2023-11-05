@@ -9,6 +9,20 @@ const moreLogins = [{
 	name: '微博登录'
 }]
 
+const loginType = [
+	{
+		id: 1,
+		name: '一键登录 ->'
+	},{
+		id: 2,
+		name: '验证码登录 ->'
+	},{
+		id: 3,
+		name: '密码登录 ->'
+	}
+]
+
 module.exports = {
-	moreLogins
+	moreLogins,
+	loginType
 }

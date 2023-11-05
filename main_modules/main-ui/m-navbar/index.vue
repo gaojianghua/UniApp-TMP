@@ -20,6 +20,7 @@
 				<view v-if="isLang" class="tabbar-locale d-flex j-center a-center" @click="selectLang">
 					<u-image height="60rpx" width="60rpx" src="/static/img/common/diamonds.svg"></u-image>
 				</view>
+				<slot name="right"></slot>
 			</view>
 		</view>
 	</view>

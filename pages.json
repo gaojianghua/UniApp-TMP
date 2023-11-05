@@ -179,14 +179,6 @@
 		"root": "pages-offspring",
 		"pages": [
 			{
-				"path": "privacy-policy/index",
-				"style": {
-					"navigationBarTitleText": "%page.隐私政策%",
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
 				"path": "feedback/index",
 				"style": {
 					"navigationBarTitleText": "%page.意见反馈%",
@@ -260,6 +252,13 @@
 			},
 			{
 				"path": "policy-agreement/index",
+				"style": {
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
+				"path": "add-edit-address/index",
 				"style": {
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false

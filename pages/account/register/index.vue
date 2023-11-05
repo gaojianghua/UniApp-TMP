@@ -24,6 +24,21 @@
 						</u-input>
 					</view>
 					<view class="bottom">
+						<u-input border="none" :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="password"
+							:placeholder="$t('请再次输入密码')" v-model="query.rePassword">
+							<span slot="prefix" class="iconfont icon-mima"></span>
+						</u-input>
+					</view>
+					<view class="bottom">
+						<u-input border="none" :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="password"
+							:placeholder="$t('请输入验证码')" v-model="query.code">
+							<span slot="prefix" class="iconfont icon-mima"></span>
+							<view slot="suffix" class="code">
+								
+							</view>
+						</u-input>
+					</view>
+					<view class="bottom">
 						<u-input border="none" :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="text"
 							:placeholder="$t('请输入邀请码(选填)')" v-model="query.inviteCode">
 							<span slot="prefix" class="iconfont icon-mima"></span>
