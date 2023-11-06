@@ -31,7 +31,7 @@ const setList = [
 	{
 		id: 6,
 		name: '隐私政策',
-		page: '/pages-offspring/privacy-policy/index'
+		page: '/pages-offspring/policy-agreement/index'
 	},
 	{
 		id: 7,

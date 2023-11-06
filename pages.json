@@ -263,6 +263,13 @@
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
+			},
+			{
+				"path": "feedback-record/index",
+				"style": {
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
 			}
 		]
 	}],

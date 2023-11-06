@@ -205,6 +205,7 @@
 		.btons:active {
 			background: linear-gradient(to right, #85B6CA80, #F9A4A080);
 		}
+		
 		.popup{
 			height: 80vh;
 			.title{
