@@ -12,21 +12,19 @@
 				</view>
 				<view class="content-form mt-10 p-3">
 					<view v-if="isLoginType != 1" class="bottom">
-						<u-input :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="text" border="none"
+						<u-input clearable :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="text" border="none"
 							:placeholder="$t('请输入手机号')" v-model="query.phone">
-							<span slot="prefix" class="iconfont icon-shouji"></span>
 						</u-input>
 					</view>
 					<view v-if="isLoginType == 2" class="bottom">
-						<u-input border="none" :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="password"
+						<u-input clearable border="none" :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="number"
 							:placeholder="$t('请输入验证码')" v-model="query.code">
-							<span slot="prefix" class="iconfont icon-mima"></span>
 						</u-input>
 					</view>
 					<view v-if="isLoginType == 3" class="bottom">
-						<u-input border="none" :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="password"
+						<u-input clearable :password="isPassword" border="none" :customStyle="{height: '100rpx', caretColor: '#f27299'}"
 							:placeholder="$t('请输入密码')" v-model="query.password">
-							<span slot="prefix" class="iconfont icon-mima"></span>
+							<u-icon slot="suffix" :name="eyeStr" size="20" color="#999" @click="switchEye"></u-icon>
 						</u-input>
 					</view>
 					<view v-if="isLoginType != 1" class="notice my-4 text-center" @click="$tools.Navigate.navigateTo('/pages/account/register/index')">
@@ -80,7 +78,9 @@
 				loginType,
 				check: [],
 				moreLogins,
-				isLoginType: 1
+				isLoginType: 1,
+				eyeStr: 'eye-off', // eye-fill
+				isPassword: true,
 			}
 		},
 		onLoad() {
@@ -157,6 +157,16 @@
 					
 				}else {
 					
+				}
+			},
+			// 密码显隐
+			switchEye() {
+				if (this.eyeStr == 'eye-off') {
+					this.eyeStr = 'eye-fill'
+					this.isPassword = false
+				}else {
+					this.eyeStr = 'eye-off'
+					this.isPassword = true
 				}
 			}
 		},

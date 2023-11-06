@@ -172,7 +172,8 @@
 	"微博登录": "Weibo login",
 	"宫悦商城欢迎您": "Welcome to Gongyue Mall",
 	"同意协议并一键登录": "Agree agreement and One-click login",
-	"账号密码登录 ->": "Account password login ->",
+	"密码登录 ->": "Password login ->",
+	"验证码登录 ->": "Auth code login ->",
 	"请输入手机号": "Please enter your phone number",
 	"请输入密码": "Please enter password",
 	"还没有账号？立即注册 ->": "Don't have an account yet? Register now ->",
@@ -197,5 +198,9 @@
 	"请选择所在地区": "Please select your region",
 	"确认保存": "Confirm save",
 	"确定修改此地址吗？": "Are you sure to change this address ？",
-	"确定添加此地址吗？": "Are you sure to add this address ？"
+	"确定添加此地址吗？": "Are you sure to add this address ？",
+	"请再次输入密码": "Please enter your password again",
+	"请输入验证码": "Please enter the verification code",
+	"请输入邀请码(选填)": "Please enter the invitation code (optional)",
+	"立即注册": "Register now"
 }

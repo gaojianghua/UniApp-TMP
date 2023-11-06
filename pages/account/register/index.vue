@@ -12,36 +12,33 @@
 				</view>
 				<view class="content-form mt-10 p-3">
 					<view class="bottom">
-						<u-input :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="text" border="none"
+						<u-input clearable :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="text" border="none"
 							:placeholder="$t('请输入手机号')" v-model="query.phone">
-							<span slot="prefix" class="iconfont icon-shouji"></span>
 						</u-input>
 					</view>
 					<view class="bottom">
-						<u-input border="none" :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="password"
+						<u-input clearable :password="isPassword" border="none" :customStyle="{height: '100rpx', caretColor: '#f27299'}"
 							:placeholder="$t('请输入密码')" v-model="query.password">
-							<span slot="prefix" class="iconfont icon-mima"></span>
+							<u-icon slot="suffix" :name="eyeStr" size="20" color="#999" @click="switchEye(1)"></u-icon>
 						</u-input>
 					</view>
 					<view class="bottom">
-						<u-input border="none" :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="password"
+						<u-input clearable :password="isRePassword" border="none" :customStyle="{height: '100rpx', caretColor: '#f27299'}"
 							:placeholder="$t('请再次输入密码')" v-model="query.rePassword">
-							<span slot="prefix" class="iconfont icon-mima"></span>
+							<u-icon slot="suffix" :name="reEyeStr" size="20" color="#999" @click="switchEye(2)"></u-icon>
 						</u-input>
 					</view>
 					<view class="bottom">
-						<u-input border="none" :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="password"
+						<u-input clearable border="none" :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="number"
 							:placeholder="$t('请输入验证码')" v-model="query.code">
-							<span slot="prefix" class="iconfont icon-mima"></span>
 							<view slot="suffix" class="code">
 								
 							</view>
 						</u-input>
 					</view>
 					<view class="bottom">
-						<u-input border="none" :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="text"
+						<u-input clearable border="none" :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="text"
 							:placeholder="$t('请输入邀请码(选填)')" v-model="query.inviteCode">
-							<span slot="prefix" class="iconfont icon-mima"></span>
 						</u-input>
 					</view>
 					<view @click="submitRegister" class="mb-4 mt-5 btons d-flex a-center j-center text-white">
@@ -70,7 +67,11 @@
 					phone: '',
 					inviteCode: ''
 				},
-				check: []
+				check: [],
+				isRePassword: true,
+				isPassword: true,
+				reEyeStr: 'eye-off',
+				eyeStr: 'eye-off'
 			}
 		},
 		onLoad() {
@@ -118,6 +119,26 @@
 					duration: 1200,
 					complete: () => this.$tools.Navigate.navigateBack()
 				})
+			},
+			// 密码显隐
+			switchEye(i) {
+				if(i == 1) {
+					if (this.eyeStr == 'eye-off') {
+						this.eyeStr = 'eye-fill'
+						this.isPassword = false
+					}else {
+						this.eyeStr = 'eye-off'
+						this.isPassword = true
+					}
+				}else {
+					if (this.reEyeStr == 'eye-off') {
+						this.reEyeStr = 'eye-fill'
+						this.isRePassword = false
+					}else {
+						this.reEyeStr = 'eye-off'
+						this.isRePassword = true
+					}
+				}
 			}
 		},
 		computed: {
