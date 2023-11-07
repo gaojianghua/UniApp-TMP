@@ -20,7 +20,7 @@
 					</view>
 					<MLuckyGrid :list="list" :winningItem="item" @endLuckyDraw="endLuckyDraw" />
 					<view class="title-btn d-flex a-center j-center mt-3 px-5">
-						{{$t('剩余积分')}}：{{points}}
+						{{$t('剩余积分')}}：{{$store.state.userinfo.points}}
 					</view>
 					<view class="open-old text-center text-white" @click="openRecord">
 						{{$t('查看抽奖记录')}}
@@ -113,7 +113,6 @@
 				ruleShow: false,
 				prizeSrc: '',
 				prizeName: '',
-				points: 500,
 				luckyDrawSwitch: true,
 				list: [],
 				item: {},

@@ -134,7 +134,8 @@
 				let data = {
 					userinfo: {
 						name: '高江华',
-						id: '86579236'
+						id: '86579236',
+						points: 20808
 					},
 					token: 'sa1sd123asd456qdw456'
 				}

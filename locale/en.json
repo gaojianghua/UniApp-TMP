@@ -32,6 +32,7 @@
 	"page.视投金": "Video Deposit",
 	"page.商品详情": "Goods Detail",
 	"page.积分抽奖": "Points Draw",
+	"page.积分商城": "Points Shop",
 	"page.抽奖记录": "Draw Record",
 	"page.会员中心": "Member Center",
 	"page.欢迎登录": "Welcome Login",
@@ -209,5 +210,10 @@
 	"您的反馈已提交，我们会尽快为您处理！": "Your feedback has been submitted and we will process it for you as soon as possible ！",
 	"描述您的问题，我们会尽快为您处理！": "Describe your problem and we will deal with it for you as soon as possible ！",
 	"确定移除选中的商品吗？": "Are you sure to remove the selected item ？",
-	"温馨提示": "Warm reminder"
+	"温馨提示": "Warm reminder",
+	"恭喜中奖 ->": "Congratulations Winning ->",
+	"商城": "Shop",
+	"订单": "Order",
+	"记录": "Records",
+	"暂无记录": "No record"
 }

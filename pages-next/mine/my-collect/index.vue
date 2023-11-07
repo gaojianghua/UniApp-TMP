@@ -59,7 +59,6 @@
 			return {
 				list: [],
 				total: 0,
-				page: 1,
 				load: 0,
 				isLoading: true,
 				istrig: true,
@@ -100,7 +99,7 @@
 						this.list = data.list
 						this.total = data.total
 					}
-					if (this.page * this.query.limit >= this.total) {
+					if (this.query.page * this.query.limit >= this.total) {
 						return this.load = 1
 					} else {
 						return this.load = 2

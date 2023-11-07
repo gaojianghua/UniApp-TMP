@@ -243,6 +243,14 @@
 				}
 			},
 			{
+				"path": "points-shop/index",
+				"style": {
+					"navigationBarTitleText": "%page.积分商城%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
 				"path": "points-draw-record/index",
 				"style": {
 					"navigationBarTitleText": "%page.抽奖记录%",
