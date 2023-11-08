@@ -220,5 +220,8 @@
 	"商城": "Shop",
 	"订单": "Order",
 	"记录": "Records",
-	"暂无记录": "No record"
+	"暂无记录": "No record",
+	"您当前使用的不是Safari浏览器": "You are not currently using Safari browser",
+	"请复制下方链接在Safari浏览器中打开": "Please copy the link below and open it in Safari browser",
+	"复制链接": "Copy Link"
 }
