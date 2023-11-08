@@ -19,7 +19,7 @@
 		<m-scroll :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load" bgColor="transparent"
 			@loadmore="loadmore" @onRefresh="onRefresh">
 			<view class="content pt-2 px-2 bg-white">
-				<u-swiper height="320rpx" :list="banner" keyName="image" indicator />
+				<u-swiper height="320rpx" indicatorActiveColor="#f27299" :list="banner" keyName="image" indicator @click="bannerClick" />
 				<view class="menu-list mt-1 d-flex flex-wrap">
 					<view class="menu-item mt-2 d-flex flex-column j-center a-center" v-for="(item, i) in menus" :key="i">
 						<u-image height="88rpx" width="88rpx" :src="item.src"></u-image>
@@ -160,7 +160,20 @@
 			// 加入购物车
 			addCart(i) {
 				
-			}
+			},
+			// banner点击事件
+			bannerClick(e) {
+				if (this.banner[e].is_page == 0 && this.banner[e].link) {
+					// #ifdef APP-PLUS
+					plus.runtime.openURL(this.banner[e].link)
+					// #endif
+					// #ifdef H5
+					location.href = this.banner[e].link
+					// #endif
+				} else if (this.banner[e].is_page == 1 && this.banner[e].link) {
+					this.$tools.Navigate.navigateTo(this.banner[e].link)
+				}
+			},
 		},
 		computed: {
 			scrollStyle() {

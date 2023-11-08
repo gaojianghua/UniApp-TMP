@@ -121,7 +121,7 @@
 				.rect-btn-btn {
 					border-radius: 50rpx;
 					height: 60rpx;
-					padding: 0 35rpx;
+					padding: 0 50rpx;
 					line-height: 60rpx;
 					font-size: 26rpx;
 					color: #fff;

@@ -79,10 +79,15 @@
 	"取消下载": "Cancel download",
 	"后台下载": "Background download",
 	"关闭": "Close",
+	"IOS版下载": "IOS version download",
+	"Android版下载": "Android version download",
+	"暂不支持IOS系统": "IOS system is not supported for the time being",
+	"暂不支持Android系统": "Android system is not supported for the time being",
 	
 	"知道了": "Got it",
 	"获取服务供应商失败": "Failed to obtain a service provider",
 	"复制成功": "Copy Success",
+	"复制失败": "Copy Fail",
 	"取消分享": "Unshare",
 	
 	"保存图片": "Save Image",

@@ -671,6 +671,10 @@ body {
 	color: var(--white) !important;
 }
 
+.text-break {
+	word-break: break-all;
+}
+
 /* 文字换行溢出处理 */
 .text-ellipsis1 {
 	/* #ifndef APP-PLUS-NVUE */

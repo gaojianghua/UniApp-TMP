@@ -1,14 +1,22 @@
 export const banner = [{
-		image: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/floor2.jpg'
+		image: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/floor2.jpg',
+		is_page: 0,
+		link: 'https://wolffy.gaojianghua.cn/home'
 	},
 	{
-		image: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/floor3.jpg'
+		image: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/floor3.jpg',
+		is_page: 0,
+		link: 'https://wolffy.gaojianghua.cn/home'
 	},
 	{
-		image: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/floor4.jpg'
+		image: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/floor4.jpg',
+		is_page: 0,
+		link: 'https://wolffy.gaojianghua.cn/home'
 	},
 	{
-		image: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/floor5.png'
+		image: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/floor5.png',
+		is_page: 1,
+		link: '/pages-next/mine/download-app/index'
 	}
 ]
 

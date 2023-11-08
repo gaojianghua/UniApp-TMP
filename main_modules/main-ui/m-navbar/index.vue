@@ -47,7 +47,15 @@
 				this.$emit('selectLang')
 			},
 			retreat() {
-				tools.Navigate.navigateBack()
+				let pages = getCurrentPages();
+				if (pages.length > 1) {
+					// 存在上级页面
+					tools.Navigate.navigateBack()
+				} else {
+					// 不存在上级页面
+					tools.Navigate.switchTab(this.$router.options.routes[0].alias)
+				}
+				this.$emit('pageBack')
 			}
 		}
 	}
