@@ -36,7 +36,7 @@
 					<span>{{$t('请复制下方链接在Safari浏览器中打开')}}</span>
 					<u-icon name="arrow-downward" size="18" color="#f27299"></u-icon>
 				</view>
-				<view class="mt-1 text-center text-success border border-success px-2 py-1 rounded-1 initial text-break">
+				<view class="mt-1 text-center text-success border-2 border-success px-2 py-1 rounded-1 initial text-break">
 					{{downloadAuth.iosUrl}}
 				</view>
 			</view>

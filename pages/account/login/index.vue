@@ -136,7 +136,9 @@
 						name: '高江华',
 						id: '86579236',
 						points: 20808,
-						phone: '15257184434'
+						phone: '15257184434',
+						avatar: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/wolffy.png',
+						inviteCode: '86E7B8'
 					},
 					token: 'sa1sd123asd456qdw456'
 				}

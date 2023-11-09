@@ -526,6 +526,18 @@ body {
 	border-color: var(--borderColor);
 }
 
+.border-2 {
+	border-width: 2rpx !important;
+	border-style: solid;
+	border-color: var(--borderColor);
+}
+
+.border-4 {
+	border-width: 4rpx !important;
+	border-style: solid;
+	border-color: var(--borderColor);
+}
+
 .border-top {
 	border-top-width: 1rpx !important;
 	border-top-style: solid;
@@ -1437,6 +1449,7 @@ button {
 	padding-right: 0;
 	line-height: inherit;
 	border-radius: 0;
+	font-size: inherit;
 }
 
 .hidden {
