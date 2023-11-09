@@ -17,7 +17,8 @@
 	import {
 		getPhoneHeight,
 		setNavbarHeight,
-		getContacts
+		getContacts,
+		getAppVersion
 	} from '@/main_modules/app-init/index.js'
 	import global from '@/global/index.js'
 	export default {
@@ -78,6 +79,8 @@
 			getPhoneHeight()
 			// 设置自定义导航栏高度
 			setNavbarHeight()
+			// 获取应用系统信息
+			getAppVersion()
 			// 隐藏原生底部导航
 			uni.hideTabBar({
 				animation: false

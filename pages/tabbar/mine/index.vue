@@ -29,7 +29,8 @@
 				</view>
 			</view>
 			<view class="assets mt-2 d-flex a-center j-around">
-				<view v-for="(item, i) in assets" class="assets-item mt-2 d-flex flex-column a-center j-center" @click="openAssets(item)">
+				<view v-for="(item, i) in assets" class="assets-item mt-2 d-flex flex-column a-center j-center"
+					@click="openAssets(item)">
 					<view class="item-value">
 						{{item.value}}
 					</view>
@@ -55,7 +56,7 @@
 					<view class="order-item d-flex flex-column a-center j-center" @click="openOrderList(item.id)">
 						<u-image width="60rpx" height="60rpx" :src="item.img" mode="aspectFit" />
 						<view class="order-text">
-							{{item.name}}
+							{{$t(item.name)}}
 						</view>
 					</view>
 				</block>
@@ -64,12 +65,9 @@
 		<!-- 菜单栏 -->
 		<view class="menu mt-2">
 			<view class="menu-item" v-for="(item, i) in menuList" :key="i" @click="openMenu(item)">
-				<m-cell i18n v-if="item.id != 5 && item.id != 6" :item="item"></m-cell>
+				<m-cell i18n v-if="item.id != 5" :item="item"></m-cell>
 				<!-- #ifdef H5 -->
 				<m-cell i18n v-if="item.id == 5" :item="item"></m-cell>
-				<!-- #endif -->
-				<!-- #ifdef APP-PLUS -->
-				<m-cell i18n v-if="item.id == 6" :item="item"></m-cell>
 				<!-- #endif -->
 			</view>
 		</view>
@@ -98,7 +96,8 @@
 				orderMenus,
 				menuList,
 				assets,
-				statusHeight: 0
+				statusHeight: 0,
+				appVersion: ''
 			}
 		},
 		onLoad() {
@@ -107,13 +106,11 @@
 		methods: {
 			// 初始化
 			init() {
-				this.orderMenus.forEach((item) => {
-					item.name = this.$t(item.name)
-				})
+				
 			},
 			openOrderList(i) {
 				i == 5 ? this.$tools.Navigate.navigateTo('/pages-next/mine/my-evaluate/index') :
-				this.$tools.Navigate.navigateTo('/pages-next/mine/order-list/index', i)
+					this.$tools.Navigate.navigateTo('/pages-next/mine/order-list/index', i)
 			},
 			openSet() {
 				this.$tools.Navigate.navigateTo('/pages-next/mine/setting/index')
@@ -124,24 +121,22 @@
 			openMenu(e) {
 				switch (e.id) {
 					case 1:
-					this.$tools.Navigate.navigateTo(e.page)
+						this.$tools.Navigate.navigateTo(e.page)
 						break;
 					case 2:
-					this.$tools.Navigate.navigateTo(e.page)
+						this.$tools.Navigate.navigateTo(e.page)
 						break;
 					case 3:
-					this.$tools.Navigate.navigateTo(e.page)
+						this.$tools.Navigate.navigateTo(e.page)
 						break;
 					case 4:
-					this.$tools.Navigate.navigateTo(e.page)
+						this.$tools.Navigate.navigateTo(e.page)
 						break;
 					case 5:
-					this.$tools.Navigate.navigateTo(e.page)
+						this.$tools.Navigate.navigateTo(e.page)
 						break;
 					case 6:
-						break;
-					case 7:
-					this.$tools.Navigate.navigateTo(e.page)
+						this.$tools.Navigate.navigateTo(e.page)
 						break;
 				}
 			},
@@ -159,7 +154,7 @@
 			},
 			// 前往登录
 			openLogin() {
-				if(!this.$store.state.token) {
+				if (!this.$store.state.token) {
 					this.$tools.Navigate.navigateTo('/pages/account/login/index')
 				}
 			}
@@ -178,28 +173,31 @@
 			background: linear-gradient(to bottom, #FF9412 40%, #fff);
 			border-radius: 0 0 40rpx 40rpx;
 			color: #fff;
-			.assets{
-				.assets-item{
-					.item-value{
+
+			.assets {
+				.assets-item {
+					.item-value {
 						font-weight: bold;
 						font-size: 36rpx;
 					}
-					.item-text{
+
+					.item-text {
 						font-size: 28rpx;
-						
+
 					}
 				}
 			}
-			
-			.user-info{
+
+			.user-info {
 				height: 100rpx;
-				
-				.user-notice{
+
+				.user-notice {
 					font-size: 26rpx;
 					font-weight: 400;
 					color: #eee;
 				}
 			}
+
 			.user-avatar {
 				.user-img {
 					border-radius: 50%;
@@ -245,14 +243,16 @@
 				}
 			}
 		}
-		.menu{
+
+		.menu {
 			width: 690rpx;
 			margin-left: 30rpx;
 			border-radius: 8rpx;
 			padding: 0 30rpx;
 			background-color: #fff;
-			.menu-item:first-child{
-				/deep/ .menu-item{
+
+			.menu-item:first-child {
+				/deep/ .menu-item {
 					border-top: none !important;
 				}
 			}

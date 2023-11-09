@@ -8,6 +8,9 @@ export default {
 	updateMiniProgramCapsule(state, e) {
 		state.miniProgramCapsule = e
 	},
+	updateAppSystemInfo(state, e) {
+		state.appSystemInfo = e
+	},
 	updateSysConfig(state, e) {
 		state.sysConfig = e
 	},

@@ -34,6 +34,13 @@ export const setNavbarHeight = () => {
 	store.commit('updateNavbarHeight', navbarHeight)
 }
 
+// 获取版本号
+export const getAppVersion = () => {
+	let appSystemInfo = uni.getSystemInfoSync()
+	uni.setStorageSync('appSystemInfo', appSystemInfo)
+	store.commit('updateAppSystemInfo', appSystemInfo)
+}
+
 // 获取手机通讯录
 export const getContacts = (cb) => {
 	// #ifdef H5

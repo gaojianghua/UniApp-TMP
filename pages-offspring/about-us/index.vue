@@ -7,10 +7,10 @@
 		<view class="content d-flex pt-10 flex-column j-center a-center" :style="scrollStyle">
 			<u-image width="120rpx" height="120rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/GongYueLogo.png"></u-image>
 			<view class="mt-3 line-h font-weight" style="font-size: 32rpx;">
-				{{systemInfo.appName}}
+				{{$store.state.appSystemInfo.appName}}
 			</view>
 			<view class="mt-2 text-light-muted font-weight line-h">
-				V{{systemInfo.appVersion}}
+				V{{$store.state.appSystemInfo.appVersion}}
 			</view>
 			<view class="desc initial p-4 text-i2">
 				<p>欢迎来到宫悦商城！我们致力于为您提供便捷、安全和多样化的购物体验。宫悦商城是一个全方位的在线购物平台，汇集了各个领域的优质商品和服务。</p>
@@ -39,7 +39,7 @@
 		},
 		data() {
 			return {
-				systemInfo: {}
+				
 			}
 		},
 		onLoad() {
@@ -48,7 +48,7 @@
 		methods: {
 			// 初始化
 			init() {
-				this.systemInfo = uni.getSystemInfoSync()
+				
 			},
 			// 进入协议页面
 			openAgree(e) {

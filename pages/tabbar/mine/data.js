@@ -54,11 +54,6 @@ const menuList = [
 	},
 	{
 		id: 6,
-		name: 'page.当前版本',
-		page: ''
-	},
-	{
-		id: 7,
 		name: 'page.官方客服',
 		page: '/pages-next/mine/official-service/index'
 	}

@@ -259,6 +259,14 @@
 				}
 			},
 			{
+				"path": "app-share/index",
+				"style": {
+					"navigationBarTitleText": "%page.APP分享%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
 				"path": "policy-agreement/index",
 				"style": {
 					"navigationStyle": "custom",

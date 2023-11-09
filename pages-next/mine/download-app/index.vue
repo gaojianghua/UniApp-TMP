@@ -11,7 +11,7 @@
 					{{$t('宫悦商城欢迎您')}}
 				</view>
 				<view class="mt-2 text-light font-weight line-h">
-					V{{systemInfo.appVersion}}
+					V{{$store.state.appSystemInfo.appVersion}}
 				</view>
 				<view class="desc initial p-4 text-i2">
 					<p>欢迎下载宫悦商城！我们致力于为您提供便捷、安全和多样化的购物体验。宫悦商城是一个全方位的在线购物平台，汇集了各个领域的优质商品和服务。</p>
@@ -55,7 +55,6 @@
 		},
 		data() {
 			return {
-				systemInfo: {},
 				downloadAuth: {},
 				show: false
 			}
@@ -66,7 +65,6 @@
 		methods: {
 			// 初始化
 			init() {
-				this.systemInfo = uni.getSystemInfoSync()
 				this.getDownloadAuth()
 			},
 			// 获取下载权限
@@ -84,7 +82,7 @@
 			},
 			// APP下载
 			appDownload() {
-				if (this.systemInfo.platform == 'android') {
+				if (this.$store.state.appSystemInfo.platform == 'android') {
 					this.androidDownload()
 				} else {
 					this.iosDownload()
