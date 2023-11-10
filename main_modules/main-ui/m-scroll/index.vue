@@ -1,7 +1,7 @@
 <template>
 	<!-- #ifdef MP-WEIXIN -->
 	<scroll-view 
-		class="scroll-row" 
+		class="w-100" 
 		scroll-anchoring 
 		scroll-y
 		:style="[scrollStyle]" 
@@ -13,7 +13,7 @@
 		<!-- #endif -->
 	<!-- #ifndef MP-WEIXIN -->
 	<scroll-view 
-		class="scroll-row" 
+		class="w-100" 
 		scroll-anchoring 
 		scroll-y
 		:style="scrollStyle" 
