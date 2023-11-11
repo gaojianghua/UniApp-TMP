@@ -8,7 +8,7 @@
 					<view :slot="'left'" class="d-flex py-3 a-center">
 						<view class="user-avatar mr-2">
 							<u-image width="100rpx" height="100rpx" class="user-img"
-								src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/weChatLogo.png" mode="">
+								:src="$store.state.userinfo.avatar" mode="">
 							</u-image>
 						</view>
 						<view class="user-info d-flex flex-column j-around">

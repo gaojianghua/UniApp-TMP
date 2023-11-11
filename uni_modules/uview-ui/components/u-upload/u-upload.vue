@@ -12,7 +12,7 @@
 					    :src="item.thumb || item.url"
 					    :mode="imageMode"
 					    class="u-upload__wrap__preview__image"
-					    @tap="onPreviewImage(item)"
+					    @tap="disabled ? onPreviewImage(item) : chooseFile()"
 						:style="[{
 							width: $u.addUnit(width),
 							height: $u.addUnit(height)
@@ -202,6 +202,7 @@
 				this.isInCount = lists.length < maxCount
 			},
 			chooseFile() {
+				console.log(123)
 				const {
 					maxCount,
 					multiple,

@@ -45,7 +45,7 @@
 				</u-empty>
 				<view v-if="list.length != 0" class="list px-3" :class="direction == 'Y' ? 'd-flex flex-wrap j-sb' : ''">
 					<view class="list-item" :style="{width: direction == 'Y' ? '48.8%' : '100%'}" v-for="(item, i) in list" :key="i"
-						@click="enterListDetail(item)">
+						@click="openDetail(item)">
 						<m-goods-card @checkClick="checkClicke" @addCart="addCart" :item="item" :direction="direction" imageWidth="200rpx"
 							:imageHeight="direction == 'Y' ? '300rpx' : '200rpx'" isSales
 							isDesc isOldPrice isOver isVIP :isCartBtn="false" isChecked></m-goods-card>
