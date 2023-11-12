@@ -8,7 +8,7 @@
 					<view :slot="'left'" class="d-flex py-3 a-center">
 						<view class="user-avatar mr-2">
 							<u-image width="100rpx" height="100rpx" class="user-img"
-								:src="$store.state.userinfo.avatar" mode="">
+								:src="$store.state.userinfo.avatar || '/static/img/mine/default-avatar.png'" mode="">
 							</u-image>
 						</view>
 						<view class="user-info d-flex flex-column j-around">
@@ -103,7 +103,7 @@
 			// 鉴别登录指定跳转
 			isLoginOpen(i) {
 				// #ifdef APP-PLUS
-				if (i.id == 8) {
+				if (i.id == 9) {
 					APPUpdate()
 				}
 				// #endif

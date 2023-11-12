@@ -3,7 +3,7 @@
 		<view class="share flex flex-column justify-center align-center" @click.stop>
 			<image :src="path" mode="widthFix" show-menu-by-longpress></image>
 			<view v-if="path" class="close" @click="closePoster">
-				<image src="https://jiajiahuan-2021.oss-cn-hangzhou.aliyuncs.com/index/sign%20(2).png" mode="">
+				<image src="/static/img/mine/exit.png" mode="">
 				</image>
 			</view>
 			<l-painter :after-delay="1000" :board="poster" :isCanvasToTempFilePath="canvasSwitch"
@@ -74,15 +74,27 @@
 							}
 						},
 						{
-							src: "https://jiajiahuan-2021.oss-cn-hangzhou.aliyuncs.com/all/share-logo.png",
+							src: "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/GongYueLogo.png",
 							type: "image",
 							css: {
 								objectFit: "cover",
-								width: "188rpx",
-								height: "66rpx",
+								width: "35rpx",
+								height: "35rpx",
 								position: "absolute",
-								left: "15rpx",
+								left: "25rpx",
 								top: "25rpx"
+							}
+						},
+						{
+							text: this.$t('宫悦商城'),
+							type: "text",
+							css: {
+								height: "35rpx",
+								position: "absolute",
+								left: "75rpx",
+								top: "25rpx",
+								lineHeight: "35rpx",
+								fontSize: "24rpx"
 							}
 						},
 						{
@@ -95,7 +107,7 @@
 								// position: "relative"
 							},
 							views: [{
-									src: "https://jiajiahuan-2021.oss-cn-hangzhou.aliyuncs.com/all/share-er-bc.png",
+									src: "/static/img/mine/share-bc.png",
 									type: "image",
 									css: {
 										objectFit: "cover",
@@ -143,7 +155,7 @@
 									}
 								},
 								{
-									text: "邀请码",
+									text: this.$t('邀请码'),
 									type: "text",
 									css: {
 										position: "absolute",

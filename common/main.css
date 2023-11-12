@@ -41,6 +41,10 @@ body {
 	box-shadow: 0 16rpx 48rpx rgba(114, 130, 138, 0.2) !important;
 }
 
+.shadow-main {
+	box-shadow: 0 17rpx 43rpx 8rpx rgba(0, 0, 0, 0.02);
+}
+
 /* 定位 */
 .position-absolute {
 	position: absolute;

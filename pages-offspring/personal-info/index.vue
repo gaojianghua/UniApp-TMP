@@ -15,7 +15,7 @@
 					</view>
 					<view class="userinfo-item-value d-flex a-center">
 						<span class="line-h">{{item.value}}</span>
-						<view v-if="i == 2" class="ml-2 line-h copy bg-success text-white rounded">
+						<view v-if="i == 2" class="ml-2 line-h copy bg-success text-white rounded" @click="copyInviteCode(item.value)">
 							{{$t('复制')}}
 						</view>
 						<u-icon v-if="i == 0" name="arrow-right" color="#111" size="16"></u-icon>
@@ -23,6 +23,7 @@
 				</view>
 			</view>
 		</view>
+		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 
@@ -31,7 +32,7 @@
 		data() {
 			return {
 				fileList: [{
-					url: this.$store.state.userinfo.avatar,
+					url: this.$store.state.userinfo.avatar || '/static/img/mine/default-avatar.png',
 				}],
 				userinfo: [{
 						key: '用户名',
@@ -82,6 +83,20 @@
 					}
 				})
 			},
+			// 复制邀请码
+			copyInviteCode(data) {
+				uni.setClipboardData({
+					data,
+					showToast: false,
+					success: () => {
+						this.$refs.uToast.show({
+							message: this.$t('复制成功'),
+							type: 'success',
+							duration: 1200
+						})
+					}
+				})
+			}
 		}
 	}
 </script>

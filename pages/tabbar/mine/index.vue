@@ -1,13 +1,14 @@
 <template>
 	<view class="page">
 		<!-- 顶部信息 -->
-		<view class="user" :style="{height: `calc(388rpx + ${statusHeight}px)`}">
+		<view class="user" :style="{
+			height: `calc(388rpx + ${statusHeight}px)`}">
 			<!-- 顶部状态栏高度 -->
 			<m-top />
 			<view class="d-flex a-center">
 				<view class="user-avatar mr-2">
 					<u-image width="100rpx" height="100rpx" class="user-img"
-						:src="$store.state.userinfo.avatar" mode="">
+						:src="$store.state.userinfo.avatar || '/static/img/mine/default-avatar.png'" mode="">
 					</u-image>
 				</view>
 				<view class="user-info d-flex flex-column j-around" @click="openLogin">
@@ -25,17 +26,6 @@
 					<u-image width="50rpx" height="50rpx" src="/static/img/common/setting-two.svg" mode="" />
 					<view class="top-menu-text">
 						{{$t('page.设置')}}
-					</view>
-				</view>
-			</view>
-			<view class="assets mt-2 d-flex a-center j-around">
-				<view v-for="(item, i) in assets" class="assets-item mt-2 d-flex flex-column a-center j-center"
-					@click="openAssets(item)">
-					<view class="item-value">
-						{{item.value}}
-					</view>
-					<view class="item-text">
-						{{$t(item.name)}}
 					</view>
 				</view>
 			</view>
@@ -60,6 +50,18 @@
 						</view>
 					</view>
 				</block>
+			</view>
+		</view>
+		<!-- 币区 -->
+		<view class="assets text-white mt-2 bg-white d-flex a-center j-around">
+			<view v-for="(item, i) in assets" class="assets-item d-flex flex-column a-center j-center"
+				@click="openAssets(item)">
+				<view class="item-value">
+					{{item.value}}
+				</view>
+				<view class="item-text">
+					{{$t(item.name)}}
+				</view>
 			</view>
 		</view>
 		<!-- 菜单栏 -->
@@ -106,7 +108,7 @@
 		methods: {
 			// 初始化
 			init() {
-				
+
 			},
 			openOrderList(i) {
 				i == 5 ? this.$tools.Navigate.navigateTo('/pages-next/mine/my-evaluate/index') :
@@ -170,23 +172,10 @@
 		.user {
 			position: relative;
 			padding: 30rpx 30rpx 0;
-			background: linear-gradient(to bottom, #FF9412 40%, #fff);
+			background: url('/static/img/mine/mine-bg.png') no-repeat;
+			background-size: cover;
 			border-radius: 0 0 40rpx 40rpx;
-			color: #fff;
-
-			.assets {
-				.assets-item {
-					.item-value {
-						font-weight: bold;
-						font-size: 36rpx;
-					}
-
-					.item-text {
-						font-size: 28rpx;
-
-					}
-				}
-			}
+			color: #111;
 
 			.user-info {
 				height: 100rpx;
@@ -194,7 +183,7 @@
 				.user-notice {
 					font-size: 26rpx;
 					font-weight: 400;
-					color: #eee;
+					color: #666;
 				}
 			}
 
@@ -222,6 +211,7 @@
 				background: url('/static/img/mine/mine-vip-card.png') no-repeat;
 				background-size: cover;
 				border-radius: 8rpx;
+
 			}
 		}
 
@@ -240,6 +230,26 @@
 
 				.order-text {
 					font-size: 26rpx;
+				}
+			}
+		}
+
+		.assets {
+			width: 690rpx;
+			margin-left: 30rpx;
+			border-radius: 8rpx;
+			padding: 20rpx 0;
+			background: linear-gradient(to bottom, #FBB13B, #F0422B);
+
+			.assets-item {
+				.item-value {
+					font-weight: bold;
+					font-size: 36rpx;
+				}
+
+				.item-text {
+					font-size: 28rpx;
+
 				}
 			}
 		}

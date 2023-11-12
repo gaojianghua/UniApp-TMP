@@ -202,7 +202,6 @@
 				this.isInCount = lists.length < maxCount
 			},
 			chooseFile() {
-				console.log(123)
 				const {
 					maxCount,
 					multiple,

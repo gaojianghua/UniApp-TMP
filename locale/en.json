@@ -88,6 +88,7 @@
 	"知道了": "Got it",
 	"获取服务供应商失败": "Failed to obtain a service provider",
 	"复制成功": "Copy Success",
+	"复制": "Copy",
 	"复制失败": "Copy Fail",
 	"取消分享": "Unshare",
 	
@@ -221,8 +222,9 @@
 	"您当前使用的不是Safari浏览器": "You are not currently using Safari browser",
 	"请复制下方链接在Safari浏览器中打开": "Please copy the link below and open it in Safari browser",
 	"复制链接": "Copy Link",
-	"宫悦商城": "宫悦商城",
-	"邀请码": "邀请码",
-	"分享邀请链接": "分享邀请链接",
-	"分享专属海报": "分享专属海报"
+	"宫悦商城": "GongYue Shop",
+	"邀请码": "Invitation Code",
+	"分享邀请链接": "Share invitation link",
+	"分享专属海报": "Share Exclusive poster",
+	"包括图片，音频，视频，数据等": "Including pictures, audio, video, data, etc"
 }

@@ -147,7 +147,7 @@
 					.share-code {
 						width: 330rpx;
 						height: 400rpx;
-						background-image: url('https://jiajiahuan-2021.oss-cn-hangzhou.aliyuncs.com/all/share-er-bc.png');
+						background-image: url('/static/img/mine/share-bc.png');
 						background-repeat: no-repeat;
 						background-size: cover;
 						position: absolute;

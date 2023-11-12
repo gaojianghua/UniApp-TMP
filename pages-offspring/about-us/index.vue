@@ -1,15 +1,15 @@
 <template>
 	<view class="page">
 		<!-- 顶部导航栏 -->
-		<m-navbar bgColor="#fff" textColor="#fb7299" value="page.关于宫悦" i18n></m-navbar>
+		<m-navbar bgColor="#transparent" textColor="#fff" value="page.关于宫悦" i18n></m-navbar>
 		<!-- 内容区域 -->
 		<m-scroll :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
 		<view class="content d-flex pt-10 flex-column j-center a-center" :style="scrollStyle">
 			<u-image width="120rpx" height="120rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/GongYueLogo.png"></u-image>
-			<view class="mt-3 line-h font-weight" style="font-size: 32rpx;">
+			<view class="mt-3 line-h text-white font-weight" style="font-size: 32rpx;">
 				{{$store.state.appSystemInfo.appName}}
 			</view>
-			<view class="mt-2 text-light-muted font-weight line-h">
+			<view class="mt-2 text-light font-weight line-h">
 				V{{$store.state.appSystemInfo.appVersion}}
 			</view>
 			<view class="desc initial p-4 text-i2">
@@ -19,10 +19,10 @@
 			</view>
 			<view class="mt-auto main-text-color pb-3">
 				<span @click="openAgree(1)">《{{$t('用户协议')}}》</span> 
-				<span class="text-light-muted">| |</span>
+				<span class="text-light">| |</span>
 				<span @click="openAgree(2)">《{{$t('隐私政策')}}》</span>
 			</view>
-			<view class="text-light-muted pb-3 d-flex a-center flex-column j-center font">
+			<view class="text-light pb-3 d-flex a-center flex-column j-center font">
 				<span>{{$t('由个人开发者高江华  版权所有')}}</span>
 				<span>Copyright c 2022-{{new Date().getFullYear()}}；ALL Rights Reserved</span>
 			</view>
@@ -67,6 +67,8 @@
 
 <style lang="scss" scoped>
 	.page{
+		background: url('/static/img/common/login-bg.jpg') no-repeat;
+		background-size: cover;
 		.desc{
 			font-size: 26rpx;
 			letter-spacing: 2rpx;
