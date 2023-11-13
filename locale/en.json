@@ -15,8 +15,11 @@
 	"page.隐私政策": "Privacy Policy",
 	"page.个人信息": "Personal Information",
 	"page.收货地址": "Shipping Address",
-	"page.绑定手机": "Bind Cell Phone",
+	"page.绑定手机号": "Bind Phone number",
+	"page.更换手机号": "Change Phone number",
+	"page.手机号": "Phone number",
 	"page.常见问题": "Common Problem",
+	"page.修改密码": "Change Password",
 	"page.意见反馈": "Feedback",
 	"page.关于宫悦": "About Us",
 	"page.清除缓存": "Clear Cache",
@@ -226,5 +229,13 @@
 	"邀请码": "Invitation Code",
 	"分享邀请链接": "Share invitation link",
 	"分享专属海报": "Share Exclusive poster",
-	"包括图片，音频，视频，数据等": "Including pictures, audio, video, data, etc"
+	"包括图片，音频，视频，数据等": "Including pictures, audio, video, data, etc",
+	"获取验证码": "Get verify code",
+	"确认绑定": "Confirm Binding",
+	"确认修改": "Confirm Change",
+	"原密码": "Old Password",
+	"新密码": "New Password",
+	"确认密码": "Confirm Password",
+	"当前绑定手机号": "Currently bound Phone number",
+	"修改手机号": "Modify Phone number"
 }

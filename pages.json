@@ -267,6 +267,22 @@
 				}
 			},
 			{
+				"path": "update-password/index",
+				"style": {
+					"navigationBarTitleText": "%page.修改密码%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
+				"path": "bind-update-phone/index",
+				"style": {
+					"navigationBarTitleText": "%page.修改手机号%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
 				"path": "policy-agreement/index",
 				"style": {
 					"navigationStyle": "custom",

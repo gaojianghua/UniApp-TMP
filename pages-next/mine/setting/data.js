@@ -10,45 +10,50 @@ const setList = [
 	},
 	{
 		id: 2,
-		name: 'page.绑定手机',
+		name: 'page.手机号',
 		page: '/pages-offspring/bind-cell-phone/index'
 	},
 	{
 		id: 3,
+		name: 'page.修改密码',
+		page: '/pages-offspring/update-password/index'
+	},
+	{
+		id: 4,
 		name: 'page.常见问题',
 		page: '/pages-offspring/common-problem/index'
 	},
 	{
-		id: 4,
+		id: 5,
 		name: 'page.意见反馈',
 		page: '/pages-offspring/feedback/index'
 	},
 	{
-		id: 5,
+		id: 6,
 		name: 'page.关于宫悦',
 		page: '/pages-offspring/about-us/index'
 	},
 	{
-		id: 6,
+		id: 7,
 		name: 'page.APP分享',
 		page: '/pages-offspring/app-share/index'
 	},
 	{
-		id: 7,
+		id: 8,
 		name: 'page.隐私政策',
 		page: '/pages-offspring/policy-agreement/index'
 	},
 	{
-		id: 8,
+		id: 9,
 		name: 'page.清除缓存',
 		page: '/pages-offspring/clear-cache/index'
 	},
 	{
-		id: 9,
+		id: 10,
 		name: '当前版本'
 	},
 	{
-		id: 10,
+		id: 11,
 		name: '退出登录'
 	}
 ]

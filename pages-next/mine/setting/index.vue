@@ -38,22 +38,24 @@
 						</view>
 					</template>
 				</m-cell>
-				<u-gap v-if="i == 2" height="10rpx"></u-gap>
-				<m-cell v-if="i > 2 && i <= 4" :itemStyle="{height: '88rpx'}" i18n class="px-3 bg-white"
+				<m-cell v-if="i == 3" :itemStyle="{height: '88rpx'}" i18n class="px-3 bg-white"
 					:item="item"></m-cell>
-				<u-gap v-if="i == 4" height="10rpx"></u-gap>
-				<m-cell v-if="i > 4 && i <= 7" :itemStyle="{height: '88rpx'}" i18n class="px-3 bg-white"
+				<u-gap v-if="i == 3" height="10rpx"></u-gap>
+				<m-cell v-if="i > 3 && i <= 5" :itemStyle="{height: '88rpx'}" i18n class="px-3 bg-white"
+					:item="item"></m-cell>
+				<u-gap v-if="i == 5" height="10rpx"></u-gap>
+				<m-cell v-if="i > 5 && i <= 8" :itemStyle="{height: '88rpx'}" i18n class="px-3 bg-white"
 					:item="item"></m-cell>
 				<!-- #ifdef APP-PLUS -->
-				<m-cell v-if="i == 8" :itemStyle="{height: '88rpx'}" i18n class="px-3 bg-white" :item="item"></m-cell>
+				<m-cell v-if="i == 9" :itemStyle="{height: '88rpx'}" i18n class="px-3 bg-white" :item="item"></m-cell>
 				<!-- #endif -->
-				<m-cell v-if="i == 9" :itemStyle="{height: '88rpx'}" i18n class="px-3 bg-white" :item="item">
+				<m-cell v-if="i == 10" :itemStyle="{height: '88rpx'}" i18n class="px-3 bg-white" :item="item">
 					<view slot="right-row" class="main-text-color">
 						V{{$store.state.appSystemInfo.appVersion}}
 					</view>
 				</m-cell>
-				<u-gap v-if="i == 10 && $store.state.token" height="10rpx"></u-gap>
-				<m-cell v-if="i == 10 && $store.state.token" :itemStyle="{height: '88rpx'}" i18n textCenter
+				<u-gap v-if="i == 11 && $store.state.token" height="10rpx"></u-gap>
+				<m-cell v-if="i == 11 && $store.state.token" :itemStyle="{height: '88rpx'}" i18n textCenter
 					:isIcon="false" class="px-3 bg-white" :item="item"></m-cell>
 			</view>
 		</view>
@@ -98,20 +100,23 @@
 			},
 			// cell点击事件
 			cellClick(i) {
-				i.id == 10 ? this.show = true : this.isLoginOpen(i)
+				i.id == 11 ? this.show = true : this.isLoginOpen(i)
 			},
 			// 鉴别登录指定跳转
 			isLoginOpen(i) {
 				// #ifdef APP-PLUS
-				if (i.id == 9) {
+				if (i.id == 10) {
 					APPUpdate()
 				}
 				// #endif
 				if (!this.$store.state.token) {
-					if (i.id == 0 || i.id == 1 || i.id == 2 || i.id == 4) {
+					if (i.id == 0 || i.id == 1 || i.id == 2 || i.id == 3 || i.id == 5) {
 						return this.$tools.Navigate.navigateTo('/pages/account/login/index')
 					}
 					return this.$tools.Navigate.navigateTo(i.page)
+				}
+				if (i.id == 2 && !this.$store.state.userinfo.phone) {
+					return this.$tools.Navigate.navigateTo('/pages-offspring/bind-update-phone/index', 1)
 				}
 				this.$tools.Navigate.navigateTo(i.page)
 			},
@@ -166,9 +171,9 @@
 			}
 
 			.menu-item:nth-child(2),
-			:nth-child(5),
-			:nth-child(7),
-			:nth-child(12) {
+			:nth-child(6),
+			:nth-child(8),
+			:nth-child(13) {
 				/deep/ .menu-item {
 					border-top: none !important;
 				}
