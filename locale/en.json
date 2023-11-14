@@ -237,5 +237,7 @@
 	"新密码": "New Password",
 	"确认密码": "Confirm Password",
 	"当前绑定手机号": "Currently bound Phone number",
-	"修改手机号": "Modify Phone number"
+	"修改手机号": "Modify Phone number",
+	"请选择国家代码": "Please select a country code",
+	"重新获取": "Reacquire"
 }

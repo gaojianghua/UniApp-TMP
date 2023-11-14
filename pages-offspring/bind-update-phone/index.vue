@@ -7,8 +7,8 @@
 			<view class="bottom">
 				<u-input :customStyle="{height: '96rpx', caretColor: '#f27299'}" type="text" border="none"
 					:placeholder="$t('请输入手机号')" v-model="query.phone">
-					<view slot="prefix" class="area d-flex a-center mr-3" @click="switchArea">
-						<span class="mr-1">+{{areaCode}}</span>
+					<view slot="prefix" class="area d-flex a-center mr-3" @click="show = true">
+						<span class="mr-1">+{{query.nationCode}}</span>
 						<u-icon name="arrow-down-fill" color="#f27299" size="14"></u-icon>
 					</view>
 				</u-input>
@@ -16,28 +16,46 @@
 			<view class="bottom b2 mt-3">
 				<u-input :customStyle="{height: '96rpx', caretColor: '#f27299'}" type="text" border="none"
 					:placeholder="$t('请输入验证码')" v-model="query.code">
-					<view slot="suffix" class="code px-3 line-h py-2 main-bg-color text-white" @click="getCode">
-						{{$t('获取验证码')}}
+					<view slot="suffix" class="code line-h d-flex a-center j-center main-bg-color text-white" @click="getCode">
+						<u-loading-icon v-if="load" size="18" color="#f1f1f1"></u-loading-icon>
+						<view class="code-text ml-1">
+							{{tips}}
+						</view>
 					</view>
 				</u-input>
+				<u-code @start="start" :startText="$t('获取验证码')" changeText="x S" :endText="$t('重新获取')"
+					ref="uCode" @change="codeChange"></u-code>
 			</view>
 			<view @click="switchUpdate" class="btons d-flex mt-10 a-center j-center text-white letter-2">
 				{{$t(btName)}}
 			</view>
 		</view>
+		<!-- 弹出层 -->
+		<m-popup :show="show" @close="show = false" title="请选择国家代码" i18n>
+			<view class="nation">
+
+			</view>
+		</m-popup>
 	</view>
 </template>
 
 <script>
+	import MPopup from '@/main_modules/main-ui/m-popup/index.vue'
 	export default {
+		components: {
+			MPopup
+		},
 		data() {
 			return {
+				show: false,
+				load: false,
+				tips: '',
 				value: '',
 				query: {
 					phone: '',
-					code: ''
+					code: '',
+					nationCode: '86'
 				},
-				areaCode: '86',
 				btName: ''
 			}
 		},
@@ -49,38 +67,61 @@
 		methods: {
 			// 修改手机号
 			switchUpdate() {
-				
+
 			},
 			// 选中区号
 			switchArea() {
-				
+
 			},
 			// 获取验证码
 			getCode() {
-				
+				this.load = true
+				if (this.$refs.uCode.canGetCode) {
+					setTimeout(() => {
+						this.$refs.uCode.start();
+					}, 1000);
+				}
+			},
+			// 验证码倒计时变化
+			codeChange(text) {
+				this.tips = text;
+			},
+			// 倒计时开始
+			start() {
+				this.load = false
 			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	.page{
+	.page {
 		background-color: #fff;
+
 		.bottom {
 			width: 600rpx;
 			background-color: #f1f1f1;
 			border-radius: 25rpx;
 			padding: 0 30rpx;
-			.code{
+
+			.code {
+				height: 66rpx;
+				width: 220rpx;
 				border-radius: 20rpx;
+				.code-text{
+					font-size: 26rpx;
+				}
 			}
-			.code:active{
+
+			.code:active {
 				background-color: #f2729980;
 			}
 		}
-		.b2{
+
+		.b2 {
 			padding: 0 16rpx 0 30rpx;
 		}
+
 		.btons {
 			font-size: 30rpx;
 			border-radius: 50rpx;
@@ -89,9 +130,13 @@
 			margin: 0 auto;
 			background: linear-gradient(to right, #85B6CA, #F9A4A0);
 		}
-		
+
 		.btons:active {
 			background: linear-gradient(to right, #85B6CA80, #F9A4A080);
+		}
+
+		.nation {
+			height: 600rpx;
 		}
 	}
 </style>

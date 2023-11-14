@@ -75,22 +75,22 @@
 			</view>
 		</m-modal>
 		<!-- 弹出层 -->
-		<u-popup round="20" closeable :show="cityShow" @close="cityShow = false">
-			<view class="popup">
-				<view class="title d-flex a-center pt-1 j-center">
-					{{$t('请选择所在地区')}}
-				</view>
+		<m-popup :show="cityShow" @close="cityShow = false" title="请选择所在地区" i18n>
+			<view class="city">
+				
 			</view>
-		</u-popup>
+		</m-popup>
 		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 
 <script>
 	import MModal from '@/main_modules/main-ui/m-modal/index.vue'
+	import MPopup from '@/main_modules/main-ui/m-popup/index.vue'
 	export default {
 		components: {
-			MModal
+			MModal,
+			MPopup
 		},
 		data() {
 			return {
@@ -206,11 +206,8 @@
 			background: linear-gradient(to right, #85B6CA80, #F9A4A080);
 		}
 		
-		.popup{
-			height: 80vh;
-			.title{
-				height: 88rpx;
-			}
+		.city{
+			height: 600rpx;
 		}
 	}
 </style>

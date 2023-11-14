@@ -14,6 +14,10 @@
 					<view class="bottom">
 						<u-input clearable :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="text" border="none"
 							:placeholder="$t('请输入手机号')" v-model="query.phone">
+							<view slot="prefix" class="area d-flex a-center mr-3" @click="show = true">
+								<span class="mr-1">+{{query.nationCode}}</span>
+								<u-icon name="arrow-down-fill" color="#f27299" size="14"></u-icon>
+							</view>
 						</u-input>
 					</view>
 					<view class="bottom">
@@ -28,13 +32,18 @@
 							<u-icon slot="suffix" :name="reEyeStr" size="20" color="#999" @click="switchEye(2)"></u-icon>
 						</u-input>
 					</view>
-					<view class="bottom">
+					<view class="bottom bp">
 						<u-input clearable border="none" :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="number"
 							:placeholder="$t('请输入验证码')" v-model="query.code">
-							<view slot="suffix" class="code">
-								
+							<view slot="suffix" class="code line-h d-flex a-center j-center main-bg-color text-white" @click="getCode">
+								<u-loading-icon v-if="load" size="18" color="#f1f1f1"></u-loading-icon>
+								<view class="code-text ml-1">
+									{{tips}}
+								</view>
 							</view>
 						</u-input>
+						<u-code @start="start" :startText="$t('获取验证码')" changeText="x S" :endText="$t('重新获取')"
+							ref="uCode" @change="codeChange"></u-code>
 					</view>
 					<view class="bottom">
 						<u-input clearable border="none" :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="text"
@@ -48,6 +57,12 @@
 				</view>
 			</view>
 		</m-scroll>
+		<!-- 弹出层 -->
+		<m-popup :show="show" @close="show = false" title="请选择国家代码" i18n>
+			<view class="nation">
+				
+			</view>
+		</m-popup>
 		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
@@ -55,17 +70,23 @@
 <script>
 	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	import MAgreePolicy from '@/main_modules/main-ui/m-agree-policy/index.vue'
+	import MPopup from '@/main_modules/main-ui/m-popup/index.vue'
 	export default {
 		components: {
 			MScroll,
-			MAgreePolicy
+			MAgreePolicy,
+			MPopup
 		},
 		data() {
 			return {
+				show: false,
+				load: false,
+				tips: '',
 				query: {
 					password: '',
 					phone: '',
-					inviteCode: ''
+					inviteCode: '',
+					nationCode: '86'
 				},
 				check: [],
 				isRePassword: true,
@@ -139,6 +160,23 @@
 						this.isRePassword = true
 					}
 				}
+			},
+			// 获取验证码
+			getCode() {
+				this.load = true
+				if (this.$refs.uCode.canGetCode) {
+					setTimeout(() => {
+						this.$refs.uCode.start();
+					}, 1000);
+				}
+			},
+			// 验证码倒计时变化
+			codeChange(text) {
+				this.tips = text;
+			},
+			// 倒计时开始
+			start() {
+				this.load = false
 			}
 		},
 		computed: {
@@ -173,6 +211,21 @@
 				border-radius: 50rpx;
 				padding: 0 30rpx;
 				margin-top: 20rpx;
+				
+				.code{
+					height: 70rpx;
+					width: 220rpx;
+					border-radius: 50rpx;
+					.code-text{
+						font-size: 26rpx;
+					}
+				}
+				.code:active{
+					background-color: #f2729980;
+				}
+			}
+			.bp{
+				padding-right: 18rpx;
 			}
 		}
 
@@ -187,6 +240,10 @@
 
 		.btons:active {
 			background: linear-gradient(to right, #85B6CA80, #F9A4A080);
+		}
+		
+		.nation{
+			height: 600rpx;
 		}
 	}
 </style>
