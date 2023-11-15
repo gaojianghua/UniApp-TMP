@@ -1,17 +1,17 @@
 const tabs = [{
-		pageId: 1,
+		pageId: 0,
 		iconPath: '/static/img/mine/shop.svg',
 		selectedIconPath: '/static/img/mine/shop-active.svg',
 		text: '商城'
 	},
 	{
-		pageId: 2,
+		pageId: 1,
 		iconPath: '/static/img/mine/order.svg',
 		selectedIconPath: '/static/img/mine/order-active.svg',
 		text: '订单'
 	},
 	{
-		pageId: 3,
+		pageId: 2,
 		iconPath: '/static/img/mine/record.svg',
 		selectedIconPath: '/static/img/mine/record-active.svg',
 		text: '记录'

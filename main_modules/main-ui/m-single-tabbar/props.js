@@ -1,4 +1,10 @@
 module.exports = {
+	current: {
+		type: [Number, String],
+		default: () => {
+			return 0
+		}
+	},
 	tabs: {
 		type: Array,
 		default: () => {
