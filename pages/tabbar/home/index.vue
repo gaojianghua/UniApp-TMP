@@ -11,8 +11,10 @@
 					<text class="ml-1">{{ liveCity }}</text>
 				</view>
 				<!-- 搜索框 -->
-				<u-search :placeholder="$t('请输入关键词')" height="60rpx" disabled :showAction="false"
-					@click="openSearch"></u-search>
+				<view class="position-relative flex-1">
+					<view class="position-absolute top-0 right-0 left-0 bottom-0 index-5" @click="openSearch"></view>
+					<u-search :placeholder="$t('请输入关键词')" height="60rpx" disabled :showAction="false"></u-search>
+				</view>
 			</view>
 		</m-navbar>
 		<!-- 内容区域 -->
