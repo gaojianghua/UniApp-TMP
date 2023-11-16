@@ -6,7 +6,7 @@
 				{{$t('已收藏总量')}}：{{10}}{{$t('件')}}
 			</view>
 			<view :class="switchManage ? 'bg-warning text-white' : 'bg-light-secondary'" class="manage ml-auto px-2 py mr-2  rounded-1" @click="switchManageClick">
-				{{$t('管理')}}
+				{{switchManage ? $t('取消') : $t('管理')}}
 			</view>
 			<view class="bg-dark d-flex a-center j-center rounded-1"
 				style="height: 54rpx; width: 54rpx;">
@@ -27,7 +27,7 @@
 					:class="direction == 'Y' ? 'd-flex flex-wrap j-sb' : ''">
 					<view class="goods-item" :style="{width: direction == 'Y' ? '48.8%' : '100%'}"
 						v-for="(item, i) in list" :key="i" @click.stop="openDetail(item)">
-						<m-goods-card @checkClick="checkClicke" @addCart="addCart" :item="item" :direction="direction" imageWidth="200rpx"
+						<m-goods-card @checkClick="checkClick" @addCart="addCart" :item="item" :direction="direction" imageWidth="200rpx"
 							:imageHeight="direction == 'Y' ? '300rpx' : '200rpx'" isSales
 							isDesc isOldPrice isOver isVIP :isCartBtn="!switchManage" :isChecked="switchManage"></m-goods-card>
 					</view>
@@ -128,7 +128,7 @@
 				
 			},
 			// 选中
-			checkClicke(i) {
+			checkClick(i) {
 				let bool = true
 				this.list.forEach((item) => {
 					if(item.goodsId == i.goodsId) {
