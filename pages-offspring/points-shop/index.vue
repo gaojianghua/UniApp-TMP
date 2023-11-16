@@ -11,7 +11,7 @@
 		<!-- #endif -->
 			<swiper-item v-for="(item, i) in tabs" :key="i">
 				<!-- 列表区域 -->
-				<view class="w-100 h-100 px-2">
+				<view class="w-100 h-100">
 					<shop :current="current" v-if="i == 0"></shop>
 					<order :current="current" v-if="i == 1"></order>
 					<record :current="current" v-if="i == 2"></record>

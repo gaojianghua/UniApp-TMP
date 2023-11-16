@@ -1,19 +1,27 @@
 <template>
-	<m-scroll :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load"
-		@loadmore="loadmore" bgColor="transparent" @onRefresh="onRefresh">
+	<m-scroll :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load" @loadmore="loadmore" bgColor="transparent"
+		@onRefresh="onRefresh">
 		<u-empty v-if="load != 0 && list.length == 0" mode="list" :text="$t('暂无数据')"
 			icon="http://cdn.uviewui.com/uview/empty/list.png">
 		</u-empty>
-		<view v-if="list.length != 0" class="item d-flex a-center j-sb p-2 mt-2" v-for="(val, index) in list" :key="index">
-			<view class="left d-flex flex-column">
-				<view class="title">
-					{{val.title}}
+		<view class="px-2">
+			<view v-if="list.length != 0" class="item bg-white rounded-1 d-flex a-center j-sb p-2 mt-2"
+				v-for="(item, i) in list" :key="i">
+				<view class="d-flex a-center">
+					<u-image radius="10" width="100rpx" height="100rpx" :src="item.img"></u-image>
+					<view class="info ml-2 d-flex flex-column j-sb">
+						<view class="info-title">
+							{{item.title}}
+						</view>
+						<view class="info-time">
+							{{item.time}}
+						</view>
+					</view>
 				</view>
-				<view class="desc">
-					{{val.desc}}
+				<view class="btns border-2 rounded-1 px-3" :class="item.state == 1 ? 'main-text-color' : 'text-muted'">
+					{{item.state == 1 ? '+' : '-'}}{{item.value}}
 				</view>
 			</view>
-			<u-image width="300rpx" height="180rpx" :src="val.img"></u-image>
 		</view>
 	</m-scroll>
 </template>
@@ -57,8 +65,10 @@
 				for (let i = 0; i < 10; i++) {
 					data.list.push({
 						img: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg',
-						title: 'haha',
-						desc: 'nishidsahhda'
+						title: '购买燕京啤酒',
+						time: '2023-12-23 10:23:09',
+						state: 1,
+						value: 2000
 					})
 				}
 				data.total = data.list.length
@@ -111,7 +121,7 @@
 						let time = setTimeout(() => {
 							this.getData()
 							clearTimeout(time)
-						},1200)
+						}, 1200)
 					}
 				},
 				immediate: true,
@@ -122,4 +132,10 @@
 </script>
 
 <style lang="scss" scoped>
+	.info {
+		.info-time {
+			color: #999;
+			font-size: 26rpx;
+		}
+	}
 </style>
