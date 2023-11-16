@@ -1,30 +1,49 @@
 <template>
 	<view class="page">
 		<!-- 顶部导航栏 -->
-		<m-navbar bgColor="transparent" textColor="#fb7299" :value="pageTitle" i18n></m-navbar>
+		<m-navbar bgColor="#fff" textColor="#fb7299" :value="pageTitle" i18n></m-navbar>
 		<!-- 内容区域 -->
-		<view class="px-3">
-			<u-parse :content="content"></u-parse>
-		</view>
+		<m-scroll :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
+			<view class="px-3 pb-3">
+				<u-parse :content="content" :tagStyle="style"></u-parse>
+			</view>
+		</m-scroll>
 	</view>
 </template>
 
 <script>
+	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
+	import { policy, agreement } from './data.js'
 	export default {
+		components: {
+			MScroll
+		},
 		data() {
 			return {
 				pageTitle: '',
-				content: ''
+				content: '',
+				style: {
+					h3: 'margin-top: 20rpx;',
+					h4: 'margin-top: 20rpx;',
+				},
+				pageId: 0
 			}
 		},
 		onLoad(options) {
+			this.pageId = options.item
 			options.item == 1 ? this.pageTitle = 'page.用户协议' : this.pageTitle = 'page.隐私政策'
 			this.getData()
 		},
 		methods: {
 			getData() {
-				this.content = `<p>露从今夜白，月是故乡明</p>
-					<img src="https://cdn.uviewui.com/uview/swiper/2.jpg" />`
+				this.pageId == 1 ? this.content = agreement : this.content = policy
+			}
+		},
+		computed: {
+			scrollStyle() {
+				return {
+					height: `calc(100vh - ${this.$store.state.navbarHeight}px - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
+				}
 			}
 		}
 	}
