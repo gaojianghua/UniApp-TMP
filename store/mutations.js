@@ -23,6 +23,9 @@ export default {
 	updateLanguage(state, e) {
 		state.lang = e
 	},
+	updateLangList(state, e) {
+		state.langList = e
+	},
 	updatePhoneHeight(state, e) {
 		state.phoneHeight = e
 	},

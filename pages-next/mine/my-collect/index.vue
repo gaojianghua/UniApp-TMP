@@ -18,7 +18,7 @@
 		</view>
 		<!-- 列表区域 -->
 		<view class="w-100 px-2" :style="scrollStyle">
-			<m-scroll :placeHeight="switchManage? '100rpx' : '0'" :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load"
+			<m-scroll :placeHeight="switchManage? '100rpx' : '0'" i18n :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load"
 				@loadmore="loadmore" bgColor="transparent" @onRefresh="onRefresh">
 				<u-empty v-if="load != 0 && list.length == 0" mode="list" :text="$t('暂无收藏')"
 					icon="http://cdn.uviewui.com/uview/empty/list.png">

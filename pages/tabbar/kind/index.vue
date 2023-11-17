@@ -44,7 +44,7 @@
 					</view>
 				</view>
 				<view class="kind-content" :style="{height: `calc(100% - 88rpx)`}">
-					<m-scroll bgColor="transparent" :isLoading="isLoading" :scrollStyle="{height: '100%'}"
+					<m-scroll bgColor="transparent" i18n :isLoading="isLoading" :scrollStyle="{height: '100%'}"
 						:load="load" @loadmore="loadmore" @onRefresh="onRefresh" mainColor="#fb7290">
 						<u-empty v-if="load != 0 && list.length == 0" mode="list" :text="$t('暂无商品')"
 							icon="http://cdn.uviewui.com/uview/empty/list.png">

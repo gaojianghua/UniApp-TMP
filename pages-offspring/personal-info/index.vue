@@ -24,7 +24,7 @@
 			</view>
 		</view>
 		<!-- 弹框 -->
-		<m-modal :show="show" title="修改用户名" @cancel="show = false" @confirm="confirmChangeUsername">
+		<m-modal :show="show" i18n title="修改用户名" @cancel="show = false" @confirm="confirmChangeUsername">
 			<view class="d-flex a-center j-center">
 				<u-input :customStyle="{height: '80rpx', caretColor: '#f27299', borderColor: '#f27299 !important'}" type="text"
 					:placeholder="$t('请输入用户名')" v-model="query.username">

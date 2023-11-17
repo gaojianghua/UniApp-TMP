@@ -173,6 +173,12 @@
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
+		},{
+			"path": "mine/scan-code/index",
+			"style": {
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
 		}
 		]
 	}, {
@@ -211,9 +217,17 @@
 				}
 			},
 			{
-				"path": "common-problem/index",
+				"path": "common-issue/index",
 				"style": {
 					"navigationBarTitleText": "%page.常见问题%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
+				"path": "common-issue-detail/index",
+				"style": {
+					"navigationBarTitleText": "%page.问题详情%",
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
@@ -299,6 +313,15 @@
 			{
 				"path": "feedback-record/index",
 				"style": {
+					"navigationBarTitleText": "%page.反馈记录%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
+				"path": "feedback-detail/index",
+				"style": {
+					"navigationBarTitleText": "%page.反馈详情%",
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}

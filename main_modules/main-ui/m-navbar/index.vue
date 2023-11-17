@@ -18,9 +18,9 @@
 					</view>
 				</template>
 				<view v-if="isLang" class="tabbar-locale d-flex j-center a-center" @click="selectLang">
-					<u-image height="60rpx" width="60rpx" src="/static/img/common/diamonds.svg"></u-image>
+					<u-image height="50rpx" width="50rpx" src="/static/img/home/locale.svg"></u-image>
 				</view>
-				<slot name="right"></slot>
+				<slot v-else name="right"></slot>
 			</view>
 		</view>
 	</view>
@@ -47,6 +47,7 @@
 				this.$emit('selectLang')
 			},
 			retreat() {
+				// #ifdef H5
 				let pages = getCurrentPages();
 				if (pages.length > 1) {
 					// 存在上级页面
@@ -55,6 +56,10 @@
 					// 不存在上级页面
 					tools.Navigate.switchTab(this.$router.options.routes[0].alias)
 				}
+				// #endif
+				// #ifndef H5
+				tools.Navigate.navigateBack()
+				// #endif
 				this.$emit('pageBack')
 			}
 		}
@@ -80,11 +85,11 @@
 				right: 20rpx;
 				top: 50%;
 				transform: translateY(-50%);
-				width: 60rpx;
-				height: 60rpx;
+				width: 50rpx;
+				height: 50rpx;
 
 				img {
-					width: 60rpx;
+					width: 50rpx;
 				}
 			}
 

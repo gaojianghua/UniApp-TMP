@@ -60,7 +60,6 @@
 			}
 		},
 		onLoad(options) {
-			console.log(options.item)
 			options.item == 1 ? this.value = 'page.绑定手机号' : this.value = 'page.更换手机号'
 			options.item == 1 ? this.btName = '确认绑定' : this.btName = '确认修改'
 		},

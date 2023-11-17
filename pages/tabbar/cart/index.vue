@@ -39,7 +39,7 @@
 			</view>
 		</view>
 		<template v-else>
-			<m-scroll bgColor="transparent" :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load" @loadmore="loadmore" @onRefresh="onRefresh" mainColor="#fb7290">
+			<m-scroll bgColor="transparent" i18n :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load" @loadmore="loadmore" @onRefresh="onRefresh" mainColor="#fb7290">
 				<u-empty v-if="load != 0 && list.length == 0" mode="car" :text="$t('购物车是空的')"
 					icon="http://cdn.uviewui.com/uview/empty/car.png">
 				</u-empty>
@@ -58,7 +58,7 @@
 			<view class="left">
 				{{$t('登录查看购物车')}}
 			</view>
-			<view class="right d-flex ml-auto j-center a-center" @click="login">
+			<view class="right py-2 px-3 d-flex ml-auto line-h j-center a-center" @click="login">
 				{{$t('立即登录')}}
 			</view>
 		</view>
@@ -93,7 +93,7 @@
 			</view>
 		</view>
 		<!-- 弹框 -->
-		<m-modal :show="show" title="温馨提示" @cancel="show = false" @confirm="confirmDelete">
+		<m-modal :show="show" i18n title="温馨提示" @cancel="show = false" @confirm="confirmDelete">
 			<view class="d-flex a-center j-center">
 				<view class="mt-1 text-center">
 					{{$t('确定移除选中的商品吗？')}}
@@ -299,15 +299,12 @@
 			}
 
 			.right {
-				width: 147rpx;
-				height: 52rpx;
 				background: linear-gradient(-43deg, #FBEFD0, #FAE2A0);
-				border-radius: 30rpx;
+				border-radius: 50rpx;
 				font-size: 26rpx;
-				font-family: PingFang SC;
-				font-weight: 400;
+				font-weight: 500;
 				color: #56360E;
-				line-height: 48rpx;
+				box-shadow: 0 2rpx 4rpx 4rpx #FBEFD0;
 			}
 
 			.right:active {

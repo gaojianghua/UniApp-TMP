@@ -25,7 +25,7 @@
 			<swiper-item v-for="(item, i) in tabs" :key="i">
 				<!-- 列表区域 -->
 				<view class="w-100 h-100 px-2">
-					<m-scroll :isLoading="item.isLoading" :scrollStyle="scrollStyle" :load="item.load"
+					<m-scroll :isLoading="item.isLoading" i18n :scrollStyle="scrollStyle" :load="item.load"
 						@loadmore="loadmore" bgColor="transparent" @onRefresh="onRefresh">
 						<u-empty v-if="item.load != 0 && item.list.length == 0" mode="list" :text="$t('暂无数据')"
 							icon="http://cdn.uviewui.com/uview/empty/list.png">

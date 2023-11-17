@@ -1,12 +1,13 @@
 <template>
 	<view class="page">
 		<!-- 顶部导航栏 -->
-		<m-navbar isLang bgColor="#fff" isTab isSlot>
+		<m-navbar isLang bgColor="#fff" isTab isSlot @selectLang="show = true">
 			<view class="w-100 d-flex a-center search pl-2 pr-9" :style="{
 			width: `calc(100vw - ${miniProgramCapsule.width}px)`,
 			marginRight: `${miniProgramCapsule.width}px`}">
 				<!-- 定位城市 -->
-				<view class="d-flex a-center mr-2" @click="$tools.Navigate.navigateTo('/pages-next/home/select-city/index')">
+				<view class="d-flex a-center mr-2"
+					@click="$tools.Navigate.navigateTo('/pages-next/home/select-city/index')">
 					<u-image height="50rpx" width="50rpx" src="/static/img/home/location.png"></u-image>
 					<text class="ml-1">{{ liveCity }}</text>
 				</view>
@@ -18,12 +19,14 @@
 			</view>
 		</m-navbar>
 		<!-- 内容区域 -->
-		<m-scroll :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load" bgColor="transparent"
+		<m-scroll :isLoading="isLoading" i18n :scrollStyle="scrollStyle" :load="load" bgColor="transparent"
 			@loadmore="loadmore" @onRefresh="onRefresh">
 			<view class="content pt-2 px-2 bg-white">
-				<u-swiper height="320rpx" indicatorActiveColor="#f27299" :list="banner" keyName="image" indicator @click="bannerClick" />
+				<u-swiper height="320rpx" indicatorActiveColor="#f27299" :list="banner" keyName="image" indicator
+					@click="bannerClick" />
 				<view class="menu-list mt-1 d-flex flex-wrap">
-					<view class="menu-item mt-2 d-flex flex-column j-center a-center" v-for="(item, i) in menus" :key="i">
+					<view class="menu-item mt-2 d-flex flex-column j-center a-center" v-for="(item, i) in menus"
+						:key="i">
 						<u-image height="88rpx" width="88rpx" :src="item.src"></u-image>
 						<view class="">
 							{{item.name}}
@@ -53,12 +56,15 @@
 					<view class="goods-item" :style="{width: direction == 'Y' ? '48.8%' : '100%'}"
 						v-for="(item, i) in list" :key="i" @click.stop="openDetail(item)">
 						<m-goods-card @addCart="addCart" :item="item" :direction="direction" imageWidth="200rpx"
-							:imageHeight="direction == 'Y' ? '300rpx' : '200rpx'" isSales
-							isDesc isOldPrice isOver isVIP isCartBtn></m-goods-card>
+							:imageHeight="direction == 'Y' ? '300rpx' : '200rpx'" isSales isDesc isOldPrice isOver isVIP
+							isCartBtn></m-goods-card>
 					</view>
 				</view>
 			</view>
 		</m-scroll>
+		<!-- 弹框 -->
+		<common-lang-model :show="show" @close="show = false" @confirmSwitch="confirmSwitch"></common-lang-model>
+		<u-toast ref="uToast"></u-toast>
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/home/index" i18n></m-tabbar>
 	</view>
@@ -68,6 +74,7 @@
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
 	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	import MGoodsCard from '@/main_modules/main-ui/m-goods-card/index.vue'
+	import CommonLangModel from '@/components/pages/common-lang-model/index.vue'
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	import capsuleInit from '@/mixins/capsule-init.js'
 	import shareInit from '@/mixins/share-init.js'
@@ -81,10 +88,12 @@
 		components: {
 			MTabbar,
 			MScroll,
-			MGoodsCard
+			MGoodsCard,
+			CommonLangModel
 		},
 		data() {
 			return {
+				show: false,
 				banner,
 				menus,
 				isLoading: true,
@@ -96,7 +105,7 @@
 				list: [],
 				total: 0,
 				istrig: true,
-				direction: 'Y',
+				direction: 'Y'
 			}
 		},
 		onLoad() {
@@ -106,6 +115,7 @@
 			// 初始化
 			init() {
 				this.getData()
+				this.getLangList()
 			},
 			// 获取数据
 			async getData(e) {
@@ -151,6 +161,24 @@
 					clearTimeout(time)
 				}, 1000)
 			},
+			// 获取语言列表
+			getLangList() {
+				let langList = [{
+						name: '中文简体',
+						code: 'zh-Hans'
+					},
+					{
+						name: '中文繁体',
+						code: 'zh-Hant'
+					},
+					{
+						name: '英文',
+						code: 'en'
+					}
+				]
+				this.$store.commit('updateLangList', langList)
+				uni.setStorageSync('langList', langList)
+			},
 			// 进入搜索界面
 			openSearch() {
 				this.$tools.Navigate.navigateTo('/pages-next/common/search/index')
@@ -161,7 +189,7 @@
 			},
 			// 加入购物车
 			addCart(i) {
-				
+
 			},
 			// banner点击事件
 			bannerClick(e) {
@@ -176,6 +204,19 @@
 					this.$tools.Navigate.navigateTo(this.banner[e].link)
 				}
 			},
+			// 确认切换语言
+			confirmSwitch(lang) {
+				this.$store.commit('updateLanguage', lang)
+				uni.setStorageSync('lang', lang)
+				this.$i18n.locale = lang
+				uni.setLocale(lang)
+				this.show = false
+				this.$refs.uToast.show({
+					message: this.$t('切换语言成功'),
+					type: 'success',
+					duration: 1200
+				})
+			}
 		},
 		computed: {
 			scrollStyle() {
@@ -193,8 +234,8 @@
 <style lang="scss" scoped>
 	.page {
 		.content {
-			.menu-list{
-				.menu-item{
+			.menu-list {
+				.menu-item {
 					width: 20%;
 				}
 			}

@@ -1,5 +1,5 @@
 <template>
-	<m-modal :show="$store.state.timeoutShow" :title="title" @cancel="updateTimeoutShow" :isCancel="false"
+	<m-modal i18n :show="$store.state.timeoutShow" :title="title" @cancel="updateTimeoutShow" :isCancel="false"
 		@confirm="updateTimeoutShow">
 		<view class="modal d-flex a-center j-center flex-column text-danger">
 			<u-icon name="info-circle" color="#dc3545" size="40"></u-icon>

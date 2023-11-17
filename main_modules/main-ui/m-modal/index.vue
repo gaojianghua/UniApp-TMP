@@ -3,7 +3,7 @@
 		<view class="warp d-flex a-center j-center">
 			<view class="rect" @tap.stop>
 				<view class="rect-title d-flex a-center j-center main-bg-color">
-					{{$t(title)}}
+					{{i18n ? $t(title) : title}}
 					<view class="rect-close" @click="cancel">
 						<u-icon name="close" :color="iconColor" :size="iconSize"></u-icon>
 					</view>
@@ -13,16 +13,16 @@
 				</view>
 				<view v-if="isCancel" class="rect-btn d-flex j-sb a-center">
 					<view class="rect-btn-item text-center main-bg-color main-bg-color-active" @click="cancel">
-						{{$t('取消')}}
+						{{i18n ? $t('取消') : '取消'}}
 					</view>
 					<view class="px-4"></view>
 					<view class="rect-btn-item text-center main-bg-color main-bg-color-active" @click="confirm">
-						{{$t('确认')}}
+						{{i18n ? $t('确认') : '确认'}}
 					</view>
 				</view>
 				<view v-else class="rect-btn d-flex j-center a-center">
 					<view class="rect-btn-btn text-center main-bg-color main-bg-color-active" @click="confirm">
-						{{$t(btnName)}}
+						{{i18n ? $t(btnName) : btnName}}
 					</view>
 				</view>
 			</view>
@@ -57,6 +57,10 @@
 			iconSize: {
 				type: String,
 				default: '16'
+			},
+			i18n: {
+				type: Boolean,
+				default: false
 			}
 		},
 		data() {

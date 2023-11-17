@@ -1,6 +1,6 @@
 <template>
 	<view class="page">
-		<m-navbar bgColor="#fff" textColor="#fb7299" value="page.常见问题" i18n></m-navbar>
+		<m-navbar bgColor="#fff"></m-navbar>
 	</view>
 </template>
 
@@ -10,7 +10,7 @@
 			return {}
 		},
 		methods: {
-
+			
 		}
 	}
 </script>

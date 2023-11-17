@@ -43,7 +43,6 @@
 			},
 			current: {
 				handler(newV, oldV) {
-					console.log(newV, oldV)
 					if (newV != oldV && this.posterShow) {
 						uni.showLoading()
 					} else if (newV == oldV && this.posterShow) {

@@ -61,7 +61,7 @@
 					@click="openMoreLogin(i)">
 						<u-image :src="item.image" width="80rpx" height="80rpx" mode=""></u-image>
 						<view class="more-name line-h mt-1">
-							{{item.name}}
+							{{$t(item.name)}}
 						</view>
 					</view>
 				</view>

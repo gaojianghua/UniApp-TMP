@@ -41,30 +41,31 @@
 				<m-cell v-if="i == 3" :itemStyle="{height: '88rpx'}" i18n class="px-3 bg-white"
 					:item="item"></m-cell>
 				<u-gap v-if="i == 3" height="10rpx"></u-gap>
-				<m-cell v-if="i > 3 && i <= 5" :itemStyle="{height: '88rpx'}" i18n class="px-3 bg-white"
+				<m-cell v-if="i > 3 && i <= 6" :itemStyle="{height: '88rpx'}" i18n class="px-3 bg-white"
 					:item="item"></m-cell>
-				<u-gap v-if="i == 5" height="10rpx"></u-gap>
-				<m-cell v-if="i > 5 && i <= 8" :itemStyle="{height: '88rpx'}" i18n class="px-3 bg-white"
+				<u-gap v-if="i == 6" height="10rpx"></u-gap>
+				<m-cell v-if="i > 6 && i <= 9" :itemStyle="{height: '88rpx'}" i18n class="px-3 bg-white"
 					:item="item"></m-cell>
 				<!-- #ifdef APP-PLUS -->
-				<m-cell v-if="i == 9" :itemStyle="{height: '88rpx'}" i18n class="px-3 bg-white" :item="item"></m-cell>
+				<m-cell v-if="i == 10" :itemStyle="{height: '88rpx'}" i18n class="px-3 bg-white" :item="item"></m-cell>
 				<!-- #endif -->
-				<m-cell v-if="i == 10" :itemStyle="{height: '88rpx'}" i18n class="px-3 bg-white" :item="item">
+				<m-cell v-if="i == 11" :itemStyle="{height: '88rpx'}" i18n class="px-3 bg-white" :item="item">
 					<view slot="right-row" class="main-text-color">
 						V{{$store.state.appSystemInfo.appVersion}}
 					</view>
 				</m-cell>
-				<u-gap v-if="i == 11 && $store.state.token" height="10rpx"></u-gap>
-				<m-cell v-if="i == 11 && $store.state.token" :itemStyle="{height: '88rpx'}" i18n textCenter
+				<u-gap v-if="i == 12 && $store.state.token" height="10rpx"></u-gap>
+				<m-cell v-if="i == 12 && $store.state.token" :itemStyle="{height: '88rpx'}" i18n textCenter
 					:isIcon="false" class="px-3 bg-white" :item="item"></m-cell>
 			</view>
 		</view>
 		<!-- 弹框 -->
-		<m-modal :show="show" title="确认退出" @cancel="show = false" @confirm="confirmLogout">
+		<m-modal :show="show" i18n title="确认退出" @cancel="show = false" @confirm="confirmLogout">
 			<view class="d-flex a-center j-center">
 				{{$t('确定退出登录吗？')}}
 			</view>
 		</m-modal>
+		<common-lang-model :show="langShow" @close="langShow = false" @confirmSwitch="confirmSwitch"></common-lang-model>
 		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
@@ -72,6 +73,7 @@
 <script>
 	import MCell from '@/main_modules/main-ui/m-cell/index.vue'
 	import MModal from '@/main_modules/main-ui/m-modal/index.vue'
+	import CommonLangModel from '@/components/pages/common-lang-model/index.vue'
 	// #ifdef APP-PLUS
 	import APPUpdate from '@/uni_modules/zhouWei-APPUpdate/js_sdk/appUpdate';
 	// #endif
@@ -81,12 +83,14 @@
 	export default {
 		components: {
 			MCell,
-			MModal
+			MModal,
+			CommonLangModel
 		},
 		data() {
 			return {
 				setList,
 				show: false,
+				langShow: false,
 				systemInfo: {}
 			}
 		},
@@ -100,19 +104,23 @@
 			},
 			// cell点击事件
 			cellClick(i) {
-				i.id == 11 ? this.show = true : this.isLoginOpen(i)
+				i.id == 12 ? this.show = true : this.isLoginOpen(i)
 			},
 			// 鉴别登录指定跳转
 			isLoginOpen(i) {
 				// #ifdef APP-PLUS
-				if (i.id == 10) {
+				if (i.id == 11) {
 					APPUpdate()
 				}
 				// #endif
+				if (i.id == 6) {
+					return this.langShow = true
+				}
 				if (!this.$store.state.token) {
 					if (i.id == 0 || i.id == 1 || i.id == 2 || i.id == 3 || i.id == 5) {
 						return this.$tools.Navigate.navigateTo('/pages/account/login/index')
 					}
+					
 					return this.$tools.Navigate.navigateTo(i.page)
 				}
 				if (i.id == 2 && !this.$store.state.userinfo.phone) {
@@ -129,6 +137,19 @@
 				this.show = false
 				this.$refs.uToast.show({
 					message: this.$t('退出登录成功'),
+					type: 'success',
+					duration: 1200
+				})
+			},
+			// 确认切换语言
+			confirmSwitch(lang) {
+				this.$store.commit('updateLanguage', lang)
+				uni.setStorageSync('lang', lang)
+				this.$i18n.locale = lang
+				uni.setLocale(lang)
+				this.langShow = false
+				this.$refs.uToast.show({
+					message: this.$t('切换语言成功'),
 					type: 'success',
 					duration: 1200
 				})
@@ -172,8 +193,8 @@
 
 			.menu-item:nth-child(2),
 			:nth-child(6),
-			:nth-child(8),
-			:nth-child(13) {
+			:nth-child(9),
+			:nth-child(14) {
 				/deep/ .menu-item {
 					border-top: none !important;
 				}

@@ -64,18 +64,18 @@
 			</view>
 		</view>
 		<!-- 弹框 -->
-		<m-modal :show="show" title="确认移除" @cancel="show = false" @confirm="confirmRemoveCity">
+		<m-modal :show="show" i18n title="确认移除" @cancel="show = false" @confirm="confirmRemoveCity">
 			<view class="d-flex a-center j-center">
 				{{$t('确定移除此地址吗？')}}
 			</view>
 		</m-modal>
-		<m-modal :show="saveShow" title="确认保存" @cancel="saveShow = false" @confirm="submitSave">
+		<m-modal :show="saveShow" i18n title="确认保存" @cancel="saveShow = false" @confirm="submitSave">
 			<view class="d-flex a-center j-center">
 				{{isEdit ? $t('确定修改此地址吗？') : $t('确定添加此地址吗？')}}
 			</view>
 		</m-modal>
 		<!-- 弹出层 -->
-		<m-popup :show="cityShow" @close="cityShow = false" title="请选择所在地区" i18n>
+		<m-popup :show="cityShow" i18n @close="cityShow = false" title="请选择所在地区" i18n>
 			<view class="city">
 				
 			</view>
@@ -153,7 +153,6 @@
 					list.push(this.item)
 				}
 				this.$store.commit('updateShippingAddress', list)
-				console.log(this.$store.state.shippingAddress)
 				this.saveShow = false
 				this.$tools.Navigate.navigateBack()
 			},

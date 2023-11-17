@@ -1,7 +1,7 @@
 <template>
 	<view class="main" :style="scrollStyle">
 		<view :class="screen == 0 ? 'top-active' : (screen == 1 ? 'top-default' : '')" class="main-top">
-			<m-scroll :isLoading="couponIsLoading" :scrollStyle="{height: `calc(100% - 50rpx)`}" :load="couponLoad"
+			<m-scroll :isLoading="couponIsLoading" i18n :scrollStyle="{height: `calc(100% - 50rpx)`}" :load="couponLoad"
 				@loadmore="couponLoadmore" bgColor="transparent" @onRefresh="couponOnRefresh">
 				<u-empty v-if="load != 0 && couponList.length == 0" mode="list" :text="$t('暂无数据')"
 					icon="http://cdn.uviewui.com/uview/empty/list.png">
@@ -39,7 +39,7 @@
 				<u-icon class="mt-auto" v-if="screen != 1" name="arrow-upward" size="22" color="#f27299"></u-icon>
 				<u-icon class="mt-auto" v-else name="arrow-downward" size="22" color="#f27299"></u-icon>
 			</view>
-			<m-scroll :isLoading="isLoading" :scrollStyle="{height: `calc(100% - 50rpx)`}" :load="load"
+			<m-scroll :isLoading="isLoading" i18n :scrollStyle="{height: `calc(100% - 50rpx)`}" :load="load"
 				@loadmore="loadmore" bgColor="transparent" @onRefresh="onRefresh">
 				<u-empty v-if="load != 0 && list.length == 0" mode="list" :text="$t('暂无数据')"
 					icon="http://cdn.uviewui.com/uview/empty/list.png">
@@ -68,7 +68,12 @@
 			</m-scroll>
 		</view>
 		<!-- 弹框 -->
-		
+		<m-modal :show="show" i18n title="温馨提示" @cancel="show = false" @confirm="confirmExchange">
+			<view class="d-flex a-center j-center">
+				{{$t('确定消耗') + tempPoints + $t('积分兑换') + (type == 0 ? $t('优惠券') : tempGoods) + $t('吗？')}}
+			</view>
+		</m-modal>
+		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 
@@ -108,7 +113,9 @@
 				couponIstrig: true,
 				screen: 2,
 				show: false,
-				tempPoints: 0
+				tempPoints: 0,
+				tempGoods: '',
+				type: 0
 			}
 		},
 		methods: {
@@ -128,7 +135,8 @@
 						img: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg',
 						title: '曼哈顿啤酒',
 						ex: 1780,
-						point: 300
+						point: 300,
+						type: 1
 					})
 				}
 				data.total = data.list.length
@@ -178,7 +186,8 @@
 					data.list.push({
 						price: 20,
 						point: 200,
-						desc: '满100可用'
+						desc: '满100可用',
+						type: 0
 					})
 				}
 				data.total = data.list.length
@@ -223,7 +232,21 @@
 			},
 			// 打开确认兑换框
 			openModel(i) {
-				
+				this.tempPoints = i.point
+				this.type = i.type
+				if(i.type == 1) {
+					this.tempGoods = i.title
+				}
+				this.show = true
+			},
+			// 确认兑换
+			confirmExchange() {
+				this.show = false
+				this.$refs.uToast.show({
+					message: this.$t('兑换成功'),
+					type: 'success',
+					duration: 1200
+				})
 			}
 		},
 		computed: {

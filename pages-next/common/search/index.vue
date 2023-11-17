@@ -13,7 +13,7 @@
 			</view>
 		</m-navbar>
 		<!-- 内容区域 -->
-		<m-scroll :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load" bgColor="transparent"
+		<m-scroll :isLoading="isLoading" i18n :scrollStyle="scrollStyle" :load="load" bgColor="transparent"
 			@loadmore="loadmore" @onRefresh="onRefresh">
 			<view v-if="historyList != 0 && !isSearchResult" class="history p-3">
 				<view class="d-flex a-center j-sb">

@@ -1,5 +1,5 @@
 <template>
-	<m-modal :show="show" :title="title" @cancel="show=false" :isCancel="false" btnName="查看解决方案"
+	<m-modal :show="show" i18n :title="title" @cancel="show=false" :isCancel="false" btnName="查看解决方案"
 		@confirm="enterNetwork">
 		<view class="modal d-flex a-center j-center flex-column text-danger">
 			<view class="iconfont icon-wangluoguzhang"></view>

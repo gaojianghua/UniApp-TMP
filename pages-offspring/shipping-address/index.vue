@@ -46,7 +46,7 @@
 			</view>
 		</view>
 		<!-- 弹框 -->
-		<m-modal :show="show" title="确认移除" @cancel="show = false" @confirm="confirmRemoveCity">
+		<m-modal :show="show" i18n title="确认移除" @cancel="show = false" @confirm="confirmRemoveCity">
 			<view class="d-flex a-center j-center">
 				{{$t('确定移除此地址吗？')}}
 			</view>

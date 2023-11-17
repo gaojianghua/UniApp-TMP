@@ -1,6 +1,6 @@
 <template>
 	<view class="title-cet d-flex a-center j-center">
-		<view class="title-agreement d-flex a-center j-center" :style="{color: defColor}">
+		<view class="title-agreement d-flex a-center j-center flex-wrap" :style="{color: defColor}">
 			<u-checkbox-group checked shape="circle" @change="checkChange" size="15" :activeColor="color" :value="check"
 				placement="column">
 				<u-checkbox name="check">

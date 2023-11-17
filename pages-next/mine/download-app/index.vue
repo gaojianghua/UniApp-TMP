@@ -29,7 +29,7 @@
 			</view>
 		</m-scroll>
 		<!-- 弹框 -->
-		<m-modal :show="show" title="温馨提示" :isCancel="false" btnName="复制链接" @cancel="show = false" @confirm="urlCopy">
+		<m-modal :show="show" i18n title="温馨提示" :isCancel="false" btnName="复制链接" @cancel="show = false" @confirm="urlCopy">
 			<view class="d-flex a-center j-center flex-column">
 				<view class="d-flex a-center j-center flex-column main-text-color letter-1">
 					<span>{{$t('您当前使用的不是Safari浏览器')}}</span>

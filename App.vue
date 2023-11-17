@@ -60,9 +60,9 @@
 			// 显示小程序原生菜单分享
 			this.$multiportApi.mini.showShareMenu({
 				withShareTicket: false, // 是否使用带shareTicket的转发，可以在 App.onLaunch 或 App.onShow 获取到一个 shareTicket。通过调用 wx.getShareInfo 接口传入此 shareTicket 可以获取到转发信息
-				title: 'LOVESHOP', // 分享标题
-				content: 'LOVESHOP 一个多元化娱乐电商平台 享受更高性价比的生活', // 分享内容
-				imageUrl: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/wolffyPink.png', // 分享图标
+				title: 'GongYue Shop', // 分享标题
+				content: 'GongYue Shop 是一个多元化娱乐电商平台 享受更高性价比的生活', // 分享内容
+				imageUrl: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/GongYueLogo.png', // 分享图标
 				path: '/pages/tabbar/home/index', // 页面 path ，必须是以 / 开头的完整路径
 				success: () => {}, // 接口调用成功的回调函数
 				fail: () => {}, // 接口调用失败的回调函数

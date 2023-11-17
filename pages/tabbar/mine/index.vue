@@ -11,21 +11,31 @@
 						:src="$store.state.userinfo.avatar || '/static/img/mine/default-avatar.png'" mode="">
 					</u-image>
 				</view>
-				<view class="user-info d-flex flex-column j-around" @click="openLogin">
+				<view class="user-info d-flex flex-column j-around mr-2" @click="openLogin">
 					<view class="info-name font-lg line-h">
 						{{$store.state.token ? $store.state.userinfo.name : $t('前往登录')}}
 					</view>
-					<view v-if="$store.state.token" class="info-desc font-md line-h">
+					<view v-if="$store.state.token" class="info-desc font-md line-h mt-2">
 						ID: {{$store.state.userinfo.id}}
 					</view>
-					<view v-else class="user-notice line-h">
+					<view v-else class="user-notice line-h mt-2">
 						{{$t('您还未登录。立即登录，享受更多特权！')}}
 					</view>
 				</view>
-				<view class="top-menu ml-auto mr-1 d-flex flex-column j-center a-center" @click="openSet">
-					<u-image width="50rpx" height="50rpx" src="/static/img/common/setting-two.svg" mode="" />
-					<view class="top-menu-text">
-						{{$t('page.设置')}}
+				<view class="ml-auto flex-shrink d-flex a-center">
+					<!-- #ifndef H5 -->
+					<view class="top-menu mr-3 d-flex flex-column j-center a-center" @click="openScanCode">
+						<u-image width="50rpx" height="50rpx" src="/static/img/mine/scan-code.svg" mode="" />
+						<view class="top-menu-text">
+							{{$t('扫码')}}
+						</view>
+					</view>
+					<!-- #endif -->
+					<view class="top-menu mr-1 d-flex flex-column j-center a-center" @click="openSet">
+						<u-image width="50rpx" height="50rpx" src="/static/img/common/setting-two.svg" mode="" />
+						<view class="top-menu-text">
+							{{$t('page.设置')}}
+						</view>
 					</view>
 				</view>
 			</view>
@@ -159,6 +169,19 @@
 				if (!this.$store.state.token) {
 					this.$tools.Navigate.navigateTo('/pages/account/login/index')
 				}
+			},
+			// 扫码
+			openScanCode() {
+				if (!this.$store.state.token) {
+					return this.$tools.Navigate.navigateTo('/pages/account/login/index')
+				}
+				uni.scanCode({
+					success: (res) => {
+						console.log('条码类型：' + res.scanType);
+						console.log('条码内容：' + res.result);
+					}
+				})
+				// this.$tools.Navigate.navigateTo('/pages-next/mine/scan-code/index')
 			}
 		},
 		created() {
@@ -178,7 +201,7 @@
 			color: #111;
 
 			.user-info {
-				height: 100rpx;
+				// height: 100rpx;
 
 				.user-notice {
 					font-size: 26rpx;

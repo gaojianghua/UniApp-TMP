@@ -34,7 +34,8 @@
             "Contacts" : {},
             "Camera" : {},
             "Bluetooth" : {},
-            "FacialRecognitionVerify" : {}
+            "FacialRecognitionVerify" : {},
+            "Speech" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -71,7 +72,7 @@
                 "abiFilters" : [ "armeabi-v7a", "arm64-v8a", "x86" ],
                 "schemes" : "GongYue",
                 "minSdkVersion" : 21,
-                "targetSdkVersion" : 31
+                "targetSdkVersion" : 33
             },
             /* ios打包配置 */
             "ios" : {
@@ -93,11 +94,11 @@
                         "offline" : false,
                         "icons" : {
                             "small" : {
-                                "ldpi" : "/Users/gaojianghua/Downloads/wolffyPink.png",
-                                "mdpi" : "/Users/gaojianghua/Downloads/wolffyPink.png",
-                                "hdpi" : "/Users/gaojianghua/Downloads/wolffyPink.png",
-                                "xhdpi" : "/Users/gaojianghua/Downloads/wolffyPink.png",
-                                "xxhdpi" : "/Users/gaojianghua/Downloads/wolffyPink.png"
+                                "ldpi" : "/Users/mac/Desktop/config/GongYueLogo.png",
+                                "mdpi" : "/Users/mac/Desktop/config/GongYueLogo.png",
+                                "hdpi" : "/Users/mac/Desktop/config/GongYueLogo.png",
+                                "xhdpi" : "/Users/mac/Desktop/config/GongYueLogo.png",
+                                "xxhdpi" : "/Users/mac/Desktop/config/GongYueLogo.png"
                             }
                         },
                         "version" : "2"
@@ -111,7 +112,8 @@
                         "appkey_android" : "5a989c1320d542853ad37b58fa090af2"
                     }
                 },
-                "payment" : {}
+                "payment" : {},
+                "speech" : {}
             },
             "icons" : {
                 "android" : {

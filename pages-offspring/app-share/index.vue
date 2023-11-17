@@ -52,7 +52,6 @@
 			</view>
 		</view>
 		<mine-app-share @closePoster="closePoster" :posterShow="posterShow" :item="list[current]" :current="current" />
-		<u-toast ref="uToast" />
 	</view>
 </template>
 

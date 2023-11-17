@@ -78,7 +78,7 @@
 				</view>
 			</view>
 		</m-scroll>
-		<m-modal :show="show" title="恭喜中奖" :isCancel="false" @cancel="show = false" @confirm="show = false">
+		<m-modal :show="show" i18n title="恭喜中奖" :isCancel="false" @cancel="show = false" @confirm="show = false">
 			<view class="d-flex a-center j-center flex-column">
 				<u-image width="160rpx" height="160rpx" :src="item.image"></u-image>
 				<view class="mt-1 text-center">
@@ -86,7 +86,7 @@
 				</view>
 			</view>
 		</m-modal>
-		<m-modal :show="ruleShow" title="抽奖规则" :isCancel="false"
+		<m-modal :show="ruleShow" i18n title="抽奖规则" :isCancel="false"
 			@cancel="ruleShow = false" @confirm="ruleShow = false">
 			<view class="d-flex a-center j-center flex-column" v-html="ruleContent">
 			</view>
