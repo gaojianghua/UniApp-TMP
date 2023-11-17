@@ -47,6 +47,12 @@ module.exports = {
 			return 'aspectFit'
 		}
 	},
+	keyName: {
+		type: String,
+		default: () => {
+			return 'name'
+		}
+	},
 	isIcon: {
 		type: Boolean,
 		default: () => {

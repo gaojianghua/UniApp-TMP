@@ -9,7 +9,7 @@
 					@afterRead="afterRead" :previewFullImage="false" :deletable="false" name="file"></u-upload>
 			</view>
 			<view class="userinfo w-100 mt-5 px-3 py-1">
-				<view class="userinfo-item d-flex a-center j-sb" v-for="(item, i) in userinfo" :key="i">
+				<view class="userinfo-item d-flex a-center j-sb" v-for="(item, i) in userinfo" :key="i" @click="openModel(i)">
 					<view class="userinfo-item-key line-h">
 						{{item.key}}
 					</view>
@@ -23,14 +23,30 @@
 				</view>
 			</view>
 		</view>
+		<!-- 弹框 -->
+		<m-modal :show="show" title="修改用户名" @cancel="show = false" @confirm="confirmChangeUsername">
+			<view class="d-flex a-center j-center">
+				<u-input :customStyle="{height: '80rpx', caretColor: '#f27299', borderColor: '#f27299 !important'}" type="text"
+					:placeholder="$t('请输入用户名')" v-model="query.username">
+					<view slot="prefix" class="area d-flex a-center mr-1">
+						<u-icon name="account-fill" color="#f27299" size="24"></u-icon>
+					</view>
+				</u-input>
+			</view>
+		</m-modal>
 		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 
 <script>
+	import MModal from '@/main_modules/main-ui/m-modal/index.vue'
 	export default {
+		components: {
+			MModal
+		},
 		data() {
 			return {
+				show: false,
 				fileList: [{
 					url: this.$store.state.userinfo.avatar || '/static/img/mine/default-avatar.png',
 				}],
@@ -50,7 +66,10 @@
 						key: '手机号',
 						value: this.$store.state.userinfo.phone
 					}
-				]
+				],
+				query: {
+					username: ''
+				}
 			}
 		},
 		methods: {
@@ -96,6 +115,20 @@
 						})
 					}
 				})
+			},
+			// 打开弹出框
+			openModel(i) {
+				if (i != 0) return
+				this.show = true
+			},
+			// 修改用户名
+			confirmChangeUsername() {
+				this.show = false
+				this.$refs.uToast.show({
+					message: this.$t('修改成功'),
+					type: 'success',
+					duration: 1200
+				})
 			}
 		}
 	}
@@ -139,6 +172,12 @@
 					border-top: none;
 				}
 			}
+		}
+		.bottom {
+			width: 600rpx;
+			background-color: #f1f1f1;
+			border-radius: 25rpx;
+			padding: 0 30rpx;
 		}
 	}
 </style>

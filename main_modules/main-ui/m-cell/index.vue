@@ -4,7 +4,7 @@
 		<view v-if="isShowL" class="menu-item-left d-flex a-center">
 			<u-image class="mr-2" v-if="item.icon" v-bind="$attrs" :radius="radius" :src="item.icon" :width="imgWidth"
 				:height="imgHeight" :mode="mode"></u-image>
-			<view v-if="item.name" :style="{color}">{{i18n ? $t(item.name) : item.name}}</view>
+			<span v-if="item[keyName]" :style="{color}">{{i18n ? $t(item[keyName]) : item[keyName]}}</span>
 		</view>
 		<slot name="left" />
 		<view v-if="isShowR" class="menu-item-right d-flex a-center">

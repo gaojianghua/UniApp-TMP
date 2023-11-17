@@ -241,5 +241,11 @@
 	"当前绑定手机号": "Currently bound Phone number",
 	"修改手机号": "Modify Phone number",
 	"请选择国家代码": "Please select a country code",
-	"重新获取": "Reacquire"
+	"重新获取": "Reacquire",
+	"需要积分": "Need points",
+	"立即兑换": "Immediate exchange",
+	"人已兑换": "People exchanged",
+	"已完成": "Completed",
+	"配送中": "Delivering",
+	"已送达": "Has delivered"
 }

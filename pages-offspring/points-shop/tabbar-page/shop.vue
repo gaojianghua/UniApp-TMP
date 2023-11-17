@@ -7,8 +7,6 @@
 					icon="http://cdn.uviewui.com/uview/empty/list.png">
 				</u-empty>
 				<view class="px-2">
-
-
 					<view v-if="couponList.length != 0" class="coupon-item d-flex a-center pl-3 pr-2 mt-2"
 						v-for="(item, i) in couponList" :key="i">
 						<view class="info d-flex flex-column">
@@ -23,7 +21,7 @@
 						<view class="point d-flex a-base">
 							{{$t('需要积分')}}: <span class="point-v main-text-color font-weight ml-1">{{item.point}}</span>
 						</view>
-						<view class="btns text-white ml-auto">
+						<view class="btns text-white ml-auto" @click="openModel(item)">
 							{{$t('立即兑换')}}
 						</view>
 					</view>
@@ -62,18 +60,21 @@
 									class="point-v main-text-color font-weight ml-1">{{item.point}}</span>
 							</view>
 						</view>
-						<view class="btns text-white ml-auto">
+						<view class="btns text-white ml-auto" @click="openModel(item)">
 							{{$t('立即兑换')}}
 						</view>
 					</view>
 				</view>
 			</m-scroll>
 		</view>
+		<!-- 弹框 -->
+		
 	</view>
 </template>
 
 <script>
 	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
+	import MModal from '@/main_modules/main-ui/m-modal/index.vue'
 	export default {
 		props: {
 			current: {
@@ -82,7 +83,8 @@
 			}
 		},
 		components: {
-			MScroll
+			MScroll,
+			MModal
 		},
 		data() {
 			return {
@@ -104,7 +106,9 @@
 				couponList: [],
 				couponTotal: 0,
 				couponIstrig: true,
-				screen: 2
+				screen: 2,
+				show: false,
+				tempPoints: 0
 			}
 		},
 		methods: {
@@ -216,6 +220,10 @@
 				}else {
 					this.screen = i
 				}
+			},
+			// 打开确认兑换框
+			openModel(i) {
+				
 			}
 		},
 		computed: {
