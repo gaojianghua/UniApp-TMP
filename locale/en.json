@@ -272,5 +272,11 @@
 	"切换语言成功": "Switch language success",
 	"语音识别": "Speech Recognition",
 	"用户拒绝使用麦克风或设备没有麦克风": "User refuses to use the microphone or the device does not have a microphone",
-	"浏览器不支持语音识别功能": "Browser does not support voice recognition"
+	"浏览器不支持语音识别功能": "Browser does not support voice recognition",
+	"语音识别内容": "Speech Recognition Content",
+	"按下开始": "Press to Start",
+	"松开结束": "Release to End",
+	"...倾听中...": "...Listening...",
+	"未开始": "Not Started",
+	"没有识别到内容": "No Content Recognized"
 }

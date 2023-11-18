@@ -1,12 +1,12 @@
 <template>
-	<m-popup :show="show" i18n @close="close" title="语音识别" i18n>
+	<m-popup :show="show" i18n @close="close" title="语音识别">
 		<view class="mic p-3">
 			<u-textarea :customStyle="{caretColor: '#f27299', padding: '20rpx 20rpx', backgroundColor: '#f1f1f1'}"
 				border="none" v-model="result" :placeholder="$t('语音识别内容')">
 			</u-textarea>
 			<view class="mt-3 d-flex a-center j-center flex-column">
 				<view class="main-text-color font-weight">
-					<text>{{title}}</text>
+					<text>{{$t(title)}}</text>
 				</view>
 				<view class="partial mt-3">
 					<text>{{partialResult}}</text>
@@ -79,7 +79,7 @@
 			},
 			onEnd() {
 				if (!this.text || this.text == '') {
-					plus.nativeUI.toast('没有识别到内容');
+					plus.nativeUI.toast(this.$t('没有识别到内容'));
 				}
 				this.result = this.text;
 				this.title = '未开始';
