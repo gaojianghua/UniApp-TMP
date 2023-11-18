@@ -29,9 +29,8 @@
 			<view class="d-flex a-center j-sb py-2 border-top px-3">
 				<span>{{$t('所在地区')}}</span>
 				<view class="bottom hidden" @click="cityShow = true">
-					<u-input :readonly="cityShow" 
-						:customStyle="{height: '100rpx', caretColor: '#f27299'}"
-						type="text" border="none" :placeholder="$t('省、市、区、街道')" v-model="city">
+					<u-input :readonly="cityShow" :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="text"
+						border="none" :placeholder="$t('省、市、区、街道')" v-model="city">
 						<view slot="suffix" class="pl-2 py-2" @click.stop="openLocation">
 							<u-icon name="map-fill" size="22" color="#f27299"></u-icon>
 						</view>
@@ -45,7 +44,7 @@
 						border="none" v-model="item.address" :placeholder="$t('小区楼栋/乡村名称')">
 					</u-textarea>
 					<view class="pl-2 py-2" @click="openMic">
-						<u-icon name="mic" size="22" color="#f27299"></u-icon>
+						<u-icon name="mic" size="22" :color="micShow ? '#888' : '#f27299'"></u-icon>
 					</view>
 				</view>
 			</view>
@@ -77,9 +76,10 @@
 		<!-- 弹出层 -->
 		<m-popup :show="cityShow" i18n @close="cityShow = false" title="请选择所在地区" i18n>
 			<view class="city">
-				
+
 			</view>
 		</m-popup>
+		<c-app-speech-recognition :show="micShow" @close="micShow = false"></c-app-speech-recognition>
 		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
@@ -87,10 +87,12 @@
 <script>
 	import MModal from '@/main_modules/main-ui/m-modal/index.vue'
 	import MPopup from '@/main_modules/main-ui/m-popup/index.vue'
+	import CAppSpeechRecognition from '@/components/common/c-app-speech-recognition/index.vue'
 	export default {
 		components: {
 			MModal,
-			MPopup
+			MPopup,
+			CAppSpeechRecognition
 		},
 		data() {
 			return {
@@ -110,7 +112,9 @@
 				saveShow: false,
 				isEdit: false,
 				city: '',
-				cityShow: false
+				cityShow: false,
+				micShow: false
+				
 			}
 		},
 		onLoad(options) {
@@ -146,7 +150,7 @@
 					list.forEach((item, i) => {
 						if (this.item.id == item.id) {
 							list.splice(i, 1)
-							list.splice(i-1, 1, this.item)
+							list.splice(i - 1, 1, this.item)
 						}
 					})
 				} else {
@@ -159,16 +163,53 @@
 			// 定位获取地址
 			openLocation() {
 				console.log('location')
+				// 获取定位
+				uni.getLocation({
+					isHighAccuracy: true,
+					geocode: true,
+					success: (e) => {
+						console.log(e)
+					}
+				})
 			},
 			// 通过语音输入
-			openMic() {
-				console.log('mic')
+			async openMic() {
+				// #ifdef H5
+				let lang = this.$store.state.lang == 'en' ? 'en-US' : 'zh-CN'
+				let {
+					code,
+					data,
+					msg
+				} = await this.$multiportApi.h5.speechRecognitionBrowser(true, lang)
+				if (code == 500) {
+					return this.$refs.uToast.show({
+						message: this.$t(msg),
+						type: 'error',
+						duration: 1500
+					})
+				}
+				this.micShow = true
+				this.item.address = data
+				// #endif
+				// #ifndef H5
+				this.micShow = true
+				// #endif
+			},
+			// 关闭语音识别
+			closeMic() {
+				// #ifdef H5
+				this.$multiportApi.h5.speechRecognitionBrowser(false)
+				this.micShow = false
+				// #endif
+				// #ifndef H5
+				this.micShow = false
+				// #endif
 			},
 			// 设为默认地址
 			checkboxChange(e) {
 				this.item.isDefault = !this.item.isDefault
 				this.item.check = e
-			},
+			}
 		}
 	}
 </script>
@@ -204,8 +245,12 @@
 		.btons:active {
 			background: linear-gradient(to right, #85B6CA80, #F9A4A080);
 		}
-		
-		.city{
+
+		.city {
+			height: 600rpx;
+		}
+
+		.mic {
 			height: 600rpx;
 		}
 	}

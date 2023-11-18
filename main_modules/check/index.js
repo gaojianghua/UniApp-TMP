@@ -346,5 +346,12 @@ class Check {
 			return false
 		}
 	}
+
+	/**
+	 * @description 判断浏览器是否支持语音识别
+	 */
+	static isSpeechRecognitionBrowser() {
+		return ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) ? true : false
+	}
 }
 export default Check

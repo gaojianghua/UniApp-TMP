@@ -113,7 +113,13 @@
                     }
                 },
                 "payment" : {},
-                "speech" : {}
+                "speech" : {
+                    "baidu" : {
+                        "appid" : "36195255",
+                        "apikey" : "5rRIMU2ZZXc3vAZGWWrs9Bp4",
+                        "secretkey" : "reyboHiladxqObfT3MNXjgI8XG4uTomM"
+                    }
+                }
             },
             "icons" : {
                 "android" : {

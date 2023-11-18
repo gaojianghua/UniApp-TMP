@@ -269,5 +269,8 @@
 	"中文繁体": "Traditional Chinese",
 	"英文": "English",
 	"切换语言": "Switch Language",
-	"切换语言成功": "Switch language success"
+	"切换语言成功": "Switch language success",
+	"语音识别": "Speech Recognition",
+	"用户拒绝使用麦克风或设备没有麦克风": "User refuses to use the microphone or the device does not have a microphone",
+	"浏览器不支持语音识别功能": "Browser does not support voice recognition"
 }

@@ -235,6 +235,10 @@
 			onRefresh() {
 				this.query.page = 1
 				this.getData()
+			},
+			// 加入购物车
+			addCart() {
+				
 			}
 		},
 		computed: {
