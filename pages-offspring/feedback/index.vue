@@ -9,8 +9,8 @@
 					:customStyle="{caretColor: '#f27299', padding: '0', backgroundColor: '#f1f1f1'}" border="none"
 					v-model="query.info" :placeholder="$t('描述您的问题，我们会尽快为您处理！')">
 				</u-textarea>
-				<view class="pl-2 py-2" @click="openMic">
-					<u-icon name="mic" size="22" color="#f27299"></u-icon>
+				<view class="pl-2 py-2" @click="show = true">
+					<u-icon name="mic" size="22" :color="show ? '#888' : '#f27299'"></u-icon>
 				</view>
 			</view>
 		</view>
@@ -29,25 +29,32 @@
 				{{$t('提交反馈')}}
 			</view>
 		</view>
+		<!-- 语音识别弹框 -->
+		<c-app-speech-recognition @speechEnd="speechEnd" :show="show" @close="show = false"></c-app-speech-recognition>
 		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 
 <script>
+	import CAppSpeechRecognition from '@/components/common/c-app-speech-recognition/index.vue'
 	export default {
+		components: {
+			CAppSpeechRecognition
+		},
 		data() {
 			return {
 				query: {
 					info: '',
 					reasonPicture: ''
 				},
-				fileList: []
+				fileList: [],
+				show: false
 			}
 		},
 		methods: {
-			// 语音识别
-			openMic() {
-
+			// 关闭语音识别
+			speechEnd(i) {
+				this.query.info = i
 			},
 			// 提交反馈
 			switchFeedback() {

@@ -278,5 +278,10 @@
 	"松开结束": "Release to End",
 	"...倾听中...": "...Listening...",
 	"未开始": "Not Started",
-	"没有识别到内容": "No Content Recognized"
+	"没有识别到内容": "No Content Recognized",
+	"请勿频繁点击": "Do not click too often",
+	"开始": "Start",
+	"结束": "Finish",
+	"语音识别异常，请稍后再试": "Speech recognition exception, please try again later",
+	"因长时间没有语音输入已帮你关闭语音识别": "Speech recognition has been turned off for you because there has been no voice input for a long time"
 }

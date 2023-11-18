@@ -43,7 +43,7 @@
 					<u-textarea :customStyle="{caretColor: '#f27299', padding: '0', backgroundColor: '#f1f1f1'}"
 						border="none" v-model="item.address" :placeholder="$t('小区楼栋/乡村名称')">
 					</u-textarea>
-					<view class="pl-2 py-2" @click="openMic">
+					<view class="pl-2 py-2" @click="micShow = true">
 						<u-icon name="mic" size="22" :color="micShow ? '#888' : '#f27299'"></u-icon>
 					</view>
 				</view>
@@ -79,7 +79,7 @@
 
 			</view>
 		</m-popup>
-		<c-app-speech-recognition :show="micShow" @close="micShow = false"></c-app-speech-recognition>
+		<c-app-speech-recognition @speechEnd="speechEnd" :show="micShow" @close="micShow = false"></c-app-speech-recognition>
 		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
@@ -162,7 +162,6 @@
 			},
 			// 定位获取地址
 			openLocation() {
-				console.log('location')
 				// 获取定位
 				uni.getLocation({
 					isHighAccuracy: true,
@@ -172,38 +171,9 @@
 					}
 				})
 			},
-			// 通过语音输入
-			async openMic() {
-				// #ifdef H5
-				let lang = this.$store.state.lang == 'en' ? 'en-US' : 'zh-CN'
-				let {
-					code,
-					data,
-					msg
-				} = await this.$multiportApi.h5.speechRecognitionBrowser(true, lang)
-				if (code == 500) {
-					return this.$refs.uToast.show({
-						message: this.$t(msg),
-						type: 'error',
-						duration: 1500
-					})
-				}
-				this.micShow = true
-				this.item.address = data
-				// #endif
-				// #ifndef H5
-				this.micShow = true
-				// #endif
-			},
 			// 关闭语音识别
-			closeMic() {
-				// #ifdef H5
-				this.$multiportApi.h5.speechRecognitionBrowser(false)
-				this.micShow = false
-				// #endif
-				// #ifndef H5
-				this.micShow = false
-				// #endif
+			speechEnd(i) {
+				this.item.address = i
 			},
 			// 设为默认地址
 			checkboxChange(e) {

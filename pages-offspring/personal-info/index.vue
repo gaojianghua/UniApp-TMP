@@ -9,13 +9,15 @@
 					@afterRead="afterRead" :previewFullImage="false" :deletable="false" name="file"></u-upload>
 			</view>
 			<view class="userinfo w-100 mt-5 px-3 py-1">
-				<view class="userinfo-item d-flex a-center j-sb" v-for="(item, i) in userinfo" :key="i" @click="openModel(i)">
+				<view class="userinfo-item d-flex a-center j-sb" v-for="(item, i) in userinfo" :key="i"
+					@click="openModel(i)">
 					<view class="userinfo-item-key line-h">
 						{{item.key}}
 					</view>
 					<view class="userinfo-item-value d-flex a-center">
 						<span class="line-h">{{item.value}}</span>
-						<view v-if="i == 2" class="ml-2 line-h copy bg-success text-white rounded" @click="copyInviteCode(item.value)">
+						<view v-if="i == 2" class="ml-2 line-h copy bg-success text-white rounded"
+							@click="copyInviteCode(item.value)">
 							{{$t('复制')}}
 						</view>
 						<u-icon v-if="i == 0" name="arrow-right" color="#111" size="16"></u-icon>
@@ -25,8 +27,8 @@
 		</view>
 		<!-- 弹框 -->
 		<m-modal :show="show" i18n title="修改用户名" @cancel="show = false" @confirm="confirmChangeUsername">
-			<view class="d-flex a-center j-center">
-				<u-input :customStyle="{height: '80rpx', caretColor: '#f27299', borderColor: '#f27299 !important'}" type="text"
+			<view id="info" class="d-flex a-center j-center">
+				<u-input type="text"
 					:placeholder="$t('请输入用户名')" v-model="query.username">
 					<view slot="prefix" class="area d-flex a-center mr-1">
 						<u-icon name="account-fill" color="#f27299" size="24"></u-icon>
@@ -138,7 +140,12 @@
 	.page {
 		background: url('/static/img/common/login-bg.jpg') no-repeat;
 		background-size: cover;
-
+		/deep/ .u-border{
+			border-width: 2rpx !important;
+			height: 80rpx;
+			caret-color: #f27299;
+			border-color: #f27299 !important; 
+		}
 		.content {
 			.avatar {
 				width: 160rpx;
@@ -173,6 +180,7 @@
 				}
 			}
 		}
+
 		.bottom {
 			width: 600rpx;
 			background-color: #f1f1f1;

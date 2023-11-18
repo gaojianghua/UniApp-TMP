@@ -1,6 +1,7 @@
 <template>
 	<view class="page">
 		<m-navbar bgColor="#fff" textColor="#fb7299" value="page.设置" i18n></m-navbar>
+		<m-scroll :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
 		<view class="menu">
 			<u-gap height="10rpx"></u-gap>
 			<view class="menu-item" v-for="(item, i) in setList" :key="i" @click="cellClick(item)">
@@ -59,6 +60,7 @@
 					:isIcon="false" class="px-3 bg-white" :item="item"></m-cell>
 			</view>
 		</view>
+		</m-scroll>
 		<!-- 弹框 -->
 		<m-modal :show="show" i18n title="确认退出" @cancel="show = false" @confirm="confirmLogout">
 			<view class="d-flex a-center j-center">
@@ -71,6 +73,7 @@
 </template>
 
 <script>
+	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	import MCell from '@/main_modules/main-ui/m-cell/index.vue'
 	import MModal from '@/main_modules/main-ui/m-modal/index.vue'
 	import CommonLangModel from '@/components/pages/common-lang-model/index.vue'
@@ -82,6 +85,7 @@
 	} from './data.js'
 	export default {
 		components: {
+			MScroll,
 			MCell,
 			MModal,
 			CommonLangModel
@@ -153,6 +157,13 @@
 					type: 'success',
 					duration: 1200
 				})
+			}
+		},
+		computed: {
+			scrollStyle() {
+				return {
+					height: `calc(100vh - ${this.$store.state.navbarHeight}px - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
+				}
 			}
 		}
 	}

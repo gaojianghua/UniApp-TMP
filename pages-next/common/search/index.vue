@@ -7,15 +7,13 @@
 			width: `calc(100vw - ${miniProgramCapsule.width}px - 60rpx - 30rpx)`,
 			marginRight: `${miniProgramCapsule.width}px`}">
 				<u-search :placeholder="$t('请输入关键词')" focus height="60rpx" v-model="query.search" :showAction="false"
-					@search="startSearch"
-					@change="searchChange"
-					></u-search>
+					@search="startSearch" @change="searchChange"></u-search>
 			</view>
 		</m-navbar>
 		<!-- 内容区域 -->
 		<m-scroll :isLoading="isLoading" i18n :scrollStyle="scrollStyle" :load="load" bgColor="transparent"
 			@loadmore="loadmore" @onRefresh="onRefresh">
-			<view v-if="historyList != 0 && !isSearchResult" class="history p-3">
+			<view v-if="$store.state.historyList && $store.state.historyList.length != 0 && !isSearchResult" class="history p-3">
 				<view class="d-flex a-center j-sb">
 					<view class="history-title font-weight">
 						{{$t('搜索历史')}}
@@ -23,8 +21,8 @@
 					<u-icon name="trash-fill" size="24" color="#fb7299" @click="clearHistory"></u-icon>
 				</view>
 				<view class="history-list d-flex flex-wrap">
-					<view class="history-item px-2 mt-2 mr-2 main-bg-color text-white" v-for="(item, i) in historyList"
-						:key="i">
+					<view class="history-item px-2 mt-2 mr-2 main-bg-color text-white"
+						v-for="(item, i) in $store.state.historyList" :key="i" @click="searchHistoryItem(item)">
 						{{item}}
 					</view>
 				</view>
@@ -73,7 +71,6 @@
 		},
 		data() {
 			return {
-				historyList: [],
 				hotList: [],
 				list: [],
 				direction: 'Y',
@@ -95,7 +92,6 @@
 		methods: {
 			// 初始化
 			init() {
-				this.historyList = result.data.searchHistory
 				this.getData()
 			},
 			// 获取数据
@@ -171,6 +167,12 @@
 			},
 			// 开始搜索
 			startSearch(e) {
+				if (!this.$store.state.historyList.includes(e) && e) {
+					let arr = this.$store.state.historyList
+					arr.push(e)
+					this.$store.commit('updateHistoryList', arr)
+					uni.setStorageSync('historyList', arr)
+				}
 				this.isSearchResult = true
 				this.list = []
 				this.isLoading = true
@@ -179,13 +181,14 @@
 			},
 			// 搜索内容变化
 			searchChange(e) {
-				if(!e) {
+				if (!e) {
 					this.isSearchResult = false
 				}
 			},
 			// 清空历史
 			clearHistory() {
-				this.historyList = []
+				this.$store.commit('updateHistoryList', [])
+				uni.setStorageSync('historyList', [])
 			},
 			// 进入商品详情页
 			openDetail(i) {
@@ -194,6 +197,11 @@
 			// 加入购物车
 			addCart(i) {
 
+			},
+			// 点击历史记录
+			searchHistoryItem(i) {
+				this.query.search = i
+				this.startSearch()
 			}
 		},
 		computed: {

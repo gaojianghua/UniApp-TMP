@@ -1,88 +1,92 @@
 <template>
 	<view class="page">
 		<!-- 顶部信息 -->
-		<view class="user" :style="{
+		<m-scroll :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
+			<view class="user" :style="{
 			height: `calc(388rpx + ${statusHeight}px)`}">
-			<!-- 顶部状态栏高度 -->
-			<m-top />
-			<view class="d-flex a-center">
-				<view class="user-avatar mr-2">
-					<u-image width="100rpx" height="100rpx" class="user-img"
-						:src="$store.state.userinfo.avatar || '/static/img/mine/default-avatar.png'" mode="">
-					</u-image>
-				</view>
-				<view class="user-info d-flex flex-column j-around mr-2" @click="openLogin">
-					<view class="info-name font-lg line-h">
-						{{$store.state.token ? $store.state.userinfo.name : $t('前往登录')}}
+				<!-- 顶部状态栏高度 -->
+				<m-top />
+				<view class="d-flex a-center">
+					<view class="user-avatar mr-2">
+						<u-image width="100rpx" height="100rpx" class="user-img"
+							:src="$store.state.userinfo.avatar || '/static/img/mine/default-avatar.png'" mode="">
+						</u-image>
 					</view>
-					<view v-if="$store.state.token" class="info-desc font-md line-h mt-2">
-						ID: {{$store.state.userinfo.id}}
-					</view>
-					<view v-else class="user-notice line-h mt-2">
-						{{$t('您还未登录。立即登录，享受更多特权！')}}
-					</view>
-				</view>
-				<view class="ml-auto flex-shrink d-flex a-center">
-					<!-- #ifndef H5 -->
-					<view class="top-menu mr-3 d-flex flex-column j-center a-center" @click="openScanCode">
-						<u-image width="50rpx" height="50rpx" src="/static/img/mine/scan-code.svg" mode="" />
-						<view class="top-menu-text">
-							{{$t('扫码')}}
+					<view class="user-info d-flex flex-column j-around mr-2" @click="openLogin">
+						<view class="info-name font-lg line-h">
+							{{$store.state.token ? $store.state.userinfo.name : $t('前往登录')}}
+						</view>
+						<view v-if="$store.state.token" class="info-desc font-md line-h mt-2">
+							ID: {{$store.state.userinfo.id}}
+						</view>
+						<view v-else class="user-notice line-h mt-2">
+							{{$t('您还未登录。立即登录，享受更多特权！')}}
 						</view>
 					</view>
+					<view class="ml-auto flex-shrink d-flex a-center">
+						<!-- #ifndef H5 -->
+						<view class="top-menu mr-3 d-flex flex-column j-center a-center" @click="openScanCode">
+							<u-image width="50rpx" height="50rpx" src="/static/img/mine/scan-code.svg" mode="" />
+							<view class="top-menu-text">
+								{{$t('扫码')}}
+							</view>
+						</view>
+						<!-- #endif -->
+						<view class="top-menu mr-1 d-flex flex-column j-center a-center" @click="openSet">
+							<u-image width="50rpx" height="50rpx" src="/static/img/common/setting-two.svg" mode="" />
+							<view class="top-menu-text">
+								{{$t('page.设置')}}
+							</view>
+						</view>
+					</view>
+				</view>
+				<view class="vip-card" @click="$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')">
+				</view>
+			</view>
+			<u-gap height="80rpx"></u-gap>
+			<!-- 订单栏 -->
+			<view class="order">
+				<view class="d-flex j-sb">
+					<span class="font-weight">{{$t('我的订单')}}</span>
+					<view class="d-flex a-base" @click="openOrderList()">
+						{{$t('全部')}}
+						<u-icon name="arrow-right" size="14"></u-icon>
+					</view>
+				</view>
+				<view class="d-flex a-center mt-2 j-sb">
+					<block v-for="(item, i) in orderMenus" :key="i">
+						<view class="order-item d-flex flex-column a-center j-center" @click="openOrderList(item.id)">
+							<u-image width="60rpx" height="60rpx" :src="item.img" mode="aspectFit" />
+							<view class="order-text">
+								{{$t(item.name)}}
+							</view>
+						</view>
+					</block>
+				</view>
+			</view>
+			<!-- 币区 -->
+			<view class="assets text-white mt-2 bg-white d-flex a-center j-around">
+				<view v-for="(item, i) in assets" class="assets-item d-flex flex-column a-center j-center"
+					@click="openAssets(item)">
+					<view class="item-value">
+						{{item.value}}
+					</view>
+					<view class="item-text">
+						{{$t(item.name)}}
+					</view>
+				</view>
+			</view>
+			<!-- 菜单栏 -->
+			<view class="menu mt-2">
+				<view class="menu-item" v-for="(item, i) in menuList" :key="i" @click="openMenu(item)">
+					<m-cell i18n v-if="item.id != 5" :item="item"></m-cell>
+					<!-- #ifdef H5 -->
+					<m-cell i18n v-if="item.id == 5" :item="item"></m-cell>
 					<!-- #endif -->
-					<view class="top-menu mr-1 d-flex flex-column j-center a-center" @click="openSet">
-						<u-image width="50rpx" height="50rpx" src="/static/img/common/setting-two.svg" mode="" />
-						<view class="top-menu-text">
-							{{$t('page.设置')}}
-						</view>
-					</view>
 				</view>
 			</view>
-			<view class="vip-card" @click="$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')"></view>
-		</view>
-		<u-gap height="80rpx"></u-gap>
-		<!-- 订单栏 -->
-		<view class="order">
-			<view class="d-flex j-sb">
-				<span class="font-weight">{{$t('我的订单')}}</span>
-				<view class="d-flex a-base" @click="openOrderList()">
-					{{$t('全部')}}
-					<u-icon name="arrow-right" size="14"></u-icon>
-				</view>
-			</view>
-			<view class="d-flex a-center mt-2 j-sb">
-				<block v-for="(item, i) in orderMenus" :key="i">
-					<view class="order-item d-flex flex-column a-center j-center" @click="openOrderList(item.id)">
-						<u-image width="60rpx" height="60rpx" :src="item.img" mode="aspectFit" />
-						<view class="order-text">
-							{{$t(item.name)}}
-						</view>
-					</view>
-				</block>
-			</view>
-		</view>
-		<!-- 币区 -->
-		<view class="assets text-white mt-2 bg-white d-flex a-center j-around">
-			<view v-for="(item, i) in assets" class="assets-item d-flex flex-column a-center j-center"
-				@click="openAssets(item)">
-				<view class="item-value">
-					{{item.value}}
-				</view>
-				<view class="item-text">
-					{{$t(item.name)}}
-				</view>
-			</view>
-		</view>
-		<!-- 菜单栏 -->
-		<view class="menu mt-2">
-			<view class="menu-item" v-for="(item, i) in menuList" :key="i" @click="openMenu(item)">
-				<m-cell i18n v-if="item.id != 5" :item="item"></m-cell>
-				<!-- #ifdef H5 -->
-				<m-cell i18n v-if="item.id == 5" :item="item"></m-cell>
-				<!-- #endif -->
-			</view>
-		</view>
+			<u-gap height="30rpx"></u-gap>
+		</m-scroll>
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/mine/index" i18n></m-tabbar>
 	</view>
@@ -90,6 +94,7 @@
 
 <script>
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
+	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	import MCell from '@/main_modules/main-ui/m-cell/index.vue'
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	import {
@@ -101,6 +106,7 @@
 		mixins: [tabbarInit],
 		components: {
 			MTabbar,
+			MScroll,
 			MCell
 		},
 		data() {
@@ -108,7 +114,6 @@
 				orderMenus,
 				menuList,
 				assets,
-				statusHeight: 0,
 				appVersion: ''
 			}
 		},
@@ -184,8 +189,15 @@
 				// this.$tools.Navigate.navigateTo('/pages-next/mine/scan-code/index')
 			}
 		},
-		created() {
-			this.statusHeight = this.$store.state.statusHeight
+		computed: {
+			scrollStyle() {
+				return {
+					height: `calc(100vh - env(safe-area-inset-bottom) - ${this.$store.state.tabbarHeight}px - ${this.$store.state.statusHeight}px)`
+				}
+			},
+			statusHeight() {
+				return this.$store.state.statusHeight
+			}
 		}
 	}
 </script>

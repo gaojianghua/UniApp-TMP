@@ -5,16 +5,16 @@
 			<view class="title w-100 d-flex a-center px-3" :style="{
 			width: `calc(100vw - ${miniProgramCapsule.width}px)`,
 			marginRight: `${miniProgramCapsule.width}px`}">
-				<view class="title-text mr-2 line-h">
+				<view class="title-text mr-2 flex-shrink line-h">
 					{{$t('购物车')}}
 				</view>
-				<view class="title-address d-flex a-center">
+				<view class="title-address d-flex a-center mr-1">
 					<u-image width="50rpx" height="50rpx" src="/static/img/common/local.svg"></u-image>
-					<text class="line-h">北大山水资源年华7幢601</text>
+					<text class="line-h text-ellipsis1">北大山水资源年华7幢601</text>
 					<u-icon name="arrow-right" color="#999" size="15"></u-icon>
 				</view>
 				<!-- #ifndef MP -->
-				<view v-if="$store.state.token" :class="switchManage ? 'bg-warning text-white' : 'bg-light-secondary'" class="manage ml-auto px-2 py mr-2  rounded-1" @click="switchManageClick">
+				<view v-if="$store.state.token" :class="switchManage ? 'bg-warning text-white' : 'bg-light-secondary'" class="manage flex-shrink ml-auto px-2 py mr-2  rounded-1" @click="switchManageClick">
 					{{$t('管理')}}
 				</view>
 				<view v-if="$store.state.token" class="bg-dark d-flex a-center j-center rounded-1"
@@ -246,7 +246,7 @@
 				return this.$store.state.token
 			},
 			scrollStyle() {
-				return {height: `calc(100vh - ${this.$store.state.navbarHeight}px - 100rpx - 2rpx - env(safe-area-inset-bottom) - ${this.$store.state.tabbarHeight}px - ${this.$store.state.statusHeight}px)`}
+				return {height: `calc(100vh - ${this.$store.state.navbarHeight}px - 100rpx - env(safe-area-inset-bottom) - ${this.$store.state.tabbarHeight}px - ${this.$store.state.statusHeight}px)`}
 			}
 		},
 	}

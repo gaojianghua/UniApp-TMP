@@ -58,7 +58,7 @@
 				</view>
 				<view class="more d-flex a-center j-around mt-5 w-100">
 					<view class="d-flex a-center j-center flex-column" v-for="(item, i) in moreLogins" :key="i"
-					@click="openMoreLogin(i)">
+					@click="openMoreLogin(item, i)">
 						<u-image :src="item.image" width="80rpx" height="80rpx" mode=""></u-image>
 						<view class="more-name line-h mt-1">
 							{{$t(item.name)}}
@@ -178,7 +178,13 @@
 				})
 			},
 			// 其他登录
-			openMoreLogin(i) {
+			openMoreLogin(item, i) {
+				// #ifdef APP-PLUS
+				plus.runtime.openURL(item.schema)
+				// #endif
+				// #ifdef H5
+				location.href = item.schema
+				// #endif
 				if(i == 0) {
 					
 				}else if (i == 1) {
@@ -218,7 +224,7 @@
 		computed: {
 			scrollStyle() {
 				return {
-					height: `calc(100vh - ${this.$store.state.navbarHeight}px - 2rpx - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
+					height: `calc(100vh - ${this.$store.state.navbarHeight}px - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
 				}
 			}
 		},

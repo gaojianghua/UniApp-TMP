@@ -41,4 +41,7 @@ export default {
 	updateShippingAddress(state, e) {
 		state.shippingAddress = e
 	},
+	updateHistoryList(state, e) {
+		state.historyList = e
+	},
 }

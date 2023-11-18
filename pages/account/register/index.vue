@@ -4,7 +4,7 @@
 		<m-navbar bgColor="transparent" textColor="#fff" i18n value="page.欢迎注册"></m-navbar>
 		<!-- 内容区域 -->
 		<m-scroll :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
-			<view class="d-flex a-center j-center flex-column pt-10">
+			<view class="d-flex a-center j-center flex-column py-10">
 				<u-image width="120rpx" height="120rpx"
 					src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/GongYueLogo.png"></u-image>
 				<view class="desc line-h letter-2 mt-3 font-weight text-white">
@@ -182,7 +182,7 @@
 		computed: {
 			scrollStyle() {
 				return {
-					height: `calc(100vh - ${this.$store.state.navbarHeight}px - 2rpx - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
+					height: `calc(100vh - ${this.$store.state.navbarHeight}px - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
 				}
 			}
 		},
