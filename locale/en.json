@@ -282,6 +282,7 @@
 	"请勿频繁点击": "Do not click too often",
 	"开始": "Start",
 	"结束": "Finish",
+	"您的网络不支持语音识别": "Your network does not support speech recognition",
 	"语音识别异常，请稍后再试": "Speech recognition exception, please try again later",
 	"因长时间没有语音输入已帮你关闭语音识别": "Speech recognition has been turned off for you because there has been no voice input for a long time",
 	"根据定位获取附近地址": "Get nearby addresses based on location",
