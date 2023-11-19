@@ -2,7 +2,7 @@
 	<view class="page">
 		<!-- 顶部导航栏 -->
 		<m-navbar bgColor="transparent" textColor="#fff" value="page.积分抽奖" i18n></m-navbar>
-		<m-scroll :isLoading="false" :isCustomRefresh="false"
+		<m-scroll-y :isLoading="false" :isCustomRefresh="false"
 			:scrollStyle="scrollStyle">
 			<view class="position-relative">
 				<view class="notice" @click="ruleShow = true">
@@ -77,7 +77,7 @@
 					</view>
 				</view>
 			</view>
-		</m-scroll>
+		</m-scroll-y>
 		<m-modal :show="show" i18n title="恭喜中奖" :isCancel="false" @cancel="show = false" @confirm="show = false">
 			<view class="d-flex a-center j-center flex-column">
 				<u-image width="160rpx" height="160rpx" :src="item.image"></u-image>
@@ -97,15 +97,11 @@
 
 <script>
 	import MLuckyGrid from '@/main_modules/main-ui/m-lucky-grid/index.vue'
-	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
-	import MModal from '@/main_modules/main-ui/m-modal/index.vue'
 	import goods from './goods.json'
 	import records from './records.json'
 	export default {
 		components: {
-			MScroll,
-			MLuckyGrid,
-			MModal
+			MLuckyGrid
 		},
 		data() {
 			return {

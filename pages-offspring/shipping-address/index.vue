@@ -56,12 +56,8 @@
 </template>
 
 <script>
-	import MModal from '@/main_modules/main-ui/m-modal/index.vue'
 	import { list } from './data.js'
 	export default {
-		components: {
-			MModal
-		},
 		data() {
 			return {
 				isManage: false,

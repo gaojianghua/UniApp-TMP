@@ -1,7 +1,7 @@
 <template>
 	<view class="page">
 		<!-- 顶部信息 -->
-		<m-scroll :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
+		<m-scroll-y :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
 			<view class="user" :style="{
 			height: `calc(388rpx + ${statusHeight}px)`}">
 				<!-- 顶部状态栏高度 -->
@@ -86,7 +86,7 @@
 				</view>
 			</view>
 			<u-gap height="30rpx"></u-gap>
-		</m-scroll>
+		</m-scroll-y>
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/mine/index" i18n></m-tabbar>
 	</view>
@@ -94,7 +94,6 @@
 
 <script>
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
-	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	import MCell from '@/main_modules/main-ui/m-cell/index.vue'
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	import {
@@ -106,7 +105,6 @@
 		mixins: [tabbarInit],
 		components: {
 			MTabbar,
-			MScroll,
 			MCell
 		},
 		data() {

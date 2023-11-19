@@ -3,7 +3,7 @@
 		<!-- 顶部导航栏 -->
 		<m-navbar bgColor="#fff" textColor="#fb7299" value="page.问题详情" i18n></m-navbar>
 		<!-- 内容区域 -->
-		<m-scroll :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
+		<m-scroll-y :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
 			<view class="pt-1">
 				<view class="bg-white d-flex p-2">
 					<view class="feedback-label flex-shrink font-weight">
@@ -30,16 +30,12 @@
 					</view>
 				</view>
 			</view>
-		</m-scroll>
+		</m-scroll-y>
 	</view>
 </template>
 
 <script>
-	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	export default {
-		components: {
-			MScroll
-		},
 		data() {
 			return {
 				detail: {},

@@ -39,7 +39,7 @@
 			</view>
 		</view>
 		<template v-else>
-			<m-scroll bgColor="transparent" i18n :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load" @loadmore="loadmore" @onRefresh="onRefresh" mainColor="#fb7290">
+			<m-scroll-y bgColor="transparent" i18n :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load" @loadmore="loadmore" @onRefresh="onRefresh" mainColor="#fb7290">
 				<u-empty v-if="load != 0 && list.length == 0" mode="car" :text="$t('购物车是空的')"
 					icon="http://cdn.uviewui.com/uview/empty/car.png">
 				</u-empty>
@@ -51,7 +51,7 @@
 							isDesc isOldPrice isOver isVIP :isCartBtn="false" isChecked></m-goods-card>
 					</view>
 				</view>
-			</m-scroll>
+			</m-scroll-y>
 		</template>
 		<!-- 结算区域 -->
 		<view v-if="!token" class="login d-flex a-center">
@@ -107,9 +107,7 @@
 
 <script>
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
-	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	import MGoodsCard from '@/main_modules/main-ui/m-goods-card/index.vue'
-	import MModal from '@/main_modules/main-ui/m-modal/index.vue'
 	import goods from '@/pages/tabbar/kind/goods.json'
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	import capsuleInit from '@/mixins/capsule-init.js'
@@ -117,9 +115,7 @@
 		mixins: [tabbarInit,capsuleInit],
 		components: {
 			MTabbar,
-			MScroll,
-			MGoodsCard,
-			MModal
+			MGoodsCard
 		},
 		data() {
 			return {

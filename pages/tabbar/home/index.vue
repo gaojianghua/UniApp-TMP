@@ -19,7 +19,7 @@
 			</view>
 		</m-navbar>
 		<!-- 内容区域 -->
-		<m-scroll :isLoading="isLoading" i18n :scrollStyle="scrollStyle" :load="load" bgColor="transparent"
+		<m-scroll-y :isLoading="isLoading" i18n :scrollStyle="scrollStyle" :load="load" bgColor="transparent"
 			@loadmore="loadmore" @onRefresh="onRefresh">
 			<view class="content pt-2 px-2 bg-white">
 				<u-swiper height="320rpx" circular indicatorActiveColor="#f27299" :list="banner" keyName="image" indicator
@@ -61,7 +61,7 @@
 					</view>
 				</view>
 			</view>
-		</m-scroll>
+		</m-scroll-y>
 		<!-- 弹框 -->
 		<common-lang-model :show="show" @close="show = false" @confirmSwitch="confirmSwitch"></common-lang-model>
 		<u-toast ref="uToast"></u-toast>
@@ -72,7 +72,6 @@
 
 <script>
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
-	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	import MGoodsCard from '@/main_modules/main-ui/m-goods-card/index.vue'
 	import CommonLangModel from '@/components/pages/common-lang-model/index.vue'
 	import tabbarInit from '@/mixins/tabbar-init.js'
@@ -87,7 +86,6 @@
 		mixins: [tabbarInit, capsuleInit, shareInit],
 		components: {
 			MTabbar,
-			MScroll,
 			MGoodsCard,
 			CommonLangModel
 		},

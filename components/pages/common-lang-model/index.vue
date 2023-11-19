@@ -11,7 +11,6 @@
 </template>
 
 <script>
-	import MModal from '@/main_modules/main-ui/m-modal/index.vue'
 	export default {
 		props: {
 			show: {
@@ -20,9 +19,6 @@
 					return false
 				}
 			}
-		},
-		components: {
-			MModal
 		},
 		data() {
 			return {

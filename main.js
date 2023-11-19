@@ -53,6 +53,10 @@ Object.keys(filters).forEach((item, i) => {
 // 全局引入组件
 import MNavbar from '@/main_modules/main-ui/m-navbar/index.vue'
 Vue.component('m-navbar', MNavbar)
+import MModal from '@/main_modules/main-ui/m-modal/index.vue'
+Vue.component('m-modal', MModal)
+import MScrollY from '@/main_modules/main-ui/m-scroll-y/index.vue'
+Vue.component('m-scroll-y', MScrollY)
 import MTop from '@/main_modules/main-ui/m-top/index.vue'
 Vue.component('m-top', MTop)
 // 初始化 Vue 实例

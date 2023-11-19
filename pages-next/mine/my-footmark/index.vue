@@ -16,7 +16,7 @@
 			<swiper-item v-for="(item, i) in tabs" :key="i">
 				<!-- 列表区域 -->
 				<view class="w-100 h-100 px-2">
-					<m-scroll :isLoading="item.isLoading" i18n :scrollStyle="scrollStyle" :load="item.load"
+					<m-scroll-y :isLoading="item.isLoading" i18n :scrollStyle="scrollStyle" :load="item.load"
 						@loadmore="loadmore" bgColor="transparent" @onRefresh="onRefresh">
 						<u-empty v-if="item.load != 0 && item.list.length == 0" mode="list" :text="$t('暂无足迹')"
 							icon="http://cdn.uviewui.com/uview/empty/list.png">
@@ -32,7 +32,7 @@
 							</view>
 							<u-image width="300rpx" height="180rpx" :src="val.img"></u-image>
 						</view>
-					</m-scroll>
+					</m-scroll-y>
 				</view>
 			</swiper-item>
 		</swiper>
@@ -40,14 +40,12 @@
 </template>
 
 <script>
-	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	import MListSwiper from '@/main_modules/main-ui/m-list-swiper/index.vue'
 	import {
 		tabs
 	} from './data.js'
 	export default {
 		components: {
-			MScroll,
 			MListSwiper
 		},
 		data() {

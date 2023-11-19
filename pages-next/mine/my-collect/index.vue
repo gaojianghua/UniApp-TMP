@@ -18,7 +18,7 @@
 		</view>
 		<!-- 列表区域 -->
 		<view class="w-100 px-2" :style="scrollStyle">
-			<m-scroll :placeHeight="switchManage? '100rpx' : '0'" i18n :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load"
+			<m-scroll-y :placeHeight="switchManage? '100rpx' : '0'" i18n :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load"
 				@loadmore="loadmore" bgColor="transparent" @onRefresh="onRefresh">
 				<u-empty v-if="load != 0 && list.length == 0" mode="list" :text="$t('暂无收藏')"
 					icon="http://cdn.uviewui.com/uview/empty/list.png">
@@ -32,7 +32,7 @@
 							isDesc isOldPrice isOver isVIP :isCartBtn="!switchManage" :isChecked="switchManage"></m-goods-card>
 					</view>
 				</view>
-			</m-scroll>
+			</m-scroll-y>
 		</view>
 		<view v-if="switchManage" class="settlement d-flex j-sb a-center">
 			<u-checkbox-group>
@@ -47,12 +47,10 @@
 </template>
 
 <script>
-	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	import MGoodsCard from '@/main_modules/main-ui/m-goods-card/index.vue'
 	import goods from '@/pages/tabbar/kind/goods.json'
 	export default {
 		components: {
-			MScroll,
 			MGoodsCard
 		},
 		data() {

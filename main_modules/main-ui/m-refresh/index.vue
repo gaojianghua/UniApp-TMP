@@ -1,11 +1,18 @@
 <template>
 	<u-transition :show="show" mode="slide-down">
 		<view :style="{height: `${dropDown}px`, top: `-${dropDown}px`}"
-			class="w-100 refresher text-center d-flex a-center j-center">
-			<u-loading-icon v-if="isLoad" size="20" :inactiveColor="mainColor + '22'" mode="circle" :color="mainColor">
-			</u-loading-icon>
-			<view :style="{color: mainColor}" class="refresher-text ml-2">
-				{{text}}
+			:class="isColumn ? 'flex-column' : ''"
+			class="w-100 refresher d-flex a-center j-center">
+			<view v-if="image" class="logo mb-1 d-flex j-center a-center" :style="imageStyle">
+				<image lazy-load :src="image" mode=""></image>
+			</view>
+			<view class="d-flex a-center j-center">
+				<u-loading-icon v-if="isLoad" size="20" :inactiveColor="mainColor + '22'" mode="circle" :color="mainColor">
+				</u-loading-icon>
+				<slot v-else name="loadIcon" />
+				<view :style="{color: mainColor}" class="refresher-text ml-2">
+					{{text}}
+				</view>
 			</view>
 		</view>
 	</u-transition>
@@ -38,7 +45,25 @@
 					return ''
 				}
 			},
+			image: {
+				type: String,
+				default: () => {
+					return ''
+				}
+			},
+			imageStyle: {
+				type: Object,
+				default: () => {
+					return {}
+				}
+			},
 			isLoad: {
+				type: Boolean,
+				default: () => {
+					return false
+				}
+			},
+			isColumn: {
 				type: Boolean,
 				default: () => {
 					return false
@@ -66,6 +91,10 @@
 			font-size: 26rpx;
 			font-family: PingFang SC;
 			font-weight: 400;
+		}
+		.logo{
+			width: 60rpx;
+			height: 60rpx;
 		}
 	}
 </style>

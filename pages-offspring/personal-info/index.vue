@@ -41,11 +41,7 @@
 </template>
 
 <script>
-	import MModal from '@/main_modules/main-ui/m-modal/index.vue'
 	export default {
-		components: {
-			MModal
-		},
 		data() {
 			return {
 				show: false,

@@ -9,12 +9,8 @@
 </template>
 
 <script>
-	import MModal from '@/main_modules/main-ui/m-modal/index.vue'
 	export default {
 		name: 'g-network-error',
-		components: {
-			MModal
-		},
 		data() {
 			return {
 				show: false,

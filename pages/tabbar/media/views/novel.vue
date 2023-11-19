@@ -1,12 +1,15 @@
 <template>
 	<view class="views" >
 		<view class="w-100 bg-white" :style="{height: `${$store.state.navbarHeight}px`}"></view>
-		<m-scroll :isLoading="isLoading" i18n :scrollStyle="scrollStyle" :load="load" @loadmore="loadmore"
+		<m-scroll-y :isLoading="isLoading" i18n :scrollStyle="scrollStyle" :load="load" @loadmore="loadmore"
 			bgColor="transparent" @onRefresh="onRefresh">
 			<view class="content px-2 pt-2">
 				<!-- 书架 -->
 				<view class="book-shelf p-3 bg-white d-flex a-center">
-					<scroll-view class="scroll-row" scroll-x>
+					<m-scroll-x :isLoading="loadBookshelf" :load="0" mainColor="#f27299" :isCustomRefresh="false">
+						<u-empty textSize="12" width="70" height="70" v-if="!loadBookshelf && bookshelfList.length == 0" mode="list" :text="$t('书架是空的')"
+							icon="http://cdn.uviewui.com/uview/empty/list.png">
+						</u-empty>
 						<view class="scroll-row-item" v-for="(item, i) in bookshelfList" :key="i" @click="$tools.Navigate.navigateTo('/pages-next/media/read-novel/index', item.id)">
 							<view class="d-flex flex-column">
 								<view class="item-image position-relative hidden">
@@ -20,7 +23,7 @@
 								</view>
 							</view>
 						</view>
-					</scroll-view>
+					</m-scroll-x>
 					<view class="update flex-shrink d-flex a-center pl-3" @click="$tools.Navigate.navigateTo('/pages-next/media/book-shelf/index')">
 						<view class="update-text line-h">
 							{{$t('书架')}}
@@ -49,12 +52,12 @@
 					<u-image width="300rpx" height="180rpx" :src="val.img"></u-image>
 				</view>
 			</view>
-		</m-scroll>
+		</m-scroll-y>
 	</view>
 </template>
 
 <script>
-	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
+	import MScrollX from '@/main_modules/main-ui/m-scroll-x/index.vue'
 	export default {
 		props: {
 			current: {
@@ -63,7 +66,7 @@
 			}
 		},
 		components: {
-			MScroll
+			MScrollX
 		},
 		data() {
 			return {
@@ -78,6 +81,7 @@
 				total: 0,
 				load: 0,
 				isLoading: true,
+				loadBookshelf: true,
 				bookshelfList: []
 			}
 		},
@@ -110,6 +114,7 @@
 					}
 				}
 				this.bookshelfList = list
+				this.loadBookshelf = false
 			},
 			// 获取数据
 			async getData(e) {
@@ -174,7 +179,9 @@
 				handler(nv, ov) {
 					if (nv === 1) {
 						this.list = []
+						this.bookshelfList = []
 						this.isLoading = true
+						this.loadBookshelf = true
 						this.load = 0
 						let time = setTimeout(() => {
 							this.init()
@@ -195,10 +202,14 @@
 		
 		.content{
 			.book-shelf{
+				height: 226rpx;
 				border-radius: 12rpx;
 				
 				.scroll-row{
-					width: 84%;
+					width: 83.2%;
+					/deep/ .u-empty__text {
+						margin-top: 0 !important;
+					}
 					.scroll-row-item{
 						margin-right: 20rpx;
 						.item-image{

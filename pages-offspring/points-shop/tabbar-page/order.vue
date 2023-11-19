@@ -1,5 +1,5 @@
 <template>
-	<m-scroll :isLoading="isLoading" i18n :scrollStyle="scrollStyle" :load="load" @loadmore="loadmore" bgColor="transparent"
+	<m-scroll-y :isLoading="isLoading" i18n :scrollStyle="scrollStyle" :load="load" @loadmore="loadmore" bgColor="transparent"
 		@onRefresh="onRefresh">
 		<u-empty v-if="load != 0 && list.length == 0" mode="list" :text="$t('暂无数据')"
 			icon="http://cdn.uviewui.com/uview/empty/list.png">
@@ -24,20 +24,16 @@
 				</view>
 			</view>
 		</view>
-	</m-scroll>
+	</m-scroll-y>
 </template>
 
 <script>
-	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	export default {
 		props: {
 			current: {
 				type: [Number, String],
 				default: 1
 			}
-		},
-		components: {
-			MScroll
 		},
 		data() {
 			return {

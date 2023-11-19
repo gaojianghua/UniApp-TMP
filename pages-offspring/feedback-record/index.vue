@@ -3,7 +3,7 @@
 		<!-- 顶部导航 -->
 		<m-navbar bgColor="#fff" textColor="#fb7299" value="page.反馈记录" i18n></m-navbar>
 		<!-- 内容区域 -->
-		<m-scroll :isLoading="isLoading" i18n :scrollStyle="scrollStyle" :load="load" @loadmore="loadmore" bgColor="transparent"
+		<m-scroll-y :isLoading="isLoading" i18n :scrollStyle="scrollStyle" :load="load" @loadmore="loadmore" bgColor="transparent"
 			@onRefresh="onRefresh">
 			<u-empty v-if="load != 0 && list.length == 0" mode="list" :text="$t('暂无数据')"
 				icon="http://cdn.uviewui.com/uview/empty/list.png">
@@ -28,17 +28,13 @@
 					</view>
 				</view>
 			</view>
-		</m-scroll>
+		</m-scroll-y>
 	</view>
 </template>
 
 <script>
-	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	import res from './data.json'
 	export default {
-		components: {
-			MScroll
-		},
 		data() {
 			return {
 				load: 0,

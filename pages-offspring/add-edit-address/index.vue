@@ -38,7 +38,7 @@
 					<view @click.stop :class="locaShow == 1 ? 'active' : locaShow == 0 ? 'default' : ''"
 						class="poi px-3 hidden position-absolute left-0 w-100 index-5 bg-white">
 						<u-gap height="20rpx" bgColor="#fff"></u-gap>
-						<m-scroll :isLoading="false" :isCustomRefresh="false" :scrollStyle="{height: '460rpx'}">
+						<m-scroll-y :isLoading="false" :isCustomRefresh="false" :scrollStyle="{height: '460rpx'}">
 							<view class="poi-notice">
 								{{$t('根据定位获取附近地址')}}
 							</view>
@@ -50,7 +50,7 @@
 									{{item.province}}{{item.city}}{{item.area}}{{item.street}}{{item.address}}
 								</view>
 							</view>
-						</m-scroll>
+						</m-scroll-y>
 						<u-gap height="20rpx" bgColor="#fff"></u-gap>
 					</view>
 				</view>
@@ -104,14 +104,10 @@
 </template>
 
 <script>
-	import MModal from '@/main_modules/main-ui/m-modal/index.vue'
 	import MPopup from '@/main_modules/main-ui/m-popup/index.vue'
-	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	import CAppSpeechRecognition from '@/components/common/c-app-speech-recognition/index.vue'
 	export default {
 		components: {
-			MModal,
-			MScroll,
 			MPopup,
 			CAppSpeechRecognition
 		},

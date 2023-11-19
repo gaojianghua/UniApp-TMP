@@ -3,7 +3,7 @@
 		<!-- 顶部导航栏 -->
 		<m-navbar bgColor="transparent" textColor="#fff" i18n value="page.APP下载"></m-navbar>
 		<!-- 内容区域 -->
-		<m-scroll :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
+		<m-scroll-y :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
 			<view class="d-flex a-center j-center flex-column pt-10">
 				<u-image width="120rpx" height="120rpx"
 					src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/GongYueLogo.png"></u-image>
@@ -27,7 +27,7 @@
 					</view>
 				</view>
 			</view>
-		</m-scroll>
+		</m-scroll-y>
 		<!-- 弹框 -->
 		<m-modal :show="show" i18n title="温馨提示" :isCancel="false" btnName="复制链接" @cancel="show = false" @confirm="urlCopy">
 			<view class="d-flex a-center j-center flex-column">
@@ -46,13 +46,7 @@
 </template>
 
 <script>
-	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
-	import MModal from '@/main_modules/main-ui/m-modal/index.vue'
 	export default {
-		components: {
-			MScroll,
-			MModal
-		},
 		data() {
 			return {
 				downloadAuth: {},

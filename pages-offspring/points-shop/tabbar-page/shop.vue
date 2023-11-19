@@ -1,7 +1,7 @@
 <template>
 	<view class="main" :style="scrollStyle">
 		<view :class="screen == 0 ? 'top-active' : (screen == 1 ? 'top-default' : '')" class="main-top">
-			<m-scroll :isLoading="couponIsLoading" i18n :scrollStyle="{height: `calc(100% - 50rpx)`}" :load="couponLoad"
+			<m-scroll-y :isLoading="couponIsLoading" i18n :scrollStyle="{height: `calc(100% - 50rpx)`}" :load="couponLoad"
 				@loadmore="couponLoadmore" bgColor="transparent" @onRefresh="couponOnRefresh">
 				<u-empty v-if="load != 0 && couponList.length == 0" mode="list" :text="$t('暂无数据')"
 					icon="http://cdn.uviewui.com/uview/empty/list.png">
@@ -26,7 +26,7 @@
 						</view>
 					</view>
 				</view>
-			</m-scroll>
+			</m-scroll-y>
 			<view v-if="screen != 1" class="arrow bg-white flex-column d-flex a-center j-center" @click="screenClick(0)">
 				<u-icon v-if="screen != 0" name="arrow-downward" size="22" color="#f27299"></u-icon>
 				<u-icon v-else name="arrow-upward" size="22" color="#f27299"></u-icon>
@@ -39,7 +39,7 @@
 				<u-icon class="mt-auto" v-if="screen != 1" name="arrow-upward" size="22" color="#f27299"></u-icon>
 				<u-icon class="mt-auto" v-else name="arrow-downward" size="22" color="#f27299"></u-icon>
 			</view>
-			<m-scroll :isLoading="isLoading" i18n :scrollStyle="{height: `calc(100% - 50rpx)`}" :load="load"
+			<m-scroll-y :isLoading="isLoading" i18n :scrollStyle="{height: `calc(100% - 50rpx)`}" :load="load"
 				@loadmore="loadmore" bgColor="transparent" @onRefresh="onRefresh">
 				<u-empty v-if="load != 0 && list.length == 0" mode="list" :text="$t('暂无数据')"
 					icon="http://cdn.uviewui.com/uview/empty/list.png">
@@ -65,7 +65,7 @@
 						</view>
 					</view>
 				</view>
-			</m-scroll>
+			</m-scroll-y>
 		</view>
 		<!-- 弹框 -->
 		<m-modal :show="show" i18n title="温馨提示" @cancel="show = false" @confirm="confirmExchange">
@@ -78,18 +78,12 @@
 </template>
 
 <script>
-	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
-	import MModal from '@/main_modules/main-ui/m-modal/index.vue'
 	export default {
 		props: {
 			current: {
 				type: Number,
 				default: 0
 			}
-		},
-		components: {
-			MScroll,
-			MModal
 		},
 		data() {
 			return {

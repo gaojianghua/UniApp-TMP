@@ -11,7 +11,7 @@
 			</view>
 		</m-navbar>
 		<!-- 内容区域 -->
-		<m-scroll :isLoading="isLoading" i18n :scrollStyle="scrollStyle" :load="load" bgColor="transparent"
+		<m-scroll-y :isLoading="isLoading" i18n :scrollStyle="scrollStyle" :load="load" bgColor="transparent"
 			@loadmore="loadmore" @onRefresh="onRefresh">
 			<view v-if="$store.state.historyList && $store.state.historyList.length != 0 && !isSearchResult" class="history px-3 pb-3 pt-2">
 				<view class="d-flex a-center j-sb">
@@ -54,19 +54,17 @@
 					</view>
 				</view>
 			</view>
-		</m-scroll>
+		</m-scroll-y>
 	</view>
 </template>
 
 <script>
-	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	import MGoodsCard from '@/main_modules/main-ui/m-goods-card/index.vue'
 	import capsuleInit from '@/mixins/capsule-init.js'
 	import result from './data.json'
 	export default {
 		mixins: [capsuleInit],
 		components: {
-			MScroll,
 			MGoodsCard
 		},
 		data() {

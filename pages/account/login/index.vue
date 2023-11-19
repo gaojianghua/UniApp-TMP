@@ -3,7 +3,7 @@
 		<!-- 顶部导航栏 -->
 		<m-navbar bgColor="transparent" textColor="#fff" i18n value="page.欢迎登录"></m-navbar>
 		<!-- 内容区域 -->
-		<m-scroll :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
+		<m-scroll-y :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
 			<view class="d-flex a-center j-center flex-column pt-10">
 				<u-image width="120rpx" height="120rpx"
 					src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/GongYueLogo.png"></u-image>
@@ -66,7 +66,7 @@
 					</view>
 				</view>
 			</view>
-		</m-scroll>
+		</m-scroll-y>
 		<!-- 弹出层 -->
 		<m-popup :show="show" @close="show = false" title="请选择国家代码" i18n>
 			<view class="nation">
@@ -78,13 +78,11 @@
 </template>
 
 <script>
-	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	import MAgreePolicy from '@/main_modules/main-ui/m-agree-policy/index.vue'
 	import MPopup from '@/main_modules/main-ui/m-popup/index.vue'
 	import { moreLogins, loginType } from './data.js'
 	export default {
 		components: {
-			MScroll,
 			MAgreePolicy,
 			MPopup
 		},

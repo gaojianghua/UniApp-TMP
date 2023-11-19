@@ -3,7 +3,7 @@
 		<!-- 顶部导航栏 -->
 		<m-navbar bgColor="#transparent" textColor="#fff" value="page.关于宫悦" i18n></m-navbar>
 		<!-- 内容区域 -->
-		<m-scroll :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
+		<m-scroll-y :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
 		<view class="content d-flex pt-10 flex-column j-center a-center" :style="scrollStyle">
 			<u-image width="120rpx" height="120rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/GongYueLogo.png"></u-image>
 			<view class="mt-3 line-h text-white font-weight" style="font-size: 32rpx;">
@@ -27,16 +27,12 @@
 				<span>Copyright c 2022-{{new Date().getFullYear()}}；ALL Rights Reserved</span>
 			</view>
 		</view>
-		</m-scroll>
+		</m-scroll-y>
 	</view>
 </template>
 
 <script>
-	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	export default {
-		components: {
-			MScroll
-		},
 		data() {
 			return {
 				

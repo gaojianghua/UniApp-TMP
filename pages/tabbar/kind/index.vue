@@ -16,7 +16,7 @@
 		<view class="kind d-flex" :style="scrollStyle">
 			<!-- 左边一级分类 -->
 			<view class="kind-left h-100">
-				<m-scroll :isCustomRefresh="false" :isLoading="false" bgColor="transparent" :scrollStyle="scrollStyle"
+				<m-scroll-y :isCustomRefresh="false" :isLoading="false" bgColor="transparent" :scrollStyle="scrollStyle"
 					mainColor="#fb7290">
 					<view v-if="tabs.length != 0" class="one-list">
 						<view :class="oneCurrent == i ? 'active' : 'normal'"
@@ -25,7 +25,7 @@
 							{{item.mallCategoryName}}
 						</view>
 					</view>
-				</m-scroll>
+				</m-scroll-y>
 			</view>
 			<!-- 右边二级分类以及商品列表 -->
 			<view class="kind-right h-100">
@@ -44,7 +44,7 @@
 					</view>
 				</view>
 				<view class="kind-content" :style="{height: `calc(100% - 88rpx)`}">
-					<m-scroll bgColor="transparent" i18n :isLoading="isLoading" :scrollStyle="{height: '100%'}"
+					<m-scroll-y bgColor="transparent" i18n :isLoading="isLoading" :scrollStyle="{height: '100%'}"
 						:load="load" @loadmore="loadmore" @onRefresh="onRefresh" mainColor="#fb7290">
 						<u-empty v-if="load != 0 && list.length == 0" mode="list" :text="$t('暂无商品')"
 							icon="http://cdn.uviewui.com/uview/empty/list.png">
@@ -58,7 +58,7 @@
 									isDesc isOldPrice isOver isVIP isCartBtn></m-goods-card>
 							</view>
 						</view>
-					</m-scroll>
+					</m-scroll-y>
 				</view>
 			</view>
 		</view>
@@ -69,7 +69,6 @@
 
 <script>
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
-	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	import MTabs from '@/main_modules/main-ui/m-tabs/index.vue'
 	import MGoodsCard from '@/main_modules/main-ui/m-goods-card/index.vue'
 	import MListSwiper from '@/main_modules/main-ui/m-list-swiper/index.vue'
@@ -81,7 +80,6 @@
 		mixins: [tabbarInit, capsuleInit],
 		components: {
 			MTabbar,
-			MScroll,
 			MListSwiper,
 			MTabs,
 			MGoodsCard

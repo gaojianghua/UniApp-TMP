@@ -23,10 +23,10 @@
 		@refresherabort="onAbort" @refresherrestore="onRestore">
 		<!-- #endif -->
 		<view class="position-relative">
-			<m-refresh :mainColor="mainColor" :isLoad="triggered" :show="none" :dropDown="dropDown" :text="i18n ? $t(text) : text" />
+			<m-refresh direction="y" :mainColor="mainColor" :isLoad="triggered" :show="none" :dropDown="dropDown" :text="i18n ? $t(text) : text" />
 			<slot name="default" />
 		</view>
-		<m-loading v-if="isLoading" :height="loadHeight" :load="load" :mainColor="mainColor" :bgColor="bgColor" />
+		<m-loading direction="y" v-if="isLoading" :height="loadHeight" :load="load" :mainColor="mainColor" :bgColor="bgColor" />
 		<view :style="{height: placeHeight}" class="w-100"></view>
 	</scroll-view>
 </template>
