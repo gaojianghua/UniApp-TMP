@@ -86,7 +86,8 @@
                     "amap" : {
                         "__platform__" : [ "ios", "android" ],
                         "appkey_ios" : "68e1b09969273e6cef3810f8cb37300e",
-                        "appkey_android" : "5a989c1320d542853ad37b58fa090af2"
+                        "appkey_android" : "5a989c1320d542853ad37b58fa090af2",
+                        "name" : "amap_15257184434AP89rmjkM"
                     }
                 },
                 "push" : {

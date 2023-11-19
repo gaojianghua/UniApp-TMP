@@ -1,6 +1,6 @@
 <!-- 上拉加载组件 -->
 <template>
-	<view class="loading d-flex j-center a-center" :style="{'height': `${height}rpx`}">
+	<view class="loading d-flex j-center a-center" :style="{height: `${height}rpx`, backgroundColor: bgColor}">
 		<view v-if="load == 2" class="loading-text d-flex j-center a-center" :style="'color:' + mainColor + ';'">
 			<!-- <view class="logo flex justify-center align-center">
 				<image lazy-load :src="entLogo" mode=""></image>
@@ -34,6 +34,12 @@
 				type: String,
 				default: () => {
 					return '#fb7299'
+				}
+			},
+			bgColor: {
+				type: String,
+				default: () => {
+					return 'transparent'
 				}
 			},
 			height: {

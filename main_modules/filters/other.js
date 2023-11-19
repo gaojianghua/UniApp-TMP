@@ -121,6 +121,23 @@ class Other {
 		// 如果不是小数数值，则直接返回整数值
 		return parseInt(amountStr);
 	}
+
+	/**
+	 * @description 指定开始下标的字符和字符串总长度将多余部分替换掉
+	 * @param str 字符串
+	 * @param char 起始字符
+	 * @param length 指定字符串总长度
+	 * @param data 指定替换内容
+	 */
+	static showHeadTail = (str, char, length, data) => {
+		if(str.length >= length) {
+			let i = str.indexOf(char) + 1
+			let num = str.length - length
+			return str.substring(0, i) + data + str.substring(i + num)
+		}else {
+			return str
+		}
+	}
 }
 
 

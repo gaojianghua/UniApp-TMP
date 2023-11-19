@@ -26,7 +26,7 @@
 			<m-refresh :mainColor="mainColor" :isLoad="triggered" :show="none" :dropDown="dropDown" :text="i18n ? $t(text) : text" />
 			<slot name="default" />
 		</view>
-		<m-loading v-if="isLoading" :height="loadHeight" :load="load" :mainColor="mainColor" />
+		<m-loading v-if="isLoading" :height="loadHeight" :load="load" :mainColor="mainColor" :bgColor="bgColor" />
 		<view :style="{height: placeHeight}" class="w-100"></view>
 	</scroll-view>
 </template>

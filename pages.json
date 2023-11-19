@@ -179,6 +179,25 @@
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
+		},{
+			"path": "media/all-search/index",
+			"style": {
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},{
+			"path": "media/book-shelf/index",
+			"style": {
+				"navigationBarTitleText": "%page.我的书架%",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},{
+			"path": "media/read-novel/index",
+			"style": {
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
 		}
 		]
 	}, {
@@ -325,12 +344,27 @@
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
+			},
+			{
+				"path": "order-search/index",
+				"style": {
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			},
+			{
+				"path": "order-detail/index",
+				"style": {
+					"navigationBarTitleText": "%page.订单详情%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
 			}
 		]
 	}],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "LOVESHOP",
+		"navigationBarTitleText": "GongYue Shop",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8",
 		"app-plus": {

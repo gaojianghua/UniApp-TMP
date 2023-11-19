@@ -1,5 +1,5 @@
 <template>
-	<view class="page">
+	<view class="page" @click="pageClick">
 		<!-- 顶部导航栏 -->
 		<m-navbar bgColor="#fff" textColor="#fb7299" :value="value" i18n>
 			<template v-if="isEdit" :slot="'right'">
@@ -12,7 +12,7 @@
 		<view class="content mt-1 bg-white">
 			<view class="d-flex a-center j-sb border-top py-2 px-3">
 				<span>{{$t('收货人')}}</span>
-				<view class="bottom">
+				<view class="bottom flex-shrink">
 					<u-input :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="text" border="none"
 						:placeholder="$t('名字')" v-model="item.name">
 					</u-input>
@@ -20,7 +20,7 @@
 			</view>
 			<view class="d-flex a-center j-sb py-2 border-top px-3">
 				<span>{{$t('手机号码')}}</span>
-				<view class="bottom">
+				<view class="bottom flex-shrink">
 					<u-input :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="text" border="none"
 						:placeholder="$t('手机号码')" v-model="item.phone">
 					</u-input>
@@ -28,18 +28,36 @@
 			</view>
 			<view class="d-flex a-center j-sb py-2 border-top px-3">
 				<span>{{$t('所在地区')}}</span>
-				<view class="bottom hidden" @click="cityShow = true">
-					<u-input :readonly="cityShow" :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="text"
-						border="none" :placeholder="$t('省、市、区、街道')" v-model="city">
-						<view slot="suffix" class="pl-2 py-2" @click.stop="openLocation">
+				<view class="bottom flex-shrink position-relative" @click.stop="cityShow = true">
+					<u-input :readonly="cityShow" :customStyle="{height: '100rpx', caretColor: '#f27299', overflow: 'auto'}" type="text"
+						border="none" :placeholder="$t('省、市、区、街道')" :value="city | showHeadTail('市', 14, '...')">
+						<view slot="suffix" class="py-2" @click.stop="openLocation">
 							<u-icon name="map-fill" size="22" color="#f27299"></u-icon>
 						</view>
 					</u-input>
+					<view @click.stop :class="locaShow == 1 ? 'active' : locaShow == 0 ? 'default' : ''"
+						class="poi px-3 hidden position-absolute left-0 w-100 index-5 bg-white">
+						<u-gap height="20rpx" bgColor="#fff"></u-gap>
+						<m-scroll :isLoading="false" :isCustomRefresh="false" :scrollStyle="{height: '460rpx'}">
+							<view class="poi-notice">
+								{{$t('根据定位获取附近地址')}}
+							</view>
+							<view class="mt-2" v-for="(item, i) in locationCitys" :key="i" @click.stop="openLocationItem(item)">
+								<view class="poi-title main-text-color">
+									{{item.title}}
+								</view>
+								<view class="poi-address">
+									{{item.province}}{{item.city}}{{item.area}}{{item.street}}{{item.address}}
+								</view>
+							</view>
+						</m-scroll>
+						<u-gap height="20rpx" bgColor="#fff"></u-gap>
+					</view>
 				</view>
 			</view>
 			<view class="d-flex a-center j-sb py-2 border-top px-3">
 				<span>{{$t('详细地址')}}</span>
-				<view class="bottom d-flex a-center py-2">
+				<view class="bottom flex-shrink d-flex a-center py-2">
 					<u-textarea :customStyle="{caretColor: '#f27299', padding: '0', backgroundColor: '#f1f1f1'}"
 						border="none" v-model="item.address" :placeholder="$t('小区楼栋/乡村名称')">
 					</u-textarea>
@@ -79,7 +97,8 @@
 
 			</view>
 		</m-popup>
-		<c-app-speech-recognition @speechEnd="speechEnd" :show="micShow" @close="micShow = false"></c-app-speech-recognition>
+		<c-app-speech-recognition @speechEnd="speechEnd" :show="micShow"
+			@close="micShow = false"></c-app-speech-recognition>
 		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
@@ -87,10 +106,12 @@
 <script>
 	import MModal from '@/main_modules/main-ui/m-modal/index.vue'
 	import MPopup from '@/main_modules/main-ui/m-popup/index.vue'
+	import MScroll from '@/main_modules/main-ui/m-scroll/index.vue'
 	import CAppSpeechRecognition from '@/components/common/c-app-speech-recognition/index.vue'
 	export default {
 		components: {
 			MModal,
+			MScroll,
 			MPopup,
 			CAppSpeechRecognition
 		},
@@ -109,28 +130,38 @@
 					street: ''
 				},
 				show: false,
+				locaShow: 2,
 				saveShow: false,
 				isEdit: false,
 				city: '',
 				cityShow: false,
-				micShow: false
-				
+				micShow: false,
+				locationCitys: []
 			}
 		},
 		onLoad(options) {
 			this.item = this.$tools.Navigate.receivePageData(options)
-			if (this.$check.isEmptyObject(this.item)) {
-				this.value = 'page.添加收货地址'
-				this.isEdit = false
-				this.city = ''
-			} else {
-				this.value = 'page.编辑收货地址'
-				this.isEdit = true
-				this.city = this.item.province + ' ' + this.item.city + ' ' + this.item.area + (this.item.street ? ' ' +
-					this.item.street : '')
-			}
+			this.init()
 		},
 		methods: {
+			// 初始化
+			init() {
+				this.initAddOrEdit()
+				this.getLocationList()
+			},
+			// 区分添加或者编辑
+			initAddOrEdit() {
+				if (this.$check.isEmptyObject(this.item)) {
+					this.value = 'page.添加收货地址'
+					this.isEdit = false
+					this.city = ''
+				} else {
+					this.value = 'page.编辑收货地址'
+					this.isEdit = true
+					this.city = this.item.province + ' ' + this.item.city + ' ' + this.item.area + (this.item.street ? ' ' +
+						this.item.street : '')
+				}
+			},
 			// 确认移除地址
 			confirmRemoveCity() {
 				let list = this.$store.state.shippingAddress
@@ -161,15 +192,47 @@
 				this.$tools.Navigate.navigateBack()
 			},
 			// 定位获取地址
-			openLocation() {
+			getLocationList() {
 				// 获取定位
 				uni.getLocation({
 					isHighAccuracy: true,
 					geocode: true,
 					success: (e) => {
 						console.log(e)
+						let arr = []
+						for (let i = 0; i < 10; i++) {
+							arr.push({
+								id: i,
+								title: '藏龙星天地',
+								province: '湖北省',
+								city: '武汉市',
+								area: '江夏区',
+								street: '江夏区经济开发区藏龙岛街道',
+								address: '藏龙东街'
+							})
+						}
+						this.locationCitys = arr
 					}
 				})
+			},
+			// 点击某项附近地址
+			openLocationItem(i) {
+				Object.keys(this.item).forEach((item) => {
+					if (i[item]) {
+						item == 'address' ? this.item[item] = (i.address + i.title) : this.item[item] = i[item]
+					}
+				})
+				this.city = this.item.province + ' ' + this.item.city + ' ' + this.item.area + (this.item.street ? ' ' +
+					this.item.street : '')
+				this.locaShow = 0
+			},
+			// 点击页面其他区域
+			pageClick() {
+				this.locaShow == 1 ? this.locaShow = 0 : ''
+			},
+			// 打开附近地址
+			openLocation() {
+				this.locaShow != 1 ? this.locaShow = 1 : this.locaShow = 0
 			},
 			// 关闭语音识别
 			speechEnd(i) {
@@ -196,10 +259,67 @@
 
 		.content {
 			.bottom {
-				width: 70%;
+				width: 75%;
 				background-color: #f1f1f1;
 				border-radius: 50rpx;
 				padding: 0 30rpx;
+
+				.poi {
+					display: none;
+					border-radius: 16rpx;
+					.poi-notice{
+						font-size: 26rpx;
+						color: #999;
+						line-height: 32rpx;
+					}
+					.poi-title{
+						font-size: 28rpx;
+						line-height: 34rpx;
+					}
+					.poi-address{
+						font-size: 24rpx;
+						line-height: 32rpx;
+						color: #999;
+					}
+				}
+
+				.active {
+					display: block;
+					animation: active 0.3s linear forwards;
+
+					@keyframes active {
+						0% {
+							height: 0;
+							bottom: 0;
+
+						}
+
+						100% {
+							height: 500rpx;
+							bottom: -500rpx;
+							box-shadow: 0 0 4rpx 4rpx #f1f1f1;
+						}
+					}
+				}
+
+				.default {
+					display: block;
+					animation: default 0.3s linear forwards;
+
+					@keyframes default {
+						0% {
+							height: 500rpx;
+							bottom: -500rpx;
+						}
+
+						100% {
+							height: 0;
+							bottom: 0;
+							box-shadow: none;
+							display: none;
+						}
+					}
+				}
 			}
 		}
 

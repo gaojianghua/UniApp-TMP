@@ -44,4 +44,10 @@ export default {
 	updateHistoryList(state, e) {
 		state.historyList = e
 	},
+	updateOrderHistoryList(state, e) {
+		state.orderHistoryList = e
+	},
+	updateAllHistoryList(state, e) {
+		state.allHistoryList = e
+	},
 }
