@@ -1,7 +1,7 @@
 <template>
 	<m-popup :show="show" i18n @close="close" title="语音识别">
 		<view class="mic p-3">
-			<u-textarea :customStyle="{caretColor: '#f27299', padding: '20rpx 20rpx', backgroundColor: '#f1f1f1'}"
+			<u-textarea disabled :customStyle="{caretColor: '#f27299', padding: '20rpx 20rpx', backgroundColor: '#f1f1f1'}"
 				border="none" v-model="result" :placeholder="$t('语音识别内容')">
 			</u-textarea>
 			<!-- #ifndef H5 -->
@@ -26,7 +26,6 @@
 				</view>
 				<view :class="recognition ? 'ripple-start' : ''"
 					class="mt-5 ripple main-bg-color position-relative rounded-circle">
-
 				</view>
 			</view>
 			<view @click="onH5Start" class="mt-10 btons d-flex a-center j-center text-white">
@@ -123,7 +122,7 @@
 			},
 			// H5语音识别结束
 			onH5End() {
-				if (this.recognition.stop) {
+				if (this.recognition && this.recognition.stop) {
 					this.recognition.stop()
 					this.recognition = null
 					this.time && clearTimeout(this.time)
@@ -136,6 +135,9 @@
 					this.$emit('speechEnd', this.result)
 					this.result = ''
 				}
+				// #ifdef H5
+				this.onH5End()
+				// #endif
 				this.$emit('close')
 			},
 			// 监听语音识别开启
