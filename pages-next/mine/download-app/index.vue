@@ -69,9 +69,9 @@
 				*/
 				this.downloadAuth = {
 					android: true,
-					androidUrl: 'https://play.google.com/store/apps/details?id=uni.Gao.GongYue',
+					androidUrl: `https://play.google.com/store/apps/details?id=${this.$store.state.androidAppName}`,
 					ios: true,
-					iosUrl: 'https://apps.apple.com/app/GongYueID123456789'
+					iosUrl: `https://apps.apple.com/app/${this.$store.state.iosAppName}`
 				}
 			},
 			// APP下载

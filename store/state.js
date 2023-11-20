@@ -17,6 +17,8 @@ export default {
 	langList: uni.getStorageSync('langList') || [], //国际化多语言列表
 	moneySymbol: uni.getStorageSync('moneySymbol') || '￥',	//货币符号
 	appSystemInfo: uni.getStorageSync('appSystemInfo') || {}, //应用系统信息
+	androidAppName: 'uni.Gao.GongYue', // Android端APP包名
+	iosAppName: 'uni.Gao.GongYue', // IOS端APP包名
 	/**
 	 * 自定义 tabbar 数据
 	**/
