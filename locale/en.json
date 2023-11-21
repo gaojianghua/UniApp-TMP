@@ -287,5 +287,7 @@
 	"因长时间没有语音输入已帮你关闭语音识别": "Speech recognition has been turned off for you because there has been no voice input for a long time",
 	"根据定位获取附近地址": "Get nearby addresses based on location",
 	"书架": "Book Shelf",
-	"更新": "Update"
+	"更新": "Update",
+	"到期": "Expire",
+	"立即使用": "Immediate Use"
 }

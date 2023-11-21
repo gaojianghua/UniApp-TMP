@@ -1492,3 +1492,8 @@ button {
 .letter-2{
 	letter-spacing: 2rpx;
 }
+/* 页面置灰 */
+
+.filter-gc{
+	filter: grayscale(100%);
+}

@@ -11,32 +11,46 @@
 		<!-- #ifdef MP-WEIXIN -->
 		<swiper :current="current" :style="[scrollStyle]" @change="changeSwiper">
 		<!-- #endif -->
-		<!-- #ifndef MP-WEIXIN -->
-		<swiper :current="current" :style="scrollStyle" @change="changeSwiper">
-		<!-- #endif -->
-			<swiper-item v-for="(item, i) in tabs" :key="i">
-				<!-- 列表区域 -->
-				<view class="w-100 h-100 px-2">
-					<m-scroll-y :isLoading="item.isLoading" i18n :scrollStyle="scrollStyle" :load="item.load"
-						@loadmore="loadmore" bgColor="transparent" @onRefresh="onRefresh">
-						<u-empty v-if="item.load != 0 && item.list.length == 0" mode="list" :text="$t('暂无优惠券')"
-							icon="http://cdn.uviewui.com/uview/empty/list.png">
-						</u-empty>
-						<view v-if="item.list.length != 0" class="item d-flex a-center j-sb p-2 mt-2" v-for="(val, index) in item.list" :key="index">
-							<view class="left d-flex flex-column">
-								<view class="title">
-									{{val.title}}
+			<!-- #ifndef MP-WEIXIN -->
+			<swiper :current="current" :style="scrollStyle" @change="changeSwiper">
+			<!-- #endif -->
+				<swiper-item v-for="(item, i) in tabs" :key="i">
+					<!-- 列表区域 -->
+					<view class="w-100 h-100 px-2">
+						<m-scroll-y :isLoading="item.isLoading" i18n :scrollStyle="scrollStyle" :load="item.load"
+							@loadmore="loadmore" bgColor="transparent" @onRefresh="onRefresh">
+							<u-empty v-if="item.load != 0 && item.list.length == 0" mode="list" :text="$t('暂无优惠券')"
+								icon="http://cdn.uviewui.com/uview/empty/list.png">
+							</u-empty>
+							<template v-if="item.list && item.list.length != 0">
+								<view :class="item.type != 1 ? 'filter-gc' : ''" class="coupon-item d-flex a-center pl-3 pr-2 mt-2" v-for="(item, i) in item.list"
+									:key="i">
+									<view class="info-price d-flex a-base j-center">
+										<span class="price-icon text-danger font-weight line-h">￥</span>
+										<span class="price-value text-danger font-weight line-h">{{item.price}}</span>
+									</view>
+									<view class="info d-flex flex-column">
+										<view class="info-desc">
+											{{item.desc}}
+										</view>
+										<view class="point d-flex a-base">
+											{{item.time}} {{$t('到期')}}
+										</view>
+									</view>
+									<view v-if="item.type == 1" class="btns text-white ml-auto" @click="openModel">
+										{{$t('立即使用')}}
+									</view>
+									<view v-else class="expired rounded-circle ml-auto d-flex a-center j-center">
+										<view class="expired-item rounded-circle d-flex a-center j-center">
+											{{item.type == 2 ? $t('已使用') : $t('已过期')}}
+										</view>
+									</view>
 								</view>
-								<view class="desc">
-									{{val.desc}}
-								</view>
-							</view>
-							<u-image width="300rpx" height="180rpx" :src="val.img"></u-image>
-						</view>
-					</m-scroll-y>
-				</view>
-			</swiper-item>
-		</swiper>
+							</template>
+						</m-scroll-y>
+					</view>
+				</swiper-item>
+			</swiper>
 	</view>
 </template>
 
@@ -58,7 +72,7 @@
 				query: {
 					page: 1,
 					limit: 20,
-					type: 2
+					type: 0
 				},
 			}
 		},
@@ -77,7 +91,6 @@
 			// 获取数据
 			async getData(e) {
 				this.query.type = this.current + 1
-				
 				this.query.page = this.tabs[this.current].page
 				// let {
 				// 	data,
@@ -90,9 +103,10 @@
 				}
 				for (let i = 0; i < 10; i++) {
 					data.list.push({
-						img: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg',
-						title: 'haha',
-						desc: 'nishidsahhda'
+						price: '100',
+						desc: '满800可用',
+						time: '2024-02-21 12:08:56',
+						type: this.query.type
 					})
 				}
 				data.total = data.list.length
@@ -153,6 +167,10 @@
 						clearTimeout(time)
 					}, 1000)
 				}
+			},
+			// 去使用
+			openModel() {
+				this.$tools.Navigate.switchTab('/pages/tabbar/kind/index')
 			}
 		},
 		computed: {
@@ -170,11 +188,63 @@
 		.tabs {
 			background-color: #fff;
 		}
-	
+
+		.coupon-item {
+			height: 170rpx;
+			background: url('/static/img/mine/coupon.png') no-repeat;
+			background-size: cover;
+			border-radius: 16rpx;
+
+			.info-price {
+				.price-icon {
+					font-size: 24rpx;
+				}
+
+				.price-value {
+					font-size: 50rpx;
+				}
+			}
+
+			.info {
+				margin-left: 60rpx;
+
+				.info-desc {
+					color: #333;
+					font-size: 26rpx;
+				}
+
+				.point {
+					font-size: 24rpx;
+					color: #666;
+					
+				}
+			}
+
+
+
+			.btns {
+				padding: 6rpx 35rpx;
+				background: linear-gradient(135deg, #FFBC3A, #FF9416);
+				border-radius: 30rpx;
+			}
+			.expired{
+				width: 120rpx;
+				height: 120rpx;
+				border: 1rpx solid #999;
+				.expired-item{
+					width: 110rpx;
+					height: 110rpx;
+					border: 1rpx solid #999;
+					font-size: 26rpx;
+					color: #999;
+				}
+			}
+		}
+
 		.item {
 			border-radius: 8rpx;
 			background-color: #fff;
-		
+
 			.left {
 				height: 180rpx;
 			}
