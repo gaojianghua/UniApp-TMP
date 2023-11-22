@@ -93,7 +93,8 @@
 				eyeStr: 'eye-off'
 			}
 		},
-		onLoad() {
+		onLoad(options) {
+			this.query.inviteCode = this.$tools.Navigate.receivePageData(options)
 			this.init()
 		},
 		methods: {

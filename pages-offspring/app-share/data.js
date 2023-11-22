@@ -2,17 +2,17 @@ const list = [
 	{
 		id: 0,
 		src: '/static/img/mine/share1.png',
-		erwm: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/qrcode_for_gh_4c360c5cb61a_860.jpg'
+		shareUrl: 'https://gaojianghua.cn/pages/account/register/index'
 	},
 	{
 		id: 1,
 		src: '/static/img/mine/share1.png',
-		erwm: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/qrcode_for_gh_4c360c5cb61a_860.jpg'
+		shareUrl: 'https://gaojianghua.cn/pages-next/mine/download-app/index'
 	},
 	{
 		id: 2,
 		src: '/static/img/mine/share1.png',
-		erwm: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/home/qrcode_for_gh_4c360c5cb61a_860.jpg'
+		shareUrl: 'https://gaojianghua.cn'
 	}
 ]
 

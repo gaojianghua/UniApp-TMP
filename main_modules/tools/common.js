@@ -1,5 +1,6 @@
 import lottie from '../lib/h5-lottie/lottie-web.min.js';
 import Check from '../check/index.js'
+import QRCode from 'qrcode'
 class Common {
 	constructor() {
 		this.lock = false
@@ -223,7 +224,16 @@ class Common {
 		this.lock = true
 		fn().then(() => {
 			this.lock = false;
-		}).catch(err => {throw err});
+		}).catch(err => {
+			throw err
+		});
+	};
+	/**
+	 * @description 生成二维码图片
+	 * @param url 链接地址
+	 */
+	static async generateQRCode(url) {
+		return await QRCode.toDataURL(url)
 	};
 }
 

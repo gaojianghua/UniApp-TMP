@@ -227,7 +227,7 @@
 								this.$emit('progress', v)
 							},
 							onEffectFail: (err) => {
-								this.$emit('faill', err)
+								this.$emit('fail', err)
 							}
 						}
 					}

@@ -95,7 +95,8 @@
 					password: '',
 					phone: '',
 					code: '',
-					nationCode: '86'
+					nationCode: '86',
+					inviteCode: ''
 				},
 				loginType,
 				check: [],
@@ -105,7 +106,8 @@
 				isPassword: true,
 			}
 		},
-		onLoad() {
+		onLoad(options) {
+			this.query.inviteCode = this.$tools.Navigate.receivePageData(options)
 			this.init()
 		},
 		methods: {

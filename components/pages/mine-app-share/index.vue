@@ -1,13 +1,13 @@
 <template>
 	<u-overlay :show="posterShow" @click="closePoster">
-		<view class="share flex flex-column justify-center align-center" @click.stop>
+		<view class="share d-flex flex-column j-center a-center" @click.stop>
 			<image :src="path" mode="widthFix" show-menu-by-longpress></image>
 			<view v-if="path" class="close" @click="closePoster">
 				<image src="/static/img/mine/exit.png" mode="">
 				</image>
 			</view>
-			<l-painter :after-delay="1000" :board="poster" :isCanvasToTempFilePath="canvasSwitch"
-				@success="openSuccess" custom-style="position: fixed; left: 200%" />
+			<l-painter useCORS :after-delay="1000" :board="poster" :isCanvasToTempFilePath="canvasSwitch"
+				@success="openSuccess" @fail="openFail" @ custom-style="position: fixed; left: 200%" />
 		</view>
 	</u-overlay>
 </template>
@@ -46,7 +46,6 @@
 					if (newV != oldV && this.posterShow) {
 						uni.showLoading()
 					} else if (newV == oldV && this.posterShow) {
-						//this.path = this.oldPath
 						uni.hideLoading()
 					}
 				},
@@ -73,27 +72,41 @@
 							}
 						},
 						{
-							src: "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/GongYueLogo.png",
-							type: "image",
+							views: [
+								{
+									src: "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/GongYueLogo.png" ,
+									type: "image",
+									css: {
+										objectFit: "cover",
+										width: "35rpx",
+										height: "35rpx",
+										display: 'inline-block'
+									}
+								},
+								{
+									text: this.$t('宫悦商城'),
+									type: "text",
+									css: {
+										height: "35rpx",
+										lineHeight: "35rpx",
+										fontSize: "24rpx",
+										background: 'linear-gradient(to bottom, #FBB13B 0%, #F0422B 100%)',
+										webkitBackgroundBlip: 'text',
+										backgroundClip: 'text',
+										color: 'transparent',
+										marginLeft: '10rpx',
+										display: 'inline-block'
+									}
+								}
+							] ,
+							type: 'view',
 							css: {
-								objectFit: "cover",
-								width: "35rpx",
-								height: "35rpx",
+								padding: '15rpx',
 								position: "absolute",
-								left: "25rpx",
-								top: "25rpx"
-							}
-						},
-						{
-							text: this.$t('宫悦商城'),
-							type: "text",
-							css: {
-								height: "35rpx",
-								position: "absolute",
-								left: "75rpx",
-								top: "25rpx",
-								lineHeight: "35rpx",
-								fontSize: "24rpx"
+								left: "0rpx",
+								top: "0rpx",
+								backgroundColor: 'rgba(0, 0, 0, .5)',
+								borderRadius: '0 0 15rpx 0'
 							}
 						},
 						{
@@ -137,13 +150,14 @@
 										position: "absolute",
 										left: "99rpx",
 										top: "22rpx",
+										fontWeight: 'bold',
 										lineHeight: "55rpx",
 										lineClamp: "1"
 									}
 								},
 								{
-									src: `${this.item.erwm}`,
-									type: "image",
+									text: `${this.item.shareUrl + '?item=' + this.$store.state.userinfo.inviteCode}`,
+									type: 'qrcode',
 									css: {
 										objectFit: "cover",
 										width: "150rpx",
@@ -159,22 +173,23 @@
 									css: {
 										position: "absolute",
 										left: "126rpx",
-										top: "265rpx",
+										top: "275rpx",
 										fontSize: "24rpx",
-										fontWeight: "500",
+										fontWeight: "bold",
 										color: "#000000"
 									}
 								},
 								{
 									css: {
 										width: "230rpx",
-										height: "52rpx",
+										height: "48rpx",
 										position: "absolute",
 										left: "46rpx",
 										bottom: "30rpx",
-										border: "4rpx solid #111111",
+										borderWidth: '4rpx',
+										borderStyle: 'solid',
+										borderColor: '#111111',
 										borderRadius: "26rpx",
-										boxSizing: "border-box",
 										textAlign: "center"
 									},
 									views: [{
@@ -185,10 +200,10 @@
 											fontWeight: "bold",
 											color: "#000000",
 											width: "230rpx",
-											height: "52rpx",
+											height: "48rpx",
 											boxSizing: "border-box",
 											textAlign: "center",
-											lineHeight: "52rpx"
+											lineHeight: "48rpx"
 										}
 									}],
 									type: 'view'
@@ -211,11 +226,16 @@
 				this.init()
 				this.canvasSwitch = true
 			},
-			//下载成功
+			//生成海报成功
 			openSuccess(e) {
 				//console.log(e)
 				uni.hideLoading()
 				this.path = e
+			},
+			//生成海报失败
+			openFail(e) {
+				console.log(e)
+				uni.$u.toast(e)
 			}
 		}
 	}
