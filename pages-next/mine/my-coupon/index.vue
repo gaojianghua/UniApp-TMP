@@ -40,7 +40,7 @@
 									<view v-if="item.type == 1" class="btns text-white ml-auto" @click="openModel">
 										{{$t('立即使用')}}
 									</view>
-									<view v-else class="expired rounded-circle ml-auto d-flex a-center j-center">
+									<view v-else class="expired rounded-circle ml-auto p-1">
 										<view class="expired-item rounded-circle d-flex a-center j-center">
 											{{item.type == 2 ? $t('已使用') : $t('已过期')}}
 										</view>
@@ -232,8 +232,8 @@
 				height: 120rpx;
 				border: 1rpx solid #999;
 				.expired-item{
-					width: 110rpx;
-					height: 110rpx;
+					width: 98rpx;
+					height: 98rpx;
 					border: 1rpx solid #999;
 					font-size: 26rpx;
 					color: #999;

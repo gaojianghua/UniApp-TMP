@@ -70,3 +70,5 @@ const app = new Vue({
 // 引入 uView 的请求封装
 require('./utils/request/index')(app)
 app.$mount()
+// 生产环境去除打印
+uni.uniEnv === 'Pro' ? console.log = () => {} : ''

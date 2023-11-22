@@ -1,3 +1,4 @@
+import store from "@/store"
 export default {
 	// 退出 APP
 	exitApp() {
@@ -72,5 +73,40 @@ export default {
 				callback()
 			});
 		}
+	},
+	// 获取电量
+	getBatteryLevel() {
+		let battery = {
+			batteryState: '',
+			batteryLevel: ''
+		}
+		if (store.state.appSystemInfo.platform === 'ios') {
+			// 获取ios电量
+			let UIDevice = plus.ios.import("UIDevice")
+			let dev = UIDevice.currentDevice()
+			if (!dev.isBatteryMonitoringEnabled()) {  
+			    dev.setBatteryMonitoringEnabled(true) 
+			}
+			battery.batteryState = dev.batteryState()
+			battery.batteryLevel = dev.batteryLevel() * 100
+		}
+		else {
+			// 获取安卓电量
+			let main = plus.android.runtimeMainActivity();
+			let Intent = plus.android.importClass('android.content.Intent');  
+			let recevier = plus.android.implements('io.dcloud.feature.internal.reflect.BroadcastReceiver', {  
+			    onReceive: (context, intent) => {  
+			        let action = intent.getAction();  
+			        if (action == Intent.ACTION_BATTERY_CHANGED) {  
+			            battery.batteryState = intent.getIntExtra("status", 0); //电池状态  
+						battery.batteryLevel = intent.getIntExtra("level", 0); //电量
+			        }  
+			    }  
+			 });  
+			let IntentFilter = plus.android.importClass('android.content.IntentFilter');  
+			let filter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);  
+			main.registerReceiver(recevier, filter); 
+		}
+		return battery
 	}
 }
