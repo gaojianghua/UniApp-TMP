@@ -64,7 +64,7 @@
 			</view>
 		</view>
 		<!-- 海报生成组件 -->
-		<mine-app-share @closePoster="closePoster" :posterShow="posterShow" :item="list[current]" :current="current" />
+		<mine-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow" :item="list[current]" :current="current" />
 		<!-- 弹框 -->
 		<m-modal :show="show" i18n title="温馨提示" :isCancel="false" btnName="复制链接" @cancel="show = false"
 			@confirm="urlCopy">
@@ -102,7 +102,9 @@
 				item: {},
 				list: [],
 				show: false,
-				shareUrl: ''
+				shareUrl: '',
+				isSuccess: false,
+				time: null
 			}
 		},
 		// #ifdef MP
@@ -140,9 +142,22 @@
 			sharePosters() {
 				this.posterShow = true
 				uni.showLoading()
+				this.time = setTimeout(() => {
+					if(this.isSuccess) {
+						uni.$u.toast(this.$t('网络异常，请稍后重试'))
+						uni.hideLoading();
+					}
+					clearTimeout(this.time)
+				}, 6000);
+			},
+			//生成海报成功
+			success() {
+				this.isSuccess = true
+				clearTimeout(this.time)
 			},
 			//关闭弹框
 			closePoster() {
+				this.isSuccess = false
 				this.posterShow = false
 			},
 			//滑动事件

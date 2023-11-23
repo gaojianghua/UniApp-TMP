@@ -229,13 +229,14 @@
 			//生成海报成功
 			openSuccess(e) {
 				//console.log(e)
+				this.$emit('success')
 				uni.hideLoading()
 				this.path = e
 			},
 			//生成海报失败
 			openFail(e) {
-				console.log(e)
 				uni.$u.toast(e)
+				uni.hideLoading()
 			}
 		}
 	}
