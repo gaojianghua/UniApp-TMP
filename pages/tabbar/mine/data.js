@@ -77,8 +77,27 @@ const assets = [
 	}
 ]
 
+const literList = [
+	{
+		src: '/static/img/mine/liter1.svg',
+		name: '漫画',
+		page: '/pages-next/mine/my-comics/index'
+	},
+	{
+		src: '/static/img/mine/liter2.svg',
+		name: '小说',
+		page: '/pages-next/mine/my-novel/index'
+	},
+	{
+		src: '/static/img/mine/liter3.svg',
+		name: '娱乐',
+		page: '/pages-next/mine/recreation/index'
+	}
+]
+
 module.exports = {
 	orderMenus,
 	menuList,
-	assets
+	assets,
+	literList
 }

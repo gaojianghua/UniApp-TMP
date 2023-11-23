@@ -23,7 +23,7 @@ module.exports = {
 	},
 	scrollBgColor: {
 		type: String,
-		default: '#fff'
+		default: 'transparent'
 	},
 	scrollStyle: {
 		type: Object,

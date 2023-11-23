@@ -42,7 +42,7 @@
 			load: {
 				type: [String, Number],
 				default: () => {
-					return 2
+					return 0
 				}
 			},
 			mainColor: {

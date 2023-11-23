@@ -1,6 +1,7 @@
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 import rTime from 'dayjs/plugin/relativeTime'
+import { i18n } from '../main-ui/m-single-tabbar/props'
 dayjs.extend(rTime)
 
 
@@ -36,16 +37,24 @@ class Other {
 	/**
 	 * @description 数值格式化w或k为单位
 	 * @param number 数值
-	 * @param unit 后缀单位
+	 * @param unit 后缀单位（k 或 w）
+	 * @param locale 语言环境
 	 */
-	static numberFormat = (number, unit = 'w') => {
-		return unit == 'w' ? (number >= 10000 ? (number.slice(-4, -3) == 0 ? number.slice(0, -4) + "w" : number
+	static numberFormat = (number, unit = 'w', locale = 'en') => {
+		number += ''
+		let symbol
+		if(locale == 'cn') {
+			unit == 'k' ? symbol = '千' : symbol = '万'
+		}else{
+			symbol = unit
+		}
+		return unit == 'w' ? (number >= 10000 ? (number.slice(-4, -3) == 0 ? number.slice(0, -4) + symbol : number
 				.slice(0,
 					-4) + '.' +
-				number.slice(-4, -3) + "w") :
-			number) : (unit == 'k' ? (number >= 1000 ? (number.slice(-3, -2) == 0 ? number.slice(0, -3) + "k" :
+				number.slice(-4, -3) + symbol) :
+			number) : (unit == 'k' ? (number >= 1000 ? (number.slice(-3, -2) == 0 ? number.slice(0, -3) + symbol :
 				number.slice(0, -3) + '.' +
-				number.slice(-3, -2) + "k") :
+				number.slice(-3, -2) + symbol) :
 			number) : number)
 	}
 

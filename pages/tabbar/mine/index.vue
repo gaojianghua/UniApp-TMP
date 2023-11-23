@@ -40,6 +40,17 @@
 						</view>
 					</view>
 				</view>
+				<!-- 小说漫画 -->
+				<view class="media py-2 d-flex a-center j-around mt-3">
+					<view class="d-flex a-center j-center flex-column" v-for="(item, i) in literList" :key="i"
+						@click="$tools.Navigate.navigateTo(item.page)">
+						<u-image width="80rpx" height="80rpx" :src="item.src"></u-image>
+						<view class="mt-1 line-h main-text-color">
+							{{$t(item.name)}}
+						</view>
+					</view>
+				</view>
+				<!-- VIP -->
 				<view class="vip-card" @click="$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')">
 				</view>
 			</view>
@@ -99,7 +110,8 @@
 	import {
 		orderMenus,
 		menuList,
-		assets
+		assets,
+		literList
 	} from './data.js'
 	export default {
 		mixins: [tabbarInit],
@@ -112,7 +124,8 @@
 				orderMenus,
 				menuList,
 				assets,
-				appVersion: ''
+				appVersion: '',
+				literList
 			}
 		},
 		onLoad() {
@@ -246,6 +259,10 @@
 				border-radius: 8rpx;
 
 			}
+		}
+		
+		.media{
+			
 		}
 
 		.order {

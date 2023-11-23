@@ -38,7 +38,7 @@ export default {
 			pagePath: 'pages/tabbar/media/index',
 			iconPath: '/static/img/tabbar/media.png',
 			selectedIconPath: '/static/img/tabbar/media-active.png',
-			text: 'page.娱乐'
+			text: 'page.视频'
 		},
 		{
 			pagePath: 'pages/tabbar/cart/index',

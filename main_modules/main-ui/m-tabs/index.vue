@@ -10,8 +10,8 @@
 			width: width,
 			backgroundColor: tabIndex === i ? chooseBgColor : bgColor,
 			...itemStyle
-		}" class="scroll-row-item px-4" v-for="(item, i) in tabs" :key="i" @click="changeTab(item, i)" :id="'tab'+i">
-			<view class="h-100 d-flex flex-column a-center j-center">
+		}" class="scroll-row-item mr-2 px-2" v-for="(item, i) in tabs" :key="i" @click="changeTab(item, i)" :id="'tab'+i">
+			<view class="h-100 line-h d-flex flex-column a-center j-center">
 				<text :style="tabIndex === i ? chooseTextStyle : textStyle">{{item[keyName]}}</text>
 				<view v-if="tabIndex === i">
 					<slot />
@@ -58,5 +58,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+	.scroll-row-item:last-child{
+		margin-right: 0 !important;
+	}
 </style>

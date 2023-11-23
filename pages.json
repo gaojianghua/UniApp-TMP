@@ -180,6 +180,27 @@
 				"enablePullDownRefresh": false
 			}
 		},{
+			"path": "mine/my-novel/index",
+			"style": {
+				"navigationBarTitleText": "%page.我的小说%",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},{
+			"path": "mine/my-comics/index",
+			"style": {
+				"navigationBarTitleText": "%page.我的漫画%",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},{
+			"path": "mine/recreation/index",
+			"style": {
+				"navigationBarTitleText": "%page.娱乐中心%",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},{
 			"path": "media/all-search/index",
 			"style": {
 				"navigationStyle": "custom",
@@ -194,6 +215,12 @@
 			}
 		},{
 			"path": "media/read-novel/index",
+			"style": {
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},{
+			"path": "media/novel-screen/index",
 			"style": {
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false

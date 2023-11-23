@@ -1,29 +1,8 @@
 <template>
 	<view class="page">
-		<!-- 顶部导航栏 -->
-		<m-navbar isFixed bgColor="transparent" isTab isSlot :style="{
-			width: `calc(100vw - ${miniProgramCapsule.width}px)`,
-			marginRight: `${miniProgramCapsule.width}px`}">
-			<view class="d-flex a-center w-100 px-2">
-				<u-image class="mr-2" width="50rpx" height="50rpx" src="/static/img/media/menu.svg"></u-image>
-				<u-tabs :scrollable="false" :activeStyle="{color: '#f27299', fontWeight: '500'}" :current="current" :list="tabs" lineColor="#fb7299"
-					@click="switchTabs"></u-tabs>
-				<u-icon class="ml-auto" size="31" name="search" color="#f27299" @click="openSearch"></u-icon>
-			</view>
-		</m-navbar>
-		<!-- 内容区域 -->
-		<!-- #ifdef MP-WEIXIN -->
-		<swiper :current="current" :style="[scrollStyle]" @change="changeSwiper">
-		<!-- #endif -->
-		<!-- #ifndef MP-WEIXIN -->
-		<swiper :current="current" :style="scrollStyle" @change="changeSwiper">
-		<!-- #endif -->
-			<swiper-item v-for="(item, i) in tabs" :key="i">
-				<!-- 列表区域 -->
-				<view class="w-100 h-100">
-					<hot-spot v-if="i == 0" :current="current"></hot-spot>
-					<novel v-else-if="i == 1" :current="current"></novel>
-				</view>
+		<swiper class="h-100" vertical :style="scrollStyle">
+			<swiper-item class="h-100" v-for="(item, i) in list" :key="i">
+				<video class="h-100 w-100" :src="item.video"></video>
 			</swiper-item>
 		</swiper>
 		<!-- 底部导航栏 -->
@@ -33,68 +12,84 @@
 
 <script>
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
-	import MListSwiper from '@/main_modules/main-ui/m-list-swiper/index.vue'
-	import HotSpot from './views/hot-spot.vue'
-	import Novel from './views/novel.vue'
-	import capsuleInit from '@/mixins/capsule-init.js'
 	import tabbarInit from '@/mixins/tabbar-init.js'
-	import {
-		tabs
-	} from './data.js'
 	export default {
-		mixins: [tabbarInit, capsuleInit],
+		mixins: [tabbarInit],
 		components: {
-			MTabbar,
-			MListSwiper,
-			HotSpot,
-			Novel
+			MTabbar
 		},
 		data() {
 			return {
-				current: 0,
-				tabs,
 				istrig: true,
 				isLock: false,
 				query: {
 					page: 1,
 					limit: 20,
 					type: 2
-				}
+				},
+				list: [],
+				total: 0,
+				load: 0,
+				isLoading: true,
 			}
 		},
 		onLoad() {
 			this.init()
 		},
 		methods: {
-			// 初始化
-			init() {
-				
+			init(){
+				this.getData()
 			},
-			// 进入搜索界面
-			openSearch() {
-				this.$tools.Navigate.navigateTo('/pages-next/media/all-search/index')
+			// 获取数据
+			async getData(e) {
+				// let {
+				// 	data,
+				// 	code,
+				// 	message
+				// } = await prayData(this.query)
+				let code = 200
+				let data = {
+					list: []
+				}
+				for (let i = 0; i < 10; i++) {
+					data.list.push({
+						video: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/7xi.mp4',
+						title: 'haha',
+						desc: 'nishidsahhda'
+					})
+				}
+				data.total = data.list.length
+				if (code == 200) {
+					if (e) { // 加载更多
+						this.list = this.list.concat(data.list)
+					} else {
+						this.list = data.list
+						this.total = data.total
+					}
+					if (this.query.page * this.query.limit >= this.total) {
+						return this.load = 1
+					} else {
+						return this.load = 2
+					}
+				}
 			},
-			// 点击切换tabs
-			switchTabs(i) {
-				this.isLock = true
-				this.current = i.index
-				this.tabs[this.current].isLoading = true
+			// 下拉刷新
+			onRefresh() {
+				this.query.page = 1
+				this.getData()
+			},
+			// 加载更多
+			loadmore() {
+				if (this.load == 1 || this.istrig == false) return;
+				this.load = 0
+				this.query.page++
+				this.istrig = false
 				let time = setTimeout(() => {
-					// this.getData()
-					this.isLock = false
+					this.getData('S')
+					this.istrig = true
 					clearTimeout(time)
 				}, 1000)
 			},
-			// 滑动切换tabs
-			changeSwiper(i) {
-				if (this.isLock) return
-				this.current = i.detail.current
-				this.tabs[this.current].isLoading = true
-				let time = setTimeout(() => {
-					// this.getData()
-					clearTimeout(time)
-				}, 1000)
-			}
 		},
 		computed: {
 			scrollStyle() {
