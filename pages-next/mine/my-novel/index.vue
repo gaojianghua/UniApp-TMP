@@ -208,7 +208,7 @@
 							{{$t('猜你喜欢')}}
 						</view>
 						<view class="winnow-in ml-auto d-flex a-center"
-							@click="$tools.Navigate.navigateTo('/pages-next/media/novel-screen/index')">
+							@click="$tools.Navigate.navigateTo('/pages-offspring/novel-screen/index')">
 							{{$t('分类筛选')}}
 							<u-icon name="arrow-right" size="16" color="#333"></u-icon>
 						</view>
@@ -228,7 +228,7 @@
 							</m-tabs>
 						</view>
 						<view v-if="isTabsFixed" style="height: 70rpx; width: 15%;"
-							class="love-title-more position-relative flex-shrink ts-all-l bg-white ml-auto flex-shrink d-flex j-center a-center"
+							class="love-title-more position-relative index-5 flex-shrink ts-all-l bg-white ml-auto flex-shrink d-flex j-center a-center"
 							@click="$tools.Navigate.navigateTo('/pages-offspring/novel-screen/index')">
 							{{$t('更多')}}
 							<u-icon name="arrow-right" size="16" color="#333"></u-icon>

@@ -56,7 +56,7 @@
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		
+
 		}
 	],
 	"subPackages": [{
@@ -75,7 +75,7 @@
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		},{
+		}, {
 			"path": "common/goods-detail/index",
 			"style": {
 				"navigationBarTitleText": "%page.商品详情%",
@@ -89,148 +89,140 @@
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		},{
+		}, {
 			"path": "mine/order-list/index",
 			"style": {
 				"navigationBarTitleText": "%page.订单列表%",
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		},{
+		}, {
 			"path": "mine/my-evaluate/index",
 			"style": {
 				"navigationBarTitleText": "%page.我的评价%",
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		},{
+		}, {
 			"path": "mine/my-coupon/index",
 			"style": {
 				"navigationBarTitleText": "%page.我的优惠券%",
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		},{
+		}, {
 			"path": "mine/my-points/index",
 			"style": {
 				"navigationBarTitleText": "%page.我的积分%",
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		},{
+		}, {
 			"path": "mine/my-collect/index",
 			"style": {
 				"navigationBarTitleText": "%page.我的收藏%",
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		},{
+		}, {
 			"path": "mine/my-footmark/index",
 			"style": {
 				"navigationBarTitleText": "%page.我的足迹%",
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		},{
+		}, {
 			"path": "mine/download-app/index",
 			"style": {
 				"navigationBarTitleText": "%page.APP下载%",
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		},{
+		}, {
 			"path": "mine/official-service/index",
 			"style": {
 				"navigationBarTitleText": "%page.官方客服%",
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		},{
+		}, {
 			"path": "mine/gongyue-coin/index",
 			"style": {
 				"navigationBarTitleText": "%page.宫悦币%",
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		},{
+		}, {
 			"path": "mine/lucky-bean/index",
 			"style": {
 				"navigationBarTitleText": "%page.幸运豆%",
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		},{
+		}, {
 			"path": "mine/video-deposit/index",
 			"style": {
 				"navigationBarTitleText": "%page.视投金%",
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		},{
+		}, {
 			"path": "mine/member-center/index",
 			"style": {
 				"navigationBarTitleText": "%page.会员中心%",
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		},{
+		}, {
 			"path": "mine/scan-code/index",
 			"style": {
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		},{
+		}, {
 			"path": "mine/my-novel/index",
 			"style": {
 				"navigationBarTitleText": "%page.我的小说%",
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		},{
+		}, {
 			"path": "mine/my-comics/index",
 			"style": {
 				"navigationBarTitleText": "%page.我的漫画%",
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		},{
+		}, {
 			"path": "mine/recreation/index",
 			"style": {
 				"navigationBarTitleText": "%page.娱乐中心%",
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		},{
+		}, {
 			"path": "media/all-search/index",
 			"style": {
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		},{
+		}, {
 			"path": "media/book-shelf/index",
 			"style": {
 				"navigationBarTitleText": "%page.我的书架%",
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		},{
+		}, {
 			"path": "media/read-novel/index",
 			"style": {
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		},{
-			"path": "media/novel-screen/index",
-			"style": {
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}
-		]
+		}]
 	}, {
 		"root": "pages-offspring",
-		"pages": [
-			{
+		"pages": [{
 				"path": "feedback/index",
 				"style": {
 					"navigationBarTitleText": "%page.意见反馈%",
@@ -391,6 +383,14 @@
 				"path": "novel-rank/index",
 				"style": {
 					"navigationBarTitleText": "%page.小说排行榜%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, 
+			{
+				"path": "novel-screen/index",
+				"style": {
+					"navigationBarTitleText": "%page.小说筛选%",
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
