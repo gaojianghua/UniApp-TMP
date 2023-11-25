@@ -31,6 +31,16 @@ module.exports = {
 		type: String,
 		default: '#fff'
 	},
+	textStyle: {
+		type: Object,
+		default: () => {
+			return {}
+		}
+	},
+	textDirection: {
+		type: String,
+		default: 'center'	// left | center
+	},
 	i18n: {
 		type: Boolean,
 		default: false

@@ -6,14 +6,14 @@
 	 	...scrollStyle
 	 }" scroll-x class="scroll-row" scroll-anchoring :scroll-into-view="scrollInto" :scroll-with-animation="true">
 		<view :style="{
-			height: scrollHeight || height,
+			height: height || scrollHeight,
 			width: width,
 			backgroundColor: tabIndex === i ? chooseBgColor : bgColor,
 			...itemStyle
-		}" class="scroll-row-item mr-2 px-2" v-for="(item, i) in tabs" :key="i" @click="changeTab(item, i)" :id="'tab'+i">
+		}" class="scroll-row-item tabs-item px-4" v-for="(item, i) in tabs" :key="i" @click="changeTab(item, i)" :id="'tab'+i">
 			<view class="h-100 line-h d-flex flex-column a-center j-center">
 				<text :style="tabIndex === i ? chooseTextStyle : textStyle">{{item[keyName]}}</text>
-				<view v-if="tabIndex === i">
+				<view v-if="tabIndex === i" class="ts-all-l">
 					<slot />
 				</view>
 			</view>
@@ -31,9 +31,6 @@
 				tabIndex: 0
 			}
 		},
-		created() {
-			this.tabIndex = this.chooseIndex
-		},
 		methods: {
 			//切换选项卡
 			changeTab(item, e) {
@@ -49,16 +46,17 @@
 			}
 		},
 		watch: {
-			chooseIndex(newVal, oldVal) {
-				this.tabIndex = newVal
-				this.scrollInto = 'tab' + (newVal - this.slideNum)
+			chooseIndex: {
+				handler(newVal, oldVal) {
+					this.tabIndex = newVal
+					this.scrollInto = 'tab' + newVal
+				},
+				immediate: true,
+				deep: true
 			}
 		}
 	}
 </script>
 
 <style lang="scss" scoped>
-	.scroll-row-item:last-child{
-		margin-right: 0 !important;
-	}
 </style>

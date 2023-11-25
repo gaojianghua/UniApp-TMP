@@ -51,6 +51,7 @@
 	"page.我的小说": "My Novel",
 	"page.我的漫画": "My Comics",
 	"page.娱乐中心": "Recreation",
+	"page.小说排行榜": "Novel Rank",
 	"page.编辑收货地址": "Edit Shipping Address",
 	"page.添加收货地址": "Add Shipping Address",
 
@@ -313,5 +314,7 @@
 	"已完结": "Finished",
 	"娱乐": "Recreate",
 	"漫画": "Comics",
-	"小说": "Novel"
+	"小说": "Novel",
+	"人气": "Popular",
+	"推荐指数": "Recommend index"
 }

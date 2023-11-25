@@ -6,6 +6,7 @@
 		scroll-x
 		:style="[scrollStyle]" 
 		:enable-flex="true"
+		@scroll="scroll"
 		refresher-default-style="none"
 		:refresher-threshold="threshold" :refresher-background="bgColor" @scrolltolower="loadmore" :refresher-enabled="isCustomRefresh"
 		:refresher-triggered="triggered" @refresherpulling="onPulling" @refresherrefresh="onRefresh"
@@ -17,6 +18,7 @@
 		scroll-anchoring 
 		scroll-x
 		:style="scrollStyle" 
+		@scroll="scroll"
 		refresher-default-style="none"
 		:refresher-threshold="threshold" :refresher-background="bgColor" @scrolltolower="loadmore" :refresher-enabled="isCustomRefresh"
 		:refresher-triggered="triggered" @refresherpulling="onPulling" @refresherrefresh="onRefresh"
@@ -34,85 +36,13 @@
 <script>
 	import MRefresh from '../m-refresh/index.vue'
 	import MLoading from '../m-loading/index.vue'
+	import props from './props.js'
 	export default {
 		components: {
 			MLoading,
 			MRefresh
 		},
-		props: {
-			scrollStyle: {
-				type: Object,
-				default: () => {
-					return null
-				}
-			},
-			mainColor: {
-				type: String,
-				default: () => {
-					return '#fb7299'
-				}
-			},
-			load: {
-				type: [String, Number],
-				default: () => {
-					return 2
-				}
-			},
-			bgColor: {
-				type: String,
-				default: () => {
-					return 'transparent'
-				}
-			},
-			loadHeight: {
-				type: [String, Number],
-				default: () => {
-					return 100
-				}
-			},
-			refresherDefaultText: {
-				type: String,
-				default: () => {
-					return '亲~ 下拉可以刷新哦'
-				}
-			},
-			refresherRefreshText: {
-				type: String,
-				default: () => {
-					return "亲~ 可以松手了哦"
-				}
-			},
-			refresherLoadingText: {
-				type: String,
-				default: () => {
-					return "亲~ 正在加载中哦"
-				}
-			},
-			isLoading: {
-				type: Boolean,
-				default: () => {
-					return true
-				}
-			},
-			isCustomRefresh: {
-				type: Boolean,
-				default: () => {
-					return true
-				}
-			},
-			i18n: {
-				type: Boolean,
-				default: () => {
-					return false
-				}
-			},
-			placeHeight: {
-				type: String,
-				default: () => {
-					return "0"
-				}
-			}
-		},
+		props,
 		data() {
 			return {
 				triggered: false,
@@ -162,6 +92,10 @@
 			loadmore() {
 				this.$emit('loadmore')
 			},
+			//滚动触发
+			scroll(e) {
+				this.$emit('scroll', e.detail)
+			}
 		}
 	}
 </script>

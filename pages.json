@@ -386,6 +386,14 @@
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
+			},
+			{
+				"path": "novel-rank/index",
+				"style": {
+					"navigationBarTitleText": "%page.小说排行榜%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
 			}
 		]
 	}],

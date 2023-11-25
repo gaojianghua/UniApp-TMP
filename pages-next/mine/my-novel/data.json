@@ -362,6 +362,92 @@
 			{
 				"name": "古典仙侠"
 			}
+		],
+		"rankList": [
+			{
+				"id": 1,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人之天帝传奇",
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"recommend": 98,
+				"rank": 1,
+				"popular": 876390
+			},
+			{
+				"id": 2,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人之再创辉煌",
+				"mark": 9.8,
+				"school": 283200,
+				"type": "修仙",
+				"state": 2,
+				"recommend": 96,
+				"rank": 2,
+				"popular": 676390
+			},
+			{
+				"id": 3,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"mark": 9.6,
+				"school": 492200,
+				"type": "修仙",
+				"state": 1,
+				"recommend": 95,
+				"rank": 3,
+				"popular": 289390
+			},
+			{
+				"id": 4,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"mark": 9.6,
+				"school": 276800,
+				"type": "修仙",
+				"state": 1,
+				"recommend": 95,
+				"rank": 4,
+				"popular": 654390
+			},
+			{
+				"id": 5,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"mark": 9.5,
+				"school": 86880,
+				"type": "修仙",
+				"state": 2,
+				"recommend": 96,
+				"rank": 5,
+				"popular": 146390
+			},
+			{
+				"id": 6,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"mark": 9.3,
+				"school": 876920,
+				"type": "修仙",
+				"state": 1,
+				"recommend": 95,
+				"rank": 6,
+				"popular": 467100
+			},
+			{
+				"id": 7,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"mark": 9.4,
+				"school": 367450,
+				"type": "修仙",
+				"state": 2,
+				"recommend": 95,
+				"rank": 7,
+				"popular": 367840
+			}
 		]
 	}
 }

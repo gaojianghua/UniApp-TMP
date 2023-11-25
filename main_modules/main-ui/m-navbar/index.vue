@@ -4,7 +4,8 @@
 		<view :style="{height: `${statusHeight}px`, backgroundColor: bgColor}"></view>
 		<view class="top top-0 index-1"
 			:style="{height: `${navbarHeight}px`, borderBottom: borderBottom ? '1rpx solid #f5f5f5' : 'none'}">
-			<view :style="{backgroundColor: bgColor}" class="tabbar d-flex j-center a-center position-relative">
+			<view :style="{backgroundColor: bgColor}" class="tabbar d-flex a-center position-relative"
+				:class="textDirection === 'center' ? 'j-center' : 'pl-10'">
 				<view v-if="!isTab" class="tabbar-back d-flex j-center a-center p-1" @click="retreat">
 					<u-image height="60rpx" width="60rpx" src="/static/img/common/back.svg"></u-image>
 					<!-- <u-icon name="arrow-left" :color="iconColor" size="20"></u-icon> -->
@@ -13,7 +14,7 @@
 					<slot></slot>
 				</template>
 				<template v-else>
-					<view class="tabbar-title" :style="{color: textColor}">
+					<view class="tabbar-title" :style="{color: textColor, ...textStyle}">
 						{{i18n ? $t(value) : value}}
 					</view>
 				</template>

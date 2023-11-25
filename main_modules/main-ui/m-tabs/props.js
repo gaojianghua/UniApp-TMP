@@ -33,7 +33,7 @@ module.exports = {
 	},
 	height: {
 		type: String,
-		default: '70rpx'
+		default: ''
 	},
 	width: {
 		type: String,
