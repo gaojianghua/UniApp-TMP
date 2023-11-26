@@ -1,17 +1,21 @@
 <template>
-	<u-transition :show="show" mode="slide-down">
-		<view :style="{height: `${dropDown}px`, top: `-${dropDown}px`}"
+	<u-transition :show="show" :mode="isColumn ? 'isColumn' : 'slide-down'">
+		<view :style="{height: isColumn ? '100%' : `${dropDown}px`, 
+		width: isColumn ? `${dropDown}px` : '100%', 
+		top: isColumn ? `0` : `-${dropDown}px`,
+		left: isColumn ? `-${dropDown}px` : '0',
+		}"
 			:class="isColumn ? 'flex-column' : ''"
-			class="w-100 refresher d-flex a-center j-center">
+			class="refresher d-flex a-center j-center">
 			<view v-if="image" class="logo mb-1 d-flex j-center a-center" :style="imageStyle">
 				<image lazy-load :src="image" mode=""></image>
 			</view>
-			<view class="d-flex a-center j-center">
+			<view class="d-flex a-center j-center" :class="isColumn ? 'flex-column' : ''">
 				<u-loading-icon v-if="isLoad" size="20" :inactiveColor="mainColor + '22'" mode="circle" :color="mainColor">
 				</u-loading-icon>
 				<slot v-else name="loadIcon" />
-				<view :style="{color: mainColor}" class="refresher-text ml-2">
-					{{text}}
+				<view :style="{color: mainColor}" class="refresher-text" :class="[isColumn ? 'text-column' : 'ml-2', isLoad ? 'mt-1' : '']">
+					{{i18n ? $t(text) : text}}
 				</view>
 			</view>
 		</view>
@@ -68,7 +72,13 @@
 				default: () => {
 					return false
 				}
-			}
+			},
+			i18n: {
+				type: Boolean,
+				default: () => {
+					return false
+				}
+			},
 		},
 		data() {
 			return {
@@ -84,7 +94,6 @@
 <style lang="scss" scoped>
 	.refresher {
 		position: absolute;
-		left: 0;
 		transform: all 0.3s linear;
 
 		.refresher-text {

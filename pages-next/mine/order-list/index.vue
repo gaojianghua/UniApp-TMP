@@ -152,10 +152,10 @@
 					this.tabs[this.current].page = 1
 					let time = setTimeout(() => {
 						this.getData()
-						this.isLock = false
 						clearTimeout(time)
 					}, 1000)
 				}
+				this.isLock = false
 			},
 			// 滑动切换tabs
 			changeSwiper(i) {

@@ -1,93 +1,47 @@
 <template>
-	<!-- #ifdef MP-WEIXIN -->
-	<scroll-view 
-		class="w-100 scroll-row" 
-		scroll-anchoring 
-		scroll-x
-		:style="[scrollStyle]" 
-		:enable-flex="true"
-		@scroll="scroll"
-		refresher-default-style="none"
-		:refresher-threshold="threshold" :refresher-background="bgColor" @scrolltolower="loadmore" :refresher-enabled="isCustomRefresh"
-		:refresher-triggered="triggered" @refresherpulling="onPulling" @refresherrefresh="onRefresh"
-		@refresherabort="onAbort" @refresherrestore="onRestore">
-		<!-- #endif -->
-	<!-- #ifndef MP-WEIXIN -->
-	<scroll-view 
-		class="w-100 scroll-row" 
-		scroll-anchoring 
-		scroll-x
-		:style="scrollStyle" 
-		@scroll="scroll"
-		refresher-default-style="none"
-		:refresher-threshold="threshold" :refresher-background="bgColor" @scrolltolower="loadmore" :refresher-enabled="isCustomRefresh"
-		:refresher-triggered="triggered" @refresherpulling="onPulling" @refresherrefresh="onRefresh"
-		@refresherabort="onAbort" @refresherrestore="onRestore">
-		<!-- #endif -->
-		<view class="position-relative">
-			<m-refresh :mainColor="mainColor" :isLoad="triggered" :show="none" :dropDown="dropDown" :text="i18n ? $t(text) : text" />
-			<slot name="default" />
-		</view>
-		<m-loading v-if="isLoading" :height="loadHeight" :load="load" :mainColor="mainColor" :bgColor="bgColor" />
-		<view :style="{height: placeHeight}" class="w-100"></view>
-	</scroll-view>
+	<view class="hidden">
+		<m-damp-rebound :refresherDefaultText="refresherDefaultText" 
+		:refresherRefreshText="refresherRefreshText" :refresherLoadingText="refresherLoadingText" :mainColor="mainColor"
+		:isCustomRefresh="isCustomRefresh">
+			<!-- #ifdef MP-WEIXIN -->
+			<scroll-view class="scroll-row h-100" scroll-anchoring scroll-x :style="[scrollStyle]" @scroll="scroll"
+			@scrolltolower="loadmore">
+			<!-- #endif -->
+				<!-- #ifndef MP-WEIXIN -->
+				<scroll-view class="scroll-row h-100" scroll-anchoring scroll-x :style="{scrollStyle}" @scroll="scroll"
+				@scrolltolower="loadmore">
+				<!-- #endif -->
+					<slot name="default" />
+					<view v-if="isLoading" class="scroll-row-item">
+						<view class="w-100 position-relative hidden">
+							<view class="d-flex a-center j-center" :style="{height: loadHeight, width: loadWidth}">
+								<m-loading :textCenter="textCenter" :textStart="textStart" :textEnd="textEnd"
+									:height="loadHeight" :width="loadWidth" isColumn :load="load" :mainColor="mainColor"
+									:bgColor="bgColor" />
+							</view>
+						</view>
+					</view>
+				</scroll-view>
+		</m-damp-rebound>
+	</view>
 </template>
 
 <script>
-	import MRefresh from '../m-refresh/index.vue'
 	import MLoading from '../m-loading/index.vue'
+	import MDampRebound from '../m-damp-rebound/index.vue'
 	import props from './props.js'
 	export default {
 		components: {
 			MLoading,
-			MRefresh
+			MDampRebound
 		},
 		props,
 		data() {
 			return {
-				triggered: false,
-				threshold: 45,
-				dropDown: 0,
-				none: false,
-				text: ''
+				
 			}
 		},
-		created() {
-			this.init()
-		},
 		methods: {
-			//初始化
-			init() {
-				this.text = this.refresherDefaultText
-			},
-			//下拉刷新被下拉
-			onPulling(e) {
-				this.none = true
-				this.dropDown = e.detail.deltaY
-				if (e.detail.deltaY >= this.threshold) {
-					this.text = this.refresherRefreshText
-				}
-			},
-			//下拉刷新
-			onRefresh() {
-				this.text = this.refresherLoadingText
-				this.dropDown = this.threshold
-				this.triggered = true
-				setTimeout(() => {
-					this.$emit('onRefresh')
-					this.triggered = false
-				}, 1000)
-			},
-			//下拉刷新被复位
-			onRestore(e) {
-				this.none = false
-				this.triggered = false
-				this.init()
-			},
-			//下拉被终止
-			onAbort() {
-				this.none = false
-			},
 			//加载更多
 			loadmore() {
 				this.$emit('loadmore')

@@ -1,6 +1,6 @@
 <!-- 上拉加载组件 -->
 <template>
-	<view class="loading d-flex j-center a-center" :style="{height: `${height}rpx`, backgroundColor: bgColor}">
+	<view class="loading d-flex j-center a-center" :style="{height, width, backgroundColor: bgColor}">
 		<view v-if="load == 2" 
 		class="loading-text d-flex j-center a-center" 
 		:class="isColumn ? 'text-column' : ''"
@@ -8,7 +8,7 @@
 			<view v-if="image" class="logo mb-1 d-flex j-center a-center" :style="imageStyle">
 				<image lazy-load :src="image" mode=""></image>
 			</view>
-			<text class="logo-text">{{$t('上拉加载更多哦~')}}</text>
+			<text class="logo-text">{{i18n ? $t(textStart) : textStart}}</text>
 		</view>
 		<view v-if="load == 0" 
 		class="loading-text d-flex j-center a-center" 
@@ -20,7 +20,7 @@
 			<view class="d-flex j-center a-center">
 				<u-loading-icon v-if="isLoadingIcon" size="20" :inactiveColor="mainColor + '22'" mode="circle" :color="mainColor"></u-loading-icon>
 				<slot v-else name="loadIcon" />
-				<text class="logo-text ml-2">{{$t('正在加载中哦! 亲~')}}</text>
+				<text class="logo-text " :class="isColumn ? 'mt-1' : 'ml-2'">{{i18n ? $t(textCenter) : textCenter}}</text>
 			</view>
 		</view>
 		<view v-if="load == 1" 
@@ -30,64 +30,16 @@
 			<view v-if="image" class="logo mb-1 d-flex j-center a-center" :style="imageStyle">
 				<image lazy-load :src="image" mode=""></image>
 			</view>
-			<text class="logo-text">{{$t('亲~ 我是有底线的哦!')}}</text>
+			<text class="logo-text">{{i18n ? $t(textEnd) : textEnd}}</text>
 		</view>
 	</view>
 </template>
 
 <script>
+	import props from './props.js'
 	export default {
 		name: "loading",
-		props: {
-			load: {
-				type: [String, Number],
-				default: () => {
-					return 0
-				}
-			},
-			mainColor: {
-				type: String,
-				default: () => {
-					return '#fb7299'
-				}
-			},
-			bgColor: {
-				type: String,
-				default: () => {
-					return 'transparent'
-				}
-			},
-			image: {
-				type: String,
-				default: () => {
-					return ''
-				}
-			},
-			imageStyle: {
-				type: Object,
-				default: () => {
-					return {}
-				}
-			},
-			height: {
-				type: [String, Number],
-				default: () => {
-					return 50
-				}
-			},
-			isLoadingIcon: {
-				type: Boolean,
-				default: () => {
-					return true
-				}
-			},
-			isColumn: {
-				type: Boolean,
-				default: () => {
-					return false
-				}
-			}
-		},
+		props,
 		data() {
 			return {
 
@@ -98,7 +50,6 @@
 
 <style lang="scss" scoped>
 	.loading {
-		//height: 50rpx;
 
 		.loading-text {
 			font-size: 26rpx;

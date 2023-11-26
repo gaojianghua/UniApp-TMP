@@ -1,38 +1,14 @@
 module.exports = {
-	scrollStyle: {
-		type: Object,
+	isLoad: {
+		type: Boolean,
 		default: () => {
-			return null
+			return true
 		}
 	},
 	mainColor: {
 		type: String,
 		default: () => {
-			return '#fb7299'
-		}
-	},
-	load: {
-		type: [String, Number],
-		default: () => {
-			return 2
-		}
-	},
-	scrollTop: {
-		type: [String, Number],
-		default: () => {
-			return 0
-		}
-	},
-	bgColor: {
-		type: String,
-		default: () => {
 			return '#151521'
-		}
-	},
-	loadHeight: {
-		type: String,
-		default: () => {
-			return '100rpx'
 		}
 	},
 	refresherDefaultText: {
@@ -65,16 +41,4 @@ module.exports = {
 			return true
 		}
 	},
-	i18n: {
-		type: Boolean,
-		default: () => {
-			return false
-		}
-	},
-	placeHeight: {
-		type: String,
-		default: () => {
-			return "0"
-		}
-	}
 }

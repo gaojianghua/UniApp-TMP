@@ -26,25 +26,49 @@ module.exports = {
 	loadHeight: {
 		type: [String, Number],
 		default: () => {
-			return 100
+			return '100rpx'
+		}
+	},
+	loadWidth: {
+		type: [String, Number],
+		default: () => {
+			return '60rpx'
 		}
 	},
 	refresherDefaultText: {
 		type: String,
 		default: () => {
-			return '亲~ 下拉可以刷新哦'
+			return '右拉刷新'
 		}
 	},
 	refresherRefreshText: {
 		type: String,
 		default: () => {
-			return "亲~ 可以松手了哦"
+			return "松手刷新"
 		}
 	},
 	refresherLoadingText: {
 		type: String,
 		default: () => {
-			return "亲~ 正在加载中哦"
+			return "加载中哦"
+		}
+	},
+	textCenter: {
+		type: String,
+		default: () => {
+			return '加载中哦'
+		}
+	},
+	textStart: {
+		type: String,
+		default: () => {
+			return "加载更多"
+		}
+	},
+	textEnd: {
+		type: String,
+		default: () => {
+			return "到底了哦"
 		}
 	},
 	isLoading: {
@@ -63,12 +87,6 @@ module.exports = {
 		type: Boolean,
 		default: () => {
 			return false
-		}
-	},
-	placeHeight: {
-		type: String,
-		default: () => {
-			return "0"
 		}
 	}
 }

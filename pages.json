@@ -200,25 +200,6 @@
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		}, {
-			"path": "media/all-search/index",
-			"style": {
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "media/book-shelf/index",
-			"style": {
-				"navigationBarTitleText": "%page.我的书架%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "media/read-novel/index",
-			"style": {
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
 		}]
 	}, {
 		"root": "pages-offspring",
@@ -386,11 +367,36 @@
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
-			}, 
+			},
 			{
 				"path": "novel-screen/index",
 				"style": {
 					"navigationBarTitleText": "%page.小说筛选%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "all-search/index",
+				"style": {
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "book-shelf/index",
+				"style": {
+					"navigationBarTitleText": "%page.我的书架%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "read-novel/index",
+				"style": {
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "read-comics/index",
+				"style": {
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}

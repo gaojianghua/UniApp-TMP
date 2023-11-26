@@ -1,7 +1,17 @@
 <template>
 	<view class="views">
 		<!-- 顶部导航栏 -->
-		<m-navbar bgColor="#fff" textColor="#fb7299" value="page.我的小说" i18n></m-navbar>
+		<m-navbar bgColor="#fff" isSlot i18n>
+			<view class="w-100 d-flex a-center search pl-10 pr-2" :style="{
+			width: `calc(100vw - ${miniProgramCapsule.width}px)`,
+			marginRight: `${miniProgramCapsule.width}px`}">
+				<!-- 搜索框 -->
+				<view class="position-relative flex-1">
+					<view class="position-absolute top-0 right-0 left-0 bottom-0 index-5" @click="$tools.Navigate.navigateTo('/pages-offspring/all-search/index')"></view>
+					<u-search :placeholder="$t('请输入关键词')" height="60rpx" disabled :showAction="false"></u-search>
+				</view>
+			</view>
+		</m-navbar>
 		<!-- 内容区域 -->
 		<m-scroll-y :isLoading="isLoading" :scrollTop="scrollTop" @scroll="scroll" i18n :scrollStyle="scrollStyle"
 			:load="load" @loadmore="loadmore" bgColor="transparent" @onRefresh="onRefresh">
@@ -14,7 +24,7 @@
 					</u-empty>
 					<view v-if="bookshelfList.length != 0" class="d-flex flex-wrap flex-1">
 						<view class="item d-flex flex-column mt-3" v-for="(item, i) in bookshelfList" :key="i"
-							@click="$tools.Navigate.navigateTo('/pages-next/media/read-novel/index', item)">
+							@click="$tools.Navigate.navigateTo('/pages-offspring/read-novel/index', item)">
 							<view class="item-image w-100 position-relative hidden">
 								<u-image width="100%" height="200rpx" :src="item.img"></u-image>
 								<view v-if="item.isChange" class="change text-white position-absolute line-h">
@@ -27,7 +37,7 @@
 							</view>
 						</view>
 						<view class="item update flex-shrink d-flex flex-column j-center a-center mt-3"
-							@click="$tools.Navigate.navigateTo('/pages-next/media/book-shelf/index')">
+							@click="$tools.Navigate.navigateTo('/pages-offspring/book-shelf/index')">
 							<view class="update-text line-h">
 								{{$t('书架')}}
 							</view>
@@ -55,7 +65,7 @@
 					<view v-if="winnowList.length != 0" class="d-flex flex-wrap flex-1">
 						<view class="winnow-item mt-3 d-flex"
 							v-for="(item, i) in winnowList.slice((inNum - 1)*3, inNum*3)" :key="i"
-							@click="$tools.Navigate.navigateTo('/pages-next/media/read-novel/index', item)">
+							@click="$tools.Navigate.navigateTo('/pages-offspring/read-novel/index', item)">
 							<u-image class="mr-2" radius="6" width="158rpx" height="200rpx" :src="item.img"></u-image>
 							<view class="d-flex j-sb flex-1 flex-column">
 								<view class="d-flex a-center">
@@ -101,7 +111,7 @@
 					<view class="tabs mt-2 p-1 rounded-1 noTabsFixed">
 						<m-tabs :chooseIndex="ranks[rankCurrent].typeCurrent" @changeTab="typeChangeTab"
 							:scrollStyle="{borderRadius: '16rpx'}" chooseBgColor="#fff" bgColor="transparent"
-							:chooseTextStyle="{color: '#111'}" :slideNum="1" scrollHeight="50rpx" height="48rpx"
+							:chooseTextStyle="{color: '#111'}" :slideNum="1" scrollHeight="50rpx"
 							:itemStyle="{borderRadius: '8rpx', color: '#666', padding: '0 20rpx', marginRight: '20rpx'}"
 							:tabs="typeTabs" keyName="name">
 						</m-tabs>
@@ -127,7 +137,7 @@
 									<view v-if="ranks[rankCurrent].list.length != 0" class="d-flex flex-wrap flex-1">
 										<!-- 排行第一 -->
 										<view class="rank-one w-100 d-flex mt-2"
-											@click="$tools.Navigate.navigateTo('/pages-next/media/read-novel/index', ranks[rankCurrent].list[0])">
+											@click="$tools.Navigate.navigateTo('/pages-offspring/read-novel/index', ranks[rankCurrent].list[0])">
 											<u-image radius="6" width="118rpx" height="145rpx"
 												:src="ranks[rankCurrent].list[0].img"></u-image>
 											<view class="ml-2 py-1 d-flex flex-column j-sb" style="height: 145rpx;">
@@ -167,7 +177,7 @@
 											<view class="winnow-item rank-row mt-3 d-flex"
 												v-for="(item, i) in ranks[rankCurrent].list.slice(1, ranks[rankCurrent].list.length)"
 												:key="i"
-												@click="$tools.Navigate.navigateTo('/pages-next/media/read-novel/index', item)">
+												@click="$tools.Navigate.navigateTo('/pages-offspring/read-novel/index', item)">
 												<u-image radius="6" width="100rpx" height="128rpx"
 													:src="item.img"></u-image>
 												<view class="d-flex j-sb flex-1 flex-column">
@@ -222,7 +232,7 @@
 						}">
 							<m-tabs :chooseIndex="loveCurrent" @changeTab="changeTab"
 								:scrollStyle="{borderRadius: '16rpx'}" chooseBgColor="#fff" bgColor="transparent"
-								:chooseTextStyle="{color: '#111'}" :slideNum="1" scrollHeight="50rpx" height="48rpx"
+								:chooseTextStyle="{color: '#111'}" :slideNum="1" scrollHeight="50rpx"
 								:itemStyle="{borderRadius: '8rpx', color: '#666', padding: '0 20rpx', marginRight: '20rpx'}"
 								:tabs="tabs" keyName="name">
 							</m-tabs>
@@ -242,7 +252,7 @@
 					</u-empty>
 					<template v-if="list.length != 0">
 						<view class="winnow-item mt-3 d-flex" v-for="(item, i) in list" :key="i"
-							@click="$tools.Navigate.navigateTo('/pages-next/media/read-novel/index', item)">
+							@click="$tools.Navigate.navigateTo('/pages-offspring/read-novel/index', item)">
 							<u-image class="mr-2" radius="6" width="158rpx" height="200rpx" :src="item.img"></u-image>
 							<view class="d-flex j-sb flex-1 flex-column">
 								<view class="d-flex a-center">
@@ -276,11 +286,13 @@
 
 <script>
 	import MTabs from '@/main_modules/main-ui/m-tabs/index.vue'
+	import capsuleInit from '@/mixins/capsule-init.js'
 	import result from './data.json'
 	import {
 		ranks
 	} from './rank.js'
 	export default {
+		mixins: [capsuleInit],
 		components: {
 			MTabs
 		},
@@ -417,10 +429,10 @@
 					this.ranks[this.rankCurrent].isLoading = true
 					let time = setTimeout(() => {
 						this.getRankList()
-						this.isLock = false
 						clearTimeout(time)
 					}, 1000)
 				}
+				this.isLock = false
 			},
 			// 排行榜分类tabs切换
 			typeChangeTab(i) {
@@ -429,6 +441,7 @@
 			// 排行榜swiper滑动切换
 			changeSwiper(i) {
 				if (this.isLock) return
+				
 				this.rankCurrent = i.detail.current
 				if (this.ranks[this.rankCurrent].list.length == 0) {
 					this.ranks[this.rankCurrent].isLoading = true

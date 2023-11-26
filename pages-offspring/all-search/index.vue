@@ -35,7 +35,7 @@
 				<view v-if="list.length != 0" class="goods-list">
 					<view class="goods-item" v-for="(item, i) in list" :key="i" @click.stop="openDetail(item)">
 						<view class="">
-
+							
 						</view>
 					</view>
 				</view>
