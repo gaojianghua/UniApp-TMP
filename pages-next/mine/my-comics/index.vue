@@ -251,8 +251,8 @@
 							<u-icon name="arrow-right" size="16" color="#333"></u-icon>
 						</view>
 					</view>
-					<view v-if="list.length == 0" class="d-flex a-center j-center mt-3">
-						<m-loading></m-loading>
+					<view v-if="isTempLoad" class="d-flex a-center j-center mt-3">
+						<m-loading :load="0"></m-loading>
 					</view>
 					<u-empty v-if="load != 0 && list.length == 0" mode="list" :text="$t('暂无数据')"
 						icon="http://cdn.uviewui.com/uview/empty/list.png">
@@ -335,6 +335,7 @@
 				tabs: [],
 				typeTabs: [],
 				isTabsFixed: false,
+				isTempLoad: false,
 				scrollTop: 0
 			}
 		},
@@ -386,6 +387,7 @@
 						this.list = data.list
 						this.total = data.total
 					}
+					this.isTempLoad = false
 					if (this.query.page * this.query.limit >= this.total) {
 						return this.load = 1
 					} else {
@@ -421,6 +423,7 @@
 			changeTab(e) {
 				this.isTabsFixed = false
 				this.isLoading = false
+				this.isTempLoad = true
 				this.load = 0
 				this.scrollTop = 1161
 				this.list = []

@@ -2,7 +2,7 @@
 	<view class="page">
 		<swiper class="h-100" vertical :style="scrollStyle">
 			<swiper-item class="h-100" v-for="(item, i) in list" :key="i">
-				<video class="h-100 w-100" :src="item.video"></video>
+				<!-- <video class="h-100 w-100" :src="item.video"></video> -->
 			</swiper-item>
 		</swiper>
 		<!-- 底部导航栏 -->

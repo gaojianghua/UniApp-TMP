@@ -1,9 +1,8 @@
 {
-    "code": "200",
-    "message": "success",
-    "data": {
-		"winnowList": [
-			{
+	"code": "200",
+	"message": "success",
+	"data": {
+		"winnowList": [{
 				"id": 1,
 				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
 				"name": "大苍守夜人",
@@ -148,8 +147,7 @@
 				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
 			}
 		],
-		"bookshelfList": [
-			{
+		"bookshelfList": [{
 				"id": 1,
 				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
 				"name": "大苍守夜人",
@@ -199,8 +197,7 @@
 				"chapterNum": 0
 			}
 		],
-		"list": [
-			{
+		"list": [{
 				"id": 1,
 				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
 				"name": "大苍守夜人",
@@ -322,8 +319,7 @@
 			}
 		],
 		"total": 20,
-		"tabs": [
-			{
+		"tabs": [{
 				"name": "综合"
 			},
 			{
@@ -363,8 +359,7 @@
 				"name": "古典仙侠"
 			}
 		],
-		"rankList": [
-			{
+		"rankList": [{
 				"id": 1,
 				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
 				"name": "大苍守夜人之天帝传奇",

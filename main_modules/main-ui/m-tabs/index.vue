@@ -6,7 +6,7 @@
 	 	...scrollStyle
 	 }" scroll-x class="scroll-row" scroll-anchoring :scroll-into-view="scrollInto" :scroll-with-animation="true">
 		<view :style="{
-			height: height || scrollHeight,
+			height: scrollHeight || height,
 			width: width,
 			backgroundColor: tabIndex === i ? chooseBgColor : bgColor,
 			...itemStyle

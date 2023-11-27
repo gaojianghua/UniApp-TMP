@@ -285,7 +285,6 @@
 			border-radius: 50rpx;
 			height: 88rpx;
 			width: 630rpx;
-			margin: 0 auto;
 			background: linear-gradient(to right, #85B6CA, #F9A4A0);
 		}
 
