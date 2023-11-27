@@ -109,7 +109,7 @@
 							<view class="rank-line main-bg-color rounded-1 mt-1"></view>
 						</m-tabs>
 						<view class="winnow-in ml-auto flex-shrink d-flex a-center"
-							@click="$tools.Navigate.navigateTo('/pages-offspring/novel-rank/index')">
+							@click="$tools.Navigate.navigateTo('/pages-offspring/ranking-list/index', 1)">
 							{{$t('全部')}}
 							<u-icon name="arrow-right" size="16" color="#333"></u-icon>
 						</view>
@@ -129,7 +129,7 @@
 						<!-- #ifndef MP-WEIXIN -->
 						<swiper :current="rankCurrent" :style="{height: '640rpx'}" @change="changeSwiper">
 						<!-- #endif -->
-							<swiper-item v-for="(item, i) in tabs" :key="i">
+							<swiper-item v-for="(item, i) in ranks" :key="i">
 								<!-- 列表区域 -->
 								<view class="w-100 h-100">
 									<view v-if="ranks[rankCurrent].isLoading" class="d-flex a-center h-100 j-center">
@@ -172,7 +172,7 @@
 											<view class="ml-auto position-relative"
 												style="height: 80rpx; width: 72rpx;">
 												<u-image class="" width="72rpx" height="80rpx"
-													src="/static/img/mine/one.png"></u-image>
+													src="/static/img/mine/mine-one.png"></u-image>
 												<view class="one font-weight position-absolute top-half left-half">
 													1
 												</view>
@@ -405,6 +405,7 @@
 				if (this.load == 1 || this.istrig == false) return;
 				this.load = 0
 				this.query.page++
+				this.isLoading = true
 				this.istrig = false
 				let time = setTimeout(() => {
 					this.getData('S')
@@ -453,7 +454,6 @@
 			// 排行榜swiper滑动切换
 			changeSwiper(i) {
 				if (this.isLock) return
-
 				this.rankCurrent = i.detail.current
 				if (this.ranks[this.rankCurrent].list.length == 0) {
 					this.ranks[this.rankCurrent].isLoading = true

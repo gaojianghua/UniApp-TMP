@@ -4,7 +4,7 @@
 		<m-navbar bgColor="transparent" textColor="#fff" i18n value="page.欢迎登录"></m-navbar>
 		<!-- 内容区域 -->
 		<m-scroll-y :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
-			<view class="d-flex a-center j-center flex-column pt-10">
+			<view class="d-flex a-center j-center flex-column pt-10 h-100">
 				<u-image width="120rpx" height="120rpx"
 					src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/GongYueLogo.png"></u-image>
 				<view class="desc line-h letter-2 mt-3 font-weight text-white">
@@ -56,7 +56,7 @@
 						</view>
 					</view>
 				</view>
-				<view class="more d-flex a-center j-around mt-5 w-100">
+				<view class="more pb-5 d-flex a-center j-around mt-auto pt-10 w-100">
 					<view class="d-flex a-center j-center flex-column" v-for="(item, i) in moreLogins" :key="i"
 					@click="openMoreLogin(item, i)">
 						<u-image :src="item.image" width="80rpx" height="80rpx" mode=""></u-image>
@@ -295,9 +295,6 @@
 		}
 		
 		.more{
-			position: fixed;
-			bottom: 50rpx;
-			left: 30rpx;
 			width: 690rpx;
 			.more-name{
 				font-size: 24rpx;

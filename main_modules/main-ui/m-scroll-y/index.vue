@@ -26,7 +26,7 @@
 		:refresher-triggered="triggered" @refresherpulling="onPulling" @refresherrefresh="onRefresh"
 		@refresherabort="onAbort" @refresherrestore="onRestore">
 		<!-- #endif -->
-		<view class="position-relative">
+		<view class="position-relative" :class="isCustomRefresh ? '' : 'h-100'">
 			<m-refresh :mainColor="mainColor" :isLoad="triggered" :show="none" :dropDown="dropDown" i18n :text="text" />
 			<slot name="default" />
 		</view>

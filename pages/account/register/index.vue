@@ -4,7 +4,7 @@
 		<m-navbar bgColor="transparent" textColor="#fff" i18n value="page.欢迎注册"></m-navbar>
 		<!-- 内容区域 -->
 		<m-scroll-y :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
-			<view class="d-flex a-center j-center flex-column py-10">
+			<view class="d-flex a-center j-center flex-column h-100 py-10">
 				<u-image width="120rpx" height="120rpx"
 					src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/GongYueLogo.png"></u-image>
 				<view class="desc line-h letter-2 mt-3 font-weight text-white">
@@ -205,7 +205,6 @@
 			background-color: #ffffff80;
 			border: 2rpx solid #fff;
 			border-radius: 20rpx;
-			margin-top: 200rpx;
 
 			.bottom {
 				background-color: #fff;
@@ -235,7 +234,6 @@
 			border-radius: 50rpx;
 			height: 88rpx;
 			width: 630rpx;
-			margin: 0 auto;
 			background: linear-gradient(to right, #85B6CA, #F9A4A0);
 		}
 

@@ -1151,6 +1151,31 @@ body {
 	padding-bottom: 50rpx;
 }
 
+.py-6 {
+	padding-top: 60rpx;
+	padding-bottom: 60rpx;
+}
+
+.py-7 {
+	padding-top: 70rpx;
+	padding-bottom: 70rpx;
+}
+
+.py-8 {
+	padding-top: 80rpx;
+	padding-bottom: 80rpx;
+}
+
+.py-9 {
+	padding-top: 90rpx;
+	padding-bottom: 90rpx;
+}
+
+.py-10 {
+	padding-top: 100rpx;
+	padding-bottom: 100rpx;
+}
+
 .pt-0 {
 	padding-top: 0;
 }
