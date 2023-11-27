@@ -107,7 +107,9 @@
 			}
 		},
 		onLoad(options) {
-			this.query.inviteCode = this.$tools.Navigate.receivePageData(options)
+			if(!this.$check.isEmptyObject(options)) {
+				this.query.inviteCode = this.$tools.Navigate.receivePageData(options)
+			}
 			this.init()
 		},
 		methods: {
