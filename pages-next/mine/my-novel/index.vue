@@ -7,7 +7,8 @@
 			marginRight: `${miniProgramCapsule.width}px`}">
 				<!-- 搜索框 -->
 				<view class="position-relative flex-1">
-					<view class="position-absolute top-0 right-0 left-0 bottom-0 index-5" @click="$tools.Navigate.navigateTo('/pages-offspring/all-search/index')"></view>
+					<view class="position-absolute top-0 right-0 left-0 bottom-0 index-5"
+						@click="$tools.Navigate.navigateTo('/pages-offspring/all-search/index')"></view>
 					<u-search :placeholder="$t('请输入关键词')" height="60rpx" disabled :showAction="false"></u-search>
 				</view>
 			</view>
@@ -224,7 +225,8 @@
 						</view>
 					</view>
 					<view class="love-title w-100 d-flex a-center"
-						:class="isTabsFixed ? 'position-fixed left-0 index-5 ts-all-l' : 'mt-2 ts-all-l noTabsFixed'" :style="{top: isTabsFixed ? `calc(${$store.state.navbarHeight}px + ${$store.state.statusHeight}px)` : '0'
+						:class="isTabsFixed ? 'position-fixed left-0 index-5 ts-all-l' : 'mt-2 ts-all-l noTabsFixed'"
+						:style="{top: isTabsFixed ? `calc(${$store.state.navbarHeight}px + ${$store.state.statusHeight}px - 1rpx)` : '0'
 						}">
 						<view class="tabs w-100 p-1 ts-all-l" :style="{
 						borderRadius: isTabsFixed ? '0' : '12rpx',
@@ -414,7 +416,7 @@
 				this.isLoading = false
 				this.isTempLoad = true
 				this.load = 0
-				this.scrollTop = 1141
+				this.scrollTop = 1350
 				this.list = []
 				let time = setTimeout(() => {
 					this.onRefresh()
@@ -460,8 +462,8 @@
 			},
 			// 滚动触发
 			scroll(e) {
-				if (this.isTabsFixed && e.scrollTop >= 1190) return
-				e.scrollTop >= 1190 ? this.isTabsFixed = true : this.isTabsFixed = false
+				if (this.isTabsFixed && e.scrollTop >= 1300) return
+				e.scrollTop >= 1300 ? this.isTabsFixed = true : this.isTabsFixed = false
 			}
 		},
 		computed: {
@@ -484,13 +486,13 @@
 <style lang="scss" scoped>
 	.views {
 		background-color: #f5f5f5;
-		
-		.noTabsFixed{
-			/deep/ .tabs-item:last-child{
+
+		.noTabsFixed {
+			/deep/ .tabs-item:last-child {
 				margin-right: 0 !important;
 			}
 		}
-		
+
 		.content {
 			.book-shelf {
 				height: 490rpx;
@@ -594,8 +596,8 @@
 				.tabs {
 					background-color: #ddd;
 				}
-				
-				.love-title-more::after{
+
+				.love-title-more::after {
 					content: '';
 					position: absolute;
 					left: -34rpx;
@@ -606,7 +608,7 @@
 					height: 100%;
 					background: linear-gradient(to right, #FFFFFF00 10%, #fff 70%);
 				}
-				
+
 				.rank-line {
 					width: 50rpx;
 					height: 8rpx;

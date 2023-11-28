@@ -119,7 +119,7 @@
 							:scrollStyle="{borderRadius: '16rpx'}" chooseBgColor="#fff" bgColor="transparent"
 							:chooseTextStyle="{color: '#111'}" :slideNum="1" scrollHeight="50rpx"
 							:itemStyle="{borderRadius: '8rpx', color: '#666', padding: '0 20rpx', marginRight: '20rpx'}"
-							:tabs="typeTabs" keyName="name">
+							:tabs="tabs" keyName="name">
 						</m-tabs>
 					</view>
 					<!-- 列表栏 -->
@@ -231,7 +231,7 @@
 					</view>
 					<view class="love-title w-100 d-flex a-center"
 						:class="isTabsFixed ? 'position-fixed left-0 index-5 ts-all-l' : 'mt-2 ts-all-l noTabsFixed'"
-						:style="{top: isTabsFixed ? `calc(${$store.state.navbarHeight}px + ${$store.state.statusHeight}px)` : '0'
+						:style="{top: isTabsFixed ? `calc(${$store.state.navbarHeight}px + ${$store.state.statusHeight}px - 1rpx)` : '0'
 						}">
 						<view class="tabs w-100 p-1 ts-all-l" :style="{
 						borderRadius: isTabsFixed ? '0' : '12rpx',
@@ -333,7 +333,6 @@
 				rankCurrent: 0,
 				typeCurrent: 0,
 				tabs: [],
-				typeTabs: [],
 				isTabsFixed: false,
 				isTempLoad: false,
 				scrollTop: 0
@@ -350,7 +349,6 @@
 				this.getRankList()
 				this.tabs = result.data.tabs
 				this.rankTabs = result.data.rankTabs
-				this.typeTabs = result.data.tabs
 				this.getData()
 			},
 			// 获取书架数据
@@ -426,7 +424,7 @@
 				this.isLoading = false
 				this.isTempLoad = true
 				this.load = 0
-				this.scrollTop = 1161
+				this.scrollTop = 1363
 				this.list = []
 				let time = setTimeout(() => {
 					this.onRefresh()
@@ -450,6 +448,13 @@
 			// 排行榜分类tabs切换
 			typeChangeTab(i) {
 				this.ranks[this.rankCurrent].typeCurrent = i.index
+				this.query.type = this.tabs[i.index].id
+				this.rankList = []
+				this.ranks[this.rankCurrent].isLoading = true
+				let time = setTimeout(() => {
+					this.getRankList()
+					clearTimeout(time)
+				}, 1000)
 			},
 			// 排行榜swiper滑动切换
 			changeSwiper(i) {
@@ -465,8 +470,8 @@
 			},
 			// 滚动触发
 			scroll(e) {
-				if (this.isTabsFixed && e.scrollTop >= 1082) return
-				e.scrollTop >= 1082 ? this.isTabsFixed = true : this.isTabsFixed = false
+				if (this.isTabsFixed && e.scrollTop >= 1185) return
+				e.scrollTop >= 1185 ? this.isTabsFixed = true : this.isTabsFixed = false
 			}
 		},
 		computed: {
