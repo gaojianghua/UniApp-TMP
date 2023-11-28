@@ -174,7 +174,7 @@
 				// #ifdef APP-PLUS
 				plus.speech.startRecognize({
 					engine: 'baidu',
-					lang: this.$store.state.lang == 'en' ? 'en-us' : 'zh-cn';,
+					lang: this.$store.state.lang == 'en' ? 'en-us' : 'zh-cn',
 					'userInterface': false,
 					'continue': true
 				});
