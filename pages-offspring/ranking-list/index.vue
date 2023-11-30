@@ -69,17 +69,16 @@
 								</u-empty>
 								<view v-if="ranks[rankCurrent].list.length != 0">
 									<view class="winnow-item mt-2 d-flex"
-										v-for="(item, i) in ranks[rankCurrent].list.slice(3, ranks[rankCurrent].list.length)"
-										:key="i"
+										v-for="(item, s) in ranks[rankCurrent].list.slice(3, ranks[rankCurrent].list.length)"
+										:key="s"
 										@click="$tools.Navigate.navigateTo('/pages-offspring/read-novel/index', item)">
 										<u-image radius="6" width="145rpx" height="188rpx" :src="item.img"></u-image>
 										<view class="d-flex j-sb flex-1 flex-column">
 											<view class="d-flex">
-												<view :style="{color: i == 0 || i == 1 ? '#FA9C3E' : '#333'}"
+												<view :style="{color: s == 0 || s == 1 ? '#FA9C3E' : '#333'}"
 													class="item-name-rank font-weight line-h">
-													{{i + 4}}
-												</view>
-												<view class="d-flex flex-column j-sb flex-1 py-1" style="height: 188rpx;">
+													{{s + 4}}
+												</view>												<view class="d-flex flex-column j-sb flex-1 py-1" style="height: 188rpx;">
 													<view class="d-flex a-center flex-row j-sb ">
 														<view class="d-inline-block item-name text-ellipsis1 line-h">
 															{{item.name}}

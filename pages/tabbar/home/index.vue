@@ -4,7 +4,7 @@
 		<m-navbar isLang bgColor="#fff" isTab isSlot @selectLang="show = true">
 			<view class="w-100 d-flex a-center search pl-2 pr-9" :style="{
 			width: `calc(100vw - ${miniProgramCapsule.width}px)`,
-			marginRight: `${miniProgramCapsule.width}px`}">
+			marginRight: `calc(100vw - ${miniProgramCapsule.right}px + ${miniProgramCapsule.width}px)`}">
 				<!-- 定位城市 -->
 				<view class="d-flex a-center mr-2"
 					@click="$tools.Navigate.navigateTo('/pages-next/home/select-city/index')">

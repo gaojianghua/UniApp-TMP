@@ -4,8 +4,8 @@
 		<m-navbar bgColor="#fff" isTab isSlot>
 			<view class="w-100 search px-2" :style="{
 			width: `calc(100vw - ${miniProgramCapsule.width}px)`,
-			marginRight: `${miniProgramCapsule.width}px`}">
-				<!-- 搜索框 -->
+			marginRight: `calc(100vw - ${miniProgramCapsule.right}px + ${miniProgramCapsule.width}px)`}">
+				<!-- 搜索框 -->	
 				<view class="position-relative flex-1">
 					<view class="position-absolute top-0 right-0 left-0 bottom-0 index-5" @click="openSearch"></view>
 					<u-search :placeholder="$t('请输入关键词')" height="60rpx" disabled :showAction="false"></u-search>

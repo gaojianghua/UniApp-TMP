@@ -4,7 +4,7 @@
 		<m-navbar bgColor="#fff" textColor="#fb7299" value="page.意见反馈" i18n></m-navbar>
 		<!-- 内容区域 -->
 		<view class="content mt-1 p-3 bg-white">
-			<view class="bottom d-flex a-center py-3">
+			<view class="bottom d-flex a-center p-3">
 				<u-textarea height="100"
 					:customStyle="{caretColor: '#f27299', padding: '0', backgroundColor: '#f1f1f1'}" border="none"
 					v-model="query.info" :placeholder="$t('描述您的问题，我们会尽快为您处理！')">
@@ -115,7 +115,6 @@
 			.bottom {
 				background-color: #f1f1f1;
 				border-radius: 50rpx;
-				padding: 0 30rpx;
 			}
 		}
 		

@@ -1,19 +1,24 @@
 <!-- 顶部组件 -->
 <template>
-	<view :style="{height: `${statusHeight}px`}">
-	</view>
+	<!-- #ifdef MP -->
+	<view :style="[{height: `${statusHeight}px`}]">
+	<!-- #endif -->
+		<!-- #ifndef MP -->
+		<view :style="{height: `${statusHeight}px`}">
+		<!-- #endif -->
+		</view>
 </template>
 
 <script>
 	export default {
 		name: "m-top",
 		data() {
-			return {
-				statusHeight: 0
-			};
+			return {};
 		},
-		created() {
-			this.statusHeight = this.$store.state.statusHeight
+		computed: {
+			statusHeight() {
+				return this.$store.state.statusHeight
+			}
 		}
 	}
 </script>

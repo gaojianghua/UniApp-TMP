@@ -5,7 +5,7 @@
 				width: direction == 'Y' ? '100%' : imageWidth, 
 				height: imageHeight
 			}">
-				<u-image class="w-100 h-100" width="100%" height="100%" :src="item.image" mode="aspectFit"></u-image>
+				<u-image class="w-100 h-100" width="100%" :height="imageHeight" :src="item.image" mode="aspectFit"></u-image>
 				<view v-if="isVIP" class="vip-mark position-absolute top-0 right-0 px-2">
 					VIP
 				</view>

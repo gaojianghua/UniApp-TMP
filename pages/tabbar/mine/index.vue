@@ -2,56 +2,77 @@
 	<view class="page">
 		<!-- 顶部信息 -->
 		<m-scroll-y :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
-			<view class="user" :style="{
+			<!-- #ifdef MP -->
+			<view class="user position-relative" :style="{
+			height: `calc(388rpx + ${statusHeight}px + ${navbarHeight}px)`}">
+			<view class="user-image hidden">
+				<u-image width="100%" :height="`calc(388rpx + ${statusHeight}px + ${navbarHeight}px)`" src="/static/img/mine/mine-bg.png" mode="">
+				</u-image>
+			</view>
+			<!-- #endif -->
+			<!-- #ifndef MP -->
+			<view class="user position-relative" :style="{
 			height: `calc(388rpx + ${statusHeight}px)`}">
-				<!-- 顶部状态栏高度 -->
-				<m-top />
-				<view class="d-flex a-center">
-					<view class="user-avatar mr-2">
-						<u-image width="100rpx" height="100rpx" class="user-img"
-							:src="$store.state.userinfo.avatar || '/static/img/mine/default-avatar.png'" mode="">
-						</u-image>
-					</view>
-					<view class="user-info d-flex flex-column j-around mr-2" @click="openLogin">
-						<view class="info-name font-lg line-h">
-							{{$store.state.token ? $store.state.userinfo.name : $t('前往登录')}}
+				<view class="user-image hidden">
+					<u-image width="100%" :height="`calc(388rpx + ${statusHeight}px)`" src="/static/img/mine/mine-bg.png" mode="">
+					</u-image>
+				</view>
+				<!-- #endif -->
+				<view class="position-absolute px-3 pt-3 top-0 right-0 left-0 right-0">
+					<!-- 顶部状态栏高度 -->
+					<!-- #ifdef MP -->
+					<view :style="{height: `calc(${statusHeight}px + ${navbarHeight}px - 30rpx)`}"></view>
+					<!-- #endif -->
+					<view class="d-flex a-center">
+						<view class="user-avatar border-2 border-white mr-2">
+							<u-image radius="100" width="100rpx" height="100rpx"
+								:src="userinfo.avatar || '/static/img/mine/default-avatar.png'" mode="">
+							</u-image>
 						</view>
-						<view v-if="$store.state.token" class="info-desc font-md line-h mt-2">
-							ID: {{$store.state.userinfo.id}}
-						</view>
-						<view v-else class="user-notice line-h mt-2">
-							{{$t('您还未登录。立即登录，享受更多特权！')}}
-						</view>
-					</view>
-					<view class="ml-auto flex-shrink d-flex a-center">
-						<!-- #ifndef H5 -->
-						<view class="top-menu mr-3 d-flex flex-column j-center a-center" @click="openScanCode">
-							<u-image width="50rpx" height="50rpx" src="/static/img/mine/scan-code.svg" mode="" />
-							<view class="top-menu-text">
-								{{$t('扫码')}}
+						<view class="user-info d-flex flex-column j-around mr-2" @click="openLogin">
+							<view class="info-name font-lg line-h">
+								{{token ? userinfo.name : $t('前往登录')}}
+							</view>
+							<view v-if="token" class="info-desc font-md line-h mt-2">
+								ID: {{userinfo.id}}
+							</view>
+							<view v-else class="user-notice line-h mt-2">
+								{{$t('您还未登录。立即登录，享受更多特权！')}}
 							</view>
 						</view>
-						<!-- #endif -->
-						<view class="top-menu mr-1 d-flex flex-column j-center a-center" @click="openSet">
-							<u-image width="50rpx" height="50rpx" src="/static/img/common/setting-two.svg" mode="" />
-							<view class="top-menu-text">
-								{{$t('page.设置')}}
+						<view class="ml-auto flex-shrink d-flex a-center">
+							<!-- #ifndef H5 -->
+							<view class="top-menu mr-3 d-flex flex-column j-center a-center" @click="openScanCode">
+								<u-image width="50rpx" height="50rpx" src="/static/img/mine/scan-code.svg" mode="" />
+								<view class="top-menu-text">
+									{{$t('扫码')}}
+								</view>
+							</view>
+							<!-- #endif -->
+							<view class="top-menu mr-1 d-flex flex-column j-center a-center" @click="openSet">
+								<u-image width="50rpx" height="50rpx" src="/static/img/common/setting-two.svg" mode="" />
+								<view class="top-menu-text">
+									{{$t('page.设置')}}
+								</view>
 							</view>
 						</view>
 					</view>
-				</view>
-				<!-- 小说漫画 -->
-				<view class="media py-2 d-flex a-center j-around mt-3">
-					<view class="d-flex a-center j-center flex-column" v-for="(item, i) in literList" :key="i"
-						@click="$tools.Navigate.navigateTo(item.page)">
-						<u-image width="80rpx" height="80rpx" :src="item.src"></u-image>
-						<view class="mt-1 line-h main-text-color">
-							{{$t(item.name)}}
+					<!-- 小说漫画 -->
+					<view class="media py-2 d-flex a-center j-around mt-3">
+						<view class="d-flex a-center j-center flex-column" v-for="(item, i) in literList" :key="i"
+							@click="$tools.Navigate.navigateTo(item.page)">
+							<u-image width="80rpx" height="80rpx" :src="item.src"></u-image>
+							<view class="mt-1 line-h main-text-color">
+								{{$t(item.name)}}
+							</view>
 						</view>
 					</view>
+					<!-- VIP -->
 				</view>
-				<!-- VIP -->
-				<view class="vip-card" @click="$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')">
+				<view class="vip-card">
+					<u-image width="690rpx" height="120rpx" src="/static/img/mine/mine-vip-card.png"
+						@click="$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')">
+					</u-image>
 				</view>
 			</view>
 			<u-gap height="80rpx"></u-gap>
@@ -77,7 +98,7 @@
 			</view>
 			<!-- 币区 -->
 			<view class="assets text-white mt-2 bg-white d-flex a-center j-around">
-				<view v-for="(item, i) in assets" class="assets-item d-flex flex-column a-center j-center"
+				<view v-for="(item, i) in assets" :key="i" class="assets-item d-flex flex-column a-center j-center"
 					@click="openAssets(item)">
 					<view class="item-value">
 						{{item.value}}
@@ -96,7 +117,7 @@
 					<!-- #endif -->
 				</view>
 			</view>
-			<u-gap height="30rpx"></u-gap>
+			<u-gap height="50rpx"></u-gap>
 		</m-scroll-y>
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/mine/index" i18n></m-tabbar>
@@ -203,11 +224,20 @@
 		computed: {
 			scrollStyle() {
 				return {
-					height: `calc(100vh - env(safe-area-inset-bottom) - ${this.$store.state.tabbarHeight}px - ${this.$store.state.statusHeight}px)`
+					height: `calc(100vh - env(safe-area-inset-bottom) - ${this.$store.state.tabbarHeight}px)`
 				}
 			},
 			statusHeight() {
 				return this.$store.state.statusHeight
+			},
+			navbarHeight() {
+				return this.$store.state.navbarHeight
+			},
+			userinfo() {
+				return this.$store.state.userinfo
+			},
+			token() {
+				return this.$store.state.token
 			}
 		}
 	}
@@ -216,12 +246,11 @@
 <style lang="scss" scoped>
 	.page {
 		.user {
-			position: relative;
-			padding: 30rpx 30rpx 0;
-			background: url('/static/img/mine/mine-bg.png') no-repeat;
-			background-size: cover;
-			border-radius: 0 0 40rpx 40rpx;
 			color: #111;
+			
+			.user-image{
+				border-radius: 0 0 40rpx 40rpx;
+			}
 
 			.user-info {
 				// height: 100rpx;
@@ -234,10 +263,8 @@
 			}
 
 			.user-avatar {
-				.user-img {
-					border-radius: 50%;
-					overflow: hidden;
-				}
+				border-radius: 50%;
+				overflow: hidden;
 			}
 
 			.top-menu {
@@ -249,21 +276,13 @@
 			}
 
 			.vip-card {
-				width: 690rpx;
-				height: 120rpx;
 				position: absolute;
 				left: 30rpx;
 				bottom: -60rpx;
-				background: url('/static/img/mine/mine-vip-card.png') no-repeat;
-				background-size: cover;
-				border-radius: 8rpx;
-
 			}
 		}
-		
-		.media{
-			
-		}
+
+		.media {}
 
 		.order {
 			border-radius: 8rpx;
@@ -289,7 +308,7 @@
 			margin-left: 30rpx;
 			border-radius: 8rpx;
 			padding: 20rpx 0;
-			background: linear-gradient(to bottom, #FBB13B, #F0422B);
+			background: linear-gradient(to right, #85B6CA, #F9A4A0);
 
 			.assets-item {
 				.item-value {

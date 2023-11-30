@@ -11,7 +11,7 @@
 					{{$t('宫悦商城欢迎您')}}
 				</view>
 				<view class="mt-2 text-light font-weight line-h">
-					V{{$store.state.appSystemInfo.appVersion}}
+					V{{appSystemInfo.appVersion}}
 				</view>
 				<view class="desc initial p-4 text-i2">
 					<p>欢迎下载宫悦商城！我们致力于为您提供便捷、安全和多样化的购物体验。宫悦商城是一个全方位的在线购物平台，汇集了各个领域的优质商品和服务。</p>
@@ -139,6 +139,9 @@
 				return {
 					height: `calc(100vh - ${this.$store.state.navbarHeight}px - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
 				}
+			},
+			appSystemInfo() {
+				return this.$store.state.appSystemInfo
 			}
 		},
 	}
@@ -173,7 +176,6 @@
 			border-radius: 18rpx;
 			height: 88rpx;
 			width: 630rpx;
-			margin: 0 auto;
 			background: linear-gradient(to right, #85B6CA, #F9A4A0);
 		}
 

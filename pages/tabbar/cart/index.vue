@@ -4,7 +4,7 @@
 		<m-navbar bgColor="#fff" isTab isSlot>
 			<view class="title w-100 d-flex a-center px-3" :style="{
 			width: `calc(100vw - ${miniProgramCapsule.width}px)`,
-			marginRight: `${miniProgramCapsule.width}px`}">
+			marginRight: `calc(100vw - ${miniProgramCapsule.right}px + ${miniProgramCapsule.width}px)`}">
 				<view class="title-text mr-2 flex-shrink line-h">
 					{{$t('购物车')}}
 				</view>

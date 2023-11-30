@@ -1,8 +1,14 @@
 <template>
+	<!-- #ifndef MP -->
 	<view class="menu-item d-flex a-center" 
-	:class="[textCenter ? 'j-center': 'j-sb', isActive ? 'active': '']" :style="[{borderTop: `1rpx solid ${BBColor}`},itemStyle]">
+	:class="[textCenter ? 'j-center': 'j-sb', isActive ? 'active': '']" :style="{borderTop: `1rpx solid ${BBColor}`, ...itemStyle}">
+	<!-- #endif -->
+	<!-- #ifdef MP -->
+	<view class="menu-item d-flex a-center" 
+	:class="[textCenter ? 'j-center': 'j-sb', isActive ? 'active': '']" :style="[{borderTop: `1rpx solid ${BBColor}`}, itemStyle]">
+	<!-- #endif -->
 		<view v-if="isShowL" class="menu-item-left d-flex a-center">
-			<u-image class="mr-2" v-if="item.icon" v-bind="$attrs" :radius="radius" :src="item.icon" :width="imgWidth"
+			<u-image class="mr-2" v-if="item.icon" :radius="radius" :src="item.icon" :width="imgWidth"
 				:height="imgHeight" :mode="mode"></u-image>
 			<span v-if="item[keyName]" :style="{color}">{{i18n ? $t(item[keyName]) : item[keyName]}}</span>
 		</view>

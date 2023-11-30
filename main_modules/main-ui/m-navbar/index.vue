@@ -1,47 +1,66 @@
 <!-- 顶部组件 -->
 <template>
 	<view class="index-5" :class="isFixed ? 'position-fixed' : 'position-sticky'">
+		<!-- #ifndef MP -->
 		<view :style="{height: `${statusHeight}px`, backgroundColor: bgColor}"></view>
+		<!-- #endif -->
+		<!-- #ifdef MP -->
+		<view :style="[{height: `${statusHeight}px`, backgroundColor: bgColor}]"></view>
+		<!-- #endif -->
+		<!-- #ifndef MP -->
 		<view class="top top-0 index-1"
 			:style="{height: `${navbarHeight}px`, borderBottom: borderBottom ? '1rpx solid #f5f5f5' : 'none'}">
 			<view :style="{backgroundColor: bgColor}" class="tabbar d-flex a-center position-relative"
 				:class="textDirection === 'center' ? 'j-center' : 'pl-10'">
-				<view v-if="!isTab" class="tabbar-back d-flex j-center a-center p-1" @click="retreat">
-					<u-image height="60rpx" width="60rpx" src="/static/img/common/back.svg"></u-image>
-					<!-- <u-icon name="arrow-left" :color="iconColor" size="20"></u-icon> -->
-				</view>
-				<template v-if="isSlot">
-					<slot></slot>
-				</template>
-				<template v-else>
-					<view class="tabbar-title" :style="{color: textColor, ...textStyle}">
-						{{i18n ? $t(value) : value}}
+			<!-- #endif -->
+				<!-- #ifdef MP -->
+				<view class="top top-0 index-1"
+					:style="[{height: `${navbarHeight}px`, borderBottom: borderBottom ? '1rpx solid #f5f5f5' : 'none'}]">
+					<view :style="[{backgroundColor: bgColor}]" class="tabbar d-flex a-center position-relative"
+						:class="textDirection === 'center' ? 'j-center' : 'pl-10'">
+					<!-- #endif -->
+						<view v-if="!isTab" class="tabbar-back d-flex j-center a-center p-1" @click="retreat">
+							<u-image height="60rpx" width="60rpx" src="/static/img/common/back.svg"></u-image>
+							<!-- <u-icon name="arrow-left" :color="iconColor" size="20"></u-icon> -->
+						</view>
+						<template v-if="isSlot">
+							<slot></slot>
+						</template>
+						<template v-else>
+							<!-- #ifndef MP -->
+							<view class="tabbar-title" :style="{color: textColor, ...textStyle}">
+								<!-- #endif -->
+								<!-- #ifdef MP -->
+								<view class="tabbar-title" :style="[{color: textColor}, textStyle]">
+								<!-- #endif -->
+								{{i18n ? $t(value) : value}}
+							</view>
+						</template>
+						<!-- #ifndef MP -->
+						<view v-if="isLang" class="tabbar-locale d-flex j-center a-center"
+						:style="{right: '20rpx'}"
+						 @click="selectLang">
+						 <!-- #endif -->
+						<!-- #ifdef MP -->
+						<view v-if="isLang" class="tabbar-locale d-flex j-center a-center"
+						:style="{right: `calc(20rpx + ${miniProgramCapsule.width}px + 100vw - ${miniProgramCapsule.right}px)`}"
+						 @click="selectLang">
+						 <!-- #endif -->
+							<u-image height="50rpx" width="50rpx" src="/static/img/home/locale.svg"></u-image>
+						</view>
+						<slot v-else name="right"></slot>
 					</view>
-				</template>
-				<view v-if="isLang" class="tabbar-locale d-flex j-center a-center" @click="selectLang">
-					<u-image height="50rpx" width="50rpx" src="/static/img/home/locale.svg"></u-image>
 				</view>
-				<slot v-else name="right"></slot>
 			</view>
-		</view>
-	</view>
 </template>
 
 <script>
 	import tools from '../../tools/index.js'
 	import props from './props.js'
 	export default {
-		name: "m-navbar",
 		props,
 		data() {
-			return {
-				statusHeight: 0,
-				navbarHeight: 0
-			};
-		},
-		created() {
-			this.statusHeight = this.$store.state.statusHeight
-			this.navbarHeight = this.$store.state.navbarHeight
+			return {};
 		},
 		methods: {
 			selectLang() {
@@ -63,11 +82,22 @@
 				// #endif
 				this.$emit('pageBack')
 			}
+		},
+		computed: {
+			statusHeight() {
+				return this.$store.state.statusHeight
+			},
+			navbarHeight() {
+				return this.$store.state.navbarHeight
+			},
+			miniProgramCapsule() {
+				return this.$store.state.miniProgramCapsule
+			}
 		}
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 	.top {
 		width: 100vw;
 		overflow: hidden;
@@ -83,7 +113,6 @@
 
 			.tabbar-locale {
 				position: absolute;
-				right: 20rpx;
 				top: 50%;
 				transform: translateY(-50%);
 				width: 50rpx;

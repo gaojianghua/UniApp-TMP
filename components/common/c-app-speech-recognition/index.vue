@@ -197,7 +197,7 @@
 			border-radius: 50rpx;
 			height: 80rpx;
 			width: 400rpx;
-			margin: 0 auto;
+			margin: 30rpx auto 0;
 			background: linear-gradient(to right, #85B6CA, #F9A4A0);
 		}
 

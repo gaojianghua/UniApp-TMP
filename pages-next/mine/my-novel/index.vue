@@ -4,7 +4,7 @@
 		<m-navbar bgColor="#fff" isSlot i18n>
 			<view class="w-100 d-flex a-center search pl-10 pr-2" :style="{
 			width: `calc(100vw - ${miniProgramCapsule.width}px)`,
-			marginRight: `${miniProgramCapsule.width}px`}">
+			marginRight: `calc(100vw - ${miniProgramCapsule.right}px + ${miniProgramCapsule.width}px)`}">
 				<!-- 搜索框 -->
 				<view class="position-relative flex-1">
 					<view class="position-absolute top-0 right-0 left-0 bottom-0 index-5"
@@ -65,9 +65,11 @@
 					</u-empty>
 					<view v-if="winnowList.length != 0" class="d-flex flex-wrap flex-1">
 						<view class="winnow-item mt-3 d-flex"
-							v-for="(item, i) in winnowList.slice((inNum - 1)*3, inNum*3)" :key="i"
+							v-for="(item, j) in winnowList.slice((inNum - 1)*3, inNum*3)" :key="j"
 							@click="$tools.Navigate.navigateTo('/pages-offspring/read-novel/index', item)">
-							<u-image class="mr-2" radius="6" width="158rpx" height="200rpx" :src="item.img"></u-image>
+							<view class="mr-2">
+								<u-image radius="6" width="158rpx" height="200rpx" :src="item.img"></u-image>
+							</view>
 							<view class="d-flex j-sb flex-1 flex-column">
 								<view class="d-flex a-center">
 									<view class="item-name line-h text-ellipsis1">
@@ -124,7 +126,7 @@
 						<!-- #ifndef MP-WEIXIN -->
 						<swiper :current="rankCurrent" :style="{height: '640rpx'}" @change="changeSwiper">
 						<!-- #endif -->
-							<swiper-item v-for="(item, i) in ranks" :key="i">
+							<swiper-item v-for="(item, k) in ranks" :key="k">
 								<!-- 列表区域 -->
 								<view class="w-100 h-100">
 									<view v-if="ranks[rankCurrent].isLoading" class="d-flex a-center h-100 j-center">
@@ -176,16 +178,16 @@
 										<!-- 其余六个排行 -->
 										<view class="d-flex j-sb flex-wrap">
 											<view class="winnow-item rank-row mt-3 d-flex"
-												v-for="(item, i) in ranks[rankCurrent].list.slice(1, ranks[rankCurrent].list.length)"
-												:key="i"
+												v-for="(item, s) in ranks[rankCurrent].list.slice(1, ranks[rankCurrent].list.length)"
+												:key="s"
 												@click="$tools.Navigate.navigateTo('/pages-offspring/read-novel/index', item)">
 												<u-image radius="6" width="100rpx" height="128rpx"
 													:src="item.img"></u-image>
 												<view class="d-flex j-sb flex-1 flex-column">
 													<view class="d-flex">
-														<view :style="{color: i == 0 || i == 1 ? '#FA9C3E' : '#333'}"
+														<view :style="{color: s == 0 || s == 1 ? '#FA9C3E' : '#333'}"
 															class="item-name-rank font-weight line-h">
-															{{i + 2}}
+															{{s + 2}}
 														</view>
 														<view class="d-flex flex-column py-1">
 															<view class="item-name text-ellipsis2">
@@ -213,7 +215,12 @@
 				</view>
 				<!-- 猜你喜欢 -->
 				<u-gap height="10" bgColor="tansparent"></u-gap>
+				<!-- #ifndef MP -->
 				<view class="love bg-white p-3" :style="loveStyle">
+					<!-- #endif -->
+				<!-- #ifdef MP -->
+				<view class="love bg-white p-3" :style="[loveStyle]">
+					<!-- #endif -->
 					<view class="d-flex a-center">
 						<view class="winnow-title line-h font-weight">
 							{{$t('猜你喜欢')}}
@@ -224,9 +231,10 @@
 							<u-icon name="arrow-right" size="16" color="#333"></u-icon>
 						</view>
 					</view>
+					<!-- #ifndef MP -->
 					<view class="love-title w-100 d-flex a-center"
 						:class="isTabsFixed ? 'position-fixed left-0 index-5 ts-all-l' : 'mt-2 ts-all-l noTabsFixed'"
-						:style="{top: isTabsFixed ? `calc(${$store.state.navbarHeight}px + ${$store.state.statusHeight}px - 1rpx)` : '0'
+						:style="{top: isTabsFixed ? `calc(${navbarHeight}px + ${statusHeight}px - 1rpx)` : '0'
 						}">
 						<view class="tabs w-100 p-1 ts-all-l" :style="{
 						borderRadius: isTabsFixed ? '0' : '12rpx',
@@ -246,6 +254,20 @@
 							<u-icon name="arrow-right" size="16" color="#333"></u-icon>
 						</view>
 					</view>
+					<!-- #endif -->
+					<!-- #ifdef MP -->
+					<view v-if="!isTabsFixed" class="love-title w-100 d-flex a-center mt-2 ts-all-l noTabsFixed">
+						<view class="tabs w-100 p-1 ts-all-l" style="border-radius: 12rpx;">
+							<m-tabs :chooseIndex="loveCurrent" @changeTab="changeTab"
+								:scrollStyle="{borderRadius: '16rpx'}" chooseBgColor="#fff" bgColor="transparent"
+								:chooseTextStyle="{color: '#111'}" :slideNum="1" scrollHeight="50rpx"
+								:itemStyle="{borderRadius: '8rpx', color: '#666', padding: '0 20rpx', marginRight: '20rpx'}"
+								:tabs="tabs" keyName="name">
+							</m-tabs>
+						</view>
+					</view>
+					<!-- #endif -->
+					<view v-if="isTabsFixed" style="height: 70rpx;"></view>
 					<view v-if="isTempLoad" class="d-flex a-center j-center mt-3">
 						<m-loading :load="0"></m-loading>
 					</view>
@@ -255,7 +277,9 @@
 					<template v-if="list.length != 0">
 						<view class="winnow-item mt-3 d-flex" v-for="(item, i) in list" :key="i"
 							@click="$tools.Navigate.navigateTo('/pages-offspring/read-novel/index', item)">
-							<u-image class="mr-2" radius="6" width="158rpx" height="200rpx" :src="item.img"></u-image>
+							<view class="mr-2">
+								<u-image radius="6" width="158rpx" height="200rpx" :src="item.img"></u-image>
+							</view>
 							<view class="d-flex j-sb flex-1 flex-column">
 								<view class="d-flex a-center">
 									<view class="item-name line-h text-ellipsis1">
@@ -283,6 +307,25 @@
 				<u-gap v-if="!isTabsFixed" height="10" bgColor="tansparent"></u-gap>
 			</view>
 		</m-scroll-y>
+		<!-- #ifdef MP -->
+		<view v-if="isTabsFixed" class="love-title w-100 d-flex a-center position-fixed left-0 index-5 ts-all-l"
+			:style="{top: `calc(${navbarHeight}px + ${statusHeight}px - 2rpx)`}">
+			<view class="tabs w-100 p-1 ts-all-l" style="width: 85%;">
+				<m-tabs :chooseIndex="loveCurrent" @changeTab="changeTab" :scrollStyle="{borderRadius: '16rpx'}"
+					chooseBgColor="#fff" bgColor="transparent" :chooseTextStyle="{color: '#111'}" :slideNum="1"
+					scrollHeight="50rpx"
+					:itemStyle="{borderRadius: '8rpx', color: '#666', padding: '0 20rpx', marginRight: '20rpx'}"
+					:tabs="tabs" keyName="name">
+				</m-tabs>
+			</view>
+			<view style="height: 70rpx; width: 15%;"
+				class="love-title-more position-relative index-5 flex-shrink ts-all-l bg-white ml-auto flex-shrink d-flex j-center a-center"
+				@click="$tools.Navigate.navigateTo('/pages-offspring/novel-screen/index')">
+				{{$t('更多')}}
+				<u-icon name="arrow-right" size="16" color="#333"></u-icon>
+			</view>
+		</view>
+		<!-- #endif -->
 	</view>
 </template>
 
@@ -412,11 +455,17 @@
 			},
 			// 猜你喜欢tabs切换
 			changeTab(e) {
+				this.loveCurrent = e.index
 				this.isTabsFixed = false
 				this.isLoading = false
 				this.isTempLoad = true
 				this.load = 0
-				this.scrollTop = 1350
+				// #ifndef MP
+				this.scrollTop = 1150
+				// #endif
+				// #ifdef MP
+				this.scrollTop = 1200
+				// #endif
 				this.list = []
 				let time = setTimeout(() => {
 					this.onRefresh()
@@ -462,8 +511,14 @@
 			},
 			// 滚动触发
 			scroll(e) {
-				if (this.isTabsFixed && e.scrollTop >= 1300) return
-				e.scrollTop >= 1300 ? this.isTabsFixed = true : this.isTabsFixed = false
+				// #ifdef MP
+				if (this.isTabsFixed && e.scrollTop >= 1375) return
+				e.scrollTop >= 1375 ? this.isTabsFixed = true : this.isTabsFixed = false
+				// #endif
+				// #ifndef MP
+				if (this.isTabsFixed && e.scrollTop >= 1200) return
+				e.scrollTop >= 1200 ? this.isTabsFixed = true : this.isTabsFixed = false
+				// #endif
 			}
 		},
 		computed: {
@@ -478,6 +533,12 @@
 						`calc(100vh - 40rpx - ${this.$store.state.navbarHeight}px - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)` :
 						'auto'
 				}
+			},
+			navbarHeight() {
+				return this.$store.state.navbarHeight
+			},
+			statusHeight() {
+				return this.$store.state.statusHeight
 			}
 		}
 	}
@@ -593,22 +654,6 @@
 					}
 				}
 
-				.tabs {
-					background-color: #ddd;
-				}
-
-				.love-title-more::after {
-					content: '';
-					position: absolute;
-					left: -34rpx;
-					top: 0;
-					border-radius: 16rpx 0 0 16rpx;
-					z-index: 100;
-					width: 35rpx;
-					height: 100%;
-					background: linear-gradient(to right, #FFFFFF00 10%, #fff 70%);
-				}
-
 				.rank-line {
 					width: 50rpx;
 					height: 8rpx;
@@ -649,6 +694,21 @@
 					margin-right: 0 !important;
 				}
 			}
+		}
+		.tabs {
+			background-color: #ddd;
+		}
+		
+		.love-title-more::after {
+			content: '';
+			position: absolute;
+			left: -34rpx;
+			top: 0;
+			border-radius: 16rpx 0 0 16rpx;
+			z-index: 100;
+			width: 35rpx;
+			height: 100%;
+			background: linear-gradient(to right, #FFFFFF00 10%, #fff 70%);
 		}
 	}
 </style>

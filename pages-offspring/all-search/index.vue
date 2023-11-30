@@ -2,9 +2,9 @@
 	<view class="page">
 		<!-- 顶部导航栏 -->
 		<m-navbar bgColor="#fff" isSlot>
-			<view class="w-100 search pr-2" :style="{
+			<view class="w-100 search px-2" :style="{
 			width: `calc(100vw - ${miniProgramCapsule.width}px)`,
-			marginRight: `${miniProgramCapsule.width}px`}">
+			marginRight: `calc(100vw - ${miniProgramCapsule.right}px + ${miniProgramCapsule.width}px)`}">
 				<!-- 搜索框 -->
 				<u-search :placeholder="$t('请输入关键词')" focus height="60rpx" v-model="query.search" :showAction="false"
 					@search="startSearch" @change="searchChange"></u-search>

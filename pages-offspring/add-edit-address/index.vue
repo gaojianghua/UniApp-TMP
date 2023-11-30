@@ -12,7 +12,7 @@
 		<view class="content mt-1 bg-white">
 			<view class="d-flex a-center j-sb border-top py-2 px-3">
 				<span>{{$t('收货人')}}</span>
-				<view class="bottom flex-shrink">
+				<view class="bottom px-3 flex-shrink">
 					<u-input :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="text" border="none"
 						:placeholder="$t('名字')" v-model="item.name">
 					</u-input>
@@ -20,7 +20,7 @@
 			</view>
 			<view class="d-flex a-center j-sb py-2 border-top px-3">
 				<span>{{$t('手机号码')}}</span>
-				<view class="bottom flex-shrink">
+				<view class="bottom px-3 flex-shrink">
 					<u-input :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="text" border="none"
 						:placeholder="$t('手机号码')" v-model="item.phone">
 					</u-input>
@@ -28,7 +28,7 @@
 			</view>
 			<view class="d-flex a-center j-sb py-2 border-top px-3">
 				<span>{{$t('所在地区')}}</span>
-				<view class="bottom flex-shrink position-relative" @click.stop="cityShow = true">
+				<view class="bottom px-3 flex-shrink position-relative" @click.stop="cityShow = true">
 					<u-input :readonly="cityShow" :customStyle="{height: '100rpx', caretColor: '#f27299', overflow: 'auto'}" type="text"
 						border="none" :placeholder="$t('省、市、区、街道')" :value="city | showHeadTail('市', 14, '...')">
 						<view slot="suffix" class="py-2" @click.stop="openLocation">
@@ -57,7 +57,7 @@
 			</view>
 			<view class="d-flex a-center j-sb py-2 border-top px-3">
 				<span>{{$t('详细地址')}}</span>
-				<view class="bottom flex-shrink d-flex a-center py-2">
+				<view class="bottom p-3 flex-shrink d-flex a-center">
 					<u-textarea :customStyle="{caretColor: '#f27299', padding: '0', backgroundColor: '#f1f1f1'}"
 						border="none" v-model="item.address" :placeholder="$t('小区楼栋/乡村名称')">
 					</u-textarea>
@@ -258,7 +258,6 @@
 				width: 75%;
 				background-color: #f1f1f1;
 				border-radius: 50rpx;
-				padding: 0 30rpx;
 
 				.poi {
 					display: none;
@@ -324,7 +323,6 @@
 			border-radius: 50rpx;
 			height: 88rpx;
 			width: 690rpx;
-			margin: 0 auto;
 			background: linear-gradient(to right, #85B6CA, #F9A4A0);
 		}
 
