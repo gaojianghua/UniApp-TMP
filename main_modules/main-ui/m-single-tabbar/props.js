@@ -41,6 +41,12 @@ module.exports = {
 			return '#999'
 		}
 	},
+	borderColor: {
+		type: String,
+		default: () => {
+			return '#999'
+		}
+	},
 	bgColor: {
 		type: String,
 		default: () => {

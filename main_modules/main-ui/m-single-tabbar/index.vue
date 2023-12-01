@@ -1,6 +1,6 @@
 <template>
-	<view class="single w-100 position-fixed bottom-0 left-0 d-flex a-center py-1" :style="{backgroundColor: bgColor}">
-		<view :style="{width: `calc(100% / ${tabs.length})`, height: '100%'}"
+	<view class="single w-100 position-fixed bottom-0 left-0 d-flex a-center" :style="{backgroundColor: bgColor, borderTop: `2rpx solid ${borderColor}`}">
+		<view :style="{width: `calc(100% / ${tabs.length})`, height: '52px'}"
 			class="single-item d-flex a-center j-center flex-column" v-for="(item, i) in tabs" :key="i"
 			@click="tabClick(item, i)">
 			<image :style="{width: iconWidth, height: iconHeight}" mode="aspectFit" lazy-load
@@ -42,7 +42,7 @@
 
 <style lang="scss" scoped>
 	.single {
-		height: calc(52px + env(safe-area-inset-bottom));
+		padding-bottom: env(safe-area-inset-bottom);
 
 		.single-item {}
 	}

@@ -1,5 +1,5 @@
 <template>
-	<view class="main" :style="scrollStyle">
+	<view class="main h-100">
 		<view :class="screen == 0 ? 'top-active' : (screen == 1 ? 'top-default' : '')" class="main-top">
 			<m-scroll-y :isLoading="couponIsLoading" i18n :scrollStyle="{height: `calc(100% - 50rpx)`}" :load="couponLoad"
 				@loadmore="couponLoadmore" bgColor="transparent" @onRefresh="couponOnRefresh">
@@ -30,12 +30,12 @@
 			<view v-if="screen != 1" class="arrow bg-white flex-column d-flex a-center j-center" @click="screenClick(0)">
 				<u-icon v-if="screen != 0" name="arrow-downward" size="22" color="#f27299"></u-icon>
 				<u-icon v-else name="arrow-upward" size="22" color="#f27299"></u-icon>
-				<u-gap class="w-100 mt-auto" height="2rpx" bgColor="#999"></u-gap>
+				<view class="w-100 mt-auto bg-dark" style="height: 2rpx;"></view>
 			</view>
 		</view>
 		<view :class="screen == 1 ? 'bot-active' : (screen == 0 ? 'bot-default' : '')" class="main-bot">
 			<view v-if="screen != 0" class="arrow bg-white flex-column d-flex a-center" @click="screenClick(1)">
-				<u-gap class="w-100" height="2rpx" bgColor="#999"></u-gap>
+				<view class="w-100 bg-dark" style="height: 2rpx;"></view>
 				<u-icon class="mt-auto" v-if="screen != 1" name="arrow-upward" size="22" color="#f27299"></u-icon>
 				<u-icon class="mt-auto" v-else name="arrow-downward" size="22" color="#f27299"></u-icon>
 			</view>
@@ -241,13 +241,6 @@
 					type: 'success',
 					duration: 1200
 				})
-			}
-		},
-		computed: {
-			scrollStyle() {
-				return {
-					height: `calc(100vh - ${this.$store.state.navbarHeight}px - 52px - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
-				}
 			}
 		},
 		watch: {
