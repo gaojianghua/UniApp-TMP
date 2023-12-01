@@ -6,8 +6,8 @@
 				<image src="/static/img/mine/exit.png" mode="">
 				</image>
 			</view>
-			<l-painter useCORS :after-delay="1000" :board="poster" :isCanvasToTempFilePath="canvasSwitch"
-				@success="openSuccess" @fail="openFail" @ custom-style="position: fixed; left: 200%" />
+			<l-painter v-if="posterShow" useCORS :after-delay="1000" :board="poster" :isCanvasToTempFilePath="canvasSwitch"
+				@success="openSuccess" @fail="openFail" custom-style="position: fixed; left: 200%" />
 		</view>
 	</u-overlay>
 </template>
@@ -68,7 +68,8 @@
 							css: {
 								objectFit: "cover",
 								width: "600rpx",
-								height: "1068rpx"
+								height: "1068rpx",
+								borderRadius: "15rpx"
 							}
 						},
 						{
@@ -106,7 +107,7 @@
 								left: "0rpx",
 								top: "0rpx",
 								backgroundColor: 'rgba(0, 0, 0, .5)',
-								borderRadius: '0 0 15rpx 0'
+								borderRadius: "15rpx 0 15rpx 0"
 							}
 						},
 						{
@@ -115,8 +116,7 @@
 								height: "400rpx",
 								position: "absolute",
 								left: "138.5rpx",
-								bottom: "32rpx",
-								// position: "relative"
+								bottom: "32rpx"
 							},
 							views: [{
 									src: "/static/img/mine/share-bc.png",
@@ -128,7 +128,7 @@
 									}
 								},
 								{
-									src: `${this.$store.state.userinfo.avatar}`,
+									src: `${this.userinfo.avatar}`,
 									type: "image",
 									css: {
 										objectFit: "cover",
@@ -141,7 +141,7 @@
 									}
 								},
 								{
-									text: `${this.$store.state.userinfo.name}`,
+									text: `${this.userinfo.name}`,
 									type: "text",
 									css: {
 										objectFit: "cover",
@@ -156,7 +156,7 @@
 									}
 								},
 								{
-									text: `${this.item.shareUrl + '?item=' + this.$store.state.userinfo.inviteCode}`,
+									text: `${this.item.shareUrl + '?item=' + this.userinfo.inviteCode}`,
 									type: 'qrcode',
 									css: {
 										objectFit: "cover",
@@ -193,7 +193,7 @@
 										textAlign: "center"
 									},
 									views: [{
-										text: `${this.$store.state.userinfo.inviteCode}`,
+										text: `${this.userinfo.inviteCode}`,
 										type: "text",
 										css: {
 											fontSize: "25rpx",
@@ -228,7 +228,6 @@
 			},
 			//生成海报成功
 			openSuccess(e) {
-				//console.log(e)
 				this.$emit('success')
 				uni.hideLoading()
 				this.path = e
@@ -237,6 +236,11 @@
 			openFail(e) {
 				uni.$u.toast(e)
 				uni.hideLoading()
+			}
+		},
+		computed: {
+			userinfo() {
+				return this.$store.state.userinfo
 			}
 		}
 	}

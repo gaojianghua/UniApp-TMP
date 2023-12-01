@@ -3,84 +3,93 @@
 		<!-- 顶部导航栏 -->
 		<m-navbar bgColor="transparent" value="page.APP分享" i18n></m-navbar>
 		<!-- 内容区域 -->
+		<!-- #ifndef MP -->
 		<view class="share" :style="scrollStyle">
 			<swiper circular :current="current" previous-margin="105rpx" next-margin="105rpx" @change="openSweiper"
 				:style="{height: '73.3%'}">
-				<swiper-item class="share-item d-flex a-center" v-for="item in list" :key="item.id">
-					<view class="swiper-item w-100 h-100 hidden position-relative"
-						:class="current === item.id?'active':''" :style="{'background-image': `url(${item.src})`}">
-						<view class="logo d-inline-block">
-							<view class="d-flex a-center">
-								<u-image width="35rpx" height="35rpx"
-									src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/GongYueLogo.png"
-									mode=""></u-image>
-								<view class="ml-1 line-h logo-text font-weight">
-									{{$t('宫悦商城')}}
+			<!-- #endif -->
+				<!-- #ifdef MP -->
+				<view class="share" :style="[scrollStyle]">
+					<swiper circular :current="current" previous-margin="105rpx" next-margin="105rpx"
+						@change="openSweiper" :style="[{height: '73.3%'}]">
+					<!-- #endif -->
+						<swiper-item class="share-item h-100 d-flex a-center" v-for="item in list" :key="item.id">
+							<view class="swiper-item w-100 h-100 hidden position-relative"
+								:class="current === item.id?'active':''"
+								:style="{'background-image': `url(${item.src})`}">
+								<view class="logo d-inline-block">
+									<view class="d-flex a-center">
+										<u-image width="35rpx" height="35rpx"
+											src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/GongYueLogo.png"
+											mode=""></u-image>
+										<view class="ml-1 line-h logo-text font-weight">
+											{{$t('宫悦商城')}}
+										</view>
+									</view>
+								</view>
+								<view class="share-code">
+									<view class="share-user d-flex a-center">
+										<u-image class="mr-1 rounded-circle hidden" width="60rpx" height="60rpx"
+											:src="userinfo.avatar" mode=""></u-image>
+										<view class="user-name font-weight text-ellipsis1">
+											{{userinfo.name}}
+										</view>
+									</view>
+									<view class="code mb-4 d-flex j-center">
+										<u-image width="150rpx" height="150rpx" :src="item.erwm" mode=""></u-image>
+									</view>
+									<view class="invite d-flex j-center flex-column a-center">
+										<view class="invite-name font-weight line-h">
+											{{$t('邀请码')}}
+										</view>
+										<view class="invite-code font-weight d-flex j-center a-center">
+											{{userinfo.inviteCode}}
+										</view>
+									</view>
 								</view>
 							</view>
+						</swiper-item>
+					</swiper>
+					<view class="share-btn d-flex j-sb a-center">
+						<!-- #ifdef MP -->
+						<button class="btons d-flex j-center a-center" hover-class="none" open-type="share">
+							{{$t('分享邀请链接')}}
+						</button>
+						<!-- #endif -->
+						<!-- #ifdef H5 -->
+						<view class="btons d-flex j-center a-center" @click="show = true">
+							{{$t('分享邀请链接')}}
 						</view>
-						<view class="share-code">
-							<view class="share-user d-flex a-center">
-								<u-image class="mr-1 rounded-circle hidden" width="60rpx" height="60rpx"
-									:src="$store.state.userinfo.avatar" mode=""></u-image>
-								<view class="user-name font-weight text-ellipsis1">
-									{{$store.state.userinfo.name}}
-								</view>
-							</view>
-							<view class="code mb-4 d-flex j-center">
-								<u-image width="150rpx" height="150rpx" :src="item.erwm" mode=""></u-image>
-							</view>
-							<view class="invite d-flex j-center flex-column a-center">
-								<view class="invite-name font-weight line-h">
-									{{$t('邀请码')}}
-								</view>
-								<view class="invite-code font-weight d-flex j-center a-center">
-									{{$store.state.userinfo.inviteCode}}
-								</view>
-							</view>
+						<!-- #endif -->
+						<!-- #ifdef APP-PLUS -->
+						<view class="btons d-flex j-center a-center" @click="shareAPP">
+							{{$t('更多分享方式')}}
+						</view>
+						<!-- #endif -->
+						<view class="btons d-flex j-center a-center" @click="sharePosters">
+							{{$t('分享专属海报')}}
 						</view>
 					</view>
-				</swiper-item>
-			</swiper>
-			<view class="share-btn d-flex j-sb a-center">
-				<!-- #ifdef MP -->
-				<button class="btons d-flex j-center a-center" hover-class="none" open-type="share">
-					{{$t('分享邀请链接')}}
-				</button>
-				<!-- #endif -->
-				<!-- #ifdef H5 -->
-				<view class="btons d-flex j-center a-center" @click="show = true">
-					{{$t('分享邀请链接')}}
 				</view>
-				<!-- #endif -->
-				<!-- #ifdef APP-PLUS -->
-				<view class="btons d-flex j-center a-center" @click="shareAPP">
-					{{$t('更多分享方式')}}
-				</view>
-				<!-- #endif -->
-				<view class="btons d-flex j-center a-center" @click="sharePosters">
-					{{$t('分享专属海报')}}
-				</view>
-			</view>
+				<!-- 海报生成组件 -->
+				<mine-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow"
+					:item="list[current]" :current="current" />
+				<!-- 弹框 -->
+				<m-modal :show="show" i18n title="温馨提示" :isCancel="false" btnName="复制链接" @cancel="show = false"
+					@confirm="urlCopy">
+					<view class="d-flex a-center j-center flex-column">
+						<view class="d-flex a-center j-center flex-column main-text-color letter-1">
+							<span>{{$t('亲~ 快复制下方链接分享给您的好友吧!')}}</span>
+							<u-icon name="arrow-downward" size="18" color="#f27299"></u-icon>
+						</view>
+						<view
+							class="mt-1 text-center text-success border-2 border-success px-2 py-1 rounded-1 initial text-break">
+							{{shareUrl}}
+						</view>
+					</view>
+				</m-modal>
+				<u-toast ref="uToast"></u-toast>
 		</view>
-		<!-- 海报生成组件 -->
-		<mine-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow" :item="list[current]" :current="current" />
-		<!-- 弹框 -->
-		<m-modal :show="show" i18n title="温馨提示" :isCancel="false" btnName="复制链接" @cancel="show = false"
-			@confirm="urlCopy">
-			<view class="d-flex a-center j-center flex-column">
-				<view class="d-flex a-center j-center flex-column main-text-color letter-1">
-					<span>{{$t('亲~ 快复制下方链接分享给您的好友吧!')}}</span>
-					<u-icon name="arrow-downward" size="18" color="#f27299"></u-icon>
-				</view>
-				<view
-					class="mt-1 text-center text-success border-2 border-success px-2 py-1 rounded-1 initial text-break">
-					{{shareUrl}}
-				</view>
-			</view>
-		</m-modal>
-		<u-toast ref="uToast"></u-toast>
-	</view>
 </template>
 
 <script>
@@ -143,7 +152,7 @@
 				this.posterShow = true
 				uni.showLoading()
 				this.time = setTimeout(() => {
-					if(this.isSuccess) {
+					if (this.isSuccess) {
 						uni.$u.toast(this.$t('网络异常，请稍后重试'))
 						uni.hideLoading();
 					}
@@ -166,9 +175,11 @@
 			},
 			//获取数据
 			getData() {
+				// #ifndef MP
 				list.forEach(async (item, i) => {
 					item.erwm = await this.$tools.Common.generateQRCode(item.shareUrl)
 				})
+				// #endif
 				this.list = list
 			},
 			// 拷贝URL
@@ -199,7 +210,8 @@
 				uniShare.show({
 					content: { //公共的分享参数配置  类型（type）、链接（herf）、标题（title）、summary（描述）、imageUrl（缩略图）
 						type: 0,
-						href: 'https://gaojianghua.cn/pages/account/register/index?item=' + this.$store.state.userinfo,
+						href: 'https://gaojianghua.cn/pages/account/register/index?item=' + this.$store.state
+							.userinfo,
 						title: this.$t('宫悦商城'),
 						summary: this.$t('欢迎来到宫悦商城！我们致力于为您提供便捷、安全和多样化的购物体验。宫悦商城是一个全方位的在线购物平台，汇集了各个领域的优质商品和服务。'),
 						imageUrl: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/GongYueLogo.png'
@@ -272,6 +284,9 @@
 				return {
 					height: `calc(100vh - ${this.$store.state.navbarHeight}px - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
 				}
+			},
+			userinfo() {
+				return this.$store.state.userinfo
 			}
 		}
 	}
