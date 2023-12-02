@@ -27,7 +27,7 @@
 					<view :style="{height: `calc(${statusHeight}px - 30rpx)`}"></view>
 					<!-- #endif -->
 					<view class="d-flex a-center">
-						<view class="user-avatar border-2 border-white mr-2">
+						<view class="user-avatar flex-shrink border-2 border-white mr-2">
 							<u-image radius="100" width="100rpx" height="100rpx"
 								:src="userinfo.avatar || 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/default-avatar.png'" mode="">
 							</u-image>

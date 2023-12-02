@@ -13,7 +13,12 @@
 			</view>
 		</m-navbar>
 		<!-- 分类区域 -->
+		<!-- #ifndef MP -->
 		<view class="kind d-flex" :style="scrollStyle">
+			<!-- #endif -->
+		<!-- #ifdef MP -->
+		<view class="kind d-flex" :style="[scrollStyle]">
+			<!-- #endif -->
 			<!-- 左边一级分类 -->
 			<view class="kind-left h-100">
 				<m-scroll-y :isCustomRefresh="false" :isLoading="false" bgColor="transparent" :scrollStyle="scrollStyle"
@@ -28,10 +33,10 @@
 				</m-scroll-y>
 			</view>
 			<!-- 右边二级分类以及商品列表 -->
-			<view class="kind-right h-100">
-				<view v-if="tabs[oneCurrent]" class="two-list d-flex a-center position-relative">
+			<view class="kind-right flex-1 h-100">
+				<view v-if="tabs[oneCurrent]" class="two-list d-flex w-100 a-center position-relative">
 					<m-tabs :chooseIndex="twoCurrent" @changeTab="changeTab"
-						:scrollStyle="{width: `calc(100% - 88rpx)`}" chooseBgColor="#fb7299"
+						:scrollStyle="{width: `calc(80vw - 88rpx)`}" chooseBgColor="#fb7299"
 						:chooseTextStyle="{color: '#fff'}" :slideNum="1" scrollHeight="88rpx"
 						:tabs="tabs[oneCurrent].bxMallSubDto" keyName="mallSubName">
 					</m-tabs>
@@ -111,6 +116,16 @@
 			// 获取分类数据
 			async getCategoryData() {
 				this.tabs = await data.data
+				this.tabs.forEach((item)=> {
+					if(item.bxMallSubDto.length == 0 || item.bxMallSubDto[0].mallSubId != 0) {
+						item.bxMallSubDto.unshift({
+							mallSubId: 0,
+							mallCategoryId: item.mallCategoryId,
+							mallSubName: "全部",
+							comments: ""
+						})
+					}
+				})
 				this.getData()
 			},
 			// 获取数据
