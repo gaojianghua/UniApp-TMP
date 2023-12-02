@@ -51,16 +51,12 @@
 </template>
 
 <script>
-	import MListSwiper from '@/main_modules/main-ui/m-list-swiper/index.vue'
 	import capsuleInit from '@/mixins/capsule-init.js'
 	import {
 		tabs
 	} from './data.js'
 	export default {
 		mixins: [capsuleInit],
-		components: {
-			MListSwiper
-		},
 		data() {
 			return {
 				tabs,

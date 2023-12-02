@@ -8,23 +8,21 @@
 				<view class="title-text mr-2 flex-shrink line-h">
 					{{$t('购物车')}}
 				</view>
-				<view class="title-address d-flex a-center mr-1">
-					<u-image width="50rpx" height="50rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/local.svg"></u-image>
+				<view class="title-address d-flex a-center mr-1" @click="$tools.Navigate.navigateTo('/pages-offspring/shipping-address/index')">
+					<u-image width="34rpx" height="34rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/local.svg"></u-image>
 					<text class="line-h text-ellipsis1">北大山水资源年华7幢601</text>
-					<u-icon name="arrow-right" color="#999" size="15"></u-icon>
+					<u-icon name="arrow-right" color="#999" size="14"></u-icon>
 				</view>
-				<!-- #ifndef MP -->
-				<view v-if="$store.state.token" :class="switchManage ? 'bg-warning text-white' : 'bg-light-secondary'" class="manage flex-shrink ml-auto px-2 py mr-2  rounded-1" @click="switchManageClick">
+				<view v-if="token" :class="switchManage ? 'bg-warning text-white' : 'bg-light-secondary'" class="manage flex-shrink ml-auto px-2 py mr-2  rounded-1" @click="switchManageClick">
 					{{$t('管理')}}
 				</view>
-				<view v-if="$store.state.token" class="bg-dark d-flex a-center j-center rounded-1"
+				<view v-if="token" class="bg-dark d-flex a-center flex-shrink j-center rounded-1"
 					style="height: 54rpx; width: 54rpx;">
 					<u-icon v-if="direction == 'Y'" name="list-dot" color="#fff" size="34rpx"
 						@click="direction = 'X'"></u-icon>
 					<u-icon v-if="direction == 'X'" name="grid" color="#fff" size="34rpx"
 						@click="direction = 'Y'"></u-icon>
 				</view>
-				<!-- #endif -->
 			</view>
 		</m-navbar>
 		<!--内容区域 -->
@@ -108,7 +106,7 @@
 <script>
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
 	import MGoodsCard from '@/main_modules/main-ui/m-goods-card/index.vue'
-	import goods from '@/pages/tabbar/kind/goods.json'
+	import goods from '@/pages-common/data/goods.json'
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	import capsuleInit from '@/mixins/capsule-init.js'
 	export default {
@@ -172,7 +170,7 @@
 			},
 			// 去登录
 			login() {
-				this.$tools.Navigate.navigateTo('/pages/account/login/index')
+				this.$tools.Navigate.navigateTo('/pages-common/account/login/index')
 			},
 			// 提交结算
 			submit() {
@@ -261,7 +259,7 @@
 			.title-address {
 				text {
 					margin-left: 6rpx;
-					font-size: 28rpx;
+					font-size: 24rpx;
 					color: #999;
 				}
 			}

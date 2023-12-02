@@ -48,7 +48,7 @@
 
 <script>
 	import MGoodsCard from '@/main_modules/main-ui/m-goods-card/index.vue'
-	import goods from '@/pages/tabbar/kind/goods.json'
+	import goods from '@/pages-common/data/goods.json'
 	export default {
 		components: {
 			MGoodsCard

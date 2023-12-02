@@ -118,7 +118,7 @@
 				}
 				if (!this.$store.state.token) {
 					if (i.id == 0 || i.id == 1 || i.id == 2 || i.id == 3 || i.id == 5) {
-						return this.$tools.Navigate.navigateTo('/pages/account/login/index')
+						return this.$tools.Navigate.navigateTo('/pages-common/account/login/index')
 					}
 					
 					return this.$tools.Navigate.navigateTo(i.page)

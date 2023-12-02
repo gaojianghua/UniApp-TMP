@@ -25,7 +25,6 @@
 
 <script>
 	import MSingleTabbar from '@/main_modules/main-ui/m-single-tabbar/index.vue'
-	import MListSwiper from '@/main_modules/main-ui/m-list-swiper/index.vue'
 	import Shop from './tabbar-page/shop.vue'
 	import Order from './tabbar-page/order.vue'
 	import Record from './tabbar-page/record.vue'
@@ -33,7 +32,6 @@
 	export default {
 		components: {
 			MSingleTabbar,
-			MListSwiper,
 			Shop,
 			Order,
 			Record

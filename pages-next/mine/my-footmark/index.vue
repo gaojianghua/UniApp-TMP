@@ -40,14 +40,10 @@
 </template>
 
 <script>
-	import MListSwiper from '@/main_modules/main-ui/m-list-swiper/index.vue'
 	import {
 		tabs
 	} from './data.js'
 	export default {
-		components: {
-			MListSwiper
-		},
 		data() {
 			return {
 				tabs,

@@ -81,7 +81,7 @@
 		banner,
 		menus
 	} from './data.js'
-	import goods from '../kind/goods.json'
+	import goods from '@/pages-common/data/goods.json'
 	export default {
 		mixins: [tabbarInit, capsuleInit, shareInit],
 		components: {

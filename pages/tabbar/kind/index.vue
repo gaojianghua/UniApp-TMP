@@ -71,16 +71,14 @@
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
 	import MTabs from '@/main_modules/main-ui/m-tabs/index.vue'
 	import MGoodsCard from '@/main_modules/main-ui/m-goods-card/index.vue'
-	import MListSwiper from '@/main_modules/main-ui/m-list-swiper/index.vue'
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	import capsuleInit from '@/mixins/capsule-init.js'
-	import data from './data.json'
-	import goods from './goods.json'
+	import data from '@/pages-common/data/data.json'
+	import goods from '@/pages-common/data/goods.json'
 	export default {
 		mixins: [tabbarInit, capsuleInit],
 		components: {
 			MTabbar,
-			MListSwiper,
 			MTabs,
 			MGoodsCard
 		},

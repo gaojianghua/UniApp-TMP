@@ -40,26 +40,33 @@
 				"navigationStyle": "custom",
 				"enablePullDownRefresh": false
 			}
-		}, {
-			"path": "pages/account/login/index",
-			"style": {
-				"navigationBarTitleText": "%page.登录%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-
-		},
-		{
-			"path": "pages/account/register/index",
-			"style": {
-				"navigationBarTitleText": "%page.注册%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-
 		}
 	],
-	"subPackages": [{
+	"subPackages": [
+		{
+			"root": "pages-common",
+			"pages": [
+				{
+					"path": "account/login/index",
+					"style": {
+						"navigationBarTitleText": "%page.登录%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				
+				},
+				{
+					"path": "account/register/index",
+					"style": {
+						"navigationBarTitleText": "%page.注册%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				
+				}
+			]
+		},
+		{
 		"root": "pages-next",
 		"pages": [{
 			"path": "mine/setting/index",

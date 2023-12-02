@@ -207,13 +207,13 @@
 			// 前往登录
 			openLogin() {
 				if (!this.$store.state.token) {
-					this.$tools.Navigate.navigateTo('/pages/account/login/index')
+					this.$tools.Navigate.navigateTo('/pages-common/account/login/index')
 				}
 			},
 			// 扫码
 			openScanCode() {
 				if (!this.$store.state.token) {
-					return this.$tools.Navigate.navigateTo('/pages/account/login/index')
+					return this.$tools.Navigate.navigateTo('/pages-common/account/login/index')
 				}
 				uni.scanCode({
 					success: (res) => {
