@@ -8,7 +8,7 @@
 				<!-- 定位城市 -->
 				<view class="d-flex a-center mr-2"
 					@click="$tools.Navigate.navigateTo('/pages-next/home/select-city/index')">
-					<u-image height="50rpx" width="50rpx" src="/static/img/home/location.png"></u-image>
+					<u-image height="50rpx" width="50rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/home/location.png"></u-image>
 					<text class="ml-1">{{ liveCity }}</text>
 				</view>
 				<!-- 搜索框 -->
@@ -34,7 +34,7 @@
 					</view>
 				</view>
 				<view class="mt-3" @click="$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')">
-					<u-image radius="5" width="710rpx" height="110rpx" src="/static/img/home/vip-banner.png"></u-image>
+					<u-image radius="5" width="710rpx" height="110rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/home/vip-banner.png"></u-image>
 				</view>
 				<view class="d-flex a-center mt-3">
 					<view class="font-weight" style="font-size: 32rpx;">

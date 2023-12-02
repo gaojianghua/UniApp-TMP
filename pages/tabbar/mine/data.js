@@ -1,27 +1,27 @@
 const orderMenus = [
 	{
 		id: 1,
-		img: '/static/img/mine/order1.svg',
+		img: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/order1.svg',
 		name: '待付款'
 	},
 	{
 		id: 2,
-		img: '/static/img/mine/order2.svg',
+		img: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/order2.svg',
 		name: '待发货'
 	},
 	{
 		id: 3,
-		img: '/static/img/mine/order3.svg',
+		img: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/order3.svg',
 		name: '待收货'
 	},
 	{
 		id: 5,
-		img: '/static/img/mine/order4.svg',
+		img: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/order4.svg',
 		name: '待评价'
 	},
 	{
 		id: 4,
-		img: '/static/img/mine/order5.png',
+		img: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/order5.png',
 		name: '售后'
 	}
 ]
@@ -79,17 +79,17 @@ const assets = [
 
 const literList = [
 	{
-		src: '/static/img/mine/liter1.svg',
+		src: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/liter1.svg',
 		name: '漫画',
 		page: '/pages-next/mine/my-comics/index'
 	},
 	{
-		src: '/static/img/mine/liter2.svg',
+		src: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/liter2.svg',
 		name: '小说',
 		page: '/pages-next/mine/my-novel/index'
 	},
 	{
-		src: '/static/img/mine/liter3.svg',
+		src: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/liter3.svg',
 		name: '娱乐',
 		page: '/pages-next/mine/recreation/index'
 	}

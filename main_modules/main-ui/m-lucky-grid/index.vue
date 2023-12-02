@@ -1,6 +1,6 @@
 <template>
 	<view class="grid position-relative" :style="{width: gridWidth, height: gridHeight}">
-		<u-image :height="gridHeight" :width="gridWidth" src="/static/img/mine/choujiang.png" mode="widthFit"></u-image>
+		<u-image :height="gridHeight" :width="gridWidth" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/choujiang.png" mode="widthFit"></u-image>
 		<view class="position-absolute top-0 right-0 bottom-0 left-0 d-flex a-center j-center">
 			<view class="grid-list d-flex flex-wrap" :style="{width: gridListWidth, height: gridListHeight}">
 				<view v-for="(item, i) in list" :key="i" class="grid-item m-1 hidden"

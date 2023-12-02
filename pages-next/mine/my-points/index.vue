@@ -5,7 +5,7 @@
 		<!-- 内容区域 -->
 		<view class="points mt-1 d-flex flex-column j-center a-center bg-white py-3">
 			<view class="points-row d-flex a-center">
-				<u-image width="60rpx" height="60rpx" src="/static/img/mine/points-value.svg"></u-image>
+				<u-image width="60rpx" height="60rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/points-value.svg"></u-image>
 				<span class="points-value ml-2">{{userinfo.points}}</span>
 			</view>
 		</view>

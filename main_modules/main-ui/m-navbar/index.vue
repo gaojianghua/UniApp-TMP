@@ -20,7 +20,7 @@
 						:class="textDirection === 'center' ? 'j-center' : 'pl-10'">
 					<!-- #endif -->
 						<view v-if="!isTab" class="tabbar-back d-flex j-center a-center p-1" @click="retreat">
-							<u-image height="60rpx" width="60rpx" src="/static/img/common/back.svg"></u-image>
+							<u-image height="60rpx" width="60rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/back.svg"></u-image>
 							<!-- <u-icon name="arrow-left" :color="iconColor" size="20"></u-icon> -->
 						</view>
 						<template v-if="isSlot">
@@ -46,7 +46,7 @@
 						:style="{right: `calc(20rpx + ${miniProgramCapsule.width}px + 100vw - ${miniProgramCapsule.right}px)`}"
 						 @click="selectLang">
 						 <!-- #endif -->
-							<u-image height="50rpx" width="50rpx" src="/static/img/home/locale.svg"></u-image>
+							<u-image height="50rpx" width="50rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/home/locale.svg"></u-image>
 						</view>
 						<slot v-else name="right"></slot>
 					</view>

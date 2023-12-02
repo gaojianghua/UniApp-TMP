@@ -6,7 +6,7 @@
 			<view class="user position-relative" :style="{
 			height: `calc(388rpx + ${statusHeight}px + ${navbarHeight}px)`}">
 			<view class="user-image hidden">
-				<u-image width="100%" :height="`calc(388rpx + ${statusHeight}px + ${navbarHeight}px)`" src="/static/img/mine/mine-bg.png" mode="">
+				<u-image width="100%" :height="`calc(388rpx + ${statusHeight}px + ${navbarHeight}px)`" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/mine-bg.png" mode="">
 				</u-image>
 			</view>
 			<!-- #endif -->
@@ -14,7 +14,7 @@
 			<view class="user position-relative" :style="{
 			height: `calc(388rpx + ${statusHeight}px)`}">
 				<view class="user-image hidden">
-					<u-image width="100%" :height="`calc(388rpx + ${statusHeight}px)`" src="/static/img/mine/mine-bg.png" mode="">
+					<u-image width="100%" :height="`calc(388rpx + ${statusHeight}px)`" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/mine-bg.png" mode="">
 					</u-image>
 				</view>
 				<!-- #endif -->
@@ -23,10 +23,13 @@
 					<!-- #ifdef MP -->
 					<view :style="{height: `calc(${statusHeight}px + ${navbarHeight}px - 30rpx)`}"></view>
 					<!-- #endif -->
+					<!-- #ifdef APP-PLUS -->
+					<view :style="{height: `calc(${statusHeight}px - 30rpx)`}"></view>
+					<!-- #endif -->
 					<view class="d-flex a-center">
 						<view class="user-avatar border-2 border-white mr-2">
 							<u-image radius="100" width="100rpx" height="100rpx"
-								:src="userinfo.avatar || '/static/img/mine/default-avatar.png'" mode="">
+								:src="userinfo.avatar || 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/default-avatar.png'" mode="">
 							</u-image>
 						</view>
 						<view class="user-info d-flex flex-column j-around mr-2" @click="openLogin">
@@ -43,14 +46,14 @@
 						<view class="ml-auto flex-shrink d-flex a-center">
 							<!-- #ifndef H5 -->
 							<view class="top-menu mr-3 d-flex flex-column j-center a-center" @click="openScanCode">
-								<u-image width="50rpx" height="50rpx" src="/static/img/mine/scan-code.svg" mode="" />
+								<u-image width="50rpx" height="50rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/scan-code.svg" mode="" />
 								<view class="top-menu-text">
 									{{$t('扫码')}}
 								</view>
 							</view>
 							<!-- #endif -->
 							<view class="top-menu mr-1 d-flex flex-column j-center a-center" @click="openSet">
-								<u-image width="50rpx" height="50rpx" src="/static/img/common/setting-two.svg" mode="" />
+								<u-image width="50rpx" height="50rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/setting-two.svg" mode="" />
 								<view class="top-menu-text">
 									{{$t('page.设置')}}
 								</view>
@@ -70,7 +73,7 @@
 					<!-- VIP -->
 				</view>
 				<view class="vip-card">
-					<u-image width="690rpx" height="120rpx" src="/static/img/mine/mine-vip-card.png"
+					<u-image width="690rpx" height="120rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/mine-vip-card.png"
 						@click="$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')">
 					</u-image>
 				</view>

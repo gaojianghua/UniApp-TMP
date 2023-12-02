@@ -24,32 +24,32 @@ export default {
 	**/
 	tabbar: [{
 			pagePath: 'pages/tabbar/home/index',
-			iconPath: '/static/img/tabbar/home.png',
-			selectedIconPath: '/static/img/tabbar/home-active.png',
+			iconPath: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/tabbar/home.png',
+			selectedIconPath: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/tabbar/home-active.png',
 			text: 'page.首页'
 		},
 		{
 			pagePath: 'pages/tabbar/kind/index',
-			iconPath: '/static/img/tabbar/kind.png',
-			selectedIconPath: '/static/img/tabbar/kind-active.png',
+			iconPath: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/tabbar/kind.png',
+			selectedIconPath: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/tabbar/kind-active.png',
 			text: 'page.分类'
 		},
 		{
 			pagePath: 'pages/tabbar/media/index',
-			iconPath: '/static/img/tabbar/media.png',
-			selectedIconPath: '/static/img/tabbar/media-active.png',
+			iconPath: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/tabbar/media.png',
+			selectedIconPath: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/tabbar/media-active.png',
 			text: 'page.视频'
 		},
 		{
 			pagePath: 'pages/tabbar/cart/index',
-			iconPath: '/static/img/tabbar/cart.png',
-			selectedIconPath: '/static/img/tabbar/cart-active.png',
+			iconPath: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/tabbar/cart.png',
+			selectedIconPath: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/tabbar/cart-active.png',
 			text: 'page.购物车'
 		},
 		{
 			pagePath: 'pages/tabbar/mine/index',
-			iconPath: '/static/img/tabbar/mine.png',
-			selectedIconPath: '/static/img/tabbar/mine-active.png',
+			iconPath: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/tabbar/mine.png',
+			selectedIconPath: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/tabbar/mine-active.png',
 			text: 'page.我的'
 		}
 	],

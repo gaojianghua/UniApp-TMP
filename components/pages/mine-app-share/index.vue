@@ -3,7 +3,7 @@
 		<view class="share d-flex flex-column j-center a-center" @click.stop>
 			<image :src="path" mode="widthFix" show-menu-by-longpress></image>
 			<view v-if="path" class="close" @click="closePoster">
-				<image src="/static/img/mine/exit.png" mode="">
+				<image src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/exit.png" mode="">
 				</image>
 			</view>
 			<l-painter v-if="posterShow" useCORS :after-delay="1000" :board="poster" :isCanvasToTempFilePath="canvasSwitch"
@@ -119,7 +119,7 @@
 								bottom: "32rpx"
 							},
 							views: [{
-									src: "/static/img/mine/share-bc.png",
+									src: "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/share-bc.png",
 									type: "image",
 									css: {
 										objectFit: "cover",

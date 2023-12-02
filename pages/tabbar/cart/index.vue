@@ -9,7 +9,7 @@
 					{{$t('购物车')}}
 				</view>
 				<view class="title-address d-flex a-center mr-1">
-					<u-image width="50rpx" height="50rpx" src="/static/img/common/local.svg"></u-image>
+					<u-image width="50rpx" height="50rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/local.svg"></u-image>
 					<text class="line-h text-ellipsis1">北大山水资源年华7幢601</text>
 					<u-icon name="arrow-right" color="#999" size="15"></u-icon>
 				</view>

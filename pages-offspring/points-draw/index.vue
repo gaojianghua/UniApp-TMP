@@ -1,6 +1,6 @@
 <template>
 	<view class="page position-relative">
-		<u-image height="auto" width="100%" src="/static/img/mine/keepbg.png" mode="widthFix"></u-image>
+		<u-image height="auto" width="100%" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/keepbg.png" mode="widthFix"></u-image>
 		<view class="position-absolute top-0 bottom-0 left-0 right-0">
 			<!-- 顶部导航栏 -->
 			<m-navbar bgColor="transparent" textColor="#fff" value="page.积分抽奖" i18n></m-navbar>

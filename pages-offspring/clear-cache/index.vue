@@ -50,7 +50,7 @@
 
 <style lang="scss" scoped>
 	.page {
-		background: url('/static/img/mine/cache-bg.png') no-repeat;
+		background: url('https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/cache-bg.png') no-repeat;
 		background-size: cover;
 		height: 350rpx;
 		.cache {

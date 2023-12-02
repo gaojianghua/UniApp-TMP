@@ -1,13 +1,13 @@
 const moreLogins = [{
-	image: '/static/img/common/qq.png',
+	image: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/qq.png',
 	name: 'QQ登录',
 	schema: 'mqq://'
 }, {
-	image: '/static/img/common/wechatfriend.png',
+	image: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/wechatfriend.png',
 	name: '微信登录',
 	schema: 'weixin://'
 }, {
-	image: '/static/img/common/weibo.png',
+	image: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/weibo.png',
 	name: '微博登录',
 	schema: 'sinaweibo://'
 }]

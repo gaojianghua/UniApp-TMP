@@ -46,7 +46,7 @@
 			return {
 				show: false,
 				fileList: [{
-					url: this.$store.state.userinfo.avatar || '/static/img/mine/default-avatar.png',
+					url: this.$store.state.userinfo.avatar || 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/default-avatar.png',
 				}],
 				userinfo: [{
 						key: '用户名',
@@ -134,7 +134,7 @@
 
 <style lang="scss" scoped>
 	.page {
-		background: url('/static/img/common/login-bg.jpg') no-repeat;
+		background: url('https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/login-bg.jpg') no-repeat;
 		background-size: cover;
 		/deep/ .u-border{
 			border-width: 2rpx !important;

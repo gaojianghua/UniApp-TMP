@@ -5,7 +5,7 @@
 		<!-- 前三名 -->
 		<view class="d-flex j-center bg-white pt-3">
 			<view class="d-flex flex-column a-center  pt-8">
-				<u-image width="72rpx" height="57rpx" src="/static/img/mine/two.png"></u-image>
+				<u-image width="72rpx" height="57rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/two.png"></u-image>
 				<u-image radius="6" lazyLoad class="mt-2" width="158rpx" height="200rpx"
 					:src="ranks[rankCurrent].list[1] && ranks[rankCurrent].list[1].img">
 					<view slot="loading">
@@ -14,7 +14,7 @@
 				</u-image>
 			</view>
 			<view class="d-flex flex-column a-center  mx-3">
-				<u-image width="75rpx" height="60rpx" src="/static/img/mine/one.png"></u-image>
+				<u-image width="75rpx" height="60rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/one.png"></u-image>
 				<u-image radius="6" lazyLoad class="mt-2" width="158rpx" height="200rpx"
 					:src="ranks[rankCurrent].list[0] && ranks[rankCurrent].list[0].img">
 					<view slot="loading">
@@ -23,7 +23,7 @@
 				</u-image>
 			</view>
 			<view class="d-flex flex-column a-center  pt-8">
-				<u-image width="72rpx" height="60rpx" src="/static/img/mine/three.png"></u-image>
+				<u-image width="72rpx" height="60rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/three.png"></u-image>
 				<u-image radius="6" lazyLoad class="mt-2" width="158rpx" height="200rpx"
 					:src="ranks[rankCurrent].list[2] && ranks[rankCurrent].list[2].img">
 					<view slot="loading">

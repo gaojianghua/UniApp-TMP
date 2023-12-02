@@ -3,7 +3,7 @@
     "message": "success",
     "data": [
         {
-            "image": "/static/img/goods/goods1.jpg",
+            "image": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/goods/goods1.jpg",
             "oriPrice": 2.50,
             "presentPrice": 1.80,
 			"sales": 1688,
@@ -13,7 +13,7 @@
 			"check": true
         },
         {
-            "image": "/static/img/goods/goods2.jpg",
+            "image": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/goods/goods2.jpg",
             "oriPrice": 2.00,
             "presentPrice": 1.80,
 			"sales": 1688,
@@ -23,7 +23,7 @@
 			"check": true
         },
         {
-            "image": "/static/img/goods/goods3.jpg",
+            "image": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/goods/goods3.jpg",
             "oriPrice": 1.98,
             "presentPrice": 1.80,
 			"sales": 1688,
@@ -33,7 +33,7 @@
 			"check": false
         },
         {
-            "image": "/static/img/goods/goods4.jpg",
+            "image": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/goods/goods4.jpg",
             "oriPrice": 2.50,
             "presentPrice": 1.90,
 			"sales": 1688,
@@ -43,7 +43,7 @@
 			"check": false
         },
         {
-            "image": "/static/img/goods/goods5.jpg",
+            "image": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/goods/goods5.jpg",
             "oriPrice": 2.50,
             "presentPrice": 2.20,
 			"sales": 1688,
@@ -53,7 +53,7 @@
 			"check": false
         },
         {
-            "image": "/static/img/goods/goods6.jpg",
+            "image": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/goods/goods6.jpg",
             "oriPrice": 2.50,
             "presentPrice": 2.30,
 			"sales": 1688,
@@ -63,7 +63,7 @@
 			"check": false
         },
         {
-            "image": "/static/img/goods/goods7.jpg",
+            "image": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/goods/goods7.jpg",
             "oriPrice": 2.70,
             "presentPrice": 2.50,
 			"sales": 1688,
@@ -73,7 +73,7 @@
 			"check": false
         },
         {
-            "image": "/static/img/goods/goods8.jpg",
+            "image": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/goods/goods8.jpg",
             "oriPrice": 2.75,
             "presentPrice": 2.50,
 			"sales": 1688,
@@ -83,7 +83,7 @@
 			"check": false
         },
         {
-            "image": "/static/img/goods/goods9.jpg",
+            "image": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/goods/goods9.jpg",
             "oriPrice": 4.50,
             "presentPrice": 3.70,
 			"sales": 1688,
@@ -93,7 +93,7 @@
 			"check": false
         },
         {
-            "image": "/static/img/goods/goods10.jpg",
+            "image": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/goods/goods10.jpg",
             "oriPrice": 4.40,
             "presentPrice": 4.00,
 			"sales": 1688,
@@ -103,7 +103,7 @@
 			"check": false
         },
         {
-            "image": "/static/img/goods/goods11.jpg",
+            "image": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/goods/goods11.jpg",
             "oriPrice": 4.50,
             "presentPrice": 4.00,
 			"sales": 1688,
@@ -113,7 +113,7 @@
 			"check": false
         },
         {
-            "image": "/static/img/goods/goods12.jpg",
+            "image": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/goods/goods12.jpg",
             "oriPrice": 4.90,
             "presentPrice": 4.10,
 			"sales": 1688,
@@ -123,7 +123,7 @@
 			"check": false
         },
         {
-            "image": "/static/img/goods/goods13.jpg",
+            "image": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/goods/goods13.jpg",
             "oriPrice": 4.95,
             "presentPrice": 4.50,
 			"sales": 1688,
@@ -133,7 +133,7 @@
 			"check": false
         },
         {
-            "image": "/static/img/goods/goods14.jpg",
+            "image": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/goods/goods14.jpg",
             "oriPrice": 5.00,
             "presentPrice": 4.50,
 			"sales": 1688,
@@ -143,7 +143,7 @@
 			"check": false
         },
         {
-            "image": "/static/img/goods/goods15.jpg",
+            "image": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/goods/goods15.jpg",
             "oriPrice": 5.00,
             "presentPrice": 4.50,
 			"sales": 1688,
@@ -153,7 +153,7 @@
 			"check": false
         },
         {
-            "image": "/static/img/goods/goods16.jpg",
+            "image": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/goods/goods16.jpg",
             "oriPrice": 5.50,
             "presentPrice": 5.00,
 			"sales": 1688,
@@ -163,7 +163,7 @@
 			"check": false
         },
         {
-            "image": "/static/img/goods/goods17.jpg",
+            "image": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/goods/goods17.jpg",
             "oriPrice": 6.60,
             "presentPrice": 6.00,
 			"sales": 1688,
@@ -173,7 +173,7 @@
 			"check": false
         },
         {
-            "image": "/static/img/goods/goods18.jpg",
+            "image": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/goods/goods18.jpg",
             "oriPrice": 7.20,
             "presentPrice": 6.60,
 			"sales": 1688,
@@ -183,7 +183,7 @@
 			"check": false
         },
         {
-            "image": "/static/img/goods/goods19.jpg",
+            "image": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/goods/goods19.jpg",
             "oriPrice": 7.78,
             "presentPrice": 7.00,
 			"sales": 1688,
@@ -193,7 +193,7 @@
 			"check": false
         },
         {
-            "image": "/static/img/goods/goods20.jpg",
+            "image": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/goods/goods20.jpg",
             "oriPrice": 7.78,
             "presentPrice": 7.00,
 			"sales": 1688,

@@ -22,25 +22,25 @@
 		</view>
 		<view class="item-bottom d-flex a-center j-sb mt-3">
 			<view class="d-flex a-center">
-				<u-image width="40rpx" height="40rpx" src="/static/img/home/praise.png"></u-image>
+				<u-image width="40rpx" height="40rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/home/praise.png"></u-image>
 				<view class="ml-1 line-h">
 					{{item.praise}}
 				</view>
 			</view>
 			<view class="d-flex a-center">
-				<u-image width="40rpx" height="40rpx" src="/static/img/home/collect.png"></u-image>
+				<u-image width="40rpx" height="40rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/home/collect.png"></u-image>
 				<view class="ml-1 line-h">
 					{{item.collect}}
 				</view>
 			</view>
 			<view class="d-flex a-center">
-				<u-image width="40rpx" height="40rpx" src="/static/img/home/comment.png"></u-image>
+				<u-image width="40rpx" height="40rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/home/comment.png"></u-image>
 				<view class="ml-1 line-h">
 					{{item.comment}}
 				</view>
 			</view>
 			<view class="d-flex a-center" @click="uniAppShare">
-				<u-image width="40rpx" height="40rpx" src="/static/img/home/share.png"></u-image>
+				<u-image width="40rpx" height="40rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/home/share.png"></u-image>
 			</view>
 		</view>
 	</view>

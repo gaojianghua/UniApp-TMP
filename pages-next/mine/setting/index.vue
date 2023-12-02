@@ -9,7 +9,7 @@
 					<view :slot="'left'" class="d-flex py-3 a-center">
 						<view class="user-avatar border-2 main-border-color mr-2">
 							<u-image radius="100" width="100rpx" height="100rpx"
-								:src="userinfo.avatar || '/static/img/mine/default-avatar.png'" mode="">
+								:src="userinfo.avatar || 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/default-avatar.png'" mode="">
 							</u-image>
 						</view>
 						<view class="user-info d-flex flex-column j-around">
@@ -32,7 +32,7 @@
 					<template :slot="'right-row'">
 						<view class="d-flex a-center">
 							<u-image v-if="userinfo.phone" width="45rpx" height="45rpx"
-								src="/static/img/mine/phone.svg"></u-image>
+								src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/phone.svg"></u-image>
 							<view class="text-muted line-h ml-1">
 								{{userinfo.phone ? $t('已绑定手机号') : $t('未绑定手机号')}}
 							</view>

@@ -174,7 +174,7 @@
 											<view class="ml-auto position-relative"
 												style="height: 80rpx; width: 72rpx;">
 												<u-image class="" width="72rpx" height="80rpx"
-													src="/static/img/mine/mine-one.png"></u-image>
+													src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/mine-one.png"></u-image>
 												<view class="one font-weight position-absolute top-half left-half">
 													1
 												</view>
