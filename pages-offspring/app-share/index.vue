@@ -73,7 +73,7 @@
 				</view>
 				<!-- 海报生成组件 -->
 				<mine-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow"
-					:item="list[current]" :current="current" />
+					:poster="poster"/>
 				<!-- 弹框 -->
 				<m-modal :show="show" i18n title="温馨提示" :isCancel="false" btnName="复制链接" @cancel="show = false"
 					@confirm="urlCopy">
@@ -112,7 +112,8 @@
 				show: false,
 				shareUrl: '',
 				isSuccess: false,
-				time: null
+				time: null,
+				poster: {}
 			}
 		},
 		// #ifdef MP
@@ -133,6 +134,168 @@
 				this.shareUrl = 'https://gaojianghua.cn/pages/account/register/index?item=' + this.$store.state.userinfo
 					.inviteCode
 				this.getData()
+				this.initPoster()
+			},
+			//初始化海报数据
+			initPoster() {
+				this.poster = {
+					css: {
+						width: "600rpx",
+						height: "1068rpx",
+						borderRadius: "15rpx",
+						position: "relative"
+					},
+					views: [{
+							src: `${this.list[this.current].src}`,
+							type: "image",
+							css: {
+								objectFit: "cover",
+								width: "600rpx",
+								height: "1068rpx",
+								borderRadius: "15rpx"
+							}
+						},
+						{
+							views: [
+								{
+									src: "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/GongYueLogo.png" ,
+									type: "image",
+									css: {
+										objectFit: "cover",
+										width: "35rpx",
+										height: "35rpx",
+										display: 'inline-block'
+									}
+								},
+								{
+									text: this.$t('宫悦商城'),
+									type: "text",
+									css: {
+										height: "35rpx",
+										lineHeight: "35rpx",
+										fontSize: "24rpx",
+										background: 'linear-gradient(to bottom, #FBB13B 0%, #F0422B 100%)',
+										webkitBackgroundBlip: 'text',
+										backgroundClip: 'text',
+										color: 'transparent',
+										marginLeft: '10rpx',
+										display: 'inline-block'
+									}
+								}
+							] ,
+							type: 'view',
+							css: {
+								padding: '15rpx',
+								position: "absolute",
+								left: "0rpx",
+								top: "0rpx",
+								backgroundColor: 'rgba(0, 0, 0, .5)',
+								borderRadius: "15rpx 0 15rpx 0"
+							}
+						},
+						{
+							css: {
+								width: "323rpx",
+								height: "400rpx",
+								position: "absolute",
+								left: "138.5rpx",
+								bottom: "32rpx"
+							},
+							views: [{
+									src: "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/share-bc.png",
+									type: "image",
+									css: {
+										objectFit: "cover",
+										width: "323rpx",
+										height: "400rpx"
+									}
+								},
+								{
+									src: `${this.userinfo.avatar}`,
+									type: "image",
+									css: {
+										objectFit: "cover",
+										width: "55rpx",
+										height: "55rpx",
+										position: "absolute",
+										left: "28rpx",
+										top: "22rpx",
+										borderRadius: "50%",
+									}
+								},
+								{
+									text: `${this.userinfo.name}`,
+									type: "text",
+									css: {
+										objectFit: "cover",
+										height: "55rpx",
+										width: "200rpx",
+										position: "absolute",
+										left: "99rpx",
+										top: "22rpx",
+										fontWeight: 'bold',
+										lineHeight: "55rpx",
+										lineClamp: "1"
+									}
+								},
+								{
+									text: `${this.list[this.current].shareUrl + '?item=' + this.userinfo.inviteCode}`,
+									type: 'qrcode',
+									css: {
+										objectFit: "cover",
+										width: "150rpx",
+										height: "150rpx",
+										position: "absolute",
+										left: "86.5rpx",
+										top: "95rpx"
+									}
+								},
+								{
+									text: this.$t('邀请码'),
+									type: "text",
+									css: {
+										position: "absolute",
+										left: "126rpx",
+										top: "275rpx",
+										fontSize: "24rpx",
+										fontWeight: "bold",
+										color: "#000000"
+									}
+								},
+								{
+									css: {
+										width: "230rpx",
+										height: "48rpx",
+										position: "absolute",
+										left: "46rpx",
+										bottom: "30rpx",
+										borderWidth: '4rpx',
+										borderStyle: 'solid',
+										borderColor: '#111111',
+										borderRadius: "26rpx",
+										textAlign: "center"
+									},
+									views: [{
+										text: `${this.userinfo.inviteCode}`,
+										type: "text",
+										css: {
+											fontSize: "25rpx",
+											fontWeight: "bold",
+											color: "#000000",
+											width: "230rpx",
+											height: "48rpx",
+											boxSizing: "border-box",
+											textAlign: "center",
+											lineHeight: "48rpx"
+										}
+									}],
+									type: 'view'
+								}
+							],
+							type: 'view'
+						},
+					]
+				}
 			},
 			//分享海报
 			sharePosters() {
@@ -159,6 +322,7 @@
 			//滑动事件
 			openSweiper(e) {
 				this.current = e.detail.current
+				this.initPoster()
 			},
 			//获取数据
 			getData() {

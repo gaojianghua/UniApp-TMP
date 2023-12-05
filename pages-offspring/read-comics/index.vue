@@ -10,7 +10,7 @@
 					<view class="title-text flex-shrink line-h">
 						{{detail.name}} ( {{$t('第')}} {{runNum}} {{$t('回')}} )
 					</view>
-					<view class="share ml-auto" @click="sharePlacard">
+					<view class="share ml-auto" @click="sharePosters">
 						<u-icon name="share-square" size="26"></u-icon>
 					</view>
 					<view class="d-flex a-center flex-shrink j-center ml-2">
@@ -59,16 +59,25 @@
 				</view>
 			</view>
 		</m-scroll-y>
+		<!-- 海报弹框 -->
+		<mine-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow"
+			:poster="poster"/>
 	</view>
 </template>
 
 <script>
+	import MineAppShare from '@/components/pages/mine-app-share/index.vue'
 	import capsuleInit from '@/mixins/capsule-init.js'
 	export default {
 		mixins: [capsuleInit],
+		components: {
+			MineAppShare
+		},
 		data() {
 			return {
 				show: false,
+				posterShow: false,
+				isSuccess: false,
 				detail: {},
 				runNum: 1,
 				load: 0,
@@ -78,7 +87,9 @@
 					page: 1
 				},
 				istrig: true,
-				chapterInfo: {}
+				chapterInfo: {},
+				poster: {},
+				time: null,
 			}
 		},
 		onLoad() {
@@ -89,6 +100,148 @@
 			init() {
 				this.getComicsInfo()
 				this.getData()
+				this.initPoster()
+			},
+			//初始化海报数据
+			initPoster() {
+				this.poster = {
+					css: {
+						width: "600rpx",
+						height: "950rpx",
+						borderRadius: "15rpx",
+						position: "relative",
+						backgroundColor: "#E5ECF4"
+					},
+					views: [{
+							src: `${this.detail.coverImage}`,
+							type: "image",
+							css: {
+								objectFit: "cover",
+								width: "560rpx",
+								height: "260rpx",
+								marginLeft: "20rpx",
+								marginTop: "20rpx",
+								borderRadius: "15rpx",
+							}
+						},
+						{
+							text: `${this.detail.name}`,
+							type: 'text',
+							css: {
+								marginTop: '20rpx',
+								fontWeight: 'bold',
+								fontSize: '32rpx',
+								marginLeft: '20rpx',
+								display: 'inline-block'
+							}
+						},
+						{
+							text: `${this.detail.score}`,
+							type: 'text',
+							css: {
+								fontWeight: 'bold',
+								color: '#EF930A',
+								fontSize: '36rpx',
+								position: "absolute",
+								right: "20rpx",
+								top: "300rpx",
+							}
+						},
+						{
+							text: `${this.$t('作者')}: ${this.detail.author} · ${this.detail.state == 1 ? this.$t('连载中') : this.$t('已完结')}`,
+							type: 'text',
+							css: {
+								color: '#0A57D0',
+								fontSize: '26rpx',
+								width: '540rpx',
+								marginTop: '10rpx',
+								marginLeft: '20rpx',
+							}
+						},
+						{
+							text: `${this.$t('简介')}: ${this.detail.desc}`,
+							type: 'text',
+							css: {
+								color: '#333',
+								width: '540rpx',
+								fontSize: '28rpx',
+								marginTop: '10rpx',
+								marginLeft: '20rpx',
+								lineClamp: '9',
+								lineHeight: '45rpx'
+							}
+						},
+						{
+							css: {
+								width: "100%",
+								height: "150rpx",
+								position: "absolute",
+								bottom: '0rpx',
+								left: '0rpx',
+								borderRadius: "15rpx",
+								backgroundColor: '#fff'
+							},
+							views: [
+								{
+									src: `${this.userinfo.avatar}`,
+									type: "image",
+									css: {
+										objectFit: "cover",
+										width: "100rpx",
+										height: "100rpx",
+										position: "absolute",
+										left: "20rpx",
+										top: "25rpx",
+										borderRadius: "50%",
+									}
+								},
+								{
+									text: `${this.$t('书友')}: ${this.userinfo.name}`,
+									type: "text",
+									css: {
+										objectFit: "cover",
+										height: "50rpx",
+										width: "330rpx",
+										position: "absolute",
+										left: "130rpx",
+										top: "25rpx",
+										fontSize: '26rpx',
+										lineHeight: "50rpx",
+										lineClamp: "1"
+									}
+								},,
+								{
+									text: `${this.$t('邀请您阅读')}《${this.detail.name}》`,
+									type: "text",
+									css: {
+										objectFit: "cover",
+										height: "50rpx",
+										width: "330rpx",
+										position: "absolute",
+										left: "130rpx",
+										top: "75rpx",
+										fontSize: '26rpx',
+										lineHeight: "50rpx",
+										lineClamp: "1"
+									}
+								},
+								{
+									text: `${this.detail.shareUrl + '?item=' + this.userinfo.inviteCode}`,
+									type: 'qrcode',
+									css: {
+										objectFit: "cover",
+										width: "100rpx",
+										height: "100rpx",
+										position: "absolute",
+										right: "20rpx",
+										top: "25rpx"
+									}
+								}
+							],
+							type: 'view'
+						},
+					]
+				}
 			},
 			// 获取漫画信息
 			getComicsInfo() {
@@ -101,7 +254,8 @@
 					score: 9.8,
 					collect: false,
 					state: 1,
-					allRun: 1200
+					allRun: 1200,
+					shareUrl: 'https://gaojianghua.cn/pages-offspring/read-comics/index'
 				}
 			},
 			// 收藏
@@ -167,18 +321,39 @@
 			openDown() {
 				
 			},
-			// 分享海报
-			sharePlacard() {
-				
-			}
+			//分享海报
+			sharePosters() {
+				this.posterShow = true
+				uni.showLoading()
+				this.time = setTimeout(() => {
+					if (this.isSuccess) {
+						uni.$u.toast(this.$t('网络异常，请稍后重试'))
+						uni.hideLoading();
+					}
+					clearTimeout(this.time)
+				}, 6000);
+			},
+			//生成海报成功
+			success() {
+				this.isSuccess = true
+				clearTimeout(this.time)
+			},
+			//关闭弹框
+			closePoster() {
+				this.isSuccess = false
+				this.posterShow = false
+			},
 		},
 		computed: {
 			scrollStyle() {
 				return {
 					height: `calc(100vh - env(safe-area-inset-bottom))`
 				}
+			},
+			userinfo() {
+				return this.$store.state.userinfo
 			}
-		},
+		}
 	}
 </script>
 
