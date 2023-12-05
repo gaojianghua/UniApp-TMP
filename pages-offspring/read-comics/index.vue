@@ -21,19 +21,19 @@
 				</view>
 			</m-navbar>
 			<view @click.stop class="controls w-100 bg-white position-fixed bottom-0 left-0 d-flex a-center j-sb px-3">
-				<view class="controls-l d-flex a-center" @click="openUp">
+				<view class="controls-l d-flex a-center" @click.stop="openUp">
 					<u-icon name="arrow-up-fill" color="#fb7299" size="22"></u-icon>
 					<view class="main-text-color">
 						{{$t('上一回')}}
 					</view>
 				</view>
-				<view class="controls-c d-flex a-center" @click="menuShow = true">
+				<view class="controls-c d-flex a-center" @click.stop="directoryShow = true">
 					<u-icon name="list-dot" color="#fb7299" size="22"></u-icon>
 					<view class="main-text-color">
 						{{$t('目录')}}
 					</view>
 				</view>
-				<view class="controls-r d-flex a-center" @click="openDown">
+				<view class="controls-r d-flex a-center" @click.stop="openDown">
 					<u-icon name="arrow-down-fill" color="#fb7299" size="22"></u-icon>
 					<view class="main-text-color">
 						{{$t('下一回')}}
@@ -46,11 +46,11 @@
 			@loadmore="loadmore" @onRefresh="onRefresh" mainColor="#fb7290">
 			<view @click="show = true">
 				<view v-if="chapterInfo.lock" class="">
-				
+
 				</view>
 				<view v-else-if="list.length != 0">
 					<view class="list-item" v-for="(item, i) in list" :key="i">
-						<u-image :src="item" width="100vw" height="auto" mode="widthFix">
+						<u-image :src="item" width="100vw" height="100%" mode="widthFix">
 							<view slot="loading" class="d-flex a-center j-center">
 								<u-loading-icon></u-loading-icon>
 							</view>
@@ -60,23 +60,46 @@
 			</view>
 		</m-scroll-y>
 		<!-- 海报弹框 -->
-		<mine-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow"
-			:poster="poster"/>
+		<mine-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow" :poster="poster" />
+		<!-- 弹出层 -->
+		<m-popup :show="directoryShow" i18n @close="directoryShow = false" title="目录" i18n>
+			<view class="directory px-2">
+				<view class="directory-top d-flex a-center j-sb">
+					<view class="d-flex a-center">
+						<view class="">
+							{{detail.state == 1 ? $t('连载中') : $t('已完结')}}
+						</view>
+						<view class="ml-1">
+							({{detail.allRun}})
+						</view>
+					</view>
+					<view class="sort d-flex a-center" @click="openSort">
+						<image :src="`https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/${isSort ? 'asc' : 'desc'}.png`"></image>
+					</view>
+				</view>
+				<m-scroll-y :isLoading="false" :scrollStyle="directoryStyle" :isCustomRefresh="false">
+				</m-scroll-y>
+			</view>
+		</m-popup>
+		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 
 <script>
 	import MineAppShare from '@/components/pages/mine-app-share/index.vue'
+	import MPopup from '@/main_modules/main-ui/m-popup/index.vue'
 	import capsuleInit from '@/mixins/capsule-init.js'
 	export default {
 		mixins: [capsuleInit],
 		components: {
-			MineAppShare
+			MineAppShare,
+			MPopup
 		},
 		data() {
 			return {
 				show: false,
 				posterShow: false,
+				directoryShow: false,
 				isSuccess: false,
 				detail: {},
 				runNum: 1,
@@ -90,6 +113,7 @@
 				chapterInfo: {},
 				poster: {},
 				time: null,
+				isSort: true
 			}
 		},
 		onLoad() {
@@ -181,8 +205,7 @@
 								borderRadius: "15rpx",
 								backgroundColor: '#fff'
 							},
-							views: [
-								{
+							views: [{
 									src: `${this.userinfo.avatar}`,
 									type: "image",
 									css: {
@@ -209,7 +232,7 @@
 										lineHeight: "50rpx",
 										lineClamp: "1"
 									}
-								},,
+								}, ,
 								{
 									text: `${this.$t('邀请您阅读')}《${this.detail.name}》`,
 									type: "text",
@@ -315,11 +338,41 @@
 			},
 			// 上一回
 			openUp() {
-				
+				if (this.query.page == 1) {
+					return this.$refs.uToast.show({
+						message: this.$t('已经是第一回了'),
+						type: 'warning',
+						duration: 1200
+					})
+				}
+				this.isLoading = true
+				this.load = 0
+				this.query.page--
+				this.list = []
+				this.show = false
+				let time = setTimeout(() => {
+					this.getData()
+					clearTimeout(time)
+				}, 1000)
 			},
 			// 下一回
 			openDown() {
-				
+				if (this.query.page >= this.detail.allRun) {
+					return this.$refs.uToast.show({
+						message: this.$t('已经是最后一回了'),
+						type: 'warning',
+						duration: 1200
+					})
+				}
+				this.isLoading = true
+				this.load = 0
+				this.query.page++
+				this.list = []
+				this.show = false
+				let time = setTimeout(() => {
+					this.getData()
+					clearTimeout(time)
+				}, 1000)
 			},
 			//分享海报
 			sharePosters() {
@@ -343,11 +396,20 @@
 				this.isSuccess = false
 				this.posterShow = false
 			},
+			//排序切换
+			openSort() {
+				this.isSort = !this.isSort
+			}
 		},
 		computed: {
 			scrollStyle() {
 				return {
 					height: `calc(100vh - env(safe-area-inset-bottom))`
+				}
+			},
+			directoryStyle() {
+				return {
+					height: `calc(80vh - 88rpx - 90rpx - env(safe-area-inset-bottom))`
 				}
 			},
 			userinfo() {
@@ -358,10 +420,20 @@
 </script>
 
 <style lang="scss" scoped>
-	.page{
-		.controls{
+	.page {
+		.controls {
 			height: calc(100rpx + env(safe-area-inset-bottom));
 			padding-bottom: env(safe-area-inset-bottom);
+		}
+		.directory{
+			height: 80vh;
+			.directory-top{
+				height: 88rpx;
+				.sort{
+					width: 45rpx;
+					height: 45rpx;
+				}
+			}
 		}
 	}
 </style>
