@@ -76,5 +76,11 @@ module.exports = {
 		default: () => {
 			return "0"
 		}
-	}
+	},
+	intoView: {
+		type: String,
+		default: () => {
+			return ""
+		}
+	},
 }

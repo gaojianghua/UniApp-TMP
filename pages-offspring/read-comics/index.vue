@@ -8,7 +8,7 @@
 				width: `calc(100vw - ${miniProgramCapsule.width}px)`,
 				marginRight: `calc(100vw - ${miniProgramCapsule.right}px + ${miniProgramCapsule.width}px)`}">
 					<view class="title-text flex-shrink line-h">
-						{{detail.name}} ( {{$t('第')}} {{runNum}} {{$t('回')}} )
+						{{detail.name}} ( {{$t('第')}} {{chapterInfo.runNum}} {{$t('回')}} )
 					</view>
 					<view class="share ml-auto" @click="sharePosters">
 						<u-icon name="share-square" size="26"></u-icon>
@@ -27,7 +27,7 @@
 						{{$t('上一回')}}
 					</view>
 				</view>
-				<view class="controls-c d-flex a-center" @click.stop="directoryShow = true">
+				<view class="controls-c d-flex a-center" @click.stop="openControls">
 					<u-icon name="list-dot" color="#fb7299" size="22"></u-icon>
 					<view class="main-text-color">
 						{{$t('目录')}}
@@ -74,10 +74,22 @@
 						</view>
 					</view>
 					<view class="sort d-flex a-center" @click="openSort">
-						<image :src="`https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/${isSort ? 'asc' : 'desc'}.png`"></image>
+						<image
+							:src="`https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/${isSort ? 'asc' : 'desc'}.png`">
+						</image>
 					</view>
 				</view>
-				<m-scroll-y :isLoading="false" :scrollStyle="directoryStyle" :isCustomRefresh="false">
+				<m-scroll-y :isLoading="false" :intoView="intoView" :scrollTop="scrollTop" :scrollStyle="directoryStyle" :isCustomRefresh="false">
+					<view :id="'item'+item.id" class="directory-item d-flex a-center" :class="{'main-text-color': item.id == query.chapterId}"
+						v-for="(item, i) in chapterList" :key="i" @click="openChapter(item.id)">
+						<view v-if="item.vip" class="isvip font-weight line-h mr-2">
+							VIP
+						</view>
+						<view class="name">
+							{{item.name}}
+						</view>
+						<u-icon v-if="item.lock" class="ml-auto" name="lock" color="#FFA16A" size="24"></u-icon>
+					</view>
 				</m-scroll-y>
 			</view>
 		</m-popup>
@@ -102,18 +114,20 @@
 				directoryShow: false,
 				isSuccess: false,
 				detail: {},
-				runNum: 1,
 				load: 0,
 				list: [],
+				chapterList: [],
 				isLoading: true,
 				query: {
-					page: 1
+					chapterId: 1
 				},
 				istrig: true,
 				chapterInfo: {},
 				poster: {},
 				time: null,
-				isSort: true
+				isSort: true,
+				scrollTop: 0,
+				intoView: ''
 			}
 		},
 		onLoad() {
@@ -123,6 +137,7 @@
 			// 初始化
 			init() {
 				this.getComicsInfo()
+				this.getChapterList()
 				this.getData()
 				this.initPoster()
 			},
@@ -281,6 +296,29 @@
 					shareUrl: 'https://gaojianghua.cn/pages-offspring/read-comics/index'
 				}
 			},
+			// 获取章节列表
+			getChapterList() {
+				this.chapterList = []
+				for (let i = 1; i <= 1200; i++) {
+					this.chapterList.push({
+						name: '天魂大陆' + i,
+						id: i,
+						vip: i > 15 ? true : false,
+						lock: i > 20 ? true : false,
+					})
+				}
+			},
+			// 打开目录
+			openControls() {
+				this.query.chapterId > 10 ? this.intoView = 'item' + this.query.chapterId : this.intoView = 'item1'
+				this.directoryShow = true
+			},
+			// 打开指定章节
+			openChapter(i) {
+				this.query.chapterId = i
+				this.refreshChapter()
+				this.directoryShow = false
+			},
 			// 收藏
 			openCollect() {
 				if (this.detail.collect) {
@@ -298,7 +336,7 @@
 				let code = 200
 				let data = {
 					list: [],
-					runNum: this.query.page,
+					runNum: this.query.chapterId,
 					lock: false,
 					lockPrice: 0.34,
 					vip: true
@@ -308,12 +346,16 @@
 				}
 				if (code == 200) {
 					this.chapterInfo = data
-					if (e) {
+					if (e == 'S') {
 						this.list = this.list.concat(data.list)
+					} else if (e == 'A') {
+						data.list.reverse().forEach((item)=> {
+							this.list.unshift(item)
+						})
 					} else {
 						this.list = data.list
 					}
-					if (this.query.page >= this.detail.allRun) {
+					if (this.query.chapterId >= this.detail.allRun) {
 						return this.load = 1
 					} else {
 						return this.load = 2
@@ -324,30 +366,30 @@
 			loadmore() {
 				if (this.load == 1 || this.istrig == false) return;
 				this.load = 0
-				this.query.page++
+				this.query.chapterId++
 				this.istrig = false
-				setTimeout(() => {
+				let time = setTimeout(() => {
 					this.getData('S')
 					this.istrig = true
+					clearTimeout(time)
 				}, 1000)
 			},
 			// 下拉刷新
 			onRefresh() {
-				this.query.page = 1
-				this.getData()
-			},
-			// 上一回
-			openUp() {
-				if (this.query.page == 1) {
+				if (this.query.chapterId == 1) {
 					return this.$refs.uToast.show({
 						message: this.$t('已经是第一回了'),
 						type: 'warning',
 						duration: 1200
 					})
 				}
+				this.query.chapterId--
+				this.getData('A')
+			},
+			// 刷新章节
+			refreshChapter() {
 				this.isLoading = true
 				this.load = 0
-				this.query.page--
 				this.list = []
 				this.show = false
 				let time = setTimeout(() => {
@@ -355,24 +397,29 @@
 					clearTimeout(time)
 				}, 1000)
 			},
+			// 上一回
+			openUp() {
+				if (this.query.chapterId == 1) {
+					return this.$refs.uToast.show({
+						message: this.$t('已经是第一回了'),
+						type: 'warning',
+						duration: 1200
+					})
+				}
+				this.query.chapterId--
+				this.refreshChapter()
+			},
 			// 下一回
 			openDown() {
-				if (this.query.page >= this.detail.allRun) {
+				if (this.query.chapterId >= this.detail.allRun) {
 					return this.$refs.uToast.show({
 						message: this.$t('已经是最后一回了'),
 						type: 'warning',
 						duration: 1200
 					})
 				}
-				this.isLoading = true
-				this.load = 0
-				this.query.page++
-				this.list = []
-				this.show = false
-				let time = setTimeout(() => {
-					this.getData()
-					clearTimeout(time)
-				}, 1000)
+				this.query.chapterId++
+				this.refreshChapter()
 			},
 			//分享海报
 			sharePosters() {
@@ -399,6 +446,11 @@
 			//排序切换
 			openSort() {
 				this.isSort = !this.isSort
+				this.chapterList = this.chapterList.reverse()
+				this.scrollTop = 1
+				this.$nextTick(() => {
+					this.scrollTop = 0
+				})
 			}
 		},
 		computed: {
@@ -425,14 +477,34 @@
 			height: calc(100rpx + env(safe-area-inset-bottom));
 			padding-bottom: env(safe-area-inset-bottom);
 		}
-		.directory{
+
+		.directory {
 			height: 80vh;
-			.directory-top{
+
+			.directory-top {
 				height: 88rpx;
-				.sort{
+
+				.sort {
 					width: 45rpx;
 					height: 45rpx;
 				}
+			}
+
+			.directory-item {
+				height: 88rpx;
+				font-size: 28rpx;
+				border-bottom: #eee solid 1rpx;
+				.isvip {
+					border-radius: 20rpx 0 20rpx 0;
+					padding: 8rpx 18rpx;
+					font-size: 24rpx;
+					color: #A1562F;
+					background: linear-gradient(270deg, #F3D1B1 0%, #E2A167 100%);
+				}
+			}
+			
+			.directory-item:last-child{
+				border-bottom: none
 			}
 		}
 	}

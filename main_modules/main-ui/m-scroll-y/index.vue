@@ -1,38 +1,27 @@
 <template>
 	<!-- #ifdef MP-WEIXIN -->
-	<scroll-view 
-		class="w-100" 
-		scroll-anchoring 
-		scroll-y
-		:scroll-top="scrollTop"
-		:style="[scrollStyle]" 
-		:enable-flex="true"
-		@scroll="scroll"
-		refresher-default-style="none"
-		:refresher-threshold="threshold" :refresher-background="bgColor" @scrolltolower="loadmore" :refresher-enabled="isCustomRefresh"
-		:refresher-triggered="triggered" @refresherpulling="onPulling" @refresherrefresh="onRefresh"
-		@refresherabort="onAbort" @refresherrestore="onRestore">
+	<scroll-view class="w-100" scroll-anchoring scroll-y :scroll-top="scrollTop" :style="[scrollStyle]"
+		:enable-flex="true" @scroll="scroll" refresher-default-style="none" :refresher-threshold="threshold"
+		:refresher-background="bgColor" @scrolltolower="loadmore"
+		:refresher-enabled="isCustomRefresh" :refresher-triggered="triggered" @refresherpulling="onPulling"
+		@refresherrefresh="onRefresh" @refresherabort="onAbort" @refresherrestore="onRestore" :scroll-into-view="intoView">
+	<!-- #endif -->
+		<!-- #ifndef MP-WEIXIN -->
+		<scroll-view class="w-100" scroll-anchoring scroll-y :scroll-top="scrollTop" :style="scrollStyle"
+			@scroll="scroll" refresher-default-style="none" :refresher-threshold="threshold"
+			:refresher-background="bgColor" @scrolltolower="loadmore" :refresher-enabled="isCustomRefresh"
+			:refresher-triggered="triggered" @refresherpulling="onPulling" @refresherrefresh="onRefresh"
+			@refresherabort="onAbort" @refresherrestore="onRestore" :scroll-into-view="intoView">
 		<!-- #endif -->
-	<!-- #ifndef MP-WEIXIN -->
-	<scroll-view 
-		class="w-100" 
-		scroll-anchoring 
-		scroll-y
-		:scroll-top="scrollTop"
-		:style="scrollStyle" 
-		@scroll="scroll"
-		refresher-default-style="none"
-		:refresher-threshold="threshold" :refresher-background="bgColor" @scrolltolower="loadmore" :refresher-enabled="isCustomRefresh"
-		:refresher-triggered="triggered" @refresherpulling="onPulling" @refresherrefresh="onRefresh"
-		@refresherabort="onAbort" @refresherrestore="onRestore">
-		<!-- #endif -->
-		<view class="position-relative" :class="isCustomRefresh ? '' : 'h-100'">
-			<m-refresh :mainColor="mainColor" :isLoad="triggered" :show="none" :dropDown="dropDown" i18n :text="text" />
-			<slot name="default" />
-		</view>
-		<m-loading i18n v-if="isLoading" :height="loadHeight" :load="load" :mainColor="mainColor" :bgColor="bgColor" />
-		<view :style="{height: placeHeight}" class="w-100"></view>
-	</scroll-view>
+			<view class="position-relative" :class="isCustomRefresh ? '' : 'h-100'">
+				<m-refresh :mainColor="mainColor" :isLoad="triggered" :show="none" :dropDown="dropDown" i18n
+					:text="text" />
+				<slot name="default" />
+			</view>
+			<m-loading i18n v-if="isLoading" :height="loadHeight" :load="load" :mainColor="mainColor"
+				:bgColor="bgColor" />
+			<view :style="{height: placeHeight}" class="w-100"></view>
+		</scroll-view>
 </template>
 
 <script>
