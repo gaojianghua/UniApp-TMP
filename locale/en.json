@@ -336,5 +336,22 @@
 	"简介": "Intro",
 	"书友": "Book Friends",
 	"已经是最后一回了": "It’s already the last chapter",
-	"已经是第一回了": "It’s already chapter one"
+	"已经是第一回了": "It’s already chapter one",
+	"会员权益": "Member Benefits",
+	"超前阅读": "Read Ahead",
+	"专享限免": "Enjoy Free",
+	"VIP无限": "Infinite Read",
+	"新作免费": "News Free",
+	"会员充值": "Member Recharge",
+	"会员尊享": "Exclusive Member",
+	"开通会员": "Open VIP Member",
+	"为了保障您的账户安全，请尽快完善您的个人信息 (绑定手机号/邮箱)。": "In order to protect the security of your account，please complete your personal information (bind mobile phone number/email address) as soon as possible。",
+	"国家 | 区号": "Country | Code",
+	"请选择国际区号": "Please select country code",
+	"激活会员权限，畅享更多专属特权。": "Activate membership privileges and enjoy more exclusive privileges。",
+	"立即支付": "Pay Immediately",
+	"请选择支付方式": "Please select mode of payment",
+	"查询商品失败": "Goods query failed",
+	"支付失败": "Payment failed",
+	"消耗商品失败": "Failed to consume goods"
 }

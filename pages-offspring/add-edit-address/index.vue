@@ -333,9 +333,5 @@
 		.city {
 			height: 600rpx;
 		}
-
-		.mic {
-			height: 600rpx;
-		}
 	}
 </style>

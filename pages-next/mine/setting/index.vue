@@ -67,14 +67,14 @@
 				{{$t('确定退出登录吗？')}}
 			</view>
 		</m-modal>
-		<common-lang-model :show="langShow" @close="langShow = false" @confirmSwitch="confirmSwitch"></common-lang-model>
+		<c-lang-model :show="langShow" @close="langShow = false" @confirmSwitch="confirmSwitch" />
 		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 
 <script>
 	import MCell from '@/main_modules/main-ui/m-cell/index.vue'
-	import CommonLangModel from '@/components/pages/common-lang-model/index.vue'
+	import CLangModel from '@/components/common/c-lang-model/index.vue'
 	// #ifdef APP-PLUS
 	import APPUpdate from '@/uni_modules/zhouWei-APPUpdate/js_sdk/appUpdate';
 	// #endif
@@ -84,7 +84,7 @@
 	export default {
 		components: {
 			MCell,
-			CommonLangModel
+			CLangModel
 		},
 		data() {
 			return {

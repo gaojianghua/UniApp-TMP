@@ -1,0 +1,44 @@
+{
+	"code": 200,
+	"message": "success",
+	"data": {
+		"payMethodList": [
+			{
+				"id": 1,
+				"icon": "",
+				"name": "谷歌支付",
+				"code": "Google-Pay"
+			},
+			{
+				"id": 2,
+				"icon": "",
+				"name": "谷歌内购",
+				"code": "Google-Purchase"
+			},
+			{
+				"id": 3,
+				"icon": "",
+				"name": "苹果内购",
+				"code": "IOS-Purchase"
+			},
+			{
+				"id": 4,
+				"icon": "",
+				"name": "微信支付",
+				"code": "WeChat-Pay"
+			},
+			{
+				"id": 5,
+				"icon": "",
+				"name": "支付宝支付",
+				"code": "ALI-Pay"
+			},
+			{
+				"id": 6,
+				"icon": "",
+				"name": "H5外链支付",
+				"code": "Link-Pay"
+			}
+		]
+	}
+}

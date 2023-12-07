@@ -15,7 +15,7 @@
 						<u-input clearable :customStyle="{height: '100rpx', caretColor: '#f27299'}" type="text" border="none"
 							:placeholder="$t('请输入手机号')" v-model="query.phone">
 							<view slot="prefix" class="area d-flex a-center mr-3" @click="show = true">
-								<span class="mr-1">+{{query.nationCode}}</span>
+								<span class="mr-1">+{{query.countryCode}}</span>
 								<u-icon name="arrow-down-fill" color="#f27299" size="14"></u-icon>
 							</view>
 						</u-input>
@@ -58,22 +58,18 @@
 			</view>
 		</m-scroll-y>
 		<!-- 弹出层 -->
-		<m-popup :show="show" @close="show = false" title="请选择国家代码" i18n>
-			<view class="nation">
-				
-			</view>
-		</m-popup>
+		<c-country-code @switchArea="switchArea" :show="show" @close="show = false" :active="query.countryCode"/>
 		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 
 <script>
 	import MAgreePolicy from '@/main_modules/main-ui/m-agree-policy/index.vue'
-	import MPopup from '@/main_modules/main-ui/m-popup/index.vue'
+	import CCountryCode from '@/components/common/c-country-code/index.vue'
 	export default {
 		components: {
 			MAgreePolicy,
-			MPopup
+			CCountryCode
 		},
 		data() {
 			return {
@@ -84,7 +80,7 @@
 					password: '',
 					phone: '',
 					inviteCode: '',
-					nationCode: '86'
+					countryCode: '86'
 				},
 				check: [],
 				isRePassword: true,
@@ -107,6 +103,11 @@
 			// 同意协议
 			checkChange(e) {
 				this.check = e
+			},
+			// 选中国际区号
+			switchArea(i) {
+				this.query.countryCode = i.countryCode
+				this.show = false
 			},
 			// 注册
 			submitRegister() {

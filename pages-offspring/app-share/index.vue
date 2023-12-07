@@ -72,7 +72,7 @@
 					</view>
 				</view>
 				<!-- 海报生成组件 -->
-				<mine-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow"
+				<c-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow"
 					:poster="poster"/>
 				<!-- 弹框 -->
 				<m-modal :show="show" i18n title="温馨提示" :isCancel="false" btnName="复制链接" @cancel="show = false"
@@ -93,7 +93,7 @@
 </template>
 
 <script>
-	import MineAppShare from '@/components/pages/mine-app-share/index.vue'
+	import CAppShare from '@/components/common/c-app-share/index.vue'
 	import shareInit from '@/mixins/share-init.js'
 	import {
 		list
@@ -101,7 +101,7 @@
 	export default {
 		mixins: [shareInit],
 		components: {
-			MineAppShare
+			CAppShare
 		},
 		data() {
 			return {

@@ -1,0 +1,1692 @@
+{
+	"code": "0",
+	"message": "success",
+	"data": [{
+			"en": "Singapore",
+			"code": "sg",
+			"countryCode": "65",
+			"zh-Hans": "新加坡",
+			"zh-Hant": "新加坡"
+		},
+		{
+			"en": "Philippines",
+			"code": "ph",
+			"countryCode": "63",
+			"zh-Hans": "菲律宾",
+			"zh-Hant": "菲律賓"
+		},
+		{
+			"en": "Malaysia",
+			"code": "my",
+			"countryCode": "60",
+			"zh-Hans": "马来西亚",
+			"zh-Hant": "馬來西亞"
+		},
+		{
+			"en": "Australia",
+			"code": "au",
+			"countryCode": "61",
+			"zh-Hans": "澳大利亚",
+			"zh-Hant": "澳大利亞"
+		},
+		{
+			"en": "United States",
+			"code": "us",
+			"countryCode": "1",
+			"zh-Hans": "美国",
+			"zh-Hant": "美國"
+		},
+		{
+			"en": "China",
+			"code": "cn",
+			"countryCode": "86",
+			"zh-Hans": "中国",
+			"zh-Hant": "中國"
+		},
+		{
+			"en": "Hong Kong",
+			"code": "hk",
+			"countryCode": "852",
+			"zh-Hans": "香港",
+			"zh-Hant": "香港"
+		},
+		{
+			"en": "Macau",
+			"code": "mo",
+			"countryCode": "853",
+			"zh-Hans": "澳门",
+			"zh-Hant": "澳門"
+		},
+		{
+			"en": "India",
+			"code": "in",
+			"countryCode": "91",
+			"zh-Hans": "印度",
+			"zh-Hant": "印度"
+		},
+		{
+			"en": "Cameroon",
+			"code": "cm",
+			"countryCode": "237",
+			"zh-Hans": "喀麦隆",
+			"zh-Hant": "喀麥隆"
+		},
+		{
+			"en": "Benin",
+			"code": "bj",
+			"countryCode": "229",
+			"zh-Hans": "贝宁",
+			"zh-Hant": "貝寧"
+		},
+		{
+			"en": "Madagascar",
+			"code": "mg",
+			"countryCode": "261",
+			"zh-Hans": "马达加斯加",
+			"zh-Hant": "馬達加斯加"
+		},
+		{
+			"en": "Rwanda",
+			"code": "rw",
+			"countryCode": "250",
+			"zh-Hans": "卢旺达",
+			"zh-Hant": "盧旺達"
+		},
+		{
+			"en": "Seychelles",
+			"code": "sc",
+			"countryCode": "248",
+			"zh-Hans": "塞舌尔",
+			"zh-Hant": "塞舌爾"
+		},
+		{
+			"en": "Cote d'lvoire",
+			"code": "ci",
+			"countryCode": "225",
+			"zh-Hans": "科特迪瓦'lvoire",
+			"zh-Hant": "科特迪瓦'lvoire"
+		},
+		{
+			"en": "Egypt",
+			"code": "eg",
+			"countryCode": "20",
+			"zh-Hans": "埃及",
+			"zh-Hant": "埃及"
+		},
+		{
+			"en": "Mauritius",
+			"code": "mu",
+			"countryCode": "230",
+			"zh-Hans": "毛里求斯",
+			"zh-Hant": "毛里求斯"
+		},
+		{
+			"en": "Burkina Faso",
+			"code": "bf",
+			"countryCode": "226",
+			"zh-Hans": "布吉纳法索",
+			"zh-Hant": "布吉納法索"
+		},
+		{
+			"en": "Eritrea",
+			"code": "er",
+			"countryCode": "291",
+			"zh-Hans": "厄立特里亚",
+			"zh-Hant": "厄立特里亞"
+		},
+		{
+			"en": "Sao Tome and Principe",
+			"code": "st",
+			"countryCode": "239",
+			"zh-Hans": "圣多美和普林西比",
+			"zh-Hant": "聖多美和普林西比"
+		},
+		{
+			"en": "Angola",
+			"code": "ao",
+			"countryCode": "244",
+			"zh-Hans": "安哥拉",
+			"zh-Hant": "安哥拉"
+		},
+		{
+			"en": "Libyan Arab Jm",
+			"code": "ly",
+			"countryCode": "218",
+			"zh-Hans": "阿拉伯利比亚Jm",
+			"zh-Hant": "阿拉伯利比亞Jm"
+		},
+		{
+			"en": "Zimbabwe",
+			"code": "zw",
+			"countryCode": "263",
+			"zh-Hans": "津巴布韦",
+			"zh-Hant": "津巴布韋"
+		},
+		{
+			"en": "Guinea",
+			"code": "gn",
+			"countryCode": "224",
+			"zh-Hans": "几内亚",
+			"zh-Hant": "幾內亞"
+		},
+		{
+			"en": "Sierra Leone",
+			"code": "sl",
+			"countryCode": "232",
+			"zh-Hans": "塞拉利昂",
+			"zh-Hant": "塞拉利昂"
+		},
+		{
+			"en": "Reunion",
+			"code": "re",
+			"countryCode": "262",
+			"zh-Hans": "团聚",
+			"zh-Hant": "團聚"
+		},
+		{
+			"en": "Gabon",
+			"code": "ga",
+			"countryCode": "241",
+			"zh-Hans": "加蓬",
+			"zh-Hant": "加蓬"
+		},
+		{
+			"en": "Ghana",
+			"code": "gh",
+			"countryCode": "233",
+			"zh-Hans": "加纳",
+			"zh-Hant": "加納"
+		},
+		{
+			"en": "Tanzania",
+			"code": "tz",
+			"countryCode": "255",
+			"zh-Hans": "坦桑尼亚",
+			"zh-Hant": "坦桑尼亞"
+		},
+		{
+			"en": "Mali",
+			"code": "ml",
+			"countryCode": "223",
+			"zh-Hans": "马里",
+			"zh-Hant": "馬裏"
+		},
+		{
+			"en": "Somalia",
+			"code": "so",
+			"countryCode": "252",
+			"zh-Hans": "索马里",
+			"zh-Hant": "索馬里"
+		},
+		{
+			"en": "Mauritania",
+			"code": "mr",
+			"countryCode": "222",
+			"zh-Hans": "毛利塔尼亚",
+			"zh-Hant": "毛利塔尼亞"
+		},
+		{
+			"en": "Uganda",
+			"code": "ug",
+			"countryCode": "256",
+			"zh-Hans": "乌干达",
+			"zh-Hant": "烏干達"
+		},
+		{
+			"en": "Chad",
+			"code": "td",
+			"countryCode": "235",
+			"zh-Hans": "乍得",
+			"zh-Hant": "乍得"
+		},
+		{
+			"en": "Mayotte",
+			"code": "yt",
+			"countryCode": "262",
+			"zh-Hans": "马约特",
+			"zh-Hant": "馬約特"
+		},
+		{
+			"en": "Comoros",
+			"code": "km",
+			"countryCode": "269",
+			"zh-Hans": "科摩罗",
+			"zh-Hant": "科摩羅"
+		},
+		{
+			"en": "Botswana",
+			"code": "bw",
+			"countryCode": "267",
+			"zh-Hans": "博茨瓦纳",
+			"zh-Hant": "博茨瓦納"
+		},
+		{
+			"en": "Senegal",
+			"code": "sn",
+			"countryCode": "221",
+			"zh-Hans": "塞内加尔",
+			"zh-Hant": "塞內加爾"
+		},
+		{
+			"en": "Swaziland",
+			"code": "sz",
+			"countryCode": "268",
+			"zh-Hans": "斯威士兰",
+			"zh-Hant": "斯威士蘭"
+		},
+		{
+			"en": "Guinea Bissau",
+			"code": "gw",
+			"countryCode": "245",
+			"zh-Hans": "几内亚比绍",
+			"zh-Hant": "幾內亞比紹"
+		},
+		{
+			"en": "DR Congo",
+			"code": "cd",
+			"countryCode": "243",
+			"zh-Hans": "刚果(金)",
+			"zh-Hant": "剛果(金)"
+		},
+		{
+			"en": "Central African",
+			"code": "cf",
+			"countryCode": "236",
+			"zh-Hans": "中非",
+			"zh-Hant": "中非"
+		},
+		{
+			"en": "Lesotho",
+			"code": "ls",
+			"countryCode": "266",
+			"zh-Hans": "莱索托",
+			"zh-Hant": "萊索托"
+		},
+		{
+			"en": "Congo",
+			"code": "cg",
+			"countryCode": "242",
+			"zh-Hans": "刚果",
+			"zh-Hant": "剛果"
+		},
+		{
+			"en": "South Africa",
+			"code": "za",
+			"countryCode": "27",
+			"zh-Hans": "南非",
+			"zh-Hant": "南非"
+		},
+		{
+			"en": "Liberia",
+			"code": "lr",
+			"countryCode": "231",
+			"zh-Hans": "利比里亚",
+			"zh-Hant": "利比里亞"
+		},
+		{
+			"en": "Tunisia",
+			"code": "tn",
+			"countryCode": "216",
+			"zh-Hans": "突尼斯",
+			"zh-Hant": "突尼斯"
+		},
+		{
+			"en": "Zambia",
+			"code": "zm",
+			"countryCode": "260",
+			"zh-Hans": "赞比亚",
+			"zh-Hant": "贊比亞"
+		},
+		{
+			"en": "Niger",
+			"code": "ne",
+			"countryCode": "227",
+			"zh-Hans": "尼日尔",
+			"zh-Hant": "尼日爾"
+		},
+		{
+			"en": "Western Sahara",
+			"code": "eh",
+			"countryCode": "212",
+			"zh-Hans": "西撒哈拉",
+			"zh-Hant": "西撒哈拉"
+		},
+		{
+			"en": "Togo",
+			"code": "tg",
+			"countryCode": "228",
+			"zh-Hans": "多哥",
+			"zh-Hant": "多哥"
+		},
+		{
+			"en": "Namibia",
+			"code": "na",
+			"countryCode": "264",
+			"zh-Hans": "纳米比亚",
+			"zh-Hant": "納米比亞"
+		},
+		{
+			"en": "Mozambique",
+			"code": "mz",
+			"countryCode": "258",
+			"zh-Hans": "莫桑比克",
+			"zh-Hant": "莫桑比克"
+		},
+		{
+			"en": "Ethiopia",
+			"code": "et",
+			"countryCode": "251",
+			"zh-Hans": "埃塞俄比亚",
+			"zh-Hant": "埃塞俄比亞"
+		},
+		{
+			"en": "Morocco",
+			"code": "ma",
+			"countryCode": "212",
+			"zh-Hans": "摩洛哥",
+			"zh-Hant": "摩洛哥"
+		},
+		{
+			"en": "Malawi",
+			"code": "mw",
+			"countryCode": "265",
+			"zh-Hans": "马拉维",
+			"zh-Hant": "馬拉維"
+		},
+		{
+			"en": "Nigeria",
+			"code": "ng",
+			"countryCode": "234",
+			"zh-Hans": "尼日利亚",
+			"zh-Hant": "尼日利亞"
+		},
+		{
+			"en": "Cape Verde",
+			"code": "cv",
+			"countryCode": "238",
+			"zh-Hans": "绿色角",
+			"zh-Hant": "綠色角"
+		},
+		{
+			"en": "Burundi",
+			"code": "bi",
+			"countryCode": "257",
+			"zh-Hans": "布隆迪",
+			"zh-Hant": "布隆迪"
+		},
+		{
+			"en": "Algeria",
+			"code": "dz",
+			"countryCode": "213",
+			"zh-Hans": "阿尔及利亚",
+			"zh-Hant": "阿爾及利亞"
+		},
+		{
+			"en": "Djibouti",
+			"code": "dj",
+			"countryCode": "253",
+			"zh-Hans": "吉布提",
+			"zh-Hant": "吉布提"
+		},
+		{
+			"en": "Gambia",
+			"code": "gp",
+			"countryCode": "590",
+			"zh-Hans": "冈比亚",
+			"zh-Hant": "岡比亞"
+		},
+		{
+			"en": "Eq.Guinea",
+			"code": "gq",
+			"countryCode": "240",
+			"zh-Hans": "赤道几内亚",
+			"zh-Hant": "赤道幾內亞"
+		},
+		{
+			"en": "Sudan",
+			"code": "sd",
+			"countryCode": "249",
+			"zh-Hans": "苏丹",
+			"zh-Hant": "蘇丹"
+		},
+		{
+			"en": "Kenya",
+			"code": "ke",
+			"countryCode": "254",
+			"zh-Hans": "肯尼亚",
+			"zh-Hant": "肯尼亞"
+		},
+		{
+			"en": "Korea",
+			"code": "kr",
+			"countryCode": "82",
+			"zh-Hans": "韩国",
+			"zh-Hant": "韓國"
+		},
+		{
+			"en": "Syrian",
+			"code": "sy",
+			"countryCode": "963",
+			"zh-Hans": "叙利亚",
+			"zh-Hant": "敘利亞"
+		},
+		{
+			"en": "Uzbekstan",
+			"code": "uz",
+			"countryCode": "998",
+			"zh-Hans": "乌兹别克斯坦",
+			"zh-Hant": "烏茲別克斯坦"
+		},
+		{
+			"en": "Bahrian",
+			"code": "bh",
+			"countryCode": "973",
+			"zh-Hans": "Bahrian",
+			"zh-Hant": "Bahrian"
+		},
+		{
+			"en": "Japan",
+			"code": "jp",
+			"countryCode": "81",
+			"zh-Hans": "日本",
+			"zh-Hant": "日本"
+		},
+		{
+			"en": "Jordan",
+			"code": "jo",
+			"countryCode": "962",
+			"zh-Hans": "约旦",
+			"zh-Hant": "約旦"
+		},
+		{
+			"en": "Vietnam",
+			"code": "vn",
+			"countryCode": "84",
+			"zh-Hans": "越南",
+			"zh-Hant": "越南"
+		},
+		{
+			"en": "Kirghizia",
+			"code": "kg",
+			"countryCode": "996",
+			"zh-Hans": "吉尔吉斯",
+			"zh-Hant": "吉爾吉斯"
+		},
+		{
+			"en": "Thailand",
+			"code": "th",
+			"countryCode": "66",
+			"zh-Hans": "泰国",
+			"zh-Hant": "泰國"
+		},
+		{
+			"en": "Sri Lanka",
+			"code": "lk",
+			"countryCode": "94",
+			"zh-Hans": "斯里兰卡",
+			"zh-Hant": "斯里蘭卡"
+		},
+		{
+			"en": "United Arab Emirates",
+			"code": "ae",
+			"countryCode": "971",
+			"zh-Hans": "阿拉伯联合酋长国",
+			"zh-Hant": "阿拉伯聯合酋長國"
+		},
+		{
+			"en": "Laos",
+			"code": "la",
+			"countryCode": "856",
+			"zh-Hans": "老挝",
+			"zh-Hant": "老撾"
+		},
+		{
+			"en": "Afghanistan",
+			"code": "af",
+			"countryCode": "93",
+			"zh-Hans": "阿富汗",
+			"zh-Hant": "阿富汗"
+		},
+		{
+			"en": "Tajikistan",
+			"code": "tj",
+			"countryCode": "992",
+			"zh-Hans": "塔吉克斯坦",
+			"zh-Hant": "塔吉克斯坦"
+		},
+		{
+			"en": "Korea",
+			"code": "kp",
+			"countryCode": "850",
+			"zh-Hans": "朝鲜",
+			"zh-Hant": "朝鮮"
+		},
+		{
+			"en": "Palestine",
+			"code": "ps",
+			"countryCode": "970",
+			"zh-Hans": "巴勒斯坦",
+			"zh-Hant": "巴勒斯坦"
+		},
+		{
+			"en": "Iraq",
+			"code": "iq",
+			"countryCode": "964",
+			"zh-Hans": "伊拉克",
+			"zh-Hant": "伊拉克"
+		},
+		{
+			"en": "Lebanon",
+			"code": "lb",
+			"countryCode": "961",
+			"zh-Hans": "黎巴嫩",
+			"zh-Hant": "黎巴嫩"
+		},
+		{
+			"en": "Kuwait",
+			"code": "kw",
+			"countryCode": "965",
+			"zh-Hans": "科威特",
+			"zh-Hant": "科威特"
+		},
+		{
+			"en": "Brunei",
+			"code": "bn",
+			"countryCode": "673",
+			"zh-Hans": "文莱",
+			"zh-Hant": "文萊"
+		},
+		{
+			"en": "Maldives",
+			"code": "mv",
+			"countryCode": "960",
+			"zh-Hans": "马尔代夫",
+			"zh-Hant": "馬爾代夫"
+		},
+		{
+			"en": "Indonesia",
+			"code": "id",
+			"countryCode": "62",
+			"zh-Hans": "印尼",
+			"zh-Hant": "印尼"
+		},
+		{
+			"en": "Israel",
+			"code": "il",
+			"countryCode": "972",
+			"zh-Hans": "以色列",
+			"zh-Hant": "以色列"
+		},
+		{
+			"en": "Mongolia",
+			"code": "mn",
+			"countryCode": "976",
+			"zh-Hans": "蒙古",
+			"zh-Hant": "蒙古"
+		},
+		{
+			"en": "Oman",
+			"code": "om",
+			"countryCode": "968",
+			"zh-Hans": "阿曼",
+			"zh-Hant": "阿曼"
+		},
+		{
+			"en": "Myanmar",
+			"code": "mm",
+			"countryCode": "95",
+			"zh-Hans": "缅甸",
+			"zh-Hant": "緬甸"
+		},
+		{
+			"en": "East Timor",
+			"code": "tl",
+			"countryCode": "670",
+			"zh-Hans": "东帝汶",
+			"zh-Hant": "東帝汶"
+		},
+		{
+			"en": "Yemen",
+			"code": "ye",
+			"countryCode": "967",
+			"zh-Hans": "也门",
+			"zh-Hant": "也門"
+		},
+		{
+			"en": "Bhutan",
+			"code": "bt",
+			"countryCode": "975",
+			"zh-Hans": "不丹",
+			"zh-Hant": "不丹"
+		},
+		{
+			"en": "Cambodia",
+			"code": "kh",
+			"countryCode": "855",
+			"zh-Hans": "柬埔寨",
+			"zh-Hant": "柬埔寨"
+		},
+		{
+			"en": "Pakistan",
+			"code": "pk",
+			"countryCode": "92",
+			"zh-Hans": "巴基斯坦",
+			"zh-Hant": "巴基斯坦"
+		},
+		{
+			"en": "Bangladesh",
+			"code": "bd",
+			"countryCode": "880",
+			"zh-Hans": "孟加拉国",
+			"zh-Hant": "孟加拉國"
+		},
+		{
+			"en": "Saudi Arabia",
+			"code": "sa",
+			"countryCode": "966",
+			"zh-Hans": "沙特阿拉伯",
+			"zh-Hant": "沙特阿拉伯"
+		},
+		{
+			"en": "Turkmenistan",
+			"code": "tm",
+			"countryCode": "993",
+			"zh-Hans": "土库曼斯坦",
+			"zh-Hant": "土庫曼斯坦"
+		},
+		{
+			"en": "Qatar",
+			"code": "qa",
+			"countryCode": "974",
+			"zh-Hans": "卡塔尔",
+			"zh-Hant": "卡塔爾"
+		},
+		{
+			"en": "Nepal",
+			"code": "np",
+			"countryCode": "977",
+			"zh-Hans": "尼泊尔",
+			"zh-Hant": "尼泊爾"
+		},
+		{
+			"en": "Kazakhstan",
+			"code": "kz",
+			"countryCode": "76",
+			"zh-Hans": "哈萨克斯坦",
+			"zh-Hant": "哈薩克斯坦"
+		},
+		{
+			"en": "Taiwan",
+			"code": "tw",
+			"countryCode": "886",
+			"zh-Hans": "台湾",
+			"zh-Hant": "臺灣"
+		},
+		{
+			"en": "Iran",
+			"code": "ir",
+			"countryCode": "98",
+			"zh-Hans": "伊朗",
+			"zh-Hant": "伊朗"
+		},
+		{
+			"en": "Costa Rica",
+			"code": "cr",
+			"countryCode": "506",
+			"zh-Hans": "哥斯达黎加",
+			"zh-Hant": "哥斯達黎加"
+		},
+		{
+			"en": "Cuba",
+			"code": "cu",
+			"countryCode": "53",
+			"zh-Hans": "古巴",
+			"zh-Hant": "古巴"
+		},
+		{
+			"en": "Dominican",
+			"code": "do",
+			"countryCode": "1809",
+			"zh-Hans": "多米尼加",
+			"zh-Hant": "多米尼加"
+		},
+		{
+			"en": "Mexico",
+			"code": "mx",
+			"countryCode": "52",
+			"zh-Hans": "墨西哥",
+			"zh-Hant": "墨西哥"
+		},
+		{
+			"en": "Nicaragua",
+			"code": "ni",
+			"countryCode": "505",
+			"zh-Hans": "尼加拉瓜",
+			"zh-Hant": "尼加拉瓜"
+		},
+		{
+			"en": "Panama",
+			"code": "pa",
+			"countryCode": "507",
+			"zh-Hans": "巴拿马",
+			"zh-Hant": "巴拿馬"
+		},
+		{
+			"en": "El Salvador",
+			"code": "sv",
+			"countryCode": "503",
+			"zh-Hans": "萨尔瓦多",
+			"zh-Hant": "薩爾瓦多"
+		},
+		{
+			"en": "Puerto Rico",
+			"code": "pr",
+			"countryCode": "1787",
+			"zh-Hans": "波多黎各",
+			"zh-Hant": "波多黎各"
+		},
+		{
+			"en": "Saint Vincent and the Grenadines",
+			"code": "vc",
+			"countryCode": "1784",
+			"zh-Hans": "圣文森特和格林纳丁斯",
+			"zh-Hant": "聖文森特和格林納丁斯"
+		},
+		{
+			"en": "Honduras",
+			"code": "hn",
+			"countryCode": "504",
+			"zh-Hans": "洪都拉斯",
+			"zh-Hant": "洪都拉斯"
+		},
+		{
+			"en": "Guatemala",
+			"code": "gt",
+			"countryCode": "502",
+			"zh-Hans": "危地马拉",
+			"zh-Hant": "危地馬拉"
+		},
+		{
+			"en": "Georgia",
+			"code": "ge",
+			"countryCode": "995",
+			"zh-Hans": "格鲁吉亚",
+			"zh-Hant": "格鲁吉亚"
+		},
+		{
+			"en": "Armenia",
+			"code": "am",
+			"countryCode": "374",
+			"zh-Hans": "亚美尼亚",
+			"zh-Hant": "亞美尼亞"
+		},
+		{
+			"en": "Azerbaijan",
+			"code": "az",
+			"countryCode": "994",
+			"zh-Hans": "阿塞拜疆",
+			"zh-Hant": "阿塞拜疆"
+		},
+		{
+			"en": "Belarus",
+			"code": "by",
+			"countryCode": "375",
+			"zh-Hans": "白俄罗斯",
+			"zh-Hant": "白俄羅斯"
+		},
+		{
+			"en": "Russia",
+			"code": "ru",
+			"countryCode": "7",
+			"zh-Hans": "俄罗斯",
+			"zh-Hant": "俄羅斯"
+		},
+		{
+			"en": "Ukraine",
+			"code": "ua",
+			"countryCode": "380",
+			"zh-Hans": "乌克兰",
+			"zh-Hant": "烏克蘭"
+		},
+		{
+			"en": "Hungary",
+			"code": "hu",
+			"countryCode": "36",
+			"zh-Hans": "匈牙利",
+			"zh-Hant": "匈牙利"
+		},
+		{
+			"en": "Iceland",
+			"code": "is",
+			"countryCode": "354",
+			"zh-Hans": "冰岛",
+			"zh-Hant": "冰島"
+		},
+		{
+			"en": "Malta",
+			"code": "mt",
+			"countryCode": "356",
+			"zh-Hans": "马耳他",
+			"zh-Hant": "馬耳他"
+		},
+		{
+			"en": "Monaco",
+			"code": "mc",
+			"countryCode": "377",
+			"zh-Hans": "摩纳哥",
+			"zh-Hant": "摩納哥"
+		},
+		{
+			"en": "Norway",
+			"code": "no",
+			"countryCode": "47",
+			"zh-Hans": "挪威",
+			"zh-Hant": "挪威"
+		},
+		{
+			"en": "Romania",
+			"code": "ro",
+			"countryCode": "40",
+			"zh-Hans": "罗马尼亚",
+			"zh-Hant": "羅馬尼亞"
+		},
+		{
+			"en": "San Marino",
+			"code": "sm",
+			"countryCode": "378",
+			"zh-Hans": "圣马力诺",
+			"zh-Hant": "聖馬力諾"
+		},
+		{
+			"en": "Sweden",
+			"code": "se",
+			"countryCode": "46",
+			"zh-Hans": "瑞典",
+			"zh-Hant": "瑞典"
+		},
+		{
+			"en": "Switzerland",
+			"code": "ch",
+			"countryCode": "41",
+			"zh-Hans": "瑞士",
+			"zh-Hant": "瑞士"
+		},
+		{
+			"en": "Estonia",
+			"code": "ee",
+			"countryCode": "372",
+			"zh-Hans": "爱沙尼亚",
+			"zh-Hant": "愛沙尼亞"
+		},
+		{
+			"en": "Latvia",
+			"code": "lv",
+			"countryCode": "371",
+			"zh-Hans": "拉脱维亚",
+			"zh-Hant": "拉脫維亞"
+		},
+		{
+			"en": "Lithuania",
+			"code": "lt",
+			"countryCode": "370",
+			"zh-Hans": "立陶宛",
+			"zh-Hant": "立陶宛"
+		},
+		{
+			"en": "Moldavia",
+			"code": "md",
+			"countryCode": "373",
+			"zh-Hans": "摩尔达维亚",
+			"zh-Hant": "摩爾達維亞"
+		},
+		{
+			"en": "Turkey",
+			"code": "tr",
+			"countryCode": "90",
+			"zh-Hans": "土耳其",
+			"zh-Hant": "土耳其"
+		},
+		{
+			"en": "Slovenia",
+			"code": "si",
+			"countryCode": "386",
+			"zh-Hans": "斯洛文尼亚",
+			"zh-Hant": "斯洛文尼亞"
+		},
+		{
+			"en": "Czech",
+			"code": "cz",
+			"countryCode": "420",
+			"zh-Hans": "捷克",
+			"zh-Hant": "捷克"
+		},
+		{
+			"en": "Slovak",
+			"code": "sk",
+			"countryCode": "421",
+			"zh-Hans": "斯洛伐克",
+			"zh-Hant": "斯洛伐克"
+		},
+		{
+			"en": "Macedonia",
+			"code": "mk",
+			"countryCode": "389",
+			"zh-Hans": "马其顿",
+			"zh-Hant": "馬其頓"
+		},
+		{
+			"en": "Bosnia Hercegovina",
+			"code": "ba",
+			"countryCode": "387",
+			"zh-Hans": "波斯尼亚Hercegovina",
+			"zh-Hant": "波斯尼亞"
+		},
+		{
+			"en": "Vatican City State",
+			"code": "va",
+			"countryCode": "3906698",
+			"zh-Hans": "梵蒂冈",
+			"zh-Hant": "梵蒂岡"
+		},
+		{
+			"en": "Netherlands",
+			"code": "nl",
+			"countryCode": "31",
+			"zh-Hans": "荷兰",
+			"zh-Hant": "荷蘭"
+		},
+		{
+			"en": "Croatia",
+			"code": "hr",
+			"countryCode": "385",
+			"zh-Hans": "克罗地亚",
+			"zh-Hant": "克羅地亞"
+		},
+		{
+			"en": "Greece",
+			"code": "gr",
+			"countryCode": "30",
+			"zh-Hans": "希腊",
+			"zh-Hant": "希臘"
+		},
+		{
+			"en": "Ireland",
+			"code": "ie",
+			"countryCode": "353",
+			"zh-Hans": "爱尔兰",
+			"zh-Hant": "愛爾蘭"
+		},
+		{
+			"en": "Belgium",
+			"code": "be",
+			"countryCode": "32",
+			"zh-Hans": "比利时",
+			"zh-Hant": "比利時"
+		},
+		{
+			"en": "Cyprus",
+			"code": "cy",
+			"countryCode": "357",
+			"zh-Hans": "塞浦路斯",
+			"zh-Hant": "塞浦路斯"
+		},
+		{
+			"en": "Denmark",
+			"code": "dk",
+			"countryCode": "45",
+			"zh-Hans": "丹麦",
+			"zh-Hant": "丹麥"
+		},
+		{
+			"en": "United Kingdom",
+			"code": "gb",
+			"countryCode": "44",
+			"zh-Hans": "英国",
+			"zh-Hant": "英國"
+		},
+		{
+			"en": "Germany",
+			"code": "de",
+			"countryCode": "49",
+			"zh-Hans": "德国",
+			"zh-Hant": "德國"
+		},
+		{
+			"en": "France",
+			"code": "fr",
+			"countryCode": "33",
+			"zh-Hans": "法国",
+			"zh-Hant": "法國"
+		},
+		{
+			"en": "Italy",
+			"code": "it",
+			"countryCode": "39",
+			"zh-Hans": "意大利",
+			"zh-Hant": "意大利"
+		},
+		{
+			"en": "Luxembourg",
+			"code": "lu",
+			"countryCode": "352",
+			"zh-Hans": "卢森堡",
+			"zh-Hant": "盧森堡"
+		},
+		{
+			"en": "Portugal",
+			"code": "pt",
+			"countryCode": "351",
+			"zh-Hans": "葡萄牙",
+			"zh-Hant": "葡萄牙"
+		},
+		{
+			"en": "Poland",
+			"code": "pl",
+			"countryCode": "48",
+			"zh-Hans": "波兰",
+			"zh-Hant": "波蘭"
+		},
+		{
+			"en": "Spain",
+			"code": "es",
+			"countryCode": "34",
+			"zh-Hans": "西班牙",
+			"zh-Hant": "西班牙"
+		},
+		{
+			"en": "Albania",
+			"code": "al",
+			"countryCode": "355",
+			"zh-Hans": "阿尔巴尼亚",
+			"zh-Hant": "阿爾巴尼亞"
+		},
+		{
+			"en": "Andorra",
+			"code": "ad",
+			"countryCode": "376",
+			"zh-Hans": "安道尔",
+			"zh-Hant": "安道爾"
+		},
+		{
+			"en": "Liechtenstein",
+			"code": "li",
+			"countryCode": "423",
+			"zh-Hans": "列支敦斯登",
+			"zh-Hant": "列支敦斯登"
+		},
+		{
+			"en": "Serbia",
+			"code": "rs",
+			"countryCode": "381",
+			"zh-Hans": "塞尔维亚",
+			"zh-Hant": "塞爾維亞"
+		},
+		{
+			"en": "Austria",
+			"code": "at",
+			"countryCode": "43",
+			"zh-Hans": "奥地利",
+			"zh-Hant": "奧地利"
+		},
+		{
+			"en": "Bulgaria",
+			"code": "bg",
+			"countryCode": "359",
+			"zh-Hans": "保加利亚",
+			"zh-Hant": "保加利亞"
+		},
+		{
+			"en": "Finland",
+			"code": "fi",
+			"countryCode": "358",
+			"zh-Hans": "芬兰",
+			"zh-Hant": "芬蘭"
+		},
+		{
+			"en": "Gibraltar",
+			"code": "gi",
+			"countryCode": "350",
+			"zh-Hans": "直布罗陀",
+			"zh-Hant": "直布羅陀"
+		},
+		{
+			"en": "Dominica",
+			"code": "dm",
+			"countryCode": "1767",
+			"zh-Hans": "多米尼加",
+			"zh-Hant": "多米尼加"
+		},
+		{
+			"en": "Bermuda",
+			"code": "bm",
+			"countryCode": "1441",
+			"zh-Hans": "百慕大",
+			"zh-Hant": "百慕大"
+		},
+		{
+			"en": "Canada",
+			"code": "ca",
+			"countryCode": "1",
+			"zh-Hans": "加拿大",
+			"zh-Hant": "加拿大"
+		},
+		{
+			"en": "Greenland",
+			"code": "gl",
+			"countryCode": "299",
+			"zh-Hans": "格陵兰岛",
+			"zh-Hant": "格陵蘭島"
+		},
+		{
+			"en": "Tonga",
+			"code": "to",
+			"countryCode": "676",
+			"zh-Hans": "汤加",
+			"zh-Hant": "湯加"
+		},
+		{
+			"en": "Cook Is",
+			"code": "ck",
+			"countryCode": "682",
+			"zh-Hans": "库克是",
+			"zh-Hant": "庫克是"
+		},
+		{
+			"en": "Nauru",
+			"code": "nr",
+			"countryCode": "674",
+			"zh-Hans": "瑙鲁",
+			"zh-Hant": "瑙魯"
+		},
+		{
+			"en": "New Caledonia",
+			"code": "nc",
+			"countryCode": "687",
+			"zh-Hans": "新喀里多尼亚",
+			"zh-Hant": "新喀里多尼亞"
+		},
+		{
+			"en": "Vanuatu",
+			"code": "vu",
+			"countryCode": "678",
+			"zh-Hans": "瓦努阿图",
+			"zh-Hant": "瓦努阿圖"
+		},
+		{
+			"en": "Solomon Is",
+			"code": "sb",
+			"countryCode": "677",
+			"zh-Hans": "所罗门群岛",
+			"zh-Hant": "所羅門羣島"
+		},
+		{
+			"en": "Samoa",
+			"code": "ws",
+			"countryCode": "685",
+			"zh-Hans": "萨摩亚",
+			"zh-Hant": "薩摩亞"
+		},
+		{
+			"en": "Tuvalu",
+			"code": "tv",
+			"countryCode": "688",
+			"zh-Hans": "图瓦卢",
+			"zh-Hant": "圖瓦盧"
+		},
+		{
+			"en": "Micronesia",
+			"code": "fm",
+			"countryCode": "691",
+			"zh-Hans": "密克罗尼西亚",
+			"zh-Hant": "密克羅尼西亞"
+		},
+		{
+			"en": "Marshall Is Rep",
+			"code": "mh",
+			"countryCode": "692",
+			"zh-Hans": "马绍尔群岛",
+			"zh-Hant": "馬紹爾羣島"
+		},
+		{
+			"en": "Kiribati",
+			"code": "ki",
+			"countryCode": "686",
+			"zh-Hans": "基里巴斯",
+			"zh-Hant": "基里巴斯"
+		},
+		{
+			"en": "French Polynesia",
+			"code": "pf",
+			"countryCode": "689",
+			"zh-Hans": "法属波利尼西亚",
+			"zh-Hant": "法屬波利尼西亞"
+		},
+		{
+			"en": "New Zealand",
+			"code": "nz",
+			"countryCode": "64",
+			"zh-Hans": "新西兰",
+			"zh-Hant": "新西蘭"
+		},
+		{
+			"en": "Fiji",
+			"code": "fj",
+			"countryCode": "679",
+			"zh-Hans": "斐济",
+			"zh-Hant": "斐濟"
+		},
+		{
+			"en": "Papua New Guinea",
+			"code": "pg",
+			"countryCode": "675",
+			"zh-Hans": "巴布新几内亚",
+			"zh-Hant": "巴布新幾內亞"
+		},
+		{
+			"en": "Palau",
+			"code": "pw",
+			"countryCode": "680",
+			"zh-Hans": "帕劳",
+			"zh-Hant": "帕勞"
+		},
+		{
+			"en": "Chile",
+			"code": "cl",
+			"countryCode": "56",
+			"zh-Hans": "智利",
+			"zh-Hant": "智利"
+		},
+		{
+			"en": "Colombia",
+			"code": "co",
+			"countryCode": "57",
+			"zh-Hans": "哥伦比亚",
+			"zh-Hant": "哥倫比亞"
+		},
+		{
+			"en": "Guyana",
+			"code": "gy",
+			"countryCode": "592",
+			"zh-Hans": "圭亚那",
+			"zh-Hant": "圭亞那"
+		},
+		{
+			"en": "Paraguay",
+			"code": "py",
+			"countryCode": "595",
+			"zh-Hans": "巴拉圭",
+			"zh-Hant": "巴拉圭"
+		},
+		{
+			"en": "Peru",
+			"code": "pe",
+			"countryCode": "51",
+			"zh-Hans": "秘鲁",
+			"zh-Hant": "祕魯"
+		},
+		{
+			"en": "Surien",
+			"code": "sr",
+			"countryCode": "597",
+			"zh-Hans": "苏里南",
+			"zh-Hant": "蘇里南"
+		},
+		{
+			"en": "Venezuela",
+			"code": "ve",
+			"countryCode": "58",
+			"zh-Hans": "委内瑞拉",
+			"zh-Hant": "委內瑞拉"
+		},
+		{
+			"en": "Uruguay",
+			"code": "uy",
+			"countryCode": "598",
+			"zh-Hans": "乌拉圭",
+			"zh-Hant": "烏拉圭"
+		},
+		{
+			"en": "Ecuador",
+			"code": "ec",
+			"countryCode": "593",
+			"zh-Hans": "厄瓜多尔",
+			"zh-Hant": "厄瓜多爾"
+		},
+		{
+			"en": "Antigua and Barbuda",
+			"code": "ag",
+			"countryCode": "1268",
+			"zh-Hans": "安提瓜岛和巴布达",
+			"zh-Hant": "安提瓜島和巴布達"
+		},
+		{
+			"en": "Aruba",
+			"code": "aw",
+			"countryCode": "297",
+			"zh-Hans": "阿鲁巴岛",
+			"zh-Hant": "阿魯巴島"
+		},
+		{
+			"en": "Bahamas",
+			"code": "bs",
+			"countryCode": "1242",
+			"zh-Hans": "巴哈马群岛",
+			"zh-Hant": "巴哈馬羣島"
+		},
+		{
+			"en": "Barbados",
+			"code": "bb",
+			"countryCode": "1246",
+			"zh-Hans": "巴巴多斯",
+			"zh-Hant": "巴巴多斯"
+		},
+		{
+			"en": "Cayman Is",
+			"code": "ky",
+			"countryCode": "1345",
+			"zh-Hans": "开曼群岛是",
+			"zh-Hant": "開曼羣島是"
+		},
+		{
+			"en": "Grenada",
+			"code": "gd",
+			"countryCode": "1473",
+			"zh-Hans": "格林纳达",
+			"zh-Hant": "格林納達"
+		},
+		{
+			"en": "Haiti",
+			"code": "ht",
+			"countryCode": "509",
+			"zh-Hans": "海地",
+			"zh-Hant": "海地"
+		},
+		{
+			"en": "Jamaica",
+			"code": "jm",
+			"countryCode": "1876",
+			"zh-Hans": "牙买加",
+			"zh-Hant": "牙買加"
+		},
+		{
+			"en": "Martinique",
+			"code": "mq",
+			"countryCode": "596",
+			"zh-Hans": "马提尼克岛",
+			"zh-Hant": "馬提尼克島"
+		},
+		{
+			"en": "Montserrat",
+			"code": "ms",
+			"countryCode": "1664",
+			"zh-Hans": "蒙特塞拉特",
+			"zh-Hant": "蒙特塞拉特"
+		},
+		{
+			"en": "Trinidad and Tobago",
+			"code": "tt",
+			"countryCode": "1868",
+			"zh-Hans": "特立尼达和多巴哥",
+			"zh-Hant": "特立尼達和多巴哥"
+		},
+		{
+			"en": "St Kitts-Nevis",
+			"code": "kn",
+			"countryCode": "1869",
+			"zh-Hans": "圣Kitts-Nevis",
+			"zh-Hant": "聖Kitts-Nevis"
+		},
+		{
+			"en": "St.Pierre and Miquelon",
+			"code": "pm",
+			"countryCode": "508",
+			"zh-Hans": "圣皮埃尔和密克隆群岛",
+			"zh-Hant": "聖皮埃爾和密克隆羣島"
+		},
+		{
+			"en": "Argentina",
+			"code": "ar",
+			"countryCode": "54",
+			"zh-Hans": "阿根廷",
+			"zh-Hant": "阿根廷"
+		},
+		{
+			"en": "Belize",
+			"code": "bz",
+			"countryCode": "501",
+			"zh-Hans": "伯利兹",
+			"zh-Hant": "伯利茲"
+		},
+		{
+			"en": "Bolivia",
+			"code": "bo",
+			"countryCode": "591",
+			"zh-Hans": "玻利维亚",
+			"zh-Hant": "玻利維亞"
+		},
+		{
+			"en": "Brazil",
+			"code": "br",
+			"countryCode": "55",
+			"zh-Hans": "巴西",
+			"zh-Hant": "巴西"
+		},
+		{
+			"en": "American Samoa",
+			"code": "as",
+			"countryCode": "1684",
+			"zh-Hans": "美属萨摩亚",
+			"zh-Hant": "美屬薩摩亞"
+		},
+		{
+			"en": "Aland Islands",
+			"code": "ax",
+			"countryCode": "358",
+			"zh-Hans": "奥兰群岛",
+			"zh-Hant": "奧蘭羣島"
+		},
+		{
+			"en": "Saint Barthélemy",
+			"code": "bl",
+			"countryCode": "590",
+			"zh-Hans": "圣巴泰勒米岛",
+			"zh-Hant": "聖巴泰勒米島"
+		},
+		{
+			"en": "Cocos (Keeling) Islands",
+			"code": "cc",
+			"countryCode": "61",
+			"zh-Hans": "Cocos (Keeling)岛",
+			"zh-Hant": "Cocos (Keeling)島"
+		},
+		{
+			"en": "Curaçao",
+			"code": "cw",
+			"countryCode": "5999",
+			"zh-Hans": "库拉索岛",
+			"zh-Hant": "庫拉索島"
+		},
+		{
+			"en": "Christmas Island",
+			"code": "cx",
+			"countryCode": "61",
+			"zh-Hans": "圣诞岛",
+			"zh-Hant": "聖誕島"
+		},
+		{
+			"en": "Falkland Islands (Malvinas)",
+			"code": "fk",
+			"countryCode": "500",
+			"zh-Hans": "福克兰群岛(马尔维纳斯)",
+			"zh-Hant": "福克蘭羣島(馬爾維納斯)"
+		},
+		{
+			"en": "Faroe Islands",
+			"code": "fo",
+			"countryCode": "298",
+			"zh-Hans": "法罗群岛",
+			"zh-Hant": "法羅羣島"
+		},
+		{
+			"en": "French Guiana",
+			"code": "gf",
+			"countryCode": "594",
+			"zh-Hans": "法属圭亚那",
+			"zh-Hant": "法屬圭亞那"
+		},
+		{
+			"en": "Guernsey",
+			"code": "gg",
+			"countryCode": "44",
+			"zh-Hans": "格恩西岛",
+			"zh-Hant": "格恩西島"
+		},
+		{
+			"en": "South Georgia and The South Sandwich Islands",
+			"code": "gs",
+			"countryCode": "500",
+			"zh-Hans": "南乔治亚岛和南桑威奇群岛",
+			"zh-Hant": "南喬治亞島和南桑威奇羣島"
+		},
+		{
+			"en": "Guam",
+			"code": "gu",
+			"countryCode": "1671",
+			"zh-Hans": "关岛",
+			"zh-Hant": "關島"
+		},
+		{
+			"en": "Isle Of Man",
+			"code": "im",
+			"countryCode": "44",
+			"zh-Hans": "英国属地曼岛",
+			"zh-Hant": "英國屬地曼島"
+		},
+		{
+			"en": "British Indian Ocean Territory",
+			"code": "io",
+			"countryCode": "246",
+			"zh-Hans": "英属印度洋属地",
+			"zh-Hant": "英屬印度洋屬地"
+		},
+		{
+			"en": "Jersey",
+			"code": "je",
+			"countryCode": "44",
+			"zh-Hans": "泽西岛",
+			"zh-Hant": "澤西島"
+		},
+		{
+			"en": "Saint Lucia",
+			"code": "lc",
+			"countryCode": "1758",
+			"zh-Hans": "圣卢西亚岛",
+			"zh-Hant": "聖盧西亞島"
+		},
+		{
+			"en": "Saint Martin",
+			"code": "mf",
+			"countryCode": "590",
+			"zh-Hans": "圣马丁",
+			"zh-Hant": "聖馬丁"
+		},
+		{
+			"en": "Northern Mariana Islands",
+			"code": "mp",
+			"countryCode": "1670",
+			"zh-Hans": "北马里亚纳群岛",
+			"zh-Hant": "北馬裏亞納羣島"
+		},
+		{
+			"en": "Norfolk Island",
+			"code": "nf",
+			"countryCode": "672",
+			"zh-Hans": "诺福克岛",
+			"zh-Hant": "諾福克島"
+		},
+		{
+			"en": "Niue",
+			"code": "nu",
+			"countryCode": "683",
+			"zh-Hans": "纽埃岛",
+			"zh-Hant": "紐埃島"
+		},
+		{
+			"en": "Saint Pierre and Miquelon",
+			"code": "pm",
+			"countryCode": "508",
+			"zh-Hans": "圣皮埃尔和密克隆",
+			"zh-Hant": "聖皮埃爾和密克隆"
+		},
+		{
+			"en": "Pitcairn Islands",
+			"code": "pn",
+			"countryCode": "64",
+			"zh-Hans": "皮特克恩岛",
+			"zh-Hant": "皮特克恩島"
+		},
+		{
+			"en": "Svalbard and Jan Mayen Islands",
+			"code": "sj",
+			"countryCode": "4779",
+			"zh-Hans": "斯瓦尔巴群岛和扬马延群岛",
+			"zh-Hant": "斯瓦爾巴羣島和揚馬延羣島"
+		},
+		{
+			"en": "Sint Maarten",
+			"code": "sx",
+			"countryCode": "1721",
+			"zh-Hans": "圣马丁",
+			"zh-Hant": "聖馬丁"
+		},
+		{
+			"en": "Turks and Caicos Islands",
+			"code": "tc",
+			"countryCode": "1649",
+			"zh-Hans": "特克斯和凯科斯群岛",
+			"zh-Hant": "特克斯和凱科斯羣島"
+		},
+		{
+			"en": "Tokelau",
+			"code": "tk",
+			"countryCode": "690",
+			"zh-Hans": "托克劳",
+			"zh-Hant": "托克勞"
+		},
+		{
+			"en": "The British Virgin Islands",
+			"code": "vg",
+			"countryCode": "1284",
+			"zh-Hans": "英属维尔京群岛",
+			"zh-Hant": "英屬維爾京羣島"
+		},
+		{
+			"en": "The United States Virgin Islands",
+			"code": "vi",
+			"countryCode": "1340",
+			"zh-Hans": "美属维京群岛",
+			"zh-Hant": "美屬維京羣島"
+		},
+		{
+			"en": "Wallis and Futuna Islands",
+			"code": "wf",
+			"countryCode": "681",
+			"zh-Hans": "沃利斯和富图纳群岛",
+			"zh-Hant": "沃利斯和富圖納羣島"
+		},
+		{
+			"en": "Kosovo",
+			"code": "xk",
+			"countryCode": "383",
+			"zh-Hans": "科索沃",
+			"zh-Hant": "科索沃"
+		},
+		{
+			"en": "Montenegro",
+			"code": "me",
+			"countryCode": "382",
+			"zh-Hans": "黑山共和国",
+			"zh-Hant": "黑山共和國"
+		}
+	]
+}

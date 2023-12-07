@@ -8,7 +8,7 @@
 				<u-input :customStyle="{height: '96rpx', caretColor: '#f27299'}" type="text" border="none"
 					:placeholder="$t('请输入手机号')" v-model="query.phone">
 					<view slot="prefix" class="area d-flex a-center mr-3" @click="show = true">
-						<span class="mr-1">+{{query.nationCode}}</span>
+						<span class="mr-1">+{{query.countryCode}}</span>
 						<u-icon name="arrow-down-fill" color="#f27299" size="14"></u-icon>
 					</view>
 				</u-input>
@@ -31,19 +31,15 @@
 			</view>
 		</view>
 		<!-- 弹出层 -->
-		<m-popup :show="show" @close="show = false" title="请选择国家代码" i18n>
-			<view class="nation">
-
-			</view>
-		</m-popup>
+		<c-country-code @switchArea="switchArea" :show="show" @close="show = false" :active="query.countryCode"/>
 	</view>
 </template>
 
 <script>
-	import MPopup from '@/main_modules/main-ui/m-popup/index.vue'
+	import CCountryCode from '@/components/common/c-country-code/index.vue'
 	export default {
 		components: {
-			MPopup
+			CCountryCode
 		},
 		data() {
 			return {
@@ -54,7 +50,7 @@
 				query: {
 					phone: '',
 					code: '',
-					nationCode: '86'
+					countryCode: '86'
 				},
 				btName: ''
 			}
@@ -69,8 +65,9 @@
 
 			},
 			// 选中区号
-			switchArea() {
-
+			switchArea(i) {
+				this.query.countryCode = i.countryCode
+				this.show = false
 			},
 			// 获取验证码
 			getCode() {

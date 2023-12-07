@@ -63,7 +63,7 @@
 			</view>
 		</m-scroll-y>
 		<!-- 弹框 -->
-		<common-lang-model :show="show" @close="show = false" @confirmSwitch="confirmSwitch"></common-lang-model>
+		<c-lang-model :show="show" @close="show = false" @confirmSwitch="confirmSwitch" />
 		<u-toast ref="uToast"></u-toast>
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/home/index" i18n></m-tabbar>
@@ -73,7 +73,7 @@
 <script>
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
 	import MGoodsCard from '@/main_modules/main-ui/m-goods-card/index.vue'
-	import CommonLangModel from '@/components/pages/common-lang-model/index.vue'
+	import CLangModel from '@/components/common/c-lang-model/index.vue'
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	import capsuleInit from '@/mixins/capsule-init.js'
 	import shareInit from '@/mixins/share-init.js'
@@ -87,7 +87,7 @@
 		components: {
 			MTabbar,
 			MGoodsCard,
-			CommonLangModel
+			CLangModel
 		},
 		data() {
 			return {

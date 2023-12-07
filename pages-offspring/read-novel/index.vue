@@ -390,7 +390,7 @@
 				</virtual-list>
 			</view>
 		</view>
-		<mine-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow" :item="detail" />
+		<mine-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow" :poster="poster" />
 		<m-modal :show="modalShow" i18n title="温馨提示" btnName="加入书架"  @cancel="cancel" @confirm="addfavor">
 			<view class="d-flex a-center j-center flex-column">
 				<view class="d-flex a-center text-center j-center flex-column main-text-color letter-1">
@@ -402,19 +402,9 @@
 </template>
 
 <script>
-	import {
-		requestData
-	} from '@/utils/index.js'
-	import {
-		getNovelChapterList,
-		getNovelChapterInfo,
-		getNovelDetail,
-		addNovelShelf,
-		delNovelShelf,
-	} from '@/utils/request/api/get.js'
 	import battery from '@/components/battery.vue'
 	import virtualList from '@/components/virtualList.vue'
-	import MineAppShare from '@/components/mine-app-share/index.vue'
+	import MineAppShare from '@/components/pages/mine-app-share/index.vue'
 	import MModal from '@/main_modules/main-ui/m-modal/index.vue'
 	import {
 		traditionalized,
@@ -563,7 +553,8 @@
 				posterShow: false,
 				isSuccess: false,
 				time: null,
-				modalShow: false
+				modalShow: false,
+				poster: {}
 			}
 		},
 		onLoad(options) {

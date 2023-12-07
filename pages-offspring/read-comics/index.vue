@@ -60,7 +60,7 @@
 			</view>
 		</m-scroll-y>
 		<!-- 海报弹框 -->
-		<mine-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow" :poster="poster" />
+		<c-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow" :poster="poster" />
 		<!-- 弹出层 -->
 		<m-popup :show="directoryShow" i18n @close="directoryShow = false" title="目录" i18n>
 			<view class="directory px-2">
@@ -98,13 +98,13 @@
 </template>
 
 <script>
-	import MineAppShare from '@/components/pages/mine-app-share/index.vue'
+	import CAppShare from '@/components/common/c-app-share/index.vue'
 	import MPopup from '@/main_modules/main-ui/m-popup/index.vue'
 	import capsuleInit from '@/mixins/capsule-init.js'
 	export default {
 		mixins: [capsuleInit],
 		components: {
-			MineAppShare,
+			CAppShare,
 			MPopup
 		},
 		data() {
@@ -310,8 +310,12 @@
 			},
 			// 打开目录
 			openControls() {
+				uni.showLoading()
 				this.query.chapterId > 10 ? this.intoView = 'item' + this.query.chapterId : this.intoView = 'item1'
-				this.directoryShow = true
+				let time = setTimeout(() => {
+					this.directoryShow = true
+					uni.hideLoading()
+				}, 300)
 			},
 			// 打开指定章节
 			openChapter(i) {
