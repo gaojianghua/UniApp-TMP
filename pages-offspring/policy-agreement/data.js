@@ -17,6 +17,7 @@ const policy = `
 <p class="text-i2">我们或我们的第三方合作伙伴提供服务时，可能会收集、储存和使用下列与您有关的信息。如果您不提供相关信息，可能无法注册成为我们的用户或无法享受我们提供的某些服务，或者无法达到相关服务拟达到的效果。</p>
 <ul>
 <li><strong>归因信息</strong>，指您使用我们的服务时，我们会收集、分析和报告的有关用户行为及广告效果的相关数据，包括<strong>登录</strong>、<strong>注册</strong>、<strong>商品购买</strong>等等。部分数据将被上报至我们的<strong>官方网站(<a href="https://gongyue.gaojianghua.cn/">https://gongyue.gaojianghua.cn/</a>)</strong>以及<strong>Adjust(<a href="https://suite.adjust.com/">https://suite.adjust.com/</a>)平台</strong>，以帮助我们改进产品和优化您的体验。</li>
+<li><strong>FaceBook统计信息</strong>，指您使用我们的服务时，我们会收集、分析和报告的有关用户行为及广告效果的相关数据，包括<strong>登录</strong>、<strong>注册</strong>、<strong>商品购买</strong>等等。部分数据将被上报至我们的<strong>官方网站(<a href="https://gongyue.gaojianghua.cn/">https://gongyue.gaojianghua.cn/</a>)</strong>以及<strong>FaceBook(<a href="https://developers.facebook.com/">https://developers.facebook.com/</a>)平台</strong>，以帮助我们分析广告效果、用户转化等数据，并据此进行优化。</li>
 <li><strong>日志信息</strong>，指您使用我们的服务时，系统可能通过cookies、标识符及相关技术收集的信息，包括您的<strong>设备信息</strong>、<strong>浏览信息</strong>、<strong>点击信息</strong>，并将该等信息储存为日志信息，为您提供个性化的用户体验、保障服务安全。您可以通过浏览器设置拒绝或管理cookie、标识符或相关技术的使用。</li>
 <li><strong>个人信息</strong>，您在注册账户或使用我们的服务时，向我们提供的相关个人信息，例如电话号码、电子邮件等。</li>
 <li><strong>位置信息</strong>，指您开启设备定位功能并使用我们基于位置提供的相关服务时，收集的有关您位置的信息，包括：<ul><li>您通过具有定位功能的移动设备使用我们的服务时，通过GPS或WiFi等方式收集的您的地理位置信息；</li><li>您可以通过关闭定位功能，停止对您的地理位置信息的收集。</li></ul></li>

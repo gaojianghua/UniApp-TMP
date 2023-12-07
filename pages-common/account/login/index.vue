@@ -248,7 +248,6 @@
 			background-color: #ffffff80;
 			border: 2rpx solid #fff;
 			border-radius: 20rpx;
-			margin-top: 200rpx;
 			
 			.notice{
 				font-size: 24rpx;
