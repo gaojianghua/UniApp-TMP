@@ -235,6 +235,38 @@ class Common {
 	static async generateQRCode(url) {
 		return await QRCode.toDataURL(url)
 	};
+	/**
+	 * @description 保存图片到本地相册
+	 * @param path 图片地址
+	 * @param callback 回调函数
+	 */
+	static saveImageToPhotosAlbum(path, callback = () => {}, h5ImgName = 'share-poster.png') {
+		// #ifndef H5
+		uni.getImageInfo({
+			src: path,
+			success: (res) => {
+				uni.saveImageToPhotosAlbum({
+					filePath: res.path,
+					success: () => {
+						callback(true)
+					},
+					fail: () => {
+						callback(false)
+					}
+				})
+			}
+		})
+		// #endif
+		// #ifdef H5
+		let a = document.createElement("a");
+		a.download = h5ImgName; // 设置下载的文件名，默认是'下载'
+		a.href = path; //图片url
+		document.body.appendChild(a);
+		a.click();
+		a.remove();
+		callback()
+		// #endif
+	}
 }
 
 
