@@ -69,14 +69,14 @@
                     "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
                 ],
                 "abiFilters" : [ "armeabi-v7a", "arm64-v8a", "x86" ],
-                "schemes" : "GongYue",
+                "schemes" : "gongyue",
                 "minSdkVersion" : 21,
                 "targetSdkVersion" : 33
             },
             /* ios打包配置 */
             "ios" : {
                 "dSYMs" : false,
-                "urltypes" : "GongYue",
+                "urltypes" : "gongyue",
                 "UIBackgroundModes" : "audio,location"
             },
             /* SDK配置 */

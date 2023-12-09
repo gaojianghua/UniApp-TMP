@@ -143,6 +143,12 @@
 			},
 			//初始化海报数据
 			initPoster() {
+				let shareArgs = {
+					appUrl: 'gongyue://',
+					h5Url: '',
+					id: 7,
+					inviteCode: this.userinfo.inviteCode
+				}
 				this.poster = {
 					css: {
 						width: "600rpx",
@@ -264,7 +270,7 @@
 									}
 								},
 								{
-									text: `${this.detail.shareUrl + '?item=' + this.userinfo.inviteCode}`,
+									text: `${this.detail.shareUrl + '?item=' + shareArgs}`,
 									type: 'qrcode',
 									css: {
 										objectFit: "cover",
@@ -283,6 +289,7 @@
 			},
 			// 获取漫画信息
 			getComicsInfo() {
+				// TODO：请求获取数据
 				this.detail = {
 					name: '大苍守夜人',
 					coverImage: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/manhua/coverImage.jpg',
@@ -298,6 +305,7 @@
 			},
 			// 获取章节列表
 			getChapterList() {
+				// TODO：请求获取数据
 				this.chapterList = []
 				for (let i = 1; i <= 1200; i++) {
 					this.chapterList.push({

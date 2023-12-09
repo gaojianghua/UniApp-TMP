@@ -42,18 +42,15 @@
 			}
 		}
 	],
-	"subPackages": [
-		{
+	"subPackages": [{
 			"root": "pages-common",
-			"pages": [
-				{
+			"pages": [{
 					"path": "account/login/index",
 					"style": {
 						"navigationBarTitleText": "%page.登录%",
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
-				
 				},
 				{
 					"path": "account/register/index",
@@ -62,355 +59,362 @@
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
-				
+				},
+				{
+					"path": "share-guide/index",
+					"style": {
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
 				}
 			]
 		},
 		{
-		"root": "pages-next",
-		"pages": [{
-			"path": "mine/setting/index",
-			"style": {
-				"navigationBarTitleText": "%page.设置%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "common/search/index",
-			"style": {
-				"navigationBarTitleText": "%page.搜索%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "common/goods-detail/index",
-			"style": {
-				"navigationBarTitleText": "%page.商品详情%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "home/select-city/index",
-			"style": {
-				"navigationBarTitleText": "%page.选择城市%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "mine/order-list/index",
-			"style": {
-				"navigationBarTitleText": "%page.订单列表%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "mine/my-evaluate/index",
-			"style": {
-				"navigationBarTitleText": "%page.我的评价%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "mine/my-coupon/index",
-			"style": {
-				"navigationBarTitleText": "%page.我的优惠券%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "mine/my-points/index",
-			"style": {
-				"navigationBarTitleText": "%page.我的积分%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "mine/my-collect/index",
-			"style": {
-				"navigationBarTitleText": "%page.我的收藏%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "mine/my-footmark/index",
-			"style": {
-				"navigationBarTitleText": "%page.我的足迹%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "mine/download-app/index",
-			"style": {
-				"navigationBarTitleText": "%page.APP下载%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "mine/official-service/index",
-			"style": {
-				"navigationBarTitleText": "%page.官方客服%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "mine/gongyue-coin/index",
-			"style": {
-				"navigationBarTitleText": "%page.宫悦币%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "mine/lucky-bean/index",
-			"style": {
-				"navigationBarTitleText": "%page.幸运豆%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "mine/video-deposit/index",
-			"style": {
-				"navigationBarTitleText": "%page.视投金%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "mine/member-center/index",
-			"style": {
-				"navigationBarTitleText": "%page.会员中心%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "mine/scan-code/index",
-			"style": {
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "mine/my-novel/index",
-			"style": {
-				"navigationBarTitleText": "%page.我的小说%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "mine/my-comics/index",
-			"style": {
-				"navigationBarTitleText": "%page.我的漫画%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}, {
-			"path": "mine/recreation/index",
-			"style": {
-				"navigationBarTitleText": "%page.娱乐中心%",
-				"navigationStyle": "custom",
-				"enablePullDownRefresh": false
-			}
-		}]
-	}, {
-		"root": "pages-offspring",
-		"pages": [{
-				"path": "feedback/index",
+			"root": "pages-next",
+			"pages": [{
+				"path": "mine/setting/index",
 				"style": {
-					"navigationBarTitleText": "%page.意见反馈%",
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "about-us/index",
-				"style": {
-					"navigationBarTitleText": "%page.关于宫悦%",
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "clear-cache/index",
-				"style": {
-					"navigationBarTitleText": "%page.清除缓存%",
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "personal-info/index",
-				"style": {
-					"navigationBarTitleText": "%page.个人信息%",
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "common-issue/index",
-				"style": {
-					"navigationBarTitleText": "%page.常见问题%",
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "common-issue-detail/index",
-				"style": {
-					"navigationBarTitleText": "%page.问题详情%",
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "bind-cell-phone/index",
-				"style": {
-					"navigationBarTitleText": "%page.绑定手机%",
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "shipping-address/index",
-				"style": {
-					"navigationBarTitleText": "%page.收货地址%",
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "points-draw/index",
-				"style": {
-					"navigationBarTitleText": "%page.积分抽奖%",
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "points-shop/index",
-				"style": {
-					"navigationBarTitleText": "%page.积分商城%",
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "points-draw-record/index",
-				"style": {
-					"navigationBarTitleText": "%page.抽奖记录%",
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "app-share/index",
-				"style": {
-					"navigationBarTitleText": "%page.APP分享%",
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "update-password/index",
-				"style": {
-					"navigationBarTitleText": "%page.修改密码%",
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "bind-update-phone/index",
-				"style": {
-					"navigationBarTitleText": "%page.修改手机号%",
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "policy-agreement/index",
-				"style": {
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "add-edit-address/index",
-				"style": {
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "feedback-record/index",
-				"style": {
-					"navigationBarTitleText": "%page.反馈记录%",
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "feedback-detail/index",
-				"style": {
-					"navigationBarTitleText": "%page.反馈详情%",
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "order-search/index",
-				"style": {
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "order-detail/index",
-				"style": {
-					"navigationBarTitleText": "%page.订单详情%",
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "ranking-list/index",
-				"style": {
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			},
-			{
-				"path": "novel-screen/index",
-				"style": {
-					"navigationBarTitleText": "%page.小说筛选%",
+					"navigationBarTitleText": "%page.设置%",
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
 			}, {
-				"path": "all-search/index",
+				"path": "common/search/index",
+				"style": {
+					"navigationBarTitleText": "%page.搜索%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "common/goods-detail/index",
+				"style": {
+					"navigationBarTitleText": "%page.商品详情%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "home/select-city/index",
+				"style": {
+					"navigationBarTitleText": "%page.选择城市%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "mine/order-list/index",
+				"style": {
+					"navigationBarTitleText": "%page.订单列表%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "mine/my-evaluate/index",
+				"style": {
+					"navigationBarTitleText": "%page.我的评价%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "mine/my-coupon/index",
+				"style": {
+					"navigationBarTitleText": "%page.我的优惠券%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "mine/my-points/index",
+				"style": {
+					"navigationBarTitleText": "%page.我的积分%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "mine/my-collect/index",
+				"style": {
+					"navigationBarTitleText": "%page.我的收藏%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "mine/my-footmark/index",
+				"style": {
+					"navigationBarTitleText": "%page.我的足迹%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "mine/download-app/index",
+				"style": {
+					"navigationBarTitleText": "%page.APP下载%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "mine/official-service/index",
+				"style": {
+					"navigationBarTitleText": "%page.官方客服%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "mine/gongyue-coin/index",
+				"style": {
+					"navigationBarTitleText": "%page.宫悦币%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "mine/lucky-bean/index",
+				"style": {
+					"navigationBarTitleText": "%page.幸运豆%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "mine/video-deposit/index",
+				"style": {
+					"navigationBarTitleText": "%page.视投金%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "mine/member-center/index",
+				"style": {
+					"navigationBarTitleText": "%page.会员中心%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "mine/scan-code/index",
 				"style": {
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
 			}, {
-				"path": "book-shelf/index",
+				"path": "mine/my-novel/index",
 				"style": {
-					"navigationBarTitleText": "%page.我的书架%",
+					"navigationBarTitleText": "%page.我的小说%",
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
-			}, 
-			// {
-			// 	"path": "read-novel/index",
-			// 	"style": {
-			// 		"navigationStyle": "custom",
-			// 		"enablePullDownRefresh": false
-			// 	}
-			// }, 
-			{
-				"path": "read-comics/index",
+			}, {
+				"path": "mine/my-comics/index",
 				"style": {
+					"navigationBarTitleText": "%page.我的漫画%",
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
-			}
-		]
-	}],
+			}, {
+				"path": "mine/recreation/index",
+				"style": {
+					"navigationBarTitleText": "%page.娱乐中心%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}]
+		}, {
+			"root": "pages-offspring",
+			"pages": [{
+					"path": "feedback/index",
+					"style": {
+						"navigationBarTitleText": "%page.意见反馈%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "about-us/index",
+					"style": {
+						"navigationBarTitleText": "%page.关于宫悦%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "clear-cache/index",
+					"style": {
+						"navigationBarTitleText": "%page.清除缓存%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "personal-info/index",
+					"style": {
+						"navigationBarTitleText": "%page.个人信息%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "common-issue/index",
+					"style": {
+						"navigationBarTitleText": "%page.常见问题%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "common-issue-detail/index",
+					"style": {
+						"navigationBarTitleText": "%page.问题详情%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "bind-cell-phone/index",
+					"style": {
+						"navigationBarTitleText": "%page.绑定手机%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "shipping-address/index",
+					"style": {
+						"navigationBarTitleText": "%page.收货地址%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "points-draw/index",
+					"style": {
+						"navigationBarTitleText": "%page.积分抽奖%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "points-shop/index",
+					"style": {
+						"navigationBarTitleText": "%page.积分商城%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "points-draw-record/index",
+					"style": {
+						"navigationBarTitleText": "%page.抽奖记录%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "app-share/index",
+					"style": {
+						"navigationBarTitleText": "%page.APP分享%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "update-password/index",
+					"style": {
+						"navigationBarTitleText": "%page.修改密码%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "bind-update-phone/index",
+					"style": {
+						"navigationBarTitleText": "%page.修改手机号%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "policy-agreement/index",
+					"style": {
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "add-edit-address/index",
+					"style": {
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "feedback-record/index",
+					"style": {
+						"navigationBarTitleText": "%page.反馈记录%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "feedback-detail/index",
+					"style": {
+						"navigationBarTitleText": "%page.反馈详情%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "order-search/index",
+					"style": {
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "order-detail/index",
+					"style": {
+						"navigationBarTitleText": "%page.订单详情%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "ranking-list/index",
+					"style": {
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "novel-screen/index",
+					"style": {
+						"navigationBarTitleText": "%page.小说筛选%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				}, {
+					"path": "all-search/index",
+					"style": {
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				}, {
+					"path": "book-shelf/index",
+					"style": {
+						"navigationBarTitleText": "%page.我的书架%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				// {
+				// 	"path": "read-novel/index",
+				// 	"style": {
+				// 		"navigationStyle": "custom",
+				// 		"enablePullDownRefresh": false
+				// 	}
+				// }, 
+				{
+					"path": "read-comics/index",
+					"style": {
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				}
+			]
+		}
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "GongYue Shop",

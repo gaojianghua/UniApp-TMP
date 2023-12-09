@@ -5,122 +5,131 @@
 			<!-- #ifdef MP -->
 			<view class="user position-relative" :style="{
 			height: `calc(388rpx + ${statusHeight}px + ${navbarHeight}px)`}">
-			<view class="user-image hidden">
-				<u-image width="100%" :height="`calc(388rpx + ${statusHeight}px + ${navbarHeight}px)`" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/mine-bg.png" mode="">
-				</u-image>
-			</view>
-			<!-- #endif -->
-			<!-- #ifndef MP -->
-			<view class="user position-relative" :style="{
-			height: `calc(388rpx + ${statusHeight}px)`}">
 				<view class="user-image hidden">
-					<u-image width="100%" :height="`calc(388rpx + ${statusHeight}px)`" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/mine-bg.png" mode="">
+					<u-image width="100%" :height="`calc(388rpx + ${statusHeight}px + ${navbarHeight}px)`"
+						src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/mine-bg.png" mode="">
 					</u-image>
 				</view>
 				<!-- #endif -->
-				<view class="position-absolute px-3 pt-3 top-0 right-0 left-0 right-0">
-					<!-- 顶部状态栏高度 -->
-					<!-- #ifdef MP -->
-					<view :style="{height: `calc(${statusHeight}px + ${navbarHeight}px - 30rpx)`}"></view>
+				<!-- #ifndef MP -->
+				<view class="user position-relative" :style="{
+			height: `calc(388rpx + ${statusHeight}px)`}">
+					<view class="user-image hidden">
+						<u-image width="100%" :height="`calc(388rpx + ${statusHeight}px)`"
+							src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/mine-bg.png" mode="">
+						</u-image>
+					</view>
 					<!-- #endif -->
-					<!-- #ifdef APP-PLUS -->
-					<view :style="{height: `calc(${statusHeight}px - 30rpx)`}"></view>
-					<!-- #endif -->
-					<view class="d-flex a-center">
-						<view class="user-avatar flex-shrink border-2 border-white mr-2">
-							<u-image radius="100" width="100rpx" height="100rpx"
-								:src="userinfo.avatar || 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/default-avatar.png'" mode="">
-							</u-image>
-						</view>
-						<view class="user-info d-flex flex-column j-around mr-2" @click="openLogin">
-							<view class="info-name font-lg line-h">
-								{{token ? userinfo.name : $t('前往登录')}}
+					<view class="position-absolute px-3 pt-3 top-0 right-0 left-0 right-0">
+						<!-- 顶部状态栏高度 -->
+						<!-- #ifdef MP -->
+						<view :style="{height: `calc(${statusHeight}px + ${navbarHeight}px - 30rpx)`}"></view>
+						<!-- #endif -->
+						<!-- #ifdef APP-PLUS -->
+						<view :style="{height: `calc(${statusHeight}px - 30rpx)`}"></view>
+						<!-- #endif -->
+						<view class="d-flex a-center">
+							<view class="user-avatar flex-shrink border-2 border-white mr-2">
+								<u-image radius="100" width="100rpx" height="100rpx"
+									:src="userinfo.avatar || 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/default-avatar.png'"
+									mode="">
+								</u-image>
 							</view>
-							<view v-if="token" class="info-desc font-md line-h mt-2">
-								ID: {{userinfo.id}}
-							</view>
-							<view v-else class="user-notice line-h mt-2">
-								{{$t('您还未登录。立即登录，享受更多特权！')}}
-							</view>
-						</view>
-						<view class="ml-auto flex-shrink d-flex a-center">
-							<!-- #ifndef H5 -->
-							<view class="top-menu mr-3 d-flex flex-column j-center a-center" @click="openScanCode">
-								<u-image width="50rpx" height="50rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/scan-code.svg" mode="" />
-								<view class="top-menu-text">
-									{{$t('扫码')}}
+							<view class="user-info d-flex flex-column j-around mr-2" @click="openLogin">
+								<view class="info-name font-lg line-h">
+									{{token ? userinfo.name : $t('前往登录')}}
+								</view>
+								<view v-if="token" class="info-desc font-md line-h mt-2">
+									ID: {{userinfo.id}}
+								</view>
+								<view v-else class="user-notice line-h mt-2">
+									{{$t('您还未登录。立即登录，享受更多特权！')}}
 								</view>
 							</view>
-							<!-- #endif -->
-							<view class="top-menu mr-1 d-flex flex-column j-center a-center" @click="openSet">
-								<u-image width="50rpx" height="50rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/setting-two.svg" mode="" />
-								<view class="top-menu-text">
-									{{$t('page.设置')}}
+							<view class="ml-auto flex-shrink d-flex a-center">
+								<!-- #ifndef H5 -->
+								<view class="top-menu mr-3 d-flex flex-column j-center a-center" @click="openScanCode">
+									<u-image width="50rpx" height="50rpx"
+										src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/scan-code.svg"
+										mode="" />
+									<view class="top-menu-text">
+										{{$t('扫码')}}
+									</view>
+								</view>
+								<!-- #endif -->
+								<view class="top-menu mr-1 d-flex flex-column j-center a-center" @click="$tools.Navigate.navigateTo('/pages-next/mine/setting/index')">
+									<u-image width="50rpx" height="50rpx"
+										src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/setting-two.svg"
+										mode="" />
+									<view class="top-menu-text">
+										{{$t('page.设置')}}
+									</view>
 								</view>
 							</view>
 						</view>
-					</view>
-					<!-- 小说漫画 -->
-					<view class="media py-2 d-flex a-center j-around mt-3">
-						<view class="d-flex a-center j-center flex-column" v-for="(item, i) in literList" :key="i"
-							@click="$tools.Navigate.navigateTo(item.page)">
-							<u-image width="80rpx" height="80rpx" :src="item.src"></u-image>
-							<view class="mt-1 line-h main-text-color">
-								{{$t(item.name)}}
+						<!-- 小说漫画 -->
+						<view class="media py-2 d-flex a-center j-around mt-3">
+							<view class="d-flex a-center j-center flex-column" v-for="(item, i) in literList" :key="i"
+								@click="$tools.Navigate.navigateTo(item.page)">
+								<u-image width="80rpx" height="80rpx" :src="item.src"></u-image>
+								<view class="mt-1 line-h main-text-color">
+									{{$t(item.name)}}
+								</view>
 							</view>
 						</view>
+						<!-- VIP -->
 					</view>
-					<!-- VIP -->
-				</view>
-				<view class="vip-card">
-					<u-image width="690rpx" height="120rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/mine-vip-card.png"
-						@click="$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')">
-					</u-image>
-				</view>
-			</view>
-			<u-gap height="80rpx"></u-gap>
-			<!-- 订单栏 -->
-			<view class="order">
-				<view class="d-flex j-sb">
-					<span class="font-weight">{{$t('我的订单')}}</span>
-					<view class="d-flex a-base" @click="openOrderList()">
-						{{$t('全部')}}
-						<u-icon name="arrow-right" size="14"></u-icon>
+					<view class="vip-card">
+						<u-image width="690rpx" height="120rpx"
+							src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/mine-vip-card.png"
+							@click="$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')">
+						</u-image>
 					</view>
 				</view>
-				<view class="d-flex a-center mt-2 j-sb">
-					<block v-for="(item, i) in orderMenus" :key="i">
-						<view class="order-item d-flex flex-column a-center j-center" @click="openOrderList(item.id)">
-							<u-image width="60rpx" height="60rpx" :src="item.img" mode="aspectFit" />
-							<view class="order-text">
-								{{$t(item.name)}}
-							</view>
+				<u-gap height="80rpx"></u-gap>
+				<!-- 订单栏 -->
+				<view class="order">
+					<view class="d-flex j-sb">
+						<span class="font-weight">{{$t('我的订单')}}</span>
+						<view class="d-flex a-base" @click="openOrderList()">
+							{{$t('全部')}}
+							<u-icon name="arrow-right" size="14"></u-icon>
 						</view>
-					</block>
-				</view>
-			</view>
-			<!-- 币区 -->
-			<view class="assets text-white mt-2 bg-white d-flex a-center j-around">
-				<view v-for="(item, i) in assets" :key="i" class="assets-item d-flex flex-column a-center j-center"
-					@click="openAssets(item)">
-					<view class="item-value">
-						{{item.value}}
 					</view>
-					<view class="item-text">
-						{{$t(item.name)}}
+					<view class="d-flex a-center mt-2 j-sb">
+						<block v-for="(item, i) in orderMenus" :key="i">
+							<view class="order-item d-flex flex-column a-center j-center"
+								@click="openOrderList(item.id)">
+								<u-image width="60rpx" height="60rpx" :src="item.img" mode="aspectFit" />
+								<view class="order-text">
+									{{$t(item.name)}}
+								</view>
+							</view>
+						</block>
 					</view>
 				</view>
-			</view>
-			<!-- 菜单栏 -->
-			<view class="menu mt-2">
-				<view class="menu-item" v-for="(item, i) in menuList" :key="i" @click="openMenu(item)">
-					<m-cell i18n v-if="item.id != 5" :item="item"></m-cell>
-					<!-- #ifdef H5 -->
-					<m-cell i18n v-if="item.id == 5" :item="item"></m-cell>
-					<!-- #endif -->
+				<!-- 币区 -->
+				<view class="assets text-white mt-2 bg-white d-flex a-center j-around">
+					<view v-for="(item, i) in assets" :key="i" class="assets-item d-flex flex-column a-center j-center"
+						@click="$tools.Navigate.navigateTo(item.page)">
+						<view class="item-value">
+							{{item.value}}
+						</view>
+						<view class="item-text">
+							{{$t(item.name)}}
+						</view>
+					</view>
 				</view>
-			</view>
-			<u-gap height="50rpx"></u-gap>
+				<!-- 菜单栏 -->
+				<view class="menu mt-2">
+					<view class="menu-item" v-for="(item, i) in menuList" :key="i" @click="$tools.Navigate.navigateTo(item.page)">
+						<m-cell i18n v-if="item.id != 5" :item="item"></m-cell>
+						<!-- #ifdef H5 -->
+						<m-cell i18n v-if="item.id == 5" :item="item"></m-cell>
+						<!-- #endif -->
+					</view>
+				</view>
+				<u-gap height="50rpx"></u-gap>
 		</m-scroll-y>
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/mine/index" i18n></m-tabbar>
@@ -163,34 +172,6 @@
 			openOrderList(i) {
 				i == 5 ? this.$tools.Navigate.navigateTo('/pages-next/mine/my-evaluate/index') :
 					this.$tools.Navigate.navigateTo('/pages-next/mine/order-list/index', i)
-			},
-			openSet() {
-				this.$tools.Navigate.navigateTo('/pages-next/mine/setting/index')
-			},
-			openAssets(e) {
-				this.$tools.Navigate.navigateTo(e.page)
-			},
-			openMenu(e) {
-				switch (e.id) {
-					case 1:
-						this.$tools.Navigate.navigateTo(e.page)
-						break;
-					case 2:
-						this.$tools.Navigate.navigateTo(e.page)
-						break;
-					case 3:
-						this.$tools.Navigate.navigateTo(e.page)
-						break;
-					case 4:
-						this.$tools.Navigate.navigateTo(e.page)
-						break;
-					case 5:
-						this.$tools.Navigate.navigateTo(e.page)
-						break;
-					case 6:
-						this.$tools.Navigate.navigateTo(e.page)
-						break;
-				}
 			},
 			openShow() {
 				this.$mToast.show({
@@ -250,8 +231,8 @@
 	.page {
 		.user {
 			color: #111;
-			
-			.user-image{
+
+			.user-image {
 				border-radius: 0 0 40rpx 40rpx;
 			}
 

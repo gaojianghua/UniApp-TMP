@@ -30,6 +30,7 @@
 	"page.我的足迹": "My Footmark",
 	"page.APP下载": "APP Download",
 	"page.APP分享": "APP Share",
+	"page.分享引导": "Share Guide",
 	"page.当前版本": "Current Version",
 	"page.官方客服": "Official Service",
 	"page.宫悦币": "GongYue Coin",
@@ -108,7 +109,6 @@
 	
 	"保存图片": "Save Image",
 	"保存成功": "Save Success",
-	"保存失败": "Save Fail",
 	"链接已复制": "Link Copied",
 	
 	"服务协议和隐私政策": "Service Agreement and Privacy Policy",
@@ -354,6 +354,5 @@
 	"请选择支付方式": "Please select mode of payment",
 	"查询商品失败": "Goods query failed",
 	"支付失败": "Payment failed",
-	"消耗商品失败": "Failed to consume goods",
-	"确定要保存图片到本地相册吗？": "Are you sure you want to save the picture to the local album ?"
+	"消耗商品失败": "Failed to consume goods"
 }

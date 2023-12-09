@@ -56,6 +56,11 @@ const menuList = [
 		id: 6,
 		name: 'page.官方客服',
 		page: '/pages-next/mine/official-service/index'
+	},
+	{
+		id: 7,
+		name: 'page.分享引导',
+		page: '/pages-common/share-guide/index'
 	}
 ]
 
