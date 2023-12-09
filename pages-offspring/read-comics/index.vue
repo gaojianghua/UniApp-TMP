@@ -130,7 +130,7 @@
 				intoView: ''
 			}
 		},
-		onLoad() {
+		onLoad(options) {
 			this.init()
 		},
 		methods: {
