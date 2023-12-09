@@ -4,7 +4,7 @@
 			<view class="rect" @tap.stop>
 				<view class="rect-title d-flex a-center j-center main-bg-color">
 					{{i18n ? $t(title) : title}}
-					<view class="rect-close" @click="cancel">
+					<view class="rect-close" @click="cancel('S')">
 						<u-icon name="close" :color="iconColor" :size="iconSize"></u-icon>
 					</view>
 				</view>
@@ -13,16 +13,16 @@
 				</view>
 				<view v-if="isCancel" class="rect-btn d-flex j-sb a-center">
 					<view class="rect-btn-item text-center main-bg-color main-bg-color-active" @click="cancel">
-						{{i18n ? $t('取消') : '取消'}}
+						{{i18n ? $t(cancelName) : cancelName}}
 					</view>
 					<view class="px-4"></view>
 					<view class="rect-btn-item text-center main-bg-color main-bg-color-active" @click="confirm">
-						{{i18n ? $t('确认') : '确认'}}
+						{{i18n ? $t(confirmName) : confirmName}}
 					</view>
 				</view>
 				<view v-else class="rect-btn d-flex j-center a-center">
 					<view class="rect-btn-btn text-center main-bg-color main-bg-color-active" @click="confirm">
-						{{i18n ? $t(btnName) : btnName}}
+						{{i18n ? $t(confirmName) : confirmName}}
 					</view>
 				</view>
 			</view>
@@ -46,9 +46,13 @@
 				type: Boolean,
 				default: true
 			},
-			btnName: {
+			confirmName: {
 				type: String,
 				default: '确认'
+			},
+			cancelName: {
+				type: String,
+				default: '取消'
 			},
 			iconColor: {
 				type: String,
@@ -67,8 +71,8 @@
 			return {};
 		},
 		methods: {
-			cancel() {
-				this.$emit('cancel')
+			cancel(i) {
+				i ? this.$emit('cancel', i) : this.$emit('cancel')
 			},
 			confirm() {
 				this.$emit('confirm')

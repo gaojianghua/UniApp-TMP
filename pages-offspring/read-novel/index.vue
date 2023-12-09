@@ -321,7 +321,7 @@
 			</view>
 		</view>
 		<mine-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow" :item="detail" />
-		<m-modal :show="modalShow" i18n title="温馨提示" btnName="加入书架" @cancel="cancel" @confirm="addfavor">
+		<m-modal :show="modalShow" i18n title="温馨提示" confirmName="加入书架" @cancel="cancel" @confirm="addfavor">
 			<view class="d-flex a-center j-center flex-column">
 				<view class="d-flex a-center text-center j-center flex-column main-text-color letter-1">
 					{{$t('喜欢这本书吗？快加入书架吧！')}}

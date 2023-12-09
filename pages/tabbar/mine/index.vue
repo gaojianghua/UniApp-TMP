@@ -282,7 +282,7 @@
 				}
 
 				.order-text {
-					font-size: 26rpx;
+					font-size: 24rpx;
 				}
 			}
 		}

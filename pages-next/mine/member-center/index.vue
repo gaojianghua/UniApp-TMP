@@ -89,7 +89,7 @@
 			</view>
 		</view>
 		<!-- 弹框 -->
-		<m-modal :show="show" i18n title="温馨提示" @cancel="show = false" btnName="去完善"
+		<m-modal :show="show" i18n title="温馨提示" @cancel="show = false" confirmName="去完善"
 			@confirm="$tools.Navigate.navigateTo('/pages-next/mine/setting/index')">
 			<view class="d-flex a-center text-center j-center">
 				{{$t('为了保障您的账户安全，请尽快完善您的个人信息 (绑定手机号/邮箱)。')}}

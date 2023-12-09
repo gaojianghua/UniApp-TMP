@@ -25,20 +25,30 @@
 			<view class="px-3 text-i2 text-center mt-2">
 				{{detail.intro}}
 			</view>
-			<view class="btns mt-5 text-white d-flex a-center j-center" @click="appDownload">
+			<view class="btns mt-5 text-white d-flex a-center j-center" @click="openShow = true">
+				{{$t('前往阅读')}}
+			</view>
+			<view v-if="!$check.isIncludesSomeAPP('gongyue')" class="btns mt-3 text-white d-flex a-center j-center" @click="appDownload">
 				{{$t('下载APP')}}
 			</view>
 		</view>
 		<!-- 弹框 -->
-		<m-modal :show="show" i18n title="温馨提示" :isCancel="false" btnName="复制链接" @cancel="show = false" @confirm="urlCopy">
+		<m-modal :show="show" i18n title="温馨提示" :isCancel="false" confirmName="复制链接" @cancel="show = false" @confirm="urlCopy">
 			<view class="d-flex a-center j-center flex-column">
-				<view class="d-flex a-center j-center flex-column main-text-color letter-1">
+				<view class="d-flex a-center j-center text-center flex-column main-text-color letter-1">
 					<span>{{$t('您当前使用的不是Safari浏览器')}}</span>
 					<span>{{$t('请复制下方链接在Safari浏览器中打开')}}</span>
 					<u-icon name="arrow-downward" size="18" color="#f27299"></u-icon>
 				</view>
 				<view class="mt-1 text-center text-success border-2 border-success px-2 py-1 rounded-1 initial text-break">
 					{{downloadAuth.iosUrl}}
+				</view>
+			</view>
+		</m-modal>
+		<m-modal :show="openShow" i18n title="温馨提示" cancelName="浏览器" confirmName="去APP" @cancel="openRead($event, 'h5')" @confirm="openRead('app')">
+			<view class="d-flex a-center j-center flex-column">
+				<view class="d-flex text-center a-center j-center main-text-color">
+					<span>{{$t('请选择留在浏览器或者前往APP阅读')}}</span>
 				</view>
 			</view>
 		</m-modal>
@@ -52,7 +62,8 @@
 			return {
 				shareArgs: {},
 				detail: {},
-				show: false
+				show: false,
+				openShow: true
 			}
 		},
 		onLoad(options) {
@@ -85,6 +96,21 @@
 				}
 				if (code == 200) {
 					this.detail = data
+				}
+			},
+			// 去阅读
+			openRead(e, i) {
+				if(e == 'S') {
+					return this.openShow = false
+				} else if (e == 'app') {
+					if (this.$check.isIncludesSomeAPP('gongyue')) {
+						location.href = this.shareArgs.appUrl
+					}else {
+						this.openShow = false
+						this.appDownload()
+					}
+				} else {
+					return location.href = this.shareArgs.h5Url
 				}
 			},
 			// 获取下载权限

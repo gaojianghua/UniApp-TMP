@@ -119,7 +119,8 @@
 				chapterList: [],
 				isLoading: true,
 				query: {
-					chapterId: 1
+					chapterId: 1,
+					inviteCode: ''
 				},
 				istrig: true,
 				chapterInfo: {},
@@ -127,15 +128,18 @@
 				time: null,
 				isSort: true,
 				scrollTop: 0,
-				intoView: ''
+				intoView: '',
+				item: {}
 			}
 		},
 		onLoad(options) {
+			this.item = this.$tools.Navigate.receivePageData(options)
 			this.init()
 		},
 		methods: {
 			// 初始化
 			init() {
+				this.query.inviteCode = this.item.inviteCode && this.item.inviteCode
 				this.getComicsInfo()
 				this.getChapterList()
 				this.getData()
@@ -143,11 +147,14 @@
 			},
 			//初始化海报数据
 			initPoster() {
-				let shareArgs = {
-					appUrl: 'gongyue://',
-					h5Url: '',
+				let args = {
 					id: 7,
+					chapterId: 50,
 					inviteCode: this.userinfo.inviteCode
+				}
+				let shareArgs = {
+					appUrl: `gongyue://pages-offspring/read-comics/index?item=${args}`,
+					h5Url: `https://gongyue.gaojianghua.cn/pages-offspring/read-comics/index?item=${args}`
 				}
 				this.poster = {
 					css: {
@@ -300,7 +307,7 @@
 					collect: false,
 					state: 1,
 					allRun: 1200,
-					shareUrl: 'https://gaojianghua.cn/pages-offspring/read-comics/index'
+					shareUrl: 'https://gaojianghua.cn/pages-common/share-guide/index'
 				}
 			},
 			// 获取章节列表

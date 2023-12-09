@@ -29,9 +29,9 @@
 			</view>
 		</m-scroll-y>
 		<!-- 弹框 -->
-		<m-modal :show="show" i18n title="温馨提示" :isCancel="false" btnName="复制链接" @cancel="show = false" @confirm="urlCopy">
+		<m-modal :show="show" i18n title="温馨提示" :isCancel="false" confirmName="复制链接" @cancel="show = false" @confirm="urlCopy">
 			<view class="d-flex a-center j-center flex-column">
-				<view class="d-flex a-center j-center flex-column main-text-color letter-1">
+				<view class="d-flex a-center j-center text-center flex-column main-text-color letter-1">
 					<span>{{$t('您当前使用的不是Safari浏览器')}}</span>
 					<span>{{$t('请复制下方链接在Safari浏览器中打开')}}</span>
 					<u-icon name="arrow-downward" size="18" color="#f27299"></u-icon>

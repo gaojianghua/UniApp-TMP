@@ -14,7 +14,7 @@
 		</m-navbar>
 		<!-- 标签栏 -->
 		<view class="tabs w-100">
-			<u-tabs class="w-100" :scrollable="false" :current="current" :list="tabs" lineColor="#fb7299"
+			<u-tabs class="w-100" :scrollable="$i18n.locale == 'en' ? true : false" :current="current" :list="tabs" lineColor="#fb7299"
 				@click="switchTabs"></u-tabs>
 		</view>
 		<!-- 列表栏 -->

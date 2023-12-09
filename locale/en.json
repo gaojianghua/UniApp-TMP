@@ -127,11 +127,11 @@
 	"退出应用": "Exit App",
 	
 	"全部": "ALL",
-	"待付款": "OBLIGATION",
-	"待发货": "WAITDELIVER",
-	"待收货": "WAITRECEIVING",
-	"待评价": "WAITEVALUATE",
-	"售后": "AFTER SALE",
+	"待付款": "Pend Pay",
+	"待发货": "Pend Ship",
+	"待收货": "Pend Receiv",
+	"待评价": "Pend Evaluate",
+	"售后": "Sevice",
 	"我的订单": "My Order",
 	
 	"未使用": "Unused",
@@ -354,5 +354,14 @@
 	"请选择支付方式": "Please select mode of payment",
 	"查询商品失败": "Goods query failed",
 	"支付失败": "Payment failed",
-	"消耗商品失败": "Failed to consume goods"
+	"消耗商品失败": "Failed to consume goods",
+	"确定要保存图片到本地相册吗？": "Are you sure you want to save the picture to the local album ?",
+	"评分": "Mark",
+	"推荐": "Recommend",
+	"热度": "Popular",
+	"前往阅读": "Go to read",
+	"下载APP": "Download APP",
+	"请选择留在浏览器或者前往APP阅读": "Please choose to stay in the browser or go to the APP to read",
+	"浏览器": "Browser",
+	"去APP": "To APP"
 }
