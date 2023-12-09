@@ -353,5 +353,27 @@ class Check {
 	static isSpeechRecognitionBrowser() {
 		return ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) ? true : false
 	}
+
+	/**
+	 * @description 判断设备是否安装了某个APP
+	 */
+	static isSpeechRecognitionBrowser() {
+		uni.getProvider({
+		  service: 'oauth',
+		  success(res) {
+		    if (res.provider.includes('taobao')) {
+		      // 设备安装了淘宝 App
+		      console.log('淘宝 App已安装');
+		    } else {
+		      // 设备未安装淘宝 App
+		      console.log('淘宝 App未安装');
+		    }
+		  },
+		  fail(err) {
+		    // 获取供应商信息失败
+		    console.log('获取供应商信息失败', err);
+		  }
+		});
+	}
 }
 export default Check
