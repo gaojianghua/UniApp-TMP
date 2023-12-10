@@ -33,61 +33,53 @@
 			<!-- 底部 -->
 			<view class="footer" :style="{height: `calc(88rpx + env(safe-area-inset-bottom))`}"></view>
 		</view>
-		<!-- 封面 -->
-		<view class="cover container position-relative" :class="`container${background - 1}`" :style="{zIndex: 4, transform: `translate${cover.pageTranslate[turnType]}`, transition: `transform ${showAnimation?turnPageTime:0}s`,
+		<!-- 封面 层级第一 -->
+		<view class="cover container d-flex a-center flex-column position-relative"
+			:class="`container${background - 1}`" :style="{zIndex: 11, transform: `translate${cover.pageTranslate[turnType]}`, transition: `transform ${showAnimation?turnPageTime:0}s`,
 			boxShadow:showShadow&&turnType===0?'0 0 10px 0 rgba(0,0,0,.4)':''}" @touchstart="coverTouchStart"
 			@touchend="coverTouchEnd" @touchmove="coverTouchMove" @touchcancel="coverTouchcancel">
 			<!-- 顶部三星图案 -->
-			<view class="d-flex a-center j-center position-absolute"
+			<view class="d-flex a-center w-100 j-sb position-absolute"
 				:style="{top: `calc(30rpx + ${$store.state.statusHeight}px)`}">
-				<view class="mr-1"
-					style="width: 300rpx; height: 4rpx; background: #FA9C3E80;border-radius: 0 15rpx 15rpx 0;"></view>
+				<view style="width: 300rpx; height: 4rpx; background: #FA9C3E80;border-radius: 0 15rpx 15rpx 0;"></view>
 				<view class="d-flex a-center">
 					<u-icon class="mt-1" name="star-fill" size="16" color="#33C795"></u-icon>
-					<u-icon class="mx-1 mb-1" name="star-fill" size="22" color="#33C795"></u-icon>
+					<u-icon class="mb-1" name="star-fill" size="22" color="#33C795"></u-icon>
 					<u-icon class="mt-1" name="star-fill" size="16" color="#33C795"></u-icon>
 				</view>
-				<view class="ml-1"
-					style="width: 300rpx; height: 4rpx; background: #FA9C3E80;border-radius: 15rpx 0 0 15rpx;"></view>
+				<view style="width: 300rpx; height: 4rpx; background: #FA9C3E80;border-radius: 15rpx 0 0 15rpx;"></view>
 			</view>
 			<view :style="{height: `calc(130rpx + ${$store.state.statusHeight}px)`}"></view>
-			<u-image radius="5" width="290rpx" height="400rpx" :src="detail.picx"></u-image>
-			<view class="mt-3 text-center text-ellipsis2 font-weight" style="font-size: 36rpx;"
-				:style="{color: `${background == 2 ? colorList[1] : colorList[0]}`}">
+			<u-image radius="6" width="300rpx" height="400rpx" :src="detail.img"></u-image>
+			<view class="font-weight font-lg mt-2">
 				{{detail.name}}
 			</view>
-			<view class="d-flex a-center mt-1">
-				<view class="item-school">
-					{{$t('作者')}}: {{detail.author}}
-					<!-- {{item.school | numberFormat('w', 'cn')}}{{$t('书友在读')}} -->
-				</view>
-				<view class="ml-1 item-type">
-					<!-- {{item.type}} · {{item.state == 1 ? $t('连载中') : $t('已完结')}} -->
-					· {{detail.state}}
+			<view class="font-sm mt text-warning">
+				{{detail.author}}
+			</view>
+			<view class="data">
+				{{$t('评分')}}: {{detail.mark}} · {{$t('推荐')}}: {{detail.recommend}} · {{$t('热度')}}: {{detail.popular}}
+			</view>
+			<view class="type d-flex a-center mt-2">
+				<view class="type-item mr-2" v-for="(item, i) in detail.types" :key="i">
+					{{item}}
 				</view>
 			</view>
-			<view class="d-flex a-base j-center mt-1">
-				<u-rate allowHalf :value="detail.score / 2" disabled></u-rate>
-				<view class="item-info d-inline-block font-weight ml-1">
-					{{detail.score}}{{$t('分')}}
-				</view>
-			</view>
-			<view class="mx-3 mt-5 text-center" style="width: 690rpx;"
-				:style="{color: `${background == 2 ? colorList[1] : colorList[0]}`}">
-				{{detail.text}}
+			<view class="px-3 text-i2 text-center mt-2">
+				{{detail.intro}}
 			</view>
 		</view>
 		<!-- ************************** -->
-
-		<!-- 顶部区域 -->
-		<view class="header w-100 position-fixed top-0 left-0 index-1" :style="{height: `calc(88rpx + ${$store.state.statusHeight}px)`}">
+		<!-- 顶部区域 层级第二 -->
+		<view class="header w-100 position-fixed top-0 left-0 index-1"
+			:style="{height: `calc(88rpx + ${$store.state.statusHeight}px)`}">
 			<!-- 章节名等内容 -->
 			<view class="chapter w-100" style="height: 88rpx;">
 				{{compose[0].chapterName}}
 			</view>
 		</view>
 		<!-- 阅读页（结构和样式请和仅用于计算元素一致） -->
-		<!-- 上一页 -->
+		<!-- 上一页 层级第三 -->
 		<view class="container" :class="`container${background - 1}`" :style="{zIndex: 3, transform: `translate${prePage.pageTranslate[turnType]}`, transition: `transform ${showAnimation?turnPageTime:0}s`,
 			boxShadow:showShadow&&turnType===0?'0 0 10px 0 rgba(0,0,0,.4)':''}">
 			<!-- 顶部占位 -->
@@ -111,7 +103,7 @@
 				</view>
 			</view>
 		</view>
-		<!-- 本页 -->
+		<!-- 本页 层级第四 -->
 		<view class="container" :class="`container${background - 1}`" :style="{zIndex: 2, transform: `translate${curPage.pageTranslate[turnType]}`, transition: `transform ${showAnimation?turnPageTime:0}s`,
 			boxShadow:showShadow&&turnType===0?'0 0 10px 0 rgba(0,0,0,.4)':''}" @touchstart="touchStart" @touchend="touchEnd"
 			@touchmove="touchMove" @touchcancel="touchcancel">
@@ -135,7 +127,7 @@
 			</view>
 		</view>
 
-		<!-- 下一页 -->
+		<!-- 下一页 层级第五 -->
 		<view class="container" :class="`container${background - 1}`" :style="{zIndex: 1, transform: `translate${nextPage.pageTranslate[turnType]}`,transition: `transform ${showAnimation?turnPageTime:0}s`,
 			boxShadow:showShadow&&turnType===0?'0 0 10px 0 rgba(0,0,0,.4)':''}">
 			<view class="" :style="{height: $store.state.statusHeight + 'px'}"></view>
@@ -158,8 +150,9 @@
 				</view>
 			</view>
 		</view>
-		<!-- 底部区域 -->
-		<view class="footer w-100 px-2 position-fixed bottom-0 left-0 index-1" :style="{height: `calc(88rpx + env(safe-area-inset-bottom))`}">
+		<!-- 底部区域 层级第二 -->
+		<view class="footer w-100 px-2 position-fixed bottom-0 left-0 index-1"
+			:style="{height: `calc(88rpx + env(safe-area-inset-bottom))`}">
 			<view>
 				{{systemTimeStr}}
 			</view>
@@ -167,121 +160,87 @@
 				{{curPage.pageNum + 1}}/{{curPage.totalPage}}
 			</view>
 			<view>
-				<battery :level="batteryLevel" :charging="batteryState === 2"></battery>
+				<battery :level="battery.batteryLevel" :charging="battery.batteryState === 2"></battery>
 			</view>
 		</view>
-		<!-- 菜单层 -->
-		<view class="menu" :style="{height: `100%`, width: `100%`}" v-if="menuShow" @touchend="closeMenu">
-			<!-- 菜单层包含返回按钮的上半部分 -->
-			<view class="menu-top" :style="{height: `${statusBarHeight + 40}px`, top: itemShow ? 0 : `-100%`}"
-				@touchend.stop>
-				<view :style="{height: `${statusBarHeight}px`}"></view>
-				<view class="head d-flex a-center">
-					<text class="iconfont back" @click="back">&#xe71a;</text>
-					<view class="d-flex a-center ml-auto pr-3">
-						<u-icon @click="sharePosters" class="mr-2" name="share" size="24" color="#fff"></u-icon>
-						<u-icon v-if="detail.fav == 1" name="heart-fill" size="24" color="#33C795"
-							@click="delfavor"></u-icon>
-						<u-icon v-else name="heart" size="24" color="#fff" @click="addfavor"></u-icon>
+
+
+
+		<!-- 遮罩层 -->
+		<u-overlay :show="menuShow">
+			<!-- 顶部导航栏 -->
+			<m-navbar :borderBottom="false" unBack @pageBack="pageBack" isFixed
+				:bgColor="background == 1 ? bgList[background].color : (background == 2 ? bgList[background - 2].color : bgList[background - 1].color)"
+				isSlot>
+				<view @click.stop class="title w-100 d-flex a-center pl-10 pr-3" :style="{
+				width: `calc(100vw - ${miniProgramCapsule.width}px)`,
+				marginRight: `calc(100vw - ${miniProgramCapsule.right}px + ${miniProgramCapsule.width}px)`}">
+					<view class="title-text flex-shrink line-h main-text-color">
+						{{detail.name}} ( {{$t('第')}} {{compose[0].chapterName}} {{$t('章')}} )
+					</view>
+					<view class="share ml-auto" @click="sharePosters">
+						<u-icon name="share-square" size="26" color="#fb7299"></u-icon>
+					</view>
+					<view class="d-flex a-center flex-shrink j-center ml-2">
+						<u-icon v-if="detail.collect" name="star-fill" color="#fb7299" size="24"
+							@click="openCollect"></u-icon>
+						<u-icon v-else name="star" color="#fb7299" size="24" @click="openCollect"></u-icon>
 					</view>
 				</view>
-			</view>
-			<!-- 菜单主体 -->
-			<view class="menu-bottom" :style="{bottom: itemShow ? 0 : '-100%'}" @touchend.stop>
+			</m-navbar>
+			<!-- 底部 -->
+			<view class="position-fixed bottom-0 left-0 w-100 menu-bottom"
+				:style="{background: background == 1 ? bgList[background].color : (background == 2 ? bgList[background - 2].color : bgList[background - 1].color)}">
 				<!-- 用于显示章节进度 -->
-				<view class="show-chapter" v-if="progressTouched">{{directoryList[chapterProgress].name}}</view>
-				<view class="show-chapter" v-else>{{compose[1].chapterName}}</view>
+				<view class="position-absolute rounded-1 p-3 bg-light-secondary left-half tf-half-x"
+					style="top: -80rpx; width: 200rpx;"
+					:style="{background: background == 1 ? bgList[background].color : (background == 2 ? bgList[background - 2].color : bgList[background - 1].color)}">
+					{{progressTouched ? directoryList[chapterProgress].name : compose[1].chapterName}}
+				</view>
 				<!-- 章节进度条 -->
-				<view class="progress-box">
-					<text @click="goPreChapter">{{$t('上一章')}}</text>
-					<view style="flex: 1;height: 100%;padding: 8px 0;">
+				<view class="d-flex a-center j-around px-2">
+					<text @click="goPreChapter"
+						:style="{color: background != 1 ? bgList[1].color : bgList[0].color}">{{$t('上一章')}}</text>
+					<view class="flex-1 py-2">
 						<slider :value="compose[1].chapterIndex" activeColor="#000" :block-size="20"
 							:max="directoryList.length - 1" @changing="slideChanging" @change="slideChange" />
 					</view>
-					<text @click="goNextChapter">{{$t('下一章')}}</text>
+					<text @click="goNextChapter"
+						:style="{color: background != 1 ? bgList[1].color : bgList[0].color}">{{$t('下一章')}}</text>
 				</view>
-				<view class="items-box">
-					<view class="item-box" @click="openDirectory">
-						<text class="iconfont line-h" style="font-size: 25px;">&#xe601;</text>
-						<text style="font-size: 13px;">{{$t('目录')}}</text>
+				<view class="d-flex a-center j-around">
+					<view class="d-flex a-center j-center flex-column" @click="openDirectory">
+						<u-icon name="list-dot" size="26"
+							:color="background != 1 ? bgList[1].color : bgList[0].color"></u-icon>
+						<text class="font"
+							:style="{color: background != 1 ? bgList[1].color : bgList[0].color}">{{$t('目录')}}</text>
 					</view>
-					<view class="item-box" v-if="background != 2" @click="changeBackground(2)">
-						<text class="iconfont line-h" style="font-size: 25px;">&#xe63e;</text>
-						<text style="font-size: 13px;">{{$t('夜间')}}</text>
+					<view class="d-flex a-center j-center flex-column" v-if="background != 2"
+						@click="changeBackground(2)">
+						<u-icon :name="`https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/${background == 1 ? 'hei' : 'hei-all'}.svg`"
+							size="28"></u-icon>
+						<text class="font"
+							:style="{color: background != 1 ? bgList[1].color : bgList[0].color}">{{$t('夜间')}}</text>
 					</view>
-					<view class="item-box" v-else @click="changeBackground(tempBackground)">
-						<text class="iconfont line-h" style="font-size: 25px;">&#xe64c;</text>
-						<text style="font-size: 13px;">{{$t('日间')}}</text>
+					<view class="d-flex a-center j-center flex-column" v-else @click="changeBackground(1)">
+						<u-icon name="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/bai.svg"
+							size="28"></u-icon>
+						<text class="font"
+							:style="{color: background != 1 ? bgList[1].color : bgList[0].color}">{{$t('日间')}}</text>
 					</view>
-					<view class="item-box" @click="openSetting">
-						<text class="iconfont line-h" style="font-size: 25px;">&#xe61d;</text>
-						<text style="font-size: 13px;">{{$t('设置')}}</text>
+					<view class="d-flex a-center j-center flex-column" @click="openSetting">
+						<u-icon name="setting-fill" size="26"
+							:color="background != 1 ? bgList[1].color : bgList[0].color"></u-icon>
+						<text class="font"
+							:style="{color: background != 1 ? bgList[1].color : bgList[0].color}">{{$t('page.设置')}}</text>
 					</view>
-
-				</view>
-			</view>
-
-			<view class="setting hideen" :style="{bottom: settingShow ? 0 : `-100%`}" @touchend.stop>
-				<view class="setting-title position-relative d-flex a-center j-center main-bg-color w-100"
-					style="height: 80rpx;">
-					{{$t('阅读设置')}}
-					<u-icon class="position-absolute" style="top: 25rpx; right: 20rpx;" name="close" size="18"
-						color="#fff" @click="closeMenu"></u-icon>
-				</view>
-				<view class="item">
-					<view class="item-name">{{$t('字号')}}</view>
-					<view class="icon" @click="bigSize" v-if="fontSize<maxFontSize">A+</view>
-					<view class="icon" style="color: #666; border: #666 solid 1px;" v-else>A+</view>
-					<view class="text-dark mr-2">
-						{{fontSize}}
-					</view>
-					<view class="icon" @click="smallSize" v-if="fontSize>minFontSize">A-</view>
-					<view class="icon" style="color: #666;border: #666 solid 1px;" v-else>A-</view>
-				</view>
-				<view class="item">
-					<view class="item-name">{{$t('排版')}}</view>
-					<view class="type-setting" :class="{active: lineHeight === 1}" @click="changeLineHeight(1)">
-						<view class="line" :class="{lineActive: lineHeight === 1}" v-for="i in 5" :key="i"></view>
-					</view>
-					<view class="type-setting" :class="{active: lineHeight === 1.5}" @click="changeLineHeight(1.5)">
-						<view class="line" :class="{lineActive: lineHeight === 1.5}" v-for="i in 4" :key="i"></view>
-					</view>
-					<view class="type-setting" :class="{active: lineHeight === 2}" @click="changeLineHeight(2)">
-						<view class="line" :class="{lineActive: lineHeight === 2}" v-for="i in 3" :key="i"></view>
-					</view>
-					<view class="type-setting" :class="{active: lineHeight === 2.5}" @click="changeLineHeight(2.5)">
-						<view class="line" :class="{lineActive: lineHeight === 2.5}" v-for="i in 2" :key="i"></view>
-					</view>
-					<view class="type-setting" :class="{active: lineHeight === 3}" @click="changeLineHeight(3)">
-						<view class="line" :class="{lineActive: lineHeight === 3}" v-for="i in 1" :key="i"></view>
-					</view>
-				</view>
-				<view class="item">
-					<view class="item-name">{{$t('翻页')}}</view>
-					<view class="icon" :class="{active: turnType === 0}" style="padding: 5px 8px; width: 150rpx;"
-						@click="changeTurnType(0)">{{$t('覆盖翻页')}}</view>
-					<view class="icon" :class="{active: turnType === 1}" style="padding: 5px 8px;width: 150rpx;"
-						@click="changeTurnType(1)">{{$t('平移翻页')}}</view>
-					<view class="icon" :class="{active: turnType === 2}" style="padding: 5px 8px;width: 150rpx;"
-						@click="changeTurnType(2)">{{$t('上下翻页')}}</view>
-				</view>
-				<view class="item">
-					<view class="item-name">{{$t('背景')}}</view>
-					<view class="icon roun" style="background-color: #fff;" :class="{active: background === 1}"
-						@click="changeBackground(1)"></view>
-					<view class="icon roun" style="background-color: #E8E2CC;" :class="{active: background === 3}"
-						@click="changeBackground(3)"></view>
-					<view class="icon roun" style="background-color: #BECEBF;" :class="{active: background === 4}"
-						@click="changeBackground(4)"></view>
-					<view class="icon roun" style="background-color: #DCE2F1;" :class="{active: background === 5}"
-						@click="changeBackground(5)"></view>
-					<view class="icon roun" style="background-color: #F1DFC2;" :class="{active: background === 6}"
-						@click="changeBackground(6)"></view>
 				</view>
 			</view>
-
-			<!-- 目录层 -->
-			<view class="directory" :class="`container${background - 1}`" v-if="directoryShowBefore"
+		</u-overlay>
+		<!-- 菜单层 -->
+		<!-- <view class="menu" :style="{height: `100%`, width: `100%`}" v-if="menuShow" @touchend="closeMenu"> -->
+		<!-- 目录层 -->
+		<!-- <view class="directory" :class="`container${background - 1}`" v-if="directoryShowBefore"
 				:style="{left: directoryShow ? 0 : '-100%',color: `${background == 2 ? colorList[1] : colorList[0]}`,boxShadow:'0 0 10px 0 rgba(0,0,0,.4)'}"
 				@touchend.stop>
 				<view class="nation-title d-flex a-center px-2 j-sb"
@@ -301,9 +260,9 @@
 							{{$t('倒序')}}
 						</view>
 					</view>
-				</view>
-				<!--  :size="40"——每一栏高度为40px  :scrollHeight="windowHeight - 60"——书名的高度为60px -->
-				<virtual-list :items="directoryList" :size="40" :remain="16" :active="compose[1].chapterIndex"
+				</view> -->
+		<!-- :size="40"——每一栏高度为40px  :scrollHeight="windowHeight - 60"——书名的高度为60px -->
+		<!-- <virtual-list :items="directoryList" :size="40" :remain="16" :active="compose[1].chapterIndex"
 					:scrollHeight="windowHeight - 40 - $store.state.statusHeight">
 					<template v-slot="{item,active}">
 						<view class="directory-listItem" :class="{active: item.index == active}"
@@ -318,9 +277,14 @@
 						</view>
 					</template>
 				</virtual-list>
-			</view>
-		</view>
-		<mine-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow" :item="detail" />
+			</view> -->
+		<!-- </view> -->
+		<!-- 阅读设置弹框 -->
+		<c-novel-read-set :show="setShow" :maxFontSize="maxFontSize" :minFontSize="minFontSize" :turnType="turnType"
+			:bgId="background" :lineHeight="lineHeight" :fontSize="fontSize" @addSize="addSize" @subSize="subSize"
+			@changeLineHeight="changeLineHeight" @changeTurnType="changeTurnType" @changeBackground="changeBackground"
+			@close="setShow = false" />
+		<c-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow" :poster="poster" />
 		<m-modal :show="modalShow" i18n title="温馨提示" confirmName="加入书架" @cancel="cancel" @confirm="addfavor">
 			<view class="d-flex a-center j-center flex-column">
 				<view class="d-flex a-center text-center j-center flex-column main-text-color letter-1">
@@ -337,22 +301,32 @@
 	} from './data.js'
 	import battery from '@/components/battery.vue'
 	import virtualList from '@/components/virtualList.vue'
-	import MineAppShare from '@/components/mine-app-share/index.vue'
-	import MModal from '@/main_modules/main-ui/m-modal/index.vue'
+	import CAppShare from '@/components/common/c-app-share/index.vue'
+	import CNovelReadSet from '@/components/common/c-novel-read-set/index.vue'
+	import capsuleInit from '@/mixins/capsule-init.js'
+	import {
+		lineList,
+		turnTypeList,
+		bgList
+	} from '@/components/common/c-novel-read-set/options.js'
 	import {
 		traditionalized,
 		simplized,
 		dateToStr
 	} from '@/utils/index.js'
 	export default {
+		mixins: [capsuleInit],
 		components: {
 			battery,
 			virtualList,
-			MineAppShare,
-			MModal
+			CAppShare,
+			CNovelReadSet
 		},
 		data() {
 			return {
+				lineList,
+				turnTypeList,
+				bgList,
 				bookName: '我是书名',
 				bookId: 1,
 				history: { //本书历史记录
@@ -415,18 +389,13 @@
 
 				showAnimation: false, //是否开启动画
 				showShadow: false, //是否显示页面阴影
-
-				windowWidth: 0, //可用屏幕宽度
-				windowHeight: 0, //可用屏幕高度
 				contentHeight: 0, //阅读区域高度
-
-				platform: '', //设备
-				batteryState: '', //电池状态
-				batteryLevel: 100, //电量
+				battery: {
+					batteryState: '', //电池状态
+					batteryLevel: 100, //电量
+				},
 				systemTime: '', //系统时间
 				systemTimeStr: '', //系统时间字符串
-				statusBarHeight: 0, //状态栏高度
-				pixelRatio: '', //设备像素比
 
 				touchStartX: 0, // 触屏起始点x
 				touchX: 0, // 瞬时触屏点x
@@ -437,13 +406,13 @@
 
 				menuShow: false, //菜单栏box是否渲染
 				itemShow: false, // 菜单栏动画控制
-				settingShow: false, //设置栏动画控制
+				setShow: false, //设置栏动画控制
 				directoryShow: false, //目录动画控制
 				directoryShowBefore: false, // 目录渲染
 				turnPageTime: .5, //翻页动画时间
 
-				maxFontSize: 30, //最大字体大小，px
-				minFontSize: 14, //最小字体大小，px
+				maxFontSize: 60, //最大字体大小，px
+				minFontSize: 24, //最小字体大小，px
 				turnType: 0, //翻页方式
 				fontSize: '', //字体大小，
 				simplified: '', //是否简体
@@ -460,32 +429,173 @@
 				posterShow: false,
 				isSuccess: false,
 				time: null,
-				modalShow: false
+				modalShow: false,
+				poster: {}
 			}
 		},
 		onLoad(options) {
 			this.query = this.$tools.Navigate.receivePageData(options)
-			this.get_detail()
-			this.getSystemInfo()
-			this.tempBackground = uni.getStorageSync('background') == 2 ? 1 : uni.getStorageSync('background')
-			// this.initPage()
-		},
-		onUnload() {
-
-			// #ifdef APP-PLUS
-			// 退出全屏
-			plus.navigator.setFullscreen(false)
-			// #endif
-
-			// this.setStorage()
-		},
-		onHide() {
-			// this.setStorage()
-		},
-		mounted() {
-			this.initPage()
+			this.init()
 		},
 		methods: {
+			// 初始化
+			init() {
+				this.initPoster()
+				this.getNovelInfo()
+				this.getChapterList()
+				this.getSystemInfo()
+				this.tempBackground = uni.getStorageSync('background') == 2 ? 1 : uni.getStorageSync('background')
+				// this.initPage()
+			},
+			//初始化海报数据
+			initPoster() {
+				let args = {
+					id: 7,
+					chapterId: 50,
+					inviteCode: this.userinfo.inviteCode
+				}
+				let shareArgs = {
+					appUrl: `gongyue://pages-offspring/read-comics/index?item=${args}`,
+					h5Url: `https://gongyue.gaojianghua.cn/pages-offspring/read-comics/index?item=${args}`
+				}
+				this.poster = {
+					css: {
+						width: "600rpx",
+						height: "950rpx",
+						borderRadius: "15rpx",
+						position: "relative",
+						backgroundColor: "#E5ECF4"
+					},
+					views: [{
+							src: `${this.detail.coverImage}`,
+							type: "image",
+							css: {
+								objectFit: "cover",
+								width: "560rpx",
+								height: "260rpx",
+								marginLeft: "20rpx",
+								marginTop: "20rpx",
+								borderRadius: "15rpx",
+							}
+						},
+						{
+							text: `${this.detail.name}`,
+							type: 'text',
+							css: {
+								marginTop: '20rpx',
+								fontWeight: 'bold',
+								fontSize: '32rpx',
+								marginLeft: '20rpx',
+								display: 'inline-block'
+							}
+						},
+						{
+							text: `${this.detail.score}`,
+							type: 'text',
+							css: {
+								fontWeight: 'bold',
+								color: '#EF930A',
+								fontSize: '36rpx',
+								position: "absolute",
+								right: "20rpx",
+								top: "300rpx",
+							}
+						},
+						{
+							text: `${this.$t('作者')}: ${this.detail.author} · ${this.detail.state == 1 ? this.$t('连载中') : this.$t('已完结')}`,
+							type: 'text',
+							css: {
+								color: '#0A57D0',
+								fontSize: '26rpx',
+								width: '540rpx',
+								marginTop: '10rpx',
+								marginLeft: '20rpx',
+							}
+						},
+						{
+							text: `${this.$t('简介')}: ${this.detail.desc}`,
+							type: 'text',
+							css: {
+								color: '#333',
+								width: '540rpx',
+								fontSize: '28rpx',
+								marginTop: '10rpx',
+								marginLeft: '20rpx',
+								lineClamp: '9',
+								lineHeight: '45rpx'
+							}
+						},
+						{
+							css: {
+								width: "100%",
+								height: "150rpx",
+								position: "absolute",
+								bottom: '0rpx',
+								left: '0rpx',
+								borderRadius: "15rpx",
+								backgroundColor: '#fff'
+							},
+							views: [{
+									src: `${this.userinfo.avatar}`,
+									type: "image",
+									css: {
+										objectFit: "cover",
+										width: "100rpx",
+										height: "100rpx",
+										position: "absolute",
+										left: "20rpx",
+										top: "25rpx",
+										borderRadius: "50%",
+									}
+								},
+								{
+									text: `${this.$t('书友')}: ${this.userinfo.name}`,
+									type: "text",
+									css: {
+										objectFit: "cover",
+										height: "50rpx",
+										width: "330rpx",
+										position: "absolute",
+										left: "130rpx",
+										top: "25rpx",
+										fontSize: '26rpx',
+										lineHeight: "50rpx",
+										lineClamp: "1"
+									}
+								}, ,
+								{
+									text: `${this.$t('邀请您阅读')}《${this.detail.name}》`,
+									type: "text",
+									css: {
+										objectFit: "cover",
+										height: "50rpx",
+										width: "330rpx",
+										position: "absolute",
+										left: "130rpx",
+										top: "75rpx",
+										fontSize: '26rpx',
+										lineHeight: "50rpx",
+										lineClamp: "1"
+									}
+								},
+								{
+									text: `${this.detail.shareUrl + '?item=' + shareArgs}`,
+									type: 'qrcode',
+									css: {
+										objectFit: "cover",
+										width: "100rpx",
+										height: "100rpx",
+										position: "absolute",
+										right: "20rpx",
+										top: "25rpx"
+									}
+								}
+							],
+							type: 'view'
+						},
+					]
+				}
+			},
 			// 取消
 			cancel() {
 				this.modalShow = false
@@ -513,39 +623,44 @@
 				this.isSuccess = false
 				this.posterShow = false
 			},
-			// 收藏
-			async addfavor() {
-				let result = requestData({
-					id: this.detail.id
-				})
-				let {} = await addNovelShelf(result)
-				this.detail.fav = 1
-				uni.showToast({
-					icon: 'none',
-					position: 'bottom',
-					title: this.$t("收藏成功,请在书架查看"),
-					complete: () => {
-						let time = setTimeout(() => {
-							if (this.modalShow) {
-								uni.navigateBack()
+			async openCollect() {
+				let res = {
+					code: 200
+				}
+				// if (this.detail.collect) {
+				// 	res = await delCollect({
+				// 		id: this.detail.id
+				// 	})
+				// } else {
+				// 	res = await addCollect({
+				// 		id: this.detail.id
+				// 	})
+				// }
+				if (res.code == 200) {
+					if (this.detail.collect) {
+						this.detail.collect = false
+						uni.showToast({
+							icon: 'none',
+							position: 'bottom',
+							title: this.$t("取消收藏成功")
+						})
+					} else {
+						this.detail.collect = true
+						uni.showToast({
+							icon: 'none',
+							position: 'bottom',
+							title: this.$t("收藏成功,请在书架查看"),
+							complete: () => {
+								let time = setTimeout(() => {
+									if (this.modalShow) {
+										this.$tools.Navigate.navigateBack()
+									}
+									clearTimeout(time)
+								}, 1000)
 							}
-							clearTimeout(time)
-						}, 1000)
+						})
 					}
-				});
-			},
-			// 取消收藏
-			async delfavor() {
-				let result = requestData({
-					ids: this.detail.id
-				})
-				let {} = await delNovelShelf(result)
-				this.detail.fav = 0
-				uni.showToast({
-					icon: 'none',
-					position: 'bottom',
-					title: this.$t("取消收藏成功")
-				});
+				}
 			},
 			// 设置排序
 			setIsSort(id) {
@@ -561,19 +676,29 @@
 					}
 				}
 			},
-			// 获取详情
-			async get_detail() {
-				// let {
-				// 	code,
-				// 	book
-				// } = await getNovelDetail(result)
-				// this.detail = book
+			// 获取小说信息
+			getNovelInfo() {
+				// TODO：请求获取数据
+				this.detail = {
+					"id": 7,
+					"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+					"name": "大苍守夜人",
+					"mark": 9.4,
+					"school": 367450,
+					"types": ["玄幻", '穿越', '无敌流', '废材流'],
+					"state": 2,
+					"recommend": 95,
+					"rank": 7,
+					"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。",
+					"author": '二十四桥明月夜',
+					"popular": 367840
+				}
 			},
 			// 获取章节内容
 			async getNovelChapterInfos() {
-				if (!this.query.zid) {
-					this.query.zid = this.chapterList[0].id
-				}
+				// if (!this.query.zid) {
+				// 	this.query.zid = this.chapterList[0].id
+				// }
 				// let {
 				// 	data,
 				// 	code
@@ -581,13 +706,17 @@
 				this.text = dateToStr()
 			},
 			// 获取章节列表
-			async getNovelChapters() {
-				// let {
-				// 	list,
-				// 	code
-				// } = await getNovelChapterList(result)
-				this.chapterList = list
-				this.getNovelChapterInfos()
+			getChapterList() {
+				// TODO：请求获取数据
+				this.chapterList = []
+				for (let i = 1; i <= 1200; i++) {
+					this.chapterList.push({
+						name: '天魂大陆' + i,
+						id: i,
+						vip: i > 15 ? true : false,
+						lock: i > 20 ? true : false,
+					})
+				}
 			},
 			setStorage() {
 				// let history = uni.getStorageSync('history')
@@ -611,77 +740,26 @@
 				// }
 				// uni.setStorageSync('history', history)
 			},
-
-			/**
-			 * 返回上一页面
-			 **/
-			back() {
-				if (this.detail.fav == 1) {
-					uni.navigateBack()
+			// 退出当前页面
+			pageBack() {
+				if (this.detail.collect) {
+					this.$tools.Navigate.navigateBack()
 				} else {
-					this.closeMenu()
 					this.modalShow = true
 				}
 			},
-
-			/**
-			 * 获取设备信息
-			 **/
+			// 获取设备信息
 			getSystemInfo() {
-
-				const {
-					windowWidth,
-					windowHeight,
-					statusBarHeight,
-					platform,
-					pixelRatio
-				} = uni.getSystemInfoSync()
-				//获取一些必要的设备参数
-				this.statusBarHeight = statusBarHeight
-				this.windowWidth = windowWidth
-				this.windowHeight = windowHeight
-				this.pixelRatio = pixelRatio
-				this.platform = platform
 				// #ifdef APP-PLUS
-				// 全屏
-				plus.navigator.setFullscreen(true)
 				// 取消ios左滑返回
-				let page = this.$mp.page.$getAppWebview()
-				page.setStyle({
+				this.$mp.page.$getAppWebview().setStyle({
 					popGesture: 'none'
 				})
-
-				if (this.platform === 'ios') {
-					// 获取ios电量
-					let UIDevice = plus.ios.import("UIDevice")
-					let dev = UIDevice.currentDevice()
-					if (!dev.isBatteryMonitoringEnabled()) {
-						dev.setBatteryMonitoringEnabled(true)
-					}
-					setInterval(() => {
-						this.batteryState = dev.batteryState()
-						this.batteryLevel = dev.batteryLevel() * 100
-					}, 1000)
-				} else {
-					// 获取安卓电量
-					let main = plus.android.runtimeMainActivity();
-					let Intent = plus.android.importClass('android.content.Intent');
-					let recevier = plus.android.implements('io.dcloud.feature.internal.reflect.BroadcastReceiver', {
-						onReceive: (context, intent) => {
-							let action = intent.getAction();
-							if (action == Intent.ACTION_BATTERY_CHANGED) {
-								this.batteryState = intent.getIntExtra("status", 0); //电池状态  
-								this.batteryLevel = intent.getIntExtra("level", 0); //电量
-							}
-						}
-					});
-					let IntentFilter = plus.android.importClass('android.content.IntentFilter');
-					let filter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
-					main.registerReceiver(recevier, filter);
-				}
-
+				let time = setInterval(() => {
+					this.battery = this.$multiportApi.app.getBatteryLevel()
+					clearTimeout(time)
+				}, 1000)
 				// #endif
-
 				// 设置时间
 				let date = new Date();
 				this.systemTime = Date.parse(date);
@@ -690,36 +768,29 @@
 					this.systemTime += 60000;
 					this.systemTimeStr = dateToStr(this.systemTime);
 				}, 60000)
-
-				// 获取字体、排版等信息
-
-				/*****************************************/
-				/**********    根据需要更改    ************/
-				/*****************************************/
-
-				//可能缓存在前端可能从后端拿，如果是异步注意同步处理
+				// 获取字体、排版等信息(可能缓存在前端可能从后端拿，如果是异步注意同步处理)
 				this.fontSize = uni.getStorageSync('fontSize')
-				if (typeof this.fontSize !== 'number') {
+				if (!this.$check.isNumber(this.fontSize)) {
 					this.fontSize = 16
 				}
 				this.simplified = uni.getStorageSync('simplified')
-				if (typeof this.simplified !== 'number') {
+				if (!this.$check.isNumber(this.simplified)) {
 					this.simplified = 1
 				}
 				this.lineHeight = uni.getStorageSync('lineHeight')
-				if (typeof this.lineHeight !== 'number') {
+				if (!this.$check.isNumber(this.lineHeight)) {
 					this.lineHeight = 1.5
 				}
 				this.background = uni.getStorageSync('background')
-				if (typeof this.background !== 'number') {
+				if (!this.$check.isNumber(this.background)) {
 					this.background = 1
 				}
 				this.turnType = uni.getStorageSync('turnType')
-				if (typeof this.turnType !== 'number') {
+				if (!this.$check.isNumber(this.turnType)) {
 					this.turnType = 0
 				}
 				let history = uni.getStorageSync('history')
-				if (typeof history !== 'object') {
+				if (!this.$check.isNumber(history)) {
 					history = []
 				}
 				history.forEach((value) => {
@@ -727,16 +798,8 @@
 						this.history = value
 					}
 				})
-
-				/*****************************************/
-				/*****************************************/
-				/*****************************************/
-
 			},
-
-			/**
-			 * 获取数据并计算页面
-			 **/
+			// 获取数据并计算页面
 			async initPage() {
 				uni.showLoading({
 					mask: true
@@ -744,7 +807,7 @@
 				this.cover.pageTranslate = [
 					`(-100%,0)`,
 					`(-100%,0)`,
-					`(0,${-this.windowHeight}px)`
+					`(0,${-this.appSystemInfo.windowHeight}px)`
 				]
 				await this.calcHeight()
 				await this.getDirectoryList()
@@ -767,7 +830,7 @@
 				if (this.contentHeight) {
 					let lineHeight = this.fontSize * this.lineHeight;
 					// #ifdef APP-PLUS || MP-WEIXIN
-					lineHeight = Math.floor(lineHeight * this.pixelRatio) / this.pixelRatio
+					lineHeight = Math.floor(lineHeight * this.appSystemInfo.pixelRatio) / this.appSystemInfo.pixelRatio
 					// #endif
 					let lineNum = Math.floor((this.contentHeight + Math.floor((lineHeight - this.fontSize) / 2)) /
 						lineHeight)
@@ -782,7 +845,8 @@
 								let lineHeight = this.fontSize * this.lineHeight;
 
 								// #ifdef APP-PLUS || MP-WEIXIN
-								lineHeight = Math.floor(lineHeight * this.pixelRatio) / this
+								lineHeight = Math.floor(lineHeight * this.appSystemInfo
+										.pixelRatio) / this
 									.pixelRatio
 								// #endif
 								let lineNum = Math.floor((height + Math.floor((lineHeight - this
@@ -809,7 +873,8 @@
 							let height = data.height;
 							// #ifdef APP-PLUS || MP-WEIXIN
 
-							height = Math.round(height * this.pixelRatio) / this.pixelRatio
+							height = Math.round(height * this.appSystemInfo.pixelRatio) / this
+								.appSystemInfo.pixelRatio
 							// #endif
 							this.compose[1].totalPage = Math.ceil(height / this.innerHeight) || 1
 							this.compose[1].ready = true //章节准备完毕
@@ -831,7 +896,8 @@
 						query.select('.preChapter').boundingClientRect(data => {
 							let height = data.height;
 							// #ifdef APP-PLUS || MP-WEIXIN
-							height = Math.round(height * this.pixelRatio) / this.pixelRatio
+							height = Math.round(height * this.appSystemInfo.pixelRatio) / this
+								.appSystemInfo.pixelRatio
 							// #endif
 							this.compose[0].totalPage = Math.ceil(height / this.innerHeight) || 1
 							this.compose[0].ready = true //章节准备完毕
@@ -865,7 +931,8 @@
 						query.select('.nextChapter').boundingClientRect(data => {
 							let height = data.height;
 							// #ifdef APP-PLUS || MP-WEIXIN
-							height = Math.round(height * this.pixelRatio) / this.pixelRatio
+							height = Math.round(height * this.appSystemInfo.pixelRatio) / this
+								.appSystemInfo.pixelRatio
 							// #endif
 							this.compose[2].totalPage = Math.ceil(height / this.innerHeight) || 1
 							this.compose[2].ready = true //章节准备完毕
@@ -910,11 +977,11 @@
 					delta = e.touches[0].clientX - this.touchStartX;
 
 					// 限制边界
-					if (delta > this.windowWidth) {
-						delta = this.windowWidth
+					if (delta > this.appSystemInfo.windowWidth) {
+						delta = this.appSystemInfo.windowWidth
 					}
-					if (delta < -this.windowWidth) {
-						delta = -this.windowWidth
+					if (delta < -this.appSystemInfo.windowWidth) {
+						delta = -this.appSystemInfo.windowWidth
 					}
 
 					this.delta = e.touches[0].clientX - this.touchX;
@@ -923,11 +990,11 @@
 					delta = e.touches[0].clientY - this.touchStartY;
 
 					// 限制边界
-					if (delta > this.windowHeight) {
-						delta = this.windowHeight
+					if (delta > this.appSystemInfo.windowHeight) {
+						delta = this.appSystemInfo.windowHeight
 					}
-					if (delta < -this.windowHeight) {
-						delta = -this.windowHeight
+					if (delta < -this.appSystemInfo.windowHeight) {
+						delta = -this.appSystemInfo.windowHeight
 					}
 
 					this.delta = e.touches[0].clientY - this.touchY;
@@ -948,8 +1015,8 @@
 					]
 					this.curPage.pageTranslate = [
 						`(0,0)`,
-						`(${this.windowWidth + delta}px,0)`,
-						`(0,${this.windowHeight + delta}px)`
+						`(${this.appSystemInfo.windowWidth + delta}px,0)`,
+						`(0,${this.appSystemInfo.windowHeight + delta}px)`
 					]
 				}
 				if (!this.pre && !this.next && delta < 0) { //首次翻下一页
@@ -961,8 +1028,8 @@
 					]
 					this.curPage.pageTranslate = [
 						`(0,0)`,
-						`(${this.windowWidth + delta}px,0)`,
-						`(0,${this.windowHeight + delta}px,)`
+						`(${this.appSystemInfo.windowWidth + delta}px,0)`,
+						`(0,${this.appSystemInfo.windowHeight + delta}px,)`
 					]
 				}
 				if (this.pre) { //首次右滑后，由于是封面不做任何操作
@@ -992,24 +1059,25 @@
 					delta = e.changedTouches[0].clientY - this.touchStartY;
 				}
 				if (delta === 0) {
-					if (e.changedTouches[0].clientX < this.windowWidth / 3) { //点击屏幕左1/3为上一页
+					if (e.changedTouches[0].clientX < this.appSystemInfo.windowWidth / 3) { //点击屏幕左1/3为上一页
 						// uni.showToast({
 						// 	title: '已经是第一页了',
 						// 	icon: 'none'
 						// })
-					} else if (e.changedTouches[0].clientX > this.windowWidth / 3 * 2) { //点击屏幕右1/3为下一页
+					} else if (e.changedTouches[0].clientX > this.appSystemInfo.windowWidth / 3 * 2) { //点击屏幕右1/3为下一页
 						this.cover.pageTranslate = [
 							`(-100%,0)`,
 							`(-100%,0)`,
-							`(0,${-this.windowHeight}px)`
+							`(0,${-this.appSystemInfo.windowHeight}px)`
 						]
 						this.curPage.pageTranslate = [
 							`(0,0)`,
 							`(0,0)`,
 							`(0,0)`
 						]
-					} else if (e.changedTouches[0].clientX <= this.windowWidth / 3 * 2 && e.changedTouches[0].clientX >=
-						this.windowWidth / 3) { //点击屏幕中间1/3为呼出菜单
+					} else if (e.changedTouches[0].clientX <= this.appSystemInfo.windowWidth / 3 * 2 && e.changedTouches[0]
+						.clientX >=
+						this.appSystemInfo.windowWidth / 3) { //点击屏幕中间1/3为呼出菜单
 
 						this.showMenu()
 					}
@@ -1018,7 +1086,7 @@
 						this.cover.pageTranslate = [
 							`(-100%,0)`,
 							`(-100%,0)`,
-							`(0,${-this.windowHeight}px)`
+							`(0,${-this.appSystemInfo.windowHeight}px)`
 						]
 						this.curPage.pageTranslate = [
 							`(0,0)`,
@@ -1033,8 +1101,8 @@
 						]
 						this.curPage.pageTranslate = [
 							`(0,0)`,
-							`(${this.windowWidth}px,0)`,
-							`(0,${this.windowHeight}px)`
+							`(${this.appSystemInfo.windowWidth}px,0)`,
+							`(0,${this.appSystemInfo.windowHeight}px)`
 						]
 					}
 				}
@@ -1058,8 +1126,8 @@
 				]
 				this.curPage.pageTranslate = [
 					`(0,0)`,
-					`(${this.windowWidth}px,0)`,
-					`(0,${this.windowHeight}px)`
+					`(${this.appSystemInfo.windowWidth}px,0)`,
+					`(0,${this.appSystemInfo.windowHeight}px)`
 				]
 				this.next = false
 				this.pre = false
@@ -1086,11 +1154,11 @@
 					delta = e.touches[0].clientX - this.touchStartX;
 
 					// 限制边界
-					if (delta > this.windowWidth) {
-						delta = this.windowWidth
+					if (delta > this.appSystemInfo.windowWidth) {
+						delta = this.appSystemInfo.windowWidth
 					}
-					if (delta < -this.windowWidth) {
-						delta = -this.windowWidth
+					if (delta < -this.appSystemInfo.windowWidth) {
+						delta = -this.appSystemInfo.windowWidth
 					}
 
 					this.delta = e.touches[0].clientX - this.touchX;
@@ -1099,11 +1167,11 @@
 					delta = e.touches[0].clientY - this.touchStartY;
 
 					// 限制边界
-					if (delta > this.windowHeight) {
-						delta = this.windowHeight
+					if (delta > this.appSystemInfo.windowHeight) {
+						delta = this.appSystemInfo.windowHeight
 					}
-					if (delta < -this.windowHeight) {
-						delta = -this.windowHeight
+					if (delta < -this.appSystemInfo.windowHeight) {
+						delta = -this.appSystemInfo.windowHeight
 					}
 
 					this.delta = e.touches[0].clientY - this.touchY;
@@ -1122,8 +1190,8 @@
 
 					this.prePage.pageTranslate = [
 						`(-100%,0)`,
-						`(${-this.windowWidth+delta}px,0)`,
-						`(0,${-this.windowHeight+delta}px)`
+						`(${-this.appSystemInfo.windowWidth+delta}px,0)`,
+						`(0,${-this.appSystemInfo.windowHeight+delta}px)`
 					]
 					this.curPage.pageTranslate = [
 						`(${delta}px,0)`,
@@ -1132,8 +1200,8 @@
 					]
 					this.nextPage.pageTranslate = [
 						`(0,0)`,
-						`(${this.windowWidth+delta}px,0)`,
-						`(0,${this.windowHeight+delta}px)`
+						`(${this.appSystemInfo.windowWidth+delta}px,0)`,
+						`(0,${this.appSystemInfo.windowHeight+delta}px)`
 					]
 				}
 				if (!this.pre && !this.next && delta < 0) { //首次翻下一页
@@ -1157,8 +1225,8 @@
 						} else {
 							this.prePage.pageTranslate = [
 								`(-100%,0)`,
-								`(${-this.windowWidth+delta}px,0)`,
-								`(0,${-this.windowHeight+delta}px)`
+								`(${-this.appSystemInfo.windowWidth+delta}px,0)`,
+								`(0,${-this.appSystemInfo.windowHeight+delta}px)`
 							]
 							this.curPage.pageTranslate = [
 								`(${delta}px,0)`,
@@ -1167,8 +1235,8 @@
 							]
 							this.nextPage.pageTranslate = [
 								`(0,0)`,
-								`(${this.windowWidth+delta}px,0)`,
-								`(0,${this.windowHeight+delta}px)`
+								`(${this.appSystemInfo.windowWidth+delta}px,0)`,
+								`(0,${this.appSystemInfo.windowHeight+delta}px)`
 							]
 						}
 					} else if (this.compose[2].ready) { //下一章已经准备好了
@@ -1180,15 +1248,15 @@
 							totalPage: this.compose[2].totalPage,
 							pageTranslate: [
 								`(0,0)`,
-								`(${this.windowWidth}px,0)`,
-								`(0,${this.windowHeight}px)`
+								`(${this.appSystemInfo.windowWidth}px,0)`,
+								`(0,${this.appSystemInfo.windowHeight}px)`
 							],
 							canRead: this.compose[2].canRead
 						}
 						this.prePage.pageTranslate = [
 							`(-100%,0)`,
-							`(${-this.windowWidth+delta}px,0)`,
-							`(0,${-this.windowHeight+delta}px)`
+							`(${-this.appSystemInfo.windowWidth+delta}px,0)`,
+							`(0,${-this.appSystemInfo.windowHeight+delta}px)`
 						]
 						this.curPage.pageTranslate = [
 							`(${delta}px,0)`,
@@ -1197,8 +1265,8 @@
 						]
 						this.nextPage.pageTranslate = [
 							`(0,0)`,
-							`(${this.windowWidth+delta}px,0)`,
-							`(0,${this.windowHeight+delta}px)`
+							`(${this.appSystemInfo.windowWidth+delta}px,0)`,
+							`(0,${this.appSystemInfo.windowHeight+delta}px)`
 						]
 					}
 				}
@@ -1211,9 +1279,9 @@
 
 					if (this.prePage.isCover) { //上一页是封面
 						this.cover.pageTranslate = [
-							`(${-this.windowWidth+delta}px,0)`,
-							`(${-this.windowWidth+delta}px,0)`,
-							`(0,${-this.windowHeight+delta}px)`
+							`(${-this.appSystemInfo.windowWidth+delta}px,0)`,
+							`(${-this.appSystemInfo.windowWidth+delta}px,0)`,
+							`(0,${-this.appSystemInfo.windowHeight+delta}px)`
 						]
 						this.curPage.pageTranslate = [
 							`(0,0)`,
@@ -1222,9 +1290,9 @@
 						]
 					} else {
 						this.prePage.pageTranslate = [
-							`(${-this.windowWidth+delta}px,0)`,
-							`(${-this.windowWidth+delta}px,0)`,
-							`(0,${-this.windowHeight+delta}px)`
+							`(${-this.appSystemInfo.windowWidth+delta}px,0)`,
+							`(${-this.appSystemInfo.windowWidth+delta}px,0)`,
+							`(0,${-this.appSystemInfo.windowHeight+delta}px)`
 						]
 						this.curPage.pageTranslate = [
 							`(0,0)`,
@@ -1233,8 +1301,8 @@
 						]
 						this.nextPage.pageTranslate = [
 							`(0,0)`,
-							`(${this.windowWidth+delta}px,0)`,
-							`(0,${this.windowHeight+delta}px)`
+							`(${this.appSystemInfo.windowWidth+delta}px,0)`,
+							`(0,${this.appSystemInfo.windowHeight+delta}px)`
 						]
 					}
 				}
@@ -1243,9 +1311,9 @@
 					if (this.prePage.ready) { //页面准备好了
 						if (this.prePage.isCover) { //上一页是封面
 							this.cover.pageTranslate = [
-								`(${-this.windowWidth+delta}px,0)`,
-								`(${-this.windowWidth+delta}px,0)`,
-								`(0,${-this.windowHeight+delta}px)`
+								`(${-this.appSystemInfo.windowWidth+delta}px,0)`,
+								`(${-this.appSystemInfo.windowWidth+delta}px,0)`,
+								`(0,${-this.appSystemInfo.windowHeight+delta}px)`
 							]
 							this.curPage.pageTranslate = [
 								`(0,0)`,
@@ -1254,9 +1322,9 @@
 							]
 						} else {
 							this.prePage.pageTranslate = [
-								`(${-this.windowWidth+delta}px,0)`,
-								`(${-this.windowWidth+delta}px,0)`,
-								`(0,${-this.windowHeight+delta}px)`
+								`(${-this.appSystemInfo.windowWidth+delta}px,0)`,
+								`(${-this.appSystemInfo.windowWidth+delta}px,0)`,
+								`(0,${-this.appSystemInfo.windowHeight+delta}px)`
 							]
 							this.curPage.pageTranslate = [
 								`(0,0)`,
@@ -1265,8 +1333,8 @@
 							]
 							this.nextPage.pageTranslate = [
 								`(0,0)`,
-								`(${this.windowWidth+delta}px,0)`,
-								`(0,${this.windowHeight+delta}px)`
+								`(${this.appSystemInfo.windowWidth+delta}px,0)`,
+								`(0,${this.appSystemInfo.windowHeight+delta}px)`
 							]
 						}
 					} else if (this.compose[0].ready) { //上一章已经准备好了
@@ -1279,14 +1347,14 @@
 							pageTranslate: [
 								`(-100%,0)`,
 								`(-100%,0)`,
-								`(0,${-this.windowHeight}px)`
+								`(0,${-this.appSystemInfo.windowHeight}px)`
 							],
 							canRead: this.compose[0].canRead
 						}
 						this.prePage.pageTranslate = [
-							`(${-this.windowWidth+delta}px,0)`,
-							`(${-this.windowWidth+delta}px,0)`,
-							`(0,${-this.windowHeight+delta}px)`
+							`(${-this.appSystemInfo.windowWidth+delta}px,0)`,
+							`(${-this.appSystemInfo.windowWidth+delta}px,0)`,
+							`(0,${-this.appSystemInfo.windowHeight+delta}px)`
 						]
 						this.curPage.pageTranslate = [
 							`(0,0)`,
@@ -1295,8 +1363,8 @@
 						]
 						this.nextPage.pageTranslate = [
 							`(0,0)`,
-							`(${this.windowWidth+delta}px,0)`,
-							`(0,${this.windowHeight+delta}px)`
+							`(${this.appSystemInfo.windowWidth+delta}px,0)`,
+							`(0,${this.appSystemInfo.windowHeight+delta}px)`
 						]
 					}
 				}
@@ -1316,14 +1384,16 @@
 					delta = e.changedTouches[0].clientY - this.touchStartY;
 				}
 				if (delta < 0.8 && delta > -0.8) { //部分手机点击屏幕时无法做到delta===0
-					if (e.changedTouches[0].clientX < this.windowWidth / 3) { //点击屏幕左1/3为上一页
+					if (e.changedTouches[0].clientX < this.appSystemInfo.windowWidth / 3) { //点击屏幕左1/3为上一页
 						this.goPrePage()
-					} else if (e.changedTouches[0].clientX > this.windowWidth / 3 * 2) { //点击屏幕右1/3为下一页
+					} else if (e.changedTouches[0].clientX > this.appSystemInfo.windowWidth / 3 * 2) { //点击屏幕右1/3为下一页
 						this.goNextPage()
-					} else if (e.changedTouches[0].clientX <= this.windowWidth / 3 * 2 && e.changedTouches[0].clientX >=
-						this.windowWidth / 3) { //点击屏幕中间1/3为呼出菜单
-						if (!this.curPage.canRead && e.changedTouches[0].clientY <= this.windowHeight / 3 * 2 && e
-							.changedTouches[0].clientY >= this.windowHeight / 3) {
+					} else if (e.changedTouches[0].clientX <= this.appSystemInfo.windowWidth / 3 * 2 && e.changedTouches[0]
+						.clientX >=
+						this.appSystemInfo.windowWidth / 3) { //点击屏幕中间1/3为呼出菜单
+						if (!this.curPage.canRead && e.changedTouches[0].clientY <= this.appSystemInfo.windowHeight / 3 *
+							2 && e
+							.changedTouches[0].clientY >= this.appSystemInfo.windowHeight / 3) {
 							this.$tools.Navigate.navigateTo('/pages/tabbar/mine/vip/noVip')
 						} else {
 							this.showMenu()
@@ -1336,7 +1406,7 @@
 						this.prePage.pageTranslate = [
 							`(-100%,0)`,
 							`(-100%,0)`,
-							`(0,${-this.windowHeight}px)`
+							`(0,${-this.appSystemInfo.windowHeight}px)`
 						]
 						this.curPage.pageTranslate = [
 							`(0,0)`,
@@ -1345,8 +1415,8 @@
 						]
 						this.nextPage.pageTranslate = [
 							`(0,0)`,
-							`(${this.windowWidth}px,0)`,
-							`(0,${this.windowHeight}px)`
+							`(${this.appSystemInfo.windowWidth}px,0)`,
+							`(0,${this.appSystemInfo.windowHeight}px)`
 						]
 					} else if (this.pre && this.delta >= 0) { //上一页
 						this.goPrePage()
@@ -1354,7 +1424,7 @@
 						this.prePage.pageTranslate = [
 							`(-100%,0)`,
 							`(-100%,0)`,
-							`(0,${-this.windowHeight}px)`
+							`(0,${-this.appSystemInfo.windowHeight}px)`
 						]
 						this.curPage.pageTranslate = [
 							`(0,0)`,
@@ -1363,13 +1433,13 @@
 						]
 						this.nextPage.pageTranslate = [
 							`(0,0)`,
-							`(${this.windowWidth}px,0)`,
-							`(0,${this.windowHeight}px)`
+							`(${this.appSystemInfo.windowWidth}px,0)`,
+							`(0,${this.appSystemInfo.windowHeight}px)`
 						]
 						this.cover.pageTranslate = [
 							`(-100%,0)`,
 							`(-100%,0)`,
-							`(0,${-this.windowHeight}px)`
+							`(0,${-this.appSystemInfo.windowHeight}px)`
 						]
 					}
 				}
@@ -1382,14 +1452,13 @@
 			 * 取消触摸
 			 **/
 			touchcancel() {
-
 				//取消翻页,重置页面
 				this.showAnimation = false
 				this.showShadow = false
 				this.prePage.pageTranslate = [
 					`(-100%,0)`,
 					`(-100%,0)`,
-					`(0,${-this.windowHeight}px)`
+					`(0,${-this.appSystemInfo.windowHeight}px)`
 				]
 				this.curPage.pageTranslate = [
 					`(0,0)`,
@@ -1398,13 +1467,13 @@
 				]
 				this.nextPage.pageTranslate = [
 					`(0,0)`,
-					`(${this.windowWidth}px,0)`,
-					`(0,${this.windowHeight}px)`
+					`(${this.appSystemInfo.windowWidth}px,0)`,
+					`(0,${this.appSystemInfo.windowHeight}px)`
 				]
 				this.cover.pageTranslate = [
 					`(-100%,0)`,
 					`(-100%,0)`,
-					`(0,${-this.windowHeight}px)`
+					`(0,${-this.appSystemInfo.windowHeight}px)`
 				]
 				this.next = false
 				this.pre = false
@@ -1431,7 +1500,7 @@
 				plus.navigator.setFullscreen(true);
 				// #endif
 				this.itemShow = false
-				this.settingShow = false
+				this.setShow = false
 				this.directoryShow = false
 				setTimeout(() => {
 					this.directoryShowBefore = false
@@ -1446,7 +1515,7 @@
 
 				this.itemShow = false
 				setTimeout(() => {
-					this.settingShow = true
+					this.setShow = true
 				}, 300)
 			},
 
@@ -1499,8 +1568,8 @@
 					]
 					this.curPage.pageTranslate = [
 						`(0,0)`,
-						`(${this.windowWidth}px,0)`,
-						`(0,${this.windowHeight}px)`
+						`(${this.appSystemInfo.windowWidth}px,0)`,
+						`(0,${this.appSystemInfo.windowHeight}px)`
 					]
 					return
 				}
@@ -1526,7 +1595,7 @@
 				this.prePage.pageTranslate = [
 					`(-100%,0)`,
 					`(-100%,0)`,
-					`(0,${-this.windowHeight}px)`
+					`(0,${-this.appSystemInfo.windowHeight}px)`
 				]
 				this.curPage.pageTranslate = pre
 				this.nextPage.pageTranslate = cur
@@ -1541,7 +1610,7 @@
 					this.prePage.pageTranslate = [
 						`(-100%,0)`,
 						`(-100%,0)`,
-						`(0,${-this.windowHeight}px)`
+						`(0,${-this.appSystemInfo.windowHeight}px)`
 					]
 					this.curPage.pageTranslate = [
 						`(0,0)`,
@@ -1550,8 +1619,8 @@
 					]
 					this.nextPage.pageTranslate = [
 						`(0,0)`,
-						`(${this.windowWidth}px,0)`,
-						`(0,${this.windowHeight}px)`
+						`(${this.appSystemInfo.windowWidth}px,0)`,
+						`(0,${this.appSystemInfo.windowHeight}px)`
 					]
 				}, 50)
 			},
@@ -1598,8 +1667,8 @@
 				this.curPage.pageTranslate = next
 				this.nextPage.pageTranslate = [
 					`(0,0)`,
-					`(${this.windowWidth}px,0)`,
-					`(0,${this.windowHeight}px)`
+					`(${this.appSystemInfo.windowWidth}px,0)`,
+					`(0,${this.appSystemInfo.windowHeight}px)`
 				]
 				setTimeout(() => {
 					// if (showChapter) {
@@ -1612,7 +1681,7 @@
 					this.prePage.pageTranslate = [
 						`(-100%,0)`,
 						`(-100%,0)`,
-						`(0,${-this.windowHeight}px)`
+						`(0,${-this.appSystemInfo.windowHeight}px)`
 					]
 					this.curPage.pageTranslate = [
 						`(0,0)`,
@@ -1621,8 +1690,8 @@
 					]
 					this.nextPage.pageTranslate = [
 						`(0,0)`,
-						`(${this.windowWidth}px,0)`,
-						`(0,${this.windowHeight}px)`
+						`(${this.appSystemInfo.windowWidth}px,0)`,
+						`(0,${this.appSystemInfo.windowHeight}px)`
 					]
 				}, 50)
 			},
@@ -1753,7 +1822,7 @@
 							pageTranslate: [
 								`(-100%,0)`,
 								`(-100%,0)`,
-								`(0,${-this.windowHeight}px)`
+								`(0,${-this.appSystemInfo.windowHeight}px)`
 							]
 						}
 					} else {
@@ -1766,7 +1835,7 @@
 							pageTranslate: [
 								`(-100%,0)`,
 								`(-100%,0)`,
-								`(0,${-this.windowHeight}px)`
+								`(0,${-this.appSystemInfo.windowHeight}px)`
 							],
 							canRead: this.compose[0].canRead
 						}
@@ -1781,7 +1850,7 @@
 						pageTranslate: [
 							`(-100%,0)`,
 							`(-100%,0)`,
-							`(0,${-this.windowHeight}px)`
+							`(0,${-this.appSystemInfo.windowHeight}px)`
 						],
 						canRead: this.compose[1].canRead
 					}
@@ -1793,8 +1862,8 @@
 							isEnd: true,
 							pageTranslate: [
 								`(0,0)`,
-								`(${this.windowWidth}px,0)`,
-								`(0,${this.windowHeight}px)`
+								`(${this.appSystemInfo.windowWidth}px,0)`,
+								`(0,${this.appSystemInfo.windowHeight}px)`
 							]
 						}
 					} else {
@@ -1806,8 +1875,8 @@
 							totalPage: this.compose[2].totalPage,
 							pageTranslate: [
 								`(0,0)`,
-								`(${this.windowWidth}px,0)`,
-								`(0,${this.windowHeight}px)`
+								`(${this.appSystemInfo.windowWidth}px,0)`,
+								`(0,${this.appSystemInfo.windowHeight}px)`
 							],
 							canRead: this.compose[2].canRead
 						}
@@ -1821,8 +1890,8 @@
 						totalPage: this.compose[1].totalPage,
 						pageTranslate: [
 							`(0,0)`,
-							`(${this.windowWidth}px,0)`,
-							`(0,${this.windowHeight}px)`
+							`(${this.appSystemInfo.windowWidth}px,0)`,
+							`(0,${this.appSystemInfo.windowHeight}px)`
 						],
 						canRead: this.compose[1].canRead
 					}
@@ -1844,7 +1913,8 @@
 			/**
 			 * 加大字体
 			 **/
-			async bigSize() {
+			async addSize() {
+				if (this.fontSize >= this.maxFontSize) return
 				let progress = this.progress //记录阅读进度用于调整字体后跳转
 				this.fontSize += 1
 				uni.setStorageSync('fontSize', this.fontSize)
@@ -1868,7 +1938,8 @@
 			/**
 			 * 缩小字体
 			 **/
-			async smallSize() {
+			async subSize() {
+				if (this.fontSize <= this.minFontSize) return
 				let progress = this.progress
 				this.fontSize -= 1
 				uni.setStorageSync('fontSize', this.fontSize)
@@ -1884,34 +1955,7 @@
 					this.compose[2].ready = false
 					await this.calcNextChapter()
 				}
-
 			},
-
-			/**
-			 * 切换繁体简体
-			 **/
-			changeFont(type) {
-				if (type === 2) { //切换为繁体
-					this.compose[0].text = traditionalized(this.compose[0].text)
-					this.compose[1].text = traditionalized(this.compose[1].text)
-					this.compose[2].text = traditionalized(this.compose[2].text)
-					this.prePage.text = traditionalized(this.prePage.text)
-					this.curPage.text = traditionalized(this.curPage.text)
-					this.nextPage.text = traditionalized(this.nextPage.text)
-					this.simplified = 2
-					uni.setStorageSync('simplified', 2)
-				} else { //切换为简体
-					this.compose[0].text = simplized(this.compose[0].text)
-					this.compose[1].text = simplized(this.compose[1].text)
-					this.compose[2].text = simplized(this.compose[2].text)
-					this.prePage.text = simplized(this.prePage.text)
-					this.curPage.text = simplized(this.curPage.text)
-					this.nextPage.text = simplized(this.nextPage.text)
-					this.simplified = 1
-					uni.setStorageSync('simplified', 1)
-				}
-			},
-
 			/**
 			 * 改变行距
 			 **/
@@ -2149,8 +2193,14 @@
 				}
 				return this.currentPage / (this.compose[1].totalPage - 1)
 			},
-			compose(){
+			compose() {
 				return compose
+			},
+			appSystemInfo() {
+				return this.$store.state.appSystemInfo
+			},
+			userinfo() {
+				return this.$store.state.userinfo
 			}
 		}
 
@@ -2166,6 +2216,10 @@
 
 	.hidden {
 		opacity: 0;
+	}
+
+	.share {
+		padding-top: 2rpx;
 	}
 
 	.action {
@@ -2241,7 +2295,7 @@
 		justify-content: space-between;
 		align-items: center;
 		font-size: 14px;
-		color: $minor-text-color;
+		color: #666;
 		height: 30px;
 		width: 100%;
 	}
@@ -2477,10 +2531,29 @@
 	}
 
 	.cover {
-		image {
-			height: 400rpx;
-			width: 300rpx;
-			background-color: #eee;
+
+		.data {
+			color: #555;
 		}
+
+		.type {
+
+			.type-item {
+				padding: 2rpx 20rpx;
+				font-size: 24rpx;
+				color: #666;
+				background-color: #ddd;
+				border-radius: 12rpx;
+			}
+
+			.type-item:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+
+	.menu-bottom {
+		border-radius: 30rpx 30rpx 0 0;
+		padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
 	}
 </style>

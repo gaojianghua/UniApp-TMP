@@ -3,7 +3,7 @@
 		<view class="pay w-100 d-flex a-center flex-column">
 			<view class="w-100" v-for="(item, i) in payMethodList" :key="i" @click="switchPayMethod(item)">
 				<!-- #ifdef APP-PLUS -->
-				<m-cell isShowR class="px-3" bbColor="#ddd" :color="item.check ? '#f27299' : '#111'" :isIcon="false"
+				<m-cell isShowR i18n class="px-3" bbColor="#ddd" :color="item.check ? '#f27299' : '#111'" :isIcon="false"
 					:item="item">
 					<view slot="right-row" class="check-icon" :class="item.check ? 'check-active' : ''">
 						<u-icon
@@ -12,7 +12,7 @@
 				</m-cell>
 				<!-- #endif -->
 				<!-- #ifndef APP-PLUS -->
-				<m-cell v-if="item.code != 'Google-Purchase' && item.code != 'IOS-Purchase'" isShowR class="px-3" bbColor="#ddd" :color="item.check ? '#f27299' : '#111'" :isIcon="false"
+				<m-cell v-if="item.code != 'Google-Purchase' && item.code != 'IOS-Purchase'" i18n isShowR class="px-3" bbColor="#ddd" :color="item.check ? '#f27299' : '#111'" :isIcon="false"
 					:item="item">
 					<view slot="right-row" class="check-icon" :class="item.check ? 'check-active' : ''">
 						<u-icon

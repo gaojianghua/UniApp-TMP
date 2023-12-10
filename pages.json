@@ -398,13 +398,13 @@
 						"enablePullDownRefresh": false
 					}
 				},
-				// {
-				// 	"path": "read-novel/index",
-				// 	"style": {
-				// 		"navigationStyle": "custom",
-				// 		"enablePullDownRefresh": false
-				// 	}
-				// }, 
+				{
+					"path": "read-novel/index",
+					"style": {
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				}, 
 				{
 					"path": "read-comics/index",
 					"style": {

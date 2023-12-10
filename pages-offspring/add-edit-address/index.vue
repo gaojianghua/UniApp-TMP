@@ -68,10 +68,10 @@
 			</view>
 			<view class="d-flex a-center j-sb py-2 border-top px-3">
 				<span>{{$t('设为默认地址')}}</span>
-				<u-checkbox-group v-model="item.check" @change="checkboxChange">
-					<u-checkbox :checked="item.isDefault" label-size="12" size="18" iconSize="14" active-color="#fb7290"
-						shape="circle"></u-checkbox>
-				</u-checkbox-group>
+				<view class="check-icon" :class="item.isDefault ? 'check-active' : ''" @click="checkboxChange">
+					<u-icon
+						:name="`https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/${item.isDefault ? 'tick-active' : 'tick'}.svg`"></u-icon>
+				</view>
 			</view>
 		</view>
 		<!-- 保存收货地址按钮 -->
@@ -119,7 +119,6 @@
 					phone: '',
 					address: '',
 					isDefault: false,
-					check: [],
 					province: '',
 					city: '',
 					area: '',
@@ -237,7 +236,6 @@
 			// 设为默认地址
 			checkboxChange(e) {
 				this.item.isDefault = !this.item.isDefault
-				this.item.check = e
 			}
 		}
 	}
@@ -315,6 +313,15 @@
 						}
 					}
 				}
+			}
+			.check-icon {
+				border: 4rpx solid #f27299;
+				border-radius: 10rpx;
+			}
+			
+			.check-active {
+				border: 4rpx solid #f2729980;
+				background-color: #f27299;
 			}
 		}
 

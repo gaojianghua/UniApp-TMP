@@ -19,7 +19,7 @@
 					<view :style="[{backgroundColor: bgColor}]" class="tabbar d-flex a-center position-relative"
 						:class="textDirection === 'center' ? 'j-center' : 'pl-10'">
 					<!-- #endif -->
-						<view v-if="!isTab" class="tabbar-back d-flex j-center a-center p-1" @click="retreat">
+						<view v-if="!isTab" class="tabbar-back d-flex j-center a-center p-1" @click.stop="unBack ? onBack() : retreat()">
 							<u-image height="60rpx" width="60rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/back.svg"></u-image>
 							<!-- <u-icon name="arrow-left" :color="iconColor" size="20"></u-icon> -->
 						</view>
@@ -65,6 +65,9 @@
 		methods: {
 			selectLang() {
 				this.$emit('selectLang')
+			},
+			onBack() {
+				this.$emit('pageBack')
 			},
 			retreat() {
 				// #ifdef H5

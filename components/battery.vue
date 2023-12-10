@@ -46,10 +46,10 @@
 			width: 22px;
 			height: 100%;
 			border-radius: 1px;
-			border: $minor-text-color solid 1px;
+			border: 2rpx solid #666;
 			.battery{
 				height: 100%;
-				background-color: $minor-text-color;
+				background-color: #666;
 			}
 			.charging{
 				position: absolute;
@@ -65,7 +65,7 @@
 		.battery-head{
 			width: 2px;
 			height: 6px;
-			background-color: $minor-text-color;
+			background-color: #666;
 		}
 	}
 </style>

@@ -5,37 +5,43 @@
 		"payMethodList": [
 			{
 				"id": 1,
-				"icon": "",
+				"icon": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/google-pay.svg",
 				"name": "谷歌支付",
 				"code": "Google-Pay"
 			},
 			{
 				"id": 2,
-				"icon": "",
+				"icon": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/google-play.svg",
 				"name": "谷歌内购",
 				"code": "Google-Purchase"
 			},
 			{
 				"id": 3,
-				"icon": "",
+				"icon": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/ios.svg",
 				"name": "苹果内购",
 				"code": "IOS-Purchase"
 			},
 			{
 				"id": 4,
-				"icon": "",
+				"icon": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/weChat-pay.svg",
 				"name": "微信支付",
 				"code": "WeChat-Pay"
 			},
 			{
 				"id": 5,
-				"icon": "",
+				"icon": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/ali-pay.svg",
 				"name": "支付宝支付",
 				"code": "ALI-Pay"
 			},
 			{
 				"id": 6,
-				"icon": "",
+				"icon": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/union-pay.svg",
+				"name": "银联支付",
+				"code": "Union-Pay"
+			},
+			{
+				"id": 7,
+				"icon": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/link-pay.svg",
 				"name": "H5外链支付",
 				"code": "Link-Pay"
 			}

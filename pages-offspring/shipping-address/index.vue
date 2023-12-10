@@ -3,7 +3,8 @@
 		<!-- 顶部导航 -->
 		<m-navbar bgColor="#fff" textColor="#fb7299" value="page.收货地址" i18n>
 			<template :slot="'right'">
-				<view :class="isManage ? 'bg-warning text-white' : 'bg-light-secondary'" class="manage position-absolute" @click="isManage = !isManage">
+				<view :class="isManage ? 'bg-warning text-white' : 'bg-light-secondary'"
+					class="manage position-absolute" @click="isManage = !isManage">
 					{{isManage ? $t('完成') : $t('管理')}}
 				</view>
 			</template>
@@ -24,15 +25,21 @@
 							{{item.province}} {{item.city}} {{item.area}} {{item.street}}{{item.address}}
 						</view>
 					</view>
-					<view class="item-r ml-auto" @click="$tools.Navigate.navigateTo('/pages-offspring/add-edit-address/index', item)">
+					<view class="item-r ml-auto"
+						@click="$tools.Navigate.navigateTo('/pages-offspring/add-edit-address/index', item)">
 						<u-icon name="edit-pen" color="#666" size="22"></u-icon>
 					</view>
 				</view>
 				<view v-if="isManage" class="d-flex a-center j-sb border-top border-light-secondary px-3 py-2">
-					<u-checkbox-group v-model="item.check" @change="checkboxChange(i, $event)">
-						<u-checkbox :checked="item.isDefault" :label="$t('默认地址')" label-size="12" size="18" iconSize="14" active-color="#fb7290" shape="circle"
-						></u-checkbox>
-					</u-checkbox-group>
+					<view class="d-flex a-center" @click="checkboxChange(i)">
+						<view class="check-icon" :class="item.isDefault ? 'check-active' : ''">
+							<u-icon
+								:name="`https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/${item.isDefault ? 'tick-active' : 'tick'}.svg`"></u-icon>
+						</view>
+						<view class="ml-2 item-delete">
+							{{$t('默认地址')}}
+						</view>
+					</view>
 					<view class="item-delete" @click="openRemoveCity(i)">
 						{{$t('删除')}}
 					</view>
@@ -41,7 +48,8 @@
 		</view>
 		<!-- 添加收货地址按钮 -->
 		<view class="position-fixed bottom-0 left-0 p-3 bg-white w-100">
-			<view @click="$tools.Navigate.navigateTo('/pages-offspring/add-edit-address/index', {})" class="btons d-flex a-center j-center text-white">
+			<view @click="$tools.Navigate.navigateTo('/pages-offspring/add-edit-address/index', {})"
+				class="btons d-flex a-center j-center text-white">
 				{{$t('page.添加收货地址')}}
 			</view>
 		</view>
@@ -56,7 +64,9 @@
 </template>
 
 <script>
-	import { list } from './data.js'
+	import {
+		list
+	} from './data.js'
 	export default {
 		data() {
 			return {
@@ -72,30 +82,15 @@
 		methods: {
 			// 初始化
 			init() {
-				list.forEach((item, i) => {
-					if(item.isDefault) {
-						list[i] = {
-							...item,
-							check: ['check']
-						}
-					}else{
-						list[i] = {
-							...item,
-							check: []
-						}
-					}
-				})
 				this.$store.commit('updateShippingAddress', list)
 			},
 			// 设置默认地址
-			checkboxChange(i, e) {
+			checkboxChange(i) {
 				let list = this.$store.state.shippingAddress
 				list.forEach((item, index) => {
-					if(i == index) {
-						item.check = e
-						item.isDefault = !item.isDefault
-					}else{
-						item.check = []
+					if (i == index) {
+						item.isDefault = true
+					} else {
 						item.isDefault = false
 					}
 				})
@@ -123,27 +118,30 @@
 </script>
 
 <style lang="scss" scoped>
-	.page{
-		.manage{
+	.page {
+		.manage {
 			right: 30rpx;
 			top: 50%;
 			transform: translateY(-50%);
 			padding: 0 20rpx;
 			border-radius: 8rpx;
 		}
-		.content{
-			.item{
-				.item-l{
-					.item-l-t{
-						.item-name{
+
+		.content {
+			.item {
+				.item-l {
+					.item-l-t {
+						.item-name {
 							font-size: 28rpx;
 							font-weight: 500;
 						}
-						.item-phone{
+
+						.item-phone {
 							font-size: 26rpx;
 							color: #111;
 						}
-						.item-l-t-tag{
+
+						.item-l-t-tag {
 							border-radius: 6rpx;
 							border: 2rpx solid #f27299;
 							padding: 6rpx 12rpx;
@@ -152,18 +150,31 @@
 							color: #f27299;
 						}
 					}
-					.item-l-b{
+
+					.item-l-b {
 						font-size: 26rpx;
 						color: #666;
 						line-height: 36rpx;
 					}
 				}
-				.item-delete{
+
+				.item-delete {
 					font-size: 26rpx;
 					color: #666;
 				}
+
+				.check-icon {
+					border: 4rpx solid #f27299;
+					border-radius: 10rpx;
+				}
+
+				.check-active {
+					border: 4rpx solid #f2729980;
+					background-color: #f27299;
+				}
 			}
 		}
+
 		.btons {
 			font-size: 30rpx;
 			border-radius: 50rpx;
@@ -172,7 +183,7 @@
 			margin: 0 auto;
 			background: linear-gradient(to right, #85B6CA, #F9A4A0);
 		}
-		
+
 		.btons:active {
 			background: linear-gradient(to right, #85B6CA80, #F9A4A080);
 		}

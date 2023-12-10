@@ -48,5 +48,9 @@ module.exports = {
 	isFixed: {
 		type: Boolean,
 		default: false
-	}
+	},
+	unBack: {
+		type: Boolean,
+		default: false
+	},
 }

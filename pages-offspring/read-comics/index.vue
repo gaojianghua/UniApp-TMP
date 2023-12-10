@@ -3,7 +3,7 @@
 		<!-- 遮罩层 -->
 		<u-overlay :show="show" @click="show = false">
 			<!-- 顶部导航栏 -->
-			<m-navbar isFixed bgColor="#fff" isSlot>
+			<m-navbar unBack @pageBack="pageBack" isFixed bgColor="#fff" isSlot>
 				<view @click.stop class="title w-100 d-flex a-center pl-10 pr-3" :style="{
 				width: `calc(100vw - ${miniProgramCapsule.width}px)`,
 				marginRight: `calc(100vw - ${miniProgramCapsule.right}px + ${miniProgramCapsule.width}px)`}">
@@ -11,7 +11,7 @@
 						{{detail.name}} ( {{$t('第')}} {{chapterInfo.runNum}} {{$t('回')}} )
 					</view>
 					<view class="share ml-auto" @click="sharePosters">
-						<u-icon name="share-square" size="26"></u-icon>
+						<u-icon name="share-square" size="26" color="#fb7299"></u-icon>
 					</view>
 					<view class="d-flex a-center flex-shrink j-center ml-2">
 						<u-icon v-if="detail.collect" name="star-fill" color="#fb7299" size="24"
@@ -93,6 +93,14 @@
 				</m-scroll-y>
 			</view>
 		</m-popup>
+		<!-- 弹框 -->
+		<m-modal :show="modalShow" i18n title="温馨提示" confirmName="加入书架" @cancel="cancel" @confirm="openCollect">
+			<view class="d-flex a-center j-center flex-column">
+				<view class="d-flex a-center text-center j-center flex-column main-text-color letter-1">
+					{{$t('喜欢这本书吗？快加入书架吧！')}}
+				</view>
+			</view>
+		</m-modal>
 		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
@@ -113,6 +121,7 @@
 				posterShow: false,
 				directoryShow: false,
 				isSuccess: false,
+				modalShow: false,
 				detail: {},
 				load: 0,
 				list: [],
@@ -310,6 +319,14 @@
 					shareUrl: 'https://gaojianghua.cn/pages-common/share-guide/index'
 				}
 			},
+			// 退出当前页面
+			pageBack() {
+				if (this.detail.collect) {
+					this.$tools.Navigate.navigateBack()
+				} else {
+					this.modalShow = true
+				}
+			},
 			// 获取章节列表
 			getChapterList() {
 				// TODO：请求获取数据
@@ -338,12 +355,44 @@
 				this.refreshChapter()
 				this.directoryShow = false
 			},
-			// 收藏
-			openCollect() {
-				if (this.detail.collect) {
-					this.detail.collect = false
-				} else {
-					this.detail.collect = true
+			// 收藏或者取消收藏
+			async openCollect() {
+				let res = {
+					code: 200
+				}
+				// if (this.detail.collect) {
+				// 	res = await delCollect({
+				// 		id: this.detail.id
+				// 	})
+				// } else {
+				// 	res = await addCollect({
+				// 		id: this.detail.id
+				// 	})
+				// }
+				if (res.code == 200) {
+					if (this.detail.collect) {
+						this.detail.collect = false
+						uni.showToast({
+							icon: 'none',
+							position: 'bottom',
+							title: this.$t("取消收藏成功")
+						})
+					}else {
+						this.detail.collect = true
+						uni.showToast({
+							icon: 'none',
+							position: 'bottom',
+							title: this.$t("收藏成功,请在书架查看"),
+							complete: () => {
+								let time = setTimeout(() => {
+									if (this.modalShow) {
+										this.$tools.Navigate.navigateBack()
+									}
+									clearTimeout(time)
+								}, 1000)
+							}
+						})
+					}
 				}
 			},
 			// 获取数据
@@ -470,6 +519,11 @@
 				this.$nextTick(() => {
 					this.scrollTop = 0
 				})
+			},
+			// 取消
+			cancel() {
+				this.modalShow = false
+				this.$tools.Navigate.navigateBack()
 			}
 		},
 		computed: {
@@ -496,7 +550,9 @@
 			height: calc(100rpx + env(safe-area-inset-bottom));
 			padding-bottom: env(safe-area-inset-bottom);
 		}
-
+		.share{
+			padding-top: 2rpx;
+		}
 		.directory {
 			height: 80vh;
 
