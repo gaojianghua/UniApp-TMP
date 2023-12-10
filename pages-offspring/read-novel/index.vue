@@ -623,6 +623,7 @@
 				this.isSuccess = false
 				this.posterShow = false
 			},
+			// 收藏
 			async openCollect() {
 				let res = {
 					code: 200
@@ -688,6 +689,7 @@
 					"types": ["玄幻", '穿越', '无敌流', '废材流'],
 					"state": 2,
 					"recommend": 95,
+					"collect": false,
 					"rank": 7,
 					"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。",
 					"author": '二十四桥明月夜',
@@ -2272,7 +2274,7 @@
 	}
 
 	/deep/ .uicon-star-fill {
-		color: #FA9C3E !important;
+		color: #f27299 !important;
 	}
 
 	.item-type {
