@@ -338,7 +338,6 @@
 	"到底了哦": "No More Oh",
 	"第": "The",
 	"回": "Chapter",
-	"章": "Chapter",
 	"上一回": "Prev",
 	"下一回": "Next",
 	"目录": "Catalogue",
@@ -390,5 +389,7 @@
 	"平移翻页": "Translation",
 	"上下翻页": "Scroll",
 	"背景": "Backdrop",
-	"阅读设置": "Read Set"
+	"阅读设置": "Read Set",
+	"当前为VIP章节，请开通VIP服务后继续阅读": "The current chapter is VIP, please continue reading after opening VIP service",
+	"去开通": "Go Activate"
 }

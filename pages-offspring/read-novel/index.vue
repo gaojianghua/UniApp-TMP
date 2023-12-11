@@ -11,7 +11,7 @@
 		<!-- 仅用于计算（结构和样式请和阅读页一致） -->
 		<view class="container hidden" v-for="(item, i) in compose" :key="i">
 			<!-- 顶部 -->
-			<view class="header" :style="{height: `calc(88rpx + ${$store.state.statusHeight}px)`}">
+			<view class="header" :style="{height: `calc(88rpx + ${statusHeight}px)`}">
 				<!-- 章节名等内容 -->
 				<view class="chapter w-100" style="height: 88rpx;"></view>
 			</view>
@@ -19,14 +19,14 @@
 			<view id="content" class="content">
 				<view class="inner-box" :style="{height: `${innerHeight}px`}">
 					<!-- 动态ID或者类名在DOM无宽高的情况下会消失 -->
-					<view v-if="i == 0" class="book-inner preChapter" v-html="item.content"
-						:style="{fontSize: `${fontSize}px`, lineHeight: `${lineHeight*fontSize}px`}">
+					<view v-if="i == 0" id="preChapter" class="book-inner" v-html="item.text"
+						:style="{fontSize: `${fontSize}rpx`, lineHeight: `${lineHeight*fontSize}rpx`}">
 					</view>
-					<view v-if="i == 1" class="book-inner curChapter" v-html="item.content"
-						:style="{fontSize: `${fontSize}px`, lineHeight: `${lineHeight*fontSize}px`}">
+					<view v-if="i == 1" id="curChapter" class="book-inner" v-html="item.text"
+						:style="{fontSize: `${fontSize}rpx`, lineHeight: `${lineHeight*fontSize}rpx`}">
 					</view>
-					<view v-if="i == 2" class="book-inner nextChapter" v-html="item.content"
-						:style="{fontSize: `${fontSize}px`, lineHeight: `${lineHeight*fontSize}px`}">
+					<view v-if="i == 2" id="nextChapter" class="book-inner" v-html="item.text"
+						:style="{fontSize: `${fontSize}rpx`, lineHeight: `${lineHeight*fontSize}rpx`}">
 					</view>
 				</view>
 			</view>
@@ -40,7 +40,7 @@
 			@touchend="coverTouchEnd" @touchmove="coverTouchMove" @touchcancel="coverTouchcancel">
 			<!-- 顶部三星图案 -->
 			<view class="d-flex a-center w-100 j-sb position-absolute"
-				:style="{top: `calc(30rpx + ${$store.state.statusHeight}px)`}">
+				:style="{top: `calc(30rpx + ${statusHeight}px)`}">
 				<view style="width: 300rpx; height: 4rpx; background: #FA9C3E80;border-radius: 0 15rpx 15rpx 0;"></view>
 				<view class="d-flex a-center">
 					<u-icon class="mt-1" name="star-fill" size="16" color="#33C795"></u-icon>
@@ -49,7 +49,7 @@
 				</view>
 				<view style="width: 300rpx; height: 4rpx; background: #FA9C3E80;border-radius: 15rpx 0 0 15rpx;"></view>
 			</view>
-			<view :style="{height: `calc(130rpx + ${$store.state.statusHeight}px)`}"></view>
+			<view :style="{height: `calc(130rpx + ${statusHeight}px)`}"></view>
 			<u-image radius="6" width="300rpx" height="400rpx" :src="detail.img"></u-image>
 			<view class="font-weight font-lg mt-2">
 				{{detail.name}}
@@ -72,10 +72,11 @@
 		<!-- ************************** -->
 		<!-- 顶部区域 层级第二 -->
 		<view class="header w-100 position-fixed top-0 left-0 index-1"
-			:style="{height: `calc(88rpx + ${$store.state.statusHeight}px)`}">
+			:style="{height: `calc(88rpx + ${statusHeight}px)`}">
 			<!-- 章节名等内容 -->
-			<view class="chapter w-100" style="height: 88rpx;">
-				{{compose[0].chapterName}}
+			<view class="chapter d-flex a-center pl-2 w-100" style="height: 88rpx;">
+				<u-icon class="mr-1" name="arrow-left" size="14" color="#111" @click="$tools.Navigate.navigateBack()"></u-icon>
+				<span>{{curPage.chapterName}}</span> 
 			</view>
 		</view>
 		<!-- 阅读页（结构和样式请和仅用于计算元素一致） -->
@@ -83,22 +84,20 @@
 		<view class="container" :class="`container${background - 1}`" :style="{zIndex: 3, transform: `translate${prePage.pageTranslate[turnType]}`, transition: `transform ${showAnimation?turnPageTime:0}s`,
 			boxShadow:showShadow&&turnType===0?'0 0 10px 0 rgba(0,0,0,.4)':''}">
 			<!-- 顶部占位 -->
-			<view class="header" :style="{height: `calc(88rpx + ${$store.state.statusHeight}px)`}"></view>
+			<view class="header" :style="{height: `calc(88rpx + ${statusHeight}px)`}"></view>
 			<!-- 外层class="content"用于计算阅读部分的高度 -->
 			<view class="content">
 				<!-- 内层class="inner-box"利用innerHeight将内容截取至整行，防止文字不完整的情况出现 -->
 				<view class="inner-box" :style="{height: `${innerHeight}px`}" v-if="prePage.canRead">
 					<!-- 最里层class="book-inner"的用于获取文本总高度，计算总页数，注意不可以overflow:hidden -->
-					<view class="book-inner" v-html="prePage.text" :style="{fontSize: `${fontSize}px`, lineHeight: `${lineHeight*fontSize}px`,color: `${background == 2 ? colorList[1] : colorList[0]}`,
-						transform: `translateY(-${prePage.pageNum*innerHeight}px)`}">
+					<view class="book-inner" v-html="prePage.text" :style="{fontSize: `${fontSize}rpx`, lineHeight: `${lineHeight*fontSize}rpx`,color: `${background == 2 ? colorList[1] : colorList[0]}`,
+						transform: `translateY(-${prePage.pageNum*innerHeight}rpx)`}">
 					</view>
 				</view>
-				<view style="display:flex;flex-flow: column;justify-content: center;align-items: center;height: 100%;"
-					v-else>
-					<span>{{$t('VIP章节')}}</span>
-					<view class="mt-2 text-white"
-						style="padding: 5rpx 40rpx;background-color: #33C795;border-radius: 50rpx;">
-						{{$t('开通VIP')}}
+				<view v-else class="d-flex flex-column a-center j-center h-100" @click.stop="$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')">
+					<view class="px-3 main-text-color">{{$t('当前为VIP章节，请开通VIP服务后继续阅读')}}</view>
+					<view class="mt-10 btns text-white d-flex a-center j-center">
+						{{$t('去开通')}}
 					</view>
 				</view>
 			</view>
@@ -108,50 +107,45 @@
 			boxShadow:showShadow&&turnType===0?'0 0 10px 0 rgba(0,0,0,.4)':''}" @touchstart="touchStart" @touchend="touchEnd"
 			@touchmove="touchMove" @touchcancel="touchcancel">
 			<!-- 顶部占位 -->
-			<view class="header" :style="{height: `calc(88rpx + ${$store.state.statusHeight}px)`}"></view>
+			<view class="header" :style="{height: `calc(88rpx + ${statusHeight}px)`}"></view>
 			<!-- 阅读区域 -->
 			<view class="content">
 				<view class="inner-box" :style="{height: `${innerHeight}px`}" v-if="curPage.canRead">
-					<view class="book-inner" v-html="curPage.text" :style="{fontSize: `${fontSize}px`, lineHeight: `${lineHeight*fontSize}px`,color: `${background == 2 ? colorList[1] : colorList[0]}`,
-						transform: `translateY(-${curPage.pageNum*innerHeight}px)`}">
+					<view class="book-inner" v-html="curPage.text" :style="{fontSize: `${fontSize}rpx`, lineHeight: `${lineHeight*fontSize}rpx`,color: `${background == 2 ? colorList[1] : colorList[0]}`,
+						transform: `translateY(-${curPage.pageNum*innerHeight}rpx)`}">
 					</view>
 				</view>
-				<view style="display:flex;flex-flow: column;justify-content: center;align-items: center;height: 100%;"
-					v-else>
-					<span>{{$t('VIP章节')}}</span>
-					<view class="mt-2 text-white"
-						style="padding: 5rpx 40rpx;background-color: #33C795;border-radius: 50rpx;">
-						{{$t('开通VIP')}}
+				<view v-else class="d-flex flex-column a-center j-center h-100" @click.stop="$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')">
+					<view class="px-3 main-text-color">{{$t('当前为VIP章节，请开通VIP服务后继续阅读')}}</view>
+					<view class="mt-10 btns text-white d-flex a-center j-center">
+						{{$t('去开通')}}
 					</view>
 				</view>
 			</view>
 		</view>
-
 		<!-- 下一页 层级第五 -->
 		<view class="container" :class="`container${background - 1}`" :style="{zIndex: 1, transform: `translate${nextPage.pageTranslate[turnType]}`,transition: `transform ${showAnimation?turnPageTime:0}s`,
 			boxShadow:showShadow&&turnType===0?'0 0 10px 0 rgba(0,0,0,.4)':''}">
-			<view class="" :style="{height: $store.state.statusHeight + 'px'}"></view>
+			<view class="" :style="{height: statusHeight + 'px'}"></view>
 			<!-- 顶部占位 -->
-			<view class="header" :style="{height: `calc(88rpx + ${$store.state.statusHeight}px)`}"></view>
+			<view class="header" :style="{height: `calc(88rpx + ${statusHeight}px)`}"></view>
 			<!-- 阅读区域 -->
 			<view class="content">
 				<view class="inner-box" :style="{height: `${innerHeight}px`}" v-if="nextPage.canRead">
-					<view class="book-inner" v-html="nextPage.text" :style="{fontSize: `${fontSize}px`, lineHeight: `${lineHeight*fontSize}px`,color: `${background == 2 ? colorList[1] : colorList[0]}`,
-						transform: `translateY(-${nextPage.pageNum*innerHeight}px)`}">
+					<view class="book-inner" v-html="nextPage.text" :style="{fontSize: `${fontSize}rpx`, lineHeight: `${lineHeight*fontSize}rpx`,color: `${background == 2 ? colorList[1] : colorList[0]}`,
+						transform: `translateY(-${nextPage.pageNum*innerHeight}rpx)`}">
 					</view>
 				</view>
-				<view style="display:flex;flex-flow: column;justify-content: center;align-items: center;height: 100%;"
-					v-else>
-					<span>{{$t('VIP章节')}}</span>
-					<view class="mt-2 text-white"
-						style="padding: 5rpx 40rpx;background-color: #33C795;border-radius: 50rpx;">
-						{{$t('开通VIP')}}
+				<view v-else class="d-flex flex-column a-center j-center h-100" @click.stop="$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')">
+					<view class="px-3 main-text-color">{{$t('当前为VIP章节，请开通VIP服务后继续阅读')}}</view>
+					<view class="mt-10 btns text-white d-flex a-center j-center">
+						{{$t('去开通')}}
 					</view>
 				</view>
 			</view>
 		</view>
 		<!-- 底部区域 层级第二 -->
-		<view class="footer w-100 px-2 position-fixed bottom-0 left-0 index-1"
+		<view class="footer d-flex a-center j-sb w-100 px-2 position-fixed bottom-0 left-0 index-1"
 			:style="{height: `calc(88rpx + env(safe-area-inset-bottom))`}">
 			<view>
 				{{systemTimeStr}}
@@ -163,11 +157,8 @@
 				<battery :level="battery.batteryLevel" :charging="battery.batteryState === 2"></battery>
 			</view>
 		</view>
-
-
-
 		<!-- 遮罩层 -->
-		<u-overlay :show="menuShow" @click="closeMenu">
+		<u-overlay :show="menuShow" zIndex="100" @click="closeMenu">
 			<!-- 顶部导航栏 -->
 			<m-navbar :borderBottom="false" unBack @pageBack="pageBack" isFixed
 				:bgColor="background == 1 ? bgList[background].color : (background == 2 ? bgList[background - 2].color : bgList[background - 1].color)"
@@ -192,7 +183,8 @@
 			<view class="position-fixed bottom-0 left-0 w-100 menu-bottom" @click.stop
 				:style="{background: background == 1 ? bgList[background].color : (background == 2 ? bgList[background - 2].color : bgList[background - 1].color)}">
 				<!-- 用于显示章节进度 -->
-				<view class="position-absolute d-flex a-center text-center rounded-1 px-3 py-1 bg-light-secondary left-half tf-half-x"
+				<view v-if="chapterProgress > 0"
+					class="position-absolute d-flex a-center text-center rounded-1 px-3 py-1 bg-light-secondary left-half tf-half-x"
 					style="top: -80rpx;"
 					:style="{background: background == 1 ? bgList[background].color : (background == 2 ? bgList[background - 2].color : bgList[background - 1].color)}">
 					{{progressTouched ? directoryList[chapterProgress].name : compose[1].chapterName}}
@@ -204,7 +196,7 @@
 					<view class="flex-1 py-2">
 						<u-slider v-model="chapterProgress" activeColor="#f27299" :block-size="20"
 							:max="directoryList.length - 1" @changing="slideChanging" @change="slideChange"
-							:blockColor="background != 1 ? bgList[1].color : bgList[0].color"/>
+							:blockColor="background != 1 ? bgList[1].color : bgList[0].color" />
 					</view>
 					<text @click="goNextChapter"
 						:style="{color: background != 1 ? bgList[1].color : bgList[0].color}">{{$t('下一章')}}</text>
@@ -218,7 +210,8 @@
 					</view>
 					<view class="d-flex a-center j-center flex-column" v-if="background != 2"
 						@click="changeBackground(2)">
-						<u-icon :name="`https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/${background == 1 ? 'hei' : 'hei-all'}.svg`"
+						<u-icon
+							:name="`https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/${background == 1 ? 'hei' : 'hei-all'}.svg`"
 							size="28"></u-icon>
 						<text class="font"
 							:style="{color: background != 1 ? bgList[1].color : bgList[0].color}">{{$t('夜间')}}</text>
@@ -238,53 +231,15 @@
 				</view>
 			</view>
 		</u-overlay>
-		<!-- 菜单层 -->
-		<!-- <view class="menu" :style="{height: `100%`, width: `100%`}" v-if="menuShow" @touchend="closeMenu"> -->
-		<!-- 目录层 -->
-		<!-- <view class="directory" :class="`container${background - 1}`" v-if="directoryShowBefore"
-				:style="{left: directoryShow ? 0 : '-100%',color: `${background == 2 ? colorList[1] : colorList[0]}`,boxShadow:'0 0 10px 0 rgba(0,0,0,.4)'}"
-				@touchend.stop>
-				<view class="nation-title d-flex a-center px-2 j-sb"
-					:style="{height: `calc(80rpx + ${$store.state.statusHeight}px)` , paddingTop: $store.state.statusHeight + 'px'}">
-					<view class="d-flex a-center">
-						<view class="text-ellipsis1" style="width: 300rpx;">{{detail.name}}</view>
-						<view>({{directoryList.length}})</view>
-					</view>
-					<view class="d-flex a-center j-center">
-						<view class="" :style="{color: isSort == 0 ? '#33C795' : '#666'}" @click="setIsSort(0)">
-							{{$t('正序')}}
-						</view>
-						<view class="px-1" style="color: #33C795;">
-							|
-						</view>
-						<view class="" :style="{color: isSort == 1 ? '#33C795' : '#666'}" @click="setIsSort(1)">
-							{{$t('倒序')}}
-						</view>
-					</view>
-				</view> -->
-		<!-- :size="40"——每一栏高度为40px  :scrollHeight="windowHeight - 60"——书名的高度为60px -->
-		<!-- <virtual-list :items="directoryList" :size="40" :remain="16" :active="compose[1].chapterIndex"
-					:scrollHeight="windowHeight - 40 - $store.state.statusHeight">
-					<template v-slot="{item,active}">
-						<view class="directory-listItem" :class="{active: item.index == active}"
-							@click="goToChapter(item.index)">
-							<view v-if="item.vip!=='0'" class="isvip line-h text-white mr-2">
-								VIP
-							</view>
-							<view class="name">
-								{{item.name}}
-							</view>
-							<u-icon v-if="item.cion!=='0'" class="ml-auto" name="lock" color="#111" size="24"></u-icon>
-						</view>
-					</template>
-				</virtual-list>
-			</view> -->
-		<!-- </view> -->
+		<!-- 目录弹框 -->
+		<directory :show="directoryShow" @close="directoryShow = false" :backgroundId="background" :directoryList="directoryList"
+		:chapterProgress="chapterProgress" :detail="detail" @openSort="openSort" @openToChapter="goToChapter" />
 		<!-- 阅读设置弹框 -->
-		<c-novel-read-set :show="setShow" :maxFontSize="maxFontSize" :minFontSize="minFontSize" :turnType="turnType"
+		<read-set :show="setShow" :maxFontSize="maxFontSize" :minFontSize="minFontSize" :turnType="turnType"
 			:bgId="background" :lineHeight="lineHeight" :fontSize="fontSize" @addSize="addSize" @subSize="subSize"
 			@changeLineHeight="changeLineHeight" @changeTurnType="changeTurnType" @changeBackground="changeBackground"
 			@close="setShow = false" />
+		<!-- 分享海报 -->
 		<c-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow" :poster="poster" />
 		<m-modal :show="modalShow" i18n title="温馨提示" confirmName="加入书架" @cancel="cancel" @confirm="addfavor">
 			<view class="d-flex a-center j-center flex-column">
@@ -303,17 +258,20 @@
 	import battery from '@/components/battery.vue'
 	import virtualList from '@/components/virtualList.vue'
 	import CAppShare from '@/components/common/c-app-share/index.vue'
-	import CNovelReadSet from '@/components/common/c-novel-read-set/index.vue'
+	import ReadSet from '@/components/pages/novel-mudules/read-set/index.vue'
+	import Directory from '@/components/pages/novel-mudules/directory/index.vue'
+	import MCell from '@/main_modules/main-ui/m-cell/index.vue'
 	import capsuleInit from '@/mixins/capsule-init.js'
 	import {
 		lineList,
 		turnTypeList,
 		bgList
-	} from '@/components/common/c-novel-read-set/options.js'
+	} from '@/components/pages/novel-mudules/options.js'
 	import {
 		traditionalized,
 		simplized,
-		dateToStr
+		dateToStr,
+		simpPYStr
 	} from '@/utils/index.js'
 	export default {
 		mixins: [capsuleInit],
@@ -321,13 +279,17 @@
 			battery,
 			virtualList,
 			CAppShare,
-			CNovelReadSet
+			ReadSet,
+			Directory,
+			MCell
 		},
 		data() {
 			return {
 				lineList,
 				turnTypeList,
 				bgList,
+				scrollTop: 0,
+				intoView: '',
 				bookName: '我是书名',
 				bookId: 1,
 				history: { //本书历史记录
@@ -426,7 +388,7 @@
 				query: {},
 				detail: {},
 				tempBackground: 8,
-				isSort: 0,
+				isSort: true,
 				posterShow: false,
 				isSuccess: false,
 				time: null,
@@ -439,15 +401,16 @@
 			this.query = this.$tools.Navigate.receivePageData(options)
 			this.init()
 		},
+		mounted() {
+			this.initPage()
+		},
 		methods: {
 			// 初始化
 			init() {
 				this.initPoster()
 				this.getNovelInfo()
-				this.getChapterList()
 				this.getSystemInfo()
-				this.tempBackground = uni.getStorageSync('background') == 2 ? 1 : uni.getStorageSync('background')
-				// this.initPage()
+				// this.tempBackground = uni.getStorageSync('background') == 2 ? 1 : uni.getStorageSync('background')
 			},
 			//初始化海报数据
 			initPoster() {
@@ -665,19 +628,13 @@
 					}
 				}
 			},
-			// 设置排序
-			setIsSort(id) {
-				if (id == 0) {
-					if (this.isSort !== 0) {
-						this.directoryList = this.directoryList.reverse()
-						this.isSort = 0
-					}
-				} else {
-					if (this.isSort !== 1) {
-						this.directoryList = this.directoryList.reverse()
-						this.isSort = 1
-					}
-				}
+			//排序切换
+			openSort() {
+				this.directoryList = this.directoryList.reverse()
+				this.scrollTop = 1
+				this.$nextTick(() => {
+					this.scrollTop = 0
+				})
 			},
 			// 获取小说信息
 			getNovelInfo() {
@@ -698,30 +655,7 @@
 					"popular": 367840
 				}
 			},
-			// 获取章节内容
-			async getNovelChapterInfos() {
-				// if (!this.query.zid) {
-				// 	this.query.zid = this.chapterList[0].id
-				// }
-				// let {
-				// 	data,
-				// 	code
-				// } = await getNovelChapterInfo(result)
-				this.text = dateToStr()
-			},
-			// 获取章节列表
-			getChapterList() {
-				// TODO：请求获取数据
-				this.directoryList = []
-				for (let i = 1; i <= 1200; i++) {
-					this.directoryList.push({
-						name: '天魂大陆' + i,
-						id: i,
-						vip: i > 15 ? true : false,
-						lock: i > 20 ? true : false,
-					})
-				}
-			},
+
 			setStorage() {
 				// let history = uni.getStorageSync('history')
 				// if (typeof history !== 'object') {
@@ -815,21 +749,15 @@
 				]
 				await this.calcHeight()
 				await this.getDirectoryList()
-
 				if (this.history.chapterIndex > this.directoryList.length - 1 || !this.history.chapterIndex) {
 					this.history.chapterIndex = 0
 				}
 				await this.getThreeChapter(this.history.chapterIndex)
-
 				let page = Math.floor((this.compose[1].totalPage - 1) * this.history.progress)
 				this.goToPage(page)
 				uni.hideLoading()
-
 			},
-
-			/**
-			 * 计算innerHeight，用于截取至整行
-			 **/
+			// 计算innerHeight，用于截取至整行
 			calcHeight() {
 				if (this.contentHeight) {
 					let lineHeight = this.fontSize * this.lineHeight;
@@ -859,45 +787,37 @@
 								resolve()
 							}).exec();
 						})
-
 					})
 				}
-
 			},
-
-			/**
-			 * 计算本章页数
-			 **/
+			// 计算本章页数
 			calcCurChapter() {
 				return new Promise((resolve, reject) => {
 					// 此处setTimeout 100ms是为了确保元素渲染完毕从而获取正确高度，如果遇到页面页数计算不正确的情况可以增加时间试试看
-					setTimeout(() => {
+					let time = setTimeout(() => {
 						const query = uni.createSelectorQuery().in(this);
-						query.select('.curChapter').boundingClientRect(data => {
+						query.select('#curChapter').boundingClientRect(data => {
 							let height = data.height;
 							// #ifdef APP-PLUS || MP-WEIXIN
-
 							height = Math.round(height * this.appSystemInfo.pixelRatio) / this
 								.appSystemInfo.pixelRatio
 							// #endif
+							console.log(data.height, Math.ceil(height / this.innerHeight))
 							this.compose[1].totalPage = Math.ceil(height / this.innerHeight) || 1
 							this.compose[1].ready = true //章节准备完毕
 							resolve()
 						}).exec();
+						clearTimeout(time)
 					}, 100)
-
 				})
 			},
-
-			/**
-			 * 计算上一章页数,并翻页（如果有）
-			 **/
+			// 计算上一章页数,并翻页（如果有）
 			calcPreChapter() {
 				return new Promise((resolve, reject) => {
 					// 此处setTimeout 100ms是为了确保元素渲染完毕从而获取正确高度，如果遇到页面页数计算不正确的情况可以增加时间试试看
-					setTimeout(() => {
+					let time = setTimeout(() => {
 						const query = uni.createSelectorQuery().in(this);
-						query.select('.preChapter').boundingClientRect(data => {
+						query.select('#preChapter').boundingClientRect(data => {
 							let height = data.height;
 							// #ifdef APP-PLUS || MP-WEIXIN
 							height = Math.round(height * this.appSystemInfo.pixelRatio) / this
@@ -918,21 +838,17 @@
 							}
 							resolve()
 						}).exec();
+						clearTimeout(time)
 					}, 100)
-
 				})
-
 			},
-
-			/**
-			 * 计算下一章页数,并翻页（如果有）
-			 **/
+			// 计算下一章页数,并翻页（如果有）
 			calcNextChapter() {
 				return new Promise((resolve, reject) => {
 					// 此处setTimeout 100ms是为了确保元素渲染完毕从而获取正确高度，如果遇到页面页数计算不正确的情况可以增加时间试试看
-					setTimeout(() => {
+					let time = setTimeout(() => {
 						const query = uni.createSelectorQuery().in(this);
-						query.select('.nextChapter').boundingClientRect(data => {
+						query.select('#nextChapter').boundingClientRect(data => {
 							let height = data.height;
 							// #ifdef APP-PLUS || MP-WEIXIN
 							height = Math.round(height * this.appSystemInfo.pixelRatio) / this
@@ -953,16 +869,11 @@
 							}
 							resolve()
 						}).exec();
-
+						clearTimeout(time)
 					}, 100)
-
 				})
-
 			},
-
-			/**
-			 * 触摸开始（封面）
-			 **/
+			// 触摸开始（封面）
 			coverTouchStart(e) {
 				this.showAnimation = false //关掉动画，否则翻页会很慢
 				this.touchX = e.touches[0].clientX
@@ -970,16 +881,12 @@
 				this.touchY = e.touches[0].clientY
 				this.touchStartY = e.touches[0].clientY
 			},
-
-			/**
-			 * 触摸（封面）
-			 **/
+			// 触摸（封面）
 			coverTouchMove(e) {
 				this.showShadow = true
 				let delta = 0
 				if (this.turnType === 0 || this.turnType === 1) { //翻页方式为‘覆盖’或者‘左右平移’
 					delta = e.touches[0].clientX - this.touchStartX;
-
 					// 限制边界
 					if (delta > this.appSystemInfo.windowWidth) {
 						delta = this.appSystemInfo.windowWidth
@@ -987,12 +894,10 @@
 					if (delta < -this.appSystemInfo.windowWidth) {
 						delta = -this.appSystemInfo.windowWidth
 					}
-
 					this.delta = e.touches[0].clientX - this.touchX;
 					this.touchX = e.touches[0].clientX;
 				} else { //翻页方式为‘上下平移’
 					delta = e.touches[0].clientY - this.touchStartY;
-
 					// 限制边界
 					if (delta > this.appSystemInfo.windowHeight) {
 						delta = this.appSystemInfo.windowHeight
@@ -1000,18 +905,14 @@
 					if (delta < -this.appSystemInfo.windowHeight) {
 						delta = -this.appSystemInfo.windowHeight
 					}
-
 					this.delta = e.touches[0].clientY - this.touchY;
 					this.touchY = e.touches[0].clientY;
 				}
-
 				if (this.next) { //首次翻下一页之后
-
 					// 限制边界
 					if (delta > 0) {
 						delta = 0
 					}
-
 					this.cover.pageTranslate = [
 						`(${delta}px,0)`,
 						`(${delta}px,0)`,
@@ -1046,13 +947,8 @@
 					// 	icon: 'none'
 					// })
 				}
-
-
 			},
-
-			/**
-			 * 触摸结束（封面）
-			 **/
+			// 触摸结束（封面）
 			coverTouchEnd(e) {
 				this.showAnimation = true
 				this.showShadow = false
@@ -1082,7 +978,6 @@
 					} else if (e.changedTouches[0].clientX <= this.appSystemInfo.windowWidth / 3 * 2 && e.changedTouches[0]
 						.clientX >=
 						this.appSystemInfo.windowWidth / 3) { //点击屏幕中间1/3为呼出菜单
-
 						this.showMenu()
 					}
 				} else {
@@ -1112,14 +1007,9 @@
 				}
 				this.next = false
 				this.pre = false
-
 			},
-
-			/**
-			 * 触摸取消（封面）
-			 **/
+			// 触摸取消（封面）
 			coverTouchcancel() {
-
 				// 取消翻页
 				this.showAnimation = false
 				this.showShadow = false
@@ -1136,10 +1026,7 @@
 				this.next = false
 				this.pre = false
 			},
-
-			/**
-			 * 触摸开始
-			 **/
+			// 触摸开始
 			touchStart(e) {
 				this.showAnimation = false
 				this.touchX = e.touches[0].clientX;
@@ -1147,16 +1034,12 @@
 				this.touchY = e.touches[0].clientY;
 				this.touchStartY = e.touches[0].clientY;
 			},
-
-			/**
-			 * 触摸
-			 **/
+			// 触摸
 			touchMove(e) {
 				this.showShadow = true;
 				let delta = 0
 				if (this.turnType === 0 || this.turnType === 1) { //翻页方式为‘覆盖’或者‘左右平移’
 					delta = e.touches[0].clientX - this.touchStartX;
-
 					// 限制边界
 					if (delta > this.appSystemInfo.windowWidth) {
 						delta = this.appSystemInfo.windowWidth
@@ -1164,12 +1047,10 @@
 					if (delta < -this.appSystemInfo.windowWidth) {
 						delta = -this.appSystemInfo.windowWidth
 					}
-
 					this.delta = e.touches[0].clientX - this.touchX;
 					this.touchX = e.touches[0].clientX;
 				} else { //翻页方式为‘上下平移’
 					delta = e.touches[0].clientY - this.touchStartY;
-
 					// 限制边界
 					if (delta > this.appSystemInfo.windowHeight) {
 						delta = this.appSystemInfo.windowHeight
@@ -1177,21 +1058,17 @@
 					if (delta < -this.appSystemInfo.windowHeight) {
 						delta = -this.appSystemInfo.windowHeight
 					}
-
 					this.delta = e.touches[0].clientY - this.touchY;
 					this.touchY = e.touches[0].clientY;
 				}
-
 				if (this.next && this.nextPage.ready) { //首次翻下一页之后
 					if (this.nextPage.isEnd) {
 						return
 					}
-
 					// 限制边界
 					if (delta > 0) {
 						delta = 0
 					}
-
 					this.prePage.pageTranslate = [
 						`(-100%,0)`,
 						`(${-this.appSystemInfo.windowWidth+delta}px,0)`,
@@ -1212,8 +1089,6 @@
 					this.next = true
 					if (this.nextPage.ready) { //页面准备好了
 						if (this.nextPage.isEnd) {
-
-
 							/*****************************************/
 							/**********    根据需要更改    ************/
 							/*****************************************/
@@ -1224,8 +1099,6 @@
 							/*****************************************/
 							/*****************************************/
 							/*****************************************/
-
-
 						} else {
 							this.prePage.pageTranslate = [
 								`(-100%,0)`,
@@ -1482,10 +1355,7 @@
 				this.next = false
 				this.pre = false
 			},
-
-			/**
-			 * 呼出菜单
-			 **/
+			// 呼出菜单
 			showMenu() {
 				// #ifdef APP-PLUS
 				plus.navigator.setFullscreen(false);
@@ -1496,11 +1366,9 @@
 					this.itemShow = true
 				}, 100)
 			},
-
-			/**
-			 * 关闭菜单
-			 **/
+			// 关闭菜单
 			closeMenu() {
+				console.log(123)
 				if (new Date().getTime() - this.menuTime < 500) return
 				// #ifdef APP-PLUS
 				plus.navigator.setFullscreen(true);
@@ -1513,20 +1381,14 @@
 					this.menuShow = false
 				}, 300)
 			},
-
-			/**
-			 * 关闭菜单栏，呼出设置栏
-			 **/
+			// 关闭菜单栏，呼出设置栏
 			openSetting() {
 				this.itemShow = false
 				setTimeout(() => {
 					this.setShow = true
 				}, 300)
 			},
-
-			/**
-			 * 关闭菜单栏，呼出目录栏
-			 **/
+			// 关闭菜单栏，呼出目录栏
 			openDirectory() {
 				// #ifdef APP-PLUS
 				plus.navigator.setFullscreen(true);
@@ -1932,9 +1794,6 @@
 					this.compose[2].ready = false
 					await this.calcNextChapter()
 				}
-
-
-
 			},
 
 			/**
@@ -2017,86 +1876,79 @@
 			 * 获取目录
 			 **/
 			async getDirectoryList(showLoading) {
-
-				/*****************************************/
-				/**********    根据需要更改    ************/
-				/*****************************************/
-
 				if (showLoading) {
 					uni.showLoading({
 						mask: true
 					})
 				}
-				let result = requestData({
-					id: this.query.bid
-				})
-				let {
-					list,
-					code
-				} = await getNovelChapterList(result)
-				if (code == 1) {
-					list.forEach((item, i) => {
-						item.index = i
-					})
-					this.directoryList = list
-					return
-				}
-				// 此处是网络连接失败的逻辑
-				uni.hideLoading()
-				return new Promise((resolve, reject) => {
-					uni.showModal({
-						title: this.$t('获取章节内容失败'),
-						content: this.$t('请检查您的网络状态'),
-						confirmText: this.$t('重试'),
-						confirmColor: '#ffd300',
-						success: async (res) => {
-							if (res.confirm) {
-								//用户点击了重试
-								await this.getDirectoryList(true)
-								resolve()
-							} else if (res.cancel) {
-								//用户点击取消
-								this.back()
+				// let {
+				// 	data,
+				// 	code
+				// } = await getNovelChapterList()
+				let code = 200
+				if (code == 200) {
+					this.directoryList = []
+					for (let i = 1; i <= 1200; i++) {
+						this.directoryList.push({
+							name: '天魂大陆' + i,
+							id: i,
+							vip: i > 15 ? true : false,
+							lock: i > 20 ? true : false,
+						})
+					}
+				} else {
+					// 此处是网络连接失败的逻辑
+					uni.hideLoading()
+					return new Promise((resolve, reject) => {
+						uni.showModal({
+							title: this.$t('获取章节内容失败'),
+							content: this.$t('请检查您的网络状态'),
+							confirmText: this.$t('重试'),
+							confirmColor: '#f27299',
+							success: async (res) => {
+								if (res.confirm) {
+									//用户点击了重试
+									await this.getDirectoryList(true)
+									resolve()
+								} else if (res.cancel) {
+									//用户点击取消
+									this.$tools.Navigate.navigateBack()
+								}
 							}
-						}
+						})
 					})
-				})
-				/*****************************************/
-				/*****************************************/
-				/*****************************************/
+				}
 			},
-
-
 			/**
 			 * 获取一章数据
 			 **/
 			async getOneChapter(chapterId, showLoading) {
-
-				/*****************************************/
-				/**********    根据需要更改    ************/
-				/*****************************************/
-
 				if (showLoading) {
 					uni.showLoading({
 						mask: true
 					})
 				}
-				this.query.zid = chapterId
-				let result = requestData(this.query)
-				let {
-					data,
-					code
-				} = await getNovelChapterInfo(result)
-				if (code == 1) {
+
+				// this.query.zid = chapterId
+				// let {
+				// 	data,
+				// 	code
+				// } = await getNovelChapterInfo(this.query)
+				let data = {
+					vip: chapterId >= 15 ? true : false,
+					text: simpPYStr()
+				}
+				let code = 200
+				if (code == 200) {
 					if (showLoading) {
 						uni.hideLoading()
 					}
-					if (data.vip == '0') {
+					if (!data.vip) {
 						this.tmpChapter.text = data.text //模拟数据
 
 						// 根据业务实际情况判断该用户是否可阅读,逻辑后端判断
 						this.tmpChapter.canRead = true
-					} else if (this.$store.state.userinfo.vip == '1') {
+					} else if (this.userinfo.vip) {
 						this.tmpChapter.text = data.text //模拟数据
 
 						// 根据业务实际情况判断该用户是否可阅读,逻辑后端判断
@@ -2107,12 +1959,11 @@
 						// 根据业务实际情况判断该用户是否可阅读,逻辑后端判断
 						this.tmpChapter.canRead = false
 					}
-
-
 					if (this.simplified === 2) { //切换为繁体  注意：这里默认数据库中是简体字
 						this.tmpChapter.text = traditionalized(this.tmpChapter.text)
 					}
 				} else {
+					console.log(3)
 					// 此处是网络连接失败的逻辑
 					uni.hideLoading()
 					return new Promise((resolve, reject) => {
@@ -2120,7 +1971,7 @@
 							title: this.$t('获取章节内容失败'),
 							content: this.$t('请检查您的网络状态'),
 							confirmText: this.$t('重试'),
-							confirmColor: '#ffd300',
+							confirmColor: '#f27299',
 							success: async (res) => {
 								if (res.confirm) {
 									//用户点击了重试
@@ -2128,23 +1979,17 @@
 									resolve()
 								} else if (res.cancel) {
 									//用户点击取消
-									this.back()
+									this.$tools.Navigate.navigateBack()
 								}
 							}
 						})
 					})
 				}
-				/*****************************************/
-				/*****************************************/
-				/*****************************************/
 			},
 			/**
 			 * 获取三章数据
 			 **/
 			async getThreeChapter(index) {
-				if (this.query.index) {
-					index = this.query.index
-				}
 				await this.getOneChapter(this.directoryList[index].id)
 				this.compose[1] = {
 					chapterIndex: index,
@@ -2152,7 +1997,6 @@
 					text: this.tmpChapter.text,
 					canRead: this.tmpChapter.canRead
 				}
-
 				if (this.compose[1].chapterIndex !== 0) {
 					await this.getOneChapter(this.directoryList[index - 1].id)
 					this.compose[0] = {
@@ -2167,7 +2011,6 @@
 						isCover: true
 					}
 				}
-
 				if (this.compose[1].chapterIndex !== this.directoryList.length - 1) {
 					await this.getOneChapter(this.directoryList[index + 1].id)
 					this.compose[2] = {
@@ -2182,10 +2025,10 @@
 						isEnd: true
 					}
 				}
+				console.log(this.compose)
 				await this.calcCurChapter()
 				await this.calcPreChapter()
 				await this.calcNextChapter()
-				this.query.index = ''
 			}
 		},
 		computed: {
@@ -2203,6 +2046,12 @@
 			},
 			userinfo() {
 				return this.$store.state.userinfo
+			},
+			statusHeight() {
+				return this.$store.state.statusHeight
+			},
+			navbarHeight() {
+				return this.$store.state.navbarHeight
 			}
 		}
 
@@ -2269,8 +2118,18 @@
 					text-align: justify;
 				}
 			}
+			.btns {
+				font-size: 30rpx;
+				border-radius: 50rpx;
+				height: 88rpx;
+				width: 630rpx;
+				background: linear-gradient(to right, #85B6CA, #F9A4A0);
+			}
+			
+			.btns:active {
+				background: linear-gradient(to right, #85B6CA80, #F9A4A080);
+			}
 		}
-
 	}
 
 	/deep/ .uicon-star-fill {
@@ -2285,21 +2144,6 @@
 	.item-info {
 		color: #FA9C3E;
 		font-size: 32rpx;
-	}
-
-	.item-school {
-		color: #0A57D0;
-		font-size: 24rpx;
-	}
-
-	.footer {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		font-size: 14px;
-		color: #666;
-		height: 30px;
-		width: 100%;
 	}
 
 	.container0 {
@@ -2324,212 +2168,6 @@
 
 	.container5 {
 		background-color: #F1DFC2;
-	}
-
-	.menu {
-		position: fixed;
-		top: 0;
-		left: 0;
-		z-index: 300;
-		background-color: #11111160;
-
-		// transition: all .3s;
-		.menu-top {
-			position: absolute;
-			left: 0;
-			width: 100%;
-			background-color: #333;
-			transition: top .3s;
-
-			.head {
-				position: relative;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				height: 40px;
-				width: 100%;
-				line-height: 40px;
-				color: #fff;
-			}
-
-			.back {
-				position: absolute;
-				top: 0;
-				left: 10px;
-				font-size: 38rpx;
-			}
-		}
-
-		.directory {
-			position: absolute;
-			top: 0;
-			display: flex;
-			flex-flow: column;
-			width: 600rpx;
-			height: 100%;
-			transition: left .1s;
-
-			.isvip {
-				border-radius: 20rpx 0 20rpx 0;
-				padding: 5rpx 15rpx;
-				background: linear-gradient(90deg, #FF4820 0%, #FE2936 100%);
-			}
-
-			.bookname {
-				padding: 20px 0 20px 10px;
-				height: 60px;
-				font-size: 18px;
-			}
-
-			.nation-title {
-				// height: 100rpx;
-			}
-
-			.chapter-list {
-				.isvip {
-					border-radius: 20rpx 0 20rpx 0;
-					padding: 5rpx 15rpx;
-					background: linear-gradient(90deg, #FF4820 0%, #FE2936 100%);
-				}
-			}
-
-			.directory-listItem {
-				display: flex;
-				align-items: center;
-				padding-left: 20rpx;
-				height: 80rpx;
-				font-size: 28rpx;
-				// border-bottom: #eee solid 1rpx;
-			}
-
-			.active {
-				color: #33C795;
-			}
-		}
-
-		.menu-bottom {
-			position: absolute;
-			left: 0;
-			width: 100%;
-			background-color: #333;
-			transition: bottom .3s;
-			color: #fff;
-
-			.show-chapter {
-				position: absolute;
-				left: 50%;
-				top: 0;
-				transform: translate(-50%, -110%);
-				padding: 5px 10px;
-				line-height: 20px;
-				border-radius: 10rpx;
-				font-size: 13px;
-				background-color: #333;
-			}
-
-			.progress-box {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				padding: 0 20px;
-				height: 50px;
-				width: 100%;
-				font-size: 15px;
-			}
-
-			.items-box {
-				display: flex;
-				justify-content: space-around;
-				align-items: center;
-				height: 100rpx;
-				width: 100%;
-
-				.item-box {
-					display: flex;
-					flex-flow: column;
-					justify-content: center;
-					align-items: center;
-					height: 100%;
-				}
-			}
-		}
-
-		.setting {
-			position: absolute;
-			left: 0;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-around;
-			border-radius: 25rpx 25rpx 0 0;
-			width: 100%;
-			color: #fff;
-			background-color: #fff;
-			transition: all .3s linear;
-
-			.setting-title {
-				border-radius: 25rpx 25rpx 0 0;
-			}
-
-			.item {
-				display: flex;
-				align-items: center;
-				height: 70px;
-
-				.item-name {
-					padding: 10px;
-					color: #111;
-					font-size: 14px;
-				}
-
-				.icon {
-					margin-right: 10px;
-					padding: 5px 20px;
-					font-size: 15px;
-					height: 32px;
-					color: #111;
-					line-height: 20px;
-					width: auto;
-					text-align: center;
-					border-radius: 12rpx;
-					border: #111 solid 2rpx;
-				}
-
-				.roun {
-					width: 70rpx;
-					height: 70rpx;
-					border-radius: 50%;
-					padding: 0 !important;
-				}
-
-				.type-setting {
-					display: flex;
-					flex-direction: column;
-					justify-content: space-around;
-					align-items: center;
-					margin-right: 10px;
-					padding: 5px;
-					height: 30px;
-					width: 30px;
-					border-radius: 5px;
-					border: #111 solid 1px;
-
-					.line {
-						width: 100%;
-						border-bottom: #111 solid 1px;
-					}
-
-					.lineActive {
-						width: 100%;
-						border-bottom: #33C795 solid 1px;
-					}
-				}
-
-				.active {
-					color: #33C795;
-					border: #33C795 solid 1px;
-				}
-			}
-		}
 	}
 
 	.cover {

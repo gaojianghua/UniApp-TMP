@@ -8,6 +8,7 @@
 	:class="[textCenter ? 'j-center': 'j-sb', isActive ? 'active': '']" :style="[{borderTop: `1rpx solid ${BBColor}`}, itemStyle]">
 	<!-- #endif -->
 		<view v-if="isShowL" class="menu-item-left d-flex a-center">
+			<slot name="left-row"></slot>
 			<u-image class="mr-2" v-if="item.icon" :radius="radius" :src="item.icon" :width="imgWidth"
 				:height="imgHeight" :mode="mode"></u-image>
 			<span v-if="item[keyName]" :style="{color}">{{i18n ? $t(item[keyName]) : item[keyName]}}</span>

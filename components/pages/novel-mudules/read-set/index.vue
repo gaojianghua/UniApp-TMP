@@ -44,7 +44,7 @@
 <script>
 	import MPopup from '@/main_modules/main-ui/m-popup/index.vue'
 	import props from './props.js'
-	import { lineList, turnTypeList, bgList } from './options.js'
+	import { lineList, turnTypeList, bgList } from '../options.js'
 	export default {
 		props,
 		components: {
