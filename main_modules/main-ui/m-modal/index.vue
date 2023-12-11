@@ -1,5 +1,5 @@
 <template>
-	<u-overlay :show="show" @click="cancel">
+	<u-overlay :show="show" @click="cancel" :zIndex="zIndex">
 		<view class="warp d-flex a-center j-center">
 			<view class="rect" @tap.stop>
 				<view class="rect-title d-flex a-center j-center main-bg-color">
@@ -61,6 +61,10 @@
 			iconSize: {
 				type: String,
 				default: '16'
+			},
+			zIndex: {
+				type: String,
+				default: ''
 			},
 			i18n: {
 				type: Boolean,

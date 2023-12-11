@@ -167,7 +167,7 @@
 
 
 		<!-- 遮罩层 -->
-		<u-overlay :show="menuShow">
+		<u-overlay :show="menuShow" @click="closeMenu">
 			<!-- 顶部导航栏 -->
 			<m-navbar :borderBottom="false" unBack @pageBack="pageBack" isFixed
 				:bgColor="background == 1 ? bgList[background].color : (background == 2 ? bgList[background - 2].color : bgList[background - 1].color)"
@@ -189,11 +189,11 @@
 				</view>
 			</m-navbar>
 			<!-- 底部 -->
-			<view class="position-fixed bottom-0 left-0 w-100 menu-bottom"
+			<view class="position-fixed bottom-0 left-0 w-100 menu-bottom" @click.stop
 				:style="{background: background == 1 ? bgList[background].color : (background == 2 ? bgList[background - 2].color : bgList[background - 1].color)}">
 				<!-- 用于显示章节进度 -->
-				<view class="position-absolute rounded-1 p-3 bg-light-secondary left-half tf-half-x"
-					style="top: -80rpx; width: 200rpx;"
+				<view class="position-absolute d-flex a-center text-center rounded-1 px-3 py-1 bg-light-secondary left-half tf-half-x"
+					style="top: -80rpx;"
 					:style="{background: background == 1 ? bgList[background].color : (background == 2 ? bgList[background - 2].color : bgList[background - 1].color)}">
 					{{progressTouched ? directoryList[chapterProgress].name : compose[1].chapterName}}
 				</view>
@@ -202,8 +202,9 @@
 					<text @click="goPreChapter"
 						:style="{color: background != 1 ? bgList[1].color : bgList[0].color}">{{$t('上一章')}}</text>
 					<view class="flex-1 py-2">
-						<slider :value="compose[1].chapterIndex" activeColor="#000" :block-size="20"
-							:max="directoryList.length - 1" @changing="slideChanging" @change="slideChange" />
+						<u-slider v-model="chapterProgress" activeColor="#f27299" :block-size="20"
+							:max="directoryList.length - 1" @changing="slideChanging" @change="slideChange"
+							:blockColor="background != 1 ? bgList[1].color : bgList[0].color"/>
 					</view>
 					<text @click="goNextChapter"
 						:style="{color: background != 1 ? bgList[1].color : bgList[0].color}">{{$t('下一章')}}</text>
@@ -430,7 +431,8 @@
 				isSuccess: false,
 				time: null,
 				modalShow: false,
-				poster: {}
+				poster: {},
+				menuTime: 0
 			}
 		},
 		onLoad(options) {
@@ -710,9 +712,9 @@
 			// 获取章节列表
 			getChapterList() {
 				// TODO：请求获取数据
-				this.chapterList = []
+				this.directoryList = []
 				for (let i = 1; i <= 1200; i++) {
-					this.chapterList.push({
+					this.directoryList.push({
 						name: '天魂大陆' + i,
 						id: i,
 						vip: i > 15 ? true : false,
@@ -1489,6 +1491,7 @@
 				plus.navigator.setFullscreen(false);
 				// #endif
 				this.menuShow = true;
+				this.menuTime = new Date().getTime()
 				setTimeout(() => {
 					this.itemShow = true
 				}, 100)
@@ -1498,6 +1501,7 @@
 			 * 关闭菜单
 			 **/
 			closeMenu() {
+				if (new Date().getTime() - this.menuTime < 500) return
 				// #ifdef APP-PLUS
 				plus.navigator.setFullscreen(true);
 				// #endif
@@ -1514,7 +1518,6 @@
 			 * 关闭菜单栏，呼出设置栏
 			 **/
 			openSetting() {
-
 				this.itemShow = false
 				setTimeout(() => {
 					this.setShow = true
@@ -1540,28 +1543,25 @@
 			 **/
 			slideChanging(e) {
 				this.progressTouched = true
-				this.chapterProgress = e.detail.value
+				this.chapterProgress = e
 			},
 
 			/**
 			 * 结束拖动进度条
 			 **/
 			async slideChange(e) {
-
-				this.chapterProgress = e.detail.value
+				this.chapterProgress = e
 				uni.showLoading()
-				await this.getThreeChapter(e.detail.value)
+				await this.getThreeChapter(e)
 				this.progressTouched = false
 				this.goToPage(0)
 				uni.hideLoading()
-
 			},
 
 			/**
 			 * 上一页,页面轮换
 			 **/
 			goPrePage() {
-
 				if (this.prePage.isCover) { //如果是首页
 					this.cover.pageTranslate = [
 						`(0,0)`,

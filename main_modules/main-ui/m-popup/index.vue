@@ -1,5 +1,5 @@
 <template>
-	<u-popup round="25" :show="show" @close="close">
+	<u-popup round="25" :show="show" @close="close" :zIndex="zIndex">
 		<!-- #ifdef MP -->
 		<view class="popup">
 			<view class="d-flex a-center pt-1 j-center position-relative" :style="[{
@@ -53,6 +53,12 @@
 				}
 			},
 			title: {
+				type: String,
+				default: () => {
+					return ''
+				}
+			},
+			zIndex: {
 				type: String,
 				default: () => {
 					return ''
