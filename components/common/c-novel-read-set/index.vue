@@ -1,5 +1,5 @@
 <template>
-	<m-popup :show="show" i18n @close="close" title="阅读设置" i18n>
+	<m-popup :show="show" i18n @close="close" title="阅读设置" i18n zIndex="10080">
 		<view class="read p-3" @click.stop @touchend.stop>
 			<view class="item d-flex a-center">
 				<view class="item-name font-md main-text-color mr-3">{{$t('字号')}}</view>
