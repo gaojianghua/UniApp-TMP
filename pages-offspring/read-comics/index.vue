@@ -62,7 +62,7 @@
 		<!-- 海报弹框 -->
 		<c-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow" :poster="poster" />
 		<!-- 弹出层 -->
-		<m-popup :show="directoryShow" i18n @close="directoryShow = false" title="目录" i18n>
+		<m-popup :show="directoryShow" i18n @close="directoryShow = false" title="目录" zIndex="10100" i18n>
 			<view class="directory px-2">
 				<view class="directory-top d-flex a-center j-sb">
 					<view class="d-flex a-center">
