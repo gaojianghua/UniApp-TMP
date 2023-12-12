@@ -64,7 +64,7 @@
 			},
 			zIndex: {
 				type: String,
-				default: ''
+				default: '10070'
 			},
 			i18n: {
 				type: Boolean,

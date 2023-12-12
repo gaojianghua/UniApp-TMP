@@ -61,7 +61,7 @@
 			zIndex: {
 				type: String,
 				default: () => {
-					return ''
+					return '10070'
 				}
 			},
 			closeL: {
