@@ -50,7 +50,7 @@
 				<view style="width: 300rpx; height: 4rpx; background: #FA9C3E80;border-radius: 15rpx 0 0 15rpx;"></view>
 			</view>
 			<view :style="{height: `calc(130rpx + ${statusHeight}px)`}"></view>
-			<u-image radius="6" width="300rpx" height="400rpx" :src="detail.img"></u-image>
+			<u-image radius="6" width="300rpx" height="400rpx" :src="detail.coverImage"></u-image>
 			<view class="font-weight font-lg mt-2">
 				{{detail.name}}
 			</view>
@@ -58,15 +58,15 @@
 				{{detail.author}}
 			</view>
 			<view class="data">
-				{{$t('评分')}}: {{detail.mark}} · {{$t('推荐')}}: {{detail.recommend}} · {{$t('热度')}}: {{detail.popular}}
+				{{$t('评分')}}: {{detail.score}} · {{$t('推荐')}}: {{detail.recommend}} · {{$t('热度')}}: {{detail.popular}}
 			</view>
 			<view class="type d-flex a-center mt-2">
-				<view class="type-item mr-2" v-for="(item, i) in detail.types" :key="i">
+				<view class="type-item mr-2" v-for="(item, i) in detail.tags" :key="i">
 					{{item}}
 				</view>
 			</view>
 			<view class="px-3 text-i2 text-center mt-2">
-				{{detail.intro}}
+				{{detail.desc}}
 			</view>
 		</view>
 		<!-- ************************** -->
@@ -241,7 +241,7 @@
 			@close="setShow = false" />
 		<!-- 分享海报 -->
 		<c-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow" :poster="poster" />
-		<m-modal :show="modalShow" i18n title="温馨提示" confirmName="加入书架" @cancel="cancel" @confirm="addfavor">
+		<m-modal :show="modalShow" i18n title="温馨提示" confirmName="加入书架" @cancel="cancel" zIndex="101" @confirm="openCollect">
 			<view class="d-flex a-center j-center flex-column">
 				<view class="d-flex a-center text-center j-center flex-column main-text-color letter-1">
 					{{$t('喜欢这本书吗？快加入书架吧！')}}
@@ -256,7 +256,6 @@
 		compose
 	} from './data.js'
 	import battery from '@/components/battery.vue'
-	import virtualList from '@/components/virtualList.vue'
 	import CAppShare from '@/components/common/c-app-share/index.vue'
 	import ReadSet from '@/components/pages/novel-mudules/read-set/index.vue'
 	import Directory from '@/components/pages/novel-mudules/directory/index.vue'
@@ -277,7 +276,6 @@
 		mixins: [capsuleInit],
 		components: {
 			battery,
-			virtualList,
 			CAppShare,
 			ReadSet,
 			Directory,
@@ -640,19 +638,20 @@
 			getNovelInfo() {
 				// TODO：请求获取数据
 				this.detail = {
-					"id": 7,
-					"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
-					"name": "大苍守夜人",
-					"mark": 9.4,
-					"school": 367450,
-					"types": ["玄幻", '穿越', '无敌流', '废材流'],
-					"state": 2,
-					"recommend": 95,
-					"collect": false,
-					"rank": 7,
-					"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。",
-					"author": '二十四桥明月夜',
-					"popular": 367840
+					id: 7,
+					name: '大苍守夜人',
+					coverImage: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/manhua/coverImage.jpg',
+					desc: '见过比贵族还猖狂的家丁吗?见过比纨绔还嚣张的家丁吗?见过比帝王还霸气的家丁吗?见过勾搭自家小姐的家丁吗?见过坐拥倾城祸水的家丁吗?',
+					author: '二十四桥明月夜',
+					tags: ["玄幻", '穿越', '无敌流', '废材流'],
+					score: 9.8,
+					collect: false,
+					recommend: 95,
+					state: 1,
+					allRun: 1200,
+					school: 367450,
+					popular: 367840,
+					shareUrl: 'https://gaojianghua.cn/pages-common/share-guide/index'
 				}
 			},
 
@@ -680,6 +679,7 @@
 			},
 			// 退出当前页面
 			pageBack() {
+				console.log(123)
 				if (this.detail.collect) {
 					this.$tools.Navigate.navigateBack()
 				} else {

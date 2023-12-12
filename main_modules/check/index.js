@@ -355,7 +355,7 @@ class Check {
 	}
 
 	/**
-	 * @description 判断设备是否安装了某个APP
+	 * @description 判断设备是否安装了某个APP(不适用H5)
 	 * @param schema APP的schema
 	 */
 	static isIncludesSomeAPP(schema) {
