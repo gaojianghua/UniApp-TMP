@@ -236,6 +236,15 @@ class Common {
 		return await QRCode.toDataURL(url)
 	};
 	/**
+	 * @description 获取当前页面路由
+	 */
+	static getCurrentPage() {
+		const pages = getCurrentPages();
+		const currentPage = pages[pages.length - 1];
+		const route = currentPage.route;
+		return route
+	};
+	/**
 	 * @description 保存图片到本地相册
 	 * @param path 图片地址
 	 * @param callback 回调函数
