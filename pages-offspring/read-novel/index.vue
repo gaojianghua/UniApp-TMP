@@ -75,7 +75,7 @@
 			:style="{height: `calc(88rpx + ${statusHeight}px)`}">
 			<!-- 章节名等内容 -->
 			<view class="chapter d-flex a-center pl-2 w-100" style="height: 88rpx;">
-				<u-icon class="mr-1" name="arrow-left" size="14" color="#111" @click="$tools.Navigate.navigateBack()"></u-icon>
+				<u-icon class="mr-1" name="arrow-left" size="14" color="#111" @click="pageBack()"></u-icon>
 				<span>{{curPage.chapterName}}</span> 
 			</view>
 		</view>

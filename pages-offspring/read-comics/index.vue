@@ -1,7 +1,7 @@
 <template>
 	<view class="page">
 		<!-- 遮罩层 -->
-		<u-overlay :show="show" @click="show = false">
+		<u-overlay :show="show" @click="show = false" zIndex="10">
 			<!-- 顶部导航栏 -->
 			<m-navbar unBack @pageBack="pageBack" isFixed bgColor="#fff" isSlot>
 				<view @click.stop class="title w-100 d-flex a-center pl-10 pr-3" :style="{
@@ -62,7 +62,7 @@
 		<!-- 海报弹框 -->
 		<c-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow" :poster="poster" />
 		<!-- 弹出层 -->
-		<m-popup :show="directoryShow" i18n @close="directoryShow = false" title="目录" zIndex="10100" i18n>
+		<m-popup :show="directoryShow" i18n @close="directoryShow = false" title="目录" zIndex="10071" i18n>
 			<view class="directory px-2">
 				<view class="directory-top d-flex a-center j-sb">
 					<view class="d-flex a-center">
@@ -94,7 +94,7 @@
 			</view>
 		</m-popup>
 		<!-- 弹框 -->
-		<m-modal :show="modalShow" i18n title="温馨提示" confirmName="加入书架" @cancel="cancel" @confirm="openCollect">
+		<m-modal :show="modalShow" i18n title="温馨提示" confirmName="加入书架" @cancel="cancel" zIndex="11" @confirm="openCollect">
 			<view class="d-flex a-center j-center flex-column">
 				<view class="d-flex a-center text-center j-center flex-column main-text-color letter-1">
 					{{$t('喜欢这本书吗？快加入书架吧！')}}
