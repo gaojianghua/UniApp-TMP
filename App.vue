@@ -121,17 +121,7 @@
 		},
 		onShow: function() {
 			console.log('App Show');
-			// let args= plus.runtime.arguments;
-			// let scheme = args.split('//')[1];
-			// console.log(scheme)
-			//获取特定页面标识
-			//没有的话自动跳pages文件里的第一个
-			// if(scheme=='特定页面标识'){
-			// 	uni.navigateTo({
-			// 		url: `要跳转的页面`
-			// 	})
-			// }  
-			// scheme=''
+			// this.$multiportApi.app.openAppPage('&', ':', 'id')
 			// checkOpenPermission(this.globalData)
 			// checkOpenService()
 		},

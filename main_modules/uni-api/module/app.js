@@ -108,5 +108,28 @@ export default {
 			main.registerReceiver(recevier, filter); 
 		}
 		return battery
+	},
+	/**
+	 * @description 配置APP被唤醒至指定页面
+	 * @param eleChar(string) 对象属性分隔符
+	 * @param keyValueCahr(string) 键值对分隔符
+	 * @param goodsId(string) 同一页面的商品id唯一标识名
+	 */
+	openAppPage(eleChar, keyValueCahr, goodsId) {
+		const pages = getCurrentPages();
+		const currentPage = pages[pages.length - 1];
+		const route = currentPage && currentPage.route != undefined ? '/' + currentPage.route : ''
+		let args = plus.runtime.arguments;
+		let argsStr = args.split('//')[1];
+		if (argsStr) {
+			let argsObj = MString.convertStringToObject(argsStr, eleChar, keyValueCahr)
+			if (route == argsObj.url && currentPage.$vm[goodsId] == argsObj[goodsId]) {
+				return
+			}else {
+				let url = argsObj.url
+				delete argsObj.url
+				Navigate.navigateTo(url, argsObj, true)
+			}
+		}
 	}
 }
