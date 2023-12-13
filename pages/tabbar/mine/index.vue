@@ -198,11 +198,11 @@
 				}
 				uni.scanCode({
 					success: (res) => {
-						console.log('条码类型：' + res.scanType);
-						console.log('条码内容：' + res.result);
+						let startIndex = res.result.indexOf("/pages/"); // 获取 "/pages/" 的起始下标
+						let result = res.result.substring(startIndex);
+						this.$tools.Navigate.navigateTo(result)
 					}
 				})
-				// this.$tools.Navigate.navigateTo('/pages-next/mine/scan-code/index')
 			}
 		},
 		computed: {

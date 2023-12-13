@@ -184,12 +184,6 @@
 					"enablePullDownRefresh": false
 				}
 			}, {
-				"path": "mine/scan-code/index",
-				"style": {
-					"navigationStyle": "custom",
-					"enablePullDownRefresh": false
-				}
-			}, {
 				"path": "mine/my-novel/index",
 				"style": {
 					"navigationBarTitleText": "%page.我的小说%",
