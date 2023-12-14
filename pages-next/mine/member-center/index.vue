@@ -140,7 +140,7 @@
 				this.VIPPriceList = VIPPriceList
 			},
 			// 选择VIP价目
-			selectVIP(i) {
+			selectVIP(item, i) {
 				this.VIPIndex = i
 			},
 			// 更新用户信息

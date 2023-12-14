@@ -5,7 +5,7 @@
 			:style="{background: backgroundId == 1 ? bgList[backgroundId].color : (backgroundId == 2 ? bgList[backgroundId - 2].color : bgList[backgroundId - 1].color)}">
 			<view class="d-flex a-center px-2 j-sb"
 				:style="{height: `calc(${navbarHeight}px + ${statusHeight}px)`}">
-				<view class="d-flex a-center">
+				<view class="d-flex a-center" :style="{color: backgroundId != 1 ? bgList[1].color : bgList[0].color}">
 					<view class="text-ellipsis1">{{detail.name}}</view>
 					<view>({{directoryList.length}})</view>
 				</view>
@@ -23,7 +23,7 @@
 					<view v-if="item.vip" class="isvip font-weight line-h mr-2">
 						VIP
 					</view>
-					<view class="name">
+					<view class="name" :style="{color: backgroundId != 1 ? bgList[1].color : bgList[0].color}">
 						{{item.name}}
 					</view>
 					<u-icon v-if="item.lock" class="ml-auto" name="lock" color="#FFA16A" size="24"></u-icon>

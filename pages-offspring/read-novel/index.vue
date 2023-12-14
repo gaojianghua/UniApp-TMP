@@ -75,8 +75,8 @@
 			:style="{height: `calc(88rpx + ${statusHeight}px)`}">
 			<!-- 章节名等内容 -->
 			<view class="chapter d-flex a-center pl-2 w-100" style="height: 88rpx;">
-				<u-icon class="mr-1" name="arrow-left" size="14" color="#111" @click="pageBack()"></u-icon>
-				<span>{{curPage.chapterName}}</span> 
+				<u-icon class="mr-1" name="arrow-left" size="14" :color="background != 2 ? bgList[1].color : bgList[0].color" @click="pageBack()"></u-icon>
+				<span :style="{color: background != 2 ? bgList[1].color : bgList[0].color}">{{curPage.chapterName}}</span> 
 			</view>
 		</view>
 		<!-- 阅读页（结构和样式请和仅用于计算元素一致） -->
@@ -147,90 +147,20 @@
 		<!-- 底部区域 层级第二 -->
 		<view class="footer d-flex a-center j-sb w-100 px-2 position-fixed bottom-0 left-0 index-1"
 			:style="{height: `calc(88rpx + env(safe-area-inset-bottom))`}">
-			<view>
+			<view :style="{color: background != 2 ? bgList[1].color : bgList[0].color}">
 				{{systemTimeStr}}
 			</view>
-			<view>
+			<view :style="{color: background != 2 ? bgList[1].color : bgList[0].color}">
 				{{curPage.pageNum + 1}}/{{curPage.totalPage}}
 			</view>
-			<view>
-				<battery :level="battery.batteryLevel" :charging="battery.batteryState === 2"></battery>
-			</view>
+			<battery :backgroundId="background" :level="battery.batteryLevel" :charging="battery.batteryState === 2"></battery>
 		</view>
 		<!-- 遮罩层 -->
-		<u-overlay :show="menuShow" zIndex="100" @click="closeMenu">
-			<!-- 顶部导航栏 -->
-			<m-navbar :borderBottom="false" unBack @pageBack="pageBack" isFixed
-				:bgColor="background == 1 ? bgList[background].color : (background == 2 ? bgList[background - 2].color : bgList[background - 1].color)"
-				isSlot>
-				<view @click.stop class="title w-100 d-flex a-center pl-10 pr-3" :style="{
-				width: `calc(100vw - ${miniProgramCapsule.width}px)`,
-				marginRight: `calc(100vw - ${miniProgramCapsule.right}px + ${miniProgramCapsule.width}px)`}">
-					<view class="title-text flex-shrink line-h main-text-color">
-						{{detail.name}} ( {{$t('第')}} {{compose[0].chapterName}} {{$t('章')}} )
-					</view>
-					<view class="share ml-auto" @click="sharePosters">
-						<u-icon name="share-square" size="26" color="#fb7299"></u-icon>
-					</view>
-					<view class="d-flex a-center flex-shrink j-center ml-2">
-						<u-icon v-if="detail.collect" name="star-fill" color="#fb7299" size="24"
-							@click="openCollect"></u-icon>
-						<u-icon v-else name="star" color="#fb7299" size="24" @click="openCollect"></u-icon>
-					</view>
-				</view>
-			</m-navbar>
-			<!-- 底部 -->
-			<view class="position-fixed bottom-0 left-0 w-100 menu-bottom" @click.stop
-				:style="{background: background == 1 ? bgList[background].color : (background == 2 ? bgList[background - 2].color : bgList[background - 1].color)}">
-				<!-- 用于显示章节进度 -->
-				<view v-if="chapterProgress > 0"
-					class="position-absolute d-flex a-center text-center rounded-1 px-3 py-1 bg-light-secondary left-half tf-half-x"
-					style="top: -80rpx;"
-					:style="{background: background == 1 ? bgList[background].color : (background == 2 ? bgList[background - 2].color : bgList[background - 1].color)}">
-					{{progressTouched ? directoryList[chapterProgress].name : compose[1].chapterName}}
-				</view>
-				<!-- 章节进度条 -->
-				<view class="d-flex a-center j-around px-2">
-					<text @click="goPreChapter"
-						:style="{color: background != 1 ? bgList[1].color : bgList[0].color}">{{$t('上一章')}}</text>
-					<view class="flex-1 py-2">
-						<u-slider v-model="chapterProgress" activeColor="#f27299" :block-size="20"
-							:max="directoryList.length - 1" @changing="slideChanging" @change="slideChange"
-							:blockColor="background != 1 ? bgList[1].color : bgList[0].color" />
-					</view>
-					<text @click="goNextChapter"
-						:style="{color: background != 1 ? bgList[1].color : bgList[0].color}">{{$t('下一章')}}</text>
-				</view>
-				<view class="d-flex a-center j-around">
-					<view class="d-flex a-center j-center flex-column" @click="openDirectory">
-						<u-icon name="list-dot" size="26"
-							:color="background != 1 ? bgList[1].color : bgList[0].color"></u-icon>
-						<text class="font"
-							:style="{color: background != 1 ? bgList[1].color : bgList[0].color}">{{$t('目录')}}</text>
-					</view>
-					<view class="d-flex a-center j-center flex-column" v-if="background != 2"
-						@click="changeBackground(2)">
-						<u-icon
-							:name="`https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/${background == 1 ? 'hei' : 'hei-all'}.svg`"
-							size="28"></u-icon>
-						<text class="font"
-							:style="{color: background != 1 ? bgList[1].color : bgList[0].color}">{{$t('夜间')}}</text>
-					</view>
-					<view class="d-flex a-center j-center flex-column" v-else @click="changeBackground(1)">
-						<u-icon name="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/bai.svg"
-							size="28"></u-icon>
-						<text class="font"
-							:style="{color: background != 1 ? bgList[1].color : bgList[0].color}">{{$t('日间')}}</text>
-					</view>
-					<view class="d-flex a-center j-center flex-column" @click="openSetting">
-						<u-icon name="setting-fill" size="26"
-							:color="background != 1 ? bgList[1].color : bgList[0].color"></u-icon>
-						<text class="font"
-							:style="{color: background != 1 ? bgList[1].color : bgList[0].color}">{{$t('page.设置')}}</text>
-					</view>
-				</view>
-			</view>
-		</u-overlay>
+		<control-menu :show="menuShow" :detail="detail" @close="closeMenu" :backgroundId="background"
+		@changeBackground="changeBackground" @sharePosters="sharePosters" @openCollect="openCollect" @goNextChapter="goNextChapter"
+		@goPreChapter="goPreChapter" @slideChanging="slideChanging" @slideChange="slideChange" :progressTouched="progressTouched"
+		:compose="compose" :directoryList="directoryList" :chapterProgress="chapterProgress" @pageBack="pageBack" 
+		@openSetting="openSetting" @openDirectory="openDirectory"/>
 		<!-- 目录弹框 -->
 		<directory :show="directoryShow" @close="directoryShow = false" :backgroundId="background" :directoryList="directoryList"
 		:chapterProgress="chapterProgress" :detail="detail" @openSort="openSort" @openToChapter="goToChapter" />
@@ -255,17 +185,18 @@
 	import {
 		compose
 	} from './data.js'
-	import battery from '@/components/battery.vue'
+	import Battery from './novel-modules/battery/index.vue'
 	import CAppShare from '@/components/common/c-app-share/index.vue'
-	import ReadSet from '@/components/pages/novel-mudules/read-set/index.vue'
-	import Directory from '@/components/pages/novel-mudules/directory/index.vue'
+	import ReadSet from './novel-modules/read-set/index.vue'
+	import Directory from './novel-modules/directory/index.vue'
+	import ControlMenu from './novel-modules/control-menu/index.vue'
 	import MCell from '@/main_modules/main-ui/m-cell/index.vue'
 	import capsuleInit from '@/mixins/capsule-init.js'
 	import {
 		lineList,
 		turnTypeList,
 		bgList
-	} from '@/components/pages/novel-mudules/options.js'
+	} from './novel-modules/options.js'
 	import {
 		traditionalized,
 		simplized,
@@ -275,10 +206,11 @@
 	export default {
 		mixins: [capsuleInit],
 		components: {
-			battery,
+			Battery,
 			CAppShare,
 			ReadSet,
 			Directory,
+			ControlMenu,
 			MCell
 		},
 		data() {
@@ -288,7 +220,6 @@
 				bgList,
 				scrollTop: 0,
 				intoView: '',
-				bookName: '我是书名',
 				bookId: 1,
 				history: { //本书历史记录
 					chapterIndex: 0,
@@ -368,8 +299,7 @@
 				menuShow: false, //菜单栏box是否渲染
 				itemShow: false, // 菜单栏动画控制
 				setShow: false, //设置栏动画控制
-				directoryShow: false, //目录动画控制
-				directoryShowBefore: false, // 目录渲染
+				directoryShow: false, //目录控制
 				turnPageTime: .5, //翻页动画时间
 
 				maxFontSize: 60, //最大字体大小，px
@@ -679,7 +609,6 @@
 			},
 			// 退出当前页面
 			pageBack() {
-				console.log(123)
 				if (this.detail.collect) {
 					this.$tools.Navigate.navigateBack()
 				} else {
@@ -709,7 +638,7 @@
 				// 获取字体、排版等信息(可能缓存在前端可能从后端拿，如果是异步注意同步处理)
 				this.fontSize = uni.getStorageSync('fontSize')
 				if (!this.$check.isNumber(this.fontSize)) {
-					this.fontSize = 16
+					this.fontSize = 26
 				}
 				this.simplified = uni.getStorageSync('simplified')
 				if (!this.$check.isNumber(this.simplified)) {
@@ -1377,7 +1306,6 @@
 				this.setShow = false
 				this.directoryShow = false
 				setTimeout(() => {
-					this.directoryShowBefore = false
 					this.menuShow = false
 				}, 300)
 			},
@@ -1394,7 +1322,6 @@
 				plus.navigator.setFullscreen(true);
 				// #endif
 				this.itemShow = false
-				this.directoryShowBefore = true
 				setTimeout(() => {
 					this.directoryShow = true
 				}, 300)
@@ -1759,6 +1686,7 @@
 						],
 						canRead: this.compose[1].canRead
 					}
+					
 				}
 			},
 
@@ -2069,9 +1997,7 @@
 		opacity: 0;
 	}
 
-	.share {
-		padding-top: 2rpx;
-	}
+	
 
 	.action {
 		position: fixed;
@@ -2190,10 +2116,5 @@
 				margin-right: 0;
 			}
 		}
-	}
-
-	.menu-bottom {
-		border-radius: 30rpx 30rpx 0 0;
-		padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
 	}
 </style>

@@ -1,46 +1,8 @@
 <template>
 	<view class="page">
 		<!-- 遮罩层 -->
-		<u-overlay :show="show" @click="show = false" zIndex="10">
-			<!-- 顶部导航栏 -->
-			<m-navbar unBack @pageBack="pageBack" isFixed bgColor="#fff" isSlot>
-				<view @click.stop class="title w-100 d-flex a-center pl-10 pr-3" :style="{
-				width: `calc(100vw - ${miniProgramCapsule.width}px)`,
-				marginRight: `calc(100vw - ${miniProgramCapsule.right}px + ${miniProgramCapsule.width}px)`}">
-					<view class="title-text flex-shrink line-h">
-						{{detail.name}} ( {{$t('第')}} {{chapterInfo.runNum}} {{$t('回')}} )
-					</view>
-					<view class="share ml-auto" @click="sharePosters">
-						<u-icon name="share-square" size="26" color="#fb7299"></u-icon>
-					</view>
-					<view class="d-flex a-center flex-shrink j-center ml-2">
-						<u-icon v-if="detail.collect" name="star-fill" color="#fb7299" size="24"
-							@click="openCollect"></u-icon>
-						<u-icon v-else name="star" color="#fb7299" size="24" @click="openCollect"></u-icon>
-					</view>
-				</view>
-			</m-navbar>
-			<view @click.stop class="controls w-100 bg-white position-fixed bottom-0 left-0 d-flex a-center j-sb px-3">
-				<view class="controls-l d-flex a-center" @click.stop="openUp">
-					<u-icon name="arrow-up-fill" color="#fb7299" size="22"></u-icon>
-					<view class="main-text-color">
-						{{$t('上一回')}}
-					</view>
-				</view>
-				<view class="controls-c d-flex a-center" @click.stop="openControls">
-					<u-icon name="list-dot" color="#fb7299" size="22"></u-icon>
-					<view class="main-text-color">
-						{{$t('目录')}}
-					</view>
-				</view>
-				<view class="controls-r d-flex a-center" @click.stop="openDown">
-					<u-icon name="arrow-down-fill" color="#fb7299" size="22"></u-icon>
-					<view class="main-text-color">
-						{{$t('下一回')}}
-					</view>
-				</view>
-			</view>
-		</u-overlay>
+		<control-menu :show="show" :detail="detail" :chapterInfo="chapterInfo" @close="show = false" @pageBack="pageBack" @openDown="openDown" @openControls="openControls"
+			@openUp="openUp" @openCollect="openCollect"/>
 		<!-- 内容区域 -->
 		<m-scroll-y bgColor="transparent" i18n :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load"
 			@loadmore="loadmore" @onRefresh="onRefresh" mainColor="#fb7290">
@@ -62,37 +24,7 @@
 		<!-- 海报弹框 -->
 		<c-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow" :poster="poster" />
 		<!-- 弹出层 -->
-		<m-popup :show="directoryShow" i18n @close="directoryShow = false" title="目录" zIndex="10071" i18n>
-			<view class="directory px-2">
-				<view class="directory-top d-flex a-center j-sb">
-					<view class="d-flex a-center">
-						<view class="">
-							{{detail.state == 1 ? $t('连载中') : $t('已完结')}}
-						</view>
-						<view class="ml-1">
-							({{detail.allRun}})
-						</view>
-					</view>
-					<view class="sort d-flex a-center" @click="openSort">
-						<image
-							:src="`https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/${isSort ? 'asc' : 'desc'}.png`">
-						</image>
-					</view>
-				</view>
-				<m-scroll-y :isLoading="false" :intoView="intoView" :scrollTop="scrollTop" :scrollStyle="directoryStyle" :isCustomRefresh="false">
-					<view :id="'item'+item.id" class="directory-item d-flex a-center" :class="{'main-text-color': item.id == query.chapterId}"
-						v-for="(item, i) in chapterList" :key="i" @click="openChapter(item.id)">
-						<view v-if="item.vip" class="isvip font-weight line-h mr-2">
-							VIP
-						</view>
-						<view class="name">
-							{{item.name}}
-						</view>
-						<u-icon v-if="item.lock" class="ml-auto" name="lock" color="#FFA16A" size="24"></u-icon>
-					</view>
-				</m-scroll-y>
-			</view>
-		</m-popup>
+		<directory :show="directoryShow" :chapterList="chapterList" :detail="detail" :chapterId="query.chapterId" @close="directoryShow = false" @openSort="openSort" @openChapter="openChapter" />
 		<!-- 弹框 -->
 		<m-modal :show="modalShow" i18n title="温馨提示" confirmName="加入书架" @cancel="cancel" zIndex="11" @confirm="openCollect">
 			<view class="d-flex a-center j-center flex-column">
@@ -107,13 +39,13 @@
 
 <script>
 	import CAppShare from '@/components/common/c-app-share/index.vue'
-	import MPopup from '@/main_modules/main-ui/m-popup/index.vue'
-	import capsuleInit from '@/mixins/capsule-init.js'
+	import Directory from './comics-modules/directory/index.vue'
+	import ControlMenu from './comics-modules/control-menu/index.vue'
 	export default {
-		mixins: [capsuleInit],
 		components: {
 			CAppShare,
-			MPopup
+			Directory,
+			ControlMenu
 		},
 		data() {
 			return {
@@ -135,9 +67,6 @@
 				chapterInfo: {},
 				poster: {},
 				time: null,
-				isSort: true,
-				scrollTop: 0,
-				intoView: '',
 				item: {}
 			}
 		},
@@ -517,12 +446,8 @@
 			},
 			//排序切换
 			openSort() {
-				this.isSort = !this.isSort
+				
 				this.chapterList = this.chapterList.reverse()
-				this.scrollTop = 1
-				this.$nextTick(() => {
-					this.scrollTop = 0
-				})
 			},
 			// 取消
 			cancel() {
@@ -536,11 +461,6 @@
 					height: `calc(100vh - env(safe-area-inset-bottom))`
 				}
 			},
-			directoryStyle() {
-				return {
-					height: `calc(80vh - 88rpx - 90rpx - env(safe-area-inset-bottom))`
-				}
-			},
 			userinfo() {
 				return this.$store.state.userinfo
 			}
@@ -549,46 +469,4 @@
 </script>
 
 <style lang="scss" scoped>
-	.page {
-		.controls {
-			height: calc(100rpx + env(safe-area-inset-bottom));
-			padding-bottom: env(safe-area-inset-bottom);
-		}
-		.share{
-			padding-top: 2rpx;
-		}
-		.directory {
-			height: 80vh;
-
-			.directory-top {
-				height: 88rpx;
-
-				.sort {
-					width: 45rpx;
-					height: 45rpx;
-				}
-			}
-
-			.directory-item {
-				height: 88rpx;
-				font-size: 28rpx;
-				border-bottom: #eee solid 1rpx;
-				.isvip {
-					border-radius: 20rpx 0 20rpx 0;
-					padding: 8rpx 18rpx;
-					font-size: 24rpx;
-					color: #A1562F;
-					background: linear-gradient(270deg, #F3D1B1 0%, #E2A167 100%);
-				}
-			}
-			
-			.directory-item:last-child{
-				border-bottom: none
-			}
-		}
-		
-		.list-item{
-			font-size: 0;
-		}
-	}
 </style>
