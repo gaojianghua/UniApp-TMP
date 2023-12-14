@@ -49,8 +49,8 @@
 
 				</view>
 				<view v-else-if="list.length != 0">
-					<view class="list-item" v-for="(item, i) in list" :key="i">
-						<u-image :src="item" width="100vw" height="100%" mode="widthFix">
+					<view class="list-item d-flex flex-column" v-for="(item, i) in list" :key="i">
+						<u-image class="d-block" :src="item" width="100vw" height="100%" mode="widthFix">
 							<view slot="loading" class="d-flex a-center j-center">
 								<u-loading-icon></u-loading-icon>
 							</view>
@@ -410,7 +410,11 @@
 					vip: true
 				}
 				for (let i = 0; i < 10; i++) {
-					data.list.push('https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/manhua/coverImage.jpg')
+					if(i == 0) {
+						data.list.push('https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/manhua/coverImage.jpg')
+					}else {
+						data.list.push(`https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/manhua/${i}.jpg.jpeg`)
+					}
 				}
 				if (code == 200) {
 					this.chapterInfo = data
@@ -581,6 +585,10 @@
 			.directory-item:last-child{
 				border-bottom: none
 			}
+		}
+		
+		.list-item{
+			font-size: 0;
 		}
 	}
 </style>
