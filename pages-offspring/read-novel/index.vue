@@ -159,10 +159,10 @@
 		<control-menu :show="menuShow" :detail="detail" @close="closeMenu" :backgroundId="background"
 		@changeBackground="changeBackground" @sharePosters="sharePosters" @openCollect="openCollect" @goNextChapter="goNextChapter"
 		@goPreChapter="goPreChapter" @slideChanging="slideChanging" @slideChange="slideChange" :progressTouched="progressTouched"
-		:compose="compose" :directoryList="directoryList" :chapterProgress="chapterProgress" @pageBack="pageBack" 
+		:composeCurChild="compose[1]" :directoryList="directoryList" :chapterProgressValue="chapterProgress" @pageBack="pageBack" 
 		@openSetting="openSetting" @openDirectory="openDirectory"/>
 		<!-- 目录弹框 -->
-		<directory :show="directoryShow" @close="directoryShow = false" :backgroundId="background" :directoryList="directoryList"
+		<directory :show="directoryShow" :composeCurChild="compose[1]" @close="directoryShow = false" :backgroundId="background" :directoryList="directoryList"
 		:chapterProgress="chapterProgress" :detail="detail" @openSort="openSort" @openToChapter="goToChapter" />
 		<!-- 阅读设置弹框 -->
 		<read-set :show="setShow" :maxFontSize="maxFontSize" :minFontSize="minFontSize" :turnType="turnType"
@@ -737,7 +737,7 @@
 							resolve()
 						}).exec();
 						clearTimeout(time)
-					}, 100)
+					}, 300)
 				})
 			},
 			// 计算上一章页数,并翻页（如果有）
@@ -768,7 +768,7 @@
 							resolve()
 						}).exec();
 						clearTimeout(time)
-					}, 100)
+					}, 300)
 				})
 			},
 			// 计算下一章页数,并翻页（如果有）
@@ -799,7 +799,7 @@
 							resolve()
 						}).exec();
 						clearTimeout(time)
-					}, 100)
+					}, 300)
 				})
 			},
 			// 触摸开始（封面）
@@ -1200,7 +1200,7 @@
 						if (!this.curPage.canRead && e.changedTouches[0].clientY <= this.appSystemInfo.windowHeight / 3 *
 							2 && e
 							.changedTouches[0].clientY >= this.appSystemInfo.windowHeight / 3) {
-							this.$tools.Navigate.navigateTo('/pages/tabbar/mine/vip/noVip')
+							this.$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')
 						} else {
 							this.showMenu()
 						}
@@ -1251,7 +1251,6 @@
 				}
 				this.next = false
 				this.pre = false
-
 			},
 
 			/**
@@ -1297,7 +1296,6 @@
 			},
 			// 关闭菜单
 			closeMenu() {
-				console.log(123)
 				if (new Date().getTime() - this.menuTime < 500) return
 				// #ifdef APP-PLUS
 				plus.navigator.setFullscreen(true);
@@ -1532,8 +1530,6 @@
 					}
 				}
 			},
-
-
 			/**
 			 * 跳转下一章
 			 **/
@@ -1550,6 +1546,7 @@
 				}
 				if (this.compose[2].ready) {
 					this.chapterRotate('next')
+					this.chapterProgress++
 					this.goToPage(0)
 				} else {
 					uni.showLoading({
@@ -1576,6 +1573,7 @@
 				}
 				if (this.compose[0].ready) {
 					this.chapterRotate('pre')
+					this.chapterProgress--
 					this.goToPage(0)
 				} else {
 					uni.showLoading({
@@ -1584,8 +1582,6 @@
 					this.waitForPreChapter = true
 				}
 			},
-
-
 			/**
 			 * 根据页码跳转
 			 **/
@@ -1695,6 +1691,7 @@
 			 **/
 			async goToChapter(index) {
 				this.progressTouched = false
+				this.chapterProgress = index
 				this.closeMenu()
 				uni.showLoading()
 				await this.getThreeChapter(index)

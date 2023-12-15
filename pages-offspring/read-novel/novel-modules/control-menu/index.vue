@@ -26,7 +26,7 @@
 				style="top: -80rpx;"
 				:style="{background: backgroundId == 1 ? bgList[backgroundId].color : (backgroundId == 2 ? bgList[backgroundId - 2].color : bgList[backgroundId - 1].color),
 				color: backgroundId != 1 ? bgList[1].color : bgList[0].color}">
-				{{progressTouched ? directoryList[chapterProgress].name : compose[1].chapterName}}
+				{{progressTouched ? directoryList[chapterProgress].name : composeCurChild.chapterName}}
 			</view>
 			<!-- 章节进度条 -->
 			<view class="d-flex a-center j-around px-2">
@@ -77,52 +77,10 @@
 	import {
 		bgList
 	} from '../options.js'
+	import props from './props.js'
 	export default {
 		mixins: [capsuleInit],
-		props: {
-			show: {
-				type: Boolean,
-				default: () => {
-					return false
-				}
-			},
-			backgroundId: {
-				type: Number,
-				default: () => {
-					return 0
-				}
-			},
-			detail: {
-				type: Object,
-				default: () => {
-					return {}
-				}
-			},
-			chapterProgressValue: {
-				type: Number,
-				default: () => {
-					return 0
-				}
-			},
-			progressTouched: {
-				type: Boolean,
-				default: () => {
-					return false
-				}
-			},
-			compose: {
-				type: Array,
-				default: () => {
-					return []
-				}
-			},
-			directoryList: {
-				type: Array,
-				default: () => {
-					return []
-				}
-			}
-		},
+		props,
 		data() {
 			return {
 				bgList,
@@ -176,9 +134,13 @@
 			}
 		},
 		watch: {
-			chapterProgressValue(nv, ov) {
-				this.chapterProgress = nv
-				console.log(nv)
+			chapterProgressValue: {
+				handler(nv, ov) {
+					this.chapterProgress = nv
+					console.log(nv)
+				},
+				immediate: true,
+				deep: true
 			}
 		}
 	}

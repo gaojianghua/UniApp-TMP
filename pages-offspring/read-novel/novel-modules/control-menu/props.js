@@ -5,16 +5,10 @@ module.exports = {
 			return false
 		}
 	},
-	directoryList: {
-		type: Array,
-		default: () => {
-			return []
-		}
-	},
-	chapterProgress: {
+	backgroundId: {
 		type: Number,
 		default: () => {
-			return 1
+			return 0
 		}
 	},
 	detail: {
@@ -23,10 +17,16 @@ module.exports = {
 			return {}
 		}
 	},
-	backgroundId: {
+	chapterProgressValue: {
 		type: Number,
 		default: () => {
-			return 0
+			return 1
+		}
+	},
+	progressTouched: {
+		type: Boolean,
+		default: () => {
+			return false
 		}
 	},
 	composeCurChild: {
@@ -35,4 +35,10 @@ module.exports = {
 			return {}
 		}
 	},
+	directoryList: {
+		type: Array,
+		default: () => {
+			return []
+		}
+	}
 }

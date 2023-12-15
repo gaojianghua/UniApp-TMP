@@ -36,7 +36,7 @@ image {
 
 /* 主字体颜色（橙色）*/
 .main-text-color {
-	color: #fb7299;
+	color: #fb7299 !important;
 }
 
 /* 主边框颜色 */

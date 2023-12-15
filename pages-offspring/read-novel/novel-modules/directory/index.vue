@@ -18,12 +18,14 @@
 			<m-scroll-y :isLoading="false" :intoView="intoView" :scrollTop="scrollTop" :isCustomRefresh="false"
 				:scrollStyle="scrollStyle">
 				<view :id="'item'+item.id" class="directory-item d-flex px-2 a-center"
-					:class="{'main-text-color': i == chapterProgress}" v-for="(item, i) in directoryList" :key="i"
+					v-for="(item, i) in directoryList" :key="i"
+					:style="{borderColor: backgroundId == 1 ? '#232323' : '#ddd'}"
 					@click="openToChapter(i)">
 					<view v-if="item.vip" class="isvip font-weight line-h mr-2">
 						VIP
 					</view>
-					<view class="name" :style="{color: backgroundId != 1 ? bgList[1].color : bgList[0].color}">
+					<view class="name" :style="{color: backgroundId != 1 ? bgList[1].color : bgList[0].color}"
+					:class="{'main-text-color': item.name == composeCurChild.chapterName}">
 						{{item.name}}
 					</view>
 					<u-icon v-if="item.lock" class="ml-auto" name="lock" color="#FFA16A" size="24"></u-icon>
@@ -73,6 +75,13 @@
 			navbarHeight() {
 				return this.$store.state.navbarHeight
 			}
+		},
+		watch: {
+			show(nv, ov) {
+				if (nv) {
+					this.intoView = 'item' + this.directoryList[this.chapterProgress].id
+				}
+			}
 		}
 	}
 </script>
@@ -81,7 +90,7 @@
 	.directory-item {
 		height: 88rpx;
 		font-size: 28rpx;
-		border-bottom: #eee solid 1rpx;
+		border-bottom: solid 1rpx;
 	
 		.isvip {
 			border-radius: 20rpx 0 20rpx 0;
