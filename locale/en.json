@@ -28,7 +28,8 @@
 	"page.我的积分": "My Points",
 	"page.我的收藏": "My Collect",
 	"page.我的足迹": "My Footmark",
-	"page.我的书架": "My Bookshelf",
+	"page.小说书架": "Novel Bookshelf",
+	"page.漫画书架": "Comics Bookshelf",
 	"page.APP下载": "APP Download",
 	"page.APP分享": "APP Share",
 	"page.分享引导": "Share Guide",
@@ -391,6 +392,7 @@
 	"上下翻页": "Scroll",
 	"背景": "Backdrop",
 	"阅读设置": "Read Set",
+	"阅读历史": "Read History",
 	"当前为VIP章节，请开通VIP服务后继续阅读": "The current chapter is VIP, please continue reading after opening VIP service",
 	"去开通": "Go Activate"
 }

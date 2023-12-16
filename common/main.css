@@ -1527,7 +1527,7 @@ button {
 }
 
 .hidden {
-	overflow: hidden;
+	overflow: hidden !important;
 }
 
 .normal{

@@ -43,7 +43,7 @@
 						</m-scroll-x>
 					</view>
 					<view class="update bg-white ml-auto position-relative h-100 flex-shrink d-flex flex-column j-center a-end"
-						@click="$tools.Navigate.navigateTo('/pages-offspring/book-shelf/index')">
+						@click="$tools.Navigate.navigateTo('/pages-offspring/book-shelf/index', 'comics')">
 						<view class="update-text line-h text-column">
 							{{$t('书架')}}
 						</view>
@@ -576,13 +576,13 @@
 						margin-right: 3%;
 
 						.item-image {
-							border-radius: 12rpx;
+							border-radius: 18rpx;
 
 							.change {
 								padding: 8rpx 12rpx;
 								right: 0;
 								top: 0;
-								border-radius: 0 0 0 12rpx;
+								border-radius: 0 0 0 18rpx;
 								font-size: 20rpx;
 								background-color: #FF0F30;
 							}

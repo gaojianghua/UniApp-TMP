@@ -32,13 +32,13 @@
 									{{$t('更新')}}
 								</view>
 								<view
-									class="item-name text-white w-100 line-h mt-1 text-ellipsis1 position-absolute bottom-0 left-0">
+									class="item-name text-white w-100 mt-1 text-ellipsis1 position-absolute bottom-0 left-0">
 									{{item.name}}
 								</view>
 							</view>
 						</view>
 						<view class="item update flex-shrink d-flex flex-column j-center a-center mt-3"
-							@click="$tools.Navigate.navigateTo('/pages-offspring/book-shelf/index')">
+							@click="$tools.Navigate.navigateTo('/pages-offspring/book-shelf/index', 'novel')">
 							<view class="update-text line-h">
 								{{$t('书架')}}
 							</view>
@@ -564,20 +564,20 @@
 					margin-right: 2%;
 
 					.item-image {
-						border-radius: 12rpx;
+						border-radius: 18rpx;
 
 						.change {
 							padding: 8rpx 12rpx;
 							right: 0;
 							top: 0;
-							border-radius: 0 0 0 12rpx;
+							border-radius: 0 0 0 18rpx;
 							font-size: 20rpx;
 							background-color: #FF0F30;
 						}
 					}
 
 					.item-name {
-						padding: 10rpx 15rpx;
+						padding: 2rpx 15rpx;
 						background-color: #11111160;
 						font-size: 26rpx;
 					}
