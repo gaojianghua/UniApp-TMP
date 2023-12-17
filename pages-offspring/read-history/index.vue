@@ -1,23 +1,15 @@
 <template>
 	<view class="page">
-		<!-- 顶部导航栏 -->
-		<m-navbar bgColor="#fff" isSlot>
-			<view class="w-100 search pl-10 pr-2" :style="{
-			width: `calc(100vw - ${miniProgramCapsule.width}px)`,
-			marginRight: `${miniProgramCapsule.width}px`}">
-				<!-- 搜索框 -->
-				<view class="position-relative flex-1">
-					<view class="position-absolute top-0 right-0 left-0 bottom-0 index-5" @click="openSearch"></view>
-					<u-search :placeholder="$t('请输入关键词')" height="60rpx" disabled :showAction="false"></u-search>
-				</view>
+		<!-- 顶部导航 -->
+		<m-navbar bgColor="#fff" textColor="#fb7299" value="page.阅读历史" i18n>
+			<view slot="right" @click="openEdit" class="edit position-absolute top-half tf-half-y border-2 line-h rounded"
+			:class="isEdit ? 'main-border-color main-text-color' : 'border-light-secondary text-light-muted'">
+				{{isEdit ? $t('取消') : $t('管理')}}
 			</view>
 		</m-navbar>
-		<!-- 标签栏 -->
-		<view class="tabs w-100">
-			<u-tabs class="w-100" :scrollable="$i18n.locale == 'en' ? true : false" :current="current" :list="tabs" lineColor="#fb7299"
-				@click="switchTabs"></u-tabs>
-		</view>
-		<!-- 列表栏 -->
+		<!-- 切换栏 -->
+		<u-subsection :list="tabs" fontSize="14" activeColor="#f27299" :current="current" @change="subChange"></u-subsection>
+		<!-- 内容列表 -->
 		<!-- #ifdef MP-WEIXIN -->
 		<swiper :current="current" :style="[scrollStyle]" @change="changeSwiper">
 		<!-- #endif -->
@@ -51,12 +43,8 @@
 </template>
 
 <script>
-	import capsuleInit from '@/mixins/capsule-init.js'
-	import {
-		tabs
-	} from './data.js'
+	import { tabs } from './data.js'
 	export default {
-		mixins: [capsuleInit],
 		data() {
 			return {
 				tabs,
@@ -66,20 +54,18 @@
 				query: {
 					page: 1,
 					limit: 20,
-					type: 2
+					type: 1
 				},
+				isEdit: false
 			}
 		},
 		onLoad(args) {
-			this.current = args.item || 0
+			this.current = this.$tools.Navigate.receivePageData(args) - 1
 			this.init()
 		},
 		methods: {
 			// 初始化
 			init() {
-				this.tabs.forEach((item) => {
-					item.name = this.$t(item.name)
-				})
 				this.getData()
 			},
 			// 获取数据
@@ -134,14 +120,10 @@
 					clearTimeout(time)
 				}, 1000)
 			},
-			// 进入搜索界面
-			openSearch() {
-				this.$tools.Navigate.navigateTo('/pages-offspring/order-search/index')
-			},
 			// 点击切换tabs
-			switchTabs(i) {
+			subChange(i) {
 				this.isLock = true
-				this.current = i.index
+				this.current = i
 				if (this.tabs[this.current].list.length == 0) {
 					this.tabs[this.current].isLoading = true
 					this.tabs[this.current].page = 1
@@ -164,12 +146,16 @@
 						clearTimeout(time)
 					}, 1000)
 				}
+			},
+			// 编辑
+			openEdit() {
+				this.isEdit = !this.isEdit
 			}
 		},
 		computed: {
 			scrollStyle() {
 				return {
-					height: `calc(100vh - ${this.$store.state.navbarHeight}px - 44px - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
+					height: `calc(100vh - ${this.$store.state.navbarHeight}px - 32px - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
 				}
 			}
 		},
@@ -178,10 +164,13 @@
 
 <style lang="scss" scoped>
 	.page {
-		.tabs {
-			background-color: #fff;
+		
+		.edit{
+			right: 20rpx;
+			font-size: 24rpx;
+			padding: 8rpx 20rpx;
 		}
-
+	
 		.item {
 			border-radius: 8rpx;
 			background-color: #fff;

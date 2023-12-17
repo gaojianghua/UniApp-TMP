@@ -330,7 +330,9 @@
 			this.init()
 		},
 		mounted() {
-			this.initPage()
+			this.$nextTick(() => {
+				this.initPage()
+			})
 		},
 		methods: {
 			// 初始化
@@ -699,8 +701,7 @@
 				} else {
 					return new Promise((resolve, reject) => {
 						this.$nextTick(() => {
-							const query = uni.createSelectorQuery().in(this);
-							query.select('#content').boundingClientRect(data => {
+							uni.createSelectorQuery().in(this).select('#content').boundingClientRect(data => {
 								let height = data.height;
 								this.contentHeight = height;
 								let lineHeight = this.fontSize * this.lineHeight;
@@ -724,8 +725,7 @@
 				return new Promise((resolve, reject) => {
 					// 此处setTimeout 100ms是为了确保元素渲染完毕从而获取正确高度，如果遇到页面页数计算不正确的情况可以增加时间试试看
 					let time = setTimeout(() => {
-						const query = uni.createSelectorQuery().in(this);
-						query.select('#curChapter').boundingClientRect(data => {
+						uni.createSelectorQuery().in(this).select('#curChapter').boundingClientRect(data => {
 							let height = data.height;
 							// #ifdef APP-PLUS || MP-WEIXIN
 							height = Math.round(height * this.appSystemInfo.pixelRatio) / this
@@ -745,8 +745,7 @@
 				return new Promise((resolve, reject) => {
 					// 此处setTimeout 100ms是为了确保元素渲染完毕从而获取正确高度，如果遇到页面页数计算不正确的情况可以增加时间试试看
 					let time = setTimeout(() => {
-						const query = uni.createSelectorQuery().in(this);
-						query.select('#preChapter').boundingClientRect(data => {
+						uni.createSelectorQuery().in(this).select('#preChapter').boundingClientRect(data => {
 							let height = data.height;
 							// #ifdef APP-PLUS || MP-WEIXIN
 							height = Math.round(height * this.appSystemInfo.pixelRatio) / this
@@ -776,8 +775,7 @@
 				return new Promise((resolve, reject) => {
 					// 此处setTimeout 100ms是为了确保元素渲染完毕从而获取正确高度，如果遇到页面页数计算不正确的情况可以增加时间试试看
 					let time = setTimeout(() => {
-						const query = uni.createSelectorQuery().in(this);
-						query.select('#nextChapter').boundingClientRect(data => {
+						uni.createSelectorQuery().in(this).select('#nextChapter').boundingClientRect(data => {
 							let height = data.height;
 							// #ifdef APP-PLUS || MP-WEIXIN
 							height = Math.round(height * this.appSystemInfo.pixelRatio) / this

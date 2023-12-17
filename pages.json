@@ -405,6 +405,13 @@
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
+				}, 
+				{
+					"path": "read-history/index",
+					"style": {
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
 				}
 			]
 		}

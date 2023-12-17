@@ -4,19 +4,20 @@
 		<m-navbar bgColor="#fff" textColor="#fb7299" :value="value" i18n></m-navbar>
 		<!-- 操作栏 -->
 		<view class="operate d-flex a-center px-3">
-			<view class="screen d-flex a-center position-relative">
+			<view class="screen d-flex a-center position-relative" @click="">
 				<view class="screen-name mr-1">
 					{{screenList[currentScreen].name}}
 				</view>
 				<u-icon name="arrow-down" color="#111" size="16"></u-icon>
 			</view>
-			<view class="history d-flex ml-auto mr-3 a-center position-relative">
+			<view class="history d-flex ml-auto mr-3 a-center position-relative"
+			@click="$tools.Navigate.navigateTo('/pages-offspring/read-history/index', query.type)">
 				<view class="history-name mr-1">
 					{{$t('阅读历史')}}
 				</view>
 				<u-icon name="clock" color="#111" size="18"></u-icon>
 			</view>
-			<u-icon name="more-dot-fill" color="#111" size="20"></u-icon>
+			<u-icon name="more-dot-fill" color="#111" size="20" @click=""></u-icon>
 		</view>
 		<!-- 内容区域 -->
 		<m-scroll-y :isLoading="isLoading" i18n :scrollStyle="scrollStyle" :load="load" bgColor="transparent"
@@ -48,7 +49,8 @@
 				load: 0,
 				query: {
 					page: 1,
-					limit: 10
+					limit: 10,
+					type: 0
 				},
 				list: [],
 				total: 0,
@@ -57,6 +59,7 @@
 		},
 		onLoad(options) {
 			this.value = this.$tools.Navigate.receivePageData(options) == 'novel' ? 'page.小说书架' : 'page.漫画书架'
+			this.query.type = this.$tools.Navigate.receivePageData(options) == 'novel' ? 2 : 1
 			this.init()
 		},
 		methods: {
@@ -128,7 +131,7 @@
 		background-color: #fff;
 		.operate{
 			height: 88rpx;
-			border-bottom: 1rpx solid #efefef;
+			border-bottom: 1rpx solid #f1f1f1;
 		}
 	}
 </style>
