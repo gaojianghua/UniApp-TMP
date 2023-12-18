@@ -234,7 +234,7 @@
 				this.item.address = i
 			},
 			// 设为默认地址
-			checkboxChange(e) {
+			checkboxChange() {
 				this.item.isDefault = !this.item.isDefault
 			}
 		}

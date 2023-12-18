@@ -395,5 +395,8 @@
 	"阅读设置": "Read Set",
 	"阅读历史": "Read History",
 	"当前为VIP章节，请开通VIP服务后继续阅读": "The current chapter is VIP, please continue reading after opening VIP service",
-	"去开通": "Go Activate"
+	"去开通": "Go Activate",
+	"已阅读至": "Current Read",
+	"最新章节": "New Chapter"
+	
 }
