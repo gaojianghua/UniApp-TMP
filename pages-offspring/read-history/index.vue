@@ -28,7 +28,7 @@
 							</u-empty>
 							<template v-if="item.list.length != 0">
 								<view class="item d-flex a-center j-sb p-2 mt-2" v-for="(val, index) in item.list"
-									:key="index">
+									:key="index" @click="$tools.Navigate.navigateTo(`/pages-offspring/read-${current == 0 ? 'comics' : 'novel'}/index`, val)">
 									<view class="mr-2">
 										<u-image radius="6" width="158rpx" height="200rpx" :src="val.img"></u-image>
 									</view>
@@ -103,11 +103,14 @@
 					type: 1
 				},
 				isEdit: false,
-				allCheck: false
+				allCheck: false,
+				ids: [],
+				pageInfo: ''
 			}
 		},
 		onLoad(args) {
-			this.current = this.$tools.Navigate.receivePageData(args) - 1
+			this.pageInfo = this.$tools.Navigate.receivePageData(args)
+			this.current = this.pageInfo == 'novel' ? 1 : 0
 			this.init()
 		},
 		methods: {
@@ -161,10 +164,18 @@
 					clearTimeout(time)
 				}, 1000)
 			},
+			// 初始化状态
+			initStatus() {
+				this.ids = []
+				this.isEdit = false
+				this.allCheck = false
+				this.tabs[this.current].list = this.tabs[this.current].list.map(item => ({ ...item, isChange: false }))
+			},
 			// 点击切换tabs
 			subChange(i) {
 				this.isLock = true
 				this.current = i
+				this.initStatus()
 				if (this.tabs[this.current].list.length == 0) {
 					this.tabs[this.current].isLoading = true
 					this.tabs[this.current].page = 1
@@ -179,6 +190,7 @@
 			changeSwiper(i) {
 				if (this.isLock) return
 				this.current = i.detail.current
+				this.initStatus()
 				if (this.tabs[this.current].list.length == 0) {
 					this.tabs[this.current].isLoading = true
 					this.tabs[this.current].page = 1
@@ -195,14 +207,18 @@
 			// 勾选
 			checkboxChange(i) {
 				this.tabs[this.current].list[i].isChange = !this.tabs[this.current].list[i].isChange
+				this.allCheck = this.tabs[this.current].list.every(item => item.isChange === true);
+				this.ids = this.tabs[this.current].list.filter(item => item.isChange === true).map(item => item.id);
 			},
 			// 全选
 			allCheckboxChange() {
-
+				this.allCheck = !this.allCheck
+				this.tabs[this.current].list = this.tabs[this.current].list.map(item => ({ ...item, isChange: this.allCheck }));
+				this.ids = this.tabs[this.current].list.filter(item => item.isChange === true).map(item => item.id);
 			},
 			// 删除
 			deleteSubmit() {
-
+				
 			}
 		},
 		computed: {
@@ -232,7 +248,7 @@
 				width: 150rpx;
 				height: 58rpx;
 				background: linear-gradient(-43deg, #EF4860, #fb7290);
-				border-radius: 20rpx;
+				border-radius: 14rpx;
 				font-weight: 500;
 				color: #FFFFFF;
 				font-size: 25rpx;
