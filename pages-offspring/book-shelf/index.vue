@@ -1,14 +1,22 @@
 <template>
-	<view class="page">
+	<view class="page" @click.stop="pageClick">
 		<!-- 顶部导航 -->
 		<m-navbar bgColor="#fff" textColor="#fb7299" :value="value" i18n></m-navbar>
 		<!-- 操作栏 -->
 		<view class="operate d-flex a-center px-3">
-			<view class="screen d-flex a-center position-relative" @click="scrrenShow = true">
-				<view class="screen-name mr-1">
-					{{screenList[currentScreen].name}}
+			<view class="screen d-flex a-center position-relative h-100">
+				<view class="d-flex a-center" @click.stop="openScreen">
+					<view class="screen-name mr-1">
+						{{screenList[currentScreen].name}}
+					</view>
+					<u-icon name="arrow-down" color="#111" size="16"></u-icon>
 				</view>
-				<u-icon name="arrow-down" color="#111" size="16"></u-icon>
+				<view @click.stop :class="screenShow == 1 ? 'active' : screenShow == 0 ? 'default' : ''"
+					class="poi px-3 py-2 position-absolute left-0 index-5 bg-white">
+					<view class="poi-item d-flex a-center" style="height: 60rpx;" v-for="(item, i) in screenList" :key="i">
+						{{$t(item.name)}}
+					</view>
+				</view>
 			</view>
 			<view class="history d-flex ml-auto mr-3 a-center position-relative"
 			@click="$tools.Navigate.navigateTo('/pages-offspring/read-history/index', pageInfo)">
@@ -17,7 +25,20 @@
 				</view>
 				<u-icon name="clock" color="#111" size="18"></u-icon>
 			</view>
-			<u-icon name="more-dot-fill" color="#111" size="20" @click="menuShow = true"></u-icon>
+			<view class="position-relative d-flex a-center h-100">
+				<view class="" @click.stop="openMenu">
+					<u-icon name="more-dot-fill" color="#111" size="20" ></u-icon>
+				</view>
+				<view @click.stop :class="menuShow == 1 ? 'active' : menuShow == 0 ? 'default' : ''"
+					class="poi px-3 py-2 position-absolute right-0 index-5 bg-white">
+					<view class="poi-item d-flex a-center" style="height: 60rpx;">
+						{{$t('编辑书架')}}
+					</view>
+					<view class="poi-item d-flex a-center" style="height: 60rpx;">
+						{{$t('列表展示')}}
+					</view>
+				</view>
+			</view>
 		</view>
 		<!-- 内容区域 -->
 		<m-scroll-y :isLoading="isLoading" i18n :scrollStyle="scrollStyle" :load="load" bgColor="transparent"
@@ -27,7 +48,7 @@
 			</u-empty>
 			<view v-if="list.length != 0" class="goods-list d-flex flex-wrap px-3">
 				<view class="goods-item d-flex flex-column mt-5" v-for="(item, i) in list" :key="i" 
-				@click="$tools.Navigate.navigateTo(`/pages-offspring/read-${pageInfo}/index`, item)">
+				@click.stop="$tools.Navigate.navigateTo(`/pages-offspring/read-${pageInfo}/index`, item)">
 					<view class="position-relative w-100">
 						<u-image radius="12" width="100%" height="240rpx" :src="item.img"></u-image>
 					</view>
@@ -62,8 +83,8 @@
 				list: [],
 				total: 0,
 				istrig: true,
-				scrrenShow: false,
-				menuShow: false,
+				screenShow: 2,
+				menuShow: 2,
 				pageInfo: ''
 			}
 		},
@@ -121,6 +142,21 @@
 					this.istrig = true
 					clearTimeout(time)
 				}, 1000)
+			},
+			// 打开筛选
+			openScreen() {
+				this.screenShow != 1 ? this.screenShow = 1 : this.screenShow = 0
+				this.screenShow == 1 ? this.menuShow = 0 : ''
+			},
+			// 打开菜单
+			openMenu() {
+				this.menuShow != 1 ? this.menuShow = 1 : this.menuShow = 0
+				this.menuShow == 1 ? this.screenShow = 0 : ''
+			},
+			// 点击页面其他区域
+			pageClick() {
+				this.screenShow == 1 ? this.screenShow = 0 : ''
+				this.menuShow == 1 ? this.menuShow = 0 : ''
 			}
 		},
 		computed: {
@@ -159,6 +195,54 @@
 			.goods-item:nth-child(3)
 			{
 				margin-top: 30rpx;
+			}
+		}
+		
+		.poi {
+			display: none;
+			border-radius: 16rpx;
+			width: 200rpx;
+			top: 88rpx;
+			
+			.poi-item{
+				border-bottom: 1rpx solid #ddd;
+			}
+			
+			.poi-item:last-child{
+				border: none;
+			}
+		}
+		
+		.active {
+			display: block;
+			animation: active 0.3s linear forwards;
+		
+			@keyframes active {
+				0% {
+					opacity: 0;
+				}
+		
+				100% {
+					opacity: 1;
+					box-shadow: 0 0 4rpx 4rpx #f1f1f1;
+				}
+			}
+		}
+		
+		.default {
+			display: block;
+			animation: default 0.3s linear forwards;
+		
+			@keyframes default {
+				0% {
+					opacity: 1;
+				}
+		
+				100% {
+					opacity: 0;
+					box-shadow: none;
+					display: none;
+				}
 			}
 		}
 	}

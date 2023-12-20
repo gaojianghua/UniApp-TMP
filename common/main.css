@@ -1567,3 +1567,15 @@ button {
 .filter-gc{
 	filter: grayscale(100%);
 }
+
+/* 按字母换行 */
+.auto-feed-letter{
+	word-wrap:break-word;
+	word-break:break-all;
+}
+
+/* 按词组换行 */
+.auto-feed-word{
+	word-wrap:break-word; 
+	word-break:keep-all;
+}
