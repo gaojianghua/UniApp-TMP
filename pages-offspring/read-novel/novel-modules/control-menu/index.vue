@@ -137,7 +137,6 @@
 			chapterProgressValue: {
 				handler(nv, ov) {
 					this.chapterProgress = nv
-					console.log(nv)
 				},
 				immediate: true,
 				deep: true

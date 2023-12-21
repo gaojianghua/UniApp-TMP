@@ -12,14 +12,16 @@
 					<u-icon name="arrow-down" color="#111" size="16"></u-icon>
 				</view>
 				<view @click.stop :class="screenShow == 1 ? 'active' : screenShow == 0 ? 'default' : ''"
-					class="poi px-3 py-2 position-absolute left-0 index-5 bg-white">
-					<view class="poi-item d-flex a-center" style="height: 60rpx;" v-for="(item, i) in screenList" :key="i">
+					class="poi px-2 py position-absolute left-0 index-5 bg-white">
+					<view class="poi-item d-flex a-center" :class="currentScreen == i ? 'main-text-color' : ''"
+						style="height: 60rpx;" v-for="(item, i) in screenList" :key="i"
+						@click="chooseScreen(item, i)">
 						{{$t(item.name)}}
 					</view>
 				</view>
 			</view>
 			<view class="history d-flex ml-auto mr-3 a-center position-relative"
-			@click="$tools.Navigate.navigateTo('/pages-offspring/read-history/index', pageInfo)">
+				@click="$tools.Navigate.navigateTo('/pages-offspring/read-history/index', pageInfo)">
 				<view class="history-name mr-1">
 					{{$t('阅读历史')}}
 				</view>
@@ -27,15 +29,30 @@
 			</view>
 			<view class="position-relative d-flex a-center h-100">
 				<view class="" @click.stop="openMenu">
-					<u-icon name="more-dot-fill" color="#111" size="20" ></u-icon>
+					<u-icon name="more-dot-fill" color="#111" size="20"></u-icon>
 				</view>
 				<view @click.stop :class="menuShow == 1 ? 'active' : menuShow == 0 ? 'default' : ''"
-					class="poi px-3 py-2 position-absolute right-0 index-5 bg-white">
-					<view class="poi-item d-flex a-center" style="height: 60rpx;">
-						{{$t('编辑书架')}}
+					class="poi px-2 py position-absolute right-0 index-5 bg-white">
+					<view class="poi-item d-flex a-center j-sb" style="height: 60rpx;" @click="openEdit">
+						<u-image width="30rpx" height="30rpx"
+							src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/edit.svg"></u-image>
+						<view class="ml-1">
+							{{$t('编辑书架')}}
+						</view>
 					</view>
-					<view class="poi-item d-flex a-center" style="height: 60rpx;">
-						{{$t('列表展示')}}
+					<view v-if="isLayout" class="poi-item d-flex a-center j-sb" style="height: 60rpx;" @click="chooseDisplay(true)">
+						<u-image width="30rpx" height="30rpx"
+							src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/list.svg"></u-image>
+						<view class="ml-1">
+							{{$t('列表展示')}}
+						</view>
+					</view>
+					<view v-else class="poi-item d-flex a-center j-sb" style="height: 60rpx;" @click="chooseDisplay(false)">
+						<u-image width="30rpx" height="30rpx"
+							src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/gril.svg"></u-image>
+						<view class="ml-1">
+							{{$t('宫格展示')}}
+						</view>
 					</view>
 				</view>
 			</view>
@@ -47,8 +64,8 @@
 				icon="http://cdn.uviewui.com/uview/empty/list.png">
 			</u-empty>
 			<view v-if="list.length != 0" class="goods-list d-flex flex-wrap px-3">
-				<view class="goods-item d-flex flex-column mt-5" v-for="(item, i) in list" :key="i" 
-				@click.stop="$tools.Navigate.navigateTo(`/pages-offspring/read-${pageInfo}/index`, item)">
+				<view class="goods-item d-flex flex-column mt-5" v-for="(item, i) in list" :key="i"
+					@click.stop="$tools.Navigate.navigateTo(`/pages-offspring/read-${pageInfo}/index`, item)">
 					<view class="position-relative w-100">
 						<u-image radius="12" width="100%" height="240rpx" :src="item.img"></u-image>
 					</view>
@@ -65,7 +82,9 @@
 </template>
 
 <script>
-	import { screenList } from './data.js'
+	import {
+		screenList
+	} from './data.js'
 	import result from './data.json'
 	export default {
 		data() {
@@ -85,7 +104,8 @@
 				istrig: true,
 				screenShow: 2,
 				menuShow: 2,
-				pageInfo: ''
+				pageInfo: '',
+				isLayout: true
 			}
 		},
 		onLoad(options) {
@@ -146,17 +166,34 @@
 			// 打开筛选
 			openScreen() {
 				this.screenShow != 1 ? this.screenShow = 1 : this.screenShow = 0
-				this.screenShow == 1 ? this.menuShow = 0 : ''
+				if (this.menuShow == 1) {
+					this.menuShow = 0
+				}
 			},
 			// 打开菜单
 			openMenu() {
 				this.menuShow != 1 ? this.menuShow = 1 : this.menuShow = 0
-				this.menuShow == 1 ? this.screenShow = 0 : ''
+				if (this.screenShow == 1) {
+					this.screenShow = 0
+				}
 			},
 			// 点击页面其他区域
 			pageClick() {
 				this.screenShow == 1 ? this.screenShow = 0 : ''
 				this.menuShow == 1 ? this.menuShow = 0 : ''
+			},
+			// 点击编辑书架
+			openEdit() {
+				
+			},
+			// 切换展示模式
+			chooseDisplay(i) {
+				this.isLayout = i
+			},
+			// 点击筛选项
+			chooseScreen(item, i) {
+				this.currentScreen = i
+				this.query.type = item.type
 			}
 		},
 		computed: {
@@ -170,74 +207,75 @@
 </script>
 
 <style lang="scss" scoped>
-	.page{
+	.page {
 		background-color: #fff;
-		.operate{
+
+		.operate {
 			height: 88rpx;
 			border-bottom: 1rpx solid #f1f1f1;
 		}
-		
-		.goods-list{
-			.goods-item{
+
+		.goods-list {
+			.goods-item {
 				width: 26%;
 				margin-right: 11%;
-				.goods-name{
+
+				.goods-name {
 					line-height: 70rpx;
 				}
 			}
-			
-			.goods-item:nth-child(3n){
+
+			.goods-item:nth-child(3n) {
 				margin-right: 0;
 			}
-			
+
 			.goods-item:nth-child(1),
 			.goods-item:nth-child(2),
-			.goods-item:nth-child(3)
-			{
+			.goods-item:nth-child(3) {
 				margin-top: 30rpx;
 			}
 		}
-		
+
 		.poi {
 			display: none;
 			border-radius: 16rpx;
 			width: 200rpx;
 			top: 88rpx;
-			
-			.poi-item{
+
+			.poi-item {
 				border-bottom: 1rpx solid #ddd;
 			}
-			
-			.poi-item:last-child{
+
+			.poi-item:last-child {
 				border: none;
 			}
 		}
-		
+
 		.active {
 			display: block;
 			animation: active 0.3s linear forwards;
-		
+
 			@keyframes active {
 				0% {
 					opacity: 0;
 				}
-		
+
 				100% {
 					opacity: 1;
 					box-shadow: 0 0 4rpx 4rpx #f1f1f1;
 				}
 			}
 		}
-		
+
 		.default {
 			display: block;
 			animation: default 0.3s linear forwards;
-		
+
 			@keyframes default {
 				0% {
 					opacity: 1;
 				}
-		
+
 				100% {
 					opacity: 0;
 					box-shadow: none;

@@ -9,7 +9,7 @@
 <template>
 	<view style="height: 100%;">
 		<!-- 仅用于计算（结构和样式请和阅读页一致） -->
-		<view class="container hidden" v-for="(item, i) in compose" :key="i">
+		<view class="container hidden" v-for="(item, i) in 3" :key="i">
 			<!-- 顶部 -->
 			<view class="header" :style="{height: `calc(88rpx + ${statusHeight}px)`}">
 				<!-- 章节名等内容 -->
@@ -19,13 +19,13 @@
 			<view id="content" class="content">
 				<view class="inner-box" :style="{height: `${innerHeight}px`}">
 					<!-- 动态ID或者类名在DOM无宽高的情况下会消失 -->
-					<view v-if="i == 0" id="preChapter" class="book-inner" v-html="item.text"
+					<view v-if="i == 0" id="preChapter" class="book-inner" v-html="preChapter.text"
 						:style="{fontSize: `${fontSize}rpx`, lineHeight: `${lineHeight*fontSize}rpx`}">
 					</view>
-					<view v-if="i == 1" id="curChapter" class="book-inner" v-html="item.text"
+					<view v-if="i == 1" id="curChapter" class="book-inner" v-html="curChapter.text"
 						:style="{fontSize: `${fontSize}rpx`, lineHeight: `${lineHeight*fontSize}rpx`}">
 					</view>
-					<view v-if="i == 2" id="nextChapter" class="book-inner" v-html="item.text"
+					<view v-if="i == 2" id="nextChapter" class="book-inner" v-html="nextChapter.text"
 						:style="{fontSize: `${fontSize}rpx`, lineHeight: `${lineHeight*fontSize}rpx`}">
 					</view>
 				</view>
@@ -75,8 +75,10 @@
 			:style="{height: `calc(88rpx + ${statusHeight}px)`}">
 			<!-- 章节名等内容 -->
 			<view class="chapter d-flex a-center pl-2 w-100" style="height: 88rpx;">
-				<u-icon class="mr-1" name="arrow-left" size="14" :color="background != 2 ? bgList[1].color : bgList[0].color" @click="pageBack()"></u-icon>
-				<span :style="{color: background != 2 ? bgList[1].color : bgList[0].color}">{{curPage.chapterName}}</span> 
+				<u-icon class="mr-1" name="arrow-left" size="14"
+					:color="background != 2 ? bgList[1].color : bgList[0].color" @click="pageBack()"></u-icon>
+				<span
+					:style="{color: background != 2 ? bgList[1].color : bgList[0].color}">{{curPage.chapterName}}</span>
 			</view>
 		</view>
 		<!-- 阅读页（结构和样式请和仅用于计算元素一致） -->
@@ -94,7 +96,8 @@
 						transform: `translateY(-${prePage.pageNum*innerHeight}rpx)`}">
 					</view>
 				</view>
-				<view v-else class="d-flex flex-column a-center j-center h-100" @click.stop="$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')">
+				<view v-else class="d-flex flex-column a-center j-center h-100"
+					@click.stop="$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')">
 					<view class="px-3 main-text-color">{{$t('当前为VIP章节，请开通VIP服务后继续阅读')}}</view>
 					<view class="mt-10 btns text-white d-flex a-center j-center">
 						{{$t('去开通')}}
@@ -115,7 +118,8 @@
 						transform: `translateY(-${curPage.pageNum*innerHeight}rpx)`}">
 					</view>
 				</view>
-				<view v-else class="d-flex flex-column a-center j-center h-100" @click.stop="$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')">
+				<view v-else class="d-flex flex-column a-center j-center h-100"
+					@click.stop="$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')">
 					<view class="px-3 main-text-color">{{$t('当前为VIP章节，请开通VIP服务后继续阅读')}}</view>
 					<view class="mt-10 btns text-white d-flex a-center j-center">
 						{{$t('去开通')}}
@@ -136,7 +140,8 @@
 						transform: `translateY(-${nextPage.pageNum*innerHeight}rpx)`}">
 					</view>
 				</view>
-				<view v-else class="d-flex flex-column a-center j-center h-100" @click.stop="$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')">
+				<view v-else class="d-flex flex-column a-center j-center h-100"
+					@click.stop="$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')">
 					<view class="px-3 main-text-color">{{$t('当前为VIP章节，请开通VIP服务后继续阅读')}}</view>
 					<view class="mt-10 btns text-white d-flex a-center j-center">
 						{{$t('去开通')}}
@@ -151,19 +156,22 @@
 				{{systemTimeStr}}
 			</view>
 			<view :style="{color: background != 2 ? bgList[1].color : bgList[0].color}">
-				{{curPage.pageNum + 1}}/{{curPage.totalPage}}
+				{{curPage.pageNum + 1}}/{{curChapter.totalPage}}
 			</view>
-			<battery :backgroundId="background" :level="battery.batteryLevel" :charging="battery.batteryState === 2"></battery>
+			<battery :backgroundId="background" :level="battery.batteryLevel" :charging="battery.batteryState === 2">
+			</battery>
 		</view>
 		<!-- 遮罩层 -->
 		<control-menu :show="menuShow" :detail="detail" @close="closeMenu" :backgroundId="background"
-		@changeBackground="changeBackground" @sharePosters="sharePosters" @openCollect="openCollect" @goNextChapter="goNextChapter"
-		@goPreChapter="goPreChapter" @slideChanging="slideChanging" @slideChange="slideChange" :progressTouched="progressTouched"
-		:composeCurChild="compose[1]" :directoryList="directoryList" :chapterProgressValue="chapterProgress" @pageBack="pageBack" 
-		@openSetting="openSetting" @openDirectory="openDirectory"/>
+			@changeBackground="changeBackground" @sharePosters="sharePosters" @openCollect="openCollect"
+			@goNextChapter="goNextChapter" @goPreChapter="goPreChapter" @slideChanging="slideChanging"
+			@slideChange="slideChange" :progressTouched="progressTouched" :composeCurChild="curChapter"
+			:directoryList="directoryList" :chapterProgressValue="chapterProgress" @pageBack="pageBack"
+			@openSetting="openSetting" @openDirectory="openDirectory" />
 		<!-- 目录弹框 -->
-		<directory :show="directoryShow" :composeCurChild="compose[1]" @close="directoryShow = false" :backgroundId="background" :directoryList="directoryList"
-		:chapterProgress="chapterProgress" :detail="detail" @openSort="openSort" @openToChapter="goToChapter" />
+		<directory :show="directoryShow" :composeCurChild="curChapter" @close="directoryShow = false"
+			:backgroundId="background" :directoryList="directoryList" :chapterProgress="chapterProgress"
+			:detail="detail" @openSort="openSort" @openToChapter="goToChapter" />
 		<!-- 阅读设置弹框 -->
 		<read-set :show="setShow" :maxFontSize="maxFontSize" :minFontSize="minFontSize" :turnType="turnType"
 			:bgId="background" :lineHeight="lineHeight" :fontSize="fontSize" @addSize="addSize" @subSize="subSize"
@@ -171,7 +179,8 @@
 			@close="setShow = false" />
 		<!-- 分享海报 -->
 		<c-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow" :poster="poster" />
-		<m-modal :show="modalShow" i18n title="温馨提示" confirmName="加入书架" @cancel="cancel" zIndex="101" @confirm="openCollect">
+		<m-modal :show="modalShow" i18n title="温馨提示" confirmName="加入书架" @cancel="cancel" zIndex="101"
+			@confirm="openCollect">
 			<view class="d-flex a-center j-center flex-column">
 				<view class="d-flex a-center text-center j-center flex-column main-text-color letter-1">
 					{{$t('喜欢这本书吗？快加入书架吧！')}}
@@ -182,9 +191,6 @@
 </template>
 
 <script>
-	import {
-		compose
-	} from './data.js'
 	import Battery from './novel-modules/battery/index.vue'
 	import CAppShare from '@/components/common/c-app-share/index.vue'
 	import ReadSet from './novel-modules/read-set/index.vue'
@@ -239,7 +245,29 @@
 				cover: { //封面的状态
 					pageTranslate: ['', '', ''], //页面位移，三个数对应三种翻页方式
 				},
-
+				preChapter: { //上一章数据
+					ready: false, //是否准备完毕
+					chapterIndex: '',
+					chapterName: '',
+					text: '',
+					totalPage: '',
+					canRead: true
+				},
+				curChapter: { //本一章数据
+					chapterIndex: '',
+					chapterName: '',
+					text: '',
+					totalPage: '',
+					canRead: true
+				},
+				nextChapter: { //下一章数据
+					ready: false, //是否准备完毕
+					chapterIndex: '',
+					chapterName: '',
+					text: '',
+					totalPage: '',
+					canRead: true
+				},
 				prePage: { //上一页数据
 					ready: false, //是否准备完毕
 					chapterName: '',
@@ -596,14 +624,14 @@
 				// history.forEach((value) => {
 				// 	if (value.bookId === this.bookId) {
 				// 		have = true
-				// 		value.chapterIndex = this.compose[1].chapterIndex
+				// 		value.chapterIndex = this.curChapter.chapterIndex
 				// 		value.progress = this.progress
 				// 	}
 				// })
 				// if (!have) {
 				// 	history.push({
 				// 		bookId: this.bookId,
-				// 		chapterIndex: this.compose[1].chapterIndex,
+				// 		chapterIndex: this.curChapter.chapterIndex,
 				// 		progress: this.progress
 				// 	})
 				// }
@@ -684,7 +712,7 @@
 					this.history.chapterIndex = 0
 				}
 				await this.getThreeChapter(this.history.chapterIndex)
-				let page = Math.floor((this.compose[1].totalPage - 1) * this.history.progress)
+				let page = Math.floor((this.curChapter.totalPage - 1) * this.history.progress)
 				this.goToPage(page)
 				uni.hideLoading()
 			},
@@ -701,21 +729,22 @@
 				} else {
 					return new Promise((resolve, reject) => {
 						this.$nextTick(() => {
-							uni.createSelectorQuery().in(this).select('#content').boundingClientRect(data => {
-								let height = data.height;
-								this.contentHeight = height;
-								let lineHeight = this.fontSize * this.lineHeight;
+							uni.createSelectorQuery().in(this).select('#content').boundingClientRect(
+								data => {
+									let height = data.height;
+									this.contentHeight = height;
+									let lineHeight = this.fontSize * this.lineHeight;
 
-								// #ifdef APP-PLUS || MP-WEIXIN
-								lineHeight = Math.floor(lineHeight * this.appSystemInfo
-										.pixelRatio) / this
-									.pixelRatio
-								// #endif
-								let lineNum = Math.floor((height + Math.floor((lineHeight - this
-									.fontSize) / 2)) / lineHeight)
-								this.innerHeight = lineNum * lineHeight
-								resolve()
-							}).exec();
+									// #ifdef APP-PLUS || MP-WEIXIN
+									lineHeight = Math.floor(lineHeight * this.appSystemInfo
+											.pixelRatio) / this
+										.pixelRatio
+									// #endif
+									let lineNum = Math.floor((height + Math.floor((lineHeight - this
+										.fontSize) / 2)) / lineHeight)
+									this.innerHeight = lineNum * lineHeight
+									resolve()
+								}).exec();
 						})
 					})
 				}
@@ -725,15 +754,15 @@
 				return new Promise((resolve, reject) => {
 					// 此处setTimeout 100ms是为了确保元素渲染完毕从而获取正确高度，如果遇到页面页数计算不正确的情况可以增加时间试试看
 					let time = setTimeout(() => {
-						uni.createSelectorQuery().in(this).select('#curChapter').boundingClientRect(data => {
+						uni.createSelectorQuery().in(this).select('#curChapter').boundingClientRect(
+						data => {
 							let height = data.height;
 							// #ifdef APP-PLUS || MP-WEIXIN
 							height = Math.round(height * this.appSystemInfo.pixelRatio) / this
 								.appSystemInfo.pixelRatio
 							// #endif
-							console.log(data.height, Math.ceil(height / this.innerHeight))
-							this.compose[1].totalPage = Math.ceil(height / this.innerHeight) || 1
-							this.compose[1].ready = true //章节准备完毕
+							this.curChapter.totalPage = Math.ceil(height / this.innerHeight) || 1
+							this.curChapter.ready = true //章节准备完毕
 							resolve()
 						}).exec();
 						clearTimeout(time)
@@ -745,14 +774,15 @@
 				return new Promise((resolve, reject) => {
 					// 此处setTimeout 100ms是为了确保元素渲染完毕从而获取正确高度，如果遇到页面页数计算不正确的情况可以增加时间试试看
 					let time = setTimeout(() => {
-						uni.createSelectorQuery().in(this).select('#preChapter').boundingClientRect(data => {
+						uni.createSelectorQuery().in(this).select('#preChapter').boundingClientRect(
+						data => {
 							let height = data.height;
 							// #ifdef APP-PLUS || MP-WEIXIN
 							height = Math.round(height * this.appSystemInfo.pixelRatio) / this
 								.appSystemInfo.pixelRatio
 							// #endif
-							this.compose[0].totalPage = Math.ceil(height / this.innerHeight) || 1
-							this.compose[0].ready = true //章节准备完毕
+							this.preChapter.totalPage = Math.ceil(height / this.innerHeight) || 1
+							this.preChapter.ready = true //章节准备完毕
 							if (this.waitForPre) { //发生在用户翻至上一章，但是上一章数据未准备完毕时
 								uni.hideLoading() //把loading关掉
 								this.waitForPre = false;
@@ -775,27 +805,28 @@
 				return new Promise((resolve, reject) => {
 					// 此处setTimeout 100ms是为了确保元素渲染完毕从而获取正确高度，如果遇到页面页数计算不正确的情况可以增加时间试试看
 					let time = setTimeout(() => {
-						uni.createSelectorQuery().in(this).select('#nextChapter').boundingClientRect(data => {
-							let height = data.height;
-							// #ifdef APP-PLUS || MP-WEIXIN
-							height = Math.round(height * this.appSystemInfo.pixelRatio) / this
-								.appSystemInfo.pixelRatio
-							// #endif
-							this.compose[2].totalPage = Math.ceil(height / this.innerHeight) || 1
-							this.compose[2].ready = true //章节准备完毕
-							if (this.waitForNext) { //发生在用户翻至下一章，但是下一章数据未准备完毕时
-								uni.hideLoading() //把loading关掉
-								this.waitForNext = false;
-								//页面准备完毕
-								this.goNextPage()
-							}
-							if (this.waitForNextChapter) {
-								uni.hideLoading()
-								this.waitForNextChapter = false
-								this.goNextChapter()
-							}
-							resolve()
-						}).exec();
+						uni.createSelectorQuery().in(this).select('#nextChapter').boundingClientRect(
+							data => {
+								let height = data.height;
+								// #ifdef APP-PLUS || MP-WEIXIN
+								height = Math.round(height * this.appSystemInfo.pixelRatio) / this
+									.appSystemInfo.pixelRatio
+								// #endif
+								this.nextChapter.totalPage = Math.ceil(height / this.innerHeight) || 1
+								this.nextChapter.ready = true //章节准备完毕
+								if (this.waitForNext) { //发生在用户翻至下一章，但是下一章数据未准备完毕时
+									uni.hideLoading() //把loading关掉
+									this.waitForNext = false;
+									//页面准备完毕
+									this.goNextPage()
+								}
+								if (this.waitForNextChapter) {
+									uni.hideLoading()
+									this.waitForNextChapter = false
+									this.goNextChapter()
+								}
+								resolve()
+							}).exec();
 						clearTimeout(time)
 					}, 300)
 				})
@@ -1043,19 +1074,19 @@
 								`(0,${this.appSystemInfo.windowHeight+delta}px)`
 							]
 						}
-					} else if (this.compose[2].ready) { //下一章已经准备好了
+					} else if (this.nextChapter.ready) { //下一章已经准备好了
 						this.nextPage = {
-							ready: this.compose[2].ready,
-							chapterName: this.compose[2].chapterName,
-							text: this.compose[2].text,
+							ready: this.nextChapter.ready,
+							chapterName: this.nextChapter.chapterName,
+							text: this.nextChapter.text,
 							pageNum: 0,
-							totalPage: this.compose[2].totalPage,
+							totalPage: this.nextChapter.totalPage,
 							pageTranslate: [
 								`(0,0)`,
 								`(${this.appSystemInfo.windowWidth}px,0)`,
 								`(0,${this.appSystemInfo.windowHeight}px)`
 							],
-							canRead: this.compose[2].canRead
+							canRead: this.nextChapter.canRead
 						}
 						this.prePage.pageTranslate = [
 							`(-100%,0)`,
@@ -1141,19 +1172,19 @@
 								`(0,${this.appSystemInfo.windowHeight+delta}px)`
 							]
 						}
-					} else if (this.compose[0].ready) { //上一章已经准备好了
+					} else if (this.preChapter.ready) { //上一章已经准备好了
 						this.prePage = {
-							ready: this.compose[0].ready,
-							chapterName: this.compose[0].chapterName,
-							text: this.compose[0].text,
-							pageNum: this.compose[0].totalPage - 1,
-							totalPage: this.compose[0].totalPage,
+							ready: this.preChapter.ready,
+							chapterName: this.preChapter.chapterName,
+							text: this.preChapter.text,
+							pageNum: this.preChapter.totalPage - 1,
+							totalPage: this.preChapter.totalPage,
 							pageTranslate: [
 								`(-100%,0)`,
 								`(-100%,0)`,
 								`(0,${-this.appSystemInfo.windowHeight}px)`
 							],
-							canRead: this.compose[0].canRead
+							canRead: this.preChapter.canRead
 						}
 						this.prePage.pageTranslate = [
 							`(${-this.appSystemInfo.windowWidth+delta}px,0)`,
@@ -1360,7 +1391,7 @@
 					]
 					return
 				}
-				if (!this.prePage.ready && !this.compose[0].ready) {
+				if (!this.prePage.ready && !this.preChapter.ready) {
 					this.waitForPre = true
 					uni.showLoading({
 						title: '正在准备上一章',
@@ -1372,7 +1403,7 @@
 				this.currentPage -= 1
 				if (this.currentPage === -1) { //翻至上一章了
 					showChapter = true
-					this.currentPage = this.compose[0].totalPage - 1
+					this.currentPage = this.preChapter.totalPage - 1
 					this.chapterRotate('pre')
 				}
 
@@ -1389,7 +1420,7 @@
 				setTimeout(() => {
 					// if (showChapter) {
 					// 	uni.showToast({
-					// 		title: this.compose[1].chapterName,
+					// 		title: this.curChapter.chapterName,
 					// 		icon: 'none'
 					// 	})
 					// }
@@ -1431,7 +1462,7 @@
 					/*****************************************/
 					return
 				}
-				if (!this.nextPage.ready && !this.compose[2].ready) {
+				if (!this.nextPage.ready && !this.nextChapter.ready) {
 					this.waitForNext = true
 					uni.showLoading({
 						title: '正在准备下一章',
@@ -1441,7 +1472,7 @@
 				}
 				this.currentPage += 1
 				let showChapter = false
-				if (this.currentPage === this.compose[1].totalPage) { //翻至下一章了
+				if (this.currentPage === this.curChapter.totalPage) { //翻至下一章了
 					showChapter = true
 					this.currentPage = 0
 					this.chapterRotate('next')
@@ -1460,7 +1491,7 @@
 				setTimeout(() => {
 					// if (showChapter) {
 					// 	uni.showToast({
-					// 		title: this.compose[1].chapterName,
+					// 		title: this.curChapter.chapterName,
 					// 		icon: 'none'
 					// 	})
 					// }
@@ -1488,40 +1519,40 @@
 			 **/
 			async chapterRotate(type) {
 				if (type === 'next') {
-					this.compose[0] = Object.assign({}, this.compose[1])
-					this.compose[1] = Object.assign({}, this.compose[2])
-					if (this.compose[1].chapterIndex !== this.directoryList.length - 1) { //最后一章是根据目录列表长度判断
-						this.compose[2] = {
+					this.preChapter = Object.assign({}, this.curChapter)
+					this.curChapter = Object.assign({}, this.nextChapter)
+					if (this.curChapter.chapterIndex !== this.directoryList.length - 1) { //最后一章是根据目录列表长度判断
+						this.nextChapter = {
 							ready: false,
-							chapterIndex: this.compose[1].chapterIndex + 1,
-							chapterName: this.directoryList[this.compose[1].chapterIndex + 1].name,
+							chapterIndex: this.curChapter.chapterIndex + 1,
+							chapterName: this.directoryList[this.curChapter.chapterIndex + 1].name,
 						}
-						await this.getOneChapter(this.directoryList[this.compose[1].chapterIndex + 1].id)
-						this.$set(this.compose[2], 'text', this.tmpChapter.text)
-						this.$set(this.compose[2], 'canRead', this.tmpChapter.canRead)
+						await this.getOneChapter(this.directoryList[this.curChapter.chapterIndex + 1].id)
+						this.$set(this.nextChapter, 'text', this.tmpChapter.text)
+						this.$set(this.nextChapter, 'canRead', this.tmpChapter.canRead)
 						this.calcNextChapter()
 					} else {
-						this.compose[2] = {
+						this.nextChapter = {
 							ready: true,
 							isEnd: true
 						}
 					}
 				}
 				if (type === 'pre') {
-					this.compose[2] = Object.assign({}, this.compose[1])
-					this.compose[1] = Object.assign({}, this.compose[0])
-					if (this.compose[1].chapterIndex !== 0) {
-						this.compose[0] = {
+					this.nextChapter = Object.assign({}, this.curChapter)
+					this.curChapter = Object.assign({}, this.preChapter)
+					if (this.curChapter.chapterIndex !== 0) {
+						this.preChapter = {
 							ready: false,
-							chapterIndex: this.compose[1].chapterIndex - 1,
-							chapterName: this.directoryList[this.compose[1].chapterIndex - 1].name,
+							chapterIndex: this.curChapter.chapterIndex - 1,
+							chapterName: this.directoryList[this.curChapter.chapterIndex - 1].name,
 						}
-						await this.getOneChapter(this.directoryList[this.compose[1].chapterIndex - 1].id)
-						this.$set(this.compose[0], 'text', this.tmpChapter.text)
-						this.$set(this.compose[0], 'canRead', this.tmpChapter.canRead)
+						await this.getOneChapter(this.directoryList[this.curChapter.chapterIndex - 1].id)
+						this.$set(this.preChapter, 'text', this.tmpChapter.text)
+						this.$set(this.preChapter, 'canRead', this.tmpChapter.canRead)
 						this.calcPreChapter()
 					} else {
-						this.compose[0] = {
+						this.preChapter = {
 							ready: true,
 							isCover: true
 						}
@@ -1532,7 +1563,7 @@
 			 * 跳转下一章
 			 **/
 			goNextChapter() {
-				if (this.compose[1].chapterIndex === this.directoryList.length - 1) {
+				if (this.curChapter.chapterIndex === this.directoryList.length - 1) {
 					uni.showToast({
 						title: '已经是最后一章了',
 						icon: 'none'
@@ -1542,7 +1573,7 @@
 				if (this.waitForNext || this.waitForPre) {
 					return
 				}
-				if (this.compose[2].ready) {
+				if (this.nextChapter.ready) {
 					this.chapterRotate('next')
 					this.chapterProgress++
 					this.goToPage(0)
@@ -1559,7 +1590,7 @@
 			 * 跳转上一章
 			 **/
 			goPreChapter(page) {
-				if (this.compose[1].chapterIndex === 0) {
+				if (this.curChapter.chapterIndex === 0) {
 					uni.showToast({
 						title: '这是第一章',
 						icon: 'none'
@@ -1569,7 +1600,7 @@
 				if (this.waitForNext || this.waitForPre) {
 					return
 				}
-				if (this.compose[0].ready) {
+				if (this.preChapter.ready) {
 					this.chapterRotate('pre')
 					this.chapterProgress--
 					this.goToPage(0)
@@ -1587,20 +1618,20 @@
 				this.currentPage = page
 				this.showAnimation = false
 				this.curPage = {
-					ready: this.compose[1].ready,
-					chapterName: this.compose[1].chapterName,
-					text: this.compose[1].text,
+					ready: this.curChapter.ready,
+					chapterName: this.curChapter.chapterName,
+					text: this.curChapter.text,
 					pageNum: this.currentPage,
-					totalPage: this.compose[1].totalPage,
+					totalPage: this.curChapter.totalPage,
 					pageTranslate: [
 						`(0,0)`,
 						`(0,0)`,
 						`(0,0)`
 					],
-					canRead: this.compose[1].canRead
+					canRead: this.curChapter.canRead
 				}
 				if (this.currentPage === 0) {
-					if (this.compose[0].ready && this.compose[0].isCover) { //翻至封面了
+					if (this.preChapter.ready && this.preChapter.isCover) { //翻至封面了
 						this.prePage = {
 							ready: true,
 							isCover: true,
@@ -1612,36 +1643,36 @@
 						}
 					} else {
 						this.prePage = {
-							ready: this.compose[0].ready,
-							chapterName: this.compose[0].chapterName,
-							text: this.compose[0].text,
-							pageNum: this.compose[0].totalPage - 1,
-							totalPage: this.compose[0].totalPage,
+							ready: this.preChapter.ready,
+							chapterName: this.preChapter.chapterName,
+							text: this.preChapter.text,
+							pageNum: this.preChapter.totalPage - 1,
+							totalPage: this.preChapter.totalPage,
 							pageTranslate: [
 								`(-100%,0)`,
 								`(-100%,0)`,
 								`(0,${-this.appSystemInfo.windowHeight}px)`
 							],
-							canRead: this.compose[0].canRead
+							canRead: this.preChapter.canRead
 						}
 					}
 				} else {
 					this.prePage = {
 						ready: true,
-						chapterName: this.compose[1].chapterName,
-						text: this.compose[1].text,
+						chapterName: this.curChapter.chapterName,
+						text: this.curChapter.text,
 						pageNum: this.currentPage - 1,
-						totalPage: this.compose[1].totalPage,
+						totalPage: this.curChapter.totalPage,
 						pageTranslate: [
 							`(-100%,0)`,
 							`(-100%,0)`,
 							`(0,${-this.appSystemInfo.windowHeight}px)`
 						],
-						canRead: this.compose[1].canRead
+						canRead: this.curChapter.canRead
 					}
 				}
-				if (this.currentPage >= this.compose[1].totalPage - 1) {
-					if (this.compose[2].ready && this.compose[2].isEnd) { //翻至最后一章了
+				if (this.currentPage >= this.curChapter.totalPage - 1) {
+					if (this.nextChapter.ready && this.nextChapter.isEnd) { //翻至最后一章了
 						this.nextPage = {
 							ready: true,
 							isEnd: true,
@@ -1653,34 +1684,34 @@
 						}
 					} else {
 						this.nextPage = {
-							ready: this.compose[2].ready,
-							chapterName: this.compose[2].chapterName,
-							text: this.compose[2].text,
+							ready: this.nextChapter.ready,
+							chapterName: this.nextChapter.chapterName,
+							text: this.nextChapter.text,
 							pageNum: 0,
-							totalPage: this.compose[2].totalPage,
+							totalPage: this.nextChapter.totalPage,
 							pageTranslate: [
 								`(0,0)`,
 								`(${this.appSystemInfo.windowWidth}px,0)`,
 								`(0,${this.appSystemInfo.windowHeight}px)`
 							],
-							canRead: this.compose[2].canRead
+							canRead: this.nextChapter.canRead
 						}
 					}
 				} else {
 					this.nextPage = {
 						ready: true,
-						chapterName: this.compose[1].chapterName,
-						text: this.compose[1].text,
+						chapterName: this.curChapter.chapterName,
+						text: this.curChapter.text,
 						pageNum: this.currentPage + 1,
-						totalPage: this.compose[1].totalPage,
+						totalPage: this.curChapter.totalPage,
 						pageTranslate: [
 							`(0,0)`,
 							`(${this.appSystemInfo.windowWidth}px,0)`,
 							`(0,${this.appSystemInfo.windowHeight}px)`
 						],
-						canRead: this.compose[1].canRead
+						canRead: this.curChapter.canRead
 					}
-					
+
 				}
 			},
 
@@ -1707,14 +1738,14 @@
 				uni.setStorageSync('fontSize', this.fontSize)
 				this.calcHeight()
 				await this.calcCurChapter()
-				let page = Math.floor((this.compose[1].totalPage - 1) * progress)
+				let page = Math.floor((this.curChapter.totalPage - 1) * progress)
 				this.goToPage(page)
-				if (this.compose[0].ready && !this.compose[0].isCover) {
-					this.compose[0].ready = false
+				if (this.preChapter.ready && !this.preChapter.isCover) {
+					this.preChapter.ready = false
 					await this.calcPreChapter()
 				}
-				if (this.compose[2].ready && !this.compose[2].isEnd) {
-					this.compose[2].ready = false
+				if (this.nextChapter.ready && !this.nextChapter.isEnd) {
+					this.nextChapter.ready = false
 					await this.calcNextChapter()
 				}
 			},
@@ -1729,14 +1760,14 @@
 				uni.setStorageSync('fontSize', this.fontSize)
 				this.calcHeight()
 				await this.calcCurChapter()
-				let page = Math.floor((this.compose[1].totalPage - 1) * progress)
+				let page = Math.floor((this.curChapter.totalPage - 1) * progress)
 				this.goToPage(page)
-				if (this.compose[0].ready && !this.compose[0].isCover) {
-					this.compose[0].ready = false
+				if (this.preChapter.ready && !this.preChapter.isCover) {
+					this.preChapter.ready = false
 					await this.calcPreChapter()
 				}
-				if (this.compose[2].ready && !this.compose[2].isEnd) {
-					this.compose[2].ready = false
+				if (this.nextChapter.ready && !this.nextChapter.isEnd) {
+					this.nextChapter.ready = false
 					await this.calcNextChapter()
 				}
 			},
@@ -1752,14 +1783,14 @@
 					uni.setStorageSync('lineHeight', this.lineHeight)
 					this.calcHeight()
 					await this.calcCurChapter()
-					let page = Math.floor((this.compose[1].totalPage - 1) * progress)
+					let page = Math.floor((this.curChapter.totalPage - 1) * progress)
 					this.goToPage(page)
-					if (this.compose[0].ready && !this.compose[0].isCover) {
-						this.compose[0].ready = false
+					if (this.preChapter.ready && !this.preChapter.isCover) {
+						this.preChapter.ready = false
 						await this.calcPreChapter()
 					}
-					if (this.compose[2].ready && !this.compose[2].isEnd) {
-						this.compose[2].ready = false
+					if (this.nextChapter.ready && !this.nextChapter.isEnd) {
+						this.nextChapter.ready = false
 						await this.calcNextChapter()
 					}
 
@@ -1886,7 +1917,6 @@
 						this.tmpChapter.text = traditionalized(this.tmpChapter.text)
 					}
 				} else {
-					console.log(3)
 					// 此处是网络连接失败的逻辑
 					uni.hideLoading()
 					return new Promise((resolve, reject) => {
@@ -1914,55 +1944,52 @@
 			 **/
 			async getThreeChapter(index) {
 				await this.getOneChapter(this.directoryList[index].id)
-				this.compose[1] = {
+				this.curChapter = {
 					chapterIndex: index,
 					chapterName: this.directoryList[index].name,
 					text: this.tmpChapter.text,
-					canRead: this.tmpChapter.canRead
+					canRead: this.tmpChapter.canRead,
+					totalPage: 0
 				}
-				if (this.compose[1].chapterIndex !== 0) {
+				if (this.curChapter.chapterIndex !== 0) {
 					await this.getOneChapter(this.directoryList[index - 1].id)
-					this.compose[0] = {
+					this.preChapter = {
 						chapterIndex: index - 1,
 						chapterName: this.directoryList[index - 1].name,
 						text: this.tmpChapter.text,
 						canRead: this.tmpChapter.canRead
 					}
 				} else {
-					this.compose[0] = {
+					this.preChapter = {
 						ready: true,
 						isCover: true
 					}
 				}
-				if (this.compose[1].chapterIndex !== this.directoryList.length - 1) {
+				if (this.curChapter.chapterIndex !== this.directoryList.length - 1) {
 					await this.getOneChapter(this.directoryList[index + 1].id)
-					this.compose[2] = {
+					this.nextChapter = {
 						chapterIndex: index + 1,
 						chapterName: this.directoryList[index + 1].name,
 						text: this.tmpChapter.text,
 						canRead: this.tmpChapter.canRead
 					}
 				} else {
-					this.compose[2] = {
+					this.nextChapter = {
 						ready: true,
 						isEnd: true
 					}
 				}
-				console.log(this.compose)
-				await this.calcCurChapter()
-				await this.calcPreChapter()
-				await this.calcNextChapter()
+				this.calcCurChapter()
+				this.calcPreChapter()
+				this.calcNextChapter()
 			}
 		},
 		computed: {
 			progress() { //章节的阅读进度
-				if (this.compose[1].totalPage === 1) {
+				if (this.curChapter.totalPage === 1) {
 					return 0
 				}
-				return this.currentPage / (this.compose[1].totalPage - 1)
-			},
-			compose() {
-				return compose
+				return this.currentPage / (this.curChapter.totalPage - 1)
 			},
 			appSystemInfo() {
 				return this.$store.state.appSystemInfo
@@ -1992,7 +2019,7 @@
 		opacity: 0;
 	}
 
-	
+
 
 	.action {
 		position: fixed;
@@ -2039,6 +2066,7 @@
 					text-align: justify;
 				}
 			}
+
 			.btns {
 				font-size: 30rpx;
 				border-radius: 50rpx;
@@ -2046,7 +2074,7 @@
 				width: 630rpx;
 				background: linear-gradient(to right, #85B6CA, #F9A4A0);
 			}
-			
+
 			.btns:active {
 				background: linear-gradient(to right, #85B6CA80, #F9A4A080);
 			}

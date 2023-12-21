@@ -399,6 +399,12 @@
 	"已阅读至": "Current Read",
 	"最新章节": "New Chapter",
 	"章未读": "Chapters Unread",
-	"已读至最新章节": "Have read to the latest chapter"
+	"已读至最新章节": "Have read to the latest chapter",
+	"未读": "Unread",
+	"在读": "Be Reading",
+	"读完": "Finish Read",
+	"编辑书架": "Edit Bookshelf",
+	"列表展示": "List Display",
+	"宫格展示": "Grid Display"
 	
 }

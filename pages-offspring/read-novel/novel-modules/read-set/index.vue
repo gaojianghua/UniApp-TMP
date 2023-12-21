@@ -82,11 +82,6 @@
 			close() {
 				this.$emit('close')
 			}
-		},
-		watch: {
-			fontSize(e, o) {
-				console.log(e, this.maxFontSize)
-			}
 		}
 	}
 </script>
