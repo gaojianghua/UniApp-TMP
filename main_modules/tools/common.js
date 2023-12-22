@@ -34,6 +34,32 @@ class Common {
 		})).then(callback);
 	}
 	/**
+	 * @description H5初始化FaceBook
+	 */
+	static addFacebookPixelCode = (id) => {
+		let script = document.createElement('script');
+		script.innerHTML = `
+			!function(f,b,e,v,n,t,s)
+			{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+			n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+			if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+			n.queue=[];t=b.createElement(e);t.async=!0;
+			t.src=v;s=b.getElementsByTagName(e)[0];
+			s.parentNode.insertBefore(t,s)}(window, document,'script',
+			'https://connect.facebook.net/en_US/fbevents.js');
+			fbq('init', ${id});
+			fbq('track', 'PageView');
+		`;
+		let noscript = document.createElement('noscript');
+		noscript.innerHTML = `
+			<img height="1" width="1" style="display:none"
+			  src="https://www.facebook.com/tr?id=${id}&ev=PageView&noscript=1"
+			/>
+		`;
+		document.head.appendChild(script);
+		document.head.appendChild(noscript);
+	}
+	/**
 	 * @description async await 捕获错误
 	 */
 	static asyncTryCatch = (promise, errorExt) => {
