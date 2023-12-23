@@ -1,8 +1,9 @@
 <template>
 	<view class="page">
 		<!-- 遮罩层 -->
-		<control-menu :show="show" :detail="detail" :chapterInfo="chapterInfo" @close="show = false" @pageBack="pageBack" @openDown="openDown" @openControls="openControls"
-			@openUp="openUp" @openCollect="openCollect"/>
+		<control-menu :show="show" :detail="detail" :chapterInfo="chapterInfo" @close="show = false" 
+			@pageBack="pageBack" @openDown="openDown" @openControls="openControls"
+			@openUp="openUp" @openCollect="openCollect" @sharePosters="sharePosters"/>
 		<!-- 内容区域 -->
 		<m-scroll-y bgColor="transparent" i18n :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load"
 			@loadmore="loadmore" @onRefresh="onRefresh" mainColor="#fb7290">

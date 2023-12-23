@@ -50,4 +50,7 @@ export default {
 	updateAllHistoryList(state, e) {
 		state.allHistoryList = e
 	},
+	updateCartList(state, e) {
+		state.cartList = e
+	},
 }

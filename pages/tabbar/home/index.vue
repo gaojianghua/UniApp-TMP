@@ -107,9 +107,6 @@
 			}
 		},
 		onLoad() {
-			console.log(this.$check.isIncludesSomeAPP('taobao'))
-			
-			
 			this.init()
 		},
 		methods: {

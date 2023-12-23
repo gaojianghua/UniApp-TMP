@@ -61,6 +61,7 @@ export default {
 	sysConfig: uni.getStorageSync('config') || {},		// 业务系统配置
 	liveCity: uni.getStorageSync('liveCity') || '武汉',		// 所在城市
 	contacts: uni.getStorageSync('contacts') || [],		// 通讯录数据
+	cartList: uni.getStorageSync('cartList') || [],		// 购物车数据
 	shippingAddress: [], // 收货地址
 	historyList: uni.getStorageSync('historyList') || [], // 搜索历史记录
 	orderHistoryList: uni.getStorageSync('orderHistoryList') || [], // 订单搜索历史记录

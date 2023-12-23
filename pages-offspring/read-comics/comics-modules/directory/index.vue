@@ -91,7 +91,7 @@
 		computed: {
 			directoryStyle() {
 				return {
-					height: `calc(80vh - 88rpx - 90rpx - env(safe-area-inset-bottom))`
+					height: `calc(80vh - 88rpx - env(safe-area-inset-bottom))`
 				}
 			}
 		}

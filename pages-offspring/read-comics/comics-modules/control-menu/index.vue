@@ -90,6 +90,10 @@
 			// 返回
 			pageBack() {
 				this.$emit('pageBack')
+			},
+			// 分享按钮
+			sharePosters() {
+				this.$emit('sharePosters')
 			}
 		}
 	}

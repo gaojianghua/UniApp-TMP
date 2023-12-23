@@ -18,6 +18,19 @@ export default {
 			uni.setStorageSync('config', data)
 		}
 	},
+	// 获取购物车数据
+	async getSysConfig({
+		commit
+	}) {
+		let {
+			data,
+			code
+		} = await getCartList()
+		if (code == 200) {
+			commit('updateCartList', data.list)
+			uni.setStorageSync('cartList', data.list)
+		}
+	},
 	// 获取用户信息
 	async getUserinfo({
 		commit
