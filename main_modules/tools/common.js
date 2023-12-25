@@ -35,6 +35,7 @@ class Common {
 	}
 	/**
 	 * @description H5初始化FaceBook
+	 * @param id 像素ID
 	 */
 	static addFacebookPixelCode = (id) => {
 		let script = document.createElement('script');
