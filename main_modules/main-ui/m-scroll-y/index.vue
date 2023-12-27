@@ -2,13 +2,13 @@
 	<!-- #ifdef MP-WEIXIN -->
 	<scroll-view class="w-100" scroll-anchoring scroll-y :scroll-top="scrollTop" :style="[scrollStyle]"
 		:enable-flex="true" @scroll="scroll" refresher-default-style="none" :refresher-threshold="threshold"
-		:refresher-background="bgColor" @scrolltolower="loadmore"
+		:refresher-background="bgColor" @scrolltolower="loadmore" scroll-with-animation
 		:refresher-enabled="isCustomRefresh" :refresher-triggered="triggered" @refresherpulling="onPulling"
 		@refresherrefresh="onRefresh" @refresherabort="onAbort" @refresherrestore="onRestore" :scroll-into-view="intoView">
 	<!-- #endif -->
 		<!-- #ifndef MP-WEIXIN -->
 		<scroll-view class="w-100" scroll-anchoring scroll-y :scroll-top="scrollTop" :style="scrollStyle"
-			@scroll="scroll" refresher-default-style="none" :refresher-threshold="threshold"
+			@scroll="scroll" refresher-default-style="none" :refresher-threshold="threshold" scroll-with-animation
 			:refresher-background="bgColor" @scrolltolower="loadmore" :refresher-enabled="isCustomRefresh"
 			:refresher-triggered="triggered" @refresherpulling="onPulling" @refresherrefresh="onRefresh"
 			@refresherabort="onAbort" @refresherrestore="onRestore" :scroll-into-view="intoView">

@@ -23,6 +23,9 @@
 							<u-image height="60rpx" width="60rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/back.svg"></u-image>
 							<!-- <u-icon name="arrow-left" :color="iconColor" size="20"></u-icon> -->
 						</view>
+						<view v-else class="tabbar-back">
+							<slot name="left"></slot>
+						</view>
 						<template v-if="isSlot">
 							<slot></slot>
 						</template>

@@ -131,6 +131,7 @@
 				}
 
 				.rect-btn-btn {
+					min-width: 200rpx;
 					border-radius: 50rpx;
 					height: 60rpx;
 					padding: 0 50rpx;
