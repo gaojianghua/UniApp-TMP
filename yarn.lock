@@ -83,6 +83,11 @@
   "resolved" "https://registry.npmmirror.com/get-caller-file/-/get-caller-file-2.0.5.tgz"
   "version" "2.0.5"
 
+"hls.js@^1.4.14":
+  "integrity" "sha512-UppQjyvPVclg+6t2KY/Rv03h0+bA5u6zwqVoz4LAC/L0fgYmIaCD7ZCrwe8WI1Gv01be1XL0QFsRbSdIHV/Wbw=="
+  "resolved" "https://registry.npmjs.org/hls.js/-/hls.js-1.4.14.tgz"
+  "version" "1.4.14"
+
 "is-fullwidth-code-point@^3.0.0":
   "integrity" "sha512-zymm5+u+sCsSWyD9qNaejV3DFvhCKclKdizYaJUuHA83RLjb7nSuGnddCHGv0hk+KY7BMAlsWeK4Ueg6EV6XQg=="
   "resolved" "https://registry.npmmirror.com/is-fullwidth-code-point/-/is-fullwidth-code-point-3.0.0.tgz"
@@ -109,6 +114,11 @@
   "integrity" "sha512-tZq0JcUK7lyF7+KhywNNbtR26JOi0I6MNFe9rMi1D/wz50/3Mb9gpFKvh/d4O6/nQa2wRkYGONCVbYHGMf7tgA=="
   "resolved" "https://registry.npmjs.org/lucky-canvas/-/lucky-canvas-1.5.14.tgz"
   "version" "1.5.14"
+
+"mui-player@^1.8.1":
+  "integrity" "sha512-5o0SnSyVImxT9XUO6jCMmcJ+ZyAEJeFvdeZDHHPNS/LdwhzWX4yQPNgx8nzRbcUJ749xpqEQ6uVddiexLyvvqg=="
+  "resolved" "https://registry.npmjs.org/mui-player/-/mui-player-1.8.1.tgz"
+  "version" "1.8.1"
 
 "p-limit@^2.2.0":
   "integrity" "sha512-//88mFWSJx8lxCzwdAABTJL2MyWB12+eIY7MDL2SqLmAkeKU9qxRvWuSyTjm3FUmpBEMuFfckAIqEaVGUDxb6w=="
