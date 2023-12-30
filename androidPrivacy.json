@@ -1,41 +1,81 @@
 {
-    "version" : "1.0.0",
-    "prompt" : "template",
-    "title" : "%服务协议和隐私政策%",
-    "message" : "%请你务必审慎阅读、充分理解“服务协议”和“隐私政策”各条款，包括但不限于：为了更好的向你提供服务，我们需要收集你的设备标识、操作日志等信息用于分析、优化应用性能%。<br/>%你可阅读%<a style=\"color: '#31EF1D';\" href=\"\">《%服务协议%》</a>%和%<a style=\"color: '#31EF1D';\"href=\"\">《%隐私政策%》</a>%了解详细信息。如果你同意，请点击下面按钮开始接受我们的服务%。",
-    "buttonAccept" : "%同意并接受%",
-    "buttonRefuse" : "%暂不同意%",
-    "hrefLoader" : "system|default",
-    "backToExit" : "false",
-    "second" : {
-        "title" : "%确认提示%",
-        "message" : "%进入应用前，你需先同意%<a style=\"color: '#31EF1D';\" href=\"\">《%服务协议%》</a>%和%<a style=\"color: '#31EF1D';\" href=\"\">《%隐私政策%》</a>，%否则将退出应用%。",
-        "buttonAccept" : "%同意并继续%",
-        "buttonRefuse" : "%退出应用%"
-    },
-    "disagreeMode" : {
-        "support" : false,
-        "loadNativePlugins" : false,
-        "visitorEntry" : true,
-        "showAlways" : false
-    },
-    "styles" : {
-        "backgroundColor" : "#FBB4C7",
-        "borderRadius" : "8px",
-        "title" : {
-            "color" : "#fb7266"
-        },
-        "message" : {
-            "color" : "#747563"
-        },
-        "buttonAccept" : {
-            "color" : "#28a745"
-        },
-        "buttonRefuse" : {
-            "color" : "#007bff"
-        },
-        "buttonVisitor" : {
-            "color" : "#007bff"
-        }
-    }
+	"version": "1.0.0",
+	"prompt": "template",
+	"title": "服务协议和隐私政策",
+	"titleLocales": {
+		"en": "Service Agreement and Privacy Policy",
+		"zh-Hans": "服务协议和隐私政策",
+		"zh-Hant": "服務協議和隱私政策"
+	},
+	"message": "请你务必审慎阅读、充分理解“服务协议”和“隐私政策”各条款，包括但不限于：为了更好的向你提供服务，我们需要收集你的设备标识、操作日志等信息用于分析、优化应用性能。<br/>你可阅读<a style=\"color: '#31EF1D';\" href=\"\">《服务协议》</a>和<a style=\"color: '#31EF1D';\"href=\"\">《隐私政策》</a>了解详细信息。如果你同意，请点击下面按钮开始接受我们的服务。",
+	"messageLocales": {
+		"en": "Please read carefully and fully underst “Service Agreement” and “Privacy Policy” Terms, including but not limited to：In order to better provide services to you, we need to collect your device identification, operation logs and other information for analysis and optimization of application performance。<br/>You can read<a style=\"color: '#31EF1D';\" href=\"\">《Service agreement》</a>and<a style=\"color: '#31EF1D';\"href=\"\">《Privacy Policy》</a>Learn more. If you agree, please click the button below to start receiving our services。",
+		"zh-Hans": "请你务必审慎阅读、充分理解“服务协议”和“隐私政策”各条款，包括但不限于：为了更好的向你提供服务，我们需要收集你的设备标识、操作日志等信息用于分析、优化应用性能。<br/>你可阅读<a style=\"color: '#31EF1D';\" href=\"\">《服务协议》</a>和<a style=\"color: '#31EF1D';\"href=\"\">《隐私政策》</a>了解详细信息。如果你同意，请点击下面按钮开始接受我们的服务。",
+		"zh-Hant": "請你務必審慎閱讀、充分理解“服務協議”和“隱私政策”各條款，包括但不限於：爲了更好的向你提供服務，我們需要收集你的設備標識、操作日誌等信息用於分析、優化應用性能。<br/>你可閱讀<a style=\"color: '#31EF1D';\" href=\"\">《服務協議》</a>和<a style=\"color: '#31EF1D';\"href=\"\">《隱私政策》</a>瞭解詳細信息。如果你同意，請點擊下面按鈕開始接受我們的服務。"
+	},
+	"buttonAccept": "同意并接受",
+	"buttonAcceptLocales": {
+		"en": "Agree and accept	",
+		"zh-Hans": "同意并接受",
+		"zh-Hant": "同意並接受"
+	},
+	"buttonRefuse": "暂不同意",
+	"buttonRefuseLocales": {
+		"en": "Disagree temporarily",
+		"zh-Hans": "暂不同意",
+		"zh-Hant": "暫不同意"
+	},
+	"hrefLoader": "system|default",
+	"backToExit": "false",
+	"second": {
+		"title": "确认提示",
+		"titleLocales": {
+			"en": "Confirmation prompt",
+			"zh-Hans": "确认提示",
+			"zh-Hant": "確認提示"
+		},
+		"message": "进入应用前，你需先同意<a style=\"color: '#31EF1D';\" href=\"\">《服务协议》</a>和<a style=\"color: '#31EF1D';\" href=\"\">《隐私政策》</a>，否则将退出应用。",
+		"messageLocales": {
+			"en": "Before entering the app, you need to agree<a style=\"color: '#31EF1D';\" href=\"\">《Service agreement》</a>and<a style=\"color: '#31EF1D';\" href=\"\">《Privacy Policy》</a>，Otherwise, the application will exit。",
+			"zh-Hans": "进入应用前，你需先同意<a style=\"color: '#31EF1D';\" href=\"\">《服务协议》</a>和<a style=\"color: '#31EF1D';\" href=\"\">《隐私政策》</a>，否则将退出应用。",
+			"zh-Hant": "進入應用前，你需先同意<a style=\"color: '#31EF1D';\" href=\"\">《服務協議》</a>和<a style=\"color: '#31EF1D';\" href=\"\">《隱私政策》</a>，否則將退出應用。"
+		},
+		"buttonAccept": "同意并继续",
+		"buttonAcceptLocales": {
+			"en": "Agree and continue",
+			"zh-Hans": "同意并继续",
+			"zh-Hant": "同意並繼續"
+		},
+		"buttonRefuse": "退出应用",
+		"buttonRefuseLocales": {
+			"en": "Exit App",
+			"zh-Hans": "退出应用",
+			"zh-Hant": "退出應用"
+		}
+	},
+	"disagreeMode": {
+		"support": false,
+		"loadNativePlugins": false,
+		"visitorEntry": false,
+		"showAlways": false
+	},
+	"styles": {
+		"backgroundColor": "#FBB4C7",
+		"borderRadius": "8px",
+		"title": {
+			"color": "#fb7266"
+		},
+		"message": {
+			"color": "#747563"
+		},
+		"buttonAccept": {
+			"color": "#28a745"
+		},
+		"buttonRefuse": {
+			"color": "#007bff"
+		},
+		"buttonVisitor": {
+			"color": "#007bff"
+		}
+	}
 }

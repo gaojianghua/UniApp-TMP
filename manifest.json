@@ -242,7 +242,7 @@
             "enable" : true
         }
     },
-    "locale" : "zh-Hans",
+    "locale" : "en",
     "mp-jd" : {
         "uniStatistics" : {
             "enable" : true
@@ -272,5 +272,6 @@
         "uniStatistics" : {
             "enable" : true
         }
-    }
+    },
+    "fallbackLocale" : "zh-Hans"
 }
