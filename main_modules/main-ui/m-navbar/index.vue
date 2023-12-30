@@ -73,19 +73,7 @@
 				this.$emit('pageBack')
 			},
 			retreat() {
-				// #ifdef H5
-				let pages = getCurrentPages();
-				if (pages.length > 1) {
-					// 存在上级页面
-					tools.Navigate.navigateBack()
-				} else {
-					// 不存在上级页面
-					tools.Navigate.switchTab(this.$router.options.routes[0].alias)
-				}
-				// #endif
-				// #ifndef H5
 				tools.Navigate.navigateBack()
-				// #endif
 				this.$emit('pageBack')
 			}
 		},

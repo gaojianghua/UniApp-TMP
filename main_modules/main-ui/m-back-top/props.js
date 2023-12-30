@@ -39,6 +39,6 @@ module.exports = {
 	},
 	url: {
 		type: String,
-		default: '/static/img/common/backTop.svg'
+		default: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/backTop.svg'
 	}
 }
