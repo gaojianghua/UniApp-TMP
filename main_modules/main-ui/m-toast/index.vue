@@ -59,11 +59,10 @@
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			border-radius: 8rpx;
 
 			.content {
 				padding: 0 20rpx;
-				border-radius: 12rpx;
+				border-radius: 8rpx;
 			}
 		}
 

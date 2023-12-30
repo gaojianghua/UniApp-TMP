@@ -3,7 +3,7 @@
 	<u-transition class="back position-fixed"
 	:style="{bottom: `calc(${isTab ? tabbarHeight : 0}px + ${bottom} + env(safe-area-inset-bottom))`,
 	right: right,
-	zIndex: zIndex, ...customStyle}" :show="scrollTop >= top">
+	zIndex: zIndex, ...customStyle}" :show="newScrollTop >= showBackTopValue">
 		<u-image :width="imageWidth" :height="imageHeight" :src="url" @click="backTop"></u-image>
 	</u-transition>
 </template>

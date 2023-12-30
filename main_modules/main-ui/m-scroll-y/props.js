@@ -65,6 +65,12 @@ module.exports = {
 			return true
 		}
 	},
+	isBackTop: {
+		type: Boolean,
+		default: () => {
+			return true
+		}
+	},
 	i18n: {
 		type: Boolean,
 		default: () => {
@@ -81,6 +87,12 @@ module.exports = {
 		type: String,
 		default: () => {
 			return ""
+		}
+	},
+	showBackTopValue: {
+		type: String,
+		default: () => {
+			return "600"
 		}
 	},
 }

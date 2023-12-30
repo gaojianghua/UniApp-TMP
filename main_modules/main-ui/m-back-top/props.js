@@ -3,13 +3,13 @@ module.exports = {
 		type: Boolean,
 		default: false
 	},
-	scrollTop: {
+	newScrollTop: {
 		type: Number,
 		default: 0
 	},
-	top: {
+	showBackTopValue: {
 		type: [Number, String],
-		default: 0
+		default: 600
 	},
 	zIndex: {
 		type: Number,

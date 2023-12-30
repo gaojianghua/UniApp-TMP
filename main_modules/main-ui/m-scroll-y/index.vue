@@ -21,17 +21,20 @@
 			<m-loading i18n v-if="isLoading" :height="loadHeight" :load="load" :mainColor="mainColor"
 				:bgColor="bgColor" />
 			<view :style="{height: placeHeight}" class="w-100"></view>
+			<m-back-top v-if="isBackTop" :newScrollTop="newScrollTop" :showBackTopValue="showBackTopValue" @backTop="backTop" />
 		</scroll-view>
 </template>
 
 <script>
 	import MRefresh from '../m-refresh/index.vue'
 	import MLoading from '../m-loading/index.vue'
+	import MBackTop from '../m-back-top/index.vue'
 	import props from './props.js'
 	export default {
 		components: {
 			MLoading,
-			MRefresh
+			MRefresh,
+			MBackTop
 		},
 		props,
 		data() {
@@ -40,7 +43,8 @@
 				threshold: 45,
 				dropDown: 0,
 				none: false,
-				text: ''
+				text: '',
+				newScrollTop: 0
 			}
 		},
 		created() {
@@ -85,7 +89,12 @@
 			},
 			//滚动触发
 			scroll(e) {
+				this.newScrollTop = e.detail.scrollTop
 				this.$emit('scroll', e.detail)
+			},
+			// 点击返回顶部
+			backTop() {
+				this.scrollTop == 0 ? this.scrollTop = 0.1 : this.scrollTop = 0
 			}
 		}
 	}
