@@ -2,7 +2,6 @@ export default {
 	/**
 	 * 系统相关数据
 	**/
-	phoneHeight: uni.getStorageSync('phoneHeight') || {},	//手机屏幕高度
 	statusHeight: uni.getStorageSync('statusHeight') || 0, //系统状态栏高度
 	miniProgramCapsule: uni.getStorageSync('miniProgramCapsule') || {}, //小程序胶囊信息
 	navbarHeight: uni.getStorageSync('navbarHeight') || 44, //自定义顶部导航栏高度
@@ -12,7 +11,7 @@ export default {
 	// #ifndef APP-PLUS
 	tabbarHeight: 50,	// 除了APP的其他端底部导航栏高度
 	// #endif
-	safariFitHeight: uni.getStorageSync('safariFitHeight') || 0, //Safari浏览器多出的高度
+	browserFitHeight: uni.getStorageSync('browserFitHeight') || 0, //兼容浏览器多出的高度
 	lang: uni.getStorageSync('lang') || 'en',	//国际化多语言
 	langList: uni.getStorageSync('langList') || [], //国际化多语言列表
 	moneySymbol: uni.getStorageSync('moneySymbol') || '￥',	//货币符号

@@ -12,15 +12,6 @@ export const getAppStatusHeight = () => {
 	uni.setStorageSync('statusHeight', statusHeight)
 	store.commit('updateStatusHeight', statusHeight)
 }
-// 获取手机屏幕高度
-export const getPhoneHeight = () => {
-	uni.getSystemInfo({
-		success: (res) => {
-			uni.setStorageSync('phoneHeight', res.windowHeight)
-			store.commit('updatePhoneHeight', res.windowHeight)
-		}
-	})
-}
 // 设置自定义 Navbar 高度
 export const setNavbarHeight = () => {
 	// #ifdef MP
@@ -34,11 +25,47 @@ export const setNavbarHeight = () => {
 	store.commit('updateNavbarHeight', navbarHeight)
 }
 
-// 获取版本号
+// 获取设备信息并存储
 export const getAppVersion = () => {
 	let appSystemInfo = uni.getSystemInfoSync()
 	uni.setStorageSync('appSystemInfo', appSystemInfo)
 	store.commit('updateAppSystemInfo', appSystemInfo)
+}
+
+// 获取各浏览器多出的高度
+export const getBrowserFitHeight = () => {
+	// #ifdef H5
+	const userAgent = navigator.userAgent.toLowerCase();
+	// uni.showToast({
+	// 	title: userAgent,
+	// 	icon: 'none',
+	// 	duration:10000
+	// })
+	let browserFitHeight = 0
+	if (userAgent.includes('qq') || !userAgent.includes('mobile')) {
+		// 当前在 QQ 浏览器或 PC端浏览器中运行
+		uni.setStorageSync('browserFitHeight', browserFitHeight)
+		store.commit('updateBrowserFitHeight', browserFitHeight)
+		return
+	}
+	if (userAgent.includes('safari') && !userAgent.includes('chrome')) {
+		// 当前在 Safari 浏览器中运行
+		browserFitHeight = 80
+		uni.setStorageSync('browserFitHeight', browserFitHeight)
+		store.commit('updateBrowserFitHeight', browserFitHeight)
+		console.log('当前网址在 Safari 浏览器中运行');
+	} else if (userAgent.includes('chrome')) {
+		// 当前在 Google 浏览器中运行
+		browserFitHeight = 54
+		uni.setStorageSync('browserFitHeight', browserFitHeight)
+		store.commit('updateBrowserFitHeight', browserFitHeight)
+		console.log('当前是 Google 浏览器');
+	} else {
+		// 当前在其他浏览器中运行
+		uni.setStorageSync('browserFitHeight', browserFitHeight)
+		store.commit('updateBrowserFitHeight', browserFitHeight)
+	}
+	// #endif
 }
 
 // 获取手机通讯录

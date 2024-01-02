@@ -4,9 +4,11 @@
 		getTabbarCapsule
 	} from '@/main_modules/app-init/index.js'
 	// #endif
+	// #ifdef H5
 	import {
-		getAppStatusHeight
+		getBrowserFitHeight
 	} from '@/main_modules/app-init/index.js'
+	// #endif
 	// #ifdef APP-PLUS
 	import {
 		checkOpenService,
@@ -15,8 +17,8 @@
 	import APPUpdate from '@/uni_modules/zhouWei-APPUpdate/js_sdk/appUpdate';
 	// #endif
 	import {
-		getPhoneHeight,
 		setNavbarHeight,
+		getAppStatusHeight,
 		getContacts,
 		getAppVersion
 	} from '@/main_modules/app-init/index.js'
@@ -69,14 +71,19 @@
 				complete: () => {}, // 接口调用结束的回调函数（调用成功、失败都会执行）
 			})
 			// #endif
-
+			
+			/**
+			 * H5端
+			 */
+			// #ifdef MP
+			getBrowserFitHeight()
+			// #endif
+			
 			/**
 			 * 全端
 			 */
 			// 获取手机状态栏高度
 			getAppStatusHeight()
-			// 获取手机屏幕高度
-			getPhoneHeight()
 			// 设置自定义导航栏高度
 			setNavbarHeight()
 			// 获取应用系统信息

@@ -111,9 +111,7 @@
 		methods: {
 			// 初始化
 			init() {
-				this.moreLogins.forEach((item) => {
-					item.name = this.$t(item.name)
-				})
+				
 			},
 			// 同意协议
 			checkChange(e) {

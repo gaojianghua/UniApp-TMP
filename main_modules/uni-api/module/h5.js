@@ -1,18 +1,6 @@
-import Check from '../../check/index.js'
 import store from '@/store/index.js'
 
-const recognition = new webkitSpeechRecognition();
 export default {
-	// 设置Safari浏览器多出的高度
-	setSafariFitHeight() {
-		if (Check.isSafari()) {
-			const safariFitHeight = 80
-			uni.setStorageSync('safariFitHeight', safariFitHeight)
-			store.commit('updateSafariFitHeight', safariFitHeight)
-		} else {
-			console.log('当前不是 Safari 浏览器');
-		}
-	},
 	/**
 	 * @description H5唤醒APP或者前往下载地址
 	 * @param schema(String) APP的schema标识

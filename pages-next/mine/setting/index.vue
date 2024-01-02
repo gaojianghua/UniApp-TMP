@@ -7,7 +7,7 @@
 			<view class="menu-item" v-for="(item, i) in setList" :key="i" @click="cellClick(item)">
 				<m-cell v-if="i == 0" :isShowL="false" :itemStyle="{padding: '0 30rpx', backgroundColor: '#fff'}">
 					<view :slot="'left'" class="d-flex py-3 a-center">
-						<view class="user-avatar border-2 main-border-color mr-2">
+						<view class="user-avatar flex-shrink border-2 main-border-color mr-2">
 							<u-image radius="100" width="100rpx" height="100rpx"
 								:src="userinfo.avatar || 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/default-avatar.png'" mode="">
 							</u-image>
