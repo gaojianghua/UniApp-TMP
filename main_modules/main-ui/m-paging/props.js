@@ -11,10 +11,10 @@ module.exports = {
 			return '#111'
 		}
 	},
-	defaultColor: {
+	activeColor: {
 		type: String,
 		default: () => {
-			return '#111'
+			return '#f27299'
 		}
 	}
 }
