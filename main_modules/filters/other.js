@@ -71,7 +71,7 @@ class Other {
 	 * @param string URL地址
 	 */
 	static mediaUrlDeal = (data) => {
-		return data.indexOf(process.uniEnv.baseURL) == -1 ? (process.uniEnv.baseURL + data) : data
+		return data.indexOf('http') == -1 ? (uni.uniEnv.baseURL + data) : data
 	}
 
 	/**
