@@ -17,7 +17,7 @@ module.exports = {
 			return 2
 		}
 	},
-	scrollTop: {
+	setScrollTop: {
 		type: [String, Number],
 		default: () => {
 			return 0
@@ -93,6 +93,12 @@ module.exports = {
 		type: String,
 		default: () => {
 			return "600"
+		}
+	},
+	isTab: {
+		type: Boolean,
+		default: () => {
+			return false
 		}
 	},
 }

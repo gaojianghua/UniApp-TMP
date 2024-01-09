@@ -19,7 +19,7 @@
 			</view>
 		</m-navbar>
 		<!-- 内容区域 -->
-		<m-scroll-y :isLoading="isLoading" i18n :scrollStyle="scrollStyle" :load="load" bgColor="transparent"
+		<m-scroll-y isTab :isLoading="isLoading" i18n :scrollStyle="scrollStyle" :load="load" bgColor="transparent"
 			@loadmore="loadmore" @onRefresh="onRefresh">
 			<view class="content pt-2 px-2 bg-white">
 				<u-swiper height="320rpx" circular indicatorActiveColor="#f27299" :list="banner" keyName="image" indicator
@@ -82,7 +82,7 @@
 		menus
 	} from './data.js'
 	import goods from '@/pages-common/data/goods.json'
-	import { getPublicKey } from '@/utils/request/api/get.js'
+	import { getPublicKey } from '@/utils/request/api/post.js'
 	export default {
 		mixins: [tabbarInit, capsuleInit, shareInit],
 		components: {

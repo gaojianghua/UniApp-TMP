@@ -6,7 +6,7 @@ const {
 /**
  * get请求
  */
-// 获取加密公钥
-export const getPublicKey = (params, config = {}) => http.get('/api/user/public/key', {
+// 获取首页数据
+export const getHomeData = (params, config = {}) => http.get('/api/home/data', {
 	params
 }, config)

@@ -15,7 +15,7 @@
 					</image>
 				</view>
 			</view>
-			<m-scroll-y :isLoading="false" :intoView="intoView" :scrollTop="scrollTop" :isCustomRefresh="false"
+			<m-scroll-y :isLoading="false" :intoView="intoView" :setScrollTop="scrollTop" :isCustomRefresh="false"
 				:scrollStyle="scrollStyle">
 				<view :id="'item'+item.id" class="directory-item d-flex px-2 a-center"
 					v-for="(item, i) in directoryList" :key="i"

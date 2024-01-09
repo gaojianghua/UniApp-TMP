@@ -21,7 +21,7 @@
 			<m-loading i18n v-if="isLoading" :height="loadHeight" :load="load" :mainColor="mainColor"
 				:bgColor="bgColor" />
 			<view :style="{height: placeHeight}" class="w-100"></view>
-			<m-back-top v-if="isBackTop" :newScrollTop="newScrollTop" :showBackTopValue="showBackTopValue" @backTop="backTop" />
+			<m-back-top :isTab="isTab" v-if="isBackTop" :newScrollTop="newScrollTop" :showBackTopValue="showBackTopValue" @backTop="backTop" />
 		</scroll-view>
 </template>
 
@@ -44,7 +44,8 @@
 				dropDown: 0,
 				none: false,
 				text: '',
-				newScrollTop: 0
+				newScrollTop: 0,
+				scrollTop: 0
 			}
 		},
 		created() {
@@ -95,6 +96,11 @@
 			// 点击返回顶部
 			backTop() {
 				this.scrollTop == 0 ? this.scrollTop = 0.1 : this.scrollTop = 0
+			}
+		},
+		watch: {
+			setScrollTop(nv, ov) {
+				this.scrollTop = nv
 			}
 		}
 	}

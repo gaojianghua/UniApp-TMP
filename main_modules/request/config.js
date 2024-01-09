@@ -28,3 +28,7 @@ const errorMessage = (res) => {
 		})
 	}
 }
+
+module.exports = {
+	errorMessage
+}

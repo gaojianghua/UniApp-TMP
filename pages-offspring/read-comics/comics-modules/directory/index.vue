@@ -16,7 +16,7 @@
 					</image>
 				</view>
 			</view>
-			<m-scroll-y :isLoading="false" :intoView="intoView" :scrollTop="scrollTop" :scrollStyle="directoryStyle" :isCustomRefresh="false">
+			<m-scroll-y :isLoading="false" :intoView="intoView" :setScrollTop="scrollTop" :scrollStyle="directoryStyle" :isCustomRefresh="false">
 				<view :id="'item'+item.id" class="directory-item d-flex a-center" :class="{'main-text-color': item.id == chapterId}"
 					v-for="(item, i) in chapterList" :key="i" @click="openChapter(item.id)">
 					<view v-if="item.vip" class="isvip font-weight line-h mr-2">

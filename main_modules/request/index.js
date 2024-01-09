@@ -1,4 +1,5 @@
 import config from '@/.env/index.js'
+import { errorMessage } from './config.js'
 export default {
 	intercept: {
 		BASE_URL: config.baseURL,
@@ -28,10 +29,10 @@ export default {
 				const [err, res] = data;
 				// 处理错误
 				if (res) {
-					this.errorMessage(res)
+					errorMessage(res)
 				}
 				if (err) {
-					this.errorMessage(err)
+					errorMessage(err)
 					return reject(err);
 				}
 				return resolve(res)

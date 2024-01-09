@@ -13,7 +13,7 @@
 			</view>
 		</m-navbar>
 		<!-- 内容区域 -->
-		<m-scroll-y :isLoading="isLoading" :scrollTop="scrollTop" @scroll="scroll" i18n :scrollStyle="scrollStyle"
+		<m-scroll-y :isLoading="isLoading" :setScrollTop="scrollTop" @scroll="scroll" i18n :scrollStyle="scrollStyle"
 			:load="load" @loadmore="loadmore" bgColor="transparent" @onRefresh="onRefresh">
 			<view class="content px-2 pt-2">
 				<!-- 书架 -->
