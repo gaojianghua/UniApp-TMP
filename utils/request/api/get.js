@@ -6,7 +6,7 @@ const {
 /**
  * get请求
  */
-// 注销账号
-export const cancellation = (params, config = {}) => http.get('/', {
+// 获取加密公钥
+export const getPublicKey = (params, config = {}) => http.get('/api/user/public/key', {
 	params
 }, config)

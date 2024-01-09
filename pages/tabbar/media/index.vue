@@ -5,7 +5,6 @@
 				<video class="h-100 w-100" :src="item.video"></video>
 			</swiper-item>
 		</swiper> -->
-		<view id="mui-player"></view>
 		
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/media/index" i18n></m-tabbar>
@@ -13,10 +12,6 @@
 </template>
 
 <script>
-	import 'mui-player/dist/mui-player.min.css'
-	import MuiPlayer from 'mui-player';
-	import Hls from 'hls.js'
-	
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	export default {
@@ -42,28 +37,6 @@
 		},
 		onLoad() {
 			this.init()
-		},
-		onReady() {
-			this.$nextTick(() => {
-				// 初始化 MuiPlayer 插件，MuiPlayer 方法传递一个对象，该对象包括所有插件的配置
-				this.mp = new MuiPlayer({
-					container: '#mui-player',
-					src: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8',
-					poster: 'https://gaojianghua.oss-cn-hangzhou.aliyuncs.com/0.jpg',
-					parse: {
-						type: 'hls',
-						loader: Hls,
-						config: { // hls config to：https://github.com/video-dev/hls.js/blob/HEAD/docs/API.md#fine-tuning
-							debug: false,
-						},
-					},
-					pageHead: false,
-					objectFit: 'cover'
-				});
-			})
-		},
-		onUnload() {
-			this.mp.destroy()
 		},
 		methods: {
 			init() {

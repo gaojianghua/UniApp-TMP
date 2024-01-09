@@ -11,7 +11,7 @@ export default {
 	// #ifndef APP-PLUS
 	tabbarHeight: 50,	// 除了APP的其他端底部导航栏高度
 	// #endif
-	browserFitHeight: uni.getStorageSync('browserFitHeight') || 0, //兼容浏览器多出的高度
+	browserFitHeight: uni.getStorageSync('browserFitHeight') || 0, //兼容各种浏览器多出的高度
 	lang: uni.getStorageSync('lang') || 'en',	//国际化多语言
 	langList: uni.getStorageSync('langList') || [], //国际化多语言列表
 	moneySymbol: uni.getStorageSync('moneySymbol') || '￥',	//货币符号

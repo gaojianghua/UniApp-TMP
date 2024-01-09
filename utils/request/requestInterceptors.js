@@ -9,11 +9,11 @@ module.exports = (vm) => {
 			let token = uni.getStorageSync('token') || ''
 			let lang = uni.getStorageSync('lang') == 'zh-Hans' ? 'zh-cn' : 'en'
 			config.data = config.data || {}
-			config.url = config.url + `?lang=${lang}`
-			config.header = {
-				token,
-				lang
-			}
+			// config.url = config.url + `?lang=${lang}`
+			// config.header = {
+			// 	token,
+			// 	lang
+			// }
 			// console.log(config)
 			// 可以在此通过vm引用vuex中的变量，具体值在vm.$store.state中
 			// console.log(vm.$store.state);

@@ -82,6 +82,7 @@
 		menus
 	} from './data.js'
 	import goods from '@/pages-common/data/goods.json'
+	import { getPublicKey } from '@/utils/request/api/get.js'
 	export default {
 		mixins: [tabbarInit, capsuleInit, shareInit],
 		components: {
@@ -114,6 +115,11 @@
 			init() {
 				this.getData()
 				this.getLangList()
+				this.getPublicKey()
+			},
+			async getPublicKey() {
+				let { code, data } = await getPublicKey()
+				
 			},
 			// 获取数据
 			async getData(e) {
