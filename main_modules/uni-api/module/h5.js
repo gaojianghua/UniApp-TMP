@@ -1,4 +1,5 @@
 import store from '@/store/index.js'
+import tools from '../../tools/index.js'
 
 export default {
 	/**
@@ -27,5 +28,22 @@ export default {
 			}
 			clearTimeout(time)
 		}, 300)
+	},
+	/**
+	 * @description H5通canvas获取设备唯一ID
+	 * @param schema(String) APP的schema标识
+	 */
+	generateCanvasID() {
+		if (store.state.canvasId) return store.state.canvasId;
+		const canvas = document.createElement('canvas');
+		const context = canvas.getContext('2d');
+		canvas.width = 200;
+		canvas.height = 200;
+		context.fillStyle = 'rgba(0, 0, 0, 0)';
+		context.fillRect(0, 0, canvas.width, canvas.height);
+		const dataURL = canvas.toDataURL();
+		const md5 = tools.Common.hashCode(dataURL);
+		store.commit('updateCanvasId', md5)
+		uni.setStorageSync('canvasId', md5)
 	}
 }

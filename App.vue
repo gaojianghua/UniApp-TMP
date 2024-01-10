@@ -77,6 +77,7 @@
 			 */
 			// #ifdef MP
 			getBrowserFitHeight()
+			this.$multiportApi.h5.generateCanvasID()
 			// #endif
 			
 			/**

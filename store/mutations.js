@@ -11,6 +11,9 @@ export default {
 	updateAppSystemInfo(state, e) {
 		state.appSystemInfo = e
 	},
+	updateCanvasId(state, e) {
+		state.canvasId = e
+	},
 	updateSysConfig(state, e) {
 		state.sysConfig = e
 	},

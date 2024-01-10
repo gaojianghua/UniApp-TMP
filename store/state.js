@@ -18,6 +18,7 @@ export default {
 	appSystemInfo: uni.getStorageSync('appSystemInfo') || {}, //应用系统信息
 	androidAppName: 'uni.Gao.GongYue', // Android端APP包名
 	iosAppName: 'uni.Gao.GongYue', // IOS端APP包名
+	canvasId: uni.getStorageSync('canvasId') || '', // 通过canvas获取的设备唯一ID
 	/**
 	 * 自定义 tabbar 数据
 	**/

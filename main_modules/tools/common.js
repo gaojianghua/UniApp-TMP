@@ -302,6 +302,20 @@ class Common {
 		a.remove();
 		callback()
 		// #endif
+	},
+	/**
+	 * @description 将字符串转换为32位的hash整数
+	 * @param str 字符串
+	 */
+	static hashCode(str) {
+		let hash = 0;
+		if (str.length === 0) return hash;
+		for (let i = 0; i < str.length; i++) {
+			const char = str.charCodeAt(i);
+			hash = ((hash << 5) - hash) + char;
+			hash = hash & hash;
+		}
+		return hash.toString();
 	}
 }
 
