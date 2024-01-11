@@ -61,6 +61,22 @@ class Common {
 		document.head.appendChild(noscript);
 	}
 	/**
+	 * @description H5通过fingerprintjs库获取唯一设备ID
+	 */
+	static generateDeviceId = () => {
+		let script = document.createElement('script');
+		script.innerHTML = `
+			const fpPromise = import('https://openfpcdn.io/fingerprintjs/v4')
+				.then(FingerprintJS => FingerprintJS.load())
+			fpPromise
+				.then(fp => fp.get())
+				.then(result => {
+					window.visitorId = result.visitorId
+				})
+		`;
+		document.head.appendChild(script);
+	}
+	/**
 	 * @description async await 捕获错误
 	 */
 	static asyncTryCatch = (promise, errorExt) => {
