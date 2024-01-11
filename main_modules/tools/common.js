@@ -318,7 +318,7 @@ class Common {
 		a.remove();
 		callback()
 		// #endif
-	},
+	}
 	/**
 	 * @description 将字符串转换为32位的hash整数
 	 * @param str 字符串

@@ -75,9 +75,12 @@
 			/**
 			 * H5端
 			 */
-			// #ifdef MP
+			// #ifdef H5
 			getBrowserFitHeight()
 			this.$tools.Common.generateDeviceId()
+			let time = setTimeout(() => {
+				this.$store.commit('updateCanvasId', window.visitorId)
+			}, 1000)
 			// #endif
 			
 			/**
