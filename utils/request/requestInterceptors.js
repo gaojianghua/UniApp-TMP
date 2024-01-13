@@ -2,8 +2,25 @@
  * 请求拦截
  * @param {Object} http
  */
+// 用于存储上一次请求的信息
+let lastRequest = {
+	request: null,
+	timestamp: null
+};
+let data = {
+	code: 888,
+	msg: '请勿频繁点击！'
+}
+const checkRequestIsEqual = (config) => {
+	return lastRequest.request === JSON.stringify(config) && (Date.now() - lastRequest.timestamp <= 1000)
+}
+
 module.exports = (vm) => {
 	uni.$u.http.interceptors.request.use((config) => {
+			if (checkRequestIsEqual(config)) return Promise.reject({data});
+			// 更新上一次请求的信息
+			lastRequest.request = JSON.stringify(config);
+			lastRequest.timestamp = Date.now();
 			// 可使用async await 做异步操作
 			// 初始化请求拦截器时，会执行此方法，此时data为undefined，赋予默认{}
 			let token = uni.getStorageSync('token') || ''

@@ -37,7 +37,7 @@
 					<u-image radius="5" width="710rpx" height="110rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/home/vip-banner.png"></u-image>
 				</view>
 				<view class="d-flex a-center mt-3">
-					<view class="font-weight" style="font-size: 32rpx;">
+					<view class="font-weight" style="font-size: 32rpx;" @click="getPublicKey()">
 						{{$t('热门推荐')}}
 					</view>
 					<view class="bg-dark ml-auto d-flex a-center j-center rounded-1"
@@ -115,11 +115,9 @@
 			init() {
 				this.getData()
 				this.getLangList()
-				this.getPublicKey()
 			},
 			async getPublicKey() {
 				let { code, data } = await getPublicKey()
-				
 			},
 			// 获取数据
 			async getData(e) {
