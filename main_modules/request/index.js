@@ -1,11 +1,21 @@
 import config from '@/.env/index.js'
-import { errorMessage } from './config.js'
+import {
+	errorMessage,
+	checkRequestIsEqual,
+	lastRequest,
+	data
+} from './config.js'
 export default {
 	intercept: {
 		BASE_URL: config.baseURL,
 		// 请求拦截器
 		beforeRequest(options = {}) {
 			return new Promise((resolve, reject) => {
+				if (checkRequestIsEqual(options)) return Promise.reject({data});
+				// 更新上一次请求的信息
+				lastRequest.request = JSON.stringify(options);
+				lastRequest.timestamp = Date.now();
+				
 				options.url = this.BASE_URL + options.url;
 				options.method = options.method || 'GET';
 				options.data = options.method === 'GET' || options.method === 'DELETE' ? options.data : JSON
