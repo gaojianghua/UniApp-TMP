@@ -6,7 +6,7 @@ import {
 	checkRequestIsEqual,
 	lastRequest,
 	data
-} from './config.js'
+} from '@/main_modules/request/config.js'
 
 module.exports = (vm) => {
 	uni.$u.http.interceptors.request.use((config) => {
