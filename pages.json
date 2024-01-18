@@ -272,9 +272,25 @@
 					}
 				},
 				{
-					"path": "points-draw/index",
+					"path": "points-grid-draw/index",
 					"style": {
-						"navigationBarTitleText": "%page.积分抽奖%",
+						"navigationBarTitleText": "%page.九宫格抽奖%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "points-turntable-draw/index",
+					"style": {
+						"navigationBarTitleText": "%page.大转盘抽奖%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "points-gachapon-draw/index",
+					"style": {
+						"navigationBarTitleText": "%page.扭蛋机抽奖%",
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}

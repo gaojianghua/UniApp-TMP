@@ -1,6 +1,8 @@
 import lottie from '../lib/h5-lottie/lottie-web.min.js';
 import Check from '../check/index.js'
 import QRCode from 'qrcode'
+import FingerprintJS from '@fingerprintjs/fingerprintjs'
+
 class Common {
 	constructor() {
 		this.lock = false
@@ -62,19 +64,19 @@ class Common {
 	}
 	/**
 	 * @description H5通过fingerprintjs库获取唯一设备ID
+	 * @param source 额外的指纹源（如：IP地址）
 	 */
-	static generateDeviceId = () => {
-		let script = document.createElement('script');
-		script.innerHTML = `
-			const fpPromise = import('https://openfpcdn.io/fingerprintjs/v4')
-				.then(FingerprintJS => FingerprintJS.load())
-			fpPromise
-				.then(fp => fp.get())
-				.then(result => {
-					window.visitorId = result.visitorId
-				})
-		`;
-		document.head.appendChild(script);
+	static generateDeviceId = async (source) => {
+		const fpPromise = await FingerprintJS.load()
+		// 获取浏览器指纹信息
+		const result = await fpPromise.get({
+			// 将source作为一个额外的参数传递给FingerprintJS
+			extraComponents: [{
+				key: 'source',
+				value: source
+			}]
+		})
+		return result.visitorId
 	}
 	/**
 	 * @description async await 捕获错误

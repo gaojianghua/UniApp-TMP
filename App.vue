@@ -77,10 +77,7 @@
 			 */
 			// #ifdef H5
 			getBrowserFitHeight()
-			this.$tools.Common.generateDeviceId()
-			let time = setTimeout(() => {
-				this.$store.commit('updateCanvasId', window.visitorId)
-			}, 1000)
+			this.$store.commit('updateCanvasId', this.$tools.Common.generateDeviceId())
 			// #endif
 			
 			/**
