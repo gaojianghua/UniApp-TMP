@@ -5,6 +5,8 @@
 	"main": "main.js",
 	"dependencies": {
 		"@fingerprintjs/fingerprintjs": "^4",
+		"@svgjs/cli": "^1.1.11",
+		"@svgjs/vue2-symbol-icon": "^1.1.6",
 		"crypto-js": "^4.1.1",
 		"dayjs": "^1.11.8",
 		"hls.js": "^1.4.14",
@@ -15,7 +17,8 @@
 		"uni-luck-draw": "^1.3.9"
 	},
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build:svg": "svg2js build -e static/svg -o config/svg-build",
+		"preview:svg": "svg2js preview -e static/svg -o config/svg-build"
 	},
 	"uni-app": {
 		"scripts": {
@@ -67,5 +70,6 @@
 		}
 	},
 	"author": "高江华",
-	"license": "ISC"
+	"license": "ISC",
+	"devDependencies": {}
 }

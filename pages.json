@@ -288,7 +288,7 @@
 					}
 				},
 				{
-					"path": "points-gachapon-draw/index",
+					"path": "points-gashapon-draw/index",
 					"style": {
 						"navigationBarTitleText": "%page.扭蛋机抽奖%",
 						"navigationStyle": "custom",

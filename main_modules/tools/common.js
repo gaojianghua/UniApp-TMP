@@ -8,10 +8,30 @@ class Common {
 		this.lock = false
 	}
 	/**
-	 * @description 获取指定大小区间的随机数
+	 * @description 获取指定大小区间的随机数（包括min但不包括max）
 	 */
 	static getRandomNum = (min, max) => {
-		return Math.floor(Math.random() * (max - min)) + min
+		if (typeof min !== 'number' || typeof max !== 'number') {
+			throw new Error('min and max must be numbers');
+		}
+		if (min >= max) {
+			throw new Error('max must be greater than min');
+		}
+		return Math.floor(Math.random() * (max - min)) + min;
+	}
+	/**
+	 * @description 获取指定大小区间的随机数（包含min与max）
+	 */
+	static getRandomArbitrary = (min = 0, max = 100) => {
+		if (typeof min !== 'number' || typeof max !== 'number') {
+			throw new Error('min and max must be numbers');
+		}
+		if (min >= max) {
+			throw new Error('max must be greater than min');
+		}
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 	/**
 	 * @description 数据格式转换 (指定相同的Key为一个数组单元)

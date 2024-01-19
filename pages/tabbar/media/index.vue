@@ -5,7 +5,9 @@
 				<video class="h-100 w-100" :src="item.video"></video>
 			</swiper-item>
 		</swiper> -->
-		
+		<symbol-icon size="50" sizeUnit="rpx" name="ria" />
+		<symbol-icon name="gril" />
+		<symbol-icon name="o" />
 		<!-- 底部导航栏 -->
 		<m-tabbar pagePath="pages/tabbar/media/index" i18n></m-tabbar>
 	</view>

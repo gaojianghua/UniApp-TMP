@@ -3,12 +3,13 @@
 		<u-image height="auto" width="100%" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/keepbg.png" mode="widthFix"></u-image>
 		<view class="position-absolute top-0 bottom-0 left-0 right-0">
 			<!-- 顶部导航栏 -->
-			<m-navbar bgColor="transparent" textColor="#fff" value="page.积分抽奖" i18n></m-navbar>
+			<m-navbar bgColor="transparent" textColor="#fff" value="page.大转盘抽奖" i18n>
+				<view slot="right" class="notice top-half tf-half-y" @click="ruleShow = true">
+					T&C
+				</view>
+			</m-navbar>
 			<m-scroll-y :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
 				<view class="position-relative">
-					<view class="notice" @click="ruleShow = true">
-						T&C
-					</view>
 					<view v-if="!luckyDrawSwitch" class="is-coming">
 						{{$('幸运大抽奖，敬请期待。。。')}}
 					</view>
@@ -19,7 +20,7 @@
 						<view class="title-desc">
 							{{$t('开始你的幸运之旅，赢取丰厚大奖！')}}
 						</view>
-						<MLuckyGrid :list="list" :winningItem="item" @endLuckyDraw="endLuckyDraw" />
+						<!-- <MLuckyGrid :list="list" :winningItem="item" @endLuckyDraw="endLuckyDraw" /> -->
 						<view class="title-btn d-flex a-center j-center mt-3 px-5">
 							{{$t('剩余积分')}}：{{userinfo.points}}
 						</view>
@@ -100,12 +101,11 @@
 </template>
 
 <script>
-	import MLuckyGrid from '@/main_modules/main-ui/m-lucky-grid/index.vue'
 	import goods from './goods.json'
 	import records from './records.json'
 	export default {
 		components: {
-			MLuckyGrid
+			
 		},
 		data() {
 			return {
@@ -333,7 +333,6 @@
 		.notice {
 			position: absolute;
 			right: 20rpx;
-			top: 20rpx;
 			color: #fff;
 			z-index: 9;
 			padding: 4rpx 30rpx;

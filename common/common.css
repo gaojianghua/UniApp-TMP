@@ -60,3 +60,8 @@ view,
 text {
 	box-sizing: border-box !important;
 }
+
+.svg-symbol-icon use {
+	width: 100%;
+	height: 100%;
+}

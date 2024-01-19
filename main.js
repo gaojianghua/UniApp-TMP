@@ -61,6 +61,17 @@ import MScrollY from '@/main_modules/main-ui/m-scroll-y/index.vue'
 Vue.component('m-scroll-y', MScrollY)
 import MTop from '@/main_modules/main-ui/m-top/index.vue'
 Vue.component('m-top', MTop)
+import { SvgSymbolIcon, setGlobalOption } from '@svgjs/vue2-symbol-icon';
+Vue.component('symbol-icon', SvgSymbolIcon);
+import './config/svg-build/svg-sprite.js'
+// 全局设置，这时不支持设置 name
+setGlobalOption({
+  color: '#fb7290',
+  disabledColor: '#6c757d',
+  hoverColor: '#fb729090',
+  activedColor: '#fb729090',
+  placeholderColor: '#B2B2B2',
+});
 // 初始化 Vue 实例
 App.mpType = 'app'
 const app = new Vue({

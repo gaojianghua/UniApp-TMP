@@ -33,7 +33,7 @@
 
 <script>
 	export default {
-		name: "m-lucky-grid",
+		name: "m-grid-prizedraw",
 		props: {
 			list: {
 				type: Array,
