@@ -2,9 +2,9 @@
 	<view class="capsule d-flex a-center flex-column mt-5">
 		<view class="list px-2">
 			<scroll-view scroll-x class="scroll-row h-100 w-100 ">
-				<view v-for="(item, i) in gridItems" :key="i" class="scroll-row-item mr-5">
+				<view v-for="(item, i) in prizeList" :key="i" class="scroll-row-item mr-5">
 					<view class="d-flex flex-column a-center j-center">
-						<u-image width="75rpx" height="75rpx" :src="item.image | mediaUrlDeal"
+						<u-image width="75rpx" height="75rpx" :src="item.img"
 							mode=""></u-image>
 						<view class="line-h mt-1 text-center text-ellipsis1 auto-feed"
 							style="font-size: 24rpx;color: #fff; width: 80rpx;">
@@ -15,115 +15,49 @@
 			</scroll-view>
 		</view>
 		<view class="niudan position-relative" ref="eggBody">
-			<view :ref="`box${i}`" class="position-absolute" v-for="(item, i) in danList"
+			<view :ref="`box${i}`" class="position-absolute" v-for="(item, i) in eggList"
 				:style="calcStyle(i+1)" :class="[`egg_box${i+1}`, isStart ? `anni${i+1}` : '']"
 				:key="i">
 				<u-image width="100rpx" height="100rpx" :src="item" />
 			</view>
 		</view>
-		<view :class="isBun ? 'press' : ''" class="niudanbtn" @click="startLuckyDraw"></view>
+		<view :class="isButtonTap ? 'press' : ''" class="niudanbtn" @click="startLuckyDraw"></view>
 	</view>
 </template>
 
 <script>
 	export default {
-		name: "m-grid-prizedraw",
 		props: {
-			list: {
+			prizeList: {
 				type: Array,
 				default: () => {
 					return []
 				}
 			},
+			eggList: {
+				type: Array,
+				default: () => {
+					return []
+				}
+			},
+			isButtonTap: {
+				type: Boolean,
+				default: false
+			},
 			isStart: {
 				type: Boolean,
-				default: () => {
-					return false
-				}
-			},
-			winningItem: {
-				type: Object,
-				default: () => {
-					return {}
-				}
-			},
-			activeBgColor: {
-				type: String,
-				default: () => {
-					return '#ffdd00'
-				}
-			},
-			isSlot: {
-				type: Boolean,
-				default: () => {
-					return false
-				}
-			},
-			gridWidth: {
-				type: String,
-				default: () => {
-					return '635rpx'
-				}
-			},
-			gridHeight: {
-				type: String,
-				default: () => {
-					return '635rpx'
-				}
-			},
-			gridListWidth: {
-				type: String,
-				default: () => {
-					return '600rpx'
-				}
-			},
-			gridListHeight: {
-				type: String,
-				default: () => {
-					return '600rpx'
-				}
-			},
-			rounds: {
-				type: Number,
-				default: () => {
-					return 5
-				}
-			},
-			rotationSpeed: {
-				type: Number,
-				default: () => {
-					return 50
-				}
+				default: false
 			}
 		},
 		data() {
 			return {
-				current: 10,
-				prize: 0,
-				index: -1,
-				lock: false
+				styleCacheMap: {}
 			};
 		},
 		methods: {
 			// 开始抽奖
 			startLuckyDraw() {
-				if (this.lock) return
-				this.lock = true
-				this.isNiu = true
-				this.list.forEach((item, i) => {
-					if (item.id == this.winningItem.id) {
-						this.prize = i
-					}
-				})
-				let time = setTimeout(() => {
-					this.prizeName = this.gridItems[this.prize].name
-					this.prizeSrc = this.gridItems[this.prize].image
-					this.danShow = true
-					this.lock = false
-					this.isNiu = false
-					this.styleCacheMap = {}
-					clearTimeout(time)
-				}, 4000)
+				this.$emit('startLuckyDraw')
 			}
 		},
 		computed: {
@@ -145,6 +79,13 @@
 				}
 			}
 		},
+		watch: {
+			isStart(nv, ov) {
+				if (!nv) {
+					this.styleCacheMap = {}
+				}
+			}
+		}
 	}
 </script>
 

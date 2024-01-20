@@ -1,6 +1,6 @@
 <template>
 	<view class="page position-relative">
-		<u-image height="auto" width="100%" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/keepbg.png" mode="widthFix"></u-image>
+		<u-image height="100vh" width="100vw" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/ballbg.jpg" mode=""></u-image>
 		<view class="position-absolute top-0 bottom-0 left-0 right-0">
 			<!-- 顶部导航栏 -->
 			<m-navbar bgColor="transparent" textColor="#fff" value="page.扭蛋机抽奖" i18n>
@@ -13,9 +13,9 @@
 					<view v-if="!luckyDrawSwitch" class="is-coming">
 						{{$('幸运大抽奖，敬请期待。。。')}}
 					</view>
-					<view v-else class="content d-flex a-center j-center flex-column pb-3">
+					<view v-else class="content d-flex a-center j-center flex-column pt-10 pb-3">
 						<u-image width="690rpx" height="96rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/text.png"></u-image>
-						<MGashaponPrizedraw />
+						<MGashaponPrizedraw :prizeList="list" :eggList="eggList" :isButtonTap="isButtonTap" :isStart="isStart" @startLuckyDraw="startLuckyDraw" />
 						<view class="title-btn d-flex a-center j-center mt-3 px-5">
 							{{$t('剩余积分')}}：{{userinfo.points}}
 						</view>
@@ -78,25 +78,23 @@
 				</view>
 			</m-scroll-y>
 		</view>
-		<m-modal :show="show" i18n title="恭喜中奖" :isCancel="false" @cancel="show = false" @confirm="show = false">
-			<view class="d-flex a-center j-center flex-column">
-				<u-image width="160rpx" height="160rpx" :src="item.image"></u-image>
-				<view class="mt-1 text-center">
-					{{$t('恭喜您抽中奖品')}}: {{item.name}}
-				</view>
-			</view>
-		</m-modal>
 		<m-modal :show="ruleShow" i18n title="抽奖规则" :isCancel="false" @cancel="ruleShow = false"
 			@confirm="ruleShow = false">
 			<view class="d-flex a-center j-center flex-column" v-html="ruleContent">
 			</view>
 		</m-modal>
+		<!-- 奖品弹框 -->
+		<prize-popup :show="prizeShow" :winningImg="winningImg" :prize="prize" />
+		<!-- 中蛋弹框 -->
+		<winning-popup :show="eggShow" :prizeTips="prizeTips" :winningImg="winningImg" :chanceList="chanceList" @viewContent="viewContent" />
 		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 
 <script>
 	import MGashaponPrizedraw from '@/main_modules/main-ui/m-gashapon-prizedraw/index.vue'
+	import PrizePopup from './gashapon-modules/prize-popup/index'
+	import WinningPopup from './gashapon-modules/winning-popup/index'
 	import goods from './goods.json'
 	import records from './records.json'
 	export default {
@@ -105,15 +103,22 @@
 		},
 		data() {
 			return {
-				show: false,
+				prizeShow: false,
+				eggShow: false,
 				ruleShow: false,
-				prizeSrc: '',
-				prizeName: '',
 				luckyDrawSwitch: true,
 				list: [],
 				item: {},
 				ruleContent: '',
-				records: []
+				records: [],
+				eggList: [],
+				lock: false,
+				isButtonTap: false,
+				isStart: false,
+				prize: {},
+				winningImg: '',
+				prizeTips: [],
+				chanceList: []
 			}
 		},
 		onLoad() {
@@ -140,13 +145,52 @@
 					"check": false
 				}
 			},
+			async startLuckyDraw() {
+				if (this.lock) return
+				this.lock = true
+				this.isButtonTap = true
+				if (this.$store.state.userBill.total_score < this.points) {
+					return this.$refs.uToast.show({
+						message: 'Insufficient user computing power',
+						type: 'warning',
+						duration: 2500
+					})
+				}
+				let {
+					data,
+					code
+				} = await getLuckResult(this.query)
+				if (code == 200) {
+					this.dan = data.bg_color
+					this.prizeTips = data.tips
+					this.chanceList = data.gashapon_odds
+					this.list.forEach((item, i) => {
+						if (item.id == data.product_id) {
+							this.prize = i
+						}
+					})
+					this.isStart = true
+					let time = setTimeout(() => {
+						this.prize.name = this.list[this.prize].name
+						this.prize.src = this.list[this.prize].image
+						this.eggShow = true
+						this.lock = false
+						this.isStart = false
+						clearTimeout(time)
+					}, 4000)
+					this.lick.factor_text = data.factor_text
+				} else {
+					this.lock = false
+				}
+				this.isButtonTap = false
+			},
 			// 前往抽奖记录
 			openRecord() {
 				this.$tools.Navigate.navigateTo('/pages-offspring/points-draw-record/index')
 			},
-			// 抽奖结束
-			endLuckyDraw() {
-				this.show = true
+			// 开蛋获奖
+			viewContent() {
+				this.prizeShow = true
 			}
 		},
 		computed: {

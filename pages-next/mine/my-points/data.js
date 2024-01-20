@@ -17,7 +17,7 @@ const menuList = [
 	{
 		id: 4,
 		name: 'page.扭蛋机抽奖',
-		page: '/pages-offspring/points-gachapon-draw/index'
+		page: '/pages-offspring/points-gashapon-draw/index'
 	}
 ]
 

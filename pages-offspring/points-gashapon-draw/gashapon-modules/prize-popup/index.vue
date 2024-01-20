@@ -1,21 +1,21 @@
 <template>
-	<u-overlay :show="show" mode="center" @click="show=false">
+	<u-overlay :show="show" mode="center" @click="close">
 		<view @click.stop class="feedback d-flex a-center flex-column position-relative">
 			<view class="feedback-row pb-5 d-flex a-center flex-column w-100 position-relative">
 				<view class="task position-absolute d-flex a-center j-center">
-					<u-image width="180rpx" height="180rpx" :src="`/static/img/common/sin${dan}.png`"></u-image>
+					<u-image width="180rpx" height="180rpx" :src="winningImg"></u-image>
 				</view>
 				<view class="title line-h">
-					Congrats on getting
+					{{$t('恭喜您获得')}}
 				</view>
 				<view class="d-flex a-center j-center flex-column mt-5">
-					<u-image width="160rpx" height="160rpx" :src="prizeSrc | mediaUrlDeal"></u-image>
+					<u-image width="160rpx" height="160rpx" :src="prize.img"></u-image>
 					<view class="mt-3 text-center">
-						{{prizeName}}
+						{{prize.name}}
 					</view>
 				</view>
-				<view class="feedback-btn mt-5 d-flex text-center a-center j-center" @click="show=false">
-					Great
+				<view class="feedback-btn mt-5 d-flex text-center a-center j-center" @click="close">
+					{{$t('好的')}}
 				</view>
 			</view>
 		</view>
@@ -24,11 +24,34 @@
 
 <script>
 	export default {
+		props: {
+			show: {
+				type: Boolean,
+				default: () => {
+					return false
+				}
+			},
+			winningImg: {
+				type: String,
+				default: () => {
+					return ''
+				}
+			},
+			prize: {
+				type: Object,
+				default: () => {
+					return {}
+				}
+			}
+		},
 		data() {
 			return {}
 		},
 		methods: {
-
+			// 关闭弹框
+			close() {
+				this.$emit('close')
+			}
 		}
 	}
 </script>
