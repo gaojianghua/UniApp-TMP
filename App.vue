@@ -1,3 +1,11 @@
+<template>
+	<view>
+		<!-- 在App.vue中添加的全局组件 -->
+		<g-network-error></g-network-error>
+		<g-timeout></g-timeout>
+		<router-view />
+	</view>
+</template>
 <script>
 	// #ifdef MP
 	import {
@@ -71,7 +79,7 @@
 				complete: () => {}, // 接口调用结束的回调函数（调用成功、失败都会执行）
 			})
 			// #endif
-			
+
 			/**
 			 * H5端
 			 */
@@ -79,7 +87,7 @@
 			getBrowserFitHeight()
 			this.$store.commit('updateCanvasId', this.$tools.Common.generateDeviceId())
 			// #endif
-			
+
 			/**
 			 * 全端
 			 */

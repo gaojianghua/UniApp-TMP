@@ -61,6 +61,10 @@ import MScrollY from '@/main_modules/main-ui/m-scroll-y/index.vue'
 Vue.component('m-scroll-y', MScrollY)
 import MTop from '@/main_modules/main-ui/m-top/index.vue'
 Vue.component('m-top', MTop)
+import GNetworkError from '@/components/global/g-network-error/index.vue'
+Vue.component('g-network-error', GNetworkError)
+import GTimeout from '@/components/global/g-timeout/index.vue'
+Vue.component('g-timeout', GTimeout)
 import { SvgSymbolIcon, setGlobalOption } from '@svgjs/vue2-symbol-icon';
 Vue.component('symbol-icon', SvgSymbolIcon);
 import './config/svg-build/svg-sprite.js'
