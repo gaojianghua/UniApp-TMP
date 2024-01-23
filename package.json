@@ -5,7 +5,7 @@
 	"main": "main.js",
 	"dependencies": {
 		"@fingerprintjs/fingerprintjs": "^4",
-		"@svgjs/cli": "^1.1.11",
+		"@svgjs/cli": "^1.1.12",
 		"@svgjs/vue2-symbol-icon": "^1.1.6",
 		"crypto-js": "^4.1.1",
 		"dayjs": "^1.11.8",

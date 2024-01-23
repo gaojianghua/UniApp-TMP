@@ -191,10 +191,10 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.8.tgz#6b79032e760a0899cd4204710beede972a3a185f"
   integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
 
-"@svgjs/cli@^1.1.11":
-  version "1.1.11"
-  resolved "https://registry.yarnpkg.com/@svgjs/cli/-/cli-1.1.11.tgz#81bcb8bfadd2b1880e9c42158b32f1d13553c936"
-  integrity sha512-r23squlMnQGiQnLhlSnCEWcKMsRaFlu5piWCoaJIKAfcyloGayEcc0PWT/lUgci7A5rHjY0SjAZF8HcEHFRm8Q==
+"@svgjs/cli@^1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@svgjs/cli/-/cli-1.1.12.tgz#c4639f42a862791b76b1f2249ade8a41094df37b"
+  integrity sha512-rF2nn8/VrbWcEPnVT8Bm5zbtDwWXH1w8JEYXMZ8uRqnU01NAuN8Uhl9DDEd490Be80FaZJz34w7F+fFBK3BGWQ==
   dependencies:
     "@all-in-js/utils" "^1.1.3"
     "@types/node" "^20.10.0"
