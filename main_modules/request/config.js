@@ -1,3 +1,4 @@
+import store from '@/store/index.js'
 // 请求响应错误过滤
 const errorMessage = (res) => {
 	const {
@@ -15,9 +16,7 @@ const errorMessage = (res) => {
 			icon: 'none',
 			duration: 2000,
 			success: () => {
-				let zh = str.indexOf('token')
-				let en = str.indexOf('Token')
-				if (zh != -1 || en != -1) {
+				if (str.toLocaleLowerCase().includes('token')) {
 					uni.clearStorageSync()
 					store.commit('updateUserBill', {})
 					uni.navigateTo({
