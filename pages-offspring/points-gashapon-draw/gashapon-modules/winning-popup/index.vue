@@ -6,8 +6,8 @@
 					{{$t('获奖概率')}}
 				</view>
 				<view class="d-flex a-center j-around mt-3" style="width: 650rpx;">
-					<view class="d-a-j-center flex-column" v-for="(item, i) in chanceList" :key="i">
-						<u-image width="80rpx" height="80rpx" :src="item.img"></u-image>
+					<view class="d-flex a-center j-center flex-column" v-for="(item, i) in chanceList" :key="i">
+						<u-image width="80rpx" height="80rpx" :src="item.image"></u-image>
 						<view class="text-white mt-1">
 							{{item.rate}}%
 						</view>
@@ -20,7 +20,7 @@
 					<span>{{$t('你可能会得到')}}:</span>
 					<span class="d-flex a-center flex-column w-100" style="font-size: 26rpx; margin-top: 10rpx;">
 						<p class="w-100 text-center" v-for="(item, i) in prizeTips" :key="i">
-							{{item.name}} ( {{item.show_odds}}% )
+							{{item.name}} ( {{item.rate}}% )
 						</p>
 					</span>
 				</view>

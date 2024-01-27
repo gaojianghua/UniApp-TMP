@@ -84,7 +84,7 @@
 			</view>
 		</m-modal>
 		<!-- 奖品弹框 -->
-		<prize-popup :show="prizeShow" :winningImg="winningImg" :prize="prize" />
+		<prize-popup :show="prizeShow" :winningImg="winningImg" :prize="prize" @close="prizeShow = false" />
 		<!-- 中蛋弹框 -->
 		<winning-popup :show="eggShow" :prizeTips="prizeTips" :winningImg="winningImg" :chanceList="chanceList" @viewContent="viewContent" />
 		<u-toast ref="uToast"></u-toast>
@@ -93,13 +93,18 @@
 
 <script>
 	import MGashaponPrizedraw from '@/main_modules/main-ui/m-gashapon-prizedraw/index.vue'
+import { item } from '../../main_modules/main-ui/m-cell/props'
 	import PrizePopup from './gashapon-modules/prize-popup/index'
 	import WinningPopup from './gashapon-modules/winning-popup/index'
 	import goods from './goods.json'
 	import records from './records.json'
+	import prize from './prize.json'
+	import { eggList } from './data.js'
 	export default {
 		components: {
-			MGashaponPrizedraw
+			MGashaponPrizedraw,
+			PrizePopup,
+			WinningPopup
 		},
 		data() {
 			return {
@@ -111,7 +116,7 @@
 				item: {},
 				ruleContent: '',
 				records: [],
-				eggList: [],
+				eggList,
 				lock: false,
 				isButtonTap: false,
 				isStart: false,
@@ -130,55 +135,40 @@
 				this.list = []
 				this.records = []
 				this.list = goods.data
-				if (this.list.length == 8) {
-					this.list.splice(4, 0, {name: ''});
-				}
 				this.records = records.data
-				this.item = {
-					"image": "http://images.baixingliangfan.cn/compressedPic/20180712181330_9746.jpg",
-					"oriPrice": 2.50,
-					"presentPrice": 1.90,
-					"sales": 1688,
-					"goodsDesc": "酒香浓郁，精美品质",
-					"name": "雪花啤酒",
-					"id": "87013c4315e54927a97e51d0645ece76",
-					"check": false
-				}
 			},
 			async startLuckyDraw() {
 				if (this.lock) return
 				this.lock = true
 				this.isButtonTap = true
-				if (this.$store.state.userBill.total_score < this.points) {
+				if (this.$store.state.userinfo.points < this.$store.state.sysConfig.points) {
 					return this.$refs.uToast.show({
-						message: 'Insufficient user computing power',
+						message: this.$t('积分不足'),
 						type: 'warning',
-						duration: 2500
+						duration: 1500
 					})
 				}
-				let {
-					data,
-					code
-				} = await getLuckResult(this.query)
+				// let {
+				// 	data,
+				// 	code
+				// } = await getLuckResult(this.query)
+				let { data, code } = prize
 				if (code == 200) {
-					this.dan = data.bg_color
+					this.winningImg = `https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/sin${data.level}.png`
 					this.prizeTips = data.tips
 					this.chanceList = data.gashapon_odds
-					this.list.forEach((item, i) => {
-						if (item.id == data.product_id) {
-							this.prize = i
-						}
+					this.chanceList.forEach((item) => {
+						item.image = `https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/single${item.id}.png`
 					})
 					this.isStart = true
 					let time = setTimeout(() => {
-						this.prize.name = this.list[this.prize].name
-						this.prize.src = this.list[this.prize].image
+						this.prize.name = data.prize_name
+						this.prize.src = data.prize_image
 						this.eggShow = true
 						this.lock = false
 						this.isStart = false
 						clearTimeout(time)
 					}, 4000)
-					this.lick.factor_text = data.factor_text
 				} else {
 					this.lock = false
 				}
@@ -190,6 +180,7 @@
 			},
 			// 开蛋获奖
 			viewContent() {
+				this.eggShow = false
 				this.prizeShow = true
 			}
 		},

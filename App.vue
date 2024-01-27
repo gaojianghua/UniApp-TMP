@@ -103,6 +103,9 @@
 			})
 			// 获取通讯录数据
 			getContacts()
+			// 获取业务系统配置
+			this.$store.dispatch('getSysConfig')
+			
 			/**
 			 * 不包括小程序端
 			 */

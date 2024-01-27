@@ -26,9 +26,6 @@ class Common {
 		if (typeof min !== 'number' || typeof max !== 'number') {
 			throw new Error('min and max must be numbers');
 		}
-		if (min >= max) {
-			throw new Error('max must be greater than min');
-		}
 		min = Math.ceil(min);
 		max = Math.floor(max);
 		return Math.floor(Math.random() * (max - min + 1)) + min;

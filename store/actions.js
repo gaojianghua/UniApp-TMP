@@ -9,17 +9,21 @@ export default {
 	async getSysConfig({
 		commit
 	}) {
-		let {
-			data,
-			code
-		} = await getSysConfig()
+		// let {
+		// 	data,
+		// 	code
+		// } = await getSysConfig()
+		let code = 200
+		let data = {
+			points: 10
+		}
 		if (code == 200) {
 			commit('updateSysConfig', data)
 			uni.setStorageSync('config', data)
 		}
 	},
 	// 获取购物车数据
-	async getSysConfig({
+	async getCartList({
 		commit
 	}) {
 		let {

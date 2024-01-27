@@ -412,7 +412,8 @@
 	"你可能会得到": "You will likely get",
 	"恭喜您获得": "Congrats on getting",
 	"好的": "Great",
-	"超时": "Timeout"
+	"超时": "Timeout",
+	"积分不足": "Insufficient points"
 	
 	
 }

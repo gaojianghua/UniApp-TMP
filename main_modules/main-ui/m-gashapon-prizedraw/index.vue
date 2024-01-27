@@ -3,8 +3,8 @@
 		<view class="list px-2">
 			<scroll-view scroll-x class="scroll-row h-100 w-100 ">
 				<view v-for="(item, i) in prizeList" :key="i" class="scroll-row-item mr-5">
-					<view class="d-flex flex-column a-center j-center">
-						<u-image width="75rpx" height="75rpx" :src="item.img"
+					<view class="d-flex flex-column a-center j-center pt">
+						<u-image width="75rpx" height="75rpx" :src="item.image"
 							mode=""></u-image>
 						<view class="line-h mt-1 text-center text-ellipsis1 auto-feed"
 							style="font-size: 24rpx;color: #fff; width: 80rpx;">
@@ -93,7 +93,7 @@
 	.capsule {
 		width: 636rpx;
 		height: 712rpx;
-		background: url('/static/img/common/niu.png') no-repeat;
+		background: url('https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/niu.png') no-repeat;
 		background-size: cover;
 		padding-top: 80rpx;
 	
@@ -504,7 +504,7 @@
 			width: 310rpx;
 			height: 93.5rpx;
 			margin: 30rpx 0 0 18rpx;
-			background: url('/static/img/common/ballbutton.png') no-repeat;
+			background: url('https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/ballbutton.png') no-repeat;
 			background-size: cover;
 			transition: transform 0.2s ease-out;
 		}

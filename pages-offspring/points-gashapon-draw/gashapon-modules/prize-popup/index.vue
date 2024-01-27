@@ -9,7 +9,7 @@
 					{{$t('恭喜您获得')}}
 				</view>
 				<view class="d-flex a-center j-center flex-column mt-5">
-					<u-image width="160rpx" height="160rpx" :src="prize.img"></u-image>
+					<u-image width="160rpx" height="160rpx" :src="prize.src"></u-image>
 					<view class="mt-3 text-center">
 						{{prize.name}}
 					</view>

@@ -1,0 +1,48 @@
+{
+	"msg": "success",
+	"code": 200,
+	"data": {
+		"level": 1,
+		"tips": [
+			{
+				"rate": 10,
+			    "name": "燕京啤酒",
+			    "id": "522a3511f4c545ab9547db074bb51579"
+			},
+			{
+				"rate": 20,
+			    "name": "崂山清爽",
+			    "id": "bbdbd5028cc849c2998ff84fb55cb934"
+			},
+			{
+				"rate": 30,
+			    "name": "雪花啤酒",
+			    "id": "87013c4315e54927a97e51d0645ece76"
+			},
+			{
+				"rate": 40,
+			    "name": "崂山啤酒",
+			    "id": "86388a0ee7bd4a9dbe79f4a38c8acc89"
+			}
+		],
+		"gashapon_odds": [
+			{
+				"id": 1,
+				"name": "白球",
+				"rate": 60
+			},
+			{
+				"id": 2,
+				"name": "紫球",
+				"rate": 30
+			},
+			{
+				"id": 3,
+				"name": "金球",
+				"rate": 10
+			}
+		],
+		"prize_name": "雪花啤酒",
+		"prize_image": "http://images.baixingliangfan.cn/compressedPic/20180712181330_9746.jpg"
+	}
+}

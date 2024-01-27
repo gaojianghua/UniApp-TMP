@@ -167,7 +167,7 @@
 		methods: {
 			// 初始化
 			init() {
-				this.openShow()
+				// this.openShow()
 			},
 			openOrderList(i) {
 				i == 5 ? this.$tools.Navigate.navigateTo('/pages-next/mine/my-evaluate/index') :

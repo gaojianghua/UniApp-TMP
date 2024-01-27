@@ -28,6 +28,7 @@
 				</view>
 			</view>
 		</view>
+		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 
@@ -108,6 +109,13 @@
 			// 开始抽奖
 			startLuckyDraw() {
 				if (this.lock) return
+				if (this.$store.state.userinfo.points < this.$store.state.sysConfig.points) {
+					return this.$refs.uToast.show({
+						message: this.$t('积分不足'),
+						type: 'warning',
+						duration: 1500
+					})
+				}
 				this.lock = true
 				this.list.forEach((item, i) => {
 					if (item.id == this.winningItem.id) {
