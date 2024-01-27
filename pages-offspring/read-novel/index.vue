@@ -522,7 +522,7 @@
 			// 取消
 			cancel() {
 				this.modalShow = false
-				uni.navigateBack()
+				this.$tools.Navigate.navigateBack()
 			},
 			//分享海报
 			sharePosters() {
@@ -729,22 +729,21 @@
 				} else {
 					return new Promise((resolve, reject) => {
 						this.$nextTick(() => {
-							uni.createSelectorQuery().in(this).select('#content').boundingClientRect(
-								data => {
-									let height = data.height;
-									this.contentHeight = height;
-									let lineHeight = this.fontSize * this.lineHeight;
-
-									// #ifdef APP-PLUS || MP-WEIXIN
-									lineHeight = Math.floor(lineHeight * this.appSystemInfo
-											.pixelRatio) / this
-										.pixelRatio
-									// #endif
-									let lineNum = Math.floor((height + Math.floor((lineHeight - this
-										.fontSize) / 2)) / lineHeight)
-									this.innerHeight = lineNum * lineHeight
-									resolve()
-								}).exec();
+							const query = uni.createSelectorQuery().in(this);
+							query.select('#content').boundingClientRect(data => {
+								let height = data.height;
+								this.contentHeight = height;
+								let lineHeight = this.fontSize * this.lineHeight;
+						
+								// #ifdef APP-PLUS || MP-WEIXIN
+								lineHeight = Math.floor(lineHeight * this.pixelRatio) / this
+									.pixelRatio
+								// #endif
+								let lineNum = Math.floor((height + Math.floor((lineHeight - this
+									.fontSize) / 2)) / lineHeight)
+								this.innerHeight = lineNum * lineHeight
+								resolve()
+							}).exec();
 						})
 					})
 				}
@@ -1205,10 +1204,7 @@
 				}
 
 			},
-
-			/**
-			 * 触摸结束
-			 **/
+			// 触摸结束
 			touchEnd(e) {
 				this.showAnimation = true
 				this.showShadow = false
@@ -1281,10 +1277,7 @@
 				this.next = false
 				this.pre = false
 			},
-
-			/**
-			 * 取消触摸
-			 **/
+			// 取消触摸
 			touchcancel() {
 				//取消翻页,重置页面
 				this.showAnimation = false
@@ -1353,18 +1346,12 @@
 					this.directoryShow = true
 				}, 300)
 			},
-
-			/**
-			 * 拖动进度条
-			 **/
+			// 拖动进度条
 			slideChanging(e) {
 				this.progressTouched = true
 				this.chapterProgress = e
 			},
-
-			/**
-			 * 结束拖动进度条
-			 **/
+			 // 结束拖动进度条
 			async slideChange(e) {
 				this.chapterProgress = e
 				uni.showLoading()
@@ -1373,10 +1360,7 @@
 				this.goToPage(0)
 				uni.hideLoading()
 			},
-
-			/**
-			 * 上一页,页面轮换
-			 **/
+			// 上一页,页面轮换
 			goPrePage() {
 				if (this.prePage.isCover) { //如果是首页
 					this.cover.pageTranslate = [
@@ -1442,11 +1426,7 @@
 					]
 				}, 50)
 			},
-
-
-			/**
-			 * 下一页,页面轮换
-			 **/
+			// 下一页,页面轮换
 			goNextPage() {
 				if (this.nextPage.isEnd) { //如果翻至本书末尾
 
@@ -1513,10 +1493,7 @@
 					]
 				}, 50)
 			},
-
-			/**
-			 * 章节轮换
-			 **/
+			// 章节轮换
 			async chapterRotate(type) {
 				if (type === 'next') {
 					this.preChapter = Object.assign({}, this.curChapter)
@@ -1559,9 +1536,7 @@
 					}
 				}
 			},
-			/**
-			 * 跳转下一章
-			 **/
+			// 跳转下一章
 			goNextChapter() {
 				if (this.curChapter.chapterIndex === this.directoryList.length - 1) {
 					uni.showToast({
@@ -1585,10 +1560,7 @@
 				}
 
 			},
-
-			/**
-			 * 跳转上一章
-			 **/
+			// 跳转上一章
 			goPreChapter(page) {
 				if (this.curChapter.chapterIndex === 0) {
 					uni.showToast({
@@ -1611,9 +1583,7 @@
 					this.waitForPreChapter = true
 				}
 			},
-			/**
-			 * 根据页码跳转
-			 **/
+			// 根据页码跳转
 			goToPage(page) {
 				this.currentPage = page
 				this.showAnimation = false
@@ -1714,10 +1684,7 @@
 
 				}
 			},
-
-			/**
-			 * 跳转到指定章节
-			 **/
+			// 跳转到指定章节
 			async goToChapter(index) {
 				this.progressTouched = false
 				this.chapterProgress = index
@@ -1727,14 +1694,11 @@
 				this.goToPage(0)
 				uni.hideLoading()
 			},
-
-			/**
-			 * 加大字体
-			 **/
+			// 加大字体
 			async addSize() {
 				if (this.fontSize >= this.maxFontSize) return
 				let progress = this.progress //记录阅读进度用于调整字体后跳转
-				this.fontSize += 1
+				this.fontSize += 2
 				uni.setStorageSync('fontSize', this.fontSize)
 				this.calcHeight()
 				await this.calcCurChapter()
@@ -1749,14 +1713,11 @@
 					await this.calcNextChapter()
 				}
 			},
-
-			/**
-			 * 缩小字体
-			 **/
+			// 缩小字体
 			async subSize() {
 				if (this.fontSize <= this.minFontSize) return
 				let progress = this.progress
-				this.fontSize -= 1
+				this.fontSize -= 2
 				uni.setStorageSync('fontSize', this.fontSize)
 				this.calcHeight()
 				await this.calcCurChapter()
@@ -1771,9 +1732,7 @@
 					await this.calcNextChapter()
 				}
 			},
-			/**
-			 * 改变行距
-			 **/
+			// 改变行距
 			async changeLineHeight(lineHeight) {
 				let progress = this.progress
 				if (lineHeight === this.lineHeight) {
@@ -1796,11 +1755,7 @@
 
 				}
 			},
-
-
-			/**
-			 * 改变翻页方式
-			 **/
+			// 改变翻页方式
 			changeTurnType(turnType) {
 				if (turnType === this.turnType) {
 					return
@@ -1810,10 +1765,7 @@
 					uni.setStorageSync('turnType', this.turnType)
 				}
 			},
-
-			/**
-			 * 改变背景
-			 **/
+			// 改变背景
 			changeBackground(background) {
 				if (background != 2) {
 					this.tempBackground = background
@@ -1825,10 +1777,7 @@
 					uni.setStorageSync('background', this.background)
 				}
 			},
-
-			/**
-			 * 获取目录
-			 **/
+			// 获取目录
 			async getDirectoryList(showLoading) {
 				if (showLoading) {
 					uni.showLoading({
@@ -1873,9 +1822,7 @@
 					})
 				}
 			},
-			/**
-			 * 获取一章数据
-			 **/
+			// 获取一章数据
 			async getOneChapter(chapterId, showLoading) {
 				if (showLoading) {
 					uni.showLoading({
@@ -1939,9 +1886,7 @@
 					})
 				}
 			},
-			/**
-			 * 获取三章数据
-			 **/
+			// 获取三章数据
 			async getThreeChapter(index) {
 				await this.getOneChapter(this.directoryList[index].id)
 				this.curChapter = {

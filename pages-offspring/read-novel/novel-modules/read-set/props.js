@@ -26,7 +26,7 @@ module.exports = {
 	lineHeight: {
 		type: Number,
 		default: () => {
-			return 2
+			return 4
 		}
 	},
 	turnType: {

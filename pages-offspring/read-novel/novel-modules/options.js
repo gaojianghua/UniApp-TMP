@@ -1,7 +1,4 @@
-const lineList = [{
-		height: 1,
-		num: 5
-	},
+const lineList = [
 	{
 		height: 1.5,
 		num: 4
@@ -13,10 +10,6 @@ const lineList = [{
 	{
 		height: 2.5,
 		num: 2
-	},
-	{
-		height: 3,
-		num: 1
 	}
 ]
 

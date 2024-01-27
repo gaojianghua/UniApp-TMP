@@ -247,8 +247,8 @@ import { item } from '../../main_modules/main-ui/m-cell/props'
 					height: 340rpx;
 					padding: 20rpx;
 					border-radius: 10rpx;
-					background: radial-gradient(circle at center, transparent, #361D7A);
-					border: 4rpx solid #6F6DBD;
+					background: radial-gradient(circle at center, transparent, #7269FA);
+					border: 4rpx solid #7269FA;
 
 					.img-box {
 						height: 60rpx;
