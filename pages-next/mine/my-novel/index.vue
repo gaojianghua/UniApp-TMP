@@ -524,13 +524,13 @@
 		computed: {
 			scrollStyle() {
 				return {
-					height: `calc(100vh - ${this.$store.state.navbarHeight}px - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
+					height: `calc(100vh - ${this.$store.state.browserFitHeight}px - ${this.$store.state.navbarHeight}px - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
 				}
 			},
 			loveStyle() {
 				return {
 					height: this.list.length == 0 ?
-						`calc(100vh - 40rpx - ${this.$store.state.navbarHeight}px - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)` :
+						`calc(100vh - ${this.$store.state.browserFitHeight}px - 40rpx - ${this.$store.state.navbarHeight}px - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)` :
 						'auto'
 				}
 			},

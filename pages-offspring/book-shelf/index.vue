@@ -199,7 +199,7 @@
 		computed: {
 			scrollStyle() {
 				return {
-					height: `calc(100vh - 88rpx - ${this.$store.state.navbarHeight}px - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
+					height: `calc(100vh - ${this.$store.state.browserFitHeight}px - 88rpx - ${this.$store.state.navbarHeight}px - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
 				}
 			}
 		},

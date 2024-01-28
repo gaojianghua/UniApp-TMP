@@ -225,7 +225,7 @@
 			scrollStyle() {
 				let str = this.isEdit ? '100rpx' : '0rpx'
 				return {
-					height: `calc(100vh - ${str} - ${this.$store.state.navbarHeight}px - 32px - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
+					height: `calc(100vh - ${this.$store.state.browserFitHeight}px - ${str} - ${this.$store.state.navbarHeight}px - 32px - env(safe-area-inset-bottom) - ${this.$store.state.statusHeight}px)`
 				}
 			}
 		},

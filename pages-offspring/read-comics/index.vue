@@ -459,7 +459,7 @@
 		computed: {
 			scrollStyle() {
 				return {
-					height: `calc(100vh - env(safe-area-inset-bottom))`
+					height: `calc(100vh - ${this.$store.state.browserFitHeight}px - env(safe-area-inset-bottom))`
 				}
 			},
 			userinfo() {

@@ -1,5 +1,5 @@
 <template>
-	<view class="page">
+	<view class="page" :style="scrollStyle">
 		<!-- 顶部导航 -->
 		<m-navbar isFixed bgColor="tansparent" :borderBottom="false" i18n></m-navbar>
 		<!-- 内容区域 -->
@@ -187,6 +187,11 @@
 			}
 		},
 		computed: {
+			scrollStyle() {
+				return {
+					height: `calc(100vh - ${this.$store.state.browserFitHeight}px)`
+				}
+			},
 			navbarHeight() {
 				return this.$store.state.navbarHeight
 			},
