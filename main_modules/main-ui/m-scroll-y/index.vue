@@ -21,7 +21,7 @@
 			<m-loading i18n v-if="isLoading" :height="loadHeight" :load="load" :mainColor="mainColor"
 				:bgColor="bgColor" />
 			<view :style="{height: placeHeight}" class="w-100"></view>
-			<m-back-top :isTab="isTab" v-if="isBackTop" :newScrollTop="newScrollTop" :showBackTopValue="showBackTopValue" @backTop="backTop" />
+			<m-back-top :isTab="isTab" v-if="isBackTop" :bottom="bottom" :newScrollTop="newScrollTop" :showBackTopValue="showBackTopValue" @backTop="backTop" />
 		</scroll-view>
 </template>
 

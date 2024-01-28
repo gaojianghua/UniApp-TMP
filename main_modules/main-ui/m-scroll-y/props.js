@@ -95,6 +95,12 @@ module.exports = {
 			return "600"
 		}
 	},
+	bottom: {
+		type: String,
+		default: () => {
+			return "0"
+		}
+	},
 	isTab: {
 		type: Boolean,
 		default: () => {

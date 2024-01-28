@@ -37,7 +37,7 @@
 			</view>
 		</view>
 		<template v-else>
-			<m-scroll-y isTab bgColor="transparent" i18n :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load" @loadmore="loadmore" @onRefresh="onRefresh" mainColor="#fb7290">
+			<m-scroll-y isTab bgColor="transparent" i18n bottom="150rpx" :isLoading="isLoading" :scrollStyle="scrollStyle" :load="load" @loadmore="loadmore" @onRefresh="onRefresh" mainColor="#fb7290">
 				<u-empty v-if="load != 0 && list.length == 0" mode="car" :text="$t('购物车是空的')"
 					icon="http://cdn.uviewui.com/uview/empty/car.png">
 				</u-empty>
@@ -240,7 +240,7 @@
 				return this.$store.state.token
 			},
 			scrollStyle() {
-				return {height: `calc(100vh - ${this.$store.state.navbarHeight}px - 100rpx - env(safe-area-inset-bottom) - ${this.$store.state.tabbarHeight}px - ${this.$store.state.statusHeight}px)`}
+				return {height: `calc(100vh - ${this.$store.state.browserFitHeight}px - ${this.$store.state.navbarHeight}px - 100rpx - env(safe-area-inset-bottom) - ${this.$store.state.tabbarHeight}px - ${this.$store.state.statusHeight}px)`}
 			}
 		},
 	}
