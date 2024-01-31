@@ -66,4 +66,7 @@ export default {
 	historyList: uni.getStorageSync('historyList') || [], // 搜索历史记录
 	orderHistoryList: uni.getStorageSync('orderHistoryList') || [], // 订单搜索历史记录
 	allHistoryList: uni.getStorageSync('allHistoryList') || [], // 娱乐搜索历史记录
+	domain: [
+		'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com'
+	], // 远程资源域名（如：oss，obs）
 }

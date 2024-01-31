@@ -28,8 +28,8 @@ const errorMessage = (res) => {
 	}
 }
 // 判断上一个请求是否与当前请求相同并校验时间区间
-const checkRequestIsEqual = (config) => {
-	return lastRequest.request === JSON.stringify(config) && (Date.now() - lastRequest.timestamp <= 1000)
+const checkRequestIsEqual = (config, time = 1000) => {
+	return lastRequest.request === JSON.stringify(config) && (Date.now() - lastRequest.timestamp <= time)
 }
 // 记录上一个请求的内容跟时间戳，用于判断是否与当前请求相同并校验时间区间
 const lastRequest = {
