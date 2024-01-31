@@ -51,19 +51,28 @@
 				{{$t('确定要取消收藏吗？')}}
 			</view>
 		</m-modal>
+		<!-- 底部导航栏 -->
+		<m-tabbar pagePath="pages/tabbar/media/index" i18n></m-tabbar>
 	</view>
 </template>
 
 <script>
-	import {
-		getRecommendVideo
-	} from '@/utils/request/api/get.js'
-	import {
-		addCollect,
-		videoLog,
-		setLike
-	} from '@/utils/request/api/post.js'
+	// import {
+	// 	getRecommendVideo
+	// } from '@/utils/request/api/get.js'
+	// import {
+	// 	addCollect,
+	// 	videoLog,
+	// 	setLike
+	// } from '@/utils/request/api/post.js'
+	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
+	import tabbarInit from '@/mixins/tabbar-init.js'
+	import capsuleInit from '@/mixins/capsule-init.js'
 	export default {
+		mixins: [tabbarInit, capsuleInit],
+		components: {
+			MTabbar
+		},
 		data() {
 			return {
 				list: [],
@@ -90,7 +99,7 @@
 		},
 		methods: {
 			init() {
-				this.getData()
+				// this.getData()
 			},
 			// 获取数据
 			async getData(e) {

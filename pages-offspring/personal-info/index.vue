@@ -1,5 +1,5 @@
 <template>
-	<view class="page">
+	<view class="page" :style="scrollStyle">
 		<!-- 顶部导航栏 -->
 		<m-navbar bgColor="transparent" textColor="#fff" value="page.个人信息" i18n></m-navbar>
 		<!-- 内容区域 -->
@@ -128,7 +128,14 @@
 					duration: 1200
 				})
 			}
-		}
+		},
+		computed: {
+			scrollStyle() {
+				return {
+					height: `calc(100vh - ${this.$store.state.browserFitHeight}px - env(safe-area-inset-bottom))`
+				}
+			}
+		},
 	}
 </script>
 
