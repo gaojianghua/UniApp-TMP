@@ -1,0 +1,26 @@
+{
+	"code": 200,
+	"message": "success",
+	"time": "1706841663",
+	"data": {
+		"options": [{
+				"amount": 20,
+				"gold": 200
+			},
+			{
+				"amount": 45,
+				"gold": 500
+			},
+			{
+				"amount": 88,
+				"gold": 1000
+			},
+			{
+				"amount": 99,
+				"gold": 1200
+			}
+		],
+		"rate": 10,
+		"tips": "This service is a virtual product and does not support refunds after successful payment."
+	}
+}

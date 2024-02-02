@@ -204,6 +204,12 @@
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
+			}, {
+				"path": "media/playlet-detail/index",
+				"style": {
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
 			}]
 		}, {
 			"root": "pages-offspring",

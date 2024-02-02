@@ -36,9 +36,9 @@
 							<view class="text-ellipsis5 mt-2" style="width: 500rpx;">
 								{{item.videolist.story}}
 							</view>
-							<view class="d-flex a-center" @click.stop="selectEpisode(item)">
-								<span class="text-white mr-1">{{$t('去看全集')}}</span>
-								<u-icon name="arrow-right" color="#fff" size="14"></u-icon>
+							<view class="d-flex a-center mt-2" @click.stop="selectEpisode(item)">
+								<span class="main-text-color mr-1">{{$t('去看全集')}}</span>
+								<u-icon name="arrow-right" color="#f27299" size="16"></u-icon>
 							</view>
 						</view>
 					</template>
@@ -57,14 +57,7 @@
 </template>
 
 <script>
-	// import {
-	// 	getRecommendVideo
-	// } from '@/utils/request/api/get.js'
-	// import {
-	// 	addCollect,
-	// 	videoLog,
-	// 	setLike
-	// } from '@/utils/request/api/post.js'
+	import video from '@/pages-common/data/video.json'
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	import capsuleInit from '@/mixins/capsule-init.js'
@@ -99,14 +92,18 @@
 		},
 		methods: {
 			init() {
-				// this.getData()
+				this.getData()
 			},
 			// 获取数据
-			async getData(e) {
+			async getData() {
+				// let {
+				// 	data,
+				// 	code
+				// } = await getRecommendVideo()
 				let {
 					data,
 					code
-				} = await getRecommendVideo()
+				} = video
 				if (code == 200) {
 					data.forEach((item) => {
 						item.status = 0
@@ -281,5 +278,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+	.page{
+		background-color: #111;
+	}
 </style>

@@ -1,0 +1,100 @@
+{
+	"code": 200,
+	"message": "success",
+	"time": "1706841663",
+	"data": {
+		"mid": "188",
+		"vtime": 20,
+		"love": 0,
+		"collect": 0,
+		"play": 1,
+		"info": {
+			"id": 89,
+			"name": "The Double Life of My Billionaire Husband",
+			"img": "https:\/\/v-mps.crazymaplestudios.com\/ad\/FPbX9CEcG0gw8EmXRCFf4gbJhyBf5Q4hAowtTb14.jpg#compress",
+			"price": "0.00",
+			"vipprice": "0.00",
+			"type": [],
+			"story": "Sebastian Klein is a loser and an ex-con. No girl in her right mind would marry him... until you!",
+			"sum": 49,
+			"views": 6,
+			"give": 0,
+			"status": "normal",
+			"lang": "en",
+			"full_img": "https:\/\/v-mps.crazymaplestudios.com\/ad\/FPbX9CEcG0gw8EmXRCFf4gbJhyBf5Q4hAowtTb14.jpg#compress"
+		},
+		"list": [{
+				"id": 188,
+				"name": "1",
+				"videourl": "https:\/\/v-mps.crazymaplestudios.com\/vod-112094\/9678ad60154271eebfd186c6360c0102\/fa10a4654e80841c9bca9bad29ad7013-ld.m3u8",
+				"img": "https:\/\/v-mps.crazymaplestudios.com\/vod-112094\/9678ad60154271eebfd186c6360c0102\/snapshots\/cd441cc30c4a43e59bd5324c0d8cef2d-00001.jpg",
+				"price": "0.00",
+				"vipprice": "0.00",
+				"pid": 89,
+				"info": null,
+				"weigh": 0,
+				"is_play": 1
+			},
+			{
+				"id": 189,
+				"name": "2",
+				"videourl": "https:\/\/v-mps.crazymaplestudios.com\/vod-112094\/acf18bc0154271eeb66c2680f9ea0102\/5fcc83219e44700c701af7c4b1cb2ccb-ld.m3u8",
+				"img": "https:\/\/v-mps.crazymaplestudios.com\/vod-112094\/acf18bc0154271eeb66c2680f9ea0102\/snapshots\/cf574fc02af54c92ab4fdd5d7fbd26b0-00001.jpg",
+				"price": "0.00",
+				"vipprice": "0.00",
+				"pid": 89,
+				"info": null,
+				"weigh": 1,
+				"is_play": 1
+			},
+			{
+				"id": 190,
+				"name": "3",
+				"videourl": "https:\/\/v-mps.crazymaplestudios.com\/vod-112094\/c122c410154271eebfda87c7361c0102\/0bc7164f61bd0df40c2dec8fd52d318e-ld.m3u8",
+				"img": "https:\/\/v-mps.crazymaplestudios.com\/vod-112094\/c122c410154271eebfda87c7361c0102\/snapshots\/dc42516b786a429197e4157ffdc07acd-00001.jpg",
+				"price": "0.00",
+				"vipprice": "0.00",
+				"pid": 89,
+				"info": null,
+				"weigh": 2,
+				"is_play": 1
+			},
+			{
+				"id": 191,
+				"name": "4",
+				"videourl": "https:\/\/v-mps.crazymaplestudios.com\/vod-112094\/d8298a90154271eebfd186c6360c0102\/22c109633509a74d0220e2eb75ba38e0-ld.m3u8",
+				"img": "https:\/\/v-mps.crazymaplestudios.com\/vod-112094\/d8298a90154271eebfd186c6360c0102\/snapshots\/28f7b1c004e3474f9db33bb20489bed9-00001.jpg",
+				"price": "0.00",
+				"vipprice": "0.00",
+				"pid": 89,
+				"info": null,
+				"weigh": 3,
+				"is_play": 1
+			},
+			{
+				"id": 192,
+				"name": "5",
+				"videourl": "https:\/\/v-mps.crazymaplestudios.com\/vod-112094\/eeb7ecc0154271eebfda87c7361c0102\/4673f5b5841de2719fc43500e67e14d0-ld.m3u8",
+				"img": "https:\/\/v-mps.crazymaplestudios.com\/vod-112094\/eeb7ecc0154271eebfda87c7361c0102\/snapshots\/8a12bdc798064830977ce0a69e2449f8-00001.jpg",
+				"price": "0.00",
+				"vipprice": "0.00",
+				"pid": 89,
+				"info": null,
+				"weigh": 4,
+				"is_play": 1
+			},
+			{
+				"id": 193,
+				"name": "6",
+				"videourl": "https:\/\/v-mps.crazymaplestudios.com\/vod-112094\/00ebf580154371eeb66c2680f9ea0102\/e700a88a9d0b8268d22493a67c561c31-ld.m3u8",
+				"img": "https:\/\/v-mps.crazymaplestudios.com\/vod-112094\/00ebf580154371eeb66c2680f9ea0102\/snapshots\/1b3bc1469d0748278b5d2807e0be22fd-00001.jpg",
+				"price": "0.00",
+				"vipprice": "0.00",
+				"pid": 89,
+				"info": null,
+				"weigh": 5,
+				"is_play": 1
+			}
+		]
+	}
+}

@@ -191,17 +191,15 @@
 
 <script>
 	import MPopup from '@/main_modules/main-ui/m-popup/index.vue'
-	import {
-		getVideoInfo,
-		getRechargeConfig
-	} from '@/utils/request/api/get.js'
-	import {
-		addCollect,
-		buyVideo,
-		videoLog,
-		setLike,
-		rechargeGold
-	} from '@/utils/request/api/post.js'
+	import golds from '@/pages-common/data/golds.json'
+	import videoInfo from '@/pages-common/data/videoInfo.json'
+	// import {
+	// 	addCollect,
+	// 	buyVideo,
+	// 	videoLog,
+	// 	setLike,
+	// 	rechargeGold
+	// } from '@/utils/request/api/post.js'
 	export default {
 		components: {
 			MPopup
@@ -269,7 +267,8 @@
 			},
 			// 获取充值列表
 			async getRechargeList() {
-				let { code, data } = await getRechargeConfig()
+				// let { code, data } = await getRechargeConfig()
+				let { code, data } = golds
 				if (code == 200) {
 					this.rate = data.rate
 					this.tips = data.tips
@@ -319,10 +318,11 @@
 			},
 			// 获取数据
 			async getData() {
-				let {
-					code,
-					data
-				} = await getVideoInfo(this.query)
+				// let {
+				// 	code,
+				// 	data
+				// } = await getVideoInfo(this.query)
+				let { code, data } = videoInfo
 				if (code == 200) {
 					if (this.isObject) {
 						data.list.forEach((item, i) => {
@@ -551,6 +551,7 @@
 
 <style lang="scss" scoped>
 	.page {
+		background-color: #111;
 
 		/deep/ .u-popup__content {
 			background-color: #00000099;
