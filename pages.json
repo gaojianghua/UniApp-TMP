@@ -455,6 +455,27 @@
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
+				}, 
+				{
+					"path": "points-slot-machine-draw/index",
+					"style": {
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				}, 
+				{
+					"path": "points-monopoly-draw/index",
+					"style": {
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				}, 
+				{
+					"path": "points-digging-gold-draw/index",
+					"style": {
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
 				}
 			]
 		}

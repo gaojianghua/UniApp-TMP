@@ -18,6 +18,21 @@ const menuList = [
 		id: 4,
 		name: 'page.扭蛋机抽奖',
 		page: '/pages-offspring/points-gashapon-draw/index'
+	},
+	{
+		id: 5,
+		name: 'page.老虎机抽奖',
+		page: '/pages-offspring/points-slot-machine-draw/index'
+	},
+	{
+		id: 6,
+		name: 'page.大富翁抽奖',
+		page: '/pages-offspring/points-monopoly-draw/index'
+	},
+	{
+		id: 6,
+		name: 'page.挖金条抽奖',
+		page: '/pages-offspring/points-digging-gold-draw/index'
 	}
 ]
 
