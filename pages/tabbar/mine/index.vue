@@ -57,6 +57,14 @@
 									</view>
 								</view>
 								<!-- #endif -->
+								<view class="top-menu mr-3 d-flex flex-column j-center a-center" @click="$tools.Navigate.navigateTo('/pages-next/mine/message/index')">
+									<u-image width="50rpx" height="50rpx"
+										src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/message.svg"
+										mode="" />
+									<view class="top-menu-text">
+										{{$t('page.消息')}}
+									</view>
+								</view>
 								<view class="top-menu mr-1 d-flex flex-column j-center a-center" @click="$tools.Navigate.navigateTo('/pages-next/mine/setting/index')">
 									<u-image width="50rpx" height="50rpx"
 										src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/setting-two.svg"

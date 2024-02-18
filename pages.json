@@ -204,6 +204,13 @@
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
+			},{
+				"path": "mine/message/index",
+				"style": {
+					"navigationBarTitleText": "%page.消息中心%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
 			}, {
 				"path": "media/playlet-detail/index",
 				"style": {
@@ -430,6 +437,20 @@
 				}, 
 				{
 					"path": "read-history/index",
+					"style": {
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				}, 
+				{
+					"path": "message-list/index",
+					"style": {
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				}, 
+				{
+					"path": "message-detail/index",
 					"style": {
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
