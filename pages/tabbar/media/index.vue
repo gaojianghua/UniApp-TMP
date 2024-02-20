@@ -2,7 +2,7 @@
 	<view class="page">
 		<swiper vertical :style="scrollStyle" :current="current" @change="swiperChange">
 			<swiper-item class="h-100" v-for="(item, i) in list" :key="i">
-				<yingbing-video :autoplay="i == 0" :ref="'video' + i" class="h-100" :poster="item.videolist.full_img"
+				<yingbing-video objectFit="fill" :autoplay="i == 0" :ref="'video' + i" class="h-100" :poster="item.videolist.full_img"
 					:src="item.videourl" @play="monitorPlay" @ended="ended" @pause="monitorPause"
 					@timeupdate="timeupdate">
 					<template #controls>
@@ -281,11 +281,5 @@
 <style lang="scss" scoped>
 	.page {
 		background-color: #111;
-
-		/deep/ .yb-video {
-			video {
-				object-fit: fill !important;
-			}
-		}
 	}
 </style>
