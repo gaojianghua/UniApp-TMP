@@ -1,8 +1,9 @@
 <template>
 	<m-popup :show="show" i18n @close="close" title="语音识别">
 		<view class="mic p-3">
-			<u-textarea disabled :customStyle="{caretColor: '#f27299', padding: '20rpx 20rpx', backgroundColor: '#f1f1f1'}"
-				border="none" v-model="result" :placeholder="$t('语音识别内容')">
+			<u-textarea disabled
+				:customStyle="{caretColor: '#f27299', padding: '20rpx 20rpx', backgroundColor: '#f1f1f1'}" border="none"
+				v-model="result" :placeholder="$t('语音识别内容')">
 			</u-textarea>
 			<!-- #ifndef H5 -->
 			<view class="mt-3 d-flex a-center j-center flex-column">
@@ -105,20 +106,32 @@
 						this.$u.toast(this.$t('因长时间没有语音输入已帮你关闭语音识别'))
 					}, 30 * 1000);
 				}
-				navigator.mediaDevices.getUserMedia({
-					audio: true
-				}).then((stream) => {
-					this.recognition.start()
-					this.title = '...倾听中...'
-					this.time = setTimeout(() => {
-						if (!this.result) {
-							this.onH5End()
-							this.$u.toast(this.$t('因长时间没有语音输入已帮你关闭语音识别'))
-						}
-					}, 30 * 1000)
-				}).catch((error) => {
-					this.$u.toast(this.$t('用户拒绝使用麦克风或设备没有麦克风'))
-				});
+				this.recognition.start()
+				this.title = '...倾听中...'
+				this.time = setTimeout(() => {
+					if (!this.result) {
+						this.onH5End()
+						this.$u.toast(this.$t('因长时间没有语音输入已帮你关闭语音识别'))
+					}
+				}, 30 * 1000)
+				if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+					navigator.mediaDevices.getUserMedia({
+						audio: true
+					}).then((stream) => {
+						this.recognition.start()
+						this.title = '...倾听中...'
+						this.time = setTimeout(() => {
+							if (!this.result) {
+								this.onH5End()
+								this.$u.toast(this.$t('因长时间没有语音输入已帮你关闭语音识别'))
+							}
+						}, 30 * 1000)
+					}).catch((error) => {
+						this.$u.toast(this.$t('用户拒绝使用麦克风或设备没有麦克风'))
+					});
+				} else {
+					console.log('浏览器不支持语音识别');
+				}
 			},
 			// H5语音识别结束
 			onH5End() {

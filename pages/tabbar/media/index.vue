@@ -2,28 +2,29 @@
 	<view class="page">
 		<swiper vertical :style="scrollStyle" :current="current" @change="swiperChange">
 			<swiper-item class="h-100" v-for="(item, i) in list" :key="i">
-				<yingbing-video :autoplay="i == 0" :ref="'video' + i" class="h-100"
-					:poster="item.videolist.full_img" :src="item.videourl"
-					@play="monitorPlay" @ended="ended" @pause="monitorPause" @timeupdate="timeupdate">
+				<yingbing-video :autoplay="i == 0" :ref="'video' + i" class="h-100" :poster="item.videolist.full_img"
+					:src="item.videourl" @play="monitorPlay" @ended="ended" @pause="monitorPause"
+					@timeupdate="timeupdate">
 					<template #controls>
 						<view class="position-absolute top-half left-half tf-half-xy text-white">
-							<u-icon @click="videoPlay(i)" v-if="item.status == 0" name="play-right-fill"
-								size="50" color="#ffffff80"></u-icon>
-							<u-icon @click="videoPause(i)" v-else name="pause" size="50"
+							<u-icon @click="videoPlay(i)" v-if="item.status == 0" name="play-right-fill" size="50"
 								color="#ffffff80"></u-icon>
+							<u-icon @click="videoPause(i)" v-else name="pause" size="50" color="#ffffff80"></u-icon>
 						</view>
 						<view class="d-flex a-center j-center flex-column"
 							style="position:absolute;right:20rpx;bottom: 100px;">
 							<view class="d-flex a-center j-center flex-column" @click.stop="openLike(item, i)">
 								<image style="width: 70rpx; height: 70rpx;"
-									:src="`${$store.state.domain}/img/media/${item.love == 0 ? 'like' : 'like-active'}.png`"></image>
+									:src="`${$store.state.domain}/img/media/${item.love == 0 ? 'like' : 'like-active'}.png`">
+								</image>
 								<view class="font" :style="{color: item.love == 0 ? '#fff': '#F73648'}">
 									{{$t('点赞')}}
 								</view>
 							</view>
 							<view class="d-flex a-center j-center flex-column mt-3" @click.stop="openCollect(item, i)">
 								<image style="width: 70rpx; height: 70rpx;"
-									:src="`${$store.state.domain}/img/media/${item.collect == 0 ? 'collect' : 'collect-active'}.png`"></image>
+									:src="`${$store.state.domain}/img/media/${item.collect == 0 ? 'collect' : 'collect-active'}.png`">
+								</image>
 								<view class="font" :style="{color: item.collect == 0 ? '#fff': '#F8B33B'}">
 									{{$t('追剧')}}
 								</view>
@@ -111,7 +112,7 @@
 					if (this.list.length > 20) {
 						this.current = 0
 						this.list = data
-					}else {
+					} else {
 						this.list = this.list.concat(data)
 					}
 				}
@@ -236,11 +237,11 @@
 				clearInterval(this.timeout)
 				if (i.detail.current > this.current) {
 					this.$refs[`video${i.detail.current - 1}`][0].toggle()
-				}else if (i.detail.current < this.current) {
+				} else if (i.detail.current < this.current) {
 					this.$refs[`video${i.detail.current + 1}`][0].toggle()
 				}
 				this.current = i.detail.current
-				
+
 				this.$refs[`video${i.detail.current}`][0].play()
 				if (i.detail.current < (this.list.length - 1)) {
 					this.getData('S')
@@ -278,7 +279,13 @@
 </script>
 
 <style lang="scss" scoped>
-	.page{
+	.page {
 		background-color: #111;
+
+		/deep/ .yb-video {
+			video {
+				object-fit: fill !important;
+			}
+		}
 	}
 </style>
