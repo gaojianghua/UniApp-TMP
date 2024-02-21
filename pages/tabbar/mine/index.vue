@@ -4,18 +4,18 @@
 		<m-scroll-y :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
 			<!-- #ifdef MP -->
 			<view class="user position-relative" :style="{
-			height: `calc(388rpx + ${statusHeight}px + ${navbarHeight}px)`}">
+			height: `calc(488rpx + ${statusHeight}px + ${navbarHeight}px)`}">
 				<view class="user-image hidden">
-					<u-image width="100%" :height="`calc(388rpx + ${statusHeight}px + ${navbarHeight}px)`"
+					<u-image width="100%" :height="`calc(488rpx + ${statusHeight}px + ${navbarHeight}px)`"
 						src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/mine-bg.png" mode="">
 					</u-image>
 				</view>
 				<!-- #endif -->
 				<!-- #ifndef MP -->
 				<view class="user position-relative" :style="{
-			height: `calc(388rpx + ${statusHeight}px)`}">
+			height: `calc(488rpx + ${statusHeight}px)`}">
 					<view class="user-image hidden">
-						<u-image width="100%" :height="`calc(388rpx + ${statusHeight}px)`"
+						<u-image width="100%" :height="`calc(488rpx + ${statusHeight}px)`"
 							src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/mine-bg.png" mode="">
 						</u-image>
 					</view>
@@ -28,7 +28,40 @@
 						<!-- #ifdef APP-PLUS -->
 						<view :style="{height: `calc(${statusHeight}px - 30rpx)`}"></view>
 						<!-- #endif -->
-						<view class="d-flex a-center">
+						<view class="d-flex">
+							<view></view>
+							<view class="ml-auto flex-shrink d-flex a-center">
+								<!-- #ifndef H5 -->
+								<view class="top-menu mr-3 d-flex flex-column j-center a-center" @click="openScanCode">
+									<u-image width="50rpx" height="50rpx"
+										src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/scan-code.svg"
+										mode="" />
+									<view class="top-menu-text main-text-color">
+										{{$t('扫码')}}
+									</view>
+								</view>
+								<!-- #endif -->
+								<view class="top-menu mr-3 d-flex flex-column j-center a-center"
+									@click="$tools.Navigate.navigateTo('/pages-next/mine/message/index')">
+									<u-image width="50rpx" height="50rpx"
+										src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/message.svg"
+										mode="" />
+									<view class="top-menu-text main-text-color">
+										{{$t('page.消息')}}
+									</view>
+								</view>
+								<view class="top-menu mr-1 d-flex flex-column j-center a-center"
+									@click="$tools.Navigate.navigateTo('/pages-next/mine/setting/index')">
+									<u-image width="50rpx" height="50rpx"
+										src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/setting-two.svg"
+										mode="" />
+									<view class="top-menu-text main-text-color">
+										{{$t('page.设置')}}
+									</view>
+								</view>
+							</view>
+						</view>
+						<view class="d-flex a-center mt-2">
 							<view class="user-avatar flex-shrink border-2 border-white mr-2">
 								<u-image radius="100" width="100rpx" height="100rpx"
 									:src="userinfo.avatar || 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/default-avatar.png'"
@@ -44,34 +77,6 @@
 								</view>
 								<view v-else class="user-notice line-h mt-2">
 									{{$t('您还未登录。立即登录，享受更多特权！')}}
-								</view>
-							</view>
-							<view class="ml-auto flex-shrink d-flex a-center">
-								<!-- #ifndef H5 -->
-								<view class="top-menu mr-3 d-flex flex-column j-center a-center" @click="openScanCode">
-									<u-image width="50rpx" height="50rpx"
-										src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/scan-code.svg"
-										mode="" />
-									<view class="top-menu-text">
-										{{$t('扫码')}}
-									</view>
-								</view>
-								<!-- #endif -->
-								<view class="top-menu mr-3 d-flex flex-column j-center a-center" @click="$tools.Navigate.navigateTo('/pages-next/mine/message/index')">
-									<u-image width="50rpx" height="50rpx"
-										src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/message.svg"
-										mode="" />
-									<view class="top-menu-text">
-										{{$t('page.消息')}}
-									</view>
-								</view>
-								<view class="top-menu mr-1 d-flex flex-column j-center a-center" @click="$tools.Navigate.navigateTo('/pages-next/mine/setting/index')">
-									<u-image width="50rpx" height="50rpx"
-										src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/setting-two.svg"
-										mode="" />
-									<view class="top-menu-text">
-										{{$t('page.设置')}}
-									</view>
 								</view>
 							</view>
 						</view>
@@ -130,7 +135,8 @@
 				</view>
 				<!-- 菜单栏 -->
 				<view class="menu mt-2">
-					<view class="menu-item" v-for="(item, i) in menuList" :key="i" @click="$tools.Navigate.navigateTo(item.page)">
+					<view class="menu-item" v-for="(item, i) in menuList" :key="i"
+						@click="$tools.Navigate.navigateTo(item.page)">
 						<m-cell i18n v-if="item.id != 5" :item="item"></m-cell>
 						<!-- #ifdef H5 -->
 						<m-cell i18n v-if="item.id == 5" :item="item"></m-cell>
@@ -177,6 +183,7 @@
 			init() {
 				// this.openShow()
 			},
+			// 跳转页面
 			openOrderList(i) {
 				i == 5 ? this.$tools.Navigate.navigateTo('/pages-next/mine/my-evaluate/index') :
 					this.$tools.Navigate.navigateTo('/pages-next/mine/order-list/index', i)

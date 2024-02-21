@@ -65,17 +65,22 @@ import GNetworkError from '@/components/global/g-network-error/index.vue'
 Vue.component('g-network-error', GNetworkError)
 import GTimeout from '@/components/global/g-timeout/index.vue'
 Vue.component('g-timeout', GTimeout)
-import { SvgSymbolIcon, setGlobalOption } from '@svgjs/vue2-symbol-icon';
+// #ifdef H5
+import {
+	SvgSymbolIcon,
+	setGlobalOption
+} from '@svgjs/vue2-symbol-icon';
 Vue.component('symbol-icon', SvgSymbolIcon);
 import './config/svg-build/svg-sprite.js'
 // 全局设置，这时不支持设置 name
 setGlobalOption({
-  color: '#fb7290',
-  disabledColor: '#6c757d',
-  hoverColor: '#fb729090',
-  activedColor: '#fb729090',
-  placeholderColor: '#B2B2B2',
+	color: '#fb7290',
+	disabledColor: '#6c757d',
+	hoverColor: '#fb729090',
+	activedColor: '#fb729090',
+	placeholderColor: '#B2B2B2',
 });
+// #endif
 // 初始化 Vue 实例
 App.mpType = 'app'
 const app = new Vue({

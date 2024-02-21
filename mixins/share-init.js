@@ -111,6 +111,16 @@ export default {
 				console.log(e);
 			})
 		},
+		// APP系统分享
+		appSystemShare() {
+			plus.share.sendWithSystem({
+				pictures: ['/static/tutu66.jpg']
+			}, function() {
+				console.log('分享成功');
+			}, function(e) {
+				console.log('分享失败：' + JSON.stringify(e));
+			});
+		}
 		// #endif
 	}
 }

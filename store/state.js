@@ -6,7 +6,7 @@ export default {
 	miniProgramCapsule: uni.getStorageSync('miniProgramCapsule') || {}, //小程序胶囊信息
 	navbarHeight: uni.getStorageSync('navbarHeight') || 44, //自定义顶部导航栏高度
 	// #ifdef APP-PLUS
-	tabbarHeight: 0,	// APP端底部导航栏高度
+	tabbarHeight: 50,	// APP端底部导航栏高度
 	// #endif
 	// #ifndef APP-PLUS
 	tabbarHeight: 50,	// 除了APP的其他端底部导航栏高度
