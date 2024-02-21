@@ -1,6 +1,6 @@
 <template>
 	<view class="page" :style="scrollStyle">
-		<yingbing-video autoplay ref="video" v-if="!$check.isEmptyObject(detail)" :style="scrollStyle"
+		<yingbing-video objectFit="fill" autoplay ref="video" v-if="!$check.isEmptyObject(detail)" :style="scrollStyle"
 			:poster="detail.list[current].img" :initialTime="initialTime" :src="detail.list[current].videourl ? detail.list[current].videourl : '123.mp4'" settings="playbackRate"
 			@play="monitorPlay" @pause="monitorPause" @ended="ended" @timeupdate="timeupdate">
 			<template #controls>
