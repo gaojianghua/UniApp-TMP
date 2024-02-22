@@ -239,7 +239,7 @@
 		.poi {
 			display: none;
 			border-radius: 16rpx;
-			width: 200rpx;
+			width: max-content;
 			top: 88rpx;
 
 			.poi-item {
