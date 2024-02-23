@@ -37,7 +37,7 @@
 											{{item.time}} {{$t('到期')}}
 										</view>
 									</view>
-									<view v-if="item.type == 1" class="btns text-white ml-auto" @click="openModel">
+									<view v-if="item.type == 1" class="btns line-h-sm text-center text-white ml-auto" @click="openModel">
 										{{$t('立即使用')}}
 									</view>
 									<view v-else class="expired rounded-circle d-flex a-center j-center ml-auto p-1">
@@ -219,7 +219,7 @@
 
 
 			.btns {
-				padding: 6rpx 35rpx;
+				padding: 8rpx 35rpx;
 				background: linear-gradient(135deg, #FFBC3A, #FF9416);
 				border-radius: 30rpx;
 			}
