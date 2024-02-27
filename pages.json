@@ -198,9 +198,9 @@
 					"enablePullDownRefresh": false
 				}
 			}, {
-				"path": "mine/recreation/index",
+				"path": "mine/my-playlet/index",
 				"style": {
-					"navigationBarTitleText": "%page.娱乐中心%",
+					"navigationBarTitleText": "%page.短剧中心%",
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}

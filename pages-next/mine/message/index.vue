@@ -12,7 +12,7 @@
 								{{$t(item.name)}}
 							</view>
 							<view class="item-msg font text-ellipsis1">
-								{{$t(item.message)}}
+								{{item.message}}
 							</view>
 						</view>
 						<u-icon class="ml-auto" name="arrow-right" size="16"></u-icon>

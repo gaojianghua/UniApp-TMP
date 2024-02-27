@@ -1,0 +1,461 @@
+{
+	"code": "200",
+	"message": "success",
+	"data": {
+		"winnowList": [{
+				"id": 1,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			},
+			{
+				"id": 2,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			},
+			{
+				"id": 3,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			},
+			{
+				"id": 4,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			},
+			{
+				"id": 5,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "妖龙古帝",
+				"isChange": true,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			},
+			{
+				"id": 6,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			},
+			{
+				"id": 7,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			},
+			{
+				"id": 8,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "妖龙古帝",
+				"isChange": true,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			},
+			{
+				"id": 9,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			},
+			{
+				"id": 10,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			},
+			{
+				"id": 11,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "妖龙古帝",
+				"isChange": true,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			},
+			{
+				"id": 12,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "妖龙古帝",
+				"isChange": true,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			}
+		],
+		"bookshelfList": [{
+				"id": 1,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0
+			},
+			{
+				"id": 2,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0
+			},
+			{
+				"id": 3,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0
+			},
+			{
+				"id": 4,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0
+			},
+			{
+				"id": 5,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "妖龙古帝",
+				"isChange": true,
+				"chapterNum": 0
+			},
+			{
+				"id": 6,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0
+			},
+			{
+				"id": 7,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0
+			}
+		],
+		"list": [{
+				"id": 1,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			},
+			{
+				"id": 2,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			},
+			{
+				"id": 3,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			},
+			{
+				"id": 4,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			},
+			{
+				"id": 5,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "妖龙古帝",
+				"isChange": true,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			},
+			{
+				"id": 6,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			},
+			{
+				"id": 7,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			},
+			{
+				"id": 8,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "妖龙古帝",
+				"isChange": true,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			},
+			{
+				"id": 9,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			},
+			{
+				"id": 10,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"isChange": false,
+				"chapterNum": 0,
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"intro": "这儿有只乌龟，它就是个土匪！强盗！无耻败类！别惹它！不算正统异兽的强大兽类。"
+			}
+		],
+		"total": 20,
+		"tabs": [{
+				"id": 1,
+				"name": "综合"
+			},
+			{
+				"id": 2,
+				"name": "仙侠"
+			},
+			{
+				"id": 3,
+				"name": "杀伐果断"
+			},
+			{
+				"id":4,
+				"name": "智商在线"
+			},
+			{
+				"id": 5,
+				"name": "重生"
+			},
+			{
+				"id": 6,
+				"name": "玄幻"
+			},
+			{
+				"id": 7,
+				"name": "热血"
+			},
+			{
+				"id": 8,
+				"name": "扮猪吃虎"
+			},
+			{
+				"id": 9,
+				"name": "冷静"
+			},
+			{
+				"id": 10,
+				"name": "武侠"
+			},
+			{
+				"id": 11,
+				"name": "赘婿流"
+			},
+			{
+				"id": 12,
+				"name": "腹黑"
+			},
+			{
+				"id": 13,
+				"name": "古典仙侠"
+			}
+		],
+		"rankList": [{
+				"id": 1,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人之天帝传奇",
+				"mark": 9.8,
+				"school": 189200,
+				"type": "修仙",
+				"state": 1,
+				"recommend": 98,
+				"rank": 1,
+				"popular": 876390
+			},
+			{
+				"id": 2,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人之再创辉煌",
+				"mark": 9.8,
+				"school": 283200,
+				"type": "修仙",
+				"state": 2,
+				"recommend": 96,
+				"rank": 2,
+				"popular": 676390
+			},
+			{
+				"id": 3,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"mark": 9.6,
+				"school": 492200,
+				"type": "修仙",
+				"state": 1,
+				"recommend": 95,
+				"rank": 3,
+				"popular": 289390
+			},
+			{
+				"id": 4,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"mark": 9.6,
+				"school": 276800,
+				"type": "修仙",
+				"state": 1,
+				"recommend": 95,
+				"rank": 4,
+				"popular": 654390
+			},
+			{
+				"id": 5,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"mark": 9.5,
+				"school": 86880,
+				"type": "修仙",
+				"state": 2,
+				"recommend": 96,
+				"rank": 5,
+				"popular": 146390
+			},
+			{
+				"id": 6,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"mark": 9.3,
+				"school": 876920,
+				"type": "修仙",
+				"state": 1,
+				"recommend": 95,
+				"rank": 6,
+				"popular": 467100
+			},
+			{
+				"id": 7,
+				"img": "https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/141b53c86d1f6dc174982e6f122dcbfc.jpg",
+				"name": "大苍守夜人",
+				"mark": 9.4,
+				"school": 367450,
+				"type": "修仙",
+				"state": 2,
+				"recommend": 95,
+				"rank": 7,
+				"popular": 367840
+			}
+		]
+	}
+}

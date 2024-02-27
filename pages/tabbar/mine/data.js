@@ -95,8 +95,8 @@ const literList = [
 	},
 	{
 		src: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/liter3.svg',
-		name: '娱乐',
-		page: '/pages-next/mine/recreation/index'
+		name: '短剧',
+		page: '/pages-next/mine/my-playlet/index'
 	}
 ]
 
