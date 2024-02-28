@@ -273,5 +273,12 @@
             "enable" : true
         }
     },
-    "fallbackLocale" : "zh-Hans"
+    "fallbackLocale" : "zh-Hans",
+    "quickapp-webview" : {
+        "icon" : "/Users/gaojianghua/Downloads/GongYueLogo.png",
+        "package" : "uni.Gao.GongYue",
+        "minPlatformVersion" : 21,
+        "versionName" : "1.0.0",
+        "versionCode" : 100
+    }
 }
