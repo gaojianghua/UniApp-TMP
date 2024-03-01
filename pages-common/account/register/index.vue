@@ -132,6 +132,27 @@
 						duration: 1500
 					})
 				}
+				if(!this.query.rePassword) {
+					return this.$refs.uToast.show({
+						message: this.$t('请再次输入密码'),
+						type: 'warning',
+						duration: 1500
+					})
+				}
+				if(!this.query.code) {
+					return this.$refs.uToast.show({
+						message: this.$t('请输入验证码'),
+						type: 'warning',
+						duration: 1500
+					})
+				}
+				if(this.query.password !== this.query.rePassword) {
+					return this.$refs.uToast.show({
+						message: this.$t('两次密码不一致'),
+						type: 'warning',
+						duration: 1500
+					})
+				}
 				if(!this.query.inviteCode) {
 					this.query.inviteCode = '10001'
 				}

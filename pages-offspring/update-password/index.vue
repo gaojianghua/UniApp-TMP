@@ -5,17 +5,17 @@
 		<!-- 内容区域 -->
 		<view class="pt-10 px-3 d-flex a-center j-center flex-column">
 			<view class="bottom">
-				<u-input :customStyle="{height: '88rpx', caretColor: '#f27299'}" type="text" border="none"
+				<u-input :customStyle="{height: '88rpx', caretColor: '#f27299'}" type="password" border="none"
 					:placeholder="$t('原密码')" v-model="query.oldPassword">
 				</u-input>
 			</view>
 			<view class="bottom mt-3">
-				<u-input :customStyle="{height: '88rpx', caretColor: '#f27299'}" type="text" border="none"
+				<u-input :customStyle="{height: '88rpx', caretColor: '#f27299'}" type="password" border="none"
 					:placeholder="$t('新密码')" v-model="query.newPassword">
 				</u-input>
 			</view>
 			<view class="bottom mt-3">
-				<u-input :customStyle="{height: '88rpx', caretColor: '#f27299'}" type="text" border="none"
+				<u-input :customStyle="{height: '88rpx', caretColor: '#f27299'}" type="password" border="none"
 					:placeholder="$t('确认密码')" v-model="query.rePassword">
 				</u-input>
 			</view>
@@ -23,10 +23,12 @@
 				{{$t('page.修改密码')}}
 			</view>
 		</view>
+		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 
 <script>
+import { item } from '../../main_modules/main-ui/m-cell/props'
 	export default {
 		data() {
 			return {
@@ -43,7 +45,41 @@
 		methods: {
 			// 提交修改密码
 			switchUpdate() {
+				if(!this.query.oldPassword) {
+					return this.$refs.uToast.show({
+						message: this.$t('请输入原密码'),
+						type: 'warning',
+						duration: 1500
+					})
+				}
+				if(!this.query.newPassword) {
+					return this.$refs.uToast.show({
+						message: this.$t('请输入新密码'),
+						type: 'warning',
+						duration: 1500
+					})
+				}
+				if(!this.query.rePassword) {
+					return this.$refs.uToast.show({
+						message: this.$t('请再次输入新密码'),
+						type: 'warning',
+						duration: 1500
+					})
+				}
+				if(this.query.newPassword !== this.query.rePassword) {
+					return this.$refs.uToast.show({
+						message: this.$t('两次新密码不一致'),
+						type: 'warning',
+						duration: 1500
+					})
+				}
 				
+				this.$refs.uToast.show({
+					message: this.$t('修改密码成功'),
+					type: 'success',
+					duration: 1200,
+					complete: () => Object.keys(this.query).forEach(item => this.query[item] = '')
+				})
 			}
 		}
 	}

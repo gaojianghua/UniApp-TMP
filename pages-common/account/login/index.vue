@@ -39,7 +39,7 @@
 							<u-icon slot="suffix" :name="eyeStr" size="20" color="#999" @click="switchEye"></u-icon>
 						</u-input>
 					</view>
-					<view v-if="isLoginType != 1" class="notice my-4 text-center" @click="$tools.Navigate.navigateTo('/pages/account/register/index')">
+					<view v-if="isLoginType != 1" class="notice my-4 text-center" @click="$tools.Navigate.navigateTo('/pages-common/account/register/index')">
 						{{$t('还没有账号？立即注册 ->')}}
 					</view>
 					<view @click="submitLogin" class="mb-4 btons d-flex a-center j-center text-white">
@@ -141,7 +141,7 @@
 					}
 					if(this.isLoginType == 2 && !this.query.code) {
 						return this.$refs.uToast.show({
-							message: this.$t('请输入密码'),
+							message: this.$t('请输入验证码'),
 							type: 'warning',
 							duration: 1500
 						})
