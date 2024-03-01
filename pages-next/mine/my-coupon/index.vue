@@ -219,7 +219,7 @@
 
 
 			.btns {
-				padding: 8rpx 35rpx;
+				padding: 12rpx 35rpx;
 				background: linear-gradient(135deg, #FFBC3A, #FF9416);
 				border-radius: 30rpx;
 			}

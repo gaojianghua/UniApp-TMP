@@ -15,6 +15,7 @@
 	"page.选择城市": "Select City",
 	"page.我的评价": "My Evaluate",
 	"page.订单列表": "Order List",
+	"page.订单支付": "Order Pay",
 	"page.用户协议": "User Agreement",
 	"page.隐私政策": "Privacy Policy",
 	"page.个人信息": "Personal Information",
@@ -63,7 +64,7 @@
 	"page.我的小说": "My Novel",
 	"page.我的漫画": "My Comics",
 	"page.阅读历史": "Read History",
-	"page.短剧中心": "Playlet Center",
+	"page.娱乐中心": "Recreation",
 	"page.小说排行榜": "Novel Rank",
 	"page.漫画排行榜": "Comics Rank",
 	"page.编辑收货地址": "Edit Shipping Address",
@@ -203,6 +204,7 @@
 	"清除缓存成功~": "Clearing cache succeeded ~",
 	"未绑定手机号": "No mobile phone been bound",
 	"已绑定手机号": "Mobile phone been bound",
+	"更换绑定手机号成功": "Change of bound mobile number successfully",
 	"当前版本": "Current version",
 	"退出登录": "Log out",
 	"由个人开发者高江华 版权所有": "All rights reserved by the individual developer Gao Jianghua",
@@ -341,7 +343,7 @@
 	"漫友在看": "People viewing",
 	"连载中": "In progress",
 	"已完结": "Finished",
-	"短剧": "Playlet",
+	"娱乐": "Recreate",
 	"漫画": "Comics",
 	"小说": "Novel",
 	"人气": "Popular",
@@ -454,9 +456,7 @@
 	"余额不足，请充值": "Insufficient balance, please top up",
 	"您还未登录。请登录后购买！": "You are not logged in. Please login to purchase!",
 	"邮箱格式不正确": "Email format is incorrect",
-	"当前播放": "Current Play",
-	"活动通知": "Activity Notification",
-	"系统通知": "System Notification",
-	"服务通知": "Service Notification"
+	"当前播放": "Current Play"
+	
 	
 }

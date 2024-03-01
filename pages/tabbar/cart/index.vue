@@ -174,7 +174,7 @@
 			},
 			// 提交结算
 			submit() {
-
+				this.$tools.Navigate.navigateTo('/pages-next/cart/order-pay/index')
 			},
 			// 删除确认
 			confirmDelete() {

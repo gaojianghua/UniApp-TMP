@@ -35,7 +35,7 @@
 			<!-- 右边二级分类以及商品列表 -->
 			<view class="kind-right flex-1 h-100">
 				<view v-if="tabs[oneCurrent]" class="two-list d-flex w-100 a-center position-relative">
-					<m-tabs :chooseIndex="twoCurrent" @changeTab="changeTab"
+					<m-tabs :chooseIndex="twoCurrent" @changeTab="switchTwoTabs" scrollBgColor="#fff"
 						:scrollStyle="{width: `calc(80vw - 88rpx)`}" chooseBgColor="#fb7299"
 						:chooseTextStyle="{color: '#fff'}" :slideNum="1" scrollHeight="88rpx"
 						:tabs="tabs[oneCurrent].bxMallSubDto" keyName="mallSubName">
@@ -176,18 +176,6 @@
 			openSearch() {
 				this.$tools.Navigate.navigateTo('/pages-next/common/search/index')
 			},
-			// 点击切换tabs
-			changeTab(i) {
-				this.isLock = true
-				this.twoCurrent = i.index
-				this.resetData()
-			},
-			// 滑动切换tabs
-			changeSwiper(i) {
-				if (this.isLock) return
-				this.twoCurrent = i
-				this.resetData()
-			},
 			// 重置数据
 			resetData() {
 				this.list = []
@@ -209,8 +197,9 @@
 				this.resetData()
 			},
 			// 点击二级分类
-			switchTwoTabs(item, i) {
-				this.twoCurrent = i
+			switchTwoTabs(i) {
+				this.isLock = true
+				this.twoCurrent = i.index
 				this.resetData()
 			},
 			// 进入商品详情页

@@ -32,6 +32,7 @@
 		</view>
 		<!-- 弹出层 -->
 		<c-country-code @switchArea="switchArea" :show="show" @close="show = false" :active="query.countryCode"/>
+		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
 
@@ -62,7 +63,26 @@
 		methods: {
 			// 修改手机号
 			switchUpdate() {
-
+				if(!this.query.phone) {
+					return this.$refs.uToast.show({
+						message: this.$t('请输入手机号'),
+						type: 'warning',
+						duration: 1500
+					})
+				}
+				if(!this.query.code) {
+					return this.$refs.uToast.show({
+						message: this.$t('请输入验证码'),
+						type: 'warning',
+						duration: 1500
+					})
+				}
+				this.$refs.uToast.show({
+					message: this.$t('更换绑定手机号成功'),
+					type: 'success',
+					duration: 1200,
+					complete: () => this.$tools.Navigate.navigateBack()
+				})
 			},
 			// 选中区号
 			switchArea(i) {
