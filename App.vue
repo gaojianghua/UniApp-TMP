@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="h-100">
 		<!-- 在App.vue中添加的全局组件 -->
 		<g-network-error></g-network-error>
 		<g-timeout></g-timeout>
