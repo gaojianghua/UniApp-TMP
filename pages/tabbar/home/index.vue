@@ -8,7 +8,8 @@
 				<!-- 定位城市 -->
 				<view class="d-flex a-center mr-2"
 					@click="$tools.Navigate.navigateTo('/pages-next/home/select-city/index')">
-					<u-image height="50rpx" width="50rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/home/location.png"></u-image>
+					<u-image height="50rpx" width="50rpx"
+						src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/home/location.png"></u-image>
 					<text class="ml-1">{{ liveCity }}</text>
 				</view>
 				<!-- 搜索框 -->
@@ -22,8 +23,8 @@
 		<m-scroll-y isTab :isLoading="isLoading" i18n :scrollStyle="scrollStyle" :load="load" bgColor="transparent"
 			@loadmore="loadmore" @onRefresh="onRefresh">
 			<view class="content pt-2 px-2 bg-white">
-				<u-swiper height="320rpx" circular indicatorActiveColor="#f27299" :list="banner" keyName="image" indicator
-					@click="bannerClick" />
+				<u-swiper height="320rpx" circular indicatorActiveColor="#f27299" :list="banner" keyName="image"
+					indicator @click="bannerClick" />
 				<view class="menu-list mt-1 d-flex flex-wrap">
 					<view class="menu-item mt-2 d-flex flex-column j-center a-center" v-for="(item, i) in menus"
 						:key="i">
@@ -34,7 +35,8 @@
 					</view>
 				</view>
 				<view class="mt-3" @click="$tools.Navigate.navigateTo('/pages-next/mine/member-center/index')">
-					<u-image radius="5" width="710rpx" height="110rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/home/vip-banner.png"></u-image>
+					<u-image radius="5" width="710rpx" height="110rpx"
+						src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/home/vip-banner.png"></u-image>
 				</view>
 				<view class="d-flex a-center mt-3">
 					<view class="font-weight" style="font-size: 32rpx;" @click="getPublicKey()">
@@ -56,8 +58,8 @@
 					<view class="goods-item" :style="{width: direction == 'Y' ? '48.8%' : '100%'}"
 						v-for="(item, i) in list" :key="i" @click.stop="openDetail(item)">
 						<m-goods-card @addCart="addCart" :item="item" :direction="direction" imageWidth="200rpx"
-							:imageHeight="direction == 'Y' ? '300rpx' : '200rpx'" isSales isDesc isOldPrice isOver isVIP
-							isCartBtn></m-goods-card>
+							:imageHeight="direction == 'Y' ? '300rpx' : '200rpx'" isSales isDesc isOldPrice isOver
+							isVIP></m-goods-card>
 					</view>
 				</view>
 			</view>
@@ -82,7 +84,9 @@
 		menus
 	} from './data.js'
 	import goods from '@/pages-common/data/goods.json'
-	import { getPublicKey } from '@/utils/request/api/post.js'
+	import {
+		getPublicKey
+	} from '@/utils/request/api/post.js'
 	export default {
 		mixins: [tabbarInit, capsuleInit, shareInit],
 		components: {
@@ -117,7 +121,10 @@
 				this.getLangList()
 			},
 			async getPublicKey() {
-				let { code, data } = await getPublicKey()
+				let {
+					code,
+					data
+				} = await getPublicKey()
 			},
 			// 获取数据
 			async getData(e) {

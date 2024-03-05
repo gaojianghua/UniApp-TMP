@@ -28,7 +28,10 @@
 				</view>
 				<view v-if="isSales" class="item-tags mt-1 d-flex a-center">
 					<view class="item-tags-child px-1">
-						销量：{{item.sales}}件
+						销量：{{item.sales | numberFormat('k')}}件
+					</view>
+					<view class="ml-auto">
+						<slot name="item-number-box" />
 					</view>
 				</view>
 				<slot name="item-tags" />
@@ -76,7 +79,8 @@
 			},
 			checkClick() {
 				this.$emit('checkClick', this.item)
-			}
+			},
+			
 		}
 	}
 </script>

@@ -60,7 +60,7 @@
 								v-for="(item, i) in list" :key="i" @click.stop="openDetail(item)">
 								<m-goods-card @addCart="addCart" :item="item" :direction="direction" imageWidth="200rpx"
 									:imageHeight="direction == 'Y' ? '300rpx' : '200rpx'" isSales
-									isDesc isOldPrice isOver isVIP isCartBtn></m-goods-card>
+									isDesc isOldPrice isOver isVIP></m-goods-card>
 							</view>
 						</view>
 					</m-scroll-y>

@@ -46,7 +46,11 @@
 						@click="openDetail(item)">
 						<m-goods-card @checkClick="checkClicke" @addCart="addCart" :item="item" :direction="direction" imageWidth="200rpx"
 							:imageHeight="direction == 'Y' ? '300rpx' : '200rpx'" isSales
-							isDesc isOldPrice isOver isVIP :isCartBtn="false" isChecked></m-goods-card>
+							isDesc isOldPrice isOver isVIP :isCartBtn="false" isChecked>
+							<template slot="item-number-box">
+								<m-number-box :num="item.num"></m-number-box>
+							</template>
+						</m-goods-card>
 					</view>
 				</view>
 			</m-scroll-y>
@@ -106,6 +110,7 @@
 <script>
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
 	import MGoodsCard from '@/main_modules/main-ui/m-goods-card/index.vue'
+	import MNumberBox from '@/main_modules/main-ui/m-number-box/index.vue'
 	import goods from '@/pages-common/data/goods.json'
 	import tabbarInit from '@/mixins/tabbar-init.js'
 	import capsuleInit from '@/mixins/capsule-init.js'
@@ -113,7 +118,8 @@
 		mixins: [tabbarInit,capsuleInit],
 		components: {
 			MTabbar,
-			MGoodsCard
+			MGoodsCard,
+			MNumberBox
 		},
 		data() {
 			return {
