@@ -186,13 +186,13 @@
 
 		.bg-box {
 			background: url('https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/VIP-bg.png') no-repeat;
-			background-size: cover;
+			background-size: 100% 100%;
 			border-radius: 0 0 40rpx 40rpx;
 			position: relative;
 
 			.bg-card {
 				background: url('https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/VIP-card.png') no-repeat;
-				background-size: cover;
+				background-size: 100% 100%;
 				width: calc(100% - 60rpx);
 				position: absolute;
 				height: 341rpx;

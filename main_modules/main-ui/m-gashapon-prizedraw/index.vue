@@ -94,7 +94,7 @@
 		width: 636rpx;
 		height: 712rpx;
 		background: url('https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/niu.png') no-repeat;
-		background-size: cover;
+		background-size: 100% 100%;
 		padding-top: 80rpx;
 	
 		.list {
@@ -505,7 +505,7 @@
 			height: 93.5rpx;
 			margin: 30rpx 0 0 18rpx;
 			background: url('https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/ballbutton.png') no-repeat;
-			background-size: cover;
+			background-size: 100% 100%;
 			transition: transform 0.2s ease-out;
 		}
 	

@@ -373,7 +373,7 @@
 <style lang="scss" scoped>
 	.page {
 		background: url('https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/login-bg.jpg') no-repeat;
-		background-size: cover;
+		background-size: 100% 100%;
 
 		.share {
 			.share-item {
@@ -381,7 +381,7 @@
 					height: calc(100% - 160rpx) !important;
 					transform: scale(0.85);
 					background-repeat: no-repeat;
-					background-size: cover;
+					background-size: 100% 100%;
 					border-radius: 15rpx;
 					transition: all 0.3s linear;
 
@@ -404,7 +404,7 @@
 						height: 400rpx;
 						background-image: url('https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/share-bc.png');
 						background-repeat: no-repeat;
-						background-size: cover;
+						background-size: 100% 100%;
 						position: absolute;
 						left: 50%;
 						bottom: 32rpx;

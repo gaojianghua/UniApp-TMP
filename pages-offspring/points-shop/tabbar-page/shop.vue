@@ -289,7 +289,7 @@
 			.coupon-item {
 				height: 170rpx;
 				background: url('https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/coupon.png') no-repeat;
-				background-size: cover;
+				background-size: 100% 100%;
 				border-radius: 16rpx;
 
 				.info {

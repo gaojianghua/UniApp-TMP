@@ -215,7 +215,7 @@
 <style lang="scss" scoped>
 	.page {
 		background: url('https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/login-bg.jpg') no-repeat;
-		background-size: cover;
+		background-size: 100% 100%;
 
 		.desc {
 			font-size: 38rpx;

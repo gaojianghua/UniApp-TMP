@@ -86,7 +86,7 @@
 				left: 0;
 				bottom: 0;
 				background: url('@https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/invite1.png') no-repeat;
-				background-size: cover;
+				background-size: 100% 100%;
 
 				.rect-img {
 					width: 589rpx;
@@ -97,7 +97,7 @@
 					z-index: 1;
 					transform: translateX(-50%);
 					background: url('@https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/invite3.png') no-repeat;
-					background-size: cover;
+					background-size: 100% 100%;
 				}
 
 				.rect-content {
@@ -109,7 +109,7 @@
 					z-index: 2;
 					transform: translateX(-50%);
 					background: url('@https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/invite2.png') no-repeat;
-					background-size: cover;
+					background-size: 100% 100%;
 
 
 					.rect-title {

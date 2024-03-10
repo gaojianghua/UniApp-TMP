@@ -51,7 +51,7 @@
 <style lang="scss" scoped>
 	.page {
 		background: url('https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/cache-bg.png') no-repeat;
-		background-size: cover;
+		background-size: 100% 100%;
 		height: 350rpx;
 		.cache {
 			.cache-card {
