@@ -23,7 +23,8 @@ export const banner = [{
 export const menus = [{
 		id: 0,
 		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(11).png',
-		name: '乐器音乐'
+		name: '水印相机',
+		page: '/pages-next/home/watermark-camera/index'
 	},
 	{
 		id: 1,

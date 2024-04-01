@@ -72,7 +72,7 @@
                 "abiFilters" : [ "armeabi-v7a", "arm64-v8a", "x86" ],
                 "schemes" : "gongyue",
                 "minSdkVersion" : 21,
-                "targetSdkVersion" : 33
+                "targetSdkVersion" : 34
             },
             /* ios打包配置 */
             "ios" : {
@@ -163,7 +163,7 @@
         "uniStatistics" : {
             "enable" : true
         },
-        "nvueCompiler" : "uni-app"
+        "nvueCompiler" : "weex"
     },
     /* 快应用特有相关 */
     "quickapp" : {},

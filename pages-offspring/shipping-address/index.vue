@@ -2,7 +2,7 @@
 	<view class="page">
 		<!-- 顶部导航 -->
 		<m-navbar bgColor="#fff" textColor="#fb7299" value="page.收货地址" i18n>
-			<template :slot="'right'">
+			<template slot="right">
 				<view :class="isManage ? 'bg-warning text-white' : 'bg-light-secondary'"
 					class="manage position-absolute" @click="isManage = !isManage">
 					{{isManage ? $t('完成') : $t('管理')}}

@@ -27,7 +27,7 @@
 					indicator @click="bannerClick" />
 				<view class="menu-list mt-1 d-flex flex-wrap">
 					<view class="menu-item mt-2 d-flex flex-column j-center a-center" v-for="(item, i) in menus"
-						:key="i">
+						:key="i" @click="$tools.Navigate.navigateTo(item.page)">
 						<u-image height="88rpx" width="88rpx" :src="item.src"></u-image>
 						<view class="">
 							{{item.name}}
