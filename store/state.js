@@ -59,7 +59,11 @@ export default {
 	token: uni.getStorageSync('token') || '',	// 登录凭证
 	userinfo: uni.getStorageSync('userinfo') || {},		// 用户信息
 	sysConfig: uni.getStorageSync('config') || {},		// 业务系统配置
-	liveCity: uni.getStorageSync('liveCity') || '武汉',		// 所在城市
+	location: uni.getStorageSync('location') || {
+		address: {
+			city: '武汉'
+		}
+	},		// 所在城市
 	contacts: uni.getStorageSync('contacts') || [],		// 通讯录数据
 	cartList: uni.getStorageSync('cartList') || [],		// 购物车数据
 	shippingAddress: [], // 收货地址

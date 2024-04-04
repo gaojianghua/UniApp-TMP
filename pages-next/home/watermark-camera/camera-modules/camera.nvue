@@ -1,0 +1,148 @@
+<template>
+	<cover-view class="camera-container" ref="container" :style="getCameraSize">
+		<live-pusher
+			id="livePusher" 
+			ref="livePusher" 
+			mode="FHD" 
+			beauty="0" 
+			whiteness="0"
+			:aspect="aspect" 
+			min-bitrate="1000" 
+			audio-quality="16KHz" 
+			device-position="front" 
+			:auto-focus="true"
+			:muted="true" 
+			:enable-camera="true" 
+			:enable-mic="false" 
+			:zoom="false"  
+			@statechange="statechange"
+			:style="getCameraSize"
+			url="ssss"
+		/>
+	</cover-view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				poenCarmeInterval: null, //打开相机的轮询
+				aspect: '2:3', //比例
+				camerastate: false, //相机准备好了
+				livePusher: null, //流视频对象
+				snapshotsrc: null, //快照
+				light: false,
+			};
+		},
+		created() {
+			this.livePusher = uni.createLivePusherContext('livePusher', this);
+			// this.startPreview(); //开启预览并设置摄像头
+			this.poenCarme();
+		},
+		methods: {
+			//轮询打开
+			poenCarme() {
+				//#ifdef APP-PLUS
+				if (plus.os.name == 'Android') {
+					this.poenCarmeInterval = setInterval(function() {
+						console.log(this.camerastate);
+						if (!this.camerastate) this.startPreview();
+					}, 2500);
+				}
+				//#endif
+			},
+			
+			//开始预览，初始化
+			startPreview() {
+				this.livePusher.startPreview({
+					success: a => {
+						console.log('startPreview', a)
+					},
+					fail: err => {
+						console.log(err)
+					}
+				});
+			},
+			
+			//停止预览
+			stopPreview() {
+				this.livePusher.stopPreview({
+					success: a => {
+						this.camerastate = false; //标记相机未启动
+					}
+				});
+			},
+			
+			//状态
+			statechange(e) {
+				//状态改变
+				console.log(e);
+				if (e.detail.code == 1007) {
+					this.camerastate = true;
+				} else if (e.detail.code == -1301) {
+					this.camerastate = false;
+				}
+			},
+			
+			//返回
+			back(ee) {
+				uni.navigateBack();
+				console.log(ee)
+			},
+			
+			//抓拍
+			snapshot() {
+				//震动
+				uni.vibrateShort({
+					success: function() {
+						console.log('success');
+					}
+				});
+				this.livePusher.start({
+					success: (a) => {
+						console.log("livePusher.start:" + JSON.stringify(a));
+					}
+				});
+				console.log(this.$refs.container)
+				//拍照 
+				this.livePusher.snapshot({
+					success: e => {
+						this.snapshotsrc = e.message.tempImagePath;
+						debugger
+						console.log(e.message.tempImagePath)
+						// 压缩图片
+						uni.compressImage({
+							src: e.message.tempImagePath,
+							quality: 80,
+					  success: list => {
+								console.log(list)
+								// 转Base64
+								// pathToBase64(list.tempFilePath)
+								// 	.then(base64 => {
+								// 		uni.setStorageSync('pic', base64)
+								// 		_this.stopPreview();	
+								// 		uni.navigateBack();
+								// 	})
+							}
+						})
+					},
+					error: e => {
+						debugger
+					},
+					finally: (e)=> {
+							debugger
+					}
+				})
+			},
+			
+			//反转
+			flip() {
+				this.livePusher.switchCamera();
+			}
+		}
+	}
+</script>
+
+<style lang="scss" scoped>
+
+</style>

@@ -10,7 +10,7 @@
 					@click="$tools.Navigate.navigateTo('/pages-next/home/select-city/index')">
 					<u-image height="50rpx" width="50rpx"
 						src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/home/location.png"></u-image>
-					<text class="ml-1">{{ liveCity }}</text>
+					<text class="ml-1">{{ $store.state.location.address.city }}</text>
 				</view>
 				<!-- 搜索框 -->
 				<view class="position-relative flex-1">
@@ -119,6 +119,7 @@
 			init() {
 				this.getData()
 				this.getLangList()
+				this.$store.dispatch('getLocation')
 			},
 			async getPublicKey() {
 				let {

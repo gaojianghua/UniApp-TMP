@@ -35,8 +35,8 @@ export default {
 	updateNavbarHeight(state, e) {
 		state.navbarHeight = e
 	},
-	updateLiveCity(state, e) {
-		state.liveCity = e
+	updateLocation(state, e) {
+		state.location = e
 	},
 	updateContacts(state, e) {
 		state.contacts = e

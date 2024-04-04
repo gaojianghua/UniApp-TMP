@@ -59,5 +59,28 @@ export default {
 			commit('updateUserinfo', data)
 			uni.setStorageSync('userinfo', data)
 		}
+	},
+	// 获取定位数据
+	getLocation({
+		commit
+	}) {
+		uni.getLocation({
+			isHighAccuracy: true,
+			geocode: true,
+			success: (e) => {
+				!e.address ? commit('updateLocation', {
+					address: {
+						city: '武汉'
+					}
+				}) :
+				commit('updateLocation', e)
+			},
+			fail: (e) => {
+				uni.showToast({
+					title: '获取当前地址失败',
+					icon: 'none'
+				})
+			}
+		})
 	}
 }
