@@ -33,7 +33,6 @@
 	import global from '@/global/index.js'
 	export default {
 		onLaunch: function() {
-			console.log('123')
 			/**
 			 * APP端
 			 */

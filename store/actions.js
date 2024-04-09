@@ -2,6 +2,7 @@ import {
 	getSysConfig,
 	getUserInfo
 } from '@/main_modules/request/api/get.js'
+import i18n from '@/main.js'
 
 
 export default {
@@ -77,7 +78,7 @@ export default {
 			},
 			fail: (e) => {
 				uni.showToast({
-					title: '获取当前地址失败',
+					title: i18n.$t('获取当前地址失败'),
 					icon: 'none'
 				})
 			}

@@ -65,6 +65,8 @@
 			</view>
 		</m-scroll-y>
 		<!-- 弹框 -->
+		<c-app-authorization ref="authpup" type="top" @changeAuth="changeAuth"
+			permissionID="ACCESS_FINE_LOCATION"></c-app-authorization>
 		<c-lang-model :show="show" @close="show = false" @confirmSwitch="confirmSwitch" />
 		<u-toast ref="uToast"></u-toast>
 		<!-- 底部导航栏 -->
@@ -73,6 +75,7 @@
 </template>
 
 <script>
+	import CAppAuthorization from '@/components/common/c-app-authorization/index.vue'
 	import MTabbar from '@/main_modules/main-ui/m-tabbar/index.vue'
 	import MGoodsCard from '@/main_modules/main-ui/m-goods-card/index.vue'
 	import CLangModel from '@/components/common/c-lang-model/index.vue'
@@ -92,7 +95,8 @@
 		components: {
 			MTabbar,
 			MGoodsCard,
-			CLangModel
+			CLangModel,
+			CAppAuthorization
 		},
 		data() {
 			return {
@@ -114,18 +118,27 @@
 		onLoad() {
 			this.init()
 		},
+		onReady() {
+			let time = setTimeout(()=> {
+				this.$refs['authpup'].open()
+			}, 0)
+		},
 		methods: {
 			// 初始化
 			init() {
 				this.getData()
 				this.getLangList()
-				this.$store.dispatch('getLocation')
 			},
 			async getPublicKey() {
 				let {
 					code,
 					data
 				} = await getPublicKey()
+			},
+			//用户授权权限后的回调
+			changeAuth() {
+				//这里是权限通过后执行自己的代码逻辑
+				this.$store.dispatch('getLocation')
 			},
 			// 获取数据
 			async getData(e) {

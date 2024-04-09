@@ -26,6 +26,8 @@
 			</view>
 		</view>
 		<!-- 弹框 -->
+		<c-app-authorization ref="authpup" type="top" @changeAuth="changeAuth"
+			permissionID="CAMERA"></c-app-authorization>
 		<m-modal :show="show" i18n title="修改用户名" @cancel="show = false" @confirm="confirmChangeUsername">
 			<view id="info" class="d-flex a-center j-center">
 				<u-input type="text"
@@ -41,7 +43,11 @@
 </template>
 
 <script>
+	import CAppAuthorization from '@/components/common/c-app-authorization/index.vue'
 	export default {
+		components: {
+			CAppAuthorization
+		},
 		data() {
 			return {
 				show: false,
@@ -71,6 +77,15 @@
 			}
 		},
 		methods: {
+			// 调起自定义权限目的弹框
+			openAuth() {
+				this.$refs['authpup'].open()
+			},
+			//用户授权权限后的回调
+			changeAuth() {
+				//这里是权限通过后执行自己的代码逻辑
+				console.log('权限已授权，可执行自己的代码逻辑了');
+			},
 			//上传图片事件
 			afterRead(e) {
 				uni.uploadFile({

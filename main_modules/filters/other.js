@@ -1,7 +1,6 @@
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 import rTime from 'dayjs/plugin/relativeTime'
-import { i18n } from '../main-ui/m-single-tabbar/props'
 dayjs.extend(rTime)
 
 

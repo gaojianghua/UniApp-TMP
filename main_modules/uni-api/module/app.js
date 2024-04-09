@@ -12,7 +12,14 @@ export default {
 	// 前往系统设置
 	openSystemSettings() {
 		if (plus.os.name === 'iOS') {
-			plus.runtime.openURL("app-settings://");
+			let UIApplication = plus.ios.import("UIApplication");
+			let application2 = UIApplication.sharedApplication();
+			let NSURL2 = plus.ios.import("NSURL");
+			let setting2 = NSURL2.URLWithString("app-settings:");
+			application2.openURL(setting2);
+			plus.ios.deleteObject(setting2);
+			plus.ios.deleteObject(NSURL2);
+			plus.ios.deleteObject(application2);
 		} else {
 			let Intent = plus.android.importClass("android.content.Intent");
 			let Settings = plus.android.importClass("android.provider.Settings");
