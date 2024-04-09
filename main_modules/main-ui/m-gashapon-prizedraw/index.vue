@@ -84,6 +84,9 @@
 				if (!nv) {
 					this.styleCacheMap = {}
 				}
+			},
+			isButtonTap(nv, ov) {
+				console.log(nv)
 			}
 		}
 	}

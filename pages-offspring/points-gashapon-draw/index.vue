@@ -15,7 +15,7 @@
 					</view>
 					<view v-else class="content d-flex a-center j-center flex-column pt-10 pb-3">
 						<u-image width="690rpx" height="96rpx" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/text.png"></u-image>
-						<MGashaponPrizedraw :prizeList="list" :eggList="eggList" :isButtonTap="isButtonTap" :isStart="isStart" @startLuckyDraw="startLuckyDraw" />
+						<MGashaponPrizedraw :prizeList="list" :eggList="eggList" :isButtonTap.sync="isButtonTap" :isStart="isStart" @startLuckyDraw="startLuckyDraw" />
 						<view class="title-btn d-flex a-center j-center mt-3 px-5">
 							{{$t('剩余积分')}}：{{userinfo.points}}
 						</view>
@@ -172,7 +172,9 @@ import { item } from '../../main_modules/main-ui/m-cell/props'
 				} else {
 					this.lock = false
 				}
-				this.isButtonTap = false
+				let time = setTimeout(() => {
+					this.isButtonTap = false
+				}, 300)
 			},
 			// 前往抽奖记录
 			openRecord() {
