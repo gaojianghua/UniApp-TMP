@@ -9,7 +9,7 @@ const path = require('path');
 const app_id = '48013cb8c21ed176';
 const secret_key = 'H1AYEg1UylznWHRkeqZgqA2hLvYzZFcU';
 const from = 'zh-Hans';
-const to = 'th';
+const to = 'zh-CHT';
 let ident = '.'
 let prefix = ''
 const prefixArr = []
@@ -38,13 +38,13 @@ function getLangFile(lang) {
 
 	// 迭代所有匹配项并获取键名
 	while ((match = pattern.exec(jsFileContent)) !== null) {
-		if(match[1].includes(ident)) {
+		if (match[1].includes(ident)) {
 			if (!prefix) {
 				prefix = match[1].split(ident)[0] + ident
 			}
 			keys.push(match[1].replace(prefix, ''))
 			prefixArr.push(match[1].replace(prefix, ''))
-		}else {
+		} else {
 			keys.push(match[1]);
 		}
 	}
@@ -59,6 +59,7 @@ function getLangFile(lang) {
 const genLangFile = (translatedData, lang) => {
 	console.log('开始生成语言文件');
 	const langFile = `../${lang}.json`;
+	// const langFile = `../zh-Hant.json`;
 	try {
 		const langFileContent = JSON.stringify(translatedData, null, 2);
 		fs.writeFileSync(langFile, langFileContent, 'utf8');
@@ -80,7 +81,7 @@ const translateChineseArray = async (chineseArray, translatedArray = {}) => {
 
 		const translatedData = await sendPostRequest(text);
 		const translatedDataArrary = translatedData.split('\n');
-		
+
 		chunk.forEach((item, i) => {
 			prefixArr.forEach(it => {
 				if (item === it) {

@@ -15,13 +15,13 @@ const moreLogins = [{
 const loginType = [
 	{
 		id: 1,
-		name: '一键登录 ->'
+		name: '一键登录'
 	},{
 		id: 2,
-		name: '验证码登录 ->'
+		name: '验证码登录'
 	},{
 		id: 3,
-		name: '密码登录 ->'
+		name: '密码登录'
 	}
 ]
 

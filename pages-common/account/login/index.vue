@@ -40,7 +40,7 @@
 						</u-input>
 					</view>
 					<view v-if="isLoginType != 1" class="notice my-4 text-center" @click="$tools.Navigate.navigateTo('/pages-common/account/register/index')">
-						{{$t('还没有账号？立即注册 ->')}}
+						{{$t('还没有账号？立即注册')}} ->
 					</view>
 					<view @click="submitLogin" class="mb-4 btons d-flex a-center j-center text-white">
 						{{isLoginType == 1 ? $t('同意协议并一键登录') : $t('立即登录')}}
@@ -52,7 +52,7 @@
 						:key="i" 
 						:class="isLoginType == (i+1) ? 'active' : ''"
 						@click="isLoginType = item.id">
-							{{$t(item.name)}}
+							{{$t(item.name)}} ->
 						</view>
 					</view>
 				</view>

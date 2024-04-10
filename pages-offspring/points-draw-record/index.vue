@@ -17,7 +17,7 @@
 							<span class="item-time-text ml-1">{{item.time}}</span>
 						</view>
 						<view class="item-value d-flex a-center mt-1">
-							<view class="item-value-notice">{{$t('恭喜中奖 ->')}}</view>
+							<view class="item-value-notice">{{$t('恭喜中奖')}} -></view>
 							<view class="item-value-text ml-auto">{{item.value}}</view>
 						</view>
 					</view>
