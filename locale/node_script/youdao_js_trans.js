@@ -6,13 +6,13 @@ const CryptoJS = require('crypto-js');
 const fs = require('fs');
 const path = require('path');
 
-const app_id = '48013cb8c21ed176';
-const secret_key = 'H1AYEg1UylznWHRkeqZgqA2hLvYzZFcU';
-const from = 'zh-Hans';
-const to = 'zh-CHT';
-let ident = '.'
-let prefix = ''
-const prefixArr = []
+const app_id = '48013cb8c21ed176';	// 有道应用ID
+const secret_key = 'H1AYEg1UylznWHRkeqZgqA2hLvYzZFcU'; // 有到应用秘钥
+const from = 'zh-Hans';	// 指定源语言
+const to = 'zh-CHT'; // 指定翻译后的语言
+let ident = '.'	// 有前缀的话，填前缀间隔符
+let prefix = ''	// 前缀
+const prefixArr = [] // 有前缀的键名
 
 const truncate = (q) => {
 	const len = q.length;
@@ -21,7 +21,7 @@ const truncate = (q) => {
 };
 
 function getLangFile(lang) {
-	const langFilePath = path.join(__dirname, "../", `${lang}.json`);
+	const langFilePath = path.join(__dirname, "src/lang/locale", `${lang}.js`);
 
 	if (!fs.existsSync(langFilePath)) {
 		console.error(`File ${langFilePath} not found.`);
@@ -58,10 +58,9 @@ function getLangFile(lang) {
 
 const genLangFile = (translatedData, lang) => {
 	console.log('开始生成语言文件');
-	const langFile = `../${lang}.json`;
-	// const langFile = `../zh-Hant.json`;
+	const langFile = `./src/lang/locale/${lang}.js`;
 	try {
-		const langFileContent = JSON.stringify(translatedData, null, 2);
+		const langFileContent = `export default ${JSON.stringify(translatedData, null, 2)};`;
 		fs.writeFileSync(langFile, langFileContent, 'utf8');
 		console.log(`生成文件成功: ${langFile}`);
 	} catch (error) {
@@ -132,7 +131,6 @@ const sendPostRequest = async (q) => {
 		if (!data.translation) {
 			console.log(data);
 		}
-		// console.log(data.translation[0], '999');
 		return data.translation[0] || [];
 	} catch (error) {
 		throw new Error(`请求失败: ${error.message}`);

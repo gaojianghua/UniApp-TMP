@@ -39,8 +39,12 @@ UniApp TMP，是基于[uni-app](https://uniapp.dcloud.io/)与[uView 2.0](https:/
   * permission		判断APP原生功能权限是否开启
 
 - locale			i18n国际化语言包目录
+  * node_script		Node脚本
+    * youdao-js-trans.js	有道翻译脚本(js格式)--一般用于Vue等PC项目
+    * youdao-json-trans.js	有道翻译脚本(json格式)--一般用于Uniapp项目
   * en				英文包
   * zh-Hans			简体中文包
+  * zh-Hant			繁体中文包
 
 - main_modules 		为自定义工具集成
   * main—ui			为自定义组件，基于uview-UI2.0
