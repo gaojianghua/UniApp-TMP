@@ -97,35 +97,11 @@
 			setNavbarHeight()
 			// 获取应用系统信息
 			getAppVersion()
-			// 隐藏原生底部导航
-			uni.hideTabBar({
-				animation: false
-			})
 			// 获取通讯录数据
 			getContacts()
 			// 获取业务系统配置
 			this.$store.dispatch('getSysConfig')
 			
-			/**
-			 * 不包括小程序端
-			 */
-			// #ifndef MP
-			uni.preloadPage({
-				url: "@/pages/tabbar/home/index"
-			})
-			uni.preloadPage({
-				url: "@/pages/tabbar/kind/index"
-			})
-			uni.preloadPage({
-				url: "@/pages/tabbar/media/index"
-			})
-			uni.preloadPage({
-				url: "@/pages/tabbar/cart/index"
-			})
-			uni.preloadPage({
-				url: "@/pages/tabbar/mine/index"
-			})
-			// #endif
 			// setTimeout(() => {
 			// 	为tabbar的某一项上添加文本
 			// 	uni.setTabBarBadge({
@@ -153,18 +129,16 @@
 </script>
 
 <style lang="scss">
+	/* #ifndef APP-NVUE */
 	/*每个页面公共css */
 	@import "@/uni_modules/uview-ui/index.scss";
 	/* 引入官方样式库 */
-	/* #ifndef APP-NVUE */
 	@import url("./common/uni.css");
-	/* #endif */
-	/* 引入free样式库 */
+	/* 引入原子样式库 */
 	@import url("./common/main.css");
 	/* 引入全局样式库 */
 	@import url("./common/common.css");
 	/* 引入自定义图标库 */
-	/* #ifndef APP-NVUE */
 	@import url("./common/icon.css");
 	/* #endif */
 </style>

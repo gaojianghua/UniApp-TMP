@@ -30,7 +30,7 @@
 						:key="i" @click="$tools.Navigate.navigateTo(item.page)">
 						<u-image height="88rpx" width="88rpx" :src="item.src"></u-image>
 						<view class="">
-							{{item.name}}
+							{{$t(item.name)}}
 						</view>
 					</view>
 				</view>

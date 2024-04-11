@@ -100,9 +100,9 @@
 					"enablePullDownRefresh": false
 				}
 			}, {
-				"path": "home/watermark-camera/index",
+				"path": "home/horoscope/index",
 				"style": {
-					"navigationBarTitleText": "%page.水印相机%",
+					"navigationBarTitleText": "%page.紫薇星术%",
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}

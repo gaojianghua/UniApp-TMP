@@ -1,18 +1,16 @@
 <template>
 	<view class="page">
-		<m-navbar bgColor="#fff" textColor="#fb7299" value="page.水印相机" i18n></m-navbar>
+		<m-navbar bgColor="#fff" textColor="#fb7299" value="page.紫薇星术" i18n></m-navbar>
 	</view>
 </template>
 
 <script>
 	export default {
 		data() {
-			return {
-				src: ""
-			}
+			return {}
 		},
 		methods: {
-			
+
 		}
 	}
 </script>
