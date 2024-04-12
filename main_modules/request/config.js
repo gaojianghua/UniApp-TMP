@@ -1,10 +1,12 @@
 import store from '@/store/index.js'
 // 请求响应错误过滤
 const errorMessage = (res) => {
+	let isSuccess = true
 	const {
 		data
 	} = res
 	if (data.code && data.code != 200) {
+		isSuccess = false
 		let str = ''
 		if (data.msg) {
 			str = data.msg
@@ -16,16 +18,27 @@ const errorMessage = (res) => {
 			icon: 'none',
 			duration: 2000,
 			success: () => {
-				if (str.toLocaleLowerCase().includes('token')) {
-					uni.clearStorageSync()
-					store.commit('updateUserBill', {})
-					uni.navigateTo({
-						url: '/pages/login/index'
-					})
+				switch (data.code) {
+					case 300400:
+					case 300401:
+					case 300402:
+					case 300403:
+					case 300404:
+					case 300405:
+					case 300406:
+						uni.clearStorageSync()
+						store.commit('updateUserBill', {})
+						store.commit('updateUserinfo', {})
+						store.commit('updateToken', '')
+						uni.navigateTo({
+							url: '/pages/login/index'
+						})
+						break;
 				}
 			}
 		})
 	}
+	return isSuccess
 }
 // 判断上一个请求是否与当前请求相同并校验时间区间
 const checkRequestIsEqual = (config, time = 1000) => {

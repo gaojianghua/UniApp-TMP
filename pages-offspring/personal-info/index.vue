@@ -44,6 +44,9 @@
 
 <script>
 	import CAppAuthorization from '@/components/common/c-app-authorization/index.vue'
+	import {
+		errorMessage
+	} from '@/main_modules/request/config.js'
 	export default {
 		components: {
 			CAppAuthorization
@@ -96,10 +99,11 @@
 						'token': this.$store.state.token || ''
 					},
 					success: (res) => {
-						let srcObj = {
-							url: JSON.parse(res.data).data
-						}
-						this.fileList.push(srcObj)
+						let data = JSON.parse(res.data)
+						if (!errorMessage(data)) return
+						this.fileList.push({
+							url: data.url
+						})
 						if (this.fileList.length > 1) {
 							let arr = []
 							this.fileList.forEach((v, i) => {
