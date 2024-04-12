@@ -29,7 +29,8 @@ export const menus = [{
 	{
 		id: 1,
 		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(7).png',
-		name: '舞蹈'
+		name: 'page.水印相机',
+		page: '/pages-next/home/camera/index'
 	},
 	{
 		id: 2,

@@ -107,6 +107,13 @@
 					"enablePullDownRefresh": false
 				}
 			}, {
+				"path": "home/camera/index",
+				"style": {
+					"navigationBarTitleText": "%page.水印相机%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
 				"path": "mine/order-list/index",
 				"style": {
 					"navigationBarTitleText": "%page.订单列表%",
