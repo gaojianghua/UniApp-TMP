@@ -52,7 +52,7 @@ class SQLite {
 					name: name || 'test',
 					path: path || `_doc/${name}.db`,
 					success: async (res) => {
-						plus.sqlite.selectSql({
+						await plus.sqlite.selectSql({
 							name: name,
 							sql: "select * FROM sqlite_master where type='table'",
 							success: async (res) => {
@@ -108,8 +108,8 @@ class SQLite {
 					plus.sqlite.openDatabase({
 						name: dbname,
 						path: data.path || `_doc/${dbname}.db`,
-						success: (res) => {
-							plus.sqlite.executeSql({
+						success: async (res) => {
+							await plus.sqlite.executeSql({
 								name: dbname,
 								// sql: 'create table if not exists dataList("list" INTEGER PRIMARY KEY AUTOINCREMENT,"id" TEXT,"name" TEXT,"gender" TEXT,"avatar" TEXT)',
 								sql: `create table if not exists ${tablename}(${JSON.parse(describe) })`,
@@ -156,8 +156,8 @@ class SQLite {
 				plus.sqlite.openDatabase({
 					name: name,
 					path: path || `_doc/${name}.db`,
-					success: (res) => {
-						plus.sqlite.selectSql({
+					success: async (res) => {
+						await plus.sqlite.selectSql({
 							name: name,
 							sql: `select count(*) as isTable FROM sqlite_master where type='table' and name='${tabName}'`,
 							success: async (e) => {
@@ -223,8 +223,8 @@ class SQLite {
 					plus.sqlite.openDatabase({
 						name: name,
 						path: path || `_doc/${name}.db`,
-						success: (res) => {
-							plus.sqlite.executeSql({
+						success: async (res) => {
+							await plus.sqlite.executeSql({
 								name: name,
 								sql: sqlStr,
 								success: async (e) => {
@@ -301,8 +301,8 @@ class SQLite {
 					plus.sqlite.openDatabase({
 						name: name || 'test',
 						path: path || `_doc/${name}.db`,
-						success: (res) => {
-							plus.sqlite.selectSql({
+						success: async (res) => {
+							await plus.sqlite.selectSql({
 								name: name,
 								sql: sql,
 								success: async (e) => {
@@ -529,17 +529,20 @@ class SQLite {
 	//删除表
 	static deleteTable(dbName, table, path = "") {
 		return new Promise((resolve, reject) => {
-			let isOpen = isOpenDB(dbName)
+			let isOpen = this.isOpenDB(dbName)
+			console.log(isOpen)
 			if (isOpen) {
 				plus.sqlite.executeSql({
 					name: dbName,
 					sql: `DROP TABLE ${table}`,
 					success: async (e) => {
 						let a = await this.closeDB(dbName)
-						resolve(`删除表 ${table}，成功`)
+						console.log(`删除表 ${table}，成功`);
+						resolve(e)
 					},
 					fail: async (e) => {
 						let a = await this.closeDB(dbName)
+						console.log(`删除表 ${table}，失败`);
 						reject(e);
 					}
 				});
@@ -547,24 +550,27 @@ class SQLite {
 				plus.sqlite.openDatabase({ //如果数据库存在则打开，不存在则创建。
 					name: dbName,
 					path: path || `_doc/${dbName}.db`,
-					success: (e) => {
+					success: async (e) => {
 						console.log('数据库打开成功');
 						//执行 增\删\改 操作的SQL语句
-						plus.sqlite.executeSql({
+						await plus.sqlite.executeSql({
 							name: dbName,
 							sql: `DROP TABLE ${table}`,
 							success: async (e) => {
 								let a = await closeDB(dbName)
-								resolve(`删除表 ${table}，成功`)
+								console.log(`删除表 ${table}，成功`);
+								resolve(e)
 							},
 							fail: async (e) => {
 								let a = await this.closeDB(dbName)
+								console.log(`删除表 ${table}，失败`);
 								reject(e);
 							}
 						});
 					},
 					fail: async (e) => {
 						let a = await this.closeDB(dbName)
+						console.log(`打开数据库 ${dbName}，失败`);
 						reject(e);
 					}
 				});
@@ -600,11 +606,11 @@ class SQLite {
 				plus.sqlite.openDatabase({ //如果数据库存在则打开，不存在则创建。
 					name: dbName,
 					path: path || `_doc/${dbName}.db`,
-					success: (e) => {
+					success: async (e) => {
 						console.log('数据库打开成功');
 						//执行 增\删\改 操作的SQL语句
 						console.log(dbsql);
-						plus.sqlite.executeSql({
+						await plus.sqlite.executeSql({
 							name: dbName,
 							sql: dbsql,
 							success: async (e) => {
@@ -654,9 +660,9 @@ class SQLite {
 				plus.sqlite.openDatabase({
 					name: dbName, //这里是数据库的名称
 					path: path || `_doc/${dbName}.db`, //_doc是相对路径的应用私有文档目录
-					success: (e) => {
+					success: async (e) => {
 						//查询数据
-						plus.sqlite.selectSql({
+						await plus.sqlite.selectSql({
 							name: dbName,
 							sql: selectNcDuli,
 							success: async (e) => {
@@ -683,11 +689,11 @@ class SQLite {
 		return new Promise((resolve, reject) => {
 			plus.sqlite.closeDatabase({
 				name: dbName,
-				success: function(e) {
+				success: (e) => {
 					console.log('数据库关闭成功');
 					resolve(true)
 				},
-				fail: function(e) {
+				fail: (e) => {
 					console.log('数据库关闭失败');
 					reject(false)
 				}

@@ -189,8 +189,20 @@
 		},
 		methods: {
 			// 初始化
-			init() {
+			async init() {
 				// this.openShow()
+				// let bool = this.$sqlite.isOpenDB('carema')
+				let result = await this.$sqlite.openDB('carema')
+				// let result = await this.$sqlite.queryDBTable('carema')
+				// let result = await this.$sqlite.isTable('carema', 'carema')
+				// let res = await this.$sqlite.deleteTable('carema', 'carema')
+				// console.log(res)
+				// let result = await this.$sqlite.createTable({
+				// 	dbname: 'carema',
+				// 	tablename: 'carema',
+				// 	describe: '相机'
+				// })
+				console.log(result)
 			},
 			// 跳转页面
 			openOrderList(i) {
