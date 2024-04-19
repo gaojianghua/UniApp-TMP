@@ -130,7 +130,7 @@
 
 <style lang="scss">
 	/* #ifndef APP-NVUE */
-	/*每个页面公共css */
+	/* 引入uview-ui样式 */
 	@import "@/uni_modules/uview-ui/index.scss";
 	/* 引入官方样式库 */
 	@import url("./common/uni.css");
