@@ -27,7 +27,7 @@
 		},
 
 		onLoad(options) {
-			console.log("222", options);
+			// console.log("222", options);
 			/* 设置标题 */
 			let obj = this.$tools.Navigate.receivePageData(options)
 			this.fileUrl = obj.url
@@ -57,7 +57,7 @@
 		methods: {
 			//页面初始化
 			pageInt() {
-				this.src = `${this.viewerUrl}?file=${encodeURIComponent(this.fileUrl)}&page=` + 5;
+				this.src = `${this.viewerUrl}?file=${encodeURIComponent(this.fileUrl)}&page=` + 1;
 			},
 			/* 
 			 *	做成监听滚动条判断更好
