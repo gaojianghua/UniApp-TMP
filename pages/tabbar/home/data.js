@@ -29,18 +29,20 @@ export const menus = [{
 	{
 		id: 1,
 		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(7).png',
-		name: 'page.水印相机',
-		page: '/pages-next/home/camera/index'
+		name: 'page.BMI指数',
+		page: '/pages-next/home/body-mass/index'
 	},
 	{
 		id: 2,
 		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(10).png',
-		name: '科技益智'
+		name: 'page.优选好物',
+		page: '/pages-next/home/discount-goods/index'
 	},
 	{
 		id: 3,
 		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(3).png',
-		name: '书法绘画'
+		name: 'page.书籍大全',
+		page: '/pages-next/home/book-all/index'
 	},
 	{
 		id: 4,

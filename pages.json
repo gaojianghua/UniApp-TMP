@@ -107,9 +107,23 @@
 					"enablePullDownRefresh": false
 				}
 			}, {
-				"path": "home/camera/index",
+				"path": "home/body-mass/index",
 				"style": {
-					"navigationBarTitleText": "%page.水印相机%",
+					"navigationBarTitleText": "%page.BMI指数%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "home/book-all/index",
+				"style": {
+					"navigationBarTitleText": "%page.书籍大全%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "home/discount-goods/index",
+				"style": {
+					"navigationBarTitleText": "%page.优选好物%",
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
@@ -491,6 +505,20 @@
 				}, 
 				{
 					"path": "points-monopoly-draw/index",
+					"style": {
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				}, 
+				{
+					"path": "points-digging-gold-draw/index",
+					"style": {
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				}, 
+				{
+					"path": "book-view/index",
 					"style": {
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
