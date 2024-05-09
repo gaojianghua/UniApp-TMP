@@ -260,7 +260,7 @@
             "enable" : true
         }
     },
-    "locale" : "en",
+    "locale" : "auto",
     "mp-jd" : {
         "uniStatistics" : {
             "enable" : true

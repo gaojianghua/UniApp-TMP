@@ -5,7 +5,7 @@
 			<view class="w-100 search px-2" :style="{
 			width: `calc(100vw - ${miniProgramCapsule.width}px - 60rpx - 30rpx)`,
 			marginRight: `calc(100vw - ${miniProgramCapsule.right}px + ${miniProgramCapsule.width}px)`}">
-				<u-search :placeholder="$t('请输入关键词')" focus height="60rpx" v-model="query.search" :showAction="false"
+				<u-search :placeholder="$t('请输入关键词')" height="60rpx" v-model="query.search" :showAction="false"
 					@search="startSearch" @change="searchChange"></u-search>
 			</view>
 		</m-navbar>
@@ -89,37 +89,10 @@
 					}
 				}
 			},
-			// 获取搜索数据
-			async getSearchData(e) {
-				// let {
-				// 	data,
-				// 	code,
-				// 	message
-				// } = await getSearchData(this.query)
-				let code = 200
-				let data = {
-					list: []
-				}
-				data.list = result.data.hotSearchGoods
-				data.total = data.list.length
-				if (code == 200) {
-					if (e) { // 加载更多
-						this.list = this.list.concat(data.list)
-					} else {
-						this.list = data.list
-						this.total = data.total
-					}
-					if (this.query.page * this.query.limit >= this.total) {
-						return this.load = 1
-					} else {
-						return this.load = 2
-					}
-				}
-			},
 			// 下拉刷新
 			onRefresh() {
 				this.query.page = 1
-				this.isSearchResult ? this.getSearchData() : this.getData()
+				this.getData()
 			},
 			// 加载更多
 			loadmore() {
@@ -128,35 +101,21 @@
 				this.query.page++
 				this.istrig = false
 				let time = setTimeout(() => {
-					this.isSearchResult ? this.getSearchData('S') : this.getData('S')
+					this.getData('S')
 					this.istrig = true
 					clearTimeout(time)
 				}, 1000)
 			},
 			// 开始搜索
 			startSearch(e) {
-				if (!this.$store.state.historyList.includes(e) && e) {
-					let arr = this.$store.state.historyList
-					arr.push(e)
-					this.$store.commit('updateHistoryList', arr)
-					uni.setStorageSync('historyList', arr)
-				}
-				this.isSearchResult = true
 				this.list = []
 				this.isLoading = true
 				this.query.page = 1
-				this.getSearchData()
+				this.getData()
 			},
 			// 搜索内容变化
 			searchChange(e) {
-				if (!e) {
-					this.isSearchResult = false
-				}
-			},
-			// 清空历史
-			clearHistory() {
-				this.$store.commit('updateHistoryList', [])
-				uni.setStorageSync('historyList', [])
+				
 			},
 			// 进入详情页
 			openDetail(i) {
@@ -165,11 +124,6 @@
 			// 加入购物车
 			addCart(i) {
 
-			},
-			// 点击历史记录
-			searchHistoryItem(i) {
-				this.query.search = i
-				this.startSearch()
 			}
 		},
 		computed: {
