@@ -65,9 +65,26 @@
 				<view @click="submitBMI" class="mt-2 w-100 btons d-flex a-center j-center text-white">
 					{{$t('提交')}}
 				</view>
+				<view class="w-100 table mt-3 pt-2">
+					<view class="text-center">
+						{{$t('BMI指数参考表')}}
+					</view>
+					<scroll-view scroll-x class="scroll-row w-100 hidden">
+						<tbody class="scroll-row-item p-2">
+							<tr class="p-1 tr" v-for="(item, i) in table" :key="i">
+								<td class="text-center p-2" v-for="(val, j) in item" :key="j">
+									{{val}}
+								</td>
+							</tr>
+						</tbody>
+					</scroll-view>
+				</view>
 			</view>
 		</m-scroll-y>
-		<u-datetime-picker :minDate="new Date().getTime() - (100 * 365 * 24 * 60 * 60 * 1000)" :maxDate="new Date().getTime()" :title="$t('选择生日')" @cancel="show = false" @confirm="confirm" :cancelText="$t('取消')" :confirmText="$t('确认')" @close="show = false" closeOnClickOverlay cancelColor="#fff" confirmColor="#fff" :show="show" v-model="value" mode="date"></u-datetime-picker>
+		<u-datetime-picker :minDate="new Date().getTime() - (100 * 365 * 24 * 60 * 60 * 1000)"
+			:maxDate="new Date().getTime()" :title="$t('选择生日')" @cancel="show = false" @confirm="confirm"
+			:cancelText="$t('取消')" :confirmText="$t('确认')" @close="show = false" closeOnClickOverlay cancelColor="#fff"
+			confirmColor="#fff" :show="show" v-model="value" mode="date"></u-datetime-picker>
 		<u-toast ref="uToast"></u-toast>
 	</view>
 </template>
@@ -94,7 +111,65 @@
 					age: '',
 					sex: 1
 				},
-				year: ''
+				year: '',
+				table: [
+					[
+						'BMI分类',
+						'WHO标准',
+						'亚洲标准',
+						'中国标准',
+						'相关疾病发病危险性'
+					],
+					[
+						'体重过低',
+						'<18.5',
+						'<18.5',
+						'<18.5',
+						'低(但其他疾病危险性增加)'
+					],
+					[
+						'正常范围',
+						'18.5~24.9',
+						'18.5~22.9',
+						'18.5~23.9',
+						'平均水平'
+					],
+					[
+						'超重',
+						'>=25',
+						'>=23',
+						'>=24',
+						'增加'
+					],
+					[
+						'肥胖前期',
+						'25~29.9',
+						'23~24.9',
+						'24~26.9',
+						'增加'
+					],
+					[
+						'轻度肥胖',
+						'30~34.9',
+						'25~29.9',
+						'27~29.9',
+						'中度增加'
+					],
+					[
+						'中度肥胖',
+						'35~39.9',
+						'>=30',
+						'>=30',
+						'严重增加'
+					],
+					[
+						'重度肥胖',
+						'>=40',
+						'>=40',
+						'>=40',
+						'非常严重增加'
+					]
+				]
 			}
 		},
 		methods: {
@@ -122,7 +197,7 @@
 				}
 				let height = this.query.height / 100
 				this.result = (this.query.weight / (height * height)).toFixed(2)
-				
+
 				let currentYear = uni.$u.timeFormat(Number(new Date()), 'yyyy')
 				let age = currentYear - this.year
 				this.fat = (1.2 * this.result + 0.23 * age - 5.4 - 10.8 * this.query.sex).toFixed(2)
@@ -162,35 +237,84 @@
 	.page {
 		background: url('https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/common/login-bg.jpg') no-repeat;
 		background-size: 100% 100%;
-		
-		/deep/ .u-popup__content{
+
+		/deep/ .u-popup__content {
 			border-radius: 35rpx 35rpx 0 0;
 			overflow: hidden;
 		}
-		
-		/deep/ .u-toolbar{
+
+		/deep/ .u-toolbar {
 			height: 90rpx;
 			background-color: #fb7299;
 		}
-		
-		/deep/ .u-toolbar__title{
+
+		/deep/ .u-toolbar__title {
 			color: #fff;
 		}
 
 		.content {
-			
+
+			.table {
+				border-radius: 30rpx;
+				border: 2rpx solid #fff;
+				background-color: #ffffff80;
+
+				.scroll-row {
+					
+
+					.scroll-row-item {
+
+						tr {
+							td {
+								border-left: 2rpx solid #999;
+								border-bottom: 2rpx solid #999;
+							}
+
+							td:last-child {
+								border-right: 2rpx solid #999;
+							}
+						}
+
+						.tr:first-child {
+							td {
+								border-top: 2rpx solid #999;
+							}
+
+							td:first-child {
+								border-top-left-radius: 20rpx;
+							}
+
+							td:last-child {
+								border-top-right-radius: 20rpx;
+							}
+						}
+
+						.tr:last-child {
+
+							td:first-child {
+								border-bottom-left-radius: 20rpx;
+							}
+
+							td:last-child {
+								border-bottom-right-radius: 20rpx;
+							}
+						}
+					}
+				}
+			}
+
 			.check-icon {
 				width: 46rpx;
 				height: 46rpx;
 				border: 4rpx solid #f27299;
 				border-radius: 10rpx;
 			}
-			
+
 			.check-active {
 				border: 6rpx solid #f2729980;
 				background-color: #f27299;
 			}
-			
+
 			.form {
 				background-color: #ffffff80;
 				border: 2rpx solid #fff;
@@ -198,7 +322,7 @@
 			}
 
 			.result {
-				background-color: #00000080;
+				background-color: #88888880;
 				border: 2rpx solid #fff;
 				border-radius: 20rpx;
 			}
