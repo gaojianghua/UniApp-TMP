@@ -47,7 +47,8 @@ export const menus = [{
 	{
 		id: 4,
 		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(13).png',
-		name: '语言表演'
+		name: 'page.直播推流',
+		page: '/pages-next/home/live-push-stream/index'
 	},
 	{
 		id: 5,

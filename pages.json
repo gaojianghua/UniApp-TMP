@@ -128,6 +128,19 @@
 					"enablePullDownRefresh": false
 				}
 			}, {
+				"path": "home/live-push-stream/index",
+				"style": {
+					"navigationBarTitleText": "%page.直播推流%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			},{
+				"path": "home/live-push-stream/camera",
+				"style": {
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
 				"path": "mine/order-list/index",
 				"style": {
 					"navigationBarTitleText": "%page.订单列表%",
