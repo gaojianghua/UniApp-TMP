@@ -51,11 +51,14 @@ UniApp TMP，是基于[uni-app](https://uniapp.dcloud.io/)与[uView 2.0](https:/
   * app-init		集成项目初始化需要执行的函数
   * cache			是对缓存函数的封装
   * check			是对类型判断函数的封装
+  * data			特殊静态数据的收集
   * filters			是对过滤函数的封装
   * lib				是外部资源(组件或库)
+  * mqtt			是对mqtt传输方式的封装
   * request			是对请求函数的封装
   * router			是自定义路由的封装
   * sdk-init		是存放第三方SDK的初始化函数
+  * socket			是对websocket的封装
   * sqlite			是sqlite数据库API的封装
   * tools			是存放工具函数
   * uni-api			是分别存放uniapp各端独有的api
