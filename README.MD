@@ -219,6 +219,6 @@ Zulu | 南非祖鲁语 | zu
 
 - QQ交流群
 
-<p align="center">
-	<img alt="logo" src="https://official-document.oss-cn-hangzhou.aliyuncs.com/IMG_7086(20230730-131307).JPG" width="120" height="120" style="margin-bottom: 10px;">
+<p align="left">
+	<img alt="logo" src="https://official-document.oss-cn-hangzhou.aliyuncs.com/IMG_7086(20230730-131307).JPG" width="150" height="150" style="margin-bottom: 10px;">
 </p>
