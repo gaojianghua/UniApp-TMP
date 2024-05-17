@@ -216,3 +216,9 @@ Yoruba | 约鲁巴语 | yo
 Yucatec | 尤卡坦玛雅语 | yua
 Cantonese (Traditional) | 粤语 | yue
 Zulu | 南非祖鲁语 | zu
+
+- QQ交流群
+
+<p align="center">
+	<img alt="logo" src="https://official-document.oss-cn-hangzhou.aliyuncs.com/IMG_7086(20230730-131307).JPG" width="120" height="120" style="margin-bottom: 10px;">
+</p>
