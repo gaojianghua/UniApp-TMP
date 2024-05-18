@@ -61,22 +61,22 @@
 			transform: translate(-50%, -50%);
 
 			.content {
-				padding: 0 20rpx;
-				border-radius: 8rpx;
+				padding: 6rpx 24rpx;
+				border-radius: 12rpx;
 			}
 		}
 
 		&.primary {
 			.content {
-				background-color: rgba(148, 202, 231, .2);
-				border: 1rpx solid var(--primary);
-				color: var(--primary);
+				background-color: rgba(0, 0, 0, .8);
+				border: 1rpx solid var(--dark);
+				color: #fff;
 			}
 		}
 
 		&.success {
 			.content {
-				background-color: rgba(148, 231, 173, .2);
+				background-color: rgba(148, 231, 173, .8);
 				border: 1rpx solid var(--success);
 				color: var(--success);
 			}
@@ -84,7 +84,7 @@
 
 		&.warning {
 			.content {
-				background-color: rgba(245, 175, 122, .2);
+				background-color: rgba(245, 175, 122, .8);
 				border: 1rpx solid var(--warning);
 				color: var(--warning);
 			}
@@ -92,7 +92,7 @@
 
 		&.danger {
 			.content {
-				background-color: rgba(240, 145, 145, .2);
+				background-color: rgba(240, 145, 145, .8);
 				border: 1rpx solid var(--danger);
 				color: var(--danger);
 			}

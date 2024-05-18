@@ -86,7 +86,7 @@ setGlobalOption({
 // #endif
 // 初始化 Vue 实例
 App.mpType = 'app'
-const app = new Vue({
+export const app = new Vue({
 	i18n,
 	store,
 	...App,

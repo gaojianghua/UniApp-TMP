@@ -1,4 +1,5 @@
 import store from '@/store/index.js'
+import { app } from '@/main.js'
 // 请求响应错误过滤
 const errorMessage = (res) => {
 	let isSuccess = true
@@ -13,11 +14,10 @@ const errorMessage = (res) => {
 		} else {
 			str = '呀! 接口开小差啦; 贵客! 骚等哦!'
 		}
-		uni.showToast({
-			title: str,
-			icon: 'none',
+		app.$mToast.show({
+			content: str,
 			duration: 2000,
-			success: () => {
+			complete() {
 				switch (data.code) {
 					case 300400:
 					case 300401:
@@ -36,6 +36,8 @@ const errorMessage = (res) => {
 						break;
 				}
 			}
+		}, () => {
+			// console.log('打开提示弹框');
 		})
 	}
 	return isSuccess

@@ -190,7 +190,7 @@
 		methods: {
 			// 初始化
 			async init() {
-				// this.openShow()
+				this.openShow()
 				// let bool = this.$sqlite.isOpenDB('carema')
 				// let result = await this.$sqlite.openDB('carema')
 				// let result = await this.$sqlite.queryDBTable('carema')
@@ -212,7 +212,7 @@
 			openShow() {
 				this.$mToast.show({
 					content: '你们都是大傻逼',
-					type: 'warning',
+					type: 'success',
 					duration: 3000,
 					complete() {
 						console.log('执行完后的回调')
