@@ -1,6 +1,7 @@
 <template>
 	<view class="page position-relative">
-		<u-image height="auto" width="100%" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/keepbg.png" mode="widthFix"></u-image>
+		<u-image height="auto" width="100%" src="https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/img/mine/keepbg.png"
+			mode="widthFix"></u-image>
 		<view class="position-absolute top-0 bottom-0 left-0 right-0">
 			<!-- 顶部导航栏 -->
 			<m-navbar bgColor="transparent" textColor="#fff" value="page.老虎机抽奖" i18n>
@@ -20,7 +21,20 @@
 						<view class="title-desc">
 							{{$t('开始你的幸运之旅，赢取丰厚大奖！')}}
 						</view>
-						<MGridPrizedraw :list="list" :winningItem="item" @endLuckyDraw="endLuckyDraw" />
+
+						<view class="d-flex a-center j-center flex-column">
+							<SlotMachine ref="mySlot" width="600rpx" height="200rpx" :blocks="blocks"
+								:prizes="prizes" :defaultConfig="defaultConfig" :slots="slots" />
+								
+							<view class="main-bg-color mt-3 rounded-1 px-3 py" @click="openSlot">
+								开始
+							</view>
+							<view class="main-bg-color mt-3 rounded-1 px-3 py" @click="endSlot">
+								结束
+							</view>
+						</view>
+
+						<!-- <MGridPrizedraw :list="list" :winningItem="item" @endLuckyDraw="endLuckyDraw" /> -->
 						<view class="title-btn d-flex a-center j-center mt-3 px-5">
 							{{$t('剩余积分')}}：{{userinfo.points}}
 						</view>
@@ -101,12 +115,12 @@
 </template>
 
 <script>
-	import MGridPrizedraw from '@/main_modules/main-ui/m-grid-prizedraw/index.vue'
+	import SlotMachine from '@/components/@lucky-canvas/uni/slot-machine'
 	import goods from './goods.json'
 	import records from './records.json'
 	export default {
 		components: {
-			MGridPrizedraw
+			SlotMachine
 		},
 		data() {
 			return {
@@ -118,7 +132,127 @@
 				list: [],
 				item: {},
 				ruleContent: '',
-				records: []
+				records: [],
+				blocks: [{
+						padding: '10px',
+						background: '#869cfa'
+					},
+					{
+						padding: '10px',
+						background: '#e9e8fe'
+					},
+				],
+				slots: [{
+						speed: 5
+					},
+					{
+						speed: 4
+					},
+					{
+						speed: 3
+					},
+					{
+						speed: 2
+					},
+					{
+						speed: 1
+					},
+				],
+				prizes: [{
+						background: '#bac5ee',
+						borderRadius: '10px',
+						fonts: [
+							{
+								text: '1',
+								top: '25%'
+							}
+						]
+					},
+					{
+						background: '#bac5ee',
+						borderRadius: '10px',
+						fonts: [
+							{
+								text: '2',
+								top: '25%'
+							}
+						]
+					},
+					{
+						background: '#bac5ee',
+						borderRadius: '10px',
+						fonts: [
+							{
+								text: '3',
+								top: '25%'
+							}
+						]
+					},
+					{
+						background: '#bac5ee',
+						borderRadius: '10px',
+						fonts: [
+							{
+								text: '4',
+								top: '25%'
+							}
+						]
+					},
+					{
+						background: '#bac5ee',
+						borderRadius: '10px',
+						fonts: [
+							{
+								text: '5',
+								top: '25%'
+							}
+						]
+					},
+					{
+						background: '#bac5ee',
+						borderRadius: '10px',
+						fonts: [
+							{
+								text: '6',
+								top: '25%'
+							}
+						]
+					},
+					{
+						background: '#bac5ee',
+						borderRadius: '10px',
+						fonts: [
+							{
+								text: '7',
+								top: '25%'
+							}
+						]
+					},
+					{
+						background: '#bac5ee',
+						borderRadius: '10px',
+						fonts: [
+							{
+								text: '8',
+								top: '25%'
+							}
+						]
+					},
+					{
+						background: '#bac5ee',
+						borderRadius: '10px',
+						fonts: [
+							{
+								text: '9',
+								top: '25%'
+							}
+						]
+					}
+				],
+				defaultConfig: {
+					rowSpacing: '10px',
+					colSpacing: '10px'
+				}
 			}
 		},
 		onLoad() {
@@ -131,7 +265,9 @@
 				this.records = []
 				this.list = goods.data
 				if (this.list.length == 8) {
-					this.list.splice(4, 0, {name: ''});
+					this.list.splice(4, 0, {
+						name: ''
+					});
 				}
 				this.records = records.data
 				this.item = {
@@ -144,6 +280,14 @@
 					"id": "87013c4315e54927a97e51d0645ece76",
 					"check": false
 				}
+			},
+			// 抽奖
+			openSlot() {
+				this.$refs.mySlot.play()
+			},
+			// 结婚
+			endSlot() {
+				this.$refs.mySlot.stop(2)
 			},
 			// 前往抽奖记录
 			openRecord() {
