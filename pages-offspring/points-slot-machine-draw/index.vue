@@ -21,20 +21,7 @@
 						<view class="title-desc">
 							{{$t('开始你的幸运之旅，赢取丰厚大奖！')}}
 						</view>
-
-						<view class="d-flex a-center j-center flex-column">
-							<SlotMachine ref="mySlot" width="600rpx" height="200rpx" :blocks="blocks"
-								:prizes="prizes" :defaultConfig="defaultConfig" :slots="slots" />
-								
-							<view class="main-bg-color mt-3 rounded-1 px-3 py" @click="openSlot">
-								开始
-							</view>
-							<view class="main-bg-color mt-3 rounded-1 px-3 py" @click="endSlot">
-								结束
-							</view>
-						</view>
-
-						<!-- <MGridPrizedraw :list="list" :winningItem="item" @endLuckyDraw="endLuckyDraw" /> -->
+						<MSlotMachinePrizedraw ref="draw" @openDraw="openDraw" @stopCallback="stopCallback"></MSlotMachinePrizedraw>
 						<view class="title-btn d-flex a-center j-center mt-3 px-5">
 							{{$t('剩余积分')}}：{{userinfo.points}}
 						</view>
@@ -115,12 +102,12 @@
 </template>
 
 <script>
-	import SlotMachine from '@/components/@lucky-canvas/uni/slot-machine'
+	import MSlotMachinePrizedraw from '@/main_modules/main-ui/m-slotmachine-prizedraw/index.vue'
 	import goods from './goods.json'
 	import records from './records.json'
 	export default {
 		components: {
-			SlotMachine
+			MSlotMachinePrizedraw
 		},
 		data() {
 			return {
@@ -133,126 +120,7 @@
 				item: {},
 				ruleContent: '',
 				records: [],
-				blocks: [{
-						padding: '10px',
-						background: '#869cfa'
-					},
-					{
-						padding: '10px',
-						background: '#e9e8fe'
-					},
-				],
-				slots: [{
-						speed: 5
-					},
-					{
-						speed: 4
-					},
-					{
-						speed: 3
-					},
-					{
-						speed: 2
-					},
-					{
-						speed: 1
-					},
-				],
-				prizes: [{
-						background: '#bac5ee',
-						borderRadius: '10px',
-						fonts: [
-							{
-								text: '1',
-								top: '25%'
-							}
-						]
-					},
-					{
-						background: '#bac5ee',
-						borderRadius: '10px',
-						fonts: [
-							{
-								text: '2',
-								top: '25%'
-							}
-						]
-					},
-					{
-						background: '#bac5ee',
-						borderRadius: '10px',
-						fonts: [
-							{
-								text: '3',
-								top: '25%'
-							}
-						]
-					},
-					{
-						background: '#bac5ee',
-						borderRadius: '10px',
-						fonts: [
-							{
-								text: '4',
-								top: '25%'
-							}
-						]
-					},
-					{
-						background: '#bac5ee',
-						borderRadius: '10px',
-						fonts: [
-							{
-								text: '5',
-								top: '25%'
-							}
-						]
-					},
-					{
-						background: '#bac5ee',
-						borderRadius: '10px',
-						fonts: [
-							{
-								text: '6',
-								top: '25%'
-							}
-						]
-					},
-					{
-						background: '#bac5ee',
-						borderRadius: '10px',
-						fonts: [
-							{
-								text: '7',
-								top: '25%'
-							}
-						]
-					},
-					{
-						background: '#bac5ee',
-						borderRadius: '10px',
-						fonts: [
-							{
-								text: '8',
-								top: '25%'
-							}
-						]
-					},
-					{
-						background: '#bac5ee',
-						borderRadius: '10px',
-						fonts: [
-							{
-								text: '9',
-								top: '25%'
-							}
-						]
-					}
-				],
-				defaultConfig: {
-					rowSpacing: '10px',
-					colSpacing: '10px'
-				}
+				lock: false
 			}
 		},
 		onLoad() {
@@ -282,19 +150,20 @@
 				}
 			},
 			// 抽奖
-			openSlot() {
-				this.$refs.mySlot.play()
-			},
-			// 结婚
-			endSlot() {
-				this.$refs.mySlot.stop(2)
+			openDraw() {
+				if (this.lock) return
+				this.lock = true
+				this.$refs.draw.startDraw()
+				let data = Math.floor(10000 + Math.random() * 90000);
+				this.$refs.draw.stopDraw(data)
 			},
 			// 前往抽奖记录
 			openRecord() {
 				this.$tools.Navigate.navigateTo('/pages-offspring/points-draw-record/index')
 			},
 			// 抽奖结束
-			endLuckyDraw() {
+			stopCallback() {
+				this.lock = false
 				this.show = true
 			}
 		},
