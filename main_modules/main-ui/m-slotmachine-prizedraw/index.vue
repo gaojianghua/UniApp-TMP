@@ -104,8 +104,8 @@
 		background-size: 100% 100%;
 
 		.draw-row {
-			top: 272rpx;
-			left: 70rpx;
+			top: 270rpx;
+			left: 88rpx;
 		}
 
 		.draw-after {
@@ -131,9 +131,9 @@
 	}
 
 	.column {
-		margin: 0 32rpx;
+		margin-right: 29.5rpx;
 		height: 93rpx;
-		width: 40rpx;
+		width: 72rpx;
 	}
 
 	.number {
