@@ -14,8 +14,8 @@ const errorMessage = (res) => {
 		} else {
 			str = '呀! 接口开小差啦; 贵客! 骚等哦!'
 		}
-		app.$mToast.show({
-			content: str,
+		uni.showToast({
+			title: str,
 			duration: 2000,
 			complete() {
 				switch (data.code) {
