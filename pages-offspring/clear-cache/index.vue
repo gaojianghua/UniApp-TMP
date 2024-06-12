@@ -40,16 +40,14 @@
 			},
 			// 清除缓存
 			clearCache() {
-				clearCache() {
-					this.$multiportApi.app.clearCache()
-					let time = setTimeout(() => {
-						this.$refs.uToast.show({
-							message: this.$t('清除缓存成功~'),
-							type: 'success'
-						})
-						this.init()
-					}, 300);
-				}
+				this.$multiportApi.app.clearCache()
+				let time = setTimeout(() => {
+					this.$refs.uToast.show({
+						message: this.$t('清除缓存成功~'),
+						type: 'success'
+					})
+					this.init()
+				}, 300);
 			}
 		}
 	}
