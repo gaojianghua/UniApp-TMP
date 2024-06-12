@@ -30,18 +30,22 @@
 				cache: '0MB'
 			}
 		},
-		onLoad() {
-			this.cache = this.$multiportApi.app.computeCacheSize();
+		onShow() {
+			this.init()
 		},
 		methods: {
+			// 初始化
+			async init() {
+				this.cache = await this.$multiportApi.app.computeCacheSize();
+			},
 			// 清除缓存
 			clearCache() {
-				this.$multiportApi.app.clearCache(() => {
+				this.$multiportApi.app.clearCache(async () => {
 					this.$refs.uToast.show({
 						title: this.$t('清除缓存成功~'),
 						type: 'success'
 					})
-					this.cache = this.$multiportApi.app.computeCacheSize(); // 重新计算缓存  
+					this.cache = await this.$multiportApi.app.computeCacheSize(); // 重新计算缓存  
 				})
 			}
 		}

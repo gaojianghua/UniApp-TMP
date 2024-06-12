@@ -34,22 +34,28 @@ export default {
 	},
 	// 计算缓存大小
 	computeCacheSize() {
-		let cacheSizeStr = ''
-		plus.cache.calculate(size => {
-			let sizeCache = parseInt(size);
-			if (sizeCache == 0) {
-				cacheSizeStr = "0B";
-			} else if (sizeCache < 1024) {
-				cacheSizeStr = sizeCache + "B";
-			} else if (sizeCache < 1048576) {
-				cacheSizeStr = (sizeCache / 1024).toFixed(2) + "KB";
-			} else if (sizeCache < 1073741824) {
-				cacheSizeStr = (sizeCache / 1048576).toFixed(2) + "MB";
-			} else {
-				cacheSizeStr = (sizeCache / 1073741824).toFixed(2) + "GB";
-			}
-		});
-		return cacheSizeStr
+	    return new Promise((resolve, reject) => {
+	        plus.cache.calculate(size => {
+	            try {
+	                let sizeCache = parseInt(size);
+	                let cacheSizeStr = '';
+	                if (sizeCache == 0) {
+	                    cacheSizeStr = "0B";
+	                } else if (sizeCache < 1024) {
+	                    cacheSizeStr = sizeCache + "B";
+	                } else if (sizeCache < 1048576) {
+	                    cacheSizeStr = (sizeCache / 1024).toFixed(2) + "KB";
+	                } else if (sizeCache < 1073741824) {
+	                    cacheSizeStr = (sizeCache / 1048576).toFixed(2) + "MB";
+	                } else {
+	                    cacheSizeStr = (sizeCache / 1073741824).toFixed(2) + "GB";
+	                }
+	                resolve(cacheSizeStr);
+	            } catch (error) {
+	                reject(error);
+	            }
+	        });
+	    });
 	},
 	// 清除缓存
 	clearCache(callback) {
