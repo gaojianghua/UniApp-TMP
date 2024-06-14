@@ -140,6 +140,13 @@
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
+			},{
+				"path": "home/speak-freely/index",
+				"style": {
+					"navigationBarTitleText": "%page.畅所欲言%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
 			}, {
 				"path": "mine/order-list/index",
 				"style": {

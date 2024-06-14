@@ -53,7 +53,8 @@ export const menus = [{
 	{
 		id: 5,
 		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(5).png',
-		name: '体育竞技'
+		name: 'page.畅所欲言',
+		page: '/pages-next/home/speak-freely/index'
 	},
 	{
 		id: 6,
