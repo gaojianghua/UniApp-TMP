@@ -166,22 +166,7 @@
             "enable" : true
         },
         "nvueCompiler" : "uni-app",
-        "nativePlugins" : {
-            "water-mark-camera" : {
-                "__plugin_info__" : {
-                    "name" : "【增强版】原生水印相机自定义水印，文字水印，图片水印，自动对焦，动态时间水印拍摄 - [试用版，仅用于自定义调试基座]",
-                    "description" : "已适配了vue3，丰富的水印配置参数，可对水印内容、字体、颜色、风格、位置等设置；简单易用的api，让开发者轻松接入；完整的demo和文档；监控录制,动态时间水印；自动翻转水印",
-                    "platforms" : "Android,iOS",
-                    "url" : "https://ext.dcloud.net.cn/plugin?id=13557",
-                    "android_package_name" : "",
-                    "ios_bundle_id" : "",
-                    "isCloud" : true,
-                    "bought" : 0,
-                    "pid" : "13557",
-                    "parameters" : {}
-                }
-            }
-        }
+        "nativePlugins" : {}
     },
     /* 快应用特有相关 */
     "quickapp" : {},

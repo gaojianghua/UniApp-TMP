@@ -1,5 +1,4 @@
 import store from '@/store/index.js'
-import { app } from '@/main.js'
 // 请求响应错误过滤
 const errorMessage = (res) => {
 	let isSuccess = true
