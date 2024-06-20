@@ -465,6 +465,10 @@
 	"体脂率": "Body fat rate",
 	"提交": "Submit",
 	"BMI指数参考表": "BMI Index reference table",
-	"选择生日": "Choose birthday"
+	"选择生日": "Choose birthday",
+	
+	"通知权限开启提醒": "Notification Permission Enable alerts",
+	"您还没有开启通知权限，无法接受到消息通知，请前往设置！": "You have not enabled notification rights, can not receive message notifications, please go to Settings!",
+	"去设置": "Go to Settings"
 	
 }

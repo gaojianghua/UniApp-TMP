@@ -1,4 +1,6 @@
 import store from "@/store"
+import i18n from '@/main.js'
+import Navigate from '../../tools/navigate.js'
 export default {
 	// 退出 APP
 	exitApp() {
@@ -9,7 +11,7 @@ export default {
 			plus.runtime.quit();
 		}
 	},
-	// 前往系统设置
+	// 打开手机系统设置
 	openSystemSettings() {
 		if (plus.os.name === 'iOS') {
 			let UIApplication = plus.ios.import("UIApplication");
@@ -30,6 +32,59 @@ export default {
 			let uri = Uri.fromParts("package", mainActivity.getPackageName(), null);
 			intent.setData(uri);
 			mainActivity.startActivity(intent);
+		}
+	},
+	// 打开手机通知栏设置
+	openSystemMsgSettings() {
+		if (plus.os.name === 'iOS') {
+			//苹果打开对应的通知栏
+			uni.showModal({
+				title: i18n.$t('通知权限开启提醒'),
+				content: i18n.$t('您还没有开启通知权限，无法接受到消息通知，请前往设置！'),
+				showCancel: false,
+				confirmText: i18n.$t('去设置'),
+				success: res => {
+					if (res.confirm) {
+						let app = plus.ios.invoke('UIApplication', 'sharedApplication');
+						let setting = plus.ios.invoke('NSURL', 'URLWithString:', 'app-settings:');
+						plus.ios.invoke(app, 'openURL:', setting);
+						plus.ios.deleteObject(setting);
+						plus.ios.deleteObject(app);
+					}
+				}
+			});
+		} else {
+			//android打开对应的通知栏
+			let main = plus.android.runtimeMainActivity();
+			let pkName = main.getPackageName();
+			let uid = main.getApplicationInfo().plusGetAttribute("uid");
+			uni.showModal({
+				title: i18n.$t('通知权限开启提醒'),
+				content: i18n.$t('您还没有开启通知权限，无法接受到消息通知，请前往设置！'),
+				showCancel: false,
+				confirmText: i18n.$t('去设置'),
+				success: res => {
+					if (res.confirm) {
+						let Intent = plus.android.importClass('android.content.Intent');
+						let Build = plus.android.importClass("android.os.Build");
+						//android 8.0引导  
+						if (Build.VERSION.SDK_INT >= 26) {
+							let intent = new Intent('android.settings.APP_NOTIFICATION_SETTINGS');
+							intent.putExtra('android.provider.extra.APP_PACKAGE', pkName);
+						} else if (Build.VERSION.SDK_INT >= 21) { //android 5.0-7.0  
+							let intent = new Intent('android.settings.APP_NOTIFICATION_SETTINGS');
+							intent.putExtra("app_package", pkName);
+							intent.putExtra("app_uid", uid);
+						} else { //(<21)其他--跳转到该应用管理的详情页  
+							intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+							let uri = Uri.fromParts("package", mainActivity.getPackageName(), null);
+							intent.setData(uri);
+						}
+						// 跳转到该应用的系统通知设置页  
+						main.startActivity(intent);
+					}
+				}
+			});
 		}
 	},
 	// 计算缓存大小
@@ -144,5 +199,78 @@ export default {
 				Navigate.navigateTo(url, argsObj, true)
 			}
 		}
-	}
+	},
+	// 极光推送：获取设备注册ID
+	getRegistrationID(JG) { //获取registerID
+		JG.getRegistrationID(result => {
+			let registerID = result.registerID
+			uni.setStorageSync("registerID", registerID)
+			store.commit('updateRegisterID', registerID)
+		})
+	},
+	// 极光推送：判断消息通知权限是否打开
+	getNotificationEnabled(JG) {
+		if (uni.getSystemInfoSync().platform == "ios") {
+			JG.requestNotificationAuthorization((result) => {
+				let status = result.status
+				if (status < 2) {
+					this.openSystemMsgSettings()
+				}
+			})
+		} else {
+			JG.isNotificationEnabled((result) => { //判断android是否打开权限
+				if (result.code == 0) { //如果为0则表示 未打开通知权限 
+					this.openSystemMsgSettings()
+				}
+			})
+		}
+	},
+	// 极光推送：初始化
+	initJG(JG, alias) {
+		// #ifdef APP-PLUS
+		JG.initJPushService(); // 初始化推送服务
+		JG.setLoggerEnable(true); // 是否开启debug模式
+		// 设置别名
+		JG.setAlias({
+			'alias': alias + '',
+			'sequence': 1
+		})
+		// 判断权限
+		this.getNotificationEnabled(JG);
+		// 连接状态的回调
+		JG.addConnectEventListener(result => {
+			let connectEnable = result.connectEnable
+			uni.$emit('connectStatusChange', connectEnable)
+		});
+		// 通知事件的回调
+		JG.addNotificationListener(result => { //极光推送的消息通知回调
+			JG.setBadge(0);
+			plus.runtime.setBadgeNumber(0);
+			let notificationEventType = result.notificationEventType
+			let orderId = result.extras && result.extras.orderId;
+			console.log("通知", result)
+			// 点击事件
+			if (notificationEventType == 'notificationOpened') {
+				// this.$tools.Navigate.navigateTo('/pages/details/index', {id: orderId})
+			}
+		});
+		uni.$on('connectStatusChange', (connectStatus) => {
+			let connectStr = ''
+			if (connectStatus == true) {
+				connectStr = '已连接'
+				// this.getRegistrationID()
+			} else {
+				connectStr = '未连接'
+			}
+			console.log('监听到了连接状态变化 --- ', connectStr)
+		})
+		JG.isPushStopped(res => {
+			// code   0已停止推送  1未停止推送
+			const {
+				code
+			} = res
+			console.log(res, '安卓连接状态');
+		})
+		//#endif
+	},
 }

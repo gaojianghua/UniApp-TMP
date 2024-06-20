@@ -42,6 +42,8 @@
 			plus.navigator.closeSplashscreen();
 			// 锁定屏幕方向
 			plus.screen.lockOrientation("portrait-primary");
+			
+			// *** unipush初始化
 			// 获取唯一标识CID
 			let time = setTimeout(() => {
 				plus.push.getClientInfoAsync((info) => {

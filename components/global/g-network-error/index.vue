@@ -1,9 +1,9 @@
 <template>
-	<m-modal :show="show" i18n :title="title" @cancel="show=false" :isCancel="false" confirmName="查看解决方案"
+	<m-modal :show="show" :i18n="i18n" :title="title" @cancel="show=false" :isCancel="false" confirmName="查看解决方案"
 		@confirm="enterNetwork">
 		<view class="modal d-flex a-center j-center flex-column text-danger">
 			<view class="iconfont icon-wangluoguzhang"></view>
-			<text class="text-center">{{$t('网络异常, 请检查您的网络设置')}}</text>
+			<text class="text-center">{{i18n ? $t('网络异常, 请检查您的网络设置') : '网络异常, 请检查您的网络设置'}}</text>
 		</view>
 	</m-modal>
 </template>
@@ -11,6 +11,12 @@
 <script>
 	export default {
 		name: 'g-network-error',
+		props: {
+			i18n: {
+				type: Boolean,
+				default: false
+			}
+		},
 		data() {
 			return {
 				show: false,

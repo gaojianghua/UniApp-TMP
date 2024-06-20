@@ -10,10 +10,10 @@
 				@success="openSuccess" @fail="openFail" custom-style="position: fixed; left: 200%" />
 		</view>
 		<!-- 弹框 -->
-		<m-modal :show="show" i18n title="温馨提示" @cancel="show = false" @confirm="saveConfirm">
+		<m-modal :show="show" :i18n="i18n" title="温馨提示" @cancel="show = false" @confirm="saveConfirm">
 			<view class="d-flex a-center j-center flex-column">
 				<view class="d-flex a-center text-center j-center flex-column main-text-color letter-1">
-					{{$t('确定要保存图片到本地相册吗？')}}
+					{{i18n ? $t('确定要保存图片到本地相册吗？') : '确定要保存图片到本地相册吗？'}}
 				</view>
 			</view>
 		</m-modal>
@@ -33,6 +33,10 @@
 				default: () => {
 					return {}
 				}
+			},
+			i18n: {
+				type: Boolean,
+				default: false
 			}
 		},
 		data() {
@@ -80,12 +84,12 @@
 				this.$tools.Common.saveImageToPhotosAlbum(this.path, (e) => {
 					if (e) {
 						uni.showToast({
-							title: this.$t('保存成功'),
+							title: this.i18n ? this.$t('保存成功') : '保存成功',
 							icon: 'none'
 						})
 					}else {
 						uni.showToast({
-							title: this.$t('保存失败'),
+							title: this.i18n ? this.$t('保存失败') : '保存失败',
 							icon: 'none'
 						})
 					}

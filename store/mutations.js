@@ -56,4 +56,7 @@ export default {
 	updateCartList(state, e) {
 		state.cartList = e
 	},
+	updateRegisterID(state, e) {
+		state.registerID = e
+	},
 }

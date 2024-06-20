@@ -4,8 +4,8 @@
 		 :style="{paddingTop: `${$store.state.statusHeight}px`}"
 		 @click="close(true)">
 			<view class="uni-popup__wrapper-box">
-				<view class="title">{{authList[permissionID].title}}</view>
-				<view class="content">{{authList[permissionID].content}}</view>
+				<view class="title">{{$store.state.appSystemInfo.appName}}{{i18n ? $t(authList[permissionID].title) : authList[permissionID].title}}</view>
+				<view class="content">{{i18n ? $t(authList[permissionID].content) : authList[permissionID].content}}</view>
 			</view>
 		</view>
 	</view>
@@ -32,6 +32,10 @@
 				type: Boolean,
 				default: true
 			},
+			i18n: {
+				type: Boolean,
+				default: false
+			},
 			permissionID: {
 				type: [String, Number],
 				default: ''
@@ -44,23 +48,23 @@
 				refuseNum: '', //拒绝次数，
 				authList: {
 					'WRITE_EXTERNAL_STORAGE': {
-						title: this.$store.state.appSystemInfo.appName + "对存储空间/照片权限申请说明",
+						title: "对存储空间/照片权限申请说明",
 						content: "便于您使用该功能上传您的照片/图片/视频及用于更换头像、意见反馈、保存相册、发布商品/分享、下载与客服沟通等场景中读取和写入相册和文件内容。"
 					},
 					'ACCESS_FINE_LOCATION': {
-						title: this.$store.state.appSystemInfo.appName + "对地理位置权限申请说明",
+						title: "对地理位置权限申请说明",
 						content: "便于应用程序可以提供基于位置的服务、定位导航、附近搜索等功能。"
 					},
 					'CAMERA': {
-						title: this.$store.state.appSystemInfo.appName + "对相机/摄像头权限申请说明",
+						title: "对相机/摄像头权限申请说明",
 						content: "便于您使用该功能拍照上传您的照片/视频及用于更换头像、意见反馈、保存相册、发布商品/动态、下载与客服沟通等场景中使用"
 					},
 					'RECORD_AUDIO': {
-						title: this.$store.state.appSystemInfo.appName + "对麦克风权限申请说明",
+						title: "对麦克风权限申请说明",
 						content: "便于您使用该功能进行录音、语音通话、发布语音、与客服语音沟通等场景中使用"
 					},
 					'CALL_PHONE': {
-						title: this.$store.state.appSystemInfo.appName + "对拨打/管理电话权限申请说明",
+						title: "对拨打/管理电话权限申请说明",
 						content: "便于您使用该功能联系买家、骑手或者客服、业务经理与联系等场景下使用"
 					}
 				}
@@ -116,10 +120,10 @@
 							if (e.deniedAlways.length > 0) {
 								//当前查询权限已被永久禁用，此时需要引导用户跳转手机系统设置去开启
 								uni.showModal({
-									title: this.$t('温馨提示'),
-									content: this.$t('还没有该权限，立即去设置开启？'),
-									cancelText: this.$t("取消"),
-									confirmText: this.$t("去设置"),
+									title: this.i18n ? this.$t('温馨提示') : '温馨提示',
+									content: this.i18n ? this.$t('还没有该权限，立即去设置开启？') : '还没有该权限，立即去设置开启？',
+									cancelText: this.i18n ? this.$t("取消") : '取消',
+									confirmText: this.i18n ? this.$t("去设置") : '去设置',
 									showCancel: true,
 									confirmColor: '#000',
 									cancelColor: '#666',
@@ -198,10 +202,10 @@
 					} else {
 						//当前查询的权限已禁用,引导用户跳转手机系统设置去开启
 						uni.showModal({
-							title: this.$t('温馨提示'),
-							content: this.$t('还没有该权限，立即去设置开启？'),
-							cancelText: this.$t("取消"),
-							confirmText: this.$t("去设置"),
+							title: this.i18n ? this.$t('温馨提示') : '温馨提示',
+							content: this.i18n ? this.$t('还没有该权限，立即去设置开启？') : '还没有该权限，立即去设置开启？',
+							cancelText: this.i18n ? this.$t("取消") : '取消',
+							confirmText: this.i18n ? this.$t("去设置") : '去设置',
 							showCancel: true,
 							confirmColor: '#000',
 							cancelColor: '#666',

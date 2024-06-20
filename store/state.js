@@ -73,4 +73,5 @@ export default {
 	domain: [
 		'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com'
 	], // 远程资源域名（如：oss，obs）
+	registerID: uni.getStorageSync('registerID') || [], // 极光推送：设备注册ID
 }

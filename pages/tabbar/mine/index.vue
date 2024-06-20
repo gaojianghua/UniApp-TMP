@@ -152,6 +152,11 @@
 						<!-- #endif -->
 					</view>
 				</view>
+
+				<view class="" @click="openMessage">
+					获取短信
+				</view>
+
 				<u-gap height="50rpx"></u-gap>
 		</m-scroll-y>
 		<!-- 底部导航栏 -->
@@ -261,7 +266,6 @@
 			}
 
 			.user-info {
-				// height: 100rpx;
 
 				.user-notice {
 					font-size: 26rpx;
@@ -319,6 +323,7 @@
 			background: linear-gradient(to right, #85B6CA, #F9A4A0);
 
 			.assets-item {
+
 				.item-value {
 					font-weight: bold;
 					font-size: 36rpx;
