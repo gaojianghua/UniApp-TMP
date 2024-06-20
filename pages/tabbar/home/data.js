@@ -59,7 +59,8 @@ export const menus = [{
 	{
 		id: 6,
 		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(9).png',
-		name: '艺考'
+		name: 'page.热门影视',
+		page: '/pages-next/home/hot-movies/index'
 	},
 	{
 		id: 7,

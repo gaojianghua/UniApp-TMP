@@ -147,6 +147,13 @@
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
+			},{
+				"path": "home/hot-movies/index",
+				"style": {
+					"navigationBarTitleText": "%page.热门影视%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
 			}, {
 				"path": "mine/order-list/index",
 				"style": {
@@ -546,6 +553,13 @@
 				}, 
 				{
 					"path": "points-digging-gold-draw/index",
+					"style": {
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				}, 
+				{
+					"path": "hot-movies-detail/index",
 					"style": {
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
