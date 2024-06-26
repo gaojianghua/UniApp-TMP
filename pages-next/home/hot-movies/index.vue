@@ -4,7 +4,7 @@
 		<!-- 内容区域 -->
 		<m-scroll-y :isLoading="isLoading" i18n :scrollStyle="scrollStyle" :load="load" bgColor="transparent"
 			@loadmore="loadmore" @onRefresh="onRefresh">
-			<u-empty v-if="load != 0 && list.length == 0" mode="list" :text="$t('暂无热搜商品')"
+			<u-empty v-if="load != 0 && list.length == 0" mode="list" :text="$t('暂无数据')"
 				icon="http://cdn.uviewui.com/uview/empty/list.png">
 			</u-empty>
 			<view v-if="list.length != 0" class="goods-list d-flex j-sb flex-wrap px-2">
@@ -18,7 +18,7 @@
 </template>
 
 <script>
-	import result from '@/my.json'
+	import result from '@/pages-common/data/video.json'
 	export default {
 		data() {
 			return {
