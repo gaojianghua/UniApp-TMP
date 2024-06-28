@@ -44,11 +44,11 @@
 				<view v-if="list.length != 0" class="list px-3" :class="direction == 'Y' ? 'd-flex flex-wrap j-sb' : ''">
 					<view class="list-item" :style="{width: direction == 'Y' ? '48.8%' : '100%'}" v-for="(item, i) in list" :key="i"
 						@click="openDetail(item)">
-						<m-goods-card @checkClick="checkClicke" @addCart="addCart" :item="item" :direction="direction" imageWidth="200rpx"
+						<m-goods-card @checkClick="checkClicke" :item="item" :direction="direction" imageWidth="200rpx"
 							:imageHeight="direction == 'Y' ? '300rpx' : '200rpx'" isSales
 							isDesc isOldPrice isOver isVIP :isCartBtn="false" isChecked>
 							<template slot="item-number-box">
-								<m-number-box :num="item.num"></m-number-box>
+								<m-number-box :num="item.num" @numberChange="numberChange($event, item)"></m-number-box>
 							</template>
 						</m-goods-card>
 					</view>
@@ -167,6 +167,7 @@
 						this.list = data.list
 						this.total = data.total
 					}
+					this.priceCalculation()
 					if (this.query.page * this.query.limit >= this.total) {
 						return this.load = 1
 					} else {
@@ -198,13 +199,33 @@
 					}
 				})
 				this.checked = bool
+				this.priceCalculation()
 			},
 			// 全选
 			checkboxChange(e) {
 				this.checked = e
+				let price = 0
 				this.list.forEach((item, i) => {
 					item.check = e
 				})
+				this.priceCalculation()
+			},
+			// 价格计算
+			priceCalculation() {
+				let price = 0
+				this.list.forEach((item, i) => {
+					if (item.check) {
+						price = price + (item.presentPrice * item.num)
+					}
+				})
+				if (price * 1 != 0) {
+					price = price.toFixed(2)
+					this.allPrice = (price + '').split('.')[0]
+					this.decimal = '.' + (price + '').split('.')[1]
+				}else {
+					this.allPrice = '0'
+					this.decimal = '.00'
+				}
 			},
 			// 管理开关
 			switchManageClick() {
@@ -236,9 +257,17 @@
 				this.query.page = 1
 				this.getData()
 			},
-			// 加入购物车
-			addCart() {
-				
+			// 数量变化
+			numberChange(e, obj) {
+				this.list.forEach((item, i) => {
+					if (item.id == obj.id) {
+						item.num = e.value
+					}
+				})
+				let time = setTimeout(()=> {
+					this.priceCalculation()
+					clearTimeout(time)
+				},100)
 			}
 		},
 		computed: {
