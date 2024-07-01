@@ -335,6 +335,34 @@
                         }
                     }
                 }
+            },
+            "leven-ffmpeg" : {
+                "__plugin_info__" : {
+                    "name" : "安卓ffmpeg音视频处理原生插件 - [试用版，仅用于自定义调试基座]",
+                    "description" : "安卓ffmpeg音视频处理原生插件，支持音视频转换，音视频剪切，添加字幕，添加水印等操作，支持自定义指令，取消指令执行等，功能比较全面",
+                    "platforms" : "Android",
+                    "url" : "https://ext.dcloud.net.cn/plugin?id=16523",
+                    "android_package_name" : "",
+                    "ios_bundle_id" : "",
+                    "isCloud" : true,
+                    "bought" : 0,
+                    "pid" : "16523",
+                    "parameters" : {}
+                }
+            },
+            "leven-mediaPicker" : {
+                "__plugin_info__" : {
+                    "name" : "安卓媒体选择原生插件 - [试用版，仅用于自定义调试基座]",
+                    "description" : "安卓媒体选择原生插件,支持图片选择，音频选择，视频选择，文件扩展名，文件大小过滤，选择前预览播放",
+                    "platforms" : "Android",
+                    "url" : "https://ext.dcloud.net.cn/plugin?id=16808",
+                    "android_package_name" : "",
+                    "ios_bundle_id" : "",
+                    "isCloud" : true,
+                    "bought" : 0,
+                    "pid" : "16808",
+                    "parameters" : {}
+                }
             }
         }
     },
