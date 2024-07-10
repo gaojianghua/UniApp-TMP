@@ -1,6 +1,6 @@
 <template>
 	<view class="page">
-		<!-- <m-navbar bgColor="#fff" textColor="#fb7299" value="page.选择城市" i18n></m-navbar> -->
+		<m-navbar bgColor="#fff" textColor="#fb7299" value="page.选择城市" i18n></m-navbar>
 		<view class="d-flex a-center j-center py-10">
 			<view class="d-flex a-center j-center px-3 rounded-1 bg-danger text-white" @click="show = true">
 				显隐
@@ -20,6 +20,10 @@
 			return {
 				show: false,
 				arr: [
+					{
+						image: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/uniapp.png',
+						type: 'image'
+					},
 					{
 						image: 'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com/uniapp.png',
 						type: 'image'
