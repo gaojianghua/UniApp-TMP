@@ -1,6 +1,7 @@
 import store from "@/store"
 import i18n from '@/main.js'
 import Navigate from '../../tools/navigate.js'
+import MString from '../../tools/string.js'
 export default {
 	// 退出 APP
 	exitApp() {
@@ -191,6 +192,7 @@ export default {
 		let argsStr = args.split('//')[1];
 		if (argsStr) {
 			let argsObj = MString.convertStringToObject(argsStr, eleChar, keyValueCahr)
+			argsObj.url[0] != '/' ? argsObj.url = '/' + argsObj.url : argsObj.url
 			if (route == argsObj.url && currentPage.$vm[goodsId] == argsObj[goodsId]) {
 				return
 			}else {
