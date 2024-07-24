@@ -2,7 +2,7 @@
 	<view v-if="showPopup" class="uni-popup" :style="{top: isNativeHead ? '': `${$store.state.statusHeight}px`}">
 		<view :class="[type, ani, animation ? 'ani' : '']" class="uni-custom uni-popup__wrapper px-2"
 		 :style="{paddingTop: `${$store.state.statusHeight}px`}"
-		 @click="close(true)">
+		 @click="close">
 			<view class="uni-popup__wrapper-box">
 				<view class="title">{{$store.state.appSystemInfo.appName}}{{i18n ? $t(authList[permissionID].title) : authList[permissionID].title}}</view>
 				<view class="content">{{i18n ? $t(authList[permissionID].content) : authList[permissionID].content}}</view>
@@ -22,10 +22,6 @@
 			type: {
 				type: String,
 				default: 'top'
-			},
-			show: {
-				type: Boolean,
-				default: true
 			},
 			//是否是原生头部
 			isNativeHead: {
@@ -74,12 +70,23 @@
 			open() {
 				this.requestPermissions(this.permissionID);
 			},
-			close(type) {
+			close() {
 				this.ani = '';
 				this.$nextTick(() => {
-					setTimeout(() => {
+					let time = setTimeout(() => {
 						this.showPopup = false;
+						clearTimeout(time)
 					}, 300)
+				})
+			},
+			//ios打开弹窗说明
+			openModel() {
+				this.showPopup = true
+				this.$nextTick(() => {
+					let time = setTimeout(() => {
+						this.ani = 'uni-' + this.type
+						clearTimeout(time)
+					}, 30)
 				})
 			},
 			//权限检测
@@ -92,12 +99,7 @@
 						granted => {
 							if (granted.checkResult == -1) {
 								//还未授权当前查询的权限，打开权限申请目的自定义弹框
-								this.showPopup = true;
-								this.$nextTick(() => {
-									setTimeout(() => {
-										this.ani = 'uni-' + this.type
-									}, 30)
-								})
+								this.openModel()
 							}
 						},
 						error => {
@@ -107,12 +109,7 @@
 					plus.android.requestPermissions([_permissionID],
 						(e) => {
 							//关闭权限申请目的自定义弹框
-							this.ani = '';
-							this.$nextTick(() => {
-								setTimeout(() => {
-									this.showPopup = false
-								}, 0)
-							})
+							this.close()
 							if (e.granted.length > 0) {
 								//当前查询权限已授权，此时可以通知页面执行接下来的操作
 								this.$emit('changeAuth');
@@ -131,6 +128,9 @@
 										if (res.confirm) {
 											this.$multiportApi.app.openSystemSettings()
 										}
+										if (res.cancel) {
+											this.close()
+										}
 									}
 								})
 							}
@@ -148,6 +148,7 @@
 							result = 1;
 						} else {
 							result = 0;
+							this.openModel()
 						}
 						plus.ios.deleteObject(cLLocationManager);
 					} else if (permissionID == 'WRITE_EXTERNAL_STORAGE') {
@@ -158,6 +159,7 @@
 							result = 1;
 						} else {
 							result = 0;
+							this.openModel()
 						}
 						plus.ios.deleteObject(PHPhotoLibrary);
 					} else if (permissionID == 'CAMERA') {
@@ -172,6 +174,7 @@
 							result = 1;
 						} else {
 							result = 0;
+							this.openModel()
 						}
 						plus.ios.deleteObject(avCaptureDevice);
 					} else if (permissionID == 'CALL_PHONE') {
@@ -182,6 +185,7 @@
 							result = 1;
 						} else {
 							result = 0;
+							this.openModel()
 						}
 						plus.ios.deleteObject(contactStore);
 					} else if (permissionID == 'RECORD_AUDIO') {
@@ -191,6 +195,7 @@
 							authStatus = aVAudio.recordPermission();
 						if ([1684369017, 1970168948].includes(authStatus)) {
 							result = 0;
+							this.openModel()
 						} else {
 							result = 1;
 						}
@@ -213,6 +218,9 @@
 								if (res.confirm) {
 									this.$multiportApi.app.openSystemSettings()
 								}
+								if (res.cancel) {
+									this.close()
+								}
 							}
 						})
 					}
@@ -229,7 +237,7 @@
 		bottom: 0;
 		left: 0;
 		right: 0;
-		z-index: 99999;
+		z-index: 99;
 		overflow: hidden;
 
 		&__wrapper {

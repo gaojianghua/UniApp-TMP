@@ -121,6 +121,7 @@
 		onReady() {
 			let time = setTimeout(()=> {
 				this.$refs['authpup'].open()
+				clearTimeout(time)
 			}, 0)
 		},
 		methods: {

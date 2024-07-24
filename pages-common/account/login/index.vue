@@ -76,6 +76,9 @@
 <script>
 	import MAgreePolicy from '@/main_modules/main-ui/m-agree-policy/index.vue'
 	import CCountryCode from '@/components/common/c-country-code/index.vue'
+	import {
+		getContacts
+	} from '@/main_modules/app-init/index.js'
 	import { moreLogins, loginType } from './data.js'
 	export default {
 		components: {
@@ -174,6 +177,8 @@
 				uni.setStorageSync('token', data.token)
 				this.$store.commit('updateUserinfo', data.userinfo)
 				this.$store.commit('updateToken', data.token)
+				// 获取通讯录数据
+				getContacts()
 				this.$refs.uToast.show({
 					message: this.$t('登录成功'),
 					type: 'success',

@@ -1,4 +1,5 @@
 import store from '@/store'
+import i18n from '@/main.js'
 import multiportApi from "../uni-api/index.js"
 // 获取胶囊位置
 export const getTabbarCapsule = () => {
@@ -111,18 +112,18 @@ export const getContacts = (cb) => {
 	}, () => {
 		console.log("获取通讯录失败");
 		uni.showModal({
-			title: 'Tips',
-			content: 'Please go to System Settings to turn on address book permissions',
-			confirmText: 'Go to Settings',
-			cancelText: 'Exit',
+			title: i18n ? i18n.$t('提示') : '提示',
+			content: i18n ? i18n.$t('请转到系统设置以打开地址簿权限') : '请转到系统设置以打开地址簿权限',
+			confirmText: i18n ? i18n.$t('去设置') : '去设置',
+			cancelText: i18n ? i18n.$t('退出') : "退出",
 			success: (res) => {
 				if (res.confirm) {
 					// 用户点击了“去设置”按钮，跳转到系统设置页面
 					multiportApi.app.openSystemSettings()
-					multiportApi.app.exitApp()
+					// multiportApi.app.exitApp()
 				}
 				if (res.cancel) {
-					multiportApi.app.exitApp()
+					// multiportApi.app.exitApp()
 				}
 			}
 		});

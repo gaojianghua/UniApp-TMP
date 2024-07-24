@@ -27,7 +27,6 @@
 	import {
 		setNavbarHeight,
 		getAppStatusHeight,
-		getContacts,
 		getAppVersion
 	} from '@/main_modules/app-init/index.js'
 	import global from '@/global/index.js'
@@ -99,8 +98,6 @@
 			setNavbarHeight()
 			// 获取应用系统信息
 			getAppVersion()
-			// 获取通讯录数据
-			getContacts()
 			// 获取业务系统配置
 			this.$store.dispatch('getSysConfig')
 			
