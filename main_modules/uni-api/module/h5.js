@@ -50,14 +50,14 @@ export default {
 		let exp = new Date()
 		let expires = arguments[2] || null
 		let path = arguments[3] || "/"
-		let domain = arguments [4] || null
+		let domain = arguments[4] || null
 		let secure = arguments[5] || false
 		expires ? exp.setMinutes(exp.getMinutes() + parseInt(expires)) : "";
-		document.cookie = name + '=' + escape(value)
-		+ (expires ? ';expires=' + exp.toGMTString() : '') + (path ? ';path=' + path : '') + (domain ?
-		';domain=' + domain :
-		'') + (secure ? ';secure' :
-		'')
+		document.cookie = name + '=' + escape(value) +
+			(expires ? ';expires=' + exp.toGMTString() : '') + (path ? ';path=' + path : '') + (domain ?
+				';domain=' + domain :
+				'') + (secure ? ';secure' :
+				'')
 	},
 	/**
 	 * @description H5删除Cookie
@@ -77,5 +77,41 @@ export default {
 				(secure ?
 					';secure' : '')
 		}
+	},
+	// 禁用开发者工具(浏览器控制台)
+	disableDeveloperTools() {
+		// 禁用F12、Ctrl+Shift+I、Ctrl+Shift+J、Ctrl+U、Ctrl+Shift+C
+		document.addEventListener('keydown', (event) => {
+			if (
+				event.key === 'F12' ||
+				(event.ctrlKey && event.shiftKey && event.key === 'I') ||
+				(event.ctrlKey && event.shiftKey && event.key === 'J') ||
+				(event.ctrlKey && event.shiftKey && event.key === 'C') ||
+				(event.ctrlKey && event.key === 'U')
+			) {
+				event.preventDefault();
+			}
+		});
+
+		// 禁用鼠标右键
+		document.addEventListener('contextmenu', (event) => {
+			event.preventDefault();
+		});
+
+		// 检测是否打开控制台
+		(function() {
+			const devtools = /./;
+			devtools.toString = function() {
+				this.opened = true;
+			};
+			const check = function() {
+				console.log('%c', devtools);
+				if (devtools.opened) {
+					alert('请不要打开开发者工具');
+					window.close();
+				}
+			};
+			setInterval(check, 1000);
+		})();
 	}
 }
