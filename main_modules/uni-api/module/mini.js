@@ -84,5 +84,16 @@ export default {
 			success: (res) => success(res),
 			fail: (err) => fail(err)
 		})
+	},
+	/**
+	 * @description 获取小程序元素信息
+	 * @param ele(String) 元素id名或者类名，如：#tab .tabß
+	 */
+	getElementInfo(ele) {
+		let info = null
+		uni.createSelectorQuery().select(ele).boundingClientRect(item => {
+			info = item
+		}).exec()
+		return info
 	}
 }

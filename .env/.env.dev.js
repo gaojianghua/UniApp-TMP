@@ -1,3 +1,3 @@
 export default {
-	baseURL: 'https://gaojianghua.cn:8888',
+	baseURL: 'https://localhost:8080',
 }
