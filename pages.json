@@ -134,23 +134,37 @@
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
-			},{
+			}, {
 				"path": "home/live-push-stream/camera",
 				"style": {
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
-			},{
+			}, {
 				"path": "home/speak-freely/index",
 				"style": {
 					"navigationBarTitleText": "%page.畅所欲言%",
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
-			},{
+			}, {
 				"path": "home/hot-movies/index",
 				"style": {
 					"navigationBarTitleText": "%page.热门影视%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "home/generate-subtitles/index",
+				"style": {
+					"navigationBarTitleText": "%page.生成字幕%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
+				"path": "home/image-cropping/index",
+				"style": {
+					"navigationBarTitleText": "%page.图片剪裁%",
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
@@ -494,70 +508,70 @@
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
-				}, 
+				},
 				{
 					"path": "read-comics/index",
 					"style": {
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
-				}, 
+				},
 				{
 					"path": "read-history/index",
 					"style": {
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
-				}, 
+				},
 				{
 					"path": "message-list/index",
 					"style": {
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
-				}, 
+				},
 				{
 					"path": "message-detail/index",
 					"style": {
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
-				}, 
+				},
 				{
 					"path": "points-slot-machine-draw/index",
 					"style": {
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
-				}, 
+				},
 				{
 					"path": "points-monopoly-draw/index",
 					"style": {
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
-				}, 
+				},
 				{
 					"path": "points-digging-gold-draw/index",
 					"style": {
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
-				}, 
+				},
 				{
 					"path": "book-view/index",
 					"style": {
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
-				}, 
+				},
 				{
 					"path": "points-digging-gold-draw/index",
 					"style": {
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
-				}, 
+				},
 				{
 					"path": "hot-movies-detail/index",
 					"style": {

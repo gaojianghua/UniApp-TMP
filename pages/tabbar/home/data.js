@@ -65,12 +65,14 @@ export const menus = [{
 	{
 		id: 7,
 		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(14).png',
-		name: '早教'
+		name: 'page.生成字幕',
+		page: '/pages-next/home/generate-subtitles/index'
 	},
 	{
 		id: 8,
 		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(12).png',
-		name: '幼儿园'
+		name: 'page.图片剪裁',
+		page: '/pages-next/home/image-cropping/index'
 	},
 	{
 		id: 9,

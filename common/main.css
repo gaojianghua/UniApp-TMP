@@ -132,8 +132,16 @@ body {
 	font-size: 60rpx;
 }
 
-.font-weight {
-	font-weight: bold;
+.font-weight4 {
+	font-weight: 400;
+}
+
+.font-weight5 {
+	font-weight: 500;
+}
+
+.font-weight6 {
+	font-weight: 600;
 }
 
 .font-weight-100 {
