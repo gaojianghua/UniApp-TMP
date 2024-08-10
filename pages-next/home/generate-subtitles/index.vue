@@ -74,6 +74,9 @@
 				{{$t('保存')}}
 			</view>
 		</view>
+		<!-- 海报生成组件 -->
+		<c-app-share @closePoster="closePoster" @success="success" :posterShow="posterShow"
+			:poster="poster"/>
 		<!-- 弹出层 -->
 		<subtitle-popup :show="subtitleShow" @close="subtitleShow = false"></subtitle-popup>
 		<image-popup :show="imageShow" @close="imageShow = false"></image-popup>
@@ -81,10 +84,12 @@
 </template>
 
 <script>
+	import CAppShare from '@/components/common/c-app-share/index.vue'
 	import SubtitlePopup from './components/subtitle-popup.vue'
 	import ImagePopup from './components/image-popup.vue'
 	export default {
 		components: {
+			CAppShare,
 			SubtitlePopup,
 			ImagePopup
 		},
@@ -98,10 +103,28 @@
 				height: 0,
 				show: false,
 				subtitleShow: false,
-				imageShow: false
+				imageShow: false,
+				poster: {},
+				posterShow: false,
 			}
 		},
 		methods: {
+			// 海报数据
+			setPoster() {
+				this.poster = {
+					
+				}
+			},
+			// 生成海报成功
+			success() {
+				this.isSuccess = true
+				clearTimeout(this.time)
+			},
+			// 关闭弹框
+			closePoster() {
+				this.isSuccess = false
+				this.posterShow = false
+			},
 			// 获取图片box高度
 			observeHeightChange() {
 				uni.createSelectorQuery().select('#content').boundingClientRect(item => {

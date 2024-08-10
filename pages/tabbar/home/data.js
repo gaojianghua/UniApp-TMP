@@ -77,6 +77,7 @@ export const menus = [{
 	{
 		id: 9,
 		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(6).png',
-		name: '托管'
+		name: 'page.娱乐中心',
+		page: '/pages-next/home/recreation-center/index'
 	}
 ]

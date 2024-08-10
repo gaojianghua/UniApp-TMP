@@ -1,5 +1,5 @@
 <template>
-	<m-popup :show="show" i18n @close="close" title="选择图片">
+	<m-popup :show="show" i18n @close="close" title="选择模板">
 		<view class="p-2">
 			<m-scroll-y :isLoading="false" :isCustomRefresh="false" :scrollStyle="{height: '60vh'}">
 				

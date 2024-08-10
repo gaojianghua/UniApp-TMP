@@ -169,6 +169,13 @@
 					"enablePullDownRefresh": false
 				}
 			}, {
+				"path": "home/recreation-center/index",
+				"style": {
+					"navigationBarTitleText": "%page.娱乐中心%",
+					"navigationStyle": "custom",
+					"enablePullDownRefresh": false
+				}
+			}, {
 				"path": "mine/order-list/index",
 				"style": {
 					"navigationBarTitleText": "%page.订单列表%",

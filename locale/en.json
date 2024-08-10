@@ -79,6 +79,7 @@
 	"page.热门影视": "Hot Movies",
 	"page.生成字幕": "Generate Subtitles",
 	"page.图片剪裁": "Image Cropping",
+	"page.娱乐中心": "Recreation Center",
 
 	"上拉加载更多哦~": "Pull up to load more oh ~",
 	"正在加载中哦! 亲~": "Under loading oh! Pro ~",
@@ -472,9 +473,15 @@
 	
 	"通知权限开启提醒": "Notification Permission Enable alerts",
 	"您还没有开启通知权限，无法接受到消息通知，请前往设置！": "You have not enabled notification rights, can not receive message notifications, please go to Settings!",
-	"去设置": "Go to Settings",
 	"提示": "Tips",
 	"退出": "Exit",
-	"请转到系统设置以打开地址簿权限": "Please go to System Settings to turn on address book permissions"
+	"请转到系统设置以打开地址簿权限": "Please go to System Settings to turn on address book permissions",
+	
+	"设置": "Settings",
+	"上传图片": "Upload pictures",
+	"选择图库图片": "Select a gallery picture",
+	"选择字幕模板": "Select subtitles template",
+	"选择图片": "Select picture",
+	"选择模板": "Select template"
 	
 }

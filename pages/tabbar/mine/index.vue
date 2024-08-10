@@ -152,11 +152,6 @@
 						<!-- #endif -->
 					</view>
 				</view>
-
-				<view class="" @click="openMessage">
-					获取短信
-				</view>
-
 				<u-gap height="50rpx"></u-gap>
 		</m-scroll-y>
 		<!-- 底部导航栏 -->
