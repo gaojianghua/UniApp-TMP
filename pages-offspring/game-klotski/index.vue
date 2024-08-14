@@ -1,37 +1,23 @@
 <template>
 	<view class="page">
-		<m-navbar bgColor="#fff" textColor="#fb7299" value="page.娱乐中心" i18n></m-navbar>
+		<m-navbar bgColor="#fff" textColor="#fb7299" value="page.华容道" i18n></m-navbar>
 		<m-scroll-y :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
 			<view class="content d-flex flex-column a-center h-100">
-				<view class="bg-white w-100 d-flex a-center" v-for="(item, i) in list" :key="i" @click="openPages(item.path)">
-					<m-cell class="w-100 px-2" i18n :item="item"></m-cell>
-				</view>
+					
 			</view>
 		</m-scroll-y>
 	</view>
 </template>
 
 <script>
-	import MCell from '@/main_modules/main-ui/m-cell/index.vue'
 	export default {
-		components: {
-			MCell
-		},
 		data() {
 			return {
-				list: [
-					{
-						name: 'page.华容道',
-						path: '/pages-offspring/game-klotski/index'
-					}
-				]
+				
 			}
 		},
 		methods: {
-			// 进入游戏页面
-			openPages(i) {
-				this.$tools.Navigate.navigateTo(i)
-			}
+
 		},
 		computed: {
 			scrollStyle() {

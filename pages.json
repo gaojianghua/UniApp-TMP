@@ -508,6 +508,13 @@
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
+				},{
+					"path": "game-klotski/index",
+					"style": {
+						"navigationBarTitleText": "%page.华容道%",
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
 				},
 				{
 					"path": "read-novel/index",
