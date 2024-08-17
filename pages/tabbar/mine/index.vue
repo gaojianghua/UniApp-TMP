@@ -1,5 +1,6 @@
 <template>
 	<view class="page">
+		<m-navbar :showNavbar="false"></m-navbar>
 		<!-- 顶部信息 -->
 		<m-scroll-y :isLoading="false" :isCustomRefresh="false" :scrollStyle="scrollStyle">
 			<!-- #ifdef MP -->

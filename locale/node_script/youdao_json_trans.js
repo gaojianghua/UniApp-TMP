@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 
 const app_id = '48013cb8c21ed176';	// 有道应用ID
-const secret_key = 'H1AYEg1UylznWHRkeqZgqA2hLvYzZFcU'; // 有到应用秘钥
+const secret_key = 'H1AYEg1UylznWHRkeqZgqA2hLvYzZFcU'; // 有道应用秘钥
 const from = 'zh-Hans';	// 指定源语言
 const to = 'th'; // 指定翻译后的语言
 let ident = '.'	// 有前缀的话，填前缀间隔符

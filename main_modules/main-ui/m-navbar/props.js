@@ -7,6 +7,10 @@ module.exports = {
 		type: Boolean,
 		default: false
 	},
+	showNavbar: {
+		type: Boolean,
+		default: true
+	},
 	isSlot: {
 		type: Boolean,
 		default: false

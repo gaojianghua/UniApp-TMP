@@ -68,6 +68,8 @@ import GNetworkError from '@/components/global/g-network-error/index.vue'
 Vue.component('g-network-error', GNetworkError)
 import GTimeout from '@/components/global/g-timeout/index.vue'
 Vue.component('g-timeout', GTimeout)
+import GSuspendBall from '@/components/global/g-suspend-ball/index.vue'
+Vue.component('g-suspend-ball', GSuspendBall)
 // #ifdef H5
 import {
 	SvgSymbolIcon,

@@ -2,19 +2,19 @@
 <template>
 	<view class="index-5" :class="isFixed ? 'position-fixed' : 'position-sticky'">
 		<!-- #ifndef MP -->
-		<view :style="{height: `${statusHeight}px`, backgroundColor: bgColor}"></view>
+		<view v-if="showNavbar" :style="{height: `${statusHeight}px`, backgroundColor: bgColor}"></view>
 		<!-- #endif -->
 		<!-- #ifdef MP -->
-		<view :style="[{height: `${statusHeight}px`, backgroundColor: bgColor}]"></view>
+		<view v-if="showNavbar" :style="[{height: `${statusHeight}px`, backgroundColor: bgColor}]"></view>
 		<!-- #endif -->
 		<!-- #ifndef MP -->
-		<view class="top top-0 index-1"
+		<view v-if="showNavbar" class="top top-0 index-1"
 			:style="{height: `${navbarHeight}px`, borderBottom: borderBottom ? '1rpx solid #f5f5f5' : 'none'}">
 			<view :style="{backgroundColor: bgColor}" class="tabbar d-flex a-center position-relative"
 				:class="textDirection === 'center' ? 'j-center' : 'pl-10'">
 			<!-- #endif -->
 				<!-- #ifdef MP -->
-				<view class="top top-0 index-1"
+				<view v-if="showNavbar" class="top top-0 index-1"
 					:style="[{height: `${navbarHeight}px`, borderBottom: borderBottom ? '1rpx solid #f5f5f5' : 'none'}]">
 					<view :style="[{backgroundColor: bgColor}]" class="tabbar d-flex a-center position-relative"
 						:class="textDirection === 'center' ? 'j-center' : 'pl-10'">
@@ -54,6 +54,9 @@
 						<slot v-else name="right"></slot>
 					</view>
 				</view>
+				<g-network-error></g-network-error>
+				<g-timeout></g-timeout>
+				<g-suspend-ball></g-suspend-ball>
 			</view>
 </template>
 

@@ -59,4 +59,7 @@ export default {
 	updateRegisterID(state, e) {
 		state.registerID = e
 	},
+	updateBall(state, e) {
+		state.ball = e
+	},
 }

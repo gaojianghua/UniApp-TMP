@@ -74,4 +74,9 @@ export default {
 		'https://gongyue-shop.oss-cn-hangzhou.aliyuncs.com'
 	], // 远程资源域名（如：oss，obs）
 	registerID: uni.getStorageSync('registerID') || [], // 极光推送：设备注册ID
+	// 悬浮球坐标
+	ball: uni.getStorageSync('ball') || {
+		x: 0,
+		y: 0
+	}
 }
