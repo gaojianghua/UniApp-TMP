@@ -335,7 +335,7 @@ class Common {
 		document.body.appendChild(a);
 		a.click();
 		a.remove();
-		callback()
+		callback(true)
 		// #endif
 	}
 	/**
