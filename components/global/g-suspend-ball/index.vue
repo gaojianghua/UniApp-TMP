@@ -51,7 +51,6 @@
 			};
 		},
 		mounted() {
-			console.log(222)
 			this.getSysInfo()
 		},
 		methods: {

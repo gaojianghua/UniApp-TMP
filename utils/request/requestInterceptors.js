@@ -10,7 +10,11 @@ import {
 
 module.exports = (vm) => {
 	uni.$u.http.interceptors.request.use((config) => {
-			if (checkRequestIsEqual(config)) return Promise.reject({data});
+			let isEqual = checkRequestIsEqual(config)
+			// 自定义返回值限流（不会发起请求）
+			if (isEqual) return Promise.reject({data});
+			// 使用Task限流 (会发起请求并取消)
+			config.getTask = (task, options) => bool && task.abort()
 			// 更新上一次请求的信息
 			lastRequest.request = JSON.stringify(config);
 			lastRequest.timestamp = Date.now();
