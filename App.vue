@@ -25,6 +25,30 @@
 	export default {
 		onLaunch: function() {
 			/**
+			 * 全端
+			 */
+			// 获取手机状态栏高度
+			getAppStatusHeight()
+			// 设置自定义导航栏高度
+			setNavbarHeight()
+			// 获取应用系统信息
+			getAppVersion()
+			// 获取业务系统配置
+			this.$store.dispatch('getSysConfig')
+			
+			// setTimeout(() => {
+			// 	为tabbar的某一项上添加文本
+			// 	uni.setTabBarBadge({
+			// 		index: 1,
+			// 		text: '31'
+			// 	});
+			// 	显示tabbar上某一项的红点
+			// 	uni.showTabBarRedDot({
+			// 		index: 3
+			// 	});
+			// }, 1000);
+			
+			/**
 			 * APP端
 			 */
 			// #ifdef APP-PLUS
@@ -80,30 +104,6 @@
 			getBrowserFitHeight()
 			this.$store.commit('updateCanvasId', this.$tools.Common.generateDeviceId())
 			// #endif
-
-			/**
-			 * 全端
-			 */
-			// 获取手机状态栏高度
-			getAppStatusHeight()
-			// 设置自定义导航栏高度
-			setNavbarHeight()
-			// 获取应用系统信息
-			getAppVersion()
-			// 获取业务系统配置
-			this.$store.dispatch('getSysConfig')
-			
-			// setTimeout(() => {
-			// 	为tabbar的某一项上添加文本
-			// 	uni.setTabBarBadge({
-			// 		index: 1,
-			// 		text: '31'
-			// 	});
-			// 	显示tabbar上某一项的红点
-			// 	uni.showTabBarRedDot({
-			// 		index: 3
-			// 	});
-			// }, 1000);
 		},
 		onShow: function() {
 			console.log('App Show');

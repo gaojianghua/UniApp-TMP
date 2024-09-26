@@ -42,7 +42,7 @@ export const getBrowserFitHeight = () => {
 	// 	icon: 'none',
 	// 	duration:10000
 	// })
-	let browserFitHeight = 0
+	let browserFitHeight = store.state.appSystemInfo.platform == 'ios' ? 0 : 60
 	if (userAgent.includes('qq') || !userAgent.includes('mobile')) {
 		// 当前在 QQ 浏览器或 PC端浏览器中运行
 		uni.setStorageSync('browserFitHeight', browserFitHeight)
@@ -51,13 +51,13 @@ export const getBrowserFitHeight = () => {
 	}
 	if (userAgent.includes('safari') && !userAgent.includes('chrome')) {
 		// 当前在 Safari 浏览器中运行
-		browserFitHeight = 80
+		browserFitHeight = 82
 		uni.setStorageSync('browserFitHeight', browserFitHeight)
 		store.commit('updateBrowserFitHeight', browserFitHeight)
 		console.log('当前网址在 Safari 浏览器中运行');
 	} else if (userAgent.includes('chrome')) {
 		// 当前在 Google 浏览器中运行
-		browserFitHeight = 54
+		browserFitHeight = 60
 		uni.setStorageSync('browserFitHeight', browserFitHeight)
 		store.commit('updateBrowserFitHeight', browserFitHeight)
 		console.log('当前是 Google 浏览器');
