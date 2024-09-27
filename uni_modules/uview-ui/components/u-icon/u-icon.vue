@@ -38,7 +38,7 @@
 	// #ifdef APP-NVUE
 	// nvue通过weex的dom模块引入字体，相关文档地址如下：
 	// https://weex.apache.org/zh/docs/modules/dom.html#addrule
-	const fontUrl = 'https://at.alicdn.com/t/font_2225171_8kdcwk4po24.ttf'
+	const fontUrl = './icon.ttf'
 	const domModule = weex.requireModule('dom')
 	domModule.addRule('fontFace', {
 		'fontFamily': "uicon-iconfont",
