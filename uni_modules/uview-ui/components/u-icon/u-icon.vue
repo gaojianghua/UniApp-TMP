@@ -160,7 +160,7 @@
 	// 非nvue下加载字体
 	@font-face {
 		font-family: 'uicon-iconfont';
-		src: url('https://at.alicdn.com/t/font_2225171_8kdcwk4po24.ttf') format('truetype');
+		src: url('./icon.ttf') format('truetype');
 	}
 
 	/* #endif */
