@@ -121,9 +121,9 @@
 					"enablePullDownRefresh": false
 				}
 			}, {
-				"path": "home/discount-goods/index",
+				"path": "home/toolkit/index",
 				"style": {
-					"navigationBarTitleText": "%page.优选好物%",
+					"navigationBarTitleText": "%page.工具大全%",
 					"navigationStyle": "custom",
 					"enablePullDownRefresh": false
 				}
@@ -589,6 +589,14 @@
 				{
 					"path": "hot-movies-detail/index",
 					"style": {
+						"navigationStyle": "custom",
+						"enablePullDownRefresh": false
+					}
+				},
+				{
+					"path": "tools-signature/index",
+					"style": {
+						"navigationBarTitleText": "%page.电子签名%",
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}

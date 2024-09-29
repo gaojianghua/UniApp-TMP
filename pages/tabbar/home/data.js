@@ -35,8 +35,8 @@ export const menus = [{
 	{
 		id: 2,
 		src: 'https://liulujiaoyu.oss-cn-hangzhou.aliyuncs.com/circle/circle%20(10).png',
-		name: 'page.优选好物',
-		page: '/pages-next/home/discount-goods/index'
+		name: 'page.工具大全',
+		page: '/pages-next/home/toolkit/index'
 	},
 	{
 		id: 3,

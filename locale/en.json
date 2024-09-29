@@ -72,7 +72,7 @@
 	"page.添加收货地址": "Add Shipping Address",
 	"page.紫薇星术": "Horoscope",
 	"page.BMI指数": "Body Mass Index",
-	"page.优选好物": "Discount Goods",
+	"page.工具大全": "Tool Kit",
 	"page.书籍大全": "Book All",
 	"page.直播推流": "Live Push Stream",
 	"page.畅所欲言": "Speak Freely",
@@ -81,6 +81,7 @@
 	"page.图片剪裁": "Image Cropping",
 	"page.娱乐中心": "Recreation Center",
 	"page.华容道": "Klotski",
+	"page.电子签名": "Electronic Signature",
 
 	"上拉加载更多哦~": "Pull up to load more oh ~",
 	"正在加载中哦! 亲~": "Under loading oh! Pro ~",
@@ -483,6 +484,17 @@
 	"选择图库图片": "Select a gallery picture",
 	"选择字幕模板": "Select subtitles template",
 	"选择图片": "Select picture",
-	"选择模板": "Select template"
+	"选择模板": "Select template",
+	
+	"清空": "Clear",
+	"保存": "Save",
+	"预览": "Preview",
+	"撤销": "Cancel",
+	"完成": "Complete",
+	"请签名": "Please sign your name",
+	"没有任何绘制内容哦": "There's no drawing content",
+	"已保存": "Saved",
+	"已成功保存到相册": "Successfully saved to album",
+	"已保存到相册": "Saved to album"
 	
 }
