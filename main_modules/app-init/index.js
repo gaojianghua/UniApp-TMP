@@ -38,10 +38,11 @@ export const getBrowserFitHeight = () => {
 	// #ifdef H5
 	const userAgent = navigator.userAgent.toLowerCase();
 	// uni.showToast({
-	// 	title: userAgent,
+	// 	title: store.state.appSystemInfo.,
 	// 	icon: 'none',
 	// 	duration:10000
 	// })
+	console.log(store.state.appSystemInfo)
 	let browserFitHeight = store.state.appSystemInfo.platform == 'ios' ? 0 : 60
 	if (userAgent.includes('qq') || !userAgent.includes('mobile')) {
 		// 当前在 QQ 浏览器或 PC端浏览器中运行
