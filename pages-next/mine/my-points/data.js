@@ -30,9 +30,14 @@ const menuList = [
 		page: '/pages-offspring/points-monopoly-draw/index'
 	},
 	{
-		id: 6,
+		id: 7,
 		name: 'page.挖金条抽奖',
 		page: '/pages-offspring/points-digging-gold-draw/index'
+	},
+	{
+		id: 8,
+		name: 'page.翻卡牌抽奖',
+		page: '/pages-offspring/points-flip-card-draw/index'
 	}
 ]
 

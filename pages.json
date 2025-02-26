@@ -469,6 +469,7 @@
 				{
 					"path": "order-search/index",
 					"style": {
+						"navigationBarTitleText": "%page.搜索%",
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
@@ -484,6 +485,7 @@
 				{
 					"path": "ranking-list/index",
 					"style": {
+						"navigationBarTitleText": "%page.排行榜%",
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
@@ -498,6 +500,7 @@
 				}, {
 					"path": "all-search/index",
 					"style": {
+						"navigationBarTitleText": "%page.搜索%",
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
@@ -519,6 +522,7 @@
 				{
 					"path": "read-novel/index",
 					"style": {
+						"navigationBarTitleText": "%page.小说%",
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
@@ -526,6 +530,7 @@
 				{
 					"path": "read-comics/index",
 					"style": {
+						"navigationBarTitleText": "%page.漫画%",
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
@@ -533,6 +538,7 @@
 				{
 					"path": "read-history/index",
 					"style": {
+						"navigationBarTitleText": "%page.阅读历史%",
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
@@ -540,6 +546,7 @@
 				{
 					"path": "message-list/index",
 					"style": {
+						"navigationBarTitleText": "%page.消息列表%",
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
@@ -547,6 +554,7 @@
 				{
 					"path": "message-detail/index",
 					"style": {
+						"navigationBarTitleText": "%page.消息详情%",
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
@@ -554,6 +562,7 @@
 				{
 					"path": "points-slot-machine-draw/index",
 					"style": {
+						"navigationBarTitleText": "%page.老虎机抽奖%",
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
@@ -561,13 +570,15 @@
 				{
 					"path": "points-monopoly-draw/index",
 					"style": {
+						"navigationBarTitleText": "%page.大富翁抽奖%",
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
 				},
 				{
-					"path": "points-digging-gold-draw/index",
+					"path": "points-flip-card-draw/index",
 					"style": {
+						"navigationBarTitleText": "%page.翻卡牌抽奖%",
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
@@ -582,6 +593,7 @@
 				{
 					"path": "points-digging-gold-draw/index",
 					"style": {
+						"navigationBarTitleText": "%page.挖金条抽奖%",
 						"navigationStyle": "custom",
 						"enablePullDownRefresh": false
 					}
